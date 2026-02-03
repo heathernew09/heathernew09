@@ -30,5 +30,3 @@ With **20+ years** of making things for the web, I operate at the intersection o
 ### ⚡ Beyond the Code
 * **Always Iterating:** Whether it's a bathroom renovation or a JS library, I am always building.
 * **Grit:** Former **Roller Derby MVP**. I know how to navigate chaos and keep moving forward. 🛼
-
-![Heather's GitHub stats](https://github-readme-stats.vercel.app/api?username=heathernew09&show_icons=true&theme=gotham&hide_border=true)
