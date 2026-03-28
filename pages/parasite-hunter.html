@@ -29,6 +29,58 @@
       --bg-color: #f4f4f4;
     }
 
+    .hero-3d {
+      position: relative;
+      height: 800px;
+      min-height: 800px;
+      width: 100%;
+      overflow: visible;
+    }
+
+    div#parasite-hunter-logo {
+      position: absolute;
+      display: block;
+      top: 50% !important;
+      left: 5% !important;
+      z-index: 100;
+      transform: translateY(-50%) scale(0.5);
+      transform-origin: top left;
+    }
+
+    div#parasite-hunter-logo img {
+      width: 500px;
+    }
+
+    #parasite-counter-ui {
+      position: absolute;
+      top: 310px;
+      left: 150px;
+      z-index: 100;
+      background: #000000d9;
+      padding: 10px 20px;
+      border: 10px solid var(--accent-lime);
+      pointer-events: none;
+      font-family: Manrope, sans-serif;
+      border-radius: 22px;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .count-label {
+      display: block;
+      font-size: 1.7rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 2px;
+    }
+
+    #squish-count {
+      font-size: 7rem;
+      font-weight: 800;
+      color: var(--accent-lime);
+      text-shadow: 0 0 10px rgba(191, 255, 0, 0.5);
+      font-variant-numeric: tabular-nums;
+    }
+
     .portfolio-section {
       padding: 0 0 8rem;
       background-color: var(--bg-color);
@@ -163,8 +215,8 @@
     /* Hero controls override */
     .parasite-controls-container {
       position: absolute;
-      bottom: 20px;
-      right: 20px;
+      bottom: 40px !important;
+      right: 40px !important;
       display: flex;
       flex-direction: row;
       gap: 8px;
@@ -191,13 +243,13 @@
       flex-shrink: 0;
     }
     .parasite-controls-container .reset-btn {
-      border-color: #ff4444 !important;
-      color: #ff4444 !important;
+      border-color: rgba(255,255,255,0.3) !important;
+      color: rgba(255,255,255,0.7) !important;
     }
     .parasite-controls-container .reset-btn:hover {
       border-color: #ff4444 !important;
-      color: #fff !important;
-      background: #ff4444 !important;
+      color: #ff4444 !important;
+      background: rgba(0,0,0,0.7) !important;
     }
   </style>
 </head>
@@ -211,7 +263,8 @@
     <main id="main-content">
 		<section><!-- 3D Interactive Container -->
             <div class="hero-3d">
-                <div id="section-parasite-hunter"><load src="../src/partials/parasite-3d.html" /></div>            </div>
+                <div id="section-parasite-hunter"><load src="../src/partials/parasite-3d.html" /></div>
+            </div>
 		</section>
 		
 		<!-- BAUHAUS GRID -->
@@ -524,13 +577,15 @@
 		const phoneContainer = document.getElementById('phone-mock-container');
 
 		function showCover() {
-		  playOverlay.classList.remove('hidden');
-		  phoneContainer.classList.remove('floating');
-		  demoBtn.style.display = 'inline-flex';
+		  if (playOverlay) playOverlay.classList.remove('hidden');
+		  if (phoneContainer) phoneContainer.classList.remove('floating');
+		  if (demoBtn) demoBtn.style.display = 'inline-flex';
 		  isPlaying = false;
 		  isPaused = false;
-		  gameVideo.pause();
-		  gameVideo.currentTime = 0;
+		  if (gameVideo) {
+			gameVideo.pause();
+			gameVideo.currentTime = 0;
+		  }
 		  if (pauseTimeout) {
 			clearTimeout(pauseTimeout);
 			pauseTimeout = null;
@@ -538,64 +593,47 @@
 		}
 
 		function handlePlayDemo() {
-		  // Start playing from cover
 		  isPlaying = true;
 		  isPaused = false;
-		  playOverlay.classList.add('hidden');
-		  phoneContainer.classList.add('floating');
-		  demoBtn.style.display = 'none';
-		  gameVideo.play();
+		  if (playOverlay) playOverlay.classList.add('hidden');
+		  if (phoneContainer) phoneContainer.classList.add('floating');
+		  if (demoBtn) demoBtn.style.display = 'none';
+		  if (gameVideo) gameVideo.play();
 		}
 
 		function handleVideoClick() {
-		  if (!isPlaying) return; // Do nothing if not started
+		  if (!isPlaying) return;
 
 		  if (isPaused) {
-			// Resume video
-			gameVideo.play();
+			if (gameVideo) gameVideo.play();
 			isPaused = false;
 			if (pauseTimeout) {
 			  clearTimeout(pauseTimeout);
 			  pauseTimeout = null;
 			}
 		  } else {
-			// Pause video
-			gameVideo.pause();
+			if (gameVideo) gameVideo.pause();
 			isPaused = true;
-			// Set 15 second timeout to revert to cover
 			pauseTimeout = setTimeout(() => {
 			  showCover();
 			}, 15000);
 		  }
 		}
 
-		// When video ends naturally, revert to cover
-		gameVideo.addEventListener('ended', function() {
-		  showCover();
+		if (gameVideo) gameVideo.addEventListener('ended', showCover);
+		if (demoBtn) demoBtn.addEventListener('click', handlePlayDemo);
+		if (playOverlay) playOverlay.addEventListener('click', () => {
+		  if (!isPlaying) handlePlayDemo();
 		});
-
-		// Event listeners
-		demoBtn.addEventListener('click', handlePlayDemo);
-
-		// Overlay only works to start video from cover state
-		playOverlay.addEventListener('click', function() {
-		  if (!isPlaying) {
-			handlePlayDemo();
-		  }
-		});
-
-		// Click on screen container (not overlay) to pause/resume
-		gameVideo.addEventListener('click', handleVideoClick);
+		if (gameVideo) gameVideo.addEventListener('click', handleVideoClick);
 	</script>
 	<script>
 		document.addEventListener('DOMContentLoaded', () => {
-				// Register with the section manager
 				window.sectionManager.register('section-parasite-hunter', 
 					() => { if (window.parasiteAnim) window.parasiteAnim.play(); }, 
 					() => { if (window.parasiteAnim) window.parasiteAnim.pause(); }
 				);
 
-				// Force immediate load start so assets download while reading
 				const bootstrap = setInterval(() => {
 					if (window.parasiteAnim) {
 						window.parasiteAnim.play();

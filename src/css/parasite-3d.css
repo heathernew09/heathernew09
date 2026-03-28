@@ -15,10 +15,11 @@
 div#parasite-hunter-logo {
     position: absolute;
     display: block;
-    bottom: 60%;
-    z-index: 9;
-    left: 10%;
+    top: 5%;
+    left: 5%;
+    z-index: 100;
     transform: scale(0.5);
+    transform-origin: top left;
 }
 
 div#parasite-hunter-logo img {
@@ -129,7 +130,7 @@ div#parasite-hunter-logo img {
 .hero-3d{
     position: relative;
     height: 800px;
-    overflow: hidden;
+    overflow: visible;
 }
 
 @media (min-width: 1024px) {

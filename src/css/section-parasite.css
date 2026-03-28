@@ -129,5 +129,5 @@ div#parasite-hunter-logo img {
 .hero-3d{
     position: relative;
     height: 800px;
-    overflow: hidden;
+    overflow: visible;
 }
