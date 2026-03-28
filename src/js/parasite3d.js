@@ -49,7 +49,7 @@
         // Preload sprites
         ['moxi', 'prazi', 'pyra'].forEach(type => {
             const img = new Image();
-            img.src = `/assets/para/sprite_attacks/${type}_attack-min.png`;
+            img.src = `/assets/para/sprite_attacks/sprite-attacks-min/${type}_attack-min.png`;
         });
 
         // --- SCENE INITIALIZATION ---
@@ -265,7 +265,7 @@
         activeAttack = type;
         frame = 0;
         const conf = fx[type];
-        sprite.style.backgroundImage = `url('/assets/para/sprite_attacks/${type}_attack-min.png')`;
+        sprite.style.backgroundImage = `url('/assets/para/sprite_attacks/sprite-attacks-min/${type}_attack-min.png')`;
         const totalRows = Math.ceil(conf.totalFrames / conf.columns);
         sprite.style.backgroundSize = `${conf.columns * 100}% ${totalRows * 100}%`;
         sprite.style.width = '200px'; 
