@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Roller Derby Alias Generator - Heather New</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+	<link rel="shortcut icon" href="/favicon/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="HeatherNew" />
+	<link rel="manifest" href="/favicon/site.webmanifest" />
+	<link rel="stylesheet" href="./src/css/global.css" />
+    <link rel="stylesheet" href="./src/css/derby.css" />
+</head>
+<body id="derby-404-body" class="page-template">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+        
+    <header class="site-header">
+        <div class="header-content"><load src="./src/partials/nav.html" /></div>
+    </header>
+
+    <main id="main-content">
+        <div class="derby-container">
+            <span class="header-404">Error 404</span>
+            <h1>Off The Track!</h1>
+            <p class="subtitle">Looks like you got hip-checked into the bleachers. The page you want is missing, but before you get back out there, let's find your ultimate Derby alias.</p>
+
+            <div class="input-grid">
+                <div class="form-group">
+                    <label for="userName">Your First Name</label>
+                    <input type="text" id="userName" placeholder="e.g. Sarah, Alex...">
+                </div>
+                <div class="form-group">
+                    <label for="userInterest">A Favorite Thing</label>
+                    <input type="text" id="userInterest" placeholder="e.g. Tacos, Space, Metal...">
+                </div>
+            </div>
+
+            <button class="btn-derby" onclick="generateNewName()">Generate Alias ⚡</button>
+
+            <div class="result-area" id="resultArea">
+                <div class="instruction">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z" fill="currentColor"/></svg>
+                    Smash any word below to reroll it!
+                </div>
+                
+                <div class="name-display" id="nameDisplay">
+                    <!-- Word parts will be injected here via JS -->
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-outline-derby" onclick="copyName()" id="copyBtn">Copy Text</button>
+                    <button class="btn-outline-derby btn-export" onclick="exportVIPPass()" id="exportBtn">⬇ Export VIP Pass</button>
+                </div>
+
+                <div class="derby-history">
+                    <h5>Recent Hits</h5>
+                    <div id="chatFeed" class="chat-feed">
+                        <!-- History injected here -->
+                    </div>
+                </div>
+            </div>
+
+            <a href="/" class="home-link">← Back to the track</a>
+        </div>
+
+        <!-- Hidden SVG template for the VIP Badge -->
+        <div id="svg-container">
+            <svg id="vip-badge-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600" style="font-family: 'Manrope', 'Arial Black', Impact, sans-serif;">
+                <defs>
+                    <pattern id="checker" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <rect width="40" height="40" fill="#1a1a1a"/>
+                        <rect width="20" height="20" fill="#252525"/>
+                        <rect x="20" y="20" width="20" height="20" fill="#252525"/>
+                    </pattern>
+                </defs>
+                
+                <rect x="10" y="40" width="380" height="550" fill="url(#checker)" stroke="#ffffff" stroke-width="8"/>
+                <rect x="150" y="10" width="100" height="25" rx="12.5" fill="#333" stroke="#fff" stroke-width="4"/>
+                <rect x="120" y="25" width="160" height="15" fill="#e60000" stroke="#fff" stroke-width="3"/>
+                <circle cx="200" cy="55" r="8" fill="#1a1a1a" stroke="#fff" stroke-width="3"/>
+                <rect x="20" y="80" width="360" height="80" fill="#e60000" stroke="#ffffff" stroke-width="4"/>
+                <text x="200" y="135" fill="#ffffff" font-size="52" font-weight="900" text-anchor="middle" letter-spacing="4">VIP ACCESS</text>
+                <text x="200" y="185" fill="#BFFF00" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="2">ALL AREA BACKSTAGE PASS</text>
+                <rect x="30" y="230" width="340" height="220" fill="#ffffff" stroke="#1a1a1a" stroke-width="6" transform="rotate(-2, 200, 340)"/>
+                <g id="svg-name-group" transform="rotate(-2, 200, 340)"></g>
+                <rect x="10" y="490" width="380" height="60" fill="#1a1a1a" stroke="#ffffff" stroke-width="4"/>
+                <text x="200" y="520" fill="#f97316" font-size="16" font-weight="900" text-anchor="middle" letter-spacing="3">ROLLER DERBY INITIATIONAL</text>
+                <text x="200" y="540" fill="#7a7a7a" font-size="12" font-weight="800" text-anchor="middle" letter-spacing="1">OFFICIAL MEAT GRINDER ALUMNI</text>
+                <path d="M50 565 v20 m10 -20 v20 m5 -20 v20 m15 -20 v20 m10 -20 v20 m5 -20 v20 m20 -20 v20 m10 -20 v20 m5 -20 v20 m15 -20 v20" stroke="#ffffff" stroke-width="3"/>
+                <path d="M220 565 v20 m10 -20 v20 m5 -20 v20 m15 -20 v20 m10 -20 v20 m5 -20 v20 m20 -20 v20 m10 -20 v20 m5 -20 v20 m15 -20 v20" stroke="#ffffff" stroke-width="3"/>
+            </svg>
+        </div>
+    </main>
+
+    <div id="footer-trigger"><load src="./src/partials/footer.html" /></div>
+
+    <script type="module" src="./src/js/site-core.js"></script>
+    <script type="module" src="./src/js/derby.js"></script>
+</body>
+</html>

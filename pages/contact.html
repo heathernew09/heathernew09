@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Contact Heather New - Creative Technologist. Let's discuss your next interactive project.">
+		<title>Contact - Heather New</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+		
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="HeatherNew" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+
+		<link rel="stylesheet" href="/src/css/global.css" />
+		<link rel="stylesheet" href="/src/css/home.css" />
+
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-dark: #111111;
+            --teal: #1BB1A5;
+            --orange: #F66C0F;
+            --lime: #B2F81D;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- CONTACT HERO (Asymmetric Void) --- */
+        .contact-hero {
+            display: flex;
+            min-height: 90vh;
+            width: 100vw;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .void-side {
+            flex: 0 0 40%;
+            background-color: var(--teal);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .void-circle {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background-color: var(--orange);
+            right: -250px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .void-side h1 {
+            font-size: 8rem;
+            line-height: 0.9;
+            font-weight: 800;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -4px;
+        }
+
+        .form-side {
+            flex: 1;
+            padding: 120px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            opacity: 0.6;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            padding: 10px 0;
+            font-size: 1.25rem;
+            font-family: inherit;
+            font-weight: 600;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: var(--teal);
+        }
+
+        .submit-btn {
+            background-color: var(--teal);
+            color: #fff;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            display: inline-block;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--text-dark);
+            transform: translateY(-5px);
+        }
+
+        /* --- CONNECT TILES --- */
+        .connect-section {
+            padding: 120px 80px;
+            background-color: #f9f9f9;
+        }
+
+        .connect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .connect-tile {
+            background: #fff;
+            padding: 40px;
+            border-left: 4px solid var(--teal);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .connect-tile:hover {
+            transform: translateY(-10px);
+        }
+
+        .connect-tile.orange { border-color: var(--orange); }
+        .connect-tile.lime { border-color: var(--lime); }
+
+        .connect-tile .meta {
+            font-size: 0.7rem;
+            font-weight: 800;
+            opacity: 0.5;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .connect-tile h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-hero { flex-direction: column; }
+            .void-side { flex: 0 0 auto; padding: 60px 40px; }
+            .void-side h1 { font-size: 5rem; }
+            .void-circle { width: 300px; height: 300px; right: -150px; }
+            .form-side { padding: 60px 40px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <load src="../src/partials/nav.html" />
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-hero">
+            <div class="void-side">
+                <h1>LET'S<br>BUILD.</h1>
+                <div class="void-circle"></div>
+            </div>
+            <div class="form-side">
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label>NAME</label>
+                        <input type="text" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>EMAIL</label>
+                        <input type="email" name="email" required placeholder="email@address.com">
+                    </div>
+                    <div class="form-group">
+                        <label>PROJECT TYPE</label>
+                        <input type="text" name="subject" placeholder="What are we making?">
+                    </div>
+                    <div class="form-group">
+                        <label>MESSAGE</label>
+                        <textarea name="message" rows="4" placeholder="Tell me more..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="connect-section">
+            <div class="connect-grid">
+                <a href="mailto:hello@heathernew.com" class="connect-tile">
+                    <span class="meta">EMAIL</span>
+                    <h3>hello@heathernew.com</h3>
+                </a>
+                <a href="https://linkedin.com/in/heathernew" class="connect-tile orange">
+                    <span class="meta">LINKEDIN</span>
+                    <h3>in/heathernew</h3>
+                </a>
+                <a href="https://github.com/heathernew" class="connect-tile lime">
+                    <span class="meta">GITHUB</span>
+                    <h3>github/heathernew</h3>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Include Footer -->
+    <div id="footer-trigger">
+        <load src="../src/partials/footer.html" />
+    </div>
+
+    <script type="module" src="/src/js/site-core.js"></script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+#canvas-container {
+	width: 100%; /* Change from 100vw */
+    height: 100%; /* Change from 100vh */
+    position: absolute; /* Change to absolute so it fills the 80vh parent */
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#canvas-container canvas {
+    display: block;
+    outline: none;
+}
+
+div#parasite-hunter-logo {
+    position: absolute;
+    display: block;
+    bottom: 60%;
+    z-index: 9;
+    left: 10%;
+    transform: scale(0.5);
+}
+
+div#parasite-hunter-logo img {
+    width: 500px;
+}
+
+/* Mobile specific button logic */
+#learn-more-button {
+    position: absolute !important;
+    bottom: 10% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 100 !important;
+    padding: 15px 30px !important;
+    background: var(--accent-lime) !important;
+    color: #1a1a1a !important;
+    border-radius: 30px !important;
+    font-family: 'Manrope', sans-serif !important;
+    font-weight: 700 !important;
+}
+#loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--accent-lime);
+    font-size: var(--base-size);
+    font-weight: 600;
+    z-index: 5;
+}
+
+/* In section-parasite.css */
+#loading {
+    display: none; /* Hide by default */
+}
+
+.active #loading {
+    display: block; /* Only show when SectionManager adds the .active class */
+}
+
+.section-parasite-3d-demo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#attack-sprite {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    display: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    transition: none; 
+    transform-origin: center center;
+}
+
+#attack-sprite.active {
+    display: block;
+}
+
+.audio-control {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    background: rgba(25, 25, 25, 0.8);
+    color: var(--accent-lime);
+    padding: 10px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border: 1px solid var(--accent-lime);
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.audio-control:hover {
+    background: var(--accent-lime);
+    color: #1a1a1a;
+}
+
+.audio-control.muted {
+    border-color: #666;
+    color: #666;
+}
+
+.audio-control.muted:hover {
+    background: #444;
+    color: #fff;
+}
+
+#home-page .hero-3d {
+    margin-top: 4rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-3d{
+    position: relative;
+    height: 800px;
+    overflow: hidden;
+}
+
+@media (min-width: 1024px) {
+	.hero-3d{
+		height: 950px;
+	}
+}
+
+@media (min-width: 2000px) {
+	.hero-3d{
+		height: 1200px;
+	}
+}
+
+#parasite-counter-ui {
+    position: absolute;
+	top: 310px;
+    left: 150px;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 10px 20px;
+    border: 10px solid var(--accent-lime);
+    pointer-events: none;
+    font-family: 'Manrope', sans-serif;
+	border-radius: 22px;
+    text-align: center;
+    color: var(--white);
+}
+
+.count-label {
+    display: block;
+    font-size: 1.7rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+}
+
+#squish-count {
+    font-size: 7rem;
+    font-weight: 800;
+    color: var(--accent-lime);
+    text-shadow: 0 0 10px rgba(191, 255, 0, 0.5);
+    font-variant-numeric: tabular-nums; /* Prevents text jumping as numbers change */
+}
+
+/* Optional: Add a "pulse" animation when a point is scored */
+.score-pop {
+    animation: scorePop 0.3s ease-out;
+}
+
+@keyframes scorePop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); color: #fff; }
+    100% { transform: scale(1); }
+}
+/* Container to hold both buttons */
+.parasite-controls-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 100;
+}
+
+/* Inherit your existing .audio-control styles, just add a specific one for Reset if desired */
+.reset-btn {
+    border-color: #ff4444 !important;
+    color: #ff4444 !important;
+}
+
+.reset-btn:hover {
+    background: #ff4444 !important;
+    color: #fff !important;
+}

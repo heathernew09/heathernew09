@@ -1,0 +1,65 @@
+{
+  "sprites": [
+    {
+      "fileName": "loti_00000.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fileName": "loti_00001.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 1080,
+      "y": 0
+    },
+    {
+      "fileName": "loti_00002.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 2160,
+      "y": 0
+    },
+    {
+      "fileName": "loti_00003.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 0,
+      "y": 1920
+    },
+    {
+      "fileName": "loti_00004.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 1080,
+      "y": 1920
+    },
+    {
+      "fileName": "loti_00005.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 2160,
+      "y": 1920
+    },
+    {
+      "fileName": "loti_00006.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 0,
+      "y": 3840
+    },
+    {
+      "fileName": "loti_00007.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 1080,
+      "y": 3840
+    }
+  ],
+  "packMode": "grid",
+  "padding": 0,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "spriteSheetWidth": 3240,
+  "spriteSheetHeight": 5760
+}

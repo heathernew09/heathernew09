@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 912.63 385.82">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        filter: url(#drop-shadow-3);
+        font-family: Fraunces-Black, Fraunces;
+        font-size: 197px;
+        font-weight: 800;
+      }
+
+      .cls-2 {
+        letter-spacing: -.1em;
+      }
+
+      .cls-3 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-6 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-8 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-9 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-10 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-11 {
+        letter-spacing: -.03em;
+      }
+    </style>
+    <filter id="drop-shadow-3" filterUnits="userSpaceOnUse">
+      <feOffset dx="4" dy="7"/>
+      <feGaussianBlur result="blur" stdDeviation="18"/>
+      <feFlood flood-color="#000" flood-opacity=".5"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <text class="cls-1" transform="translate(136.83 181.05)"><tspan class="cls-11" x="0" y="0">W</tspan><tspan class="cls-8" x="214.61" y="0">h</tspan><tspan class="cls-4" x="341.12" y="0">i</tspan><tspan class="cls-6" x="400.3" y="0">c</tspan><tspan class="cls-9" x="500.2" y="0">h</tspan><tspan class="cls-10" x="-84.79" y="154">S</tspan><tspan class="cls-3" x="35.95" y="154">w</tspan><tspan class="cls-7" x="198.93" y="154">a</tspan><tspan class="cls-8" x="306.11" y="154">t</tspan><tspan class="cls-5" x="384.66" y="154">c</tspan><tspan class="cls-2" x="484.56" y="154">h</tspan><tspan class="cls-9" x="600.06" y="154">?</tspan></text>
+</svg>

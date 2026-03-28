@@ -1,0 +1,429 @@
+{
+  "sprites": [
+    {
+      "fileName": "zap_00000.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fileName": "zap_00001.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 0
+    },
+    {
+      "fileName": "zap_00002.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 0
+    },
+    {
+      "fileName": "zap_00003.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 0
+    },
+    {
+      "fileName": "zap_00004.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 0
+    },
+    {
+      "fileName": "zap_00005.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 0
+    },
+    {
+      "fileName": "zap_00006.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 0
+    },
+    {
+      "fileName": "zap_00007.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 0
+    },
+    {
+      "fileName": "zap_00008.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 1280
+    },
+    {
+      "fileName": "zap_00009.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 1280
+    },
+    {
+      "fileName": "zap_00010.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 1280
+    },
+    {
+      "fileName": "zap_00011.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 1280
+    },
+    {
+      "fileName": "zap_00012.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 1280
+    },
+    {
+      "fileName": "zap_00013.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 1280
+    },
+    {
+      "fileName": "zap_00014.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 1280
+    },
+    {
+      "fileName": "zap_00015.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 1280
+    },
+    {
+      "fileName": "zap_00016.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 2560
+    },
+    {
+      "fileName": "zap_00017.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 2560
+    },
+    {
+      "fileName": "zap_00018.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 2560
+    },
+    {
+      "fileName": "zap_00019.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 2560
+    },
+    {
+      "fileName": "zap_00020.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 2560
+    },
+    {
+      "fileName": "zap_00021.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 2560
+    },
+    {
+      "fileName": "zap_00022.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 2560
+    },
+    {
+      "fileName": "zap_00023.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 2560
+    },
+    {
+      "fileName": "zap_00024.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 3840
+    },
+    {
+      "fileName": "zap_00025.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 3840
+    },
+    {
+      "fileName": "zap_00026.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 3840
+    },
+    {
+      "fileName": "zap_00027.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 3840
+    },
+    {
+      "fileName": "zap_00028.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 3840
+    },
+    {
+      "fileName": "zap_00029.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 3840
+    },
+    {
+      "fileName": "zap_00030.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 3840
+    },
+    {
+      "fileName": "zap_00031.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 3840
+    },
+    {
+      "fileName": "zap_00032.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 5120
+    },
+    {
+      "fileName": "zap_00033.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 5120
+    },
+    {
+      "fileName": "zap_00034.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 5120
+    },
+    {
+      "fileName": "zap_00035.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 5120
+    },
+    {
+      "fileName": "zap_00036.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 5120
+    },
+    {
+      "fileName": "zap_00037.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 5120
+    },
+    {
+      "fileName": "zap_00038.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 5120
+    },
+    {
+      "fileName": "zap_00039.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 5120
+    },
+    {
+      "fileName": "zap_00040.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 6400
+    },
+    {
+      "fileName": "zap_00041.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 6400
+    },
+    {
+      "fileName": "zap_00042.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 6400
+    },
+    {
+      "fileName": "zap_00043.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 6400
+    },
+    {
+      "fileName": "zap_00044.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 6400
+    },
+    {
+      "fileName": "zap_00045.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 6400
+    },
+    {
+      "fileName": "zap_00046.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 6400
+    },
+    {
+      "fileName": "zap_00047.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 6400
+    },
+    {
+      "fileName": "zap_00048.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 7680
+    },
+    {
+      "fileName": "zap_00049.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 7680
+    },
+    {
+      "fileName": "zap_00050.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 7680
+    },
+    {
+      "fileName": "zap_00051.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 7680
+    },
+    {
+      "fileName": "zap_00052.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 7680
+    },
+    {
+      "fileName": "zap_00053.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 7680
+    },
+    {
+      "fileName": "zap_00054.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 7680
+    },
+    {
+      "fileName": "zap_00055.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 7680
+    },
+    {
+      "fileName": "zap_00056.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 8960
+    },
+    {
+      "fileName": "zap_00057.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 8960
+    },
+    {
+      "fileName": "zap_00058.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 8960
+    },
+    {
+      "fileName": "zap_00059.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 8960
+    }
+  ],
+  "packMode": "grid",
+  "padding": 0,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "spriteSheetWidth": 5760,
+  "spriteSheetHeight": 10240
+}

@@ -1,0 +1,38 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+.parcel-cache/
+.vite/
+
+# Large Files & Binaries (>100MB and non-essentials)
+*.mp4
+*.MOV
+*.mov
+*.zip
+*.fig
+*.HEIC
+*.heic
+_archive/
+pages_backup_mess/
+
+# Environment & Credentials
+.env*
+*.key
+*.pem
+.DS_Store
+.vscode/
+.claude/
+.gemini/
+
+# Misc
+*.log
+*.tmp
+*.bak
+dwsync.xml
+_notes/

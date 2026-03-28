@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology.">
+		<title>Creative Technologist in Chicago - Heather New</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+		
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="HeatherNew" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+		<meta property="og:image" content="/assets/heathernew-og.png" />
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Heather New - Creative Technologist">
+		<meta name="twitter:description" content="Building interactive experiences with design, code, and technology.">
+		<meta name="twitter:image" content="/assets/heathernew-og.png">
+
+		<link rel="stylesheet" href="/src/css/global.css" />
+		<link rel="stylesheet" href="/src/css/home.css" />
+		<link rel="stylesheet" href="/src/css/home-hero.css" />
+
+		<!-- Import GSAP for high-performance elevated motion -->
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-dark: #111111;
+            --grid-gap: 50px;
+            --shape-size: 140px;
+            
+            /* Full Bauhaus Palette */
+            --teal: #1BB1A5;
+            --dark-teal: #247B82;
+            --yellow: #F6B352;
+            --orange: #F66C0F;
+            --lime: #B2F81D;
+            --light-grey: #E0E0E0;
+            --mid-grey: #CCCCCC;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            width: 100vw;
+            height: 70vh; /* Shorter hero for the about page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--bg-color);
+        }
+
+        #grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            gap: var(--grid-gap);
+        }
+
+        .hero-inner {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1400px;
+            pointer-events: none;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 40px;
+            transform: translateY(-50%);
+            text-align: left;
+            background: rgba(244, 244, 244, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 3.5rem;
+            border-radius: 0;
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.08);
+            pointer-events: none; 
+            border: 2px solid var(--text-dark);
+            z-index: 100;
+            max-width: 650px;
+        }
+
+        .hero-overlay h1 {
+            font-size: 3.6rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .hero-overlay p {
+            font-size: 1.15rem;
+            color: #333;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        .hero-illustration {
+            position: absolute;
+            bottom: 0;
+            right: 40px;
+            height: 85%;
+            z-index: 105;
+            pointer-events: none;
+            object-fit: contain;
+            filter: drop-shadow(-15px 15px 25px rgba(0,0,0,0.15));
+        }
+
+        /* --- SHAPE COMPONENTS --- */
+        .shape-wrapper {
+            position: relative;
+            width: var(--shape-size);
+            height: var(--shape-size);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .shape {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-origin: center center;
+            will-change: transform, border-radius;
+            transform: translateZ(0); 
+            cursor: pointer;
+        }
+
+        .shape.circle { border-radius: 50%; }
+        .shape.square { border-radius: 0%; }
+
+        /* --- STRICT BAUHAUS GRID SECTION --- */
+        .portfolio-section {
+            padding: 4rem 2vw 8rem;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+        }
+
+        .bauhaus-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(240px, auto);
+            width: 100%;
+            max-width: 1400px;
+            /* The defining borders of the structural grid */
+            border-top: 1px solid var(--text-dark);
+            border-left: 1px solid var(--text-dark);
+            background: var(--bg-color);
+        }
+
+        .b-tile {
+            /* Enables scaling child typography based on container width */
+            container-type: inline-size;
+            border-right: 1px solid var(--text-dark);
+            border-bottom: 1px solid var(--text-dark);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* Nested Grids for Content Density */
+        .inner-grid-3, .inner-grid-4 {
+            display: grid;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .inner-grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .inner-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        /* Grid Spans */
+        .span-col-2 { grid-column: span 2; }
+        .span-col-3 { grid-column: span 3; }
+        .span-col-4 { grid-column: span 4; }
+        .span-row-2 { grid-row: span 2; }
+
+        /* Mobile adjustments */
+        @media (max-width: 900px) {
+            .bauhaus-grid { grid-template-columns: repeat(2, 1fr); }
+            .span-col-3, .span-col-4 { grid-column: span 2; }
+            .inner-grid-3, .inner-grid-4 { grid-template-columns: 1fr; }
+            .hero-overlay {
+                left: 20px;
+                right: 20px;
+                max-width: calc(100vw - 40px);
+                padding: 2rem;
+            }
+            .hero-overlay h1 { font-size: 2.8rem; }
+            .hero-illustration {
+                right: auto;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                height: 85%;
+                opacity: 1;
+                z-index: 50; /* Lowered from 105 so it sits behind the overlay (which is 100) */
+            }
+        }
+        @media (max-width: 600px) {
+            .bauhaus-grid { grid-template-columns: 1fr; }
+            .span-col-2, .span-col-3, .span-col-4 { grid-column: span 1; }
+            .span-row-2 { grid-row: span 1; min-height: 300px; }
+            .hero-illustration {
+                height: 75%;
+            }
+        }
+
+        /* Tile Content Typography */
+        .b-tile h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .b-tile h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .b-tile p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .b-tile .meta {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Background Colors */
+        .bg-white { background-color: #FFFFFF; }
+        .bg-teal { background-color: var(--teal); color: #fff; }
+        .bg-dark-teal { background-color: var(--dark-teal); color: #fff; }
+        .bg-yellow { background-color: var(--yellow); color: var(--text-dark); }
+        .bg-orange { background-color: var(--orange); color: #fff; }
+        .bg-lime { background-color: var(--lime); color: var(--text-dark); }
+        .bg-light-grey { background-color: var(--light-grey); color: var(--text-dark); }
+        .bg-mid-grey { background-color: var(--mid-grey); color: var(--text-dark); }
+
+        /* Image & Video Tiles */
+        .img-tile {
+            padding: 0;
+            display: block;
+        }
+        .img-tile img, .img-tile video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .img-tile:hover img, .img-tile:hover video {
+            transform: scale(1.05);
+        }
+
+        /* Specific Interactive Hover Effects */
+        .hover-invert:hover {
+            background-color: var(--text-dark) !important;
+            color: var(--lime) !important;
+        }
+        
+        .arrow-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: auto;
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .arrow-link span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .b-tile:hover .arrow-link span {
+            transform: translateX(10px);
+        }
+
+        /* Graphic Elements within tiles */
+        .bauhaus-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+        .bauhaus-square {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            margin-bottom: 2rem;
+        }
+        
+        /* Utility Classes */
+        .list-clean {
+            list-style: none;
+            line-height: 2;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 0.2rem;
+        }
+        .job-company {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+	<header class="site-header">
+        <div class="header-content">
+            <load src="../src/partials/nav.html" />
+        </div>
+    </header>
+	<body>
+	<!-- Hero Wrapper -->
+    <header class="hero">
+        <div id="grid-container"></div>
+        
+        <div class="hero-inner">
+            <div class="hero-overlay">
+                <h1>A Unique Generation</h1>
+                <p>I remember life before the internet, yet I grew up building computers and diving into tech. From tinkering with pixels in MS Paint to building custom WordPress themes for over a decade, my journey has been a relentless blend of art and code.</p>
+            </div>
+
+            <img src="/assets/heather/Heather-Magic.png" alt="Heather New Illustration" class="hero-illustration">
+        </div>
+    </header>
+
+    <!-- Structural Bauhaus Grid Section -->
+    <main class="portfolio-section">
+        <div class="bauhaus-grid">
+            
+            <!-- Row 1: Heavy Opening -->
+            <div class="b-tile bg-dark-teal span-col-3">
+                <span class="meta" style="color: var(--lime);">Creator, Builder, Maker</span>
+                <div style="font-size: 13cqi; font-weight: 800; line-height: 1; letter-spacing: -2px; margin-top: 1rem;">DESIGN IS A<br>LIFESTYLE.</div>
+            </div>
+            
+            <div class="b-tile bg-lime" style="align-items: center; justify-content: center;">
+                <div style="width: 100px; height: 100px; border-radius: 50%; background-color: var(--text-dark); color: var(--bg-color); display: flex; justify-content: center; align-items: center; font-size: 4.5rem; font-weight: 800; padding-top: 10px; margin: 0; letter-spacing: -2px;">h</div>
+            </div>
+
+            <!-- Row 2: Editorial Quote -->
+            <div class="b-tile img-tile">
+                <img src="/ProjectAssets/dodie-computer.png" alt="Dodie dog helping mom build stuff">
+            </div>
+
+            <div class="b-tile bg-yellow span-col-3">
+                <div style="font-size: 2.2rem; font-weight: 800; line-height: 1.2; letter-spacing: -1px; margin-bottom: 2rem; max-width: 900px;">"You are so fun to work with because you are a real renaissance designer, one that appreciates all the visual elements of design and creating digital art/engagement."</div>
+                <span class="meta" style="margin-top: auto;">— George B.</span>
+            </div>
+
+            <!-- Row 3: Origin Story Cluster -->
+            <div class="b-tile img-tile">
+                <img src="/images/eggdrop.png" alt="Abstract geometric structure">
+            </div>
+
+            <div class="b-tile span-col-2 bg-light-grey hover-invert">
+                <div>
+                    <span class="meta">Origin Story</span>
+                    <h2>The Hexagon</h2>
+                </div>
+                <p>In 2005, a Design 1 challenge changed everything: create a paper container to protect an egg dropped from a flight of stairs. Inspired by soccer ball geometry, I built an inverted dome with a hexagonal structure.<br><br>It wasn't just about the drop—it was about geometric precision and thinking differently. Nearly 20 years later, that same egg is still intact, serving as a reminder that built-to-last solutions require a foundation of bold experimentation.</p>
+            </div>
+
+            <div class="b-tile bg-teal hover-invert" style="justify-content: center;">
+                <h2 style="font-size: 2rem; margin: 0; line-height: 1.1;">Hyper Studio was my gateway drug.</h2>
+            </div>
+
+            <!-- Row 4: Resilience & Derby Cluster -->
+            <div class="b-tile bg-white span-col-2" style="justify-content: flex-end;">
+                <div>
+                    <span class="meta">Resilience</span>
+                    <h3 style="margin-bottom: 1rem;">Built with Grit</h3>
+                    <p style="font-size: 1.05rem;">Before the "Creative Technologist" title, I was a Roller Derby MVP. That same spirit of teamwork defines my approach to technical problem-solving today. I don't believe in dead ends—only different paths forward.</p>
+                </div>
+            </div>
+            
+            <a href="https://heathernew.com/pages/derby.html" class="b-tile img-tile" style="text-decoration: none; position: relative;">
+                <img src="/assets/ictrollergirls-heat.png" alt="ICT Rollergirls Poster">
+                <div style="position: absolute; bottom: 2.5rem; left: 2.5rem; z-index: 2;">
+                    <span class="arrow-link" style="color: var(--lime); font-size: 1.2rem; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">Derby Posters <span>→</span></span>
+                </div>
+            </a>
+
+            <div class="b-tile bg-lime" style="padding: 0;">
+                <div style="padding: 2.5rem; padding-bottom: 1.5rem;">
+                    <div class="bauhaus-circle" style="background-color: var(--teal); margin-bottom: 0;"></div>
+                </div>
+                <div class="img-tile" style="flex-grow: 1; height: 100%;">
+                    <img src="/images/gif/charcoal.gif" alt="Charcoal Animation">
+                </div>
+            </div>
+
+            <!-- Row 4: Travel / Inspiration -->
+            <div class="b-tile img-tile span-col-2">
+                <img src="https://eurotrip.heather.codes/images/marseille_heather.jpg" alt="Architecture in Spain and France">
+            </div>
+
+            <div class="b-tile bg-teal span-col-2 hover-invert">
+                <div>
+                    <span class="meta">Inspiration Everywhere</span>
+                    <h2>Barcelona to Grenoble - The Catalans</h2>
+                </div>
+                <p>Experiencing another country was life changing, I was inspired in so many ways. Jo and I came home and decided to build our own Trencadís inspired by Antoni Gaudi and his artwork all over Barcelona. We worked together to smash and tile a back splash to a spice cabinet in our kitchen. I can't wait for our next trip. Japan is my number one destination spot.</p>
+                <a href="https://eurotrip.heather.codes" class="arrow-link">View Project <span>→</span></a>
+            </div>
+
+            <!-- Row 5: The Triptych + Bridging -->
+            <div class="b-tile bg-dark-teal hover-invert">
+                <span class="meta" style="color: var(--lime);">01</span>
+                <h3 style="margin-bottom: 1rem;">The Engineer</h3>
+                <p style="font-size: 0.95rem;">Rooted in logic and structure. Whether building robust digital systems or experimenting with AI models, I focus on performance, accessibility, and clean architecture.</p>
+            </div>
+            
+            <div class="b-tile bg-white">
+                <span class="meta" style="color: var(--teal);">02</span>
+                <h3 style="margin-bottom: 1rem;">The Artist</h3>
+                <p style="font-size: 0.95rem;">Driven by narrative and aesthetic. I bridge the gap between abstract creative vision and tangible user experiences that feel modern, "alive," and polished.</p>
+            </div>
+
+            <div class="b-tile bg-lime hover-invert">
+                <span class="meta" style="color: var(--text-dark);">03</span>
+                <h3 style="margin-bottom: 1rem;">The Leader</h3>
+                <p style="font-size: 0.95rem;">Defined by momentum. I’ve managed multidisciplinary teams for over 10 years, fostering environments where innovation, ethics, and people-first design thrive.</p>
+            </div>
+
+            <div class="b-tile bg-orange">
+                <span class="meta">Philosophy</span>
+                <h3 style="margin-bottom: 1rem;">Bridging the Divide</h3>
+                <p style="font-size: 0.95rem;">I thrive in the space between design and engineering. As a Senior Studio Artist leading AI and innovation efforts, I prioritize ethics, accessibility, and people.</p>
+            </div>
+
+            <!-- Row 5: Capabilities & Education -->
+            <div class="b-tile bg-white span-col-3">
+                <span class="meta" style="color: var(--teal); font-size: 1.5rem;">Capabilities</span>
+                <div class="inner-grid-3">
+                    <div>
+                        <h3 style="color: var(--orange);">Creative Tech</h3>
+                        <ul class="list-clean">
+                            <li>WebAR</li>
+                            <li>Interactive Displays / Kiosks</li>
+                            <li>HTML5 / CSS3 / JS / PHP</li>
+                            <li>Hardware Integration</li>
+                            <li>Generative Algorithms</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--teal);">Art Direction</h3>
+                        <ul class="list-clean">
+                            <li>UI/UX Architecture</li>
+                            <li>Adobe Creative Suite</li>
+                            <li>3D &amp; Motion Concepting</li>
+                            <li>Print &amp; Physical Production</li>
+                            <li>Merchandise Design</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--dark-teal);">Strategy &amp; Ops</h3>
+                        <ul class="list-clean">
+                            <li>Design Systems</li>
+                            <li>Vendor Management</li>
+                            <li>Cross-Functional Leadership</li>
+                            <li>Gamification Strategy</li>
+                            <li>Brand Architecture</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="b-tile bg-yellow">
+                <span class="meta">Education</span>
+                <div class="bauhaus-circle" style="background-color: var(--text-dark); width: 60px; height: 60px; margin-bottom: 1rem;"></div>
+                <h3>Management Cert</h3>
+                <p style="margin-bottom: 1rem;">MERGE University</p>
+                <h3>User Experience Design Cert</h3>
+                <p style="margin-bottom: 1rem;">Loyola University Chicago</p>
+                <h3>BFA Graphic Design</h3>
+                <p>Fort Hays State University</p>
+            </div>
+
+            <!-- Row 6: Timeline Full Width -->
+            <div class="b-tile bg-light-grey span-col-4">
+                <span class="meta" style="color: var(--dark-teal); font-size: 1.5rem; margin-bottom: 0;">Career Timeline</span>
+                <div class="inner-grid-4">
+                    <div style="border-top: 4px solid var(--teal); padding-top: 1rem;">
+                        <div class="meta" style="color: var(--teal);">Feb 2022 - Present</div>
+                        <div class="job-title">Studio Manager / Creative Technologist</div>
+                        <div class="job-company">MERGE</div>
+                        <p style="font-size: 0.9rem;">Leading technical execution and creative strategy for interactive trade show experiences, AR activations, and enterprise web systems.</p>
+                    </div>
+                    <div style="border-top: 4px solid var(--orange); padding-top: 1rem;">
+                        <div class="meta" style="color: var(--orange);">Feb 2021 - Feb 2022</div>
+                        <div class="job-title">Principal Designer &amp; Developer</div>
+                        <div class="job-company">Heather New LLC</div>
+                        <p style="font-size: 0.9rem;">Full-stack web development and brand identity for small businesses and startups.</p>
+                    </div>
+                    <div style="border-top: 4px solid var(--yellow); padding-top: 1rem;">
+                        <div class="meta" style="color: var(--text-dark);">March 2016 - Feb 2021</div>
+                        <div class="job-title">Lead Digital Developer</div>
+                        <div class="job-company">Greteman Group</div>
+                    </div>
+                    <div style="border-top: 4px solid var(--dark-teal); padding-top: 1rem;">
+                        <div class="meta" style="color: var(--dark-teal);">March 2014 - March 2016</div>
+                        <div class="job-title">Web Developer / Designer</div>
+                        <div class="job-company">Prime Concepts Group, Inc.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 8: Constant Iteration -->
+            <div class="b-tile bg-yellow span-col-2" style="justify-content: flex-end;">
+                <div>
+                    <span class="meta">Perspectives</span>
+                    <h2>Connecting<br>the dots</h2>
+                    <p>Whether it's a new feature in Figma or a cutting-edge AI tool, I'm always learning. I've branded startups, run my own business, and led multidisciplinary teams for over 15 years. Every project is an opportunity to partner on something that matters.</p>
+                </div>
+            </div>
+
+            <div class="b-tile img-tile span-col-2">
+                <img src="/assets/heather-working-computer.png" alt="Heather working at computer">
+            </div>
+
+            <!-- --- REMIXED FINAL SECTION --- -->
+            
+            <!-- Row 9: Massive Panoramic Break -->
+            <div class="b-tile img-tile span-col-4" style="aspect-ratio: 16 / 9;">
+                <img src="/assets/chartruse_thoughts.jpg" alt="Chartreuse Thoughts">
+            </div>
+            
+            <!-- Row 10 & 11: Giant Image next to 2x2 Staccato Grid -->
+            <div class="b-tile img-tile span-col-2 span-row-2">
+                <img src="/assets/heather-3d-printer.png" alt="Heather with 3D Printer">
+            </div>
+
+            <div class="b-tile bg-white">
+                <div class="bauhaus-square" style="background-color: var(--lime); border-radius: 0 50% 50% 50%;"></div>
+            </div>
+            <div class="b-tile bg-orange">
+                <div class="bauhaus-circle" style="background-color: var(--bg-color);"></div>
+            </div>
+            
+            <!-- (Row 11 continuation) -->
+            <div class="b-tile bg-mid-grey">
+                <div class="bauhaus-square" style="background-color: var(--teal); border-radius: 50% 0 0 0;"></div>
+            </div>
+            <div class="b-tile bg-teal">
+                <div class="bauhaus-circle" style="background-color: var(--dark-teal); border-radius: 0 0 50% 50%;"></div>
+            </div>
+
+            <!-- Row 12: Footer Area -->
+            <div class="b-tile bg-lime">
+                 <div class="bauhaus-circle" style="background-color: var(--text-dark); border-radius: 50% 0 50% 50%;"></div>
+                 <a href="#" class="arrow-link" style="margin-top: auto;">Back to Top <span>↑</span></a>
+            </div>
+
+            <div class="b-tile bg-dark-teal span-col-3">
+                <span class="meta" style="color: var(--lime);">Let's Connect</span>
+                <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -2px; margin-top: 1rem; text-transform: none;">console.log("Hello World");</h2>
+                <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+                    <a href="#" class="arrow-link" style="color: var(--lime); font-size: 1.2rem;">Email Me <span>→</span></a>
+                    <a href="#" class="arrow-link" style="color: var(--yellow); font-size: 1.2rem;">LinkedIn <span>→</span></a>
+                    <a href="#" class="arrow-link" style="color: #fff; font-size: 1.2rem;">GitHub <span>→</span></a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('grid-container');
+            const heroEl = document.querySelector('.hero');
+            
+            // Bauhaus color palette and assigned specific click behaviors
+            const colorBehaviors = {
+                '#1BB1A5': 'vortex',   // Teal -> Spinning vortex shrink
+                '#247B82': 'implode',  // Dark Teal -> Collapse inwards
+                '#F6B352': 'converge', // Yellow-Orange -> Fly to click center
+                '#F66C0F': 'scatter',  // Dark Orange -> Random chaotic explosion
+                '#B2F81D': 'float',    // Lime Green -> Float up and fade
+                '#E0E0E0': 'blink',    // Light Grey -> Glitchy random blinking
+                '#CCCCCC': 'flip'      // Mid Grey -> 3D rotation flip
+            };
+            const colors = Object.keys(colorBehaviors);
+
+            const sizeScales = [0.3, 0.6, 0.9, 1.2, 1.5];
+            
+            let gridItems = [];
+            const radius = 250; 
+            const shapeSize = 140;
+            const gridGap = 50;
+
+            function generateGrid() {
+                container.innerHTML = '';
+                gridItems = [];
+
+                // Reduce to exactly 1 of each color/shape variant (14 total shapes)
+                let variants = [];
+                colors.forEach(c => {
+                    variants.push({ color: c, isSquare: false });
+                    variants.push({ color: c, isSquare: true });
+                });
+                variants.sort(() => Math.random() - 0.5); // Shuffle for random layout
+
+                // Allow flexbox to naturally align the limited items within the container
+                container.style.width = '100%';
+                container.style.height = '100%';
+
+                variants.forEach(variant => {
+                    const wrapper = document.createElement('div');
+                    wrapper.classList.add('shape-wrapper');
+
+                    const shape = document.createElement('div');
+                    const scaleClass = sizeScales[Math.floor(Math.random() * sizeScales.length)];
+                    
+                    shape.classList.add('shape', variant.isSquare ? 'square' : 'circle');
+                    shape.style.backgroundColor = variant.color;
+                    
+                    gsap.set(shape, { scale: scaleClass });
+
+                    wrapper.appendChild(shape);
+                    container.appendChild(wrapper);
+
+                    gridItems.push({
+                        el: shape,
+                        isSquare: variant.isSquare,
+                        baseScale: scaleClass,
+                        colorHex: variant.color,
+                        active: false,
+                        cx: 0,
+                        cy: 0
+                    });
+                });
+                
+                // Allow DOM to layout before calculating centers
+                setTimeout(calculateCenters, 50);
+            }
+
+            function calculateCenters() {
+                gridItems.forEach(item => {
+                    const rect = item.el.getBoundingClientRect();
+                    item.cx = rect.left + rect.width / 2;
+                    item.cy = rect.top + rect.height / 2;
+                });
+            }
+
+            window.addEventListener('resize', () => {
+                clearTimeout(window.resizeTimer);
+                window.resizeTimer = setTimeout(() => {
+                    generateGrid();
+                }, 150);
+            });
+
+            generateGrid();
+
+            // Core Interaction: Magnetic Mouse Hover
+            const handleMove = (x, y) => {
+                const currentHeroHeight = heroEl.clientHeight;
+                if (y > currentHeroHeight) return; 
+
+                gridItems.forEach(item => {
+                    const dx = item.cx - x;
+                    const dy = item.cy - y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < radius) {
+                        const force = (radius - dist) / radius; 
+                        
+                        gsap.to(item.el, {
+                            scale: item.baseScale + (force * 1.5),
+                            x: -dx * force * 0.4,
+                            y: -dy * force * 0.4,
+                            rotation: item.isSquare ? force * 90 : force * -45,
+                            borderRadius: item.isSquare ? `${force * 50}%` : `${50 - force * 20}%`,
+                            duration: 0.4,
+                            ease: "power2.out",
+                            overwrite: "auto"
+                        });
+                        item.active = true;
+                    } else if (item.active) {
+                        gsap.to(item.el, {
+                            scale: item.baseScale,
+                            x: 0, y: 0, rotation: 0,
+                            borderRadius: item.isSquare ? '0%' : '50%',
+                            duration: 0.8,
+                            ease: "elastic.out(1, 0.4)",
+                            overwrite: "auto"
+                        });
+                        item.active = false;
+                    }
+                });
+            };
+
+            window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+            window.addEventListener('touchmove', (e) => {
+                if(e.touches.length > 0) handleMove(e.touches[0].clientX, e.touches[0].clientY);
+            });
+
+            // Color-specific behaviors on click
+            window.addEventListener('click', (e) => {
+                const currentHeroHeight = heroEl.clientHeight;
+                if (e.clientY > currentHeroHeight) return;
+
+                const clickX = e.clientX;
+                const clickY = e.clientY;
+
+                let behavior = 'ripple';
+                const clickedShape = e.target.closest('.shape');
+                if (clickedShape) {
+                    const itemData = gridItems.find(item => item.el === clickedShape);
+                    if (itemData && colorBehaviors[itemData.colorHex]) {
+                        behavior = colorBehaviors[itemData.colorHex];
+                    }
+                }
+
+                gridItems.forEach(item => {
+                    const dx = item.cx - clickX;
+                    const dy = item.cy - clickY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    let animProps = {
+                        duration: 0.6,
+                        yoyo: true,
+                        repeat: 1,
+                        overwrite: "auto",
+                        onComplete: () => {
+                            item.active = false; 
+                            gsap.to(item.el, {
+                                scale: item.baseScale,
+                                x: 0, y: 0, rotation: 0, rotationX: 0, rotationY: 0, opacity: 1,
+                                borderRadius: item.isSquare ? '0%' : '50%',
+                                duration: 0.5,
+                                ease: "power2.out"
+                            });
+                        }
+                    };
+
+                    let delay = dist * 0.001; 
+
+                    switch(behavior) {
+                        case 'implode':
+                            animProps.scale = 0;
+                            animProps.rotation = item.isSquare ? -90 : 90;
+                            animProps.ease = "power2.in";
+                            break;
+                        case 'vortex':
+                            delay = dist * 0.002;
+                            animProps.rotation = item.isSquare ? 360 : -360;
+                            animProps.scale = item.baseScale * 0.1;
+                            animProps.ease = "power4.inOut";
+                            animProps.duration = 0.7;
+                            break;
+                        case 'converge':
+                            delay = dist * 0.0005;
+                            animProps.x = clickX - item.cx;
+                            animProps.y = clickY - item.cy;
+                            animProps.scale = 0;
+                            animProps.rotation = 180;
+                            animProps.ease = "power3.in";
+                            break;
+                        case 'scatter':
+                            delay = Math.random() * 0.2;
+                            animProps.x = (Math.random() - 0.5) * 400;
+                            animProps.y = (Math.random() - 0.5) * 400;
+                            animProps.scale = item.baseScale * (Math.random() * 2 + 0.5);
+                            animProps.ease = "expo.out";
+                            break;
+                        case 'float':
+                            delay = Math.random() * 0.4;
+                            animProps.y = - (Math.random() * 300 + 100);
+                            animProps.rotation = (Math.random() - 0.5) * 360;
+                            animProps.opacity = 0;
+                            animProps.ease = "power1.out";
+                            animProps.duration = 0.8;
+                            break;
+                        case 'blink':
+                            delay = Math.random() * 0.4;
+                            animProps.opacity = 0;
+                            animProps.scale = item.baseScale * 0.3;
+                            animProps.duration = 0.15;
+                            animProps.repeat = 3;
+                            break;
+                        case 'flip':
+                            delay = dist * 0.0015;
+                            animProps.rotationY = 360;
+                            animProps.rotationX = item.isSquare ? 180 : 0;
+                            animProps.scale = item.baseScale * 1.3;
+                            animProps.duration = 0.8;
+                            animProps.ease = "power1.inOut";
+                            break;
+                        case 'ripple':
+                        default:
+                            animProps.scale = item.baseScale * 2.5;
+                            animProps.rotation = item.isSquare ? 180 : -180;
+                            animProps.ease = "back.out(2.5)";
+                            break;
+                    }
+
+                    animProps.delay = delay;
+                    gsap.to(item.el, animProps);
+                });
+            });
+        });
+    </script>
+
+    <!-- Include Footer -->
+    <div id="footer-trigger">
+        <load src="../src/partials/footer.html" />
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/src/js/site-core.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</body>
+</html>

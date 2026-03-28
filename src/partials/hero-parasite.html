@@ -1,0 +1,164 @@
+<div class="para-content-wrapper phone-mock-block">
+      <!-- Intro Block -->
+      <div class="phone-mock-intro">
+        <span class="eyebrow">Taking over the tradeshow</span>
+        
+        <h2>Parasite Hunter</h2>
+        
+        <p class="phone-mock-description">
+          An immersive WebAR game built on 8th Wall. Hunt parasites in augmented reality, 
+          learn about pet health, and explore interactive 3D experiences—all from your mobile browser.
+        </p>
+
+        <div class="button-group">
+          <button id="demoBtn" class="btn btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            Play Demo
+          </button>
+        </div>
+
+        <div class="meta-grid">
+          <div class="meta-item">
+            <div class="label">Technology</div>
+            <div class="value">WebAR</div>
+          </div>
+          <div class="meta-item">
+            <div class="label">Platform</div>
+            <div class="value">8th Wall</div>
+          </div>
+          <div class="meta-item">
+            <div class="label">Device</div>
+            <div class="value">Mobile First</div>
+          </div>
+        </div>
+		<div class="meta-grid">
+          <div class="meta-item">
+            <div class="label">Elanco</div>
+            <div class="value">MERGE PostPop</div>
+          </div>
+          <div class="meta-item">
+            <div class="label">Role</div>
+            <div class="value">Creative Technologist</div>
+          </div>
+          <div class="meta-item">
+            <div class="label">Deployed</div>
+            <div class="value">VMX 2026 WVC 2026</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Frame -->
+      <div class="phone-mock">
+        <div id="phone-mock-container" class="phone-mock-container">
+          <div class="phone-mock-frame">
+            <!-- Dynamic Island -->
+            <div class="dynamic-island"></div>
+            
+            <!-- Screen Container -->
+            <div class="screen-container">
+              <!-- Play Overlay -->
+              <div id="phone-mock-overlay" class="play-overlay"></div>
+
+              <!-- Video element -->
+              <video
+                id="phone-mock-video"
+                class="game-video"
+                src="/assets/para/parasite-hunter-insta-shawnee-dragon.mp4"
+                loop
+                muted
+                playsinline
+              ></video>
+
+              <!-- Tap animations container -->
+              <div id="tapContainer"></div>
+            </div>
+
+            <!-- Phone buttons -->
+            <div class="phone-button phone-button-right-1"></div>
+            <div class="phone-button phone-button-right-2"></div>
+            <div class="phone-button phone-button-right-3"></div>
+            <div class="phone-button phone-button-left"></div>
+          </div>
+
+          <!-- Reflection effect -->
+          <div class="reflection"></div>
+        </div>
+      </div>
+    </div>
+
+  <script>
+	  let isPlaying = false;
+    let isPaused = false;
+    let pauseTimeout = null;
+
+    const demoBtn = document.getElementById('demoBtn');
+    const playOverlay = document.getElementById('phone-mock-overlay');
+    const gameVideo = document.getElementById('phone-mock-video');
+    const phoneContainer = document.getElementById('phone-mock-container');
+
+    function showCover() {
+      playOverlay.classList.remove('hidden');
+      phoneContainer.classList.remove('floating');
+      demoBtn.style.display = 'inline-flex';
+      isPlaying = false;
+      isPaused = false;
+      gameVideo.pause();
+      gameVideo.currentTime = 0;
+      if (pauseTimeout) {
+        clearTimeout(pauseTimeout);
+        pauseTimeout = null;
+      }
+    }
+
+    function handlePlayDemo() {
+      // Start playing from cover
+      isPlaying = true;
+      isPaused = false;
+      playOverlay.classList.add('hidden');
+      phoneContainer.classList.add('floating');
+      demoBtn.style.display = 'none';
+      gameVideo.play();
+    }
+
+    function handleVideoClick() {
+      if (!isPlaying) return; // Do nothing if not started
+      
+      if (isPaused) {
+        // Resume video
+        gameVideo.play();
+        isPaused = false;
+        if (pauseTimeout) {
+          clearTimeout(pauseTimeout);
+          pauseTimeout = null;
+        }
+      } else {
+        // Pause video
+        gameVideo.pause();
+        isPaused = true;
+        // Set 15 second timeout to revert to cover
+        pauseTimeout = setTimeout(() => {
+          showCover();
+        }, 15000);
+      }
+    }
+
+    // When video ends naturally, revert to cover
+    gameVideo.addEventListener('ended', function() {
+      showCover();
+    });
+
+    // Event listeners
+    demoBtn.addEventListener('click', handlePlayDemo);
+    
+    // Overlay only works to start video from cover state
+    playOverlay.addEventListener('click', function() {
+      if (!isPlaying) {
+        handlePlayDemo();
+      }
+    });
+    
+    // Click on screen container (not overlay) to pause/resume
+    gameVideo.addEventListener('click', handleVideoClick);
+</script>

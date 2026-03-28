@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology.">
+		<title>Creative Technologist in Chicago - Heather New</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+		
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="HeatherNew" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+		<meta property="og:image" content="/assets/heathernew-og.png" />
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Heather New - Creative Technologist">
+		<meta name="twitter:description" content="Building interactive experiences with design, code, and technology.">
+		<meta name="twitter:image" content="/assets/heathernew-og.png">
+
+
+		<!-- Import GSAP for high-performance elevated motion -->
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --text-dark: #111111;
+            --grid-gap: 30px;
+            --shape-size: 35px;
+            
+            /* Full Bauhaus Palette */
+            --teal: #1BB1A5;
+            --dark-teal: #247B82;
+            --yellow: #F6B352;
+            --orange: #F66C0F;
+            --lime: #B2F81D;
+            --light-grey: #E0E0E0;
+            --mid-grey: #CCCCCC;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: 'Manrope', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--bg-color);
+        }
+
+        #grid-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            width: 100%;
+            height: 100%;
+            padding: 40px;
+            gap: var(--grid-gap);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 50%;
+            left: 4vw;
+            transform: translateY(-50%);
+            text-align: left;
+            background: rgba(244, 244, 244, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 3.5rem;
+            border-radius: 0;
+            box-shadow: 15px 15px 0px rgba(0,0,0,0.08);
+            pointer-events: none; 
+            border: 2px solid var(--text-dark);
+            z-index: 100;
+            max-width: 650px;
+        }
+
+        .hero-overlay h1 {
+            font-size: 4.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: -2px;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .hero-overlay h2 {
+            font-size: 1.5rem;
+            color: var(--teal);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .hero-overlay p {
+            font-size: 1.15rem;
+            color: #333;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        /* --- SHAPE COMPONENTS --- */
+        .shape-wrapper {
+            position: relative;
+            width: var(--shape-size);
+            height: var(--shape-size);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .shape {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-origin: center center;
+            will-change: transform, border-radius;
+            transform: translateZ(0); 
+            cursor: pointer;
+        }
+
+        .shape.circle { border-radius: 50%; }
+        .shape.square { border-radius: 0%; }
+
+        /* --- STRICT BAUHAUS GRID SECTION --- */
+        .portfolio-section {
+            padding: 4rem 2vw 8rem;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+        }
+
+        .bauhaus-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(240px, auto);
+            width: 100%;
+            max-width: 1400px;
+            /* The defining borders of the structural grid */
+            border-top: 1px solid var(--text-dark);
+            border-left: 1px solid var(--text-dark);
+            background: var(--bg-color);
+        }
+
+        .b-tile {
+            /* Enables scaling child typography based on container width */
+            container-type: inline-size;
+            border-right: 1px solid var(--text-dark);
+            border-bottom: 1px solid var(--text-dark);
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* Grid Spans */
+        .span-col-2 { grid-column: span 2; }
+        .span-col-3 { grid-column: span 3; }
+        .span-col-4 { grid-column: span 4; }
+        .span-row-2 { grid-row: span 2; }
+
+        /* Mobile adjustments */
+        @media (max-width: 900px) {
+            .bauhaus-grid { grid-template-columns: repeat(2, 1fr); }
+            .span-col-3, .span-col-4 { grid-column: span 2; }
+            .hero-overlay {
+                left: 20px;
+                right: 20px;
+                max-width: calc(100vw - 40px);
+                padding: 2rem;
+            }
+            .hero-overlay h1 { font-size: 3.5rem; }
+        }
+        @media (max-width: 600px) {
+            .bauhaus-grid { grid-template-columns: 1fr; }
+            .span-col-2, .span-col-3, .span-col-4 { grid-column: span 1; }
+            .span-row-2 { grid-row: span 1; min-height: 300px; }
+        }
+
+        /* Tile Content Typography */
+        .b-tile h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .b-tile h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .b-tile p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .b-tile .meta {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        /* Background Colors */
+        .bg-white { background-color: #FFFFFF; }
+        .bg-teal { background-color: var(--teal); color: #fff; }
+        .bg-dark-teal { background-color: var(--dark-teal); color: #fff; }
+        .bg-yellow { background-color: var(--yellow); color: var(--text-dark); }
+        .bg-orange { background-color: var(--orange); color: #fff; }
+        .bg-lime { background-color: var(--lime); color: var(--text-dark); }
+        .bg-light-grey { background-color: var(--light-grey); color: var(--text-dark); }
+        .bg-mid-grey { background-color: var(--mid-grey); color: var(--text-dark); }
+
+        /* Image Tiles */
+        .img-tile {
+            padding: 0;
+            display: block;
+        }
+		.img-responsive{
+			width:100%;
+			height:auto;
+		}
+        .img-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .img-tile:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Specific Interactive Hover Effects */
+        .hover-invert:hover {
+            background-color: var(--text-dark) !important;
+            color: var(--lime) !important;
+        }
+        
+        .arrow-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: auto;
+            font-weight: 800;
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .arrow-link span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+        .b-tile:hover .arrow-link span {
+            transform: translateX(10px);
+        }
+
+        /* Graphic Elements within tiles */
+        .bauhaus-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--text-dark);
+            margin-bottom: 2rem;
+        }
+        .bauhaus-square {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            margin-bottom: 2rem;
+        }
+
+        .site-header {
+            position: static;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/pages/heather-xtqXyvCe.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="/assets/site-core-Cit16Jds.js">
+  <link rel="stylesheet" crossorigin href="/assets/global-DzYtbLOr.css">
+  <link rel="stylesheet" crossorigin href="/assets/home-CF4ttIi8.css">
+  <link rel="stylesheet" crossorigin href="/assets/home-hero-CvxCc7U7.css">
+</head>
+<body>
+	<header class="site-header">
+        <div class="header-content">
+            <div class="header-content">
+    <a href="/" class="logo">
+        <img src="/assets/heather-new-wordmark.svg" alt="Heather New" style="height: 25px; width: auto;" width="150" height="25">
+    </a>
+</div>
+
+<div class="pages-menu-overlay" id="pages-overlay">
+    <div class="pages-menu-content">
+        <nav class="pages-main-nav">
+            <a href="/" class="home-link-nav">Home</a>
+            <a href="/pages/parasite-hunter.html">Parasite Hunter AR Game</a>
+            <a href="/pages/built-different.html">The Modular Brand: MERGE</a>
+            <a href="/pages/decision-tree.html">Interactive Zen Garden</a>
+            <a href="/pages/hotspot.html">Wall of Flame Interactive</a>
+            <div class="nav-bottom-group" style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                <a href="/pages/about.html">About</a>
+                <a href="/pages/contact.html">Contact</a>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="pages-nav-icon" id="nav-block">
+    <div id="nav-hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+        </div>
+    </header>
+    <!-- Hero Wrapper -->
+    <header class="hero">
+        <div id="grid-container"></div>
+        
+        <div class="hero-overlay">
+            <h1>hi seeker of creative,</h1>
+            <h2>you're welcome to play</h2>
+            <p>This is where design, code, and technology collide. I like to listen. That's how I find problems, or rather solutions. What do you want to make? Let's chat.</p>
+        </div>
+    </header>
+
+    <!-- Structural Bauhaus Grid Section -->
+    <main class="portfolio-section">
+        <div class="bauhaus-grid">
+            
+            <!-- Row 1 -->
+            <div class="b-tile span-col-2 bg-light-grey hover-invert">
+                <div>
+                    <span class="meta">Web-Based AR Experience</span>
+                    <h2>Parasite Hunter AR</h2>
+                </div>
+                <p>A web app using QR Code targets spun up in augmented reality, on their own phones gave them a new way to interact and learn with parasites swarming all over the tradeshow floor, including our competitors booths.</p>
+                <a href="#" class="arrow-link">View Project <span>→</span></a>
+            </div>
+            
+            <div class="b-tile bg-lime" style="align-items: center; justify-content: center;">
+                <img src="/public/images/boom-background.png" alt="Boom">Boom and worm gif
+            </div>
+
+            <div class="b-tile bg-dark-teal">
+                <img src="/public/images/dalmation-illustration.png" alt="Dalmatian Illustration">
+            </div>
+
+            <!-- Row 2 -->
+            <div class="b-tile bg-yellow span-row-2">
+                <h3 style="margin-bottom: 1.5rem;">Results</h3>
+                <ul style="list-style: none; line-height: 2; font-weight: 600; font-size: 1.1rem;">
+					<li><span class="huge">80,000</span> parasites caught during WVC and VMX, serving up 80,000 impressions on Credelio Quattros effectiveness</li>
+                    <li><span class="huge">5,994</span> parasites were caught by one person, maxing out our leaderboard!</li>
+                </ul>
+				<h3>Awarded Best Booth at WVC 2026</h3>
+            </div>
+
+            <div class="b-tile span-col-2 span-row-2 img-tile">
+                <a href="/pages/parasite-hunter.html"><img src="/public/images/parasite-hunter-game-introscreen.png" alt="Parasite Hunter Game Introscreen"></a>
+            </div>
+
+            <div class="b-tile bg-white">
+                <span class="meta">2024 Interactive</span>
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Comic Book</h3>
+                <p style="font-size: 0.95rem; margin-bottom: 1rem;">We helped the product launch of Credelio Quattro. The Power of Four active ingredients = 6 types of parasites are annihilated, even the tricky ones, tapeworms!</p>
+				<p style="font-size: 0.95rem; margin-bottom: 1rem;">The comic book introduces their powers. The original experience was on a kiosk with a large touch screen tv, with page turns.<!--I have created an interactive experience with the content to display the illustrations with a bit more impact.--></p>
+                <a href="https://comic.heather.codes/" target="_blank" class="arrow-link" style="font-size: 1rem; color: var(--teal);">View Project <span>→</span></a>
+            </div>
+
+            <!-- Row 3 -->
+            <a href="/pages/parasite-hunter.html">
+                 <img src="/public/images/parasite-hunter-leaderboard.png" alt="Parasite Hunter Leaderboard">
+            </a>
+
+            <!-- Row 4 -->
+            <div class="b-tile bg-orange span-col-2">
+                <span class="meta">Touch Enabled Interactive</span>
+                <h2>Interactive<br>Zen Garden</h2>
+                <p>We added a beautiful looping digital experience to encourage conversation, to help digest the message. At any time an attendee can tap and start interacting with the decision tree revealing UI elements that present dermatology options for their patients.</p>
+                <a href="#" class="arrow-link" style="margin-top: 1.5rem;">View Project <span>→</span></a>
+            </div>
+
+            <div class="bg-teal">
+				 <img src="/public/images/red-lens-reveal.png" alt="Red Lens Reveal">
+                <h2 style="font-size: 1.25rem;">Can you decode the message? →</h2>
+                <span class="meta">Secret Message</span>
+            </div>
+            
+            <div class="b-tile bg-white">
+				<img src="/public/images/question-mark.png" alt="Question Education">
+                
+                <p style="font-weight: 800; font-size: 1.1rem; margin-top: auto;">Education<br>Brand Reinforcement<br>Viceral sounds<br>Impactful visuals<br>Disruptive to the competitors<br>#winning</p>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="b-tile img-tile span-col-2">
+                <img src="/public/images/decision-tree-bonzai.png" alt="Zen Garden Tree Illustration">
+            </div>
+
+            <div class="b-tile bg-light-grey span-col-2 hover-invert">
+                <div>
+                    <span class="meta">Galliprant Booth Games</span>
+                    <h2>Wall of Flame</h2>
+                </div>
+                <p>An interactive digital wall of flame that operates as gamified learning engages people and gives representatives a chance to start conversations.</p>
+                <a href="/pages/hotspot.html" class="arrow-link">View Project <span>→</span></a>
+            </div>
+
+            <!-- Row 6: Exploration -->
+            <div class="b-tile bg-teal span-col-2 hover-invert">
+                <div>
+                    <span class="meta">ETHICAL AI PRACTICES</span>
+                    <h2>Generative Art</h2>
+                </div>
+                <p>I’ve been a leading force at MERGE building policy, process and best practices for AI generated art and its tools. The MERGE M is the first image we licensed through Shutterstock’s AI tool which we carefully vetted. It became front and center on our website.</p>
+            </div>
+            
+            <div class="b-tile bg-light-grey">
+					 <!--<audio autoplay muted src="/assets/hotspot/audio/enflame.mp3"></audio>
+				     <audio controls loop src="/assets/hotspot/audio/enflame.mp3"></audio>
+					 <audio id="enflameAudio" src="/assets/hotspot/audio/enflame.mp3"></audio>-->
+					 <button class="bauhaus-circle" style="background-color: var(--orange);" onclick="document.getElementById('enflameAudio').play()">Play</button> 
+                <h3>Hot Spot Audio Bit</h3>
+            </div>
+            
+            <div class="b-tile-nopad img-tile">
+                <img src="/public/images/hot-spot-interactive.png" alt="Hot Spot Interactive">
+            </div>
+
+            <!-- Row 7: Spatial Design Break -->
+            <div class="b-tile bg-lime">
+                <div style="width:50%;height:auto;"><br>
+					<img src="/assets/merge/404/404-M.gif" alt="M that flaps like its steps are arms and flap." style="width:100%;height:auto;">
+				</div>
+				
+                <a href="/pages/built-different.html"><h3 style="margin-top: 2rem;">MMMMMore here →</h3></a>
+            </div>
+            
+            <div class="b-tile span-col-2 img-tile">
+                <img src="/public/images/merge-m-artificial-intelligence-generation.png" alt="Interactive Zen Garden Map Render">
+            </div>
+            
+            <div class="b-tile-nopad bg-mid-grey" style="text-align: right; justify-content: flex-end;">
+                <img src="/public/images/merge-erg-logo-design.png" alt="MERGE ERG Logo Design" class="img-responsive">
+            </div>
+
+            <!-- Row 8 & 9: Complex Intersection -->
+            <div class="b-tile-nopad bg-dark-teal span-row-2 hover-invert">
+                <div style="padding:1em; position:absolute; bottom: 2rem; left: 2rem; z-index: 2;">
+					<span class="meta" style="color: var(--lime);">Recognition</span>
+					<h4 style="margin-top: 2rem; margin-bottom: 1rem;">Studio Manager Promotion and<br>M@M CERT</h4>
+					<h5 style="opacity: 0.9;">Magic Maker</h5>
+					<h5 style="opacity: 0.9;">Shining Star</h5>
+				</div>
+				<img src="/public/images/certificates-magic-mak.png" alt="M@M Certificate Magic Makers">
+            </div>
+            
+            <div class="b-tile bg-orange span-col-2">
+                <span class="meta">Race Against the Plates</span>
+                <h2>Kiosk Quiz</h2>
+                <p style="max-width: 400px;">With Achondroplasia you only have a certain amount of time to act while bones are still growing, Doctors were able to test their knowledge while racing against the clock.</p>
+            </div>
+            
+            <div class="b-tile bg-yellow">
+                <img src="/public/images/gamified-learning-with-biomarin.png" alt="Gamified Learning Biomarin">
+                <h3>Gamified<br>Learning →</h3>
+            </div>
+            
+            <!-- Row 9 -->
+            <div class="b-tile-nopad span-col-2">
+                <img src="/public/images/subway-static-menu.png" alt="Subway Static Menu">
+                
+            </div>
+            
+            <div class="b-tile bg-white">
+               <div style="position: absolute; bottom: 2rem; left: 2rem; z-index: 2;">
+                    <span class="meta">Another thing I do →</span>
+                    <h3>Subway Digital Assets,<br>Digital Menus</h3>
+                </div>
+            </div>
+
+            <!-- Row 10: Staccato Finish -->
+            <div class="b-tile-nopad bg-white">
+                <!--<div class="bauhaus-circle" style="background-color: var(--text-dark); border-radius: 50% 0 50% 50%;"></div>-->
+				<img src="/public/images/roller-derby-throwback.png" alt="Roller Derby Throwback" style="width:100%;height:auto;">
+            </div>
+            
+            <!-- Scalable ⌘+Z Tile -->
+            <div class="b-tile bg-yellow hover-invert" style="display: flex; align-items: center; justify-content: center; padding: 0;">
+                <div style="text-align: center;">
+                    <div style="font-size: 40cqi; font-weight: 800; line-height: 0.8; letter-spacing: -0.05em; color: var(--text-dark); transition: color 0.4s ease;">⌘+Z</div>
+                    <span class="meta" style="font-size: 0.6rem; opacity: 0.5;">Most Commonly used Command</span>
+                </div>
+            </div>
+
+            <div class="b-tile bg-orange">
+                <div class="bauhaus-circle" style="background-color: var(--bg-color);"></div>
+            </div>
+            <div class="b-tile-nopad bg-mid-grey">
+                 <a href="https://studio.heather.codes"><img src="/public/images/studio-roadshow.png" alt="Studio Roadshow" style="width: 100%; height: 100%; object-fit: cover;"></a>
+            </div>
+
+            <!-- Row 11 (Footer/Contact Area) -->
+            <div class="b-tile bg-dark-teal span-col-3">
+                <span class="meta" style="color: var(--lime);">Let's Connect</span>
+                <h2 style="font-size: 4rem; letter-spacing: -2px; margin-top: 1rem;">Function determines form</h2>
+                <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+                    <a href="mailto:hello@heathernew.com" class="arrow-link" style="color: var(--lime); font-size: 1.2rem;">Email Me <span>→</span></a>
+                    <a href="https://linkedin.com/in/heathernew" class="arrow-link" style="color: var(--yellow); font-size: 1.2rem;">LinkedIn <span>→</span></a>
+                    <a href="https://github.com/heathernew" class="arrow-link" style="color: #fff; font-size: 1.2rem;">GitHub <span>→</span></a>
+                </div>
+            </div>
+            
+            <div class="b-tile-nopad bg-lime" style="display: flex; align-items: center; justify-content: center; padding: 0;">
+                 <a href="https://studio.heather.codes" class="arrow-link" ><h3>Studio Roadshow <span>→</span></h3></a>
+                 <span class="meta">Which Swatch?</span>
+            </div>
+
+        </div>
+		
+    </main>
+
+    <!-- Include Footer -->
+    <div id="footer-trigger">
+        <div class="footer-scroll-wrapper" id="footer-trigger">
+    <footer class="footer-section">
+        <div class="footer-track">
+            <div id="mouse-skater" class="mouse-skater">
+                <!-- Separate container for flipping to avoid matrix conflicts -->
+                <div class="mouse-flip-container" id="mouse-flipper">
+                    <img src="/assets/mouse_skate.png" 
+                         alt="Magic Mouse on Roller Skates" 
+                         class="mouse-static">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-content-bio">
+            <h3>Heather New</h3>
+            <p>Creative Technologist specializing in interactive experiences at the intersection of design, code, and technology.</p>
+        </div>
+
+        <div class="footer-nav">
+            <p class="copyright">&copy; <span id="current-year"></span> Heather New | <a href="/pages/privacy.html">Privacy Policy</a> | <a href="/pages/sitemap.xml">Sitemap</a></p>
+            <p class="build-info">Deployment Status: <span id="build-date">Checking...</span></p>
+        </div>
+    </footer>
+</div>
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+  try {
+    const buildDate = new Date(__BUILD_DATE__);
+    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    document.getElementById('build-date').textContent = buildDate.toLocaleDateString(undefined, options);
+  } catch (e) {
+    document.getElementById('build-date').textContent = 'Live';
+  }
+</script>
+    </div>
+
+	<!-- Scripts -->
+	
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('grid-container');
+            
+            // Bauhaus color palette and assigned specific click behaviors
+            const colorBehaviors = {
+                '#1BB1A5': 'vortex',   // Teal -> Spinning vortex shrink
+                '#247B82': 'implode',  // Dark Teal -> Collapse inwards
+                '#F6B352': 'converge', // Yellow-Orange -> Fly to click center
+                '#F66C0F': 'scatter',  // Dark Orange -> Random chaotic explosion
+                '#B2F81D': 'float',    // Lime Green -> Float up and fade
+                '#E0E0E0': 'blink',    // Light Grey -> Glitchy random blinking
+                '#CCCCCC': 'flip'      // Mid Grey -> 3D rotation flip
+            };
+            const colors = Object.keys(colorBehaviors);
+
+            const sizeScales = [0.15, 0.35, 0.6, 0.9, 1.2];
+            
+            let gridItems = [];
+            let cols = 0;
+            let rows = 0;
+            const radius = 180; 
+            const shapeSize = 35;
+            const gridGap = 30;
+
+            function generateGrid() {
+                container.innerHTML = '';
+                gridItems = [];
+
+                const containerWidth = window.innerWidth - 80;
+                const containerHeight = window.innerHeight - 80;
+                
+                cols = Math.floor(containerWidth / (shapeSize + gridGap));
+                rows = Math.floor(containerHeight / (shapeSize + gridGap));
+
+                container.style.width = `${cols * (shapeSize + gridGap)}px`;
+                container.style.height = `${rows * (shapeSize + gridGap)}px`;
+
+                for (let i = 0; i < cols * rows; i++) {
+                    const wrapper = document.createElement('div');
+                    wrapper.classList.add('shape-wrapper');
+
+                    const shape = document.createElement('div');
+                    const isSquare = Math.random() > 0.85; 
+                    const scaleClass = sizeScales[Math.floor(Math.random() * sizeScales.length)];
+                    
+                    shape.classList.add('shape', isSquare ? 'square' : 'circle');
+                    const itemColor = colors[Math.floor(Math.random() * colors.length)];
+                    shape.style.backgroundColor = itemColor;
+                    
+                    gsap.set(shape, { scale: scaleClass });
+
+                    wrapper.appendChild(shape);
+                    container.appendChild(wrapper);
+
+                    gridItems.push({
+                        el: shape,
+                        isSquare: isSquare,
+                        baseScale: scaleClass,
+                        colorHex: itemColor,
+                        active: false,
+                        cx: 0,
+                        cy: 0
+                    });
+                }
+                
+                calculateCenters();
+            }
+
+            function calculateCenters() {
+                gridItems.forEach(item => {
+                    const rect = item.el.getBoundingClientRect();
+                    item.cx = rect.left + rect.width / 2;
+                    item.cy = rect.top + rect.height / 2;
+                });
+            }
+
+            window.addEventListener('resize', () => {
+                clearTimeout(window.resizeTimer);
+                window.resizeTimer = setTimeout(() => {
+                    generateGrid();
+                }, 150);
+            });
+
+            generateGrid();
+
+            // Core Interaction: Magnetic Mouse Hover
+            const handleMove = (x, y) => {
+                if (y > window.innerHeight) return; 
+
+                gridItems.forEach(item => {
+                    const dx = item.cx - x;
+                    const dy = item.cy - y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < radius) {
+                        const force = (radius - dist) / radius; 
+                        
+                        gsap.to(item.el, {
+                            scale: item.baseScale + (force * 1.5),
+                            x: -dx * force * 0.4,
+                            y: -dy * force * 0.4,
+                            rotation: item.isSquare ? force * 90 : force * -45,
+                            borderRadius: item.isSquare ? `${force * 50}%` : `${50 - force * 20}%`,
+                            duration: 0.4,
+                            ease: "power2.out",
+                            overwrite: "auto"
+                        });
+                        item.active = true;
+                    } else if (item.active) {
+                        gsap.to(item.el, {
+                            scale: item.baseScale,
+                            x: 0, y: 0, rotation: 0,
+                            borderRadius: item.isSquare ? '0%' : '50%',
+                            duration: 0.8,
+                            ease: "elastic.out(1, 0.4)",
+                            overwrite: "auto"
+                        });
+                        item.active = false;
+                    }
+                });
+            };
+
+            window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+            window.addEventListener('touchmove', (e) => {
+                if(e.touches.length > 0) handleMove(e.touches[0].clientX, e.touches[0].clientY);
+            });
+
+            // Color-specific behaviors on click
+            window.addEventListener('click', (e) => {
+                if (e.clientY > window.innerHeight) return;
+
+                const clickX = e.clientX;
+                const clickY = e.clientY;
+
+                let behavior = 'ripple';
+                const clickedShape = e.target.closest('.shape');
+                if (clickedShape) {
+                    const itemData = gridItems.find(item => item.el === clickedShape);
+                    if (itemData && colorBehaviors[itemData.colorHex]) {
+                        behavior = colorBehaviors[itemData.colorHex];
+                    }
+                }
+
+                gridItems.forEach(item => {
+                    const dx = item.cx - clickX;
+                    const dy = item.cy - clickY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    let animProps = {
+                        duration: 0.6,
+                        yoyo: true,
+                        repeat: 1,
+                        overwrite: "auto",
+                        onComplete: () => {
+                            item.active = false; 
+                            gsap.to(item.el, {
+                                scale: item.baseScale,
+                                x: 0, y: 0, rotation: 0, rotationX: 0, rotationY: 0, opacity: 1,
+                                borderRadius: item.isSquare ? '0%' : '50%',
+                                duration: 0.5,
+                                ease: "power2.out"
+                            });
+                        }
+                    };
+
+                    let delay = dist * 0.001; 
+
+                    switch(behavior) {
+                        case 'implode':
+                            animProps.scale = 0;
+                            animProps.rotation = item.isSquare ? -90 : 90;
+                            animProps.ease = "power2.in";
+                            break;
+                        case 'vortex':
+                            delay = dist * 0.002;
+                            animProps.rotation = item.isSquare ? 360 : -360;
+                            animProps.scale = item.baseScale * 0.1;
+                            animProps.ease = "power4.inOut";
+                            animProps.duration = 0.7;
+                            break;
+                        case 'converge':
+                            delay = dist * 0.0005;
+                            animProps.x = clickX - item.cx;
+                            animProps.y = clickY - item.cy;
+                            animProps.scale = 0;
+                            animProps.rotation = 180;
+                            animProps.ease = "power3.in";
+                            break;
+                        case 'scatter':
+                            delay = Math.random() * 0.2;
+                            animProps.x = (Math.random() - 0.5) * 400;
+                            animProps.y = (Math.random() - 0.5) * 400;
+                            animProps.scale = item.baseScale * (Math.random() * 2 + 0.5);
+                            animProps.ease = "expo.out";
+                            break;
+                        case 'float':
+                            delay = Math.random() * 0.4;
+                            animProps.y = - (Math.random() * 300 + 100);
+                            animProps.rotation = (Math.random() - 0.5) * 360;
+                            animProps.opacity = 0;
+                            animProps.ease = "power1.out";
+                            animProps.duration = 0.8;
+                            break;
+                        case 'blink':
+                            delay = Math.random() * 0.4;
+                            animProps.opacity = 0;
+                            animProps.scale = item.baseScale * 0.3;
+                            animProps.duration = 0.15;
+                            animProps.repeat = 3;
+                            break;
+                        case 'flip':
+                            delay = dist * 0.0015;
+                            animProps.rotationY = 360;
+                            animProps.rotationX = item.isSquare ? 180 : 0;
+                            animProps.scale = item.baseScale * 1.3;
+                            animProps.duration = 0.8;
+                            animProps.ease = "power1.inOut";
+                            break;
+                        case 'ripple':
+                        default:
+                            animProps.scale = item.baseScale * 2.5;
+                            animProps.rotation = item.isSquare ? 180 : -180;
+                            animProps.ease = "back.out(2.5)";
+                            break;
+                    }
+
+                    animProps.delay = delay;
+                    gsap.to(item.el, animProps);
+                });
+            });
+        });
+    </script>
+	
+</body>
+</html>

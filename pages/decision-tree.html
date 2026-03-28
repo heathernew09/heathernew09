@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-store,max-age=0" />
+    <title>Decision Tree - Heather New - Creative Technologist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+	<link rel="shortcut icon" href="/favicon/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="HeatherNew" />
+	<link rel="manifest" href="/favicon/site.webmanifest" />
+	<meta property="og:image" content="/assets/heathernew-og.png" />
+  <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
+  <script type="module" crossorigin src="/assets/site-core-Cit16Jds.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/decision-tree-fNIY3Lyz.css">
+  <link rel="stylesheet" crossorigin href="/assets/global-BpFj_ECW.css">
+  <style>
+    :root {
+      --teal: #1BB1A5;
+      --dark-teal: #247B82;
+      --yellow: #F6B352;
+      --orange: #F66C0F;
+      --lime: #B2F81D;
+      --light-grey: #E0E0E0;
+      --mid-grey: #CCCCCC;
+      --text-dark: #111111;
+      --bg-color: #f4f4f4;
+    }
+
+    .portfolio-section {
+      padding: 0 0 8rem;
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: center;
+    }
+
+    .bauhaus-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: minmax(240px, auto);
+      width: 100%;
+      max-width: 1400px;
+      border-top: 1px solid var(--text-dark);
+      border-left: 1px solid var(--text-dark);
+      background: var(--bg-color);
+    }
+
+    .b-tile {
+      container-type: inline-size;
+      border-right: 1px solid var(--text-dark);
+      border-bottom: 1px solid var(--text-dark);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    .b-tile h2 {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      letter-spacing: -1px;
+    }
+
+    .b-tile h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .b-tile p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .b-tile .meta {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.85;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .span-col-2 { grid-column: span 2; }
+    .span-col-3 { grid-column: span 3; }
+    .span-col-4 { grid-column: span 4; }
+    .span-row-2 { grid-row: span 2; }
+
+    .bg-white     { background-color: #fff; }
+    .bg-teal      { background-color: var(--teal); color: #fff; }
+    .bg-dark-teal { background-color: var(--dark-teal); color: #fff; }
+    .bg-yellow    { background-color: var(--yellow); color: var(--text-dark); }
+    .bg-orange    { background-color: var(--orange); color: #fff; }
+    .bg-lime      { background-color: var(--lime); color: var(--text-dark); }
+    .bg-light-grey{ background-color: var(--light-grey); color: var(--text-dark); }
+    .bg-mid-grey  { background-color: var(--mid-grey); color: var(--text-dark); }
+
+    .img-tile { padding: 0; display: block; }
+    .img-tile img, .img-tile video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .img-tile:hover img { transform: scale(1.04); }
+
+    .list-clean {
+      list-style: none;
+      line-height: 2;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .bauhaus-grid { grid-template-columns: repeat(2, 1fr); }
+      .span-col-3, .span-col-4 { grid-column: span 2; }
+    }
+
+    @media (max-width: 600px) {
+      .bauhaus-grid { grid-template-columns: 1fr; }
+      .span-col-2, .span-col-3, .span-col-4 { grid-column: span 1; }
+      .span-row-2 { grid-row: span 1; }
+    }
+  </style>
+</head>
+<body id="decision-tree-page" class="page-template">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+	<header class="site-header">
+        <div class="header-content"><div class="header-content">
+    <a href="/" class="logo">
+        <img src="/assets/heather-new-wordmark.svg" alt="Heather New" style="height: 25px; width: auto;" width="150" height="25">
+    </a>
+</div>
+
+<div class="pages-menu-overlay" id="pages-overlay">
+    <div class="pages-menu-content">
+        <nav class="pages-main-nav">
+            <a href="/" class="home-link-nav">Home</a>
+            <a href="/pages/parasite-hunter.html">Parasite Hunter AR Game</a>
+            <a href="/pages/built-different.html">The Modular Brand: MERGE</a>
+            <a href="/pages/decision-tree.html">Interactive Zen Garden</a>
+            <a href="/pages/hotspot.html">Wall of Flame Interactive</a>
+                    <a href="/pages/generative-portrait-wall.html">Generative Portrait Wall</a>
+            <div class="nav-bottom-group" style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                <a href="/pages/about.html">About</a>
+                <a href="/pages/contact.html">Contact</a>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="pages-nav-icon" id="nav-block">
+    <div id="nav-hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div></div>
+    </header>
+    
+    <main id="main-content">
+    
+		<div id="tree-partial-container">
+            <h1 class="section-title hero-title">The Zen Garden Decision Tree</h1>
+			<div id="tree-screen-wrapper">
+                <img id="tree-decorative-frame" src="/assets/tree/frame.png" alt="Decorative Wood Frame" />
+				<iframe 
+					id="tree-iframe"
+					title="Interactive Decision Tree"
+					scrolling="no"
+					src="https://decisiontree.builtmerge.com/" 
+				></iframe>
+			</div>
+
+			<div class="tree-cta-block">
+				<p class="text-center">Interact with the artwork above. Navigate through the branches to uncover the path forward.</p>
+			</div>
+		</div>
+
+		<!-- Bauhaus Grid -->
+		<div class="portfolio-section"><div class="bauhaus-grid">
+
+			<!-- ROW 1: CONTEXT + ROLE -->
+			<div class="b-tile bg-dark-teal span-col-3">
+				<span class="meta" style="color: var(--lime);">WVC / VMX &mdash; Elanco</span>
+				<h2>The Zen Garden<br>Decision Tree</h2>
+				<p>Inside 1.2M sq. ft. of trade show, we built a quiet corner. Booth attendees — waiting in line or working on crafts — could interact with a branching decision tree that walked them through real dermatology options their vet can provide. Three pathways. One clear outcome.</p>
+			</div>
+			<div class="b-tile bg-lime">
+				<span class="meta">Role</span>
+				<p style="font-weight: 800; font-size: 1.1rem; line-height: 1.8;">I designed it.<br>I built it.<br>I compiled the assets.<br>I hosted it.</p>
+				<span class="meta" style="margin-top: auto;">Creative Technologist</span>
+			</div>
+
+			<!-- ROW 2: RESULTS PHOTOS -->
+			<div class="b-tile img-tile span-col-2">
+				<img src="/assets/tree/decision-tree-people-standing.JPG" alt="Attendees engaging with the Zen Garden decision tree at the event" />
+			</div>
+			<div class="b-tile img-tile span-col-2">
+				<img src="/assets/tree/decision-tree-hamilton-install.JPG" alt="Full booth installation" />
+			</div>
+
+			<!-- ROW 3: RESULTS QUOTE -->
+			<div class="b-tile bg-yellow span-col-4" style="justify-content: center;">
+				<div style="font-size: clamp(1.1rem, 2.2vw, 1.8rem); font-weight: 800; line-height: 1.4; max-width: 1000px;">"The gamification approach increased engagement substantially compared to traditional educational materials, engaging thousands of veterinary professionals during the multi-day event."</div>
+			</div>
+
+			<!-- ROW 4: BOOTH PHOTO + BRANCHES -->
+			<div class="b-tile img-tile span-col-2">
+				<img src="/assets/tree/zen-garden-hamilton-photo-credit.JPEG" alt="Zen Garden full booth at the event" />
+			</div>
+			<div class="b-tile bg-dark-teal span-col-2">
+				<span class="meta" style="color: var(--lime);">The Three Branches</span>
+				<div>
+					<h3 style="color: var(--lime); margin-bottom: 0.75rem;">Inflammation</h3>
+					<h3 style="color: var(--yellow); margin-bottom: 0.75rem;">Parasites</h3>
+					<h3 style="color: #fff;">Itch Inspection</h3>
+				</div>
+				<p style="color: var(--light-grey); margin-top: auto;">Each pathway guides the attendee from symptom to treatment option — mirroring how a vet actually thinks through a dermatology case.</p>
+			</div>
+
+			<!-- ROW 5: SEED & GROWTH HEADER -->
+			<div class="b-tile bg-teal span-col-4">
+				<span class="meta" style="color: var(--lime);">Process</span>
+				<h2>The Seed &amp; Growth</h2>
+				<p style="max-width: 700px;">The architecture started on paper — then AI pressure-tested the branching logic before a single vector was drawn.</p>
+			</div>
+
+			<!-- ROW 6: SKETCHES -->
+			<div class="b-tile img-tile span-col-2">
+				<img src="/assets/tree/sketch-three.jpeg" alt="Refined concept sketch" />
+			</div>
+			<div class="b-tile img-tile">
+				<img src="/assets/tree/sketch-one.jpg" alt="Initial concept sketch" />
+			</div>
+			<div class="b-tile img-tile">
+				<img src="/assets/tree/map-zen-render.png" alt="Zen Garden map render" />
+			</div>
+
+			<!-- ROW 7: AI BONSAI FULL WIDTH -->
+			<div class="b-tile img-tile span-col-4" style="min-height: 180px;">
+				<img src="/assets/tree/screenshot_bonsai_tree_AI_system_2026Mar07_1.png" alt="AI-assisted bonsai branching structure" />
+			</div>
+
+			<!-- ROW 8: BONSAI PHOTO + SVG TEXT -->
+			<div class="b-tile img-tile span-col-2">
+				<img src="/assets/tree/tree_shutterstock_2702278941.jpg" alt="Bonsai tree reference" />
+			</div>
+			<div class="b-tile bg-light-grey span-col-2">
+				<span class="meta" style="color: var(--dark-teal);">Precision Vector Architecture</span>
+				<h2>Hand-crafted.<br>Node by node.</h2>
+				<p>Every branch built as an optimized SVG — crisp at any resolution, with clean hooks for the interactive logic.</p>
+			</div>
+
+			<!-- ROW 9: SVG BUILD FULL WIDTH -->
+			<div class="b-tile img-tile span-col-4">
+				<img src="/assets/tree/svg-build-illustrator-windows.png" alt="SVG architecture build in Adobe Illustrator" />
+			</div>
+
+			<!-- ROW 10: AI ITERATION -->
+			<div class="b-tile bg-orange span-col-2">
+				<span class="meta">Input &amp; Iteration</span>
+				<h2>Elanco brand assets as ground truth.<br>Generative prompts as pressure.</h2>
+				<p>Iterating until the aesthetic held up at trade show scale.</p>
+			</div>
+			<div class="b-tile img-tile">
+				<img src="/assets/tree/ai-prompt-my-source-images.png" alt="AI prompt source images" />
+			</div>
+			<div class="b-tile img-tile">
+				<img src="/assets/tree/ai-prompt1.png" alt="AI prompt iteration" />
+			</div>
+
+			<!-- ROW 11: CODE OUTPUT + BRIDGING TEXT -->
+			<div class="b-tile img-tile span-col-3">
+				<img src="/assets/tree/figma-make-code-output.png" alt="Figma Make code output" />
+			</div>
+			<div class="b-tile bg-teal">
+				<span class="meta" style="color: var(--lime);">Bridging Design &amp; Code</span>
+				<p style="font-weight: 700; font-size: 1.05rem;">Figma Make as the translation layer — visual intent to working component without loss of fidelity.</p>
+			</div>
+
+			<!-- ROW 12: RENDER SCREENS -->
+			<div class="b-tile img-tile span-col-4">
+				<img src="/assets/tree/ai-prompt-render-screen2.png" alt="Final render screen" />
+			</div>
+			<div class="b-tile img-tile span-col-2">
+				<img src="/assets/tree/ai-prompt-render-screen.jpg" alt="Render screen detail" />
+			</div>
+			<div class="b-tile bg-lime span-col-2">
+				<span class="meta">Final Visual Polish</span>
+				<h2>Alive, not just functional.</h2>
+				<p>Tightening micro-interactions and visual feedback until the tree felt responsive to every tap.</p>
+			</div>
+
+			<!-- ROW 13: VIDEO -->
+			<div class="b-tile span-col-4 bg-dark-teal" style="padding: 0;">
+				<div style="padding: 2.5rem 2.5rem 1.5rem;">
+					<span class="meta" style="color: var(--lime);">The Logic in Motion</span>
+					<h2>The Living Tree</h2>
+					<p style="color: var(--light-grey); margin-top: 0.5rem;">Watch the tree route a user from symptom to treatment option.</p>
+				</div>
+				<video class="img-responsive" controls playsinline muted style="width: 100%; display: block;">
+					<source src="/assets/tree/decision-tree-demo-figma-make.mp4" type="video/mp4">
+				</video>
+			</div>
+
+			<!-- ROW 14: CODEPEN -->
+			<div class="b-tile span-col-4" style="flex-direction: column; gap: 2rem; min-height: auto;">
+				<div>
+					<span class="meta" style="color: var(--dark-teal);">Modular Component Architecture</span>
+					<h2>Deep dive into the components.</h2>
+				</div>
+				<p class="codepen" data-height="500" data-default-tab="result" data-slug-hash="EayEdoK" data-pen-title="Decision Tree UI Components" data-user="ladywebhawk" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 0; padding: 1em;">
+					<span>See the Pen <a href="https://codepen.io/ladywebhawk/pen/EayEdoK">Decision Tree UI Components</a> by Heather New (<a href="https://codepen.io/ladywebhawk">@ladywebhawk</a>) on <a href="https://codepen.io">CodePen</a>.</span>
+				</p>
+				<script async src="https://public.codepenassets.com/embed/index.js"></script>
+			</div>
+
+			<!-- ROW 15: CREDITS -->
+			<div class="b-tile bg-dark-teal span-col-2">
+				<span class="meta" style="color: var(--lime);">Decision Tree Core</span>
+				<ul class="list-clean" style="margin-top: 1rem;">
+					<li><strong>Creative Technologist:</strong> Heather New</li>
+					<li><strong>Creative Direction:</strong> Amy McVey</li>
+					<li><strong>Account Leadership:</strong> Adriana Zardus &amp; Jessica Ocampo</li>
+					<li><strong>Project Management:</strong> Angela Peralta</li>
+					<li><strong>Booth Partner:</strong> Hamilton</li>
+				</ul>
+			</div>
+			<div class="b-tile bg-teal span-col-2">
+				<span class="meta" style="color: var(--lime);">Elanco Experience Team</span>
+				<ul class="list-clean" style="margin-top: 1rem;">
+					<li><strong>Creative Leadership:</strong> Tom Demetriou, George Bird, Josh Liotta, James Holden</li>
+					<li><strong>Design &amp; Studio:</strong> Casey Luttrell, Stacey Prudden, Jami Gettings, Chad McClure, Spencer Tetik</li>
+				</ul>
+			</div>
+
+		</div></div><!-- end bauhaus grid -->
+		
+	</main>
+    
+    <div id="footer-trigger"><div class="footer-scroll-wrapper" id="footer-trigger">
+    <footer class="footer-section">
+        <div class="footer-track">
+            <div id="mouse-skater" class="mouse-skater">
+                <!-- Separate container for flipping to avoid matrix conflicts -->
+                <div class="mouse-flip-container" id="mouse-flipper">
+                    <img src="/assets/mouse_skate.png" 
+                         alt="Magic Mouse on Roller Skates" 
+                         class="mouse-static">
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-content-bio">
+            <h3>Heather New</h3>
+            <p>Creative Technologist specializing in interactive experiences at the intersection of design, code, and technology.</p>
+        </div>
+
+        <div class="footer-nav">
+            <p class="copyright">&copy; <span id="current-year"></span> Heather New | <a href="/pages/privacy.html">Privacy Policy</a> | <a href="/pages/sitemap.xml">Sitemap</a></p>
+            <p class="build-info">Deployment Status: <span id="build-date">Checking...</span></p>
+        </div>
+    </footer>
+</div>
+<script>
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+  try {
+    const buildDate = new Date(__BUILD_DATE__);
+    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    document.getElementById('build-date').textContent = buildDate.toLocaleDateString(undefined, options);
+  } catch (e) {
+    document.getElementById('build-date').textContent = 'Live';
+  }
+</script></div>
+</body>
+</html>

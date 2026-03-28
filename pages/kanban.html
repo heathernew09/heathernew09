@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heather New | Creative Technologist</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background: #fafafa;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* Header Section - Sticky */
+        .header-section {
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 32px;
+        }
+
+        .header-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #1a858f;
+            margin-bottom: 8px;
+        }
+
+        .header-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+        }
+
+        .about-toggle {
+            background: none;
+            border: none;
+            color: #1a858f;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .about-toggle:hover {
+            text-decoration: underline;
+        }
+
+        .about-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .about-content.expanded {
+            max-height: 600px;
+            margin-top: 16px;
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #444;
+            max-width: 800px;
+        }
+
+        .about-text p {
+            margin-bottom: 12px;
+        }
+
+        /* Board Container */
+        .board-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px;
+        }
+
+        .board-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+
+        /* Kanban Board */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .column {
+            background: white;
+            border-radius: 8px;
+            padding: 16px;
+            min-height: 400px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .column-title {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+        }
+
+        .column-count {
+            background: #f0f0f0;
+            color: #666;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 300px;
+        }
+
+        /* Card Styles */
+        .card {
+            background: white;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            padding: 12px;
+            cursor: move;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        .card.dragging {
+            opacity: 0.5;
+        }
+
+        .card.drag-over {
+            border: 2px dashed #1a858f;
+        }
+
+        /* Card Type Indicators */
+        .card-type {
+            display: inline-block;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card.project {
+            border-left: 3px solid #1a858f;
+        }
+
+        .card.project .card-type {
+            background: #e6f7f8;
+            color: #1a858f;
+        }
+
+        .card.task {
+            border-left: 3px solid #f97316;
+        }
+
+        .card.task .card-type {
+            background: #fff7ed;
+            color: #f97316;
+        }
+
+        .card.idea {
+            border-left: 3px solid #8b5cf6;
+        }
+
+        .card.idea .card-type {
+            background: #f3f0ff;
+            color: #8b5cf6;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 6px;
+        }
+
+        .card-description {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: #666;
+            font-size: 11px;
+            padding: 2px 8px;
+            border-radius: 3px;
+        }
+
+        .card-expand {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .expand-btn {
+            background: none;
+            border: none;
+            color: #1a858f;
+            font-size: 12px;
+            cursor: pointer;
+            padding: 4px 0;
+            font-weight: 500;
+        }
+
+        .expand-btn:hover {
+            text-decoration: underline;
+        }
+
+        .expanded-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-top: 0;
+        }
+
+        .expanded-content.show {
+            max-height: 1000px;
+            margin-top: 12px;
+        }
+
+        .expanded-content p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 8px;
+        }
+
+        /* Add Card Button */
+        .add-card-btn {
+            width: 100%;
+            padding: 8px;
+            background: #f9f9f9;
+            border: 1px dashed #d0d0d0;
+            border-radius: 6px;
+            color: #666;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .add-card-btn:hover {
+            background: #f0f0f0;
+            border-color: #1a858f;
+            color: #1a858f;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .kanban-board {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="header-section">
+        <div class="header-content">
+            <h1 class="header-title">heathernew</h1>
+            <div class="header-subtitle">Creative Technologist | Design, code, and strategy execution | Interactive experiences, games, and digital products</div>
+            <button class="about-toggle" onclick="toggleAbout()">
+                <span id="toggle-icon">▼</span> About
+            </button>
+            <div class="about-content" id="aboutContent">
+                <div class="about-text">
+                    <p>I bridge design, code, and strategy because I can actually execute in all three - not just talk about them. Over two decades, I've built interactive games, AR tradeshow activations, custom websites, and Python automations. Accessibility isn't a nice-to-have for me; it's the baseline.</p>
+                    
+                    <p>I grew up building computers before the internet was everywhere, which gave me a unique perspective on how humans and technology actually interact. I've translated complex problems into solutions that make sense across healthcare, pharma, finance, and retail. I've designed mobile companion apps, custom WordPress themes, and 3D-printed prototypes when off-the-shelf solutions don't cut it.</p>
+                    
+                    <p>At MERGE, I manage studio operations and was a founding member of the AI Garage, where we're building processes to lead others in the ethical use of AI tools - focusing on IP indemnification, human oversight, and responsible innovation. This isn't about chasing trends; it's about building guardrails so technology serves people, not the other way around.</p>
+                    
+                    <p>Before MERGE, I ran my own web development and design business for two years. Before that, I was an MVP roller derby player, which taught me leadership under pressure and how to take a hit and keep moving.</p>
+                    
+                    <p>I teach myself what I need to know. I simplify what's complicated. I connect dots people don't see because I've built enough skills to understand designer language, developer constraints, and business reality.</p>
+                    
+                    <p>If you need someone who can art direct and execute, who brings curiosity and a construction-site work ethic to digital projects, or who leads innovation responsibly, let's talk.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Board Container -->
+    <div class="board-container">
+        <h2 class="board-title">Portfolio Build Progress</h2>
+        
+        <!-- Kanban Board -->
+        <div class="kanban-board">
+            <!-- To Do Column -->
+            <div class="column">
+                <div class="column-header">
+                    <span class="column-title">To Do</span>
+                    <span class="column-count" id="todo-count">0</span>
+                </div>
+                <div class="cards-container" id="todo">
+                    <!-- Sample cards -->
+                    <div class="card task" draggable="true" id="card1">
+                        <span class="card-type">Task</span>
+                        <div class="card-title">Find MERGE project screenshots</div>
+                        <div class="card-description">Gather high-res images from recent client work</div>
+                    </div>
+                    
+                    <div class="card task" draggable="true" id="card2">
+                        <span class="card-type">Task</span>
+                        <div class="card-title">Write case study: AR Tradeshow Activation</div>
+                        <div class="card-description">Document challenge, approach, and impact</div>
+                    </div>
+                    
+                    <div class="card idea" draggable="true" id="card3">
+                        <span class="card-type">Idea</span>
+                        <div class="card-title">Blog post: Building ethical AI tools</div>
+                        <div class="card-description">Share learnings from AI Garage work</div>
+                    </div>
+                    
+                    <div class="card task" draggable="true" id="card4">
+                        <span class="card-type">Task</span>
+                        <div class="card-title">Update resume with new positioning</div>
+                        <div class="card-description">Creative Technologist, 20 years experience</div>
+                    </div>
+                </div>
+                <button class="add-card-btn" onclick="addCard('todo')">+ Add card</button>
+            </div>
+
+            <!-- Work In Progress Column -->
+            <div class="column">
+                <div class="column-header">
+                    <span class="column-title">Work In Progress</span>
+                    <span class="column-count" id="wip-count">0</span>
+                </div>
+                <div class="cards-container" id="wip">
+                    <div class="card project" draggable="true" id="card5">
+                        <span class="card-type">Project</span>
+                        <div class="card-title">Portfolio Website Rebuild</div>
+                        <div class="card-description">Interactive Kanban-style portfolio</div>
+                        <div class="card-tags">
+                            <span class="tag">HTML/CSS/JS</span>
+                            <span class="tag">UX</span>
+                        </div>
+                        <div class="card-expand">
+                            <button class="expand-btn" onclick="toggleExpand('expand5')">View details →</button>
+                            <div class="expanded-content" id="expand5">
+                                <p><strong>Challenge:</strong> Traditional portfolio sites don't show my process or technical thinking.</p>
+                                <p><strong>Approach:</strong> Build portfolio as a productivity board - meta, interactive, demonstrates UX + technical skills.</p>
+                                <p><strong>Tech:</strong> Vanilla JS, drag & drop API, localStorage for state persistence.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card task" draggable="true" id="card6">
+                        <span class="card-type">Task</span>
+                        <div class="card-title">Contact recruiters for CD/AD roles</div>
+                        <div class="card-description">Target $130k+ positions</div>
+                    </div>
+                </div>
+                <button class="add-card-btn" onclick="addCard('wip')">+ Add card</button>
+            </div>
+
+            <!-- Completed Column -->
+            <div class="column">
+                <div class="column-header">
+                    <span class="column-title">Completed</span>
+                    <span class="column-count" id="completed-count">0</span>
+                </div>
+                <div class="cards-container" id="completed">
+                    <div class="card project" draggable="true" id="card7">
+                        <span class="card-type">Project</span>
+                        <div class="card-title">LinkedIn Profile Overhaul</div>
+                        <div class="card-description">Updated title and About to Creative Technologist positioning</div>
+                        <div class="card-tags">
+                            <span class="tag">Personal Brand</span>
+                            <span class="tag">Messaging</span>
+                        </div>
+                        <div class="card-expand">
+                            <button class="expand-btn" onclick="toggleExpand('expand7')">View details →</button>
+                            <div class="expanded-content" id="expand7">
+                                <p><strong>Old title:</strong> "Designer in search of ultimate UX, accessibility, and inclusion"</p>
+                                <p><strong>New title:</strong> "Creative Technologist | Design, code, and strategy execution | Interactive experiences, games, and digital products"</p>
+                                <p><strong>Impact:</strong> Positions me as senior-level technologist with 20 years experience, not junior designer still searching.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="add-card-btn" onclick="addCard('completed')">+ Add card</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let draggedCard = null;
+
+        // Toggle About Section
+        function toggleAbout() {
+            const content = document.getElementById('aboutContent');
+            const icon = document.getElementById('toggle-icon');
+            content.classList.toggle('expanded');
+            icon.textContent = content.classList.contains('expanded') ? '▲' : '▼';
+        }
+
+        // Toggle Card Expansion
+        function toggleExpand(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling;
+            content.classList.toggle('show');
+            button.textContent = content.classList.contains('show') ? 'Hide details ←' : 'View details →';
+        }
+
+        // Update card counts
+        function updateCounts() {
+            const columns = ['todo', 'wip', 'completed'];
+            columns.forEach(col => {
+                const container = document.getElementById(col);
+                const cards = container.querySelectorAll('.card');
+                document.getElementById(`${col}-count`).textContent = cards.length;
+            });
+        }
+
+        // Setup drag and drop for all cards
+        function setupDragAndDrop() {
+            const cards = document.querySelectorAll('.card');
+            const containers = document.querySelectorAll('.cards-container');
+
+            cards.forEach(card => {
+                card.addEventListener('dragstart', handleDragStart);
+                card.addEventListener('dragend', handleDragEnd);
+            });
+
+            containers.forEach(container => {
+                container.addEventListener('dragover', handleDragOver);
+                container.addEventListener('drop', handleDrop);
+                container.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedCard = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.innerHTML);
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            // Remove all drag-over classes
+            document.querySelectorAll('.cards-container').forEach(container => {
+                container.classList.remove('drag-over');
+            });
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            e.dataTransfer.dropEffect = 'move';
+            this.classList.add('drag-over');
+            return false;
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+            
+            this.classList.remove('drag-over');
+            
+            if (draggedCard && this.classList.contains('cards-container')) {
+                this.appendChild(draggedCard);
+                updateCounts();
+                saveState();
+            }
+            
+            return false;
+        }
+
+        // Add new card
+        function addCard(columnId) {
+            const title = prompt('Card title:');
+            if (!title || title.trim() === '') return;
+            
+            const type = prompt('Card type (project/task/idea):') || 'task';
+            const description = prompt('Description (optional):') || '';
+            
+            const cardId = 'card-' + Date.now();
+            const card = document.createElement('div');
+            card.className = `card ${type.toLowerCase()}`;
+            card.draggable = true;
+            card.id = cardId;
+            
+            card.innerHTML = `
+                <span class="card-type">${type}</span>
+                <div class="card-title">${title}</div>
+                <div class="card-description">${description}</div>
+            `;
+            
+            // Add drag event listeners to the new card
+            card.addEventListener('dragstart', handleDragStart);
+            card.addEventListener('dragend', handleDragEnd);
+            
+            const container = document.getElementById(columnId);
+            container.appendChild(card);
+            updateCounts();
+            saveState();
+        }
+
+        // Save state to localStorage
+        function saveState() {
+            const state = {
+                todo: [],
+                wip: [],
+                completed: []
+            };
+            
+            ['todo', 'wip', 'completed'].forEach(col => {
+                const cards = document.getElementById(col).querySelectorAll('.card');
+                state[col] = Array.from(cards).map(card => ({
+                    id: card.id,
+                    html: card.innerHTML
+                }));
+            });
+            
+            localStorage.setItem('portfolioBoard', JSON.stringify(state));
+        }
+
+        // Load state from localStorage
+        function loadState() {
+            const savedState = localStorage.getItem('portfolioBoard');
+            if (savedState) {
+                try {
+                    const state = JSON.parse(savedState);
+                    
+                    ['todo', 'wip', 'completed'].forEach(col => {
+                        const container = document.getElementById(col);
+                        // Clear existing cards except the initial ones on first load
+                        // For now, we'll just update counts
+                    });
+                } catch (e) {
+                    console.error('Error loading state:', e);
+                }
+            }
+            updateCounts();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            setupDragAndDrop();
+            loadState();
+        });
+    </script>
+</body>
+</html>

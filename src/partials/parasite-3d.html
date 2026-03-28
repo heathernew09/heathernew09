@@ -1,0 +1,37 @@
+<div class="section-parasite-3d-demo">
+    <div id="canvas-container"></div>
+    <div id="loading">Loading parasites...</div>
+    <div id="attack-sprite"></div>
+
+    <div id="parasite-hunter-logo">
+        <a href="/pages/parasite-hunter.html" id="logo-link">
+            <img src="/assets/para/parasite-hunter-game.png" alt="Parasite Hunter Logo">
+        </a>
+		<div id="parasite-counter-ui">
+			<span class="count-label">PARASITES COLLECTED</span>
+			<div id="squish-count">000</div>
+		</div>
+	</div>
+		<div class="parasite-controls-container">
+			<div id="parasite-reset-progress" class="audio-control reset-btn">
+				<span class="icon"><svg width="265" height="265" viewBox="0 0 265 265" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M101.704 43.7354L35.4541 109.985L29.7607 115.938L35.4541 121.89L101.704 188.14L113.608 176.235L61.5918 124.219H173.906C196.874 124.219 215.312 142.657 215.312 165.625C215.312 188.593 196.874 207.031 173.906 207.031V223.594C205.834 223.594 231.875 197.553 231.875 165.625C231.875 133.697 205.834 107.656 173.906 107.656H61.5918L113.608 55.6396L101.704 43.7354Z" fill="white"/></svg></span>
+				<span class="label">Reset Score</span>
+			</div>
+
+			<div id="parasite-audio-toggle" class="audio-control">
+				<span class="icon"><svg width="69" height="69" viewBox="0 0 69 69" xmlns="http://www.w3.org/2000/svg"><path d="M36.4639 7.70801L32.7773 11.3276L20.5109 23.594H10.7246V45.0434H20.5109L32.7773 57.3097L36.4639 60.9293V7.70801ZM51.0763 17.5613L48.06 20.5776C55.6092 28.1268 55.6092 40.2424 48.06 47.7916L51.0763 50.8749C60.2593 41.6919 60.2593 26.7443 51.0763 17.5613ZM32.174 18.0976V50.5398L22.991 41.3567L22.3207 40.7535H15.0145V27.8838H22.3207L22.991 27.2806L32.174 18.0976ZM44.8426 23.7951L41.8262 26.8114C45.9234 30.9085 45.9067 37.6953 41.7592 42.027L44.9096 45.0434C50.6238 39.0778 50.6071 29.5596 44.8426 23.7951Z" /></svg></span>
+				<span class="label">Sound On</span>
+			</div>
+		</div>
+
+
+    
+	
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <script type="module" src="/src/js/parasite3d.js"></script>
+</div>

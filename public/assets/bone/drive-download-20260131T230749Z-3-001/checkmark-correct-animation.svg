@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+      <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 100 100">
+        <defs>
+          <style>
+            .checkmark {
+              /* Style the checkmark */
+              stroke-width: 8;
+              stroke: #fff;
+              fill: none;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              opacity: 0;
+              transform-origin: 50% 50%;
+              transform: scale(0.88);
+              animation: drawCheckmark 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            }
+            @keyframes drawCheckmark {
+              0% {
+                  opacity: 0;
+                  stroke-dasharray: 0 87.56;
+                  stroke-dashoffset: 87.56;
+              }
+              40% {
+                  opacity: 1;
+                  stroke-dasharray: 0 87.56;
+                  stroke-dashoffset: 87.56;
+              }
+              100% {
+                opacity: 1;
+                stroke-dasharray: 87.56 0;
+                stroke-dashoffset: 0;
+              }
+            }
+            .circle{
+              fill:#007b4b;
+            }
+          </style>
+        </defs>
+        <circle class="circle" cx="50" cy="50" r="40"/>
+        <g transform="translate(3, 5)">
+          <path class="checkmark" d="M20 50 L35 65 L70 30" />
+        </g>
+      </svg>

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "parasite-hunter",
+    "title": "Parasite Hunter AR",
+    "subtitle": "Gamified WebAR Experience",
+    "category": "Interactive",
+    "description": "An engaging augmented reality game that educates veterinarians about parasite prevention. Featured at AVMA 2025 and VMX trade shows, providing an entertaining booth experience while delivering product education.",
+    "visual": {
+      "type": "image",
+      "src": "/assets/para/scan-to-play.JPG",
+      "alt": "Parasite Hunter AR game interface"
+    },
+    "tech": ["WebXR", "Three.js", "Game Design"],
+    "cta": {
+      "text": "View Project",
+      "link": "/pages/parasite-hunter.html"
+    },
+    "className": "bg-white"
+  },
+  {
+    "id": "merge",
+    "title": "Built Different",
+    "subtitle": "Enterprise Brand Architecture",
+    "category": "Design System",
+    "description": "Redesigning the MERGE modular brand identity for a modern, digital-first presence. Focus on scalability, modular components, and accessibility.",
+    "visual": {
+      "type": "image",
+      "src": "/assets/merge-M.png",
+      "alt": "MERGE Logo",
+      "id": "merge-logo"
+    },
+    "tech": ["Figma", "Design Systems", "Brand Ops"],
+    "cta": {
+      "text": "View Project",
+      "link": "/pages/built-different.html"
+    },
+    "className": "merge-preview bg-light"
+  },
+  {
+    "id": "decision-tree",
+    "title": "Interactive Zen Garden",
+    "subtitle": "Generative SVG Architecture",
+    "category": "Generative Art",
+    "description": "We translated a complex multi-layered decision tree into a self-service digital product. Built with recursive SVG logic and meditative interactivity.",
+    "visual": {
+      "type": "image",
+      "src": "/assets/tree/decision-tree-screen.jpg",
+      "alt": "Zen Garden Decision Tree Interactive"
+    },
+    "tech": ["SVG", "Vanilla JS", "GSAP"],
+    "cta": {
+      "text": "View Project",
+      "link": "/pages/decision-tree.html"
+    },
+    "className": "bg-white"
+  },
+  {
+    "id": "hotspot",
+    "title": "Wall of Flame",
+    "subtitle": "Large Scale Kiosk Integration",
+    "category": "Interactive Installation",
+    "description": "A high-impact tradeshow activation featuring a massive quiz wall with hardware integration, physical motion sensors, and dynamic feedback.",
+    "visual": {
+      "type": "image",
+      "src": "/assets/hotspot/hotspot-screen-inplay.png",
+      "alt": "Elanco Galliprant Wall of Flame Interactive Booth Experience",
+      "id": "project-hero-galliprant",
+      "containerClass": "hotspot-preview"
+    },
+    "tech": ["HTML5 Canvas", "Hardware API", "Physics"],
+    "cta": {
+      "text": "View Project",
+      "link": "/pages/hotspot.html"
+    },
+    "className": "bg-light"
+  }
+]

@@ -1,0 +1,219 @@
+{
+  "sprites": [
+    {
+      "fileName": "splat_gold_00000.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fileName": "splat_gold_00001.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 0
+    },
+    {
+      "fileName": "splat_gold_00002.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 0
+    },
+    {
+      "fileName": "splat_gold_00003.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 0
+    },
+    {
+      "fileName": "splat_gold_00004.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 0
+    },
+    {
+      "fileName": "splat_gold_00005.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 0
+    },
+    {
+      "fileName": "splat_gold_00006.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 1280
+    },
+    {
+      "fileName": "splat_gold_00007.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 1280
+    },
+    {
+      "fileName": "splat_gold_00008.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 1280
+    },
+    {
+      "fileName": "splat_gold_00009.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 1280
+    },
+    {
+      "fileName": "splat_gold_00010.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 1280
+    },
+    {
+      "fileName": "splat_gold_00011.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 1280
+    },
+    {
+      "fileName": "splat_gold_00012.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 2560
+    },
+    {
+      "fileName": "splat_gold_00013.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 2560
+    },
+    {
+      "fileName": "splat_gold_00014.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 2560
+    },
+    {
+      "fileName": "splat_gold_00015.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 2560
+    },
+    {
+      "fileName": "splat_gold_00016.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 2560
+    },
+    {
+      "fileName": "splat_gold_00017.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 2560
+    },
+    {
+      "fileName": "splat_gold_00018.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 3840
+    },
+    {
+      "fileName": "splat_gold_00019.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 3840
+    },
+    {
+      "fileName": "splat_gold_00020.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 3840
+    },
+    {
+      "fileName": "splat_gold_00021.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 3840
+    },
+    {
+      "fileName": "splat_gold_00022.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 3840
+    },
+    {
+      "fileName": "splat_gold_00023.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 3840
+    },
+    {
+      "fileName": "splat_gold_00024.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 5120
+    },
+    {
+      "fileName": "splat_gold_00025.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 5120
+    },
+    {
+      "fileName": "splat_gold_00026.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 5120
+    },
+    {
+      "fileName": "splat_gold_00027.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 5120
+    },
+    {
+      "fileName": "splat_gold_00028.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 5120
+    },
+    {
+      "fileName": "splat_gold_00029.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 5120
+    }
+  ],
+  "packMode": "grid",
+  "padding": 0,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "spriteSheetWidth": 4320,
+  "spriteSheetHeight": 6400
+}

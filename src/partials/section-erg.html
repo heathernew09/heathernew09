@@ -1,0 +1,215 @@
+<div id="erg-canvas-container">
+</div>
+
+<script>
+window.sectionManager.register('erg-section', 
+    () => { 
+        Runner.run(runner, engine); // Start physics
+        console.log("ERG Active");
+    }, 
+    () => { 
+        Runner.stop(runner); // Stop physics (Freezes CPU)
+        console.log("ERG Sleeping");
+    }
+);
+(function() {
+    function initERG() {
+        if (typeof Matter === 'undefined') {
+            setTimeout(initERG, 50);
+            return;
+        }
+
+        const ergData = {
+            "caregiver": { name: "Caregiver Support", desc: "Compassion-led support for those balancing work and caregiving responsibilities." },
+            "interfaith": { name: "Interfaith", desc: "Celebrating diverse spiritual paths and fostering shared values across our workforce." },
+            "generation": { name: "Generation", desc: "Bridging the gap between age groups for a thriving multi-generational workforce." },
+            "lgbtqia": { name: "LGBTQIA+", desc: "Advocating for authenticity, equity, and inclusion across the entire spectrum." },
+            "military": { name: "Military", desc: "Supporting veterans and active service members as they navigate their corporate careers." },
+            "race": { name: "Race", desc: "Promoting racial equity and celebrating the rich cultural heritage of our team." },
+            "women-in-tech": { name: "Women in Technology", desc: "Empowering women to lead, innovate, and break barriers in the tech space." },
+            "remote": { name: "Remote Workforce", desc: "Cultivating connection and community across physical and digital distances." },
+            "wellness": { name: "Wellness & Ability", desc: "Focusing on holistic health and inclusive accessibility for every individual." }
+        };
+
+        const basePath = "/assets/merge/erg/";
+        const groups = Object.keys(ergData);
+
+        const { Engine, Render, Runner, Bodies, Composite, Mouse, MouseConstraint, Events, Vector } = Matter;
+        const engine = Engine.create();
+        const world = engine.world;
+        engine.gravity.y = 0;
+
+        const container = document.getElementById('erg-canvas-container');
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        const render = Render.create({
+            element: container,
+            engine: engine,
+            options: {
+                width: width,
+                height: height,
+                wireframes: false,
+                background: 'transparent'
+            }
+        });
+
+        const coinRadius = 70;
+        const coins = groups.map(function(name, i) {
+            const col = i % 3;
+            const row = Math.floor(i / 3);
+            const startX = (width / 2 - 250) + (col * 250);
+            const startY = (height / 2 - 200) + (row * 200);
+
+            return Bodies.circle(startX, startY, coinRadius, {
+                label: name,
+                restitution: 0.6,
+                frictionAir: 0.08,
+                render: {
+                    sprite: { 
+                        texture: basePath + name + '-solid.png',
+                        xScale: 0.14, 
+                        yScale: 0.14 
+                    }
+                }
+            });
+        });
+
+        const wallOptions = { isStatic: true, render: { visible: false } };
+        const walls = [
+            Bodies.rectangle(width / 2, -50, width, 100, wallOptions),
+            Bodies.rectangle(width / 2, height + 50, width, 100, wallOptions),
+            Bodies.rectangle(-50, height / 2, 100, height, wallOptions),
+            Bodies.rectangle(width + 50, height / 2, 100, height, wallOptions)
+        ];
+
+        Composite.add(world, coins.concat(walls));
+
+        // Create the mouse
+		const mouse = Mouse.create(render.canvas);
+
+		// Logic to allow scrolling over the canvas
+		mouse.element.removeEventListener("touchstart", mouse.touchstart);
+		mouse.element.removeEventListener("touchmove", mouse.touchmove);
+		mouse.element.removeEventListener("touchend", mouse.touchend);
+
+		const mouseConstraint = MouseConstraint.create(engine, {
+			mouse: mouse,
+			constraint: {
+				stiffness: 0.2,
+				render: { visible: false }
+			}
+		});
+
+		Composite.add(world, mouseConstraint);
+
+		// Manually handle touch to allow page scroll unless dragging a coin
+		render.canvas.addEventListener('touchstart', (e) => {
+			const touch = e.touches[0];
+			const mousePosition = { x: touch.clientX, y: touch.clientY };
+			const hit = Matter.Query.point(coins, mousePosition);
+
+			if (hit.length > 0) {
+				// Only prevent scroll if we actually hit a coin
+				e.preventDefault();
+				mouse.touchstart(e);
+			}
+		}, { passive: false });
+
+		render.canvas.addEventListener('touchmove', (e) => {
+			if (mouseConstraint.body) {
+				e.preventDefault(); // Stop scrolling only if dragging
+				mouse.touchmove(e);
+			}
+		}, { passive: false });
+
+		render.canvas.addEventListener('touchend', (e) => {
+			mouse.touchend(e);
+		}, { passive: false });
+
+        var activePopupBody = null;
+        var activePopupElement = null;
+
+        Events.on(mouseConstraint, "mousedown", function(event) {
+            const body = event.source.body;
+            if (body && ergData[body.label]) {
+                createPopup(body);
+            } else if (!body && activePopupElement) {
+                removePopup();
+            }
+        });
+
+        function createPopup(sourceBody) {
+            if (activePopupElement) removePopup();
+
+            const data = ergData[sourceBody.label];
+            
+            activePopupBody = Bodies.rectangle(
+                sourceBody.position.x + (sourceBody.position.x > width / 2 ? -180 : 180), 
+                sourceBody.position.y, 
+                300, 160, {
+                    isStatic: false,
+                    frictionAir: 0.12,
+                    label: 'popup-physics',
+                    render: { visible: false }
+                }
+            );
+            
+            activePopupElement = document.createElement('div');
+            activePopupElement.className = 'erg-popup';
+            activePopupElement.innerHTML = '<button class="popup-close" aria-label="Close">&times;</button><h5>' + data.name + '</h5><p>' + data.desc + '</p>';
+            container.appendChild(activePopupElement);
+
+            activePopupElement.querySelector('.popup-close').onclick = function(e) {
+                e.stopPropagation();
+                removePopup();
+            };
+
+            Composite.add(world, activePopupBody);
+            requestAnimationFrame(function() { activePopupElement.classList.add('active'); });
+        }
+
+        function removePopup() {
+            if (activePopupElement) {
+                activePopupElement.classList.remove('active');
+                const el = activePopupElement;
+                setTimeout(function() { el.remove(); }, 300);
+                activePopupElement = null;
+            }
+            if (activePopupBody) {
+                Composite.remove(world, activePopupBody);
+                activePopupBody = null;
+            }
+        }
+
+        Events.on(engine, 'afterUpdate', function() {
+            if (activePopupBody && activePopupElement) {
+                activePopupElement.style.left = activePopupBody.position.x + 'px';
+                activePopupElement.style.top = activePopupBody.position.y + 'px';
+                activePopupElement.style.transform = 'translate(-50%, -50%) rotate(' + activePopupBody.angle + 'rad)';
+            }
+            
+            coins.forEach(function(coin) {
+                const center = { x: width / 2, y: height / 2 };
+                const force = Vector.mult(Vector.sub(center, coin.position), 0.00001);
+                Matter.Body.applyForce(coin, coin.position, force);
+            });
+        });
+
+        Render.run(render);
+        const runner = Runner.create();
+        Runner.run(runner, engine);
+
+        window.addEventListener('resize', function() {
+            render.canvas.width = window.innerWidth;
+            render.canvas.height = window.innerHeight;
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initERG);
+    } else {
+        initERG();
+    }
+})();
+</script>

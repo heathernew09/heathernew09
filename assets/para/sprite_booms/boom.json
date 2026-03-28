@@ -1,0 +1,429 @@
+{
+  "sprites": [
+    {
+      "fileName": "boom_00000.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fileName": "boom_00001.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 0
+    },
+    {
+      "fileName": "boom_00002.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 0
+    },
+    {
+      "fileName": "boom_00003.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 0
+    },
+    {
+      "fileName": "boom_00004.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 0
+    },
+    {
+      "fileName": "boom_00005.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 0
+    },
+    {
+      "fileName": "boom_00006.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 0
+    },
+    {
+      "fileName": "boom_00007.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 0
+    },
+    {
+      "fileName": "boom_00008.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 1280
+    },
+    {
+      "fileName": "boom_00009.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 1280
+    },
+    {
+      "fileName": "boom_00010.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 1280
+    },
+    {
+      "fileName": "boom_00011.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 1280
+    },
+    {
+      "fileName": "boom_00012.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 1280
+    },
+    {
+      "fileName": "boom_00013.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 1280
+    },
+    {
+      "fileName": "boom_00014.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 1280
+    },
+    {
+      "fileName": "boom_00015.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 1280
+    },
+    {
+      "fileName": "boom_00016.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 2560
+    },
+    {
+      "fileName": "boom_00017.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 2560
+    },
+    {
+      "fileName": "boom_00018.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 2560
+    },
+    {
+      "fileName": "boom_00019.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 2560
+    },
+    {
+      "fileName": "boom_00020.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 2560
+    },
+    {
+      "fileName": "boom_00021.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 2560
+    },
+    {
+      "fileName": "boom_00022.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 2560
+    },
+    {
+      "fileName": "boom_00023.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 2560
+    },
+    {
+      "fileName": "boom_00024.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 3840
+    },
+    {
+      "fileName": "boom_00025.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 3840
+    },
+    {
+      "fileName": "boom_00026.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 3840
+    },
+    {
+      "fileName": "boom_00027.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 3840
+    },
+    {
+      "fileName": "boom_00028.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 3840
+    },
+    {
+      "fileName": "boom_00029.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 3840
+    },
+    {
+      "fileName": "boom_00030.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 3840
+    },
+    {
+      "fileName": "boom_00031.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 3840
+    },
+    {
+      "fileName": "boom_00032.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 5120
+    },
+    {
+      "fileName": "boom_00033.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 5120
+    },
+    {
+      "fileName": "boom_00034.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 5120
+    },
+    {
+      "fileName": "boom_00035.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 5120
+    },
+    {
+      "fileName": "boom_00036.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 5120
+    },
+    {
+      "fileName": "boom_00037.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 5120
+    },
+    {
+      "fileName": "boom_00038.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 5120
+    },
+    {
+      "fileName": "boom_00039.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 5120
+    },
+    {
+      "fileName": "boom_00040.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 6400
+    },
+    {
+      "fileName": "boom_00041.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 6400
+    },
+    {
+      "fileName": "boom_00042.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 6400
+    },
+    {
+      "fileName": "boom_00043.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 6400
+    },
+    {
+      "fileName": "boom_00044.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 6400
+    },
+    {
+      "fileName": "boom_00045.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 6400
+    },
+    {
+      "fileName": "boom_00046.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 6400
+    },
+    {
+      "fileName": "boom_00047.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 6400
+    },
+    {
+      "fileName": "boom_00048.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 7680
+    },
+    {
+      "fileName": "boom_00049.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 7680
+    },
+    {
+      "fileName": "boom_00050.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 7680
+    },
+    {
+      "fileName": "boom_00051.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 7680
+    },
+    {
+      "fileName": "boom_00052.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2880,
+      "y": 7680
+    },
+    {
+      "fileName": "boom_00053.png",
+      "width": 720,
+      "height": 1280,
+      "x": 3600,
+      "y": 7680
+    },
+    {
+      "fileName": "boom_00054.png",
+      "width": 720,
+      "height": 1280,
+      "x": 4320,
+      "y": 7680
+    },
+    {
+      "fileName": "boom_00055.png",
+      "width": 720,
+      "height": 1280,
+      "x": 5040,
+      "y": 7680
+    },
+    {
+      "fileName": "boom_00056.png",
+      "width": 720,
+      "height": 1280,
+      "x": 0,
+      "y": 8960
+    },
+    {
+      "fileName": "boom_00057.png",
+      "width": 720,
+      "height": 1280,
+      "x": 720,
+      "y": 8960
+    },
+    {
+      "fileName": "boom_00058.png",
+      "width": 720,
+      "height": 1280,
+      "x": 1440,
+      "y": 8960
+    },
+    {
+      "fileName": "boom_00059.png",
+      "width": 720,
+      "height": 1280,
+      "x": 2160,
+      "y": 8960
+    }
+  ],
+  "packMode": "grid",
+  "padding": 0,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "spriteSheetWidth": 5760,
+  "spriteSheetHeight": 10240
+}

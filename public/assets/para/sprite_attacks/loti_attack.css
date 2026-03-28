@@ -1,0 +1,57 @@
+.sprite-loti_00000 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 1920px;
+     width: 1080px;
+     background-position: -0px -0px;
+ }
+ .sprite-loti_00001 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 1920px;
+     width: 1080px;
+     background-position: -1080px -0px;
+ }
+ .sprite-loti_00002 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 1920px;
+     width: 1080px;
+     background-position: -2160px -0px;
+ }
+ .sprite-loti_00003 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 1920px;
+     width: 1080px;
+     background-position: -0px -1920px;
+ }
+ .sprite-loti_00004 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 1920px;
+     width: 1080px;
+     background-position: -1080px -1920px;
+ }
+ .sprite-loti_00005 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 1920px;
+     width: 1080px;
+     background-position: -2160px -1920px;
+ }
+ .sprite-loti_00006 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 1920px;
+     width: 1080px;
+     background-position: -0px -3840px;
+ }
+ .sprite-loti_00007 {
+     background: url(sprite_sheet.png);
+     display: inline-block;
+     height: 1920px;
+     width: 1080px;
+     background-position: -1080px -3840px;
+ }
+ 

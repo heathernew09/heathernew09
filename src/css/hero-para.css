@@ -1,0 +1,149 @@
+/* Container and Layout */
+.phone-mock-block {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+.phone-mock-block {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Phone Frame Section Positioning */
+.phone-mock {
+  order: 1;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+@media (min-width: 1024px) {
+  .phone-mock-container {
+    order: 2;
+  }
+}
+
+/* Phone Mockup Components */
+.phone-mock-container {
+  position: relative;
+  width: 340px;
+}
+
+.phone-mock-container.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1deg); }
+  66% { transform: translateY(-5px) rotate(-1deg); }
+}
+
+.phone-mock-frame {
+  position: relative;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 3rem;
+  padding: 0.75rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 
+              0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.dynamic-island {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8rem;
+  height: 2rem;
+  background: #000000;
+  border-radius: 9999px;
+  z-index: 20;
+}
+
+.screen-container {
+  position: relative;
+  background: #000000;
+  border-radius: 2.5rem;
+  overflow: hidden;
+  aspect-ratio: 9 / 19.5;
+}
+
+/* Video and Interactive Overlays */
+.play-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: url('/assets/para/parasite-hunter-cover.png');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.3s;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.play-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.game-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.reflection {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  border-radius: 3rem;
+  pointer-events: none;
+}
+
+/* Physical Phone Details (Buttons) */
+.phone-button {
+  position: absolute;
+  background: #475569;
+  border-radius: 0.125rem;
+}
+
+.phone-button-right-1 {
+  right: 0;
+  top: 8rem;
+  width: 0.25rem;
+  height: 4rem;
+  border-radius: 0.125rem 0 0 0.125rem;
+}
+
+.phone-button-right-2 {
+  right: 0;
+  top: 13rem;
+  width: 0.25rem;
+  height: 3rem;
+  border-radius: 0.125rem 0 0 0.125rem;
+}
+
+.phone-button-right-3 {
+  right: 0;
+  top: 17rem;
+  width: 0.25rem;
+  height: 3rem;
+  border-radius: 0.125rem 0 0 0.125rem;
+}
+
+.phone-button-left {
+  left: 0;
+  top: 10rem;
+  width: 0.25rem;
+  height: 2rem;
+  border-radius: 0 0.125rem 0.125rem 0;
+}

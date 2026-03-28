@@ -1,0 +1,163 @@
+{
+  "sprites": [
+    {
+      "fileName": "prazi_00000.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "fileName": "prazi_00001.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 1080,
+      "y": 0
+    },
+    {
+      "fileName": "prazi_00002.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 2160,
+      "y": 0
+    },
+    {
+      "fileName": "prazi_00003.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 3240,
+      "y": 0
+    },
+    {
+      "fileName": "prazi_00004.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 4320,
+      "y": 0
+    },
+    {
+      "fileName": "prazi_00005.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 0,
+      "y": 1920
+    },
+    {
+      "fileName": "prazi_00006.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 1080,
+      "y": 1920
+    },
+    {
+      "fileName": "prazi_00007.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 2160,
+      "y": 1920
+    },
+    {
+      "fileName": "prazi_00008.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 3240,
+      "y": 1920
+    },
+    {
+      "fileName": "prazi_00009.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 4320,
+      "y": 1920
+    },
+    {
+      "fileName": "prazi_00010.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 0,
+      "y": 3840
+    },
+    {
+      "fileName": "prazi_00011.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 1080,
+      "y": 3840
+    },
+    {
+      "fileName": "prazi_00012.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 2160,
+      "y": 3840
+    },
+    {
+      "fileName": "prazi_00013.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 3240,
+      "y": 3840
+    },
+    {
+      "fileName": "prazi_00014.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 4320,
+      "y": 3840
+    },
+    {
+      "fileName": "prazi_00015.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 0,
+      "y": 5760
+    },
+    {
+      "fileName": "prazi_00016.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 1080,
+      "y": 5760
+    },
+    {
+      "fileName": "prazi_00017.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 2160,
+      "y": 5760
+    },
+    {
+      "fileName": "prazi_00018.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 3240,
+      "y": 5760
+    },
+    {
+      "fileName": "prazi_00019.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 4320,
+      "y": 5760
+    },
+    {
+      "fileName": "prazi_00020.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 0,
+      "y": 7680
+    },
+    {
+      "fileName": "prazi_00021.png",
+      "width": 1080,
+      "height": 1920,
+      "x": 1080,
+      "y": 7680
+    }
+  ],
+  "packMode": "grid",
+  "padding": 0,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "spriteSheetWidth": 5400,
+  "spriteSheetHeight": 9600
+}

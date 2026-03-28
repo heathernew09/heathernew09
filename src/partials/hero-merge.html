@@ -1,0 +1,277 @@
+<div class="project-preview merge-preview">
+    <div class="mint-blur-background">
+        <div class="blur-orb blur-1"></div>
+        <div class="blur-orb blur-2"></div>
+        <div class="blur-orb blur-3"></div>
+    </div>
+    
+    <div class="preview-content">
+        <div class="merge-logo-container">
+            <img 
+				src="/assets/merge-M.png" 
+				alt="MERGE Logo" 
+				class="merge-logo"
+				id="merge-logo"
+            >
+        </div>
+        
+        <div class="preview-text">
+            <h2>MERGE</h2>
+            <p class="preview-tagline">Creative Agency for Healthcare</p>
+            <p class="preview-description">
+                Building interactive experiences that educate, engage, and inspire. From AR activations 
+                to immersive 3D environments, we help healthcare brands connect with their audiences.
+            </p>
+            
+            <div class="preview-tech">
+                <span class="tech-tag">Interactive Design</span>
+                <span class="tech-tag">Healthcare Marketing</span>
+                <span class="tech-tag">Brand Strategy</span>
+            </div>
+            
+            <div class="preview-cta">
+                <span class="cta-text">Explore Work →</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.merge-preview {
+    position: relative;
+    background: #D4E8E1;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 700px;
+}
+
+/* Mint blur background */
+.mint-blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.blur-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+    animation: float-blur 20s ease-in-out infinite;
+}
+
+.blur-1 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #A8D5BA 0%, #D4E8E1 100%);
+    top: -100px;
+    left: -100px;
+    animation-delay: 0s;
+}
+
+.blur-2 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, #85BBA9 0%, #D4E8E1 100%);
+    bottom: -80px;
+    right: -80px;
+    animation-delay: -7s;
+}
+
+.blur-3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #B8E6D5 0%, #D4E8E1 100%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: -14s;
+}
+
+@keyframes float-blur {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
+    66% {
+        transform: translate(-30px, 30px) scale(0.9);
+    }
+}
+
+.merge-preview:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(133, 187, 169, 0.3);
+    border-color: rgba(133, 187, 169, 0.4);
+}
+
+.preview-content {
+    position: relative;
+    z-index: 2;
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* Logo container with 3D tilt effect */
+.merge-logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.merge-logo {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.preview-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #2D5F4C;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.preview-tagline {
+    font-size: 1.1rem;
+    color: #5A8975;
+    margin-bottom: 1rem;
+}
+
+.preview-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #3D6B56;
+    margin-bottom: 1.5rem;
+}
+
+.preview-tech {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+    background: rgba(45, 95, 76, 0.1);
+    color: #2D5F4C;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(45, 95, 76, 0.15);
+}
+
+.preview-cta {
+    display: flex;
+    align-items: center;
+}
+
+.cta-text {
+    font-size: 1.2rem;
+    color: #2D5F4C;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.merge-preview:hover .cta-text {
+    transform: translateX(10px);
+    color: #1a4332;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .preview-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .merge-logo {
+        max-width: 300px;
+    }
+}
+
+/* Dark mode override for hero page */
+body.galaxy-mode-active .merge-preview {
+    background: rgba(212, 232, 225, 0.05);
+    border-color: rgba(168, 213, 186, 0.15);
+}
+
+body.galaxy-mode-active .preview-text h2 {
+    color: #A8D5BA;
+}
+
+body.galaxy-mode-active .preview-tagline,
+body.galaxy-mode-active .preview-description {
+    color: #D4E8E1;
+}
+
+body.galaxy-mode-active .tech-tag {
+    background: rgba(168, 213, 186, 0.1);
+    color: #A8D5BA;
+    border-color: rgba(168, 213, 186, 0.2);
+}
+
+body.galaxy-mode-active .cta-text {
+    color: #A8D5BA;
+}
+
+body.galaxy-mode-active .blur-orb {
+    opacity: 0.15;
+}
+</style>
+
+<script>
+// 3D Tilt effect for MERGE logo
+(function() {
+    const logo = document.getElementById('merge-logo');
+    const container = document.querySelector('.merge-preview');
+    
+    if (!logo || !container) return;
+    
+    container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Calculate rotation (max 15 degrees)
+        const rotateX = ((y - centerY) / centerY) * -15;
+        const rotateY = ((x - centerX) / centerX) * 15;
+        
+        // Apply 3D transform
+        logo.style.transform = `
+            perspective(1000px) 
+            rotateX(${rotateX}deg) 
+            rotateY(${rotateY}deg)
+            scale3d(1.05, 1.05, 1.05)
+        `;
+    });
+    
+    container.addEventListener('mouseleave', () => {
+        // Reset to neutral position
+        logo.style.transform = `
+            perspective(1000px) 
+            rotateX(0deg) 
+            rotateY(0deg)
+            scale3d(1, 1, 1)
+        `;
+    });
+})();
+</script>
