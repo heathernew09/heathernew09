@@ -9,7 +9,7 @@ const pages = globSync('pages/**/*.html').reduce((acc, file) => {
   const relativePath = path.relative('.', file);
   // Skip index.html and 404.html as they are handled or not needed in pages
   if (relativePath === 'index.html' || relativePath === '404.html') return acc;
-  
+
   // Use the relative path as the key (e.g., 'pages/about')
   const name = relativePath.replace(/\.html$/, '');
   acc[name] = path.resolve(__dirname, file);
@@ -32,9 +32,9 @@ export default defineConfig({
       input: {
         main: path.resolve(__dirname, 'index.html'),
         notfound: path.resolve(__dirname, '404.html'),
-        ...pages
-      }
-    }
+        ...pages,
+      },
+    },
   },
   resolve: {
     alias: {
@@ -49,5 +49,5 @@ export default defineConfig({
   },
   define: {
     __BUILD_DATE__: JSON.stringify(new Date().toISOString()),
-  }
+  },
 });

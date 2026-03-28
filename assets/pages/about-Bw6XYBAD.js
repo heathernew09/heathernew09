@@ -1,1 +1,163 @@
-import"../site-core-B3OiY5_E.js";/* empty css                */document.addEventListener("DOMContentLoaded",()=>{const y=[{year:1993,event:"Built a computer, tinkered with every setting possible"},{year:1994,event:"Built a website on geocities, modified everything"},{year:1995,event:"Used HTML snips in myspace to customize"},{year:2004,event:"Sought graphic design degree to combine computers and art"},{year:2006,event:"First design job at a t-shirt shop"},{year:2006.5,event:"Learned e-commerce CMS, promoted to lead designer"},{year:2007,event:"HTML + CSS + PHP to customize purchased themes"},{year:2009,event:"Completed BFA in graphic design"},{year:2009.5,event:"Built layouts with HTML/CSS, familiarizing with web hosts"},{year:2012,event:"Web development internship - learned Joomla"},{year:2013,event:"Accepted web dev job, learned WordPress CMS"},{year:2014,event:"Building fully custom WordPress themes back to back"},{year:2015,event:"Responsive WP - Bootstrap, jQuery, Javascript, ACF"},{year:2016,event:"Utilization of Foundation Grid based theme"},{year:2017,event:"Building UX/UI methods, ACF Flexible templates"},{year:2018,event:"Sass, GIT, Terminal, Docker, docker-compose"},{year:2019,event:"Seeking next things - DB connections, APIs, languages"},{year:2020,event:"Answering on StackOverflow, building Git projects"},{year:2021,event:"Started Freelance LLC, Joined A11yTalks Team"},{year:2023,event:"AI Learning & AI Council at MERGE"}],v=[{start:2e3,end:2004,title:"High School",type:"education",color:"#2b8a92",tier:0},{start:2004,end:2009,title:"B.F.A. Design",type:"education",color:"#2b8a92",tier:1},{start:2006,end:2011,title:"Designer & Manager, HaysTees",type:"experience",color:"#f97316",tier:2},{start:2014,end:2016,title:"Web Developer",type:"experience",color:"#f97316",tier:0},{start:2016,end:2021,title:"Sr Digital Developer",type:"experience",color:"#f97316",tier:1},{start:2014,end:2019,title:"Roller Derby",type:"experience",color:"#e60000",tier:2},{start:2020,end:2024,title:"Heather New LLC",type:"freelance",color:"#2b8a92",tier:0},{start:2022,end:2025,title:"Senior Studio Artist",type:"experience",color:"#f97316",tier:1},{start:2024.5,end:2026,title:"UX Design Cert.",type:"education",color:"#2b8a92",tier:2},{start:2025,end:2027,title:"Studio Manager",type:"experience",color:"#FFBD56",tier:0}],a=document.getElementById("timeline-wrapper"),r=document.querySelector(".timeline-scroll-container");if(!a||!r)return;const c=1992,d=2027,u=d-c,s=e=>(e-c)/u*100;for(let e=c;e<=d;e++){const n=document.createElement("div");n.className="year-marker",n.style.left=`${s(e)}%`,n.innerHTML=`<span>${e}</span>`,a.appendChild(n)}v.forEach(e=>{const n=document.createElement("div");n.className=`timeline-range range-${e.type}`;const o=s(e.start),i=s(e.end);n.style.left=`${o}%`,n.style.width=`${i-o}%`,n.style.backgroundColor=e.color;let t="50%";e.tier===0?t="20%":e.tier===1?t="36%":e.tier===2?t="60%":e.tier===3&&(t="76%"),n.style.top=t,n.innerText=e.title,a.appendChild(n)}),y.forEach((e,n)=>{const o=document.createElement("div"),i=n%4;o.className=`timeline-event level-${i}`,o.style.left=`${s(e.year)}%`;const t=document.createElement("div");i===0?(t.className="event-label top",t.style.bottom="120px"):i===1?(t.className="event-label top",t.style.bottom="40px"):i===2?(t.className="event-label bottom",t.style.top="40px"):(t.className="event-label bottom",t.style.top="120px"),t.innerText=e.event,o.appendChild(t),a.appendChild(o)});let l=!1,p,m;r.addEventListener("mousedown",e=>{l=!0,p=e.pageX-r.offsetLeft,m=r.scrollLeft}),r.addEventListener("mouseleave",()=>l=!1),r.addEventListener("mouseup",()=>l=!1),r.addEventListener("mousemove",e=>{if(!l)return;e.preventDefault();const o=(e.pageX-r.offsetLeft-p)*2;r.scrollLeft=m-o}),r.scrollLeft=r.scrollWidth});
+import '../site-core-B3OiY5_E.js';
+/* empty css                */ document.addEventListener('DOMContentLoaded', () => {
+  const y = [
+      { year: 1993, event: 'Built a computer, tinkered with every setting possible' },
+      { year: 1994, event: 'Built a website on geocities, modified everything' },
+      { year: 1995, event: 'Used HTML snips in myspace to customize' },
+      { year: 2004, event: 'Sought graphic design degree to combine computers and art' },
+      { year: 2006, event: 'First design job at a t-shirt shop' },
+      { year: 2006.5, event: 'Learned e-commerce CMS, promoted to lead designer' },
+      { year: 2007, event: 'HTML + CSS + PHP to customize purchased themes' },
+      { year: 2009, event: 'Completed BFA in graphic design' },
+      { year: 2009.5, event: 'Built layouts with HTML/CSS, familiarizing with web hosts' },
+      { year: 2012, event: 'Web development internship - learned Joomla' },
+      { year: 2013, event: 'Accepted web dev job, learned WordPress CMS' },
+      { year: 2014, event: 'Building fully custom WordPress themes back to back' },
+      { year: 2015, event: 'Responsive WP - Bootstrap, jQuery, Javascript, ACF' },
+      { year: 2016, event: 'Utilization of Foundation Grid based theme' },
+      { year: 2017, event: 'Building UX/UI methods, ACF Flexible templates' },
+      { year: 2018, event: 'Sass, GIT, Terminal, Docker, docker-compose' },
+      { year: 2019, event: 'Seeking next things - DB connections, APIs, languages' },
+      { year: 2020, event: 'Answering on StackOverflow, building Git projects' },
+      { year: 2021, event: 'Started Freelance LLC, Joined A11yTalks Team' },
+      { year: 2023, event: 'AI Learning & AI Council at MERGE' },
+    ],
+    v = [
+      { start: 2e3, end: 2004, title: 'High School', type: 'education', color: '#2b8a92', tier: 0 },
+      {
+        start: 2004,
+        end: 2009,
+        title: 'B.F.A. Design',
+        type: 'education',
+        color: '#2b8a92',
+        tier: 1,
+      },
+      {
+        start: 2006,
+        end: 2011,
+        title: 'Designer & Manager, HaysTees',
+        type: 'experience',
+        color: '#f97316',
+        tier: 2,
+      },
+      {
+        start: 2014,
+        end: 2016,
+        title: 'Web Developer',
+        type: 'experience',
+        color: '#f97316',
+        tier: 0,
+      },
+      {
+        start: 2016,
+        end: 2021,
+        title: 'Sr Digital Developer',
+        type: 'experience',
+        color: '#f97316',
+        tier: 1,
+      },
+      {
+        start: 2014,
+        end: 2019,
+        title: 'Roller Derby',
+        type: 'experience',
+        color: '#e60000',
+        tier: 2,
+      },
+      {
+        start: 2020,
+        end: 2024,
+        title: 'Heather New LLC',
+        type: 'freelance',
+        color: '#2b8a92',
+        tier: 0,
+      },
+      {
+        start: 2022,
+        end: 2025,
+        title: 'Senior Studio Artist',
+        type: 'experience',
+        color: '#f97316',
+        tier: 1,
+      },
+      {
+        start: 2024.5,
+        end: 2026,
+        title: 'UX Design Cert.',
+        type: 'education',
+        color: '#2b8a92',
+        tier: 2,
+      },
+      {
+        start: 2025,
+        end: 2027,
+        title: 'Studio Manager',
+        type: 'experience',
+        color: '#FFBD56',
+        tier: 0,
+      },
+    ],
+    a = document.getElementById('timeline-wrapper'),
+    r = document.querySelector('.timeline-scroll-container');
+  if (!a || !r) return;
+  const c = 1992,
+    d = 2027,
+    u = d - c,
+    s = (e) => ((e - c) / u) * 100;
+  for (let e = c; e <= d; e++) {
+    const n = document.createElement('div');
+    ((n.className = 'year-marker'),
+      (n.style.left = `${s(e)}%`),
+      (n.innerHTML = `<span>${e}</span>`),
+      a.appendChild(n));
+  }
+  (v.forEach((e) => {
+    const n = document.createElement('div');
+    n.className = `timeline-range range-${e.type}`;
+    const o = s(e.start),
+      i = s(e.end);
+    ((n.style.left = `${o}%`), (n.style.width = `${i - o}%`), (n.style.backgroundColor = e.color));
+    let t = '50%';
+    (e.tier === 0
+      ? (t = '20%')
+      : e.tier === 1
+        ? (t = '36%')
+        : e.tier === 2
+          ? (t = '60%')
+          : e.tier === 3 && (t = '76%'),
+      (n.style.top = t),
+      (n.innerText = e.title),
+      a.appendChild(n));
+  }),
+    y.forEach((e, n) => {
+      const o = document.createElement('div'),
+        i = n % 4;
+      ((o.className = `timeline-event level-${i}`), (o.style.left = `${s(e.year)}%`));
+      const t = document.createElement('div');
+      (i === 0
+        ? ((t.className = 'event-label top'), (t.style.bottom = '120px'))
+        : i === 1
+          ? ((t.className = 'event-label top'), (t.style.bottom = '40px'))
+          : i === 2
+            ? ((t.className = 'event-label bottom'), (t.style.top = '40px'))
+            : ((t.className = 'event-label bottom'), (t.style.top = '120px')),
+        (t.innerText = e.event),
+        o.appendChild(t),
+        a.appendChild(o));
+    }));
+  let l = !1,
+    p,
+    m;
+  (r.addEventListener('mousedown', (e) => {
+    ((l = !0), (p = e.pageX - r.offsetLeft), (m = r.scrollLeft));
+  }),
+    r.addEventListener('mouseleave', () => (l = !1)),
+    r.addEventListener('mouseup', () => (l = !1)),
+    r.addEventListener('mousemove', (e) => {
+      if (!l) return;
+      e.preventDefault();
+      const o = (e.pageX - r.offsetLeft - p) * 2;
+      r.scrollLeft = m - o;
+    }),
+    (r.scrollLeft = r.scrollWidth));
+});

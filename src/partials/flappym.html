@@ -1,45 +1,47 @@
 <div class="game-section">
-    <div class="top-score">TOP SCORER → <span id="top-scorer-name">HMN</span>: <span id="top-score-value">0</span></div>
+  <div class="top-score">
+    TOP SCORER → <span id="top-scorer-name">HMN</span>: <span id="top-score-value">0</span>
+  </div>
 
-    <div class="game-info" id="game-info">
-        <div id="intro-m"></div>
-        <h2>How to play</h2>
-        <p>Press the spacebar repeatedly to lift and maneuver the M through the pages.</p>
-        <button class="btn" id="start-game" aria-label="Play Flappy M Game">Play game</button>
+  <div class="game-info" id="game-info">
+    <div id="intro-m"></div>
+    <h2>How to play</h2>
+    <p>Press the spacebar repeatedly to lift and maneuver the M through the pages.</p>
+    <button class="btn" id="start-game" aria-label="Play Flappy M Game">Play game</button>
+  </div>
+
+  <div id="game-container">
+    <div id="game-screen">
+      <div id="player"></div>
+      <div id="score-display">Score: <span id="current-score">0</span></div>
     </div>
 
-    <div id="game-container">
-        <div id="game-screen">
-            <div id="player"></div>
-            <div id="score-display">Score: <span id="current-score">0</span></div>
+    <div id="game-over">
+      <h3>Game Over!</h3>
+
+      <div id="fallen-m-container">
+        <div id="fallen-m"></div>
+      </div>
+
+      <p id="final-score-p">Your score: <span id="final-score">0</span></p>
+
+      <div id="leaderboard-entry">
+        <div id="dancing-m-container">
+          <div id="dancing-m"></div>
+          <h4>New High Score!</h4>
         </div>
-
-        <div id="game-over">
-            <h3>Game Over!</h3>
-
-            <div id="fallen-m-container">
-                <div id="fallen-m"></div>
-            </div>
-
-            <p id="final-score-p">Your score: <span id="final-score">0</span></p>
-
-            <div id="leaderboard-entry">
-                <div id="dancing-m-container">
-                    <div id="dancing-m"></div>
-                    <h4>New High Score!</h4>
-                </div>
-                <div class="initial-input">
-                    <div class="initial-letter active" id="letter-0">A</div>
-                    <div class="initial-letter" id="letter-1">A</div>
-                    <div class="initial-letter" id="letter-2">A</div>
-                </div>
-                <div class="instructions-text">Use arrow keys to change letters</div>
-                <button id="submit-initials">Submit</button>
-            </div>
-
-            <div id="countdown"></div>
-            <button id="flappy-restart-btn" class="btn" aria-label="Play Again">Play Again</button>
-            <p class="reset-info">Auto-resets after 30 seconds</p>
+        <div class="initial-input">
+          <div class="initial-letter active" id="letter-0">A</div>
+          <div class="initial-letter" id="letter-1">A</div>
+          <div class="initial-letter" id="letter-2">A</div>
         </div>
+        <div class="instructions-text">Use arrow keys to change letters</div>
+        <button id="submit-initials">Submit</button>
+      </div>
+
+      <div id="countdown"></div>
+      <button id="flappy-restart-btn" class="btn" aria-label="Play Again">Play Again</button>
+      <p class="reset-info">Auto-resets after 30 seconds</p>
     </div>
+  </div>
 </div>

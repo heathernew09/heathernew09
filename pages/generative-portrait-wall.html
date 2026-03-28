@@ -1,14 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The MERGE Generative Portrait Wall — Algorithmic art direction and event technology by Heather New, Creative Technologist.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The MERGE Generative Portrait Wall — Algorithmic art direction and event technology by Heather New, Creative Technologist."
+    />
     <title>Generative Portrait Wall — Heather New</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
@@ -17,777 +23,1074 @@
     <meta name="apple-mobile-web-app-title" content="HeatherNew" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <meta property="og:image" content="/assets/heathernew-og.png" />
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Generative Portrait Wall — Heather New">
-    <meta name="twitter:description" content="Algorithmic art direction and event technology. We turned a survey into a work of art.">
-    <meta name="twitter:image" content="/assets/heathernew-og.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Generative Portrait Wall — Heather New" />
+    <meta
+      name="twitter:description"
+      content="Algorithmic art direction and event technology. We turned a survey into a work of art."
+    />
+    <meta name="twitter:image" content="/assets/heathernew-og.png" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
-    <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX-Cb4h8HOd.js"></script>
+    <script
+      type="module"
+      crossorigin
+      src="/assets/modulepreload-polyfill-B5Qt9EMX-Cb4h8HOd.js"
+    ></script>
     <script type="module" crossorigin src="/assets/global-DzYtbLOr-DWoPKCBt.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/global-DzYtbLOr-DzYtbLOr.css">
+    <link rel="stylesheet" crossorigin href="/assets/global-DzYtbLOr-DzYtbLOr.css" />
 
     <style>
-        :root {
-            --bg: #f4f4f4;
-            --black: #111111;
-            --teal: #1BB1A5;
-            --dark-teal: #247B82;
-            --lime: #B2F81D;
-            --yellow: #F6B352;
-            --orange: #F66C0F;
-            --light-grey: #E0E0E0;
-            --mid-grey: #CCCCCC;
-            --border: 1px solid var(--black);
-            --gap: 30px;
-        }
+      :root {
+        --bg: #f4f4f4;
+        --black: #111111;
+        --teal: #1bb1a5;
+        --dark-teal: #247b82;
+        --lime: #b2f81d;
+        --yellow: #f6b352;
+        --orange: #f66c0f;
+        --light-grey: #e0e0e0;
+        --mid-grey: #cccccc;
+        --border: 1px solid var(--black);
+        --gap: 30px;
+      }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-        body {
-            background: var(--bg);
-            color: var(--black);
-            font-family: 'Manrope', sans-serif;
-            overflow-x: hidden;
-        }
+      body {
+        background: var(--bg);
+        color: var(--black);
+        font-family: 'Manrope', sans-serif;
+        overflow-x: hidden;
+      }
 
-        /* ─── HERO ─────────────────────────────────────────── */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border-bottom: var(--border);
-            width: 100vw;
-        }
+      /* ─── HERO ─────────────────────────────────────────── */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: var(--border);
+        width: 100vw;
+      }
 
-        .hero-title-block {
-            grid-column: 1 / 3;
-            padding: 7vw 2vw 5vw;
-            border-bottom: var(--border);
-        }
+      .hero-title-block {
+        grid-column: 1 / 3;
+        padding: 7vw 2vw 5vw;
+        border-bottom: var(--border);
+      }
 
-        .hero-title-block h1 {
-            font-size: clamp(2.5rem, 9vw, 10rem);
-            line-height: 0.85;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -0.04em;
-        }
+      .hero-title-block h1 {
+        font-size: clamp(2.5rem, 9vw, 10rem);
+        line-height: 0.85;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+      }
 
-        .hero-title-block .subtitle {
-            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--dark-teal);
-            margin-top: 1.5rem;
-        }
+      .hero-title-block .subtitle {
+        font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--dark-teal);
+        margin-top: 1.5rem;
+      }
 
-        .hero-role {
-            padding: 2.5vw;
-            border-right: var(--border);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 0.5rem;
-        }
+      .hero-role {
+        padding: 2.5vw;
+        border-right: var(--border);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5rem;
+      }
 
-        .hero-role .role-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--dark-teal);
-        }
+      .hero-role .role-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--dark-teal);
+      }
 
-        .hero-role .role-value {
-            font-size: clamp(1rem, 2vw, 1.4rem);
-            font-weight: 800;
-            text-transform: uppercase;
-        }
+      .hero-role .role-value {
+        font-size: clamp(1rem, 2vw, 1.4rem);
+        font-weight: 800;
+        text-transform: uppercase;
+      }
 
-        .hero-hook {
-            padding: 2.5vw;
-            display: flex;
-            align-items: center;
-        }
+      .hero-hook {
+        padding: 2.5vw;
+        display: flex;
+        align-items: center;
+      }
 
-        .hero-hook blockquote {
-            font-size: clamp(1.1rem, 2.5vw, 1.8rem);
-            font-weight: 700;
-            line-height: 1.2;
-            font-style: italic;
-        }
+      .hero-hook blockquote {
+        font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+        font-weight: 700;
+        line-height: 1.2;
+        font-style: italic;
+      }
 
-        /* ─── SECTION BASE ──────────────────────────────────── */
-        .page-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
+      /* ─── SECTION BASE ──────────────────────────────────── */
+      .page-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+        width: 100%;
+      }
 
-        .section {
-            border-bottom: var(--border);
-            padding: 5vw 2vw;
-        }
+      .section {
+        border-bottom: var(--border);
+        padding: 5vw 2vw;
+      }
 
-        .section-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--dark-teal);
-            margin-bottom: 1rem;
-        }
+      .section-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dark-teal);
+        margin-bottom: 1rem;
+      }
 
-        .section h2 {
-            font-size: clamp(1.8rem, 5vw, 4rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -0.03em;
-            line-height: 0.9;
-            margin-bottom: 2rem;
-        }
+      .section h2 {
+        font-size: clamp(1.8rem, 5vw, 4rem);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.03em;
+        line-height: 0.9;
+        margin-bottom: 2rem;
+      }
 
-        .section p {
-            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-            line-height: 1.7;
-            max-width: 70ch;
-        }
+      .section p {
+        font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+        line-height: 1.7;
+        max-width: 70ch;
+      }
 
-        .section p + p {
-            margin-top: 1rem;
-        }
+      .section p + p {
+        margin-top: 1rem;
+      }
 
-        /* ─── GRID LAYOUTS ──────────────────────────────────── */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--gap);
-            align-items: start;
-        }
+      /* ─── GRID LAYOUTS ──────────────────────────────────── */
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--gap);
+        align-items: start;
+      }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: var(--gap);
-        }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: var(--gap);
+      }
 
-        /* ─── BLOCK SYSTEM ──────────────────────────────────── */
-        /* The portrait wall's logic blocks — used as visual design elements */
-        .block-system {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            grid-template-rows: repeat(3, auto);
-            gap: 4px;
-            margin: 2rem 0;
-            border: var(--border);
-        }
+      /* ─── BLOCK SYSTEM ──────────────────────────────────── */
+      /* The portrait wall's logic blocks — used as visual design elements */
+      .block-system {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 4px;
+        margin: 2rem 0;
+        border: var(--border);
+      }
 
-        .block {
-            border: var(--border);
-            padding: 1rem;
-            position: relative;
-            min-height: 80px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
+      .block {
+        border: var(--border);
+        padding: 1rem;
+        position: relative;
+        min-height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
 
-        .block-label {
-            font-size: 0.6rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--mid-grey);
-            position: absolute;
-            top: 0.5rem;
-            left: 0.5rem;
-        }
+      .block-label {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--mid-grey);
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+      }
 
-        .block.filled-teal { background: var(--teal); }
-        .block.filled-lime { background: var(--lime); }
-        .block.filled-yellow { background: var(--yellow); }
-        .block.filled-orange { background: var(--orange); }
-        .block.filled-dark { background: var(--black); color: var(--bg); }
+      .block.filled-teal {
+        background: var(--teal);
+      }
+      .block.filled-lime {
+        background: var(--lime);
+      }
+      .block.filled-yellow {
+        background: var(--yellow);
+      }
+      .block.filled-orange {
+        background: var(--orange);
+      }
+      .block.filled-dark {
+        background: var(--black);
+        color: var(--bg);
+      }
 
-        .block.span-2 { grid-column: span 2; }
-        .block.span-3 { grid-column: span 3; }
-        .block.tall { grid-row: span 2; }
+      .block.span-2 {
+        grid-column: span 2;
+      }
+      .block.span-3 {
+        grid-column: span 3;
+      }
+      .block.tall {
+        grid-row: span 2;
+      }
 
-        .block-note {
-            font-size: 0.75rem;
-            font-weight: 600;
-            line-height: 1.3;
-        }
+      .block-note {
+        font-size: 0.75rem;
+        font-weight: 600;
+        line-height: 1.3;
+      }
 
-        /* ─── HARDWARE FLOW ─────────────────────────────────── */
-        .hardware-flow {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr auto 1fr;
-            gap: 0;
-            align-items: center;
-            margin: 2.5rem 0;
-            border: var(--border);
-        }
+      /* ─── HARDWARE FLOW ─────────────────────────────────── */
+      .hardware-flow {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr auto 1fr;
+        gap: 0;
+        align-items: center;
+        margin: 2.5rem 0;
+        border: var(--border);
+      }
 
-        .hw-step {
-            padding: 2rem 1.5rem;
-            border-right: var(--border);
-        }
+      .hw-step {
+        padding: 2rem 1.5rem;
+        border-right: var(--border);
+      }
 
-        .hw-step:last-child {
-            border-right: none;
-        }
+      .hw-step:last-child {
+        border-right: none;
+      }
 
-        .hw-arrow {
-            padding: 0 1rem;
-            font-size: 1.5rem;
-            color: var(--teal);
-            font-weight: 800;
-        }
+      .hw-arrow {
+        padding: 0 1rem;
+        font-size: 1.5rem;
+        color: var(--teal);
+        font-weight: 800;
+      }
 
-        .hw-num {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--dark-teal);
-            margin-bottom: 0.5rem;
-        }
+      .hw-num {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--dark-teal);
+        margin-bottom: 0.5rem;
+      }
 
-        .hw-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
+      .hw-title {
+        font-size: 1.1rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
 
-        .hw-spec {
-            font-size: 0.8rem;
-            color: #555;
-            line-height: 1.5;
-        }
+      .hw-spec {
+        font-size: 0.8rem;
+        color: #555;
+        line-height: 1.5;
+      }
 
-        /* ─── COMPLIANCE CALLOUT ────────────────────────────── */
-        .compliance-block {
-            background: var(--black);
-            color: var(--bg);
-            padding: 3vw;
-            margin: 2rem 0 0;
-        }
+      /* ─── COMPLIANCE CALLOUT ────────────────────────────── */
+      .compliance-block {
+        background: var(--black);
+        color: var(--bg);
+        padding: 3vw;
+        margin: 2rem 0 0;
+      }
 
-        .compliance-block h3 {
-            font-size: clamp(1.5rem, 4vw, 3rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-        }
+      .compliance-block h3 {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+      }
 
-        .compliance-block p {
-            font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-            line-height: 1.7;
-            max-width: 65ch;
-            color: var(--light-grey);
-        }
+      .compliance-block p {
+        font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+        line-height: 1.7;
+        max-width: 65ch;
+        color: var(--light-grey);
+      }
 
+      .compliance-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      @media (max-width: 600px) {
         .compliance-split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
+          grid-template-columns: 1fr;
         }
+      }
 
-        @media (max-width: 600px) {
-            .compliance-split { grid-template-columns: 1fr; }
+      .compliance-tag {
+        display: inline-block;
+        background: var(--lime);
+        color: var(--black);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0.25rem 0.6rem;
+        margin-bottom: 1rem;
+      }
+
+      /* ─── BRAND ATTRIBUTES ──────────────────────────────── */
+      .attributes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0;
+        border: var(--border);
+        margin: 2rem 0;
+      }
+
+      .attribute-card {
+        padding: 2rem 1.5rem;
+        border-right: var(--border);
+      }
+
+      .attribute-card:last-child {
+        border-right: none;
+      }
+
+      .attribute-card h3 {
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.75rem;
+      }
+
+      .attribute-card p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #444;
+      }
+
+      /* ─── RESULTS / PORTRAIT GALLERY ────────────────────── */
+      .portrait-gallery {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .portrait-img {
+        width: 100%;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        display: block;
+        grid-column: span 2;
+      }
+      .portrait-img:nth-child(4) {
+        grid-column: 2 / span 2;
+      }
+      .portrait-img:nth-child(5) {
+        grid-column: 4 / span 2;
+      }
+      .portrait-placeholder {
+        background: var(--light-grey);
+        aspect-ratio: 9 / 16;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--mid-grey);
+      }
+
+      .portrait-placeholder.tall {
+        grid-row: span 2;
+        aspect-ratio: auto;
+      }
+
+      /* ─── CREDITS ───────────────────────────────────────── */
+      .credits-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--gap);
+        margin-top: 2rem;
+      }
+
+      .credits-grid h4 {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--dark-teal);
+        margin-bottom: 1rem;
+      }
+
+      .credits-grid ul {
+        list-style: none;
+      }
+
+      .credits-grid li {
+        font-size: 0.9rem;
+        line-height: 1.8;
+        border-bottom: 1px solid var(--light-grey);
+        padding-bottom: 0.25rem;
+      }
+
+      .credits-grid li strong {
+        display: block;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--dark-teal);
+      }
+
+      .heather-credit {
+      }
+
+      .asset-disclosure {
+        font-size: 0.8rem;
+        color: #777;
+        margin-top: 2rem;
+        line-height: 1.6;
+        text-align: center;
+        width: 100%;
+      }
+
+      /* ─── RESPONSIVE ────────────────────────────────────── */
+      @media (max-width: 600px) {
+        .brand-split {
+          grid-template-columns: 1fr !important;
         }
+      }
 
-        .compliance-tag {
-            display: inline-block;
-            background: var(--lime);
-            color: var(--black);
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.6rem;
-            margin-bottom: 1rem;
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
         }
-
-        /* ─── BRAND ATTRIBUTES ──────────────────────────────── */
+        .hero-title-block {
+          grid-column: 1;
+        }
+        .hero-role {
+          border-right: none;
+          border-bottom: var(--border);
+        }
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+        .hardware-flow {
+          grid-template-columns: 1fr;
+        }
+        .hw-arrow {
+          display: none;
+        }
+        .hw-step {
+          border-right: none;
+          border-bottom: var(--border);
+        }
         .attributes-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 0;
-            border: var(--border);
-            margin: 2rem 0;
+          grid-template-columns: 1fr;
         }
-
         .attribute-card {
-            padding: 2rem 1.5rem;
-            border-right: var(--border);
+          border-right: none;
+          border-bottom: var(--border);
         }
-
-        .attribute-card:last-child {
-            border-right: none;
-        }
-
-        .attribute-card h3 {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.75rem;
-        }
-
-        .attribute-card p {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #444;
-        }
-
-        /* ─── RESULTS / PORTRAIT GALLERY ────────────────────── */
         .portrait-gallery {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 1.5rem;
-            margin: 2rem 0;
+          grid-template-columns: repeat(4, 1fr);
         }
-
-        .portrait-img {
-            width: 100%;
-            aspect-ratio: 3 / 4;
-            object-fit: cover;
-            display: block;
-            grid-column: span 2;
+        .portrait-img,
+        .portrait-img:nth-child(4),
+        .portrait-img:nth-child(5) {
+          grid-column: span 2;
         }
-        .portrait-img:nth-child(4) { grid-column: 2 / span 2; }
-        .portrait-img:nth-child(5) { grid-column: 4 / span 2; }
-        .portrait-placeholder {
-            background: var(--light-grey);
-            aspect-ratio: 9 / 16;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--mid-grey);
-        }
-
-        .portrait-placeholder.tall {
-            grid-row: span 2;
-            aspect-ratio: auto;
-        }
-
-        /* ─── CREDITS ───────────────────────────────────────── */
         .credits-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--gap);
-            margin-top: 2rem;
+          grid-template-columns: 1fr;
         }
-
-        .credits-grid h4 {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--dark-teal);
-            margin-bottom: 1rem;
+        .block-system {
+          grid-template-columns: repeat(3, 1fr);
         }
+      }
 
-        .credits-grid ul {
-            list-style: none;
+      @media (max-width: 600px) {
+        .portrait-gallery {
+          grid-template-columns: repeat(2, 1fr);
         }
-
-        .credits-grid li {
-            font-size: 0.9rem;
-            line-height: 1.8;
-            border-bottom: 1px solid var(--light-grey);
-            padding-bottom: 0.25rem;
+        .portrait-img,
+        .portrait-img:nth-child(4),
+        .portrait-img:nth-child(5) {
+          grid-column: span 1;
         }
-
-        .credits-grid li strong {
-            display: block;
-            font-size: 0.75rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            color: var(--dark-teal);
+        .block-system {
+          grid-template-columns: repeat(2, 1fr);
         }
-
-        .heather-credit {}
-
-        .asset-disclosure {
-            font-size: 0.8rem;
-            color: #777;
-            margin-top: 2rem;
-            line-height: 1.6;
-            text-align: center;
-            width: 100%;
+        .block.span-2,
+        .block.span-3 {
+          grid-column: span 1;
         }
-
-        /* ─── RESPONSIVE ────────────────────────────────────── */
-        @media (max-width: 600px) {
-            .brand-split { grid-template-columns: 1fr !important; }
-        }
-
-        @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; }
-            .hero-title-block { grid-column: 1; }
-            .hero-role { border-right: none; border-bottom: var(--border); }
-            .grid-2 { grid-template-columns: 1fr; }
-            .grid-3 { grid-template-columns: 1fr; }
-            .hardware-flow { grid-template-columns: 1fr; }
-            .hw-arrow { display: none; }
-            .hw-step { border-right: none; border-bottom: var(--border); }
-            .attributes-grid { grid-template-columns: 1fr; }
-            .attribute-card { border-right: none; border-bottom: var(--border); }
-            .portrait-gallery { grid-template-columns: repeat(4, 1fr); }
-            .portrait-img, .portrait-img:nth-child(4), .portrait-img:nth-child(5) { grid-column: span 2; }
-            .credits-grid { grid-template-columns: 1fr; }
-            .block-system { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        @media (max-width: 600px) {
-            .portrait-gallery { grid-template-columns: repeat(2, 1fr); }
-            .portrait-img, .portrait-img:nth-child(4), .portrait-img:nth-child(5) { grid-column: span 1; }
-            .block-system { grid-template-columns: repeat(2, 1fr); }
-            .block.span-2, .block.span-3 { grid-column: span 1; }
-        }
+      }
     </style>
-</head>
-<body id="generative-portrait-wall-page">
+  </head>
+  <body id="generative-portrait-wall-page">
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
     <!-- Nav -->
     <header class="site-header">
-        <div class="header-content">
-            <a href="/" class="logo">
-                <img src="/assets/heather-new-wordmark.svg" alt="Heather New" style="height: 25px; width: auto;" width="150" height="25">
-            </a>
-        </div>
+      <div class="header-content">
+        <a href="/" class="logo">
+          <img
+            src="/assets/heather-new-wordmark.svg"
+            alt="Heather New"
+            style="height: 25px; width: auto"
+            width="150"
+            height="25"
+          />
+        </a>
+      </div>
 
-        <div class="pages-menu-overlay" id="pages-overlay">
-            <div class="pages-menu-content">
-                <nav class="pages-main-nav">
-                    <a href="/" class="home-link-nav">Home</a>
-                    <a href="/pages/parasite-hunter.html">Parasite Hunter AR Game</a>
-                    <a href="/pages/built-different.html">The Modular Brand: MERGE</a>
-                    <a href="/pages/decision-tree.html">Interactive Zen Garden</a>
-                    <a href="/pages/hotspot.html">Wall of Flame Interactive</a>
-                    <div class="nav-bottom-group" style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-                        <a href="/pages/about.html">About</a>
-                        <a href="/pages/contact.html">Contact</a>
-                    </div>
-                </nav>
+      <div class="pages-menu-overlay" id="pages-overlay">
+        <div class="pages-menu-content">
+          <nav class="pages-main-nav">
+            <a href="/" class="home-link-nav">Home</a>
+            <a href="/pages/parasite-hunter.html">Parasite Hunter AR Game</a>
+            <a href="/pages/built-different.html">The Modular Brand: MERGE</a>
+            <a href="/pages/decision-tree.html">Interactive Zen Garden</a>
+            <a href="/pages/hotspot.html">Wall of Flame Interactive</a>
+            <div
+              class="nav-bottom-group"
+              style="
+                margin-top: 3rem;
+                border-top: 1px solid rgba(255, 255, 255, 0.2);
+                padding-top: 2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+              "
+            >
+              <a href="/pages/about.html">About</a>
+              <a href="/pages/contact.html">Contact</a>
             </div>
+          </nav>
         </div>
+      </div>
 
-        <div class="pages-nav-icon" id="nav-block">
-            <div id="nav-hamburger-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <div class="pages-nav-icon" id="nav-block">
+        <div id="nav-hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+      </div>
     </header>
 
     <main id="main-content">
+      <!-- HERO IMAGE — full width, outside page wrapper -->
+      <div style="width: 100%; overflow: hidden; max-height: 60vh">
+        <img
+          src="/assets/merge/gpw-grid-filled.png"
+          alt="The MERGE Generative Portrait Wall booth at full scale"
+          style="width: 100%; height: 60vh; object-fit: cover; display: block"
+        />
+      </div>
 
-        <!-- HERO IMAGE — full width, outside page wrapper -->
-        <div style="width: 100%; overflow: hidden; max-height: 60vh;">
-            <img src="/assets/merge/gpw-grid-filled.png" alt="The MERGE Generative Portrait Wall booth at full scale" style="width: 100%; height: 60vh; object-fit: cover; display: block;">
-        </div>
-
-    <div class="page-wrapper">
-
+      <div class="page-wrapper">
         <!-- HERO -->
         <section class="hero" aria-label="Project title">
-            <div class="hero-title-block">
-                <h1>Generative<br>Portrait Wall</h1>
-                <p class="subtitle">Algorithmic Art Direction &amp; Event Technology &mdash; MERGE</p>
-            </div>
-            <div class="hero-role">
-                <span class="role-label">My Role</span>
-                <span class="role-value">UX/UI Designer<br>+ Developer</span>
-            </div>
-            <div class="hero-hook">
-                <blockquote>"We turned a survey<br>into a work of art."</blockquote>
-            </div>
+          <div class="hero-title-block">
+            <h1>Generative<br />Portrait Wall</h1>
+            <p class="subtitle">Algorithmic Art Direction &amp; Event Technology &mdash; MERGE</p>
+          </div>
+          <div class="hero-role">
+            <span class="role-label">My Role</span>
+            <span class="role-value">UX/UI Designer<br />+ Developer</span>
+          </div>
+          <div class="hero-hook">
+            <blockquote>"We turned a survey<br />into a work of art."</blockquote>
+          </div>
         </section>
 
         <!-- SECTION 1: ALGORITHMIC DESIGN -->
         <section class="section" aria-labelledby="algo-heading">
-            <p class="section-label">01 &mdash; The Algorithmic Design</p>
-            <div class="grid-2">
-                <div>
-                    <h2 id="algo-heading">Automating the Art Director</h2>
-                    <p>I designed a variable grid system that dynamically composes user portraits in real-time. By mapping specific user answers to tagged image assets, the system generates a unique piece of brand art for every user — instantly formatted for an 85-inch 4K display.</p>
-                    <p>No two portraits are the same. Every one looks intentional. The grid doesn't just hold images. It thinks.</p>
-                </div>
+          <p class="section-label">01 &mdash; The Algorithmic Design</p>
+          <div class="grid-2">
+            <div>
+              <h2 id="algo-heading">Automating the Art Director</h2>
+              <p>
+                I designed a variable grid system that dynamically composes user portraits in
+                real-time. By mapping specific user answers to tagged image assets, the system
+                generates a unique piece of brand art for every user — instantly formatted for an
+                85-inch 4K display.
+              </p>
+              <p>
+                No two portraits are the same. Every one looks intentional. The grid doesn't just
+                hold images. It thinks.
+              </p>
+            </div>
 
-                <!-- Block System Diagram -->
-                <div>
-                    <div class="block-system" role="img" aria-label="Variable grid layout diagram showing Blocks A through H">
-                        <div class="block span-2 tall filled-teal">
-                            <span class="block-label">Block A</span>
-                            <span class="block-note">Anchor portrait</span>
-                        </div>
-                        <div class="block filled-lime">
-                            <span class="block-label">Block B</span>
-                        </div>
-                        <div class="block filled-yellow">
-                            <span class="block-label">Block D</span>
-                        </div>
-                        <div class="block span-2 filled-dark">
-                            <span class="block-label">Block E</span>
-                            <span class="block-note">Dominant trait weight</span>
-                        </div>
-                        <div class="block">
-                            <span class="block-label">Block B</span>
-                        </div>
-                        <div class="block filled-orange">
-                            <span class="block-label">Block D</span>
-                        </div>
-                        <div class="block span-3 filled-lime">
-                            <span class="block-label">Block G</span>
-                            <span class="block-note">Dominant trait anchor</span>
-                        </div>
-                        <div class="block span-2 filled-teal">
-                            <span class="block-label">Block H</span>
-                        </div>
-                        <div class="block">
-                            <span class="block-label">Block H</span>
-                        </div>
-                    </div>
-                    <p style="font-size: 0.75rem; color: #888; margin-top: 0.5rem;">Grid logic: Blocks A–H compose dynamically based on psychographic input</p>
+            <!-- Block System Diagram -->
+            <div>
+              <div
+                class="block-system"
+                role="img"
+                aria-label="Variable grid layout diagram showing Blocks A through H"
+              >
+                <div class="block span-2 tall filled-teal">
+                  <span class="block-label">Block A</span>
+                  <span class="block-note">Anchor portrait</span>
                 </div>
+                <div class="block filled-lime">
+                  <span class="block-label">Block B</span>
+                </div>
+                <div class="block filled-yellow">
+                  <span class="block-label">Block D</span>
+                </div>
+                <div class="block span-2 filled-dark">
+                  <span class="block-label">Block E</span>
+                  <span class="block-note">Dominant trait weight</span>
+                </div>
+                <div class="block">
+                  <span class="block-label">Block B</span>
+                </div>
+                <div class="block filled-orange">
+                  <span class="block-label">Block D</span>
+                </div>
+                <div class="block span-3 filled-lime">
+                  <span class="block-label">Block G</span>
+                  <span class="block-note">Dominant trait anchor</span>
+                </div>
+                <div class="block span-2 filled-teal">
+                  <span class="block-label">Block H</span>
+                </div>
+                <div class="block">
+                  <span class="block-label">Block H</span>
+                </div>
+              </div>
+              <p style="font-size: 0.75rem; color: #888; margin-top: 0.5rem">
+                Grid logic: Blocks A–H compose dynamically based on psychographic input
+              </p>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
-                <figure style="margin: 0;">
-                    <img src="/assets/merge/gpw-grid-wireframe.png" alt="Grid layout — wireframe state" style="width: 100%; display: block;">
-                    <figcaption style="font-size: 0.7rem; color: #888; margin-top: 0.4rem;">Wireframe</figcaption>
-                </figure>
-                <figure style="margin: 0;">
-                    <img src="/assets/merge/gpw-wall-reveal.png" alt="The portrait wall — full reveal at the event" style="width: 100%; display: block;">
-                    <figcaption style="font-size: 0.7rem; color: #888; margin-top: 0.4rem;">At Scale</figcaption>
-                </figure>
-            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem">
+            <figure style="margin: 0">
+              <img
+                src="/assets/merge/gpw-grid-wireframe.png"
+                alt="Grid layout — wireframe state"
+                style="width: 100%; display: block"
+              />
+              <figcaption style="font-size: 0.7rem; color: #888; margin-top: 0.4rem">
+                Wireframe
+              </figcaption>
+            </figure>
+            <figure style="margin: 0">
+              <img
+                src="/assets/merge/gpw-wall-reveal.png"
+                alt="The portrait wall — full reveal at the event"
+                style="width: 100%; display: block"
+              />
+              <figcaption style="font-size: 0.7rem; color: #888; margin-top: 0.4rem">
+                At Scale
+              </figcaption>
+            </figure>
+          </div>
         </section>
 
         <!-- SECTION 2: HARDWARE ECOSYSTEM -->
         <section class="section" aria-labelledby="hw-heading">
-            <p class="section-label">02 &mdash; The Hardware Ecosystem</p>
-            <h2 id="hw-heading">Orchestrating the Stack</h2>
-            <p>I managed the integration across three hardware layers — input console, auto-framing camera, and large-format display. Zero latency between Capture and Reveal.</p>
+          <p class="section-label">02 &mdash; The Hardware Ecosystem</p>
+          <h2 id="hw-heading">Orchestrating the Stack</h2>
+          <p>
+            I managed the integration across three hardware layers — input console, auto-framing
+            camera, and large-format display. Zero latency between Capture and Reveal.
+          </p>
 
-            <div class="hardware-flow" role="img" aria-label="Hardware flow: touchscreen input to camera processing to portrait display">
-                <div class="hw-step">
-                    <p class="hw-num">Step 01 &mdash; Input</p>
-                    <p class="hw-title">43" Touchscreen</p>
-                    <p class="hw-spec">Landscape orientation<br>Five psychographic questions<br>Audio output enabled</p>
-                </div>
-                <div class="hw-arrow" aria-hidden="true">&rarr;</div>
-                <div class="hw-step">
-                    <p class="hw-num">Step 02 &mdash; Processing</p>
-                    <p class="hw-title">Dell WB7022 Camera</p>
-                    <p class="hw-spec">Auto-framing, portrait mode<br>65–90° field of view<br>Round housing, rotated 90°</p>
-                </div>
-                <div class="hw-arrow" aria-hidden="true">&rarr;</div>
-                <div class="hw-step">
-                    <p class="hw-num">Step 03 &mdash; Output</p>
-                    <p class="hw-title">85" Portrait Display</p>
-                    <p class="hw-spec">4K resolution<br>74.1" × 41.7" active area<br>Unique collage, every time</p>
-                </div>
+          <div
+            class="hardware-flow"
+            role="img"
+            aria-label="Hardware flow: touchscreen input to camera processing to portrait display"
+          >
+            <div class="hw-step">
+              <p class="hw-num">Step 01 &mdash; Input</p>
+              <p class="hw-title">43" Touchscreen</p>
+              <p class="hw-spec">
+                Landscape orientation<br />Five psychographic questions<br />Audio output enabled
+              </p>
             </div>
+            <div class="hw-arrow" aria-hidden="true">&rarr;</div>
+            <div class="hw-step">
+              <p class="hw-num">Step 02 &mdash; Processing</p>
+              <p class="hw-title">Dell WB7022 Camera</p>
+              <p class="hw-spec">
+                Auto-framing, portrait mode<br />65–90° field of view<br />Round housing, rotated
+                90°
+              </p>
+            </div>
+            <div class="hw-arrow" aria-hidden="true">&rarr;</div>
+            <div class="hw-step">
+              <p class="hw-num">Step 03 &mdash; Output</p>
+              <p class="hw-title">85" Portrait Display</p>
+              <p class="hw-spec">
+                4K resolution<br />74.1" × 41.7" active area<br />Unique collage, every time
+              </p>
+            </div>
+          </div>
         </section>
 
         <!-- SECTION 3: PSYCHOGRAPHIC INPUT -->
         <section class="section" aria-labelledby="psych-heading">
-            <p class="section-label">03 &mdash; From Data to Visuals</p>
-            <div class="grid-2">
-                <div>
-                    <h2 id="psych-heading">The Experience Wasn't Random</h2>
-                    <p>We asked users to self-identify their drivers: Deep Sleep. Adventure. Nature. The system then pulled from a library of 96 curated assets to visually represent their internal state — turning a standard event survey into a mirror of their personality.</p>
-                    <p>The questions were designed to feel personal. The output was designed to feel inevitable.</p>
-                </div>
-                <div class="grid-3" style="align-content: start;">
-                    <div style="border: var(--border); padding: 1.25rem;">
-                        <p style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dark-teal); margin-bottom: 0.5rem;">Driver</p>
-                        <p style="font-weight: 800; font-size: 1.1rem;">Wellness</p>
-                    </div>
-                    <div style="border: var(--border); padding: 1.25rem;">
-                        <p style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dark-teal); margin-bottom: 0.5rem;">Driver</p>
-                        <p style="font-weight: 800; font-size: 1.1rem;">Happiness</p>
-                    </div>
-                    <div style="border: var(--border); padding: 1.25rem;">
-                        <p style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dark-teal); margin-bottom: 0.5rem;">Driver</p>
-                        <p style="font-weight: 800; font-size: 1.1rem;">Inspiration</p>
-                    </div>
-                    <div style="border: var(--border); padding: 1.25rem; background: var(--lime);">
-                        <p style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">Assets</p>
-                        <p style="font-weight: 800; font-size: 1.5rem;">96</p>
-                    </div>
-                    <div style="border: var(--border); padding: 1.25rem; grid-column: span 2;">
-                        <p style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem;">Output</p>
-                        <p style="font-weight: 800; font-size: 1.1rem;">Unique portrait</p>
-                    </div>
-                </div>
+          <p class="section-label">03 &mdash; From Data to Visuals</p>
+          <div class="grid-2">
+            <div>
+              <h2 id="psych-heading">The Experience Wasn't Random</h2>
+              <p>
+                We asked users to self-identify their drivers: Deep Sleep. Adventure. Nature. The
+                system then pulled from a library of 96 curated assets to visually represent their
+                internal state — turning a standard event survey into a mirror of their personality.
+              </p>
+              <p>
+                The questions were designed to feel personal. The output was designed to feel
+                inevitable.
+              </p>
             </div>
+            <div class="grid-3" style="align-content: start">
+              <div style="border: var(--border); padding: 1.25rem">
+                <p
+                  style="
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                    letter-spacing: 0.15em;
+                    text-transform: uppercase;
+                    color: var(--dark-teal);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Driver
+                </p>
+                <p style="font-weight: 800; font-size: 1.1rem">Wellness</p>
+              </div>
+              <div style="border: var(--border); padding: 1.25rem">
+                <p
+                  style="
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                    letter-spacing: 0.15em;
+                    text-transform: uppercase;
+                    color: var(--dark-teal);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Driver
+                </p>
+                <p style="font-weight: 800; font-size: 1.1rem">Happiness</p>
+              </div>
+              <div style="border: var(--border); padding: 1.25rem">
+                <p
+                  style="
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                    letter-spacing: 0.15em;
+                    text-transform: uppercase;
+                    color: var(--dark-teal);
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Driver
+                </p>
+                <p style="font-weight: 800; font-size: 1.1rem">Inspiration</p>
+              </div>
+              <div style="border: var(--border); padding: 1.25rem; background: var(--lime)">
+                <p
+                  style="
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                    letter-spacing: 0.15em;
+                    text-transform: uppercase;
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Assets
+                </p>
+                <p style="font-weight: 800; font-size: 1.5rem">96</p>
+              </div>
+              <div style="border: var(--border); padding: 1.25rem; grid-column: span 2">
+                <p
+                  style="
+                    font-size: 0.65rem;
+                    font-weight: 700;
+                    letter-spacing: 0.15em;
+                    text-transform: uppercase;
+                    margin-bottom: 0.5rem;
+                  "
+                >
+                  Output
+                </p>
+                <p style="font-weight: 800; font-size: 1.1rem">Unique portrait</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- SECTION 4: SECURITY BY DESIGN -->
         <section class="section" aria-labelledby="security-heading">
-            <p class="section-label">04 &mdash; Security by Design</p>
-            <h2 id="security-heading">Enterprise Maturity</h2>
-            <p>This is the part most creative technologists don't think about. I do.</p>
+          <p class="section-label">04 &mdash; Security by Design</p>
+          <h2 id="security-heading">Enterprise Maturity</h2>
+          <p>This is the part most creative technologists don't think about. I do.</p>
 
-            <div class="compliance-block">
-                <div class="compliance-split">
-                    <div>
-                        <span class="compliance-tag">HIPAA / HiTrust Compliant</span>
-                        <h3>No Direct Attachments.<br>Ever.</h3>
-                        <p>In the healthcare space, data privacy is paramount. I architected the email delivery system to use expiring download links rather than direct image attachments — ensuring user data was never at risk, and the system met HiTrust compliance requirements from day one.</p>
-                        <p style="margin-top: 1rem; color: var(--lime); font-weight: 700;">Links expire after two weeks. User data stays protected. Always.</p>
-                    </div>
-                    <img src="/assets/merge/gpw-email.png" alt="HIPAA-compliant expiring email delivery system" style="width: 100%; display: block;">
-                </div>
+          <div class="compliance-block">
+            <div class="compliance-split">
+              <div>
+                <span class="compliance-tag">HIPAA / HiTrust Compliant</span>
+                <h3>No Direct Attachments.<br />Ever.</h3>
+                <p>
+                  In the healthcare space, data privacy is paramount. I architected the email
+                  delivery system to use expiring download links rather than direct image
+                  attachments — ensuring user data was never at risk, and the system met HiTrust
+                  compliance requirements from day one.
+                </p>
+                <p style="margin-top: 1rem; color: var(--lime); font-weight: 700">
+                  Links expire after two weeks. User data stays protected. Always.
+                </p>
+              </div>
+              <img
+                src="/assets/merge/gpw-email.png"
+                alt="HIPAA-compliant expiring email delivery system"
+                style="width: 100%; display: block"
+              />
             </div>
+          </div>
         </section>
 
         <!-- SECTION 5: BRAND TRANSLATION -->
         <section class="section" aria-labelledby="brand-heading">
-            <p class="section-label">05 &mdash; Brand Translation</p>
-            <div class="brand-split" style="display: grid; grid-template-columns: 60fr 40fr; gap: 2rem; align-items: start; margin-bottom: 2rem;">
-                <div>
-                    <h2 id="brand-heading">User-Generated.<br>Still On Brand.</h2>
-                    <p>The challenge: how do you make user-generated content look on-brand? By building a strict visual framework around the agency's core attributes, we ensured that even user-created collages felt like polished agency marketing material.</p>
-                </div>
-                <img src="/assets/merge/gpw-booth-wide.png" alt="The MERGE Generative Portrait Wall booth at the event" style="width: 100%; display: block;">
+          <p class="section-label">05 &mdash; Brand Translation</p>
+          <div
+            class="brand-split"
+            style="
+              display: grid;
+              grid-template-columns: 60fr 40fr;
+              gap: 2rem;
+              align-items: start;
+              margin-bottom: 2rem;
+            "
+          >
+            <div>
+              <h2 id="brand-heading">User-Generated.<br />Still On Brand.</h2>
+              <p>
+                The challenge: how do you make user-generated content look on-brand? By building a
+                strict visual framework around the agency's core attributes, we ensured that even
+                user-created collages felt like polished agency marketing material.
+              </p>
             </div>
+            <img
+              src="/assets/merge/gpw-booth-wide.png"
+              alt="The MERGE Generative Portrait Wall booth at the event"
+              style="width: 100%; display: block"
+            />
+          </div>
 
-            <div class="attributes-grid">
-                <div class="attribute-card">
-                    <h3>Curious</h3>
-                    <p>Questions designed to surface personality, not demographics. The system rewards honest answers with surprising results.</p>
-                </div>
-                <div class="attribute-card" style="background: var(--teal); color: white;">
-                    <h3>Transformative</h3>
-                    <p>A standard event survey becomes a mirror of your internal state. Data becomes art. Instantly.</p>
-                </div>
-                <div class="attribute-card">
-                    <h3>Genuine</h3>
-                    <p>No two portraits are the same. The system generates from real input — the result feels personal because it is.</p>
-                </div>
+          <div class="attributes-grid">
+            <div class="attribute-card">
+              <h3>Curious</h3>
+              <p>
+                Questions designed to surface personality, not demographics. The system rewards
+                honest answers with surprising results.
+              </p>
             </div>
+            <div class="attribute-card" style="background: var(--teal); color: white">
+              <h3>Transformative</h3>
+              <p>
+                A standard event survey becomes a mirror of your internal state. Data becomes art.
+                Instantly.
+              </p>
+            </div>
+            <div class="attribute-card">
+              <h3>Genuine</h3>
+              <p>
+                No two portraits are the same. The system generates from real input — the result
+                feels personal because it is.
+              </p>
+            </div>
+          </div>
         </section>
 
         <!-- RESULTS: PORTRAIT GALLERY -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: 3vw 2vw; border-bottom: var(--border);">
-            <img src="/assets/merge/gpw-touchscreen-kiosk.png" alt="43-inch touchscreen survey console" style="width: 100%; display: block;">
-            <img src="/assets/merge/gpw-touchscreen-kiosk-1.png" alt="Touchscreen kiosk in use at the event" style="width: 100%; display: block;">
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding: 3vw 2vw;
+            border-bottom: var(--border);
+          "
+        >
+          <img
+            src="/assets/merge/gpw-touchscreen-kiosk.png"
+            alt="43-inch touchscreen survey console"
+            style="width: 100%; display: block"
+          />
+          <img
+            src="/assets/merge/gpw-touchscreen-kiosk-1.png"
+            alt="Touchscreen kiosk in use at the event"
+            style="width: 100%; display: block"
+          />
         </div>
 
         <section class="section" aria-labelledby="results-heading">
-            <p class="section-label">06 &mdash; Results</p>
-            <h2 id="results-heading">The Wall in Action</h2>
-            <p>Each portrait generated in real-time — unique to the person who walked up. Every one looks intentional.</p>
+          <p class="section-label">06 &mdash; Results</p>
+          <h2 id="results-heading">The Wall in Action</h2>
+          <p>
+            Each portrait generated in real-time — unique to the person who walked up. Every one
+            looks intentional.
+          </p>
 
-            <div class="portrait-gallery" aria-label="Generated portrait wall results">
-                <img src="/assets/merge/gpw-portrait-01.png" alt="Generated portrait — attendee 01" class="portrait-img">
-                <img src="/assets/merge/gpw-portrait-01-1.png" alt="Generated portrait — attendee 02" class="portrait-img">
-                <img src="/assets/merge/gpw-portrait-01-2.png" alt="Generated portrait — attendee 03" class="portrait-img">
-                <img src="/assets/merge/gpw-portrait-01-3.png" alt="Generated portrait — attendee 04" class="portrait-img">
-                <img src="/assets/merge/gpw-portrait-01-4.png" alt="Generated portrait — attendee 05" class="portrait-img">
-            </div>
+          <div class="portrait-gallery" aria-label="Generated portrait wall results">
+            <img
+              src="/assets/merge/gpw-portrait-01.png"
+              alt="Generated portrait — attendee 01"
+              class="portrait-img"
+            />
+            <img
+              src="/assets/merge/gpw-portrait-01-1.png"
+              alt="Generated portrait — attendee 02"
+              class="portrait-img"
+            />
+            <img
+              src="/assets/merge/gpw-portrait-01-2.png"
+              alt="Generated portrait — attendee 03"
+              class="portrait-img"
+            />
+            <img
+              src="/assets/merge/gpw-portrait-01-3.png"
+              alt="Generated portrait — attendee 04"
+              class="portrait-img"
+            />
+            <img
+              src="/assets/merge/gpw-portrait-01-4.png"
+              alt="Generated portrait — attendee 05"
+              class="portrait-img"
+            />
+          </div>
         </section>
 
         <!-- CREDITS -->
-        <section class="section" aria-labelledby="credits-heading" style="border-bottom: none;">
-            <p class="section-label">Credits</p>
-            <h2 id="credits-heading">The Team</h2>
+        <section class="section" aria-labelledby="credits-heading" style="border-bottom: none">
+          <p class="section-label">Credits</p>
+          <h2 id="credits-heading">The Team</h2>
 
-            <div class="credits-grid">
-                <ul>
-                    <li class="heather-credit">
-                        <strong>UX/UI Designer + Developer</strong>
-                        Heather New
-                    </li>
-                    <li>
-                        <strong>Project Manager</strong>
-                        Jess Bonfig
-                    </li>
-                    <li>
-                        <strong>Copywriter</strong>
-                        Allison Martin
-                    </li>
-                    <li>
-                        <strong>Creative / Photography</strong>
-                        Jeff Schroer
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <strong>Studio Director</strong>
-                        Dan Boene
-                    </li>
-                    <li>
-                        <strong>Print Manager</strong>
-                        Casey Luttrell
-                    </li>
-                    <li>
-                        <strong>Retoucher</strong>
-                        Rob Tucker
-                    </li>
-                    <li>
-                        <strong>Tech Ops Support</strong>
-                        Nicole Rastall
-                    </li>
-                </ul>
-            </div>
+          <div class="credits-grid">
+            <ul>
+              <li class="heather-credit">
+                <strong>UX/UI Designer + Developer</strong>
+                Heather New
+              </li>
+              <li>
+                <strong>Project Manager</strong>
+                Jess Bonfig
+              </li>
+              <li>
+                <strong>Copywriter</strong>
+                Allison Martin
+              </li>
+              <li>
+                <strong>Creative / Photography</strong>
+                Jeff Schroer
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <strong>Studio Director</strong>
+                Dan Boene
+              </li>
+              <li>
+                <strong>Print Manager</strong>
+                Casey Luttrell
+              </li>
+              <li>
+                <strong>Retoucher</strong>
+                Rob Tucker
+              </li>
+              <li>
+                <strong>Tech Ops Support</strong>
+                Nicole Rastall
+              </li>
+            </ul>
+          </div>
 
-            <p class="asset-disclosure">All photos, videos, and assets have individual credits due to a variety of contributors. Please request additional info for IP and usage rights by emailing contact(at)heathernew.com</p>
+          <p class="asset-disclosure">
+            All photos, videos, and assets have individual credits due to a variety of contributors.
+            Please request additional info for IP and usage rights by emailing
+            contact(at)heathernew.com
+          </p>
         </section>
-
-    </div>
+      </div>
     </main>
 
     <!-- Footer -->
     <div id="footer-trigger">
-        <div class="footer-scroll-wrapper" id="footer-trigger">
-            <footer class="footer-section">
-                <div class="footer-track">
-                    <div id="mouse-skater" class="mouse-skater">
-                        <div class="mouse-flip-container" id="mouse-flipper">
-                            <img src="/assets/mouse_skate.png" alt="Magic Mouse on Roller Skates" class="mouse-static">
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-content-bio">
-                    <h3>Heather New</h3>
-                    <p>Creative Technologist specializing in interactive experiences at the intersection of design, code, and technology.</p>
-                </div>
-                <div class="footer-nav">
-                    <p class="copyright">&copy; <span id="current-year"></span> Heather New | <a href="/pages/privacy.html">Privacy Policy</a> | <a href="/pages/sitemap.xml">Sitemap</a></p>
-                    <p class="build-info">Deployment Status: <span id="build-date">Checking...</span></p>
-                </div>
-            </footer>
-        </div>
+      <div class="footer-scroll-wrapper" id="footer-trigger">
+        <footer class="footer-section">
+          <div class="footer-track">
+            <div id="mouse-skater" class="mouse-skater">
+              <div class="mouse-flip-container" id="mouse-flipper">
+                <img
+                  src="/assets/mouse_skate.png"
+                  alt="Magic Mouse on Roller Skates"
+                  class="mouse-static"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="footer-content-bio">
+            <h3>Heather New</h3>
+            <p>
+              Creative Technologist specializing in interactive experiences at the intersection of
+              design, code, and technology.
+            </p>
+          </div>
+          <div class="footer-nav">
+            <p class="copyright">
+              &copy; <span id="current-year"></span> Heather New |
+              <a href="/pages/privacy.html">Privacy Policy</a> |
+              <a href="/pages/sitemap.xml">Sitemap</a>
+            </p>
+            <p class="build-info">Deployment Status: <span id="build-date">Checking...</span></p>
+          </div>
+        </footer>
+      </div>
     </div>
 
     <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        try {
-            const buildDate = new Date(__BUILD_DATE__);
-            const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-            document.getElementById('build-date').textContent = buildDate.toLocaleDateString(undefined, options);
-        } catch (e) {
-            document.getElementById('build-date').textContent = 'Live';
-        }
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+      try {
+        const buildDate = new Date(__BUILD_DATE__);
+        const options = {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        };
+        document.getElementById('build-date').textContent = buildDate.toLocaleDateString(
+          undefined,
+          options
+        );
+      } catch (e) {
+        document.getElementById('build-date').textContent = 'Live';
+      }
     </script>
-
-</body>
+  </body>
 </html>

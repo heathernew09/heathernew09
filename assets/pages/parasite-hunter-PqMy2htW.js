@@ -1,7 +1,230 @@
-import"../modulepreload-polyfill-B5Qt9EMX.js";/* empty css                */import"../site-core-Cit16Jds.js";(function(){let c,l,o,w,E=[],v=null,h=!0,y=null,s=null,H=null,d=null,u=0,f=null,m=!1,g=parseInt(localStorage.getItem("totalSquishes"))||0;const L=new THREE.Clock,k=new THREE.Vector2,x=new THREE.Raycaster,S={moxi:{columns:6,totalFrames:26},prazi:{columns:5,totalFrames:22},pyra:{columns:4,totalFrames:13}};window.parasiteAnim={play:function(){if(h){if(typeof THREE>"u"||typeof THREE.GLTFLoader>"u"){setTimeout(()=>window.parasiteAnim.play(),100);return}h=!1,c||T(),L.start(),R()}},pause:function(){h=!0,v&&cancelAnimationFrame(v),f&&clearInterval(f),L.stop()}};function T(){const n=document.getElementById("canvas-container");if(s=document.getElementById("attack-sprite"),!n)return;c=new THREE.Scene,c.background=new THREE.Color(16777215),l=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,.1,1e3),l.position.set(0,5,12),o=new THREE.WebGLRenderer({antialias:!0}),o.setSize(window.innerWidth,window.innerHeight),o.setPixelRatio(Math.min(window.devicePixelRatio,2)),n.appendChild(o.domElement),c.add(new THREE.AmbientLight(16777215,1.2));const t=new THREE.DirectionalLight(16777215,1);t.position.set(5,8,5),c.add(t),w=new THREE.OrbitControls(l,o.domElement),w.autoRotate=!0,w.enableZoom=!1;const e=document.getElementById("squish-count");e&&(e.textContent=g.toString().padStart(3,"0"));const p=document.getElementById("parasite-reset-progress");p&&p.addEventListener("click",()=>{confirm("Reset your hunting progress to zero?")&&(g=0,localStorage.setItem("totalSquishes",0),e&&(e.textContent="000"))});const i=document.getElementById("parasite-audio-toggle");i&&i.addEventListener("click",()=>{m=!m,i.classList.toggle("muted",m);const r=`
+import '../modulepreload-polyfill-B5Qt9EMX.js';
+/* empty css                */ import '../site-core-Cit16Jds.js';
+(function () {
+  let c,
+    l,
+    o,
+    w,
+    E = [],
+    v = null,
+    h = !0,
+    y = null,
+    s = null,
+    H = null,
+    d = null,
+    u = 0,
+    f = null,
+    m = !1,
+    g = parseInt(localStorage.getItem('totalSquishes')) || 0;
+  const L = new THREE.Clock(),
+    k = new THREE.Vector2(),
+    x = new THREE.Raycaster(),
+    S = {
+      moxi: { columns: 6, totalFrames: 26 },
+      prazi: { columns: 5, totalFrames: 22 },
+      pyra: { columns: 4, totalFrames: 13 },
+    };
+  window.parasiteAnim = {
+    play: function () {
+      if (h) {
+        if (typeof THREE > 'u' || typeof THREE.GLTFLoader > 'u') {
+          setTimeout(() => window.parasiteAnim.play(), 100);
+          return;
+        }
+        ((h = !1), c || T(), L.start(), R());
+      }
+    },
+    pause: function () {
+      ((h = !0), v && cancelAnimationFrame(v), f && clearInterval(f), L.stop());
+    },
+  };
+  function T() {
+    const n = document.getElementById('canvas-container');
+    if (((s = document.getElementById('attack-sprite')), !n)) return;
+    ((c = new THREE.Scene()),
+      (c.background = new THREE.Color(16777215)),
+      (l = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1e3)),
+      l.position.set(0, 5, 12),
+      (o = new THREE.WebGLRenderer({ antialias: !0 })),
+      o.setSize(window.innerWidth, window.innerHeight),
+      o.setPixelRatio(Math.min(window.devicePixelRatio, 2)),
+      n.appendChild(o.domElement),
+      c.add(new THREE.AmbientLight(16777215, 1.2)));
+    const t = new THREE.DirectionalLight(16777215, 1);
+    (t.position.set(5, 8, 5),
+      c.add(t),
+      (w = new THREE.OrbitControls(l, o.domElement)),
+      (w.autoRotate = !0),
+      (w.enableZoom = !1));
+    const e = document.getElementById('squish-count');
+    e && (e.textContent = g.toString().padStart(3, '0'));
+    const p = document.getElementById('parasite-reset-progress');
+    p &&
+      p.addEventListener('click', () => {
+        confirm('Reset your hunting progress to zero?') &&
+          ((g = 0), localStorage.setItem('totalSquishes', 0), e && (e.textContent = '000'));
+      });
+    const i = document.getElementById('parasite-audio-toggle');
+    (i &&
+      i.addEventListener('click', () => {
+        ((m = !m), i.classList.toggle('muted', m));
+        const r = `
 					<svg width="24" height="24" viewBox="0 0 265 265" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M82.8125 49.6875V215.312H99.375V49.6875H82.8125ZM165.625 49.6875V215.312H182.188V49.6875H165.625Z" fill="white"/>
-					</svg>`,a=`
+					</svg>`,
+          a = `
 					<svg width="24" height="24" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M36.4639 7.70801L32.7773 11.3276L20.5109 23.594H10.7246V45.0434H20.5109L32.7773 57.3097L36.4639 60.9293V7.70801ZM51.0763 17.5613L48.06 20.5776C55.6092 28.1268 55.6092 40.2424 48.06 47.7916L51.0763 50.8749C60.2593 41.6919 60.2593 26.7443 51.0763 17.5613ZM32.174 18.0976V50.5398L22.991 41.3567L22.3207 40.7535H15.0145V27.8838H22.3207L22.991 27.2806L32.174 18.0976ZM44.8426 23.7951L41.8262 26.8114C45.9234 30.9085 45.9067 37.6953 41.7592 42.027L44.9096 45.0434C50.6238 39.0778 50.6071 29.5596 44.8426 23.7951Z" fill="white"/>
-					</svg>`;i.querySelector(".icon").innerHTML=m?r:a,i.querySelector(".label").textContent=m?"Sound Off":"Sound On"}),window.addEventListener("mousemove",r=>{const a=o.domElement.getBoundingClientRect();k.x=(r.clientX-a.left)/a.width*2-1,k.y=-((r.clientY-a.top)/a.height)*2+1}),C()}function I(){g++,localStorage.setItem("totalSquishes",g);const n=document.getElementById("squish-count");if(n){n.textContent=g.toString().padStart(3,"0");const e=document.getElementById("parasite-counter-ui");e&&(e.style.transform="scale(1.1)",setTimeout(()=>{e.style.transform="scale(1)"},100)),n.classList.remove("score-pop"),n.offsetWidth,n.classList.add("score-pop")}if(m)return;const t=new Audio("/assets/para/audio/Squish.wav");t.volume=.4,t.playbackRate=.9+Math.random()*.4,t.play().catch(e=>{})}function C(){const n=new THREE.GLTFLoader;n.load("/assets/para/3d/heartworm-environment.gltf",e=>{y=e.scene,y.position.set(1,0,-2),c.add(y)});const t=[{name:"Flea",file:"/assets/para/3d/flea.gltf",pos:[-3,2,1],attack:"moxi",offset:.5},{name:"Heartworm",file:"/assets/para/3d/heartworm.gltf",pos:[2,3,-1],attack:"moxi",offset:.5},{name:"Hookworm",file:"/assets/para/3d/hookworm.gltf",pos:[-2,1,-2],attack:"pyra",offset:.8},{name:"Roundworm",file:"/assets/para/3d/roundworm.gltf",pos:[3,1.5,2],attack:"pyra",offset:.4},{name:"Tapeworm",file:"/assets/para/3d/tapeworm.gltf",pos:[0,3.5,0],attack:"prazi",offset:.5},{name:"Tick",file:"/assets/para/3d/tick.gltf",pos:[-1,.5,2],attack:"prazi",offset:.5}];t.forEach((e,p)=>{n.load(e.file,i=>{e.name==="Flea"&&i.scene.traverse(a=>{a.isMesh&&(a.material.metalness=.5,a.material.roughness=.4)});const r=new THREE.Group;if(i.scene.scale.set(.5,.5,.5),r.add(i.scene),r.position.set(...e.pos),r.userData={attack:e.attack,baseY:e.pos[1],index:p,offset:e.offset},c.add(r),E.push(r),E.length===t.length){const a=document.getElementById("loading");a&&(a.style.display="none")}})})}function R(){if(h)return;v=requestAnimationFrame(R);const n=L.getElapsedTime();x.setFromCamera(k,l);let t=null;E.forEach(e=>{e.position.y=e.userData.baseY+Math.sin(n+e.userData.index)*.2,e.rotation.y+=.005,x.intersectObject(e,!0).length>0&&(t=e)}),t?(d!==t&&(d=t,I(),M(t.userData.attack)),b()):d&&(d=null,B()),w&&w.update(),o.render(c,l)}function M(n){if(H===n)return;H=n,u=0;const t=S[n];s.style.backgroundImage=`url('/assets/para/sprite_attacks/${n}_attack-min.png')`;const e=Math.ceil(t.totalFrames/t.columns);s.style.backgroundSize=`${t.columns*100}% ${e*100}%`,s.style.width="200px",s.style.height="200px",s.classList.add("active"),f&&clearInterval(f),f=setInterval(()=>{const p=u%t.columns,i=Math.floor(u/t.columns);s.style.backgroundPosition=`${p/(t.columns-1)*100}% ${i/(e-1)*100}%`,u++,u>=t.totalFrames&&(u=0)},45)}function B(){H=null,s&&s.classList.remove("active"),f&&clearInterval(f)}function b(){if(!d||!s||!o)return;const n=new THREE.Vector3;d.getWorldPosition(n),n.y+=d.userData.offset||0,n.project(l);const t=o.domElement.getBoundingClientRect();s.style.transform=`translate(-50%, -50%) translate(${(n.x*.5+.5)*t.width+t.left}px, ${(n.y*-.5+.5)*t.height+t.top}px)`}window.addEventListener("resize",()=>{!l||!o||(l.aspect=window.innerWidth/window.innerHeight,l.updateProjectionMatrix(),o.setSize(window.innerWidth,window.innerHeight))})})();
+					</svg>`;
+        ((i.querySelector('.icon').innerHTML = m ? r : a),
+          (i.querySelector('.label').textContent = m ? 'Sound Off' : 'Sound On'));
+      }),
+      window.addEventListener('mousemove', (r) => {
+        const a = o.domElement.getBoundingClientRect();
+        ((k.x = ((r.clientX - a.left) / a.width) * 2 - 1),
+          (k.y = -((r.clientY - a.top) / a.height) * 2 + 1));
+      }),
+      C());
+  }
+  function I() {
+    (g++, localStorage.setItem('totalSquishes', g));
+    const n = document.getElementById('squish-count');
+    if (n) {
+      n.textContent = g.toString().padStart(3, '0');
+      const e = document.getElementById('parasite-counter-ui');
+      (e &&
+        ((e.style.transform = 'scale(1.1)'),
+        setTimeout(() => {
+          e.style.transform = 'scale(1)';
+        }, 100)),
+        n.classList.remove('score-pop'),
+        n.offsetWidth,
+        n.classList.add('score-pop'));
+    }
+    if (m) return;
+    const t = new Audio('/assets/para/audio/Squish.wav');
+    ((t.volume = 0.4), (t.playbackRate = 0.9 + Math.random() * 0.4), t.play().catch((e) => {}));
+  }
+  function C() {
+    const n = new THREE.GLTFLoader();
+    n.load('/assets/para/3d/heartworm-environment.gltf', (e) => {
+      ((y = e.scene), y.position.set(1, 0, -2), c.add(y));
+    });
+    const t = [
+      {
+        name: 'Flea',
+        file: '/assets/para/3d/flea.gltf',
+        pos: [-3, 2, 1],
+        attack: 'moxi',
+        offset: 0.5,
+      },
+      {
+        name: 'Heartworm',
+        file: '/assets/para/3d/heartworm.gltf',
+        pos: [2, 3, -1],
+        attack: 'moxi',
+        offset: 0.5,
+      },
+      {
+        name: 'Hookworm',
+        file: '/assets/para/3d/hookworm.gltf',
+        pos: [-2, 1, -2],
+        attack: 'pyra',
+        offset: 0.8,
+      },
+      {
+        name: 'Roundworm',
+        file: '/assets/para/3d/roundworm.gltf',
+        pos: [3, 1.5, 2],
+        attack: 'pyra',
+        offset: 0.4,
+      },
+      {
+        name: 'Tapeworm',
+        file: '/assets/para/3d/tapeworm.gltf',
+        pos: [0, 3.5, 0],
+        attack: 'prazi',
+        offset: 0.5,
+      },
+      {
+        name: 'Tick',
+        file: '/assets/para/3d/tick.gltf',
+        pos: [-1, 0.5, 2],
+        attack: 'prazi',
+        offset: 0.5,
+      },
+    ];
+    t.forEach((e, p) => {
+      n.load(e.file, (i) => {
+        e.name === 'Flea' &&
+          i.scene.traverse((a) => {
+            a.isMesh && ((a.material.metalness = 0.5), (a.material.roughness = 0.4));
+          });
+        const r = new THREE.Group();
+        if (
+          (i.scene.scale.set(0.5, 0.5, 0.5),
+          r.add(i.scene),
+          r.position.set(...e.pos),
+          (r.userData = { attack: e.attack, baseY: e.pos[1], index: p, offset: e.offset }),
+          c.add(r),
+          E.push(r),
+          E.length === t.length)
+        ) {
+          const a = document.getElementById('loading');
+          a && (a.style.display = 'none');
+        }
+      });
+    });
+  }
+  function R() {
+    if (h) return;
+    v = requestAnimationFrame(R);
+    const n = L.getElapsedTime();
+    x.setFromCamera(k, l);
+    let t = null;
+    (E.forEach((e) => {
+      ((e.position.y = e.userData.baseY + Math.sin(n + e.userData.index) * 0.2),
+        (e.rotation.y += 0.005),
+        x.intersectObject(e, !0).length > 0 && (t = e));
+    }),
+      t ? (d !== t && ((d = t), I(), M(t.userData.attack)), b()) : d && ((d = null), B()),
+      w && w.update(),
+      o.render(c, l));
+  }
+  function M(n) {
+    if (H === n) return;
+    ((H = n), (u = 0));
+    const t = S[n];
+    s.style.backgroundImage = `url('/assets/para/sprite_attacks/${n}_attack-min.png')`;
+    const e = Math.ceil(t.totalFrames / t.columns);
+    ((s.style.backgroundSize = `${t.columns * 100}% ${e * 100}%`),
+      (s.style.width = '200px'),
+      (s.style.height = '200px'),
+      s.classList.add('active'),
+      f && clearInterval(f),
+      (f = setInterval(() => {
+        const p = u % t.columns,
+          i = Math.floor(u / t.columns);
+        ((s.style.backgroundPosition = `${(p / (t.columns - 1)) * 100}% ${(i / (e - 1)) * 100}%`),
+          u++,
+          u >= t.totalFrames && (u = 0));
+      }, 45)));
+  }
+  function B() {
+    ((H = null), s && s.classList.remove('active'), f && clearInterval(f));
+  }
+  function b() {
+    if (!d || !s || !o) return;
+    const n = new THREE.Vector3();
+    (d.getWorldPosition(n), (n.y += d.userData.offset || 0), n.project(l));
+    const t = o.domElement.getBoundingClientRect();
+    s.style.transform = `translate(-50%, -50%) translate(${(n.x * 0.5 + 0.5) * t.width + t.left}px, ${(n.y * -0.5 + 0.5) * t.height + t.top}px)`;
+  }
+  window.addEventListener('resize', () => {
+    !l ||
+      !o ||
+      ((l.aspect = window.innerWidth / window.innerHeight),
+      l.updateProjectionMatrix(),
+      o.setSize(window.innerWidth, window.innerHeight));
+  });
+})();

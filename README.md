@@ -10,6 +10,7 @@ This is the source code for [heathernew.com](https://heathernew.com), a high-per
 Heather is a **Creative Technologist** with 20+ years of experience specialized in building what others think is "impossible." As a founding member of the AI Garage and a former Roller Derby MVP, she brings a unique blend of technical precision and relentless grit to every build.
 
 ### Core Expertise:
+
 - **Bridging the Gap:** Translating high-concept design into performant, scalable code.
 - **Interactive Narrative:** Building digital anchors for 1.2M sq. ft. tradeshow takeovers.
 - **Modern Stack:** Expert in HTML5, SVG Animation, WebAR (8th Wall), and Physics-based JS.
@@ -47,4 +48,5 @@ Heather is a **Creative Technologist** with 20+ years of experience specialized 
    ```
 
 ---
+
 **Heather New** | Creative Technologist | [heathernew.com](https://heathernew.com)

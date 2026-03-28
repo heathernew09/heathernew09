@@ -1,211 +1,210 @@
 .sprite-whoosh_00000 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -0px -0px;
- }
- .sprite-whoosh_00001 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -720px -0px;
- }
- .sprite-whoosh_00002 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -1440px -0px;
- }
- .sprite-whoosh_00003 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2160px -0px;
- }
- .sprite-whoosh_00004 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2880px -0px;
- }
- .sprite-whoosh_00005 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -3600px -0px;
- }
- .sprite-whoosh_00006 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -0px -1280px;
- }
- .sprite-whoosh_00007 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -720px -1280px;
- }
- .sprite-whoosh_00008 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -1440px -1280px;
- }
- .sprite-whoosh_00009 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2160px -1280px;
- }
- .sprite-whoosh_00010 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2880px -1280px;
- }
- .sprite-whoosh_00011 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -3600px -1280px;
- }
- .sprite-whoosh_00012 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -0px -2560px;
- }
- .sprite-whoosh_00013 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -720px -2560px;
- }
- .sprite-whoosh_00014 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -1440px -2560px;
- }
- .sprite-whoosh_00015 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2160px -2560px;
- }
- .sprite-whoosh_00016 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2880px -2560px;
- }
- .sprite-whoosh_00017 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -3600px -2560px;
- }
- .sprite-whoosh_00018 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -0px -3840px;
- }
- .sprite-whoosh_00019 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -720px -3840px;
- }
- .sprite-whoosh_00020 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -1440px -3840px;
- }
- .sprite-whoosh_00021 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2160px -3840px;
- }
- .sprite-whoosh_00022 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2880px -3840px;
- }
- .sprite-whoosh_00023 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -3600px -3840px;
- }
- .sprite-whoosh_00024 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -0px -5120px;
- }
- .sprite-whoosh_00025 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -720px -5120px;
- }
- .sprite-whoosh_00026 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -1440px -5120px;
- }
- .sprite-whoosh_00027 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2160px -5120px;
- }
- .sprite-whoosh_00028 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -2880px -5120px;
- }
- .sprite-whoosh_00029 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1280px;
-     width: 720px;
-     background-position: -3600px -5120px;
- }
- 
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -0px -0px;
+}
+.sprite-whoosh_00001 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -720px -0px;
+}
+.sprite-whoosh_00002 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -1440px -0px;
+}
+.sprite-whoosh_00003 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2160px -0px;
+}
+.sprite-whoosh_00004 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2880px -0px;
+}
+.sprite-whoosh_00005 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -3600px -0px;
+}
+.sprite-whoosh_00006 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -0px -1280px;
+}
+.sprite-whoosh_00007 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -720px -1280px;
+}
+.sprite-whoosh_00008 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -1440px -1280px;
+}
+.sprite-whoosh_00009 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2160px -1280px;
+}
+.sprite-whoosh_00010 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2880px -1280px;
+}
+.sprite-whoosh_00011 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -3600px -1280px;
+}
+.sprite-whoosh_00012 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -0px -2560px;
+}
+.sprite-whoosh_00013 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -720px -2560px;
+}
+.sprite-whoosh_00014 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -1440px -2560px;
+}
+.sprite-whoosh_00015 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2160px -2560px;
+}
+.sprite-whoosh_00016 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2880px -2560px;
+}
+.sprite-whoosh_00017 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -3600px -2560px;
+}
+.sprite-whoosh_00018 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -0px -3840px;
+}
+.sprite-whoosh_00019 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -720px -3840px;
+}
+.sprite-whoosh_00020 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -1440px -3840px;
+}
+.sprite-whoosh_00021 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2160px -3840px;
+}
+.sprite-whoosh_00022 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2880px -3840px;
+}
+.sprite-whoosh_00023 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -3600px -3840px;
+}
+.sprite-whoosh_00024 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -0px -5120px;
+}
+.sprite-whoosh_00025 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -720px -5120px;
+}
+.sprite-whoosh_00026 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -1440px -5120px;
+}
+.sprite-whoosh_00027 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2160px -5120px;
+}
+.sprite-whoosh_00028 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -2880px -5120px;
+}
+.sprite-whoosh_00029 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1280px;
+  width: 720px;
+  background-position: -3600px -5120px;
+}

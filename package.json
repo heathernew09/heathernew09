@@ -6,10 +6,17 @@
   "scripts": {
     "dev": "vite --port=3001 --host=0.0.0.0",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.2",
+    "eslint-plugin-html": "^8.1.2",
     "glob": "^13.0.6",
+    "prettier": "^3.5.2",
     "vite": "^6.2.0",
     "vite-plugin-html-inject": "^1.1.2"
   }

@@ -1,155 +1,154 @@
 .sprite-prazi_00000 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -0px -0px;
- }
- .sprite-prazi_00001 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -1080px -0px;
- }
- .sprite-prazi_00002 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -2160px -0px;
- }
- .sprite-prazi_00003 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -3240px -0px;
- }
- .sprite-prazi_00004 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -4320px -0px;
- }
- .sprite-prazi_00005 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -0px -1920px;
- }
- .sprite-prazi_00006 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -1080px -1920px;
- }
- .sprite-prazi_00007 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -2160px -1920px;
- }
- .sprite-prazi_00008 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -3240px -1920px;
- }
- .sprite-prazi_00009 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -4320px -1920px;
- }
- .sprite-prazi_00010 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -0px -3840px;
- }
- .sprite-prazi_00011 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -1080px -3840px;
- }
- .sprite-prazi_00012 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -2160px -3840px;
- }
- .sprite-prazi_00013 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -3240px -3840px;
- }
- .sprite-prazi_00014 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -4320px -3840px;
- }
- .sprite-prazi_00015 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -0px -5760px;
- }
- .sprite-prazi_00016 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -1080px -5760px;
- }
- .sprite-prazi_00017 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -2160px -5760px;
- }
- .sprite-prazi_00018 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -3240px -5760px;
- }
- .sprite-prazi_00019 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -4320px -5760px;
- }
- .sprite-prazi_00020 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -0px -7680px;
- }
- .sprite-prazi_00021 {
-     background: url(sprite_sheet.png);
-     display: inline-block;
-     height: 1920px;
-     width: 1080px;
-     background-position: -1080px -7680px;
- }
- 
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -0px -0px;
+}
+.sprite-prazi_00001 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -1080px -0px;
+}
+.sprite-prazi_00002 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -2160px -0px;
+}
+.sprite-prazi_00003 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -3240px -0px;
+}
+.sprite-prazi_00004 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -4320px -0px;
+}
+.sprite-prazi_00005 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -0px -1920px;
+}
+.sprite-prazi_00006 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -1080px -1920px;
+}
+.sprite-prazi_00007 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -2160px -1920px;
+}
+.sprite-prazi_00008 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -3240px -1920px;
+}
+.sprite-prazi_00009 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -4320px -1920px;
+}
+.sprite-prazi_00010 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -0px -3840px;
+}
+.sprite-prazi_00011 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -1080px -3840px;
+}
+.sprite-prazi_00012 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -2160px -3840px;
+}
+.sprite-prazi_00013 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -3240px -3840px;
+}
+.sprite-prazi_00014 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -4320px -3840px;
+}
+.sprite-prazi_00015 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -0px -5760px;
+}
+.sprite-prazi_00016 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -1080px -5760px;
+}
+.sprite-prazi_00017 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -2160px -5760px;
+}
+.sprite-prazi_00018 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -3240px -5760px;
+}
+.sprite-prazi_00019 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -4320px -5760px;
+}
+.sprite-prazi_00020 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -0px -7680px;
+}
+.sprite-prazi_00021 {
+  background: url(sprite_sheet.png);
+  display: inline-block;
+  height: 1920px;
+  width: 1080px;
+  background-position: -1080px -7680px;
+}

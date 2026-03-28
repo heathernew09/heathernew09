@@ -2,259 +2,286 @@
    GLOBAL NAVIGATION HEADER
    ============================================ */
 .site-header {
-    display: flex;
-    align-items: center;
-    font-family: 'Manrope', sans-serif;
-    position: absolute; /* Non-sticky, just overlays hero */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    background: transparent;
-    border-bottom: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-family: 'Manrope', sans-serif;
+  position: absolute; /* Non-sticky, just overlays hero */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .header-content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 80px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
 }
 
 /* Add space to logo - push it further left */
 .site-header .logo {
-    margin-right: auto; 
-    padding-right: 15vw; /* Significant dynamic buffer from the speaker/hamburger */
+  margin-right: auto;
+  padding-right: 15vw; /* Significant dynamic buffer from the speaker/hamburger */
 }
 
 /* Wordmark Styling */
 .site-header .logo img {
-    display: block;
-    transition: opacity 0.3s ease;
-    max-height: 50px; /* Prevent massive logos */
+  display: block;
+  transition: opacity 0.3s ease;
+  max-height: 50px; /* Prevent massive logos */
 }
 
 .site-header .logo:hover img {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 /* Icon Base Styling */
-.icon { 
-    cursor: pointer; 
-    transition: transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
+.icon {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
 }
 
-.icon:hover { transform: scale(1.1); }
-.icon svg path { fill: var(--dark-gray); }
+.icon:hover {
+  transform: scale(1.1);
+}
+.icon svg path {
+  fill: var(--dark-gray);
+}
 
 /* ============================================
    MENU OVERLAY (Matches ID from nav.js)
    ============================================ */
 #pages-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Slightly lighter backdrop */
-    backdrop-filter: blur(4px);    /* Modern feel */
-    z-index: 2000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s ease, visibility 0.4s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Slightly lighter backdrop */
+  backdrop-filter: blur(4px); /* Modern feel */
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s;
 }
 
 #pages-overlay.open {
-    opacity: 1;
-    visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
 
 /* HAMBURGER ICON ANIMATION */
 #nav-block {
-    cursor: pointer;
-    z-index: 2100;
-    position: relative;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  z-index: 2100;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #nav-block:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 /* When Menu is Open */
 #nav-block.active {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 #nav-hamburger-icon {
-    width: 24px;
-    height: 16px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 24px;
+  height: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #nav-hamburger-icon span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: var(--primary-teal, #133B34);
-    border-radius: 2px;
-    transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-teal, #133b34);
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
 }
 
 /* X State */
 #nav-hamburger-icon.active span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-    background-color: white;
+  transform: translateY(7px) rotate(45deg);
+  background-color: white;
 }
 
 #nav-hamburger-icon.active span:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-10px);
+  opacity: 0;
+  transform: translateX(-10px);
 }
 
 #nav-hamburger-icon.active span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-    background-color: white;
+  transform: translateY(-7px) rotate(-45deg);
+  background-color: white;
 }
 
 .pages-menu-content {
-    position: absolute;
-    top: 0; right: 0;
-    width: 100%;
-    height: 100%;
-    
-    /* --- WAVE ACTIVATED --- */
-    /* 1. Orange Gradient */
-    background: linear-gradient(180deg, #FF8C00 0%, #FF6B35 100%);
-    
-    /* 2. The Wave Shape */
-    clip-path: url(#menu-wave); 
-    -webkit-clip-path: url(#menu-wave);
-    
-    /* 3. Spacing Logic */
-    /* Padding-left must be ~260px to push text off the transparent part of the wave */
-    padding: 80px 40px 0 260px; 
-    
-    /* 4. Width Logic */
-    /* Max-width must be wider (700px) to accommodate the 260px empty space */
-    max-width: 700px; 
-    
-    display: flex;
-    flex-direction: column;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.3);
-    
-    /* Animation: Slide in from right */
-    transform: translateX(100%); 
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+
+  /* --- WAVE ACTIVATED --- */
+  /* 1. Orange Gradient */
+  background: linear-gradient(180deg, #ff8c00 0%, #ff6b35 100%);
+
+  /* 2. The Wave Shape */
+  clip-path: url(#menu-wave);
+  -webkit-clip-path: url(#menu-wave);
+
+  /* 3. Spacing Logic */
+  /* Padding-left must be ~260px to push text off the transparent part of the wave */
+  padding: 80px 40px 0 260px;
+
+  /* 4. Width Logic */
+  /* Max-width must be wider (700px) to accommodate the 260px empty space */
+  max-width: 700px;
+
+  display: flex;
+  flex-direction: column;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+
+  /* Animation: Slide in from right */
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Slide In Trigger */
 #pages-overlay.open > div,
 #pages-overlay.open .pages-menu-content {
-    transform: translateX(0);
+  transform: translateX(0);
 }
-
 
 /* ============================================
    NAVIGATION LINKS
    ============================================ */
 .pages-main-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .pages-main-nav a {
-    color: var(--white);
-    text-decoration: none;
-    font-size: 1.25rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    position: relative;
-    opacity: 0;
-    transform: translateY(20px);
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: opacity 0.4s ease, transform 0.4s ease, padding-left 0.3s ease, color 0.3s ease;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    padding-left 0.3s ease,
+    color 0.3s ease;
 }
 
 .pages-main-nav a:hover {
-    padding-left: 1rem;
-    color: var(--accent-lime);
+  padding-left: 1rem;
+  color: var(--accent-lime);
 }
 
 /* Reveal Links when Open */
 #pages-overlay.open .pages-main-nav a {
-    opacity: 1;
-    transform: translateY(0);
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Close Icon Styling */
 #pages-close-menu {
-    position: absolute;
-    top: 30px; 
-    right: 30px; /* Top right corner */
-    width: 40px; height: 40px;
-    cursor: pointer;
-    z-index: 2010;
-    transition: transform 0.3s ease;
+  position: absolute;
+  top: 30px;
+  right: 30px; /* Top right corner */
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 2010;
+  transition: transform 0.3s ease;
 }
 
 #pages-close-menu svg path {
-    fill: var(--white);
+  fill: var(--white);
 }
 
-#pages-close-menu:hover { transform: rotate(90deg) scale(1.2); }
+#pages-close-menu:hover {
+  transform: rotate(90deg) scale(1.2);
+}
 
 /* ============================================
    ACTIVE PAGE MARKER
    ============================================ */
 .pages-main-nav a.active {
-    color: var(--accent-lime) !important;
-    font-weight: 800;
-    border-bottom: 1px solid var(--accent-lime);
+  color: var(--accent-lime) !important;
+  font-weight: 800;
+  border-bottom: 1px solid var(--accent-lime);
 }
 
 /* Staggered Delays for entrance */
-.pages-main-nav a:nth-child(1) { transition-delay: 0.1s; }
-.pages-main-nav a:nth-child(2) { transition-delay: 0.15s; }
-.pages-main-nav a:nth-child(3) { transition-delay: 0.2s; }
-.pages-main-nav a:nth-child(4) { transition-delay: 0.25s; }
-.pages-main-nav a:nth-child(5) { transition-delay: 0.3s; }
-.pages-main-nav a:nth-child(6) { transition-delay: 0.35s; }
+.pages-main-nav a:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.pages-main-nav a:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.pages-main-nav a:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.pages-main-nav a:nth-child(4) {
+  transition-delay: 0.25s;
+}
+.pages-main-nav a:nth-child(5) {
+  transition-delay: 0.3s;
+}
+.pages-main-nav a:nth-child(6) {
+  transition-delay: 0.35s;
+}
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {
-    #pages-overlay > div,
-    .pages-menu-content {
-        max-width: 100%;
-        /* Remove wave on mobile for full screen usage */
-        clip-path: none !important; 
-        -webkit-clip-path: none !important;
-        padding: 80px 30px;
-    }
+  #pages-overlay > div,
+  .pages-menu-content {
+    max-width: 100%;
+    /* Remove wave on mobile for full screen usage */
+    clip-path: none !important;
+    -webkit-clip-path: none !important;
+    padding: 80px 30px;
+  }
 }

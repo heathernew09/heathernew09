@@ -7,11 +7,13 @@ This JavaScript-based include system works just like PHP's `include()`, but runs
 ## 📦 How It Works
 
 **Just like PHP:**
+
 ```php
 <?php include 'header.php'; ?>
 ```
 
 **With JavaScript:**
+
 ```html
 <div data-include="/partials/header.html"></div>
 ```
@@ -47,24 +49,24 @@ Create reusable HTML snippets in `/partials/`:
 ```html
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>My Page</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Include header -->
     <div data-include="/partials/header.html"></div>
-    
+
     <!-- Your page content -->
     <main>
-        <h1>Page Content</h1>
+      <h1>Page Content</h1>
     </main>
-    
+
     <!-- Include footer -->
     <div data-include="/partials/footer.html"></div>
-    
+
     <!-- Load include system -->
     <script src="/js/include.js"></script>
-</body>
+  </body>
 </html>
 ```
 
@@ -73,17 +75,19 @@ Create reusable HTML snippets in `/partials/`:
 ### Example 1: Header with Navigation
 
 **Create:** `/partials/header.html`
+
 ```html
 <header>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-    </nav>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
 </header>
 ```
 
 **Use it:**
+
 ```html
 <div data-include="/partials/header.html"></div>
 ```
@@ -91,13 +95,15 @@ Create reusable HTML snippets in `/partials/`:
 ### Example 2: Footer
 
 **Create:** `/partials/footer.html`
+
 ```html
 <footer>
-    <p>&copy; 2026 Your Name</p>
+  <p>&copy; 2026 Your Name</p>
 </footer>
 ```
 
 **Use it:**
+
 ```html
 <div data-include="/partials/footer.html"></div>
 ```
@@ -109,31 +115,33 @@ Your partials can contain `<style>` and `<script>` tags:
 ```html
 <!-- /partials/sidebar.html -->
 <aside class="sidebar">
-    <h3>Latest Posts</h3>
-    <ul id="post-list"></ul>
+  <h3>Latest Posts</h3>
+  <ul id="post-list"></ul>
 </aside>
 
 <style>
-    .sidebar {
-        background: #f0f0f0;
-        padding: 1rem;
-    }
+  .sidebar {
+    background: #f0f0f0;
+    padding: 1rem;
+  }
 </style>
 
 <script>
-    // Load posts dynamically
-    fetch('/api/posts')
-        .then(r => r.json())
-        .then(posts => {
-            document.getElementById('post-list').innerHTML = 
-                posts.map(p => `<li>${p.title}</li>`).join('');
-        });
+  // Load posts dynamically
+  fetch('/api/posts')
+    .then((r) => r.json())
+    .then((posts) => {
+      document.getElementById('post-list').innerHTML = posts
+        .map((p) => `<li>${p.title}</li>`)
+        .join('');
+    });
 </script>
 ```
 
 ## 🎯 Your Portfolio Setup
 
 ### Current Structure:
+
 ```
 /
 ├── partials/
@@ -147,41 +155,44 @@ Your partials can contain `<style>` and `<script>` tags:
 ```
 
 ### Updated Page Template:
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Page Title</title>
-    <link rel="stylesheet" href="/css/global.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/global.css" />
+  </head>
+  <body>
     <!-- Include header -->
     <div data-include="/partials/header.html"></div>
-    
+
     <!-- Your content -->
     <main class="project-content">
-        <h1>Project Title</h1>
-        <p>Content goes here...</p>
+      <h1>Project Title</h1>
+      <p>Content goes here...</p>
     </main>
-    
+
     <!-- Include footer -->
     <div data-include="/partials/footer.html"></div>
-    
+
     <!-- Include system -->
     <script src="/js/include.js"></script>
-</body>
+  </body>
 </html>
 ```
 
 ## ✅ Benefits Over nav.js
 
 **Old way (nav.js):**
+
 - Only navigation
 - JavaScript string templates (messy)
 - Hard to edit HTML
 
 **New way (include.js):**
+
 - ✅ Any HTML snippet
 - ✅ Edit in separate files
 - ✅ CSS/JS in partials
@@ -191,6 +202,7 @@ Your partials can contain `<style>` and `<script>` tags:
 ## 🔧 Advanced Usage
 
 ### Multiple Includes on One Page
+
 ```html
 <div data-include="/partials/header.html"></div>
 <div data-include="/partials/sidebar.html"></div>
@@ -199,19 +211,22 @@ Your partials can contain `<style>` and `<script>` tags:
 ```
 
 ### Nested Includes
+
 Partials can include other partials!
 
 ```html
 <!-- /partials/page-layout.html -->
 <div data-include="/partials/header.html"></div>
 <main class="content">
-    <!-- Page content goes here -->
+  <!-- Page content goes here -->
 </main>
 <div data-include="/partials/footer.html"></div>
 ```
 
 ### Error Handling
+
 If a file doesn't load, you'll see:
+
 ```
 Error loading /partials/missing.html
 ```
@@ -221,9 +236,11 @@ Check the browser console for details.
 ## 🚨 Important Notes
 
 ### 1. Must Run on a Server
+
 Includes won't work if you just open HTML files directly (`file://`).
 
 **Use:**
+
 ```bash
 python3 -m http.server 8000
 ```
@@ -231,13 +248,18 @@ python3 -m http.server 8000
 Then visit: `http://localhost:8000`
 
 ### 2. File Paths
+
 Use absolute paths starting with `/`:
+
 ```html
-✅ <div data-include="/partials/header.html"></div>
-❌ <div data-include="partials/header.html"></div>
+✅
+<div data-include="/partials/header.html"></div>
+❌
+<div data-include="partials/header.html"></div>
 ```
 
 ### 3. Order Matters
+
 Load `include.js` **after** your include divs:
 
 ```html
@@ -251,13 +273,16 @@ Load `include.js` **after** your include divs:
 ## 🎓 Converting Your Site
 
 ### Step 1: Update All Project Pages
+
 Replace this:
+
 ```html
 <div id="nav-container"></div>
 <script src="/js/nav.js"></script>
 ```
 
 With this:
+
 ```html
 <div data-include="/partials/header.html"></div>
 <div data-include="/partials/footer.html"></div>
@@ -265,10 +290,13 @@ With this:
 ```
 
 ### Step 2: Remove Old System (Optional)
+
 Once all pages are converted, you can delete:
+
 - `/js/nav.js`
 
 ### Step 3: Create More Partials
+
 ```
 /partials/
   ├── header.html       ✅ Navigation

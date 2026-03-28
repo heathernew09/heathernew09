@@ -1,646 +1,973 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="cache-control" content="no-store,max-age=0" />
     <title>Parasite Hunter - Heather New - Creative Technologist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-	<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-	<link rel="shortcut icon" href="/favicon/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-	<meta name="apple-mobile-web-app-title" content="HeatherNew" />
-	<link rel="manifest" href="/favicon/site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="stylesheet" href="../src/css/global.css" />
     <link rel="stylesheet" href="../src/css/parasite-page.css" />
-	<link rel="stylesheet" href="../src/css/parasite-3d.css" />
-	<link rel="stylesheet" href="../src/css/hero-para.css" />
-  <style>
-    :root {
-      --teal: #1BB1A5;
-      --dark-teal: #247B82;
-      --yellow: #F6B352;
-      --orange: #F66C0F;
-      --lime: #B2F81D;
-      --light-grey: #E0E0E0;
-      --mid-grey: #CCCCCC;
-      --text-dark: #111111;
-      --bg-color: #f4f4f4;
-    }
+    <link rel="stylesheet" href="../src/css/parasite-3d.css" />
+    <link rel="stylesheet" href="../src/css/hero-para.css" />
+    <style>
+      :root {
+        --teal: #1bb1a5;
+        --dark-teal: #247b82;
+        --yellow: #f6b352;
+        --orange: #f66c0f;
+        --lime: #b2f81d;
+        --light-grey: #e0e0e0;
+        --mid-grey: #cccccc;
+        --text-dark: #111111;
+        --bg-color: #f4f4f4;
+      }
 
-    .hero-3d {
-      position: relative;
-      height: 800px;
-      min-height: 800px;
-      width: 100%;
-      overflow: visible;
-    }
+      .hero-3d {
+        position: relative;
+        height: 800px;
+        min-height: 800px;
+        width: 100%;
+        overflow: visible;
+      }
 
-    div#parasite-hunter-logo {
-      position: absolute;
-      display: block;
-      top: 50% !important;
-      left: 5% !important;
-      z-index: 100;
-      transform: translateY(-50%) scale(0.5);
-      transform-origin: top left;
-    }
+      div#parasite-hunter-logo {
+        position: absolute;
+        display: block;
+        top: 50% !important;
+        left: 5% !important;
+        z-index: 100;
+        transform: translateY(-50%) scale(0.5);
+        transform-origin: top left;
+      }
 
-    div#parasite-hunter-logo img {
-      width: 500px;
-    }
+      div#parasite-hunter-logo img {
+        width: 500px;
+      }
 
-    #parasite-counter-ui {
-      position: absolute;
-      top: 310px;
-      left: 150px;
-      z-index: 100;
-      background: #000000d9;
-      padding: 10px 20px;
-      border: 10px solid var(--accent-lime);
-      pointer-events: none;
-      font-family: Manrope, sans-serif;
-      border-radius: 22px;
-      text-align: center;
-      color: var(--white);
-    }
+      #parasite-counter-ui {
+        position: absolute;
+        top: 310px;
+        left: 150px;
+        z-index: 100;
+        background: #000000d9;
+        padding: 10px 20px;
+        border: 10px solid var(--accent-lime);
+        pointer-events: none;
+        font-family: Manrope, sans-serif;
+        border-radius: 22px;
+        text-align: center;
+        color: var(--white);
+      }
 
-    .count-label {
-      display: block;
-      font-size: 1.7rem;
-      letter-spacing: 0.1em;
-      margin-bottom: 2px;
-    }
+      .count-label {
+        display: block;
+        font-size: 1.7rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 2px;
+      }
 
-    #squish-count {
-      font-size: 7rem;
-      font-weight: 800;
-      color: var(--accent-lime);
-      text-shadow: 0 0 10px rgba(191, 255, 0, 0.5);
-      font-variant-numeric: tabular-nums;
-    }
+      #squish-count {
+        font-size: 7rem;
+        font-weight: 800;
+        color: var(--accent-lime);
+        text-shadow: 0 0 10px rgba(191, 255, 0, 0.5);
+        font-variant-numeric: tabular-nums;
+      }
 
-    .portfolio-section {
-      padding: 0 0 8rem;
-      background-color: var(--bg-color);
-      display: flex;
-      justify-content: center;
-    }
+      .portfolio-section {
+        padding: 0 0 8rem;
+        background-color: var(--bg-color);
+        display: flex;
+        justify-content: center;
+      }
 
-    .bauhaus-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-auto-rows: minmax(240px, auto);
-      width: 100%;
-      max-width: 1400px;
-      border-top: 1px solid var(--text-dark);
-      border-left: 1px solid var(--text-dark);
-      background: var(--bg-color);
-    }
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(240px, auto);
+        width: 100%;
+        max-width: 1400px;
+        border-top: 1px solid var(--text-dark);
+        border-left: 1px solid var(--text-dark);
+        background: var(--bg-color);
+      }
 
-    .b-tile {
-      container-type: inline-size;
-      border-right: 1px solid var(--text-dark);
-      border-bottom: 1px solid var(--text-dark);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: background-color 0.4s ease, color 0.4s ease;
-    }
+      .b-tile {
+        container-type: inline-size;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease;
+      }
 
-    .b-tile h2 {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
-    }
+      .b-tile h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+      }
 
-    .b-tile h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
+      .b-tile h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
 
-    .b-tile p {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+      .b-tile p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
 
-    .b-tile .meta {
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      opacity: 0.85;
-      margin-bottom: 0.5rem;
-      display: block;
-    }
+      .b-tile .meta {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        opacity: 0.85;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
 
-    .span-col-2 { grid-column: span 2; }
-    .span-col-3 { grid-column: span 3; }
-    .span-col-4 { grid-column: span 4; }
-    .span-row-2 { grid-row: span 2; }
+      .span-col-2 {
+        grid-column: span 2;
+      }
+      .span-col-3 {
+        grid-column: span 3;
+      }
+      .span-col-4 {
+        grid-column: span 4;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
 
-    .bg-white     { background-color: #fff; }
-    .bg-teal      { background-color: var(--teal); color: #fff; }
-    .bg-dark-teal { background-color: var(--dark-teal); color: #fff; }
-    .bg-yellow    { background-color: var(--yellow); color: var(--text-dark); }
-    .bg-orange    { background-color: var(--orange); color: #fff; }
-    .bg-lime      { background-color: var(--lime); color: var(--text-dark); }
-    .bg-light-grey{ background-color: var(--light-grey); color: var(--text-dark); }
-    .bg-mid-grey  { background-color: var(--mid-grey); color: var(--text-dark); }
+      .bg-white {
+        background-color: #fff;
+      }
+      .bg-teal {
+        background-color: var(--teal);
+        color: #fff;
+      }
+      .bg-dark-teal {
+        background-color: var(--dark-teal);
+        color: #fff;
+      }
+      .bg-yellow {
+        background-color: var(--yellow);
+        color: var(--text-dark);
+      }
+      .bg-orange {
+        background-color: var(--orange);
+        color: #fff;
+      }
+      .bg-lime {
+        background-color: var(--lime);
+        color: var(--text-dark);
+      }
+      .bg-light-grey {
+        background-color: var(--light-grey);
+        color: var(--text-dark);
+      }
+      .bg-mid-grey {
+        background-color: var(--mid-grey);
+        color: var(--text-dark);
+      }
 
-    .img-tile { padding: 0; display: block; }
-    .img-tile img, .img-tile video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .img-tile:hover img { transform: scale(1.04); }
+      .img-tile {
+        padding: 0;
+        display: block;
+      }
+      .img-tile img,
+      .img-tile video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .img-tile:hover img {
+        transform: scale(1.04);
+      }
 
-    .char-tile {
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 1rem;
-    }
-    .char-tile img {
-      width: 100%;
-      max-height: 200px;
-      object-fit: contain;
-    }
+      .char-tile {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+      }
+      .char-tile img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: contain;
+      }
 
-    .contain-tile { padding: 1.5rem; display: block; }
-    .contain-tile img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
+      .contain-tile {
+        padding: 1.5rem;
+        display: block;
+      }
+      .contain-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
 
-    .stat-num {
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -2px;
-      margin-bottom: 0.5rem;
-    }
+      .stat-num {
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -2px;
+        margin-bottom: 0.5rem;
+      }
 
-    .list-clean {
-      list-style: none;
-      line-height: 2;
-      font-size: 0.95rem;
-    }
+      .list-clean {
+        list-style: none;
+        line-height: 2;
+        font-size: 0.95rem;
+      }
 
-    @media (max-width: 900px) {
-      .bauhaus-grid { grid-template-columns: repeat(2, 1fr); }
-      .span-col-3, .span-col-4 { grid-column: span 2; }
-    }
+      @media (max-width: 900px) {
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 2;
+        }
+      }
 
-    @media (max-width: 600px) {
-      .bauhaus-grid { grid-template-columns: 1fr; }
-      .span-col-2, .span-col-3, .span-col-4 { grid-column: span 1; }
-      .span-row-2 { grid-row: span 1; }
-    }
+      @media (max-width: 600px) {
+        .bauhaus-grid {
+          grid-template-columns: 1fr;
+        }
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 1;
+        }
+        .span-row-2 {
+          grid-row: span 1;
+        }
+      }
 
-    /* Hero controls override */
-    .parasite-controls-container {
-      position: absolute;
-      bottom: 40px !important;
-      right: 40px !important;
-      display: flex;
-      flex-direction: row;
-      gap: 8px;
-      z-index: 100;
-    }
-    .parasite-controls-container .audio-control {
-      position: static;
-      padding: 8px 12px;
-      font-size: 0.75rem;
-      opacity: 0.7;
-      border-color: rgba(255,255,255,0.3) !important;
-      color: rgba(255,255,255,0.7) !important;
-      background: rgba(0,0,0,0.5);
-    }
-    .parasite-controls-container .audio-control:hover {
-      opacity: 1;
-      border-color: var(--accent-lime) !important;
-      color: var(--accent-lime) !important;
-      background: rgba(0,0,0,0.7);
-    }
-    .parasite-controls-container .audio-control svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-    .parasite-controls-container .reset-btn {
-      border-color: rgba(255,255,255,0.3) !important;
-      color: rgba(255,255,255,0.7) !important;
-    }
-    .parasite-controls-container .reset-btn:hover {
-      border-color: #ff4444 !important;
-      color: #ff4444 !important;
-      background: rgba(0,0,0,0.7) !important;
-    }
-  </style>
-</head>
-<body id="parasite-page" class="page-template">
+      /* Hero controls override */
+      .parasite-controls-container {
+        position: absolute;
+        bottom: 40px !important;
+        right: 40px !important;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        z-index: 100;
+      }
+      .parasite-controls-container .audio-control {
+        position: static;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        opacity: 0.7;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .parasite-controls-container .audio-control:hover {
+        opacity: 1;
+        border-color: var(--accent-lime) !important;
+        color: var(--accent-lime) !important;
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .parasite-controls-container .audio-control svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+      .parasite-controls-container .reset-btn {
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+      .parasite-controls-container .reset-btn:hover {
+        border-color: #ff4444 !important;
+        color: #ff4444 !important;
+        background: rgba(0, 0, 0, 0.7) !important;
+      }
+    </style>
+  </head>
+  <body id="parasite-page" class="page-template">
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
-        <!--Nav Menu-->
-	<header class="site-header">
-    	<div class="header-content"><load src="../src/partials/nav.html" /></div>
-	</header>
-    
+    <!--Nav Menu-->
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
     <main id="main-content">
-		<section><!-- 3D Interactive Container -->
-            <div class="hero-3d">
-                <div id="section-parasite-hunter"><load src="../src/partials/parasite-3d.html" /></div>
+      <section>
+        <!-- 3D Interactive Container -->
+        <div class="hero-3d">
+          <div id="section-parasite-hunter"><load src="../src/partials/parasite-3d.html" /></div>
+        </div>
+      </section>
+
+      <!-- BAUHAUS GRID -->
+      <div class="portfolio-section">
+        <div class="bauhaus-grid">
+          <!-- ROW 1: INTRO + PHONE MOCK -->
+          <div
+            class="b-tile bg-dark-teal span-col-2"
+            style="justify-content: flex-start; gap: 1.5rem"
+          >
+            <div>
+              <span class="meta" style="color: var(--lime)"
+                >VMX 2026 / WVC 2026 &mdash; Elanco &mdash; MERGE PostPop</span
+              >
+              <h2 style="margin-top: 0.5rem">Parasite Hunter</h2>
+              <p style="color: var(--light-grey)">
+                An immersive WebAR game built on 8th Wall. Hunt parasites in augmented reality,
+                learn about pet health, and explore interactive 3D experiences — all from your
+                mobile browser.
+              </p>
             </div>
-		</section>
-		
-		<!-- BAUHAUS GRID -->
-		<div class="portfolio-section"><div class="bauhaus-grid">
+            <div>
+              <button id="demoBtn" class="btn btn-secondary" style="margin-bottom: 1.5rem">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Play Demo
+              </button>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 0.75rem 1.5rem;
+                  font-size: 0.8rem;
+                "
+              >
+                <div>
+                  <div
+                    style="
+                      text-transform: uppercase;
+                      letter-spacing: 0.1em;
+                      opacity: 0.6;
+                      font-weight: 700;
+                    "
+                  >
+                    Technology
+                  </div>
+                  <div style="font-weight: 700">WebAR</div>
+                </div>
+                <div>
+                  <div
+                    style="
+                      text-transform: uppercase;
+                      letter-spacing: 0.1em;
+                      opacity: 0.6;
+                      font-weight: 700;
+                    "
+                  >
+                    Platform
+                  </div>
+                  <div style="font-weight: 700">8th Wall</div>
+                </div>
+                <div>
+                  <div
+                    style="
+                      text-transform: uppercase;
+                      letter-spacing: 0.1em;
+                      opacity: 0.6;
+                      font-weight: 700;
+                    "
+                  >
+                    Device
+                  </div>
+                  <div style="font-weight: 700">Mobile First</div>
+                </div>
+                <div>
+                  <div
+                    style="
+                      text-transform: uppercase;
+                      letter-spacing: 0.1em;
+                      opacity: 0.6;
+                      font-weight: 700;
+                    "
+                  >
+                    Role
+                  </div>
+                  <div style="font-weight: 700">Creative Technologist</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="b-tile span-col-2"
+            style="
+              background: #0d0d1a;
+              padding: 2rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              min-height: 600px;
+              overflow: visible;
+            "
+          >
+            <div class="phone-mock">
+              <div id="phone-mock-container" class="phone-mock-container">
+                <div class="phone-mock-frame">
+                  <div class="dynamic-island"></div>
+                  <div class="screen-container">
+                    <div id="phone-mock-overlay" class="play-overlay"></div>
+                    <video
+                      id="phone-mock-video"
+                      class="game-video"
+                      src="/assets/para/parasite-hunter-insta-shawnee-dragon.mp4"
+                      loop
+                      muted
+                      playsinline
+                    ></video>
+                    <div id="tapContainer"></div>
+                  </div>
+                  <div class="phone-button phone-button-right-1"></div>
+                  <div class="phone-button phone-button-right-2"></div>
+                  <div class="phone-button phone-button-right-3"></div>
+                  <div class="phone-button phone-button-left"></div>
+                </div>
+                <div class="reflection"></div>
+              </div>
+            </div>
+          </div>
 
-			<!-- ROW 1: INTRO + PHONE MOCK -->
-			<div class="b-tile bg-dark-teal span-col-2" style="justify-content: flex-start; gap: 1.5rem;">
-				<div>
-					<span class="meta" style="color: var(--lime);">VMX 2026 / WVC 2026 &mdash; Elanco &mdash; MERGE PostPop</span>
-					<h2 style="margin-top: 0.5rem;">Parasite Hunter</h2>
-					<p style="color: var(--light-grey);">An immersive WebAR game built on 8th Wall. Hunt parasites in augmented reality, learn about pet health, and explore interactive 3D experiences — all from your mobile browser.</p>
-				</div>
-				<div>
-					<button id="demoBtn" class="btn btn-secondary" style="margin-bottom: 1.5rem;">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-						Play Demo
-					</button>
-					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1.5rem; font-size: 0.8rem;">
-						<div><div style="text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700;">Technology</div><div style="font-weight: 700;">WebAR</div></div>
-						<div><div style="text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700;">Platform</div><div style="font-weight: 700;">8th Wall</div></div>
-						<div><div style="text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700;">Device</div><div style="font-weight: 700;">Mobile First</div></div>
-						<div><div style="text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; font-weight: 700;">Role</div><div style="font-weight: 700;">Creative Technologist</div></div>
-					</div>
-				</div>
-			</div>
-			<div class="b-tile span-col-2" style="background: #0d0d1a; padding: 2rem; display: flex; align-items: center; justify-content: center; min-height: 600px; overflow: visible;">
-				<div class="phone-mock">
-					<div id="phone-mock-container" class="phone-mock-container">
-					  <div class="phone-mock-frame">
-						<div class="dynamic-island"></div>
-						<div class="screen-container">
-						  <div id="phone-mock-overlay" class="play-overlay"></div>
-						  <video id="phone-mock-video" class="game-video" src="/assets/para/parasite-hunter-insta-shawnee-dragon.mp4" loop muted playsinline></video>
-						  <div id="tapContainer"></div>
-						</div>
-						<div class="phone-button phone-button-right-1"></div>
-						<div class="phone-button phone-button-right-2"></div>
-						<div class="phone-button phone-button-right-3"></div>
-						<div class="phone-button phone-button-left"></div>
-					  </div>
-					  <div class="reflection"></div>
-					</div>
-				</div>
-			</div>
+          <!-- ROW 2: MAP + CHALLENGE -->
+          <div class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/para/game-play-map-tradeshow-floor.png"
+              alt="Map of tradeshow floor showing parasite hunt zones"
+            />
+          </div>
+          <div class="b-tile bg-orange span-col-2">
+            <span class="meta">The Challenge</span>
+            <h2>Go<br />Beyond.</h2>
+            <ul style="list-style: none; line-height: 2; font-size: 0.95rem; margin-top: auto">
+              <li>&#8594; Drive qualified traffic from across the venue</li>
+              <li>&#8594; Educate through active participation</li>
+              <li>&#8594; Create memorable brand moments</li>
+              <li>&#8594; Generate repeat engagement across multiple days</li>
+            </ul>
+          </div>
 
-			<!-- ROW 2: MAP + CHALLENGE -->
-			<div class="b-tile img-tile span-col-2">
-				<img src="/assets/para/game-play-map-tradeshow-floor.png" alt="Map of tradeshow floor showing parasite hunt zones" />
-			</div>
-			<div class="b-tile bg-orange span-col-2">
-				<span class="meta">The Challenge</span>
-				<h2>Go<br>Beyond.</h2>
-				<ul style="list-style: none; line-height: 2; font-size: 0.95rem; margin-top: auto;">
-					<li>&#8594; Drive qualified traffic from across the venue</li>
-					<li>&#8594; Educate through active participation</li>
-					<li>&#8594; Create memorable brand moments</li>
-					<li>&#8594; Generate repeat engagement across multiple days</li>
-				</ul>
-			</div>
+          <!-- ROW 3: CREATIVE DIRECTION HEADER -->
+          <div class="b-tile bg-teal span-col-4">
+            <span class="meta" style="color: var(--lime)">Creative Direction</span>
+            <h2>From Storyboard to Spatial Reality</h2>
+            <p style="max-width: 700px">
+              Pulling inspiration from Pokémon Go and Nintendo, we concepted AR opportunities. We
+              ultimately selected moving gameplay — parasites that scatter, react, and reward.
+            </p>
+          </div>
 
-			<!-- ROW 3: CREATIVE DIRECTION HEADER -->
-			<div class="b-tile bg-teal span-col-4">
-				<span class="meta" style="color: var(--lime);">Creative Direction</span>
-				<h2>From Storyboard to Spatial Reality</h2>
-				<p style="max-width: 700px;">Pulling inspiration from Pokémon Go and Nintendo, we concepted AR opportunities. We ultimately selected moving gameplay — parasites that scatter, react, and reward.</p>
-			</div>
+          <!-- ROW 4: EVOLUTION IMAGES -->
+          <div class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/para/2025-innovation-lab-interactive-comic.jpg"
+              alt="The Power of Four comic book"
+            />
+          </div>
+          <div class="b-tile bg-light-grey">
+            <span class="meta" style="color: var(--dark-teal)">Expanding Brand Visuals</span>
+            <h3>Comic characters got a new life</h3>
+            <p>2D illustration became movement, animation, and a whole new level of interaction.</p>
+          </div>
+          <div class="b-tile img-tile">
+            <img
+              src="/assets/para/pyra-mask-selfie-mock.png"
+              alt="AR face mask experiment resembling Pyra"
+            />
+          </div>
 
-			<!-- ROW 4: EVOLUTION IMAGES -->
-			<div class="b-tile img-tile span-col-2">
-				<img src="/assets/para/2025-innovation-lab-interactive-comic.jpg" alt="The Power of Four comic book" />
-			</div>
-			<div class="b-tile bg-light-grey">
-				<span class="meta" style="color: var(--dark-teal);">Expanding Brand Visuals</span>
-				<h3>Comic characters got a new life</h3>
-				<p>2D illustration became movement, animation, and a whole new level of interaction.</p>
-			</div>
-			<div class="b-tile img-tile">
-				<img src="/assets/para/pyra-mask-selfie-mock.png" alt="AR face mask experiment resembling Pyra" />
-			</div>
+          <!-- ROW 5: FLOATING PYRA + AR CARD CONCEPT -->
+          <div class="b-tile bg-mid-grey">
+            <span class="meta">Fun Experiments</span>
+            <h3>Design Direction</h3>
+            <p>
+              UX, UI, directed the 3D team — tested AR technologies, defined requirements, explored
+              what was possible before committing.
+            </p>
+          </div>
+          <div class="b-tile img-tile span-col-2" style="min-height: 300px">
+            <img
+              src="/assets/para/floating-pyra.gif"
+              alt="Pyra spinning in 3D over an AR card"
+              style="object-fit: contain; background: #1a1a2e"
+            />
+          </div>
+          <div class="b-tile bg-dark-teal">
+            <span class="meta" style="color: var(--lime)">Concepting AR Cards</span>
+            <h3>Would takeaway cards go beyond?</h3>
+            <p style="color: var(--light-grey)">
+              Scan a QR, watch the card come to life. We considered it — and the 3D work informed
+              the final game.
+            </p>
+          </div>
 
-			<!-- ROW 5: FLOATING PYRA + AR CARD CONCEPT -->
-			<div class="b-tile bg-mid-grey">
-				<span class="meta">Fun Experiments</span>
-				<h3>Design Direction</h3>
-				<p>UX, UI, directed the 3D team — tested AR technologies, defined requirements, explored what was possible before committing.</p>
-			</div>
-			<div class="b-tile img-tile span-col-2" style="min-height: 300px;">
-				<img src="/assets/para/floating-pyra.gif" alt="Pyra spinning in 3D over an AR card" style="object-fit: contain; background: #1a1a2e;" />
-			</div>
-			<div class="b-tile bg-dark-teal">
-				<span class="meta" style="color: var(--lime);">Concepting AR Cards</span>
-				<h3>Would takeaway cards go beyond?</h3>
-				<p style="color: var(--light-grey);">Scan a QR, watch the card come to life. We considered it — and the 3D work informed the final game.</p>
-			</div>
+          <!-- ROW 6: CHARACTERS HEADER -->
+          <div class="b-tile bg-yellow span-col-4" style="justify-content: center">
+            <span class="meta">Meet the Characters</span>
+            <div
+              style="
+                font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+                font-weight: 800;
+                line-height: 1.4;
+                max-width: 1000px;
+              "
+            >
+              Each active ingredient is a character. Complex pharmacological modes of action
+              translated into distinct traits, animations, and a reason to keep hunting.
+            </div>
+          </div>
 
-			<!-- ROW 6: CHARACTERS HEADER -->
-			<div class="b-tile bg-yellow span-col-4" style="justify-content: center;">
-				<span class="meta">Meet the Characters</span>
-				<div style="font-size: clamp(1.1rem, 2.2vw, 1.8rem); font-weight: 800; line-height: 1.4; max-width: 1000px;">Each active ingredient is a character. Complex pharmacological modes of action translated into distinct traits, animations, and a reason to keep hunting.</div>
-			</div>
+          <!-- ROW 7: 4 CHARACTERS -->
+          <div class="b-tile char-tile bg-white">
+            <img src="/assets/para/loti.png" alt="Loti character" />
+            <div>
+              <h3 style="color: var(--dark-teal)">Loti</h3>
+              <p style="font-size: 0.9rem">
+                <strong>Fast &amp; Agile.</strong> Optimized for high-velocity captures of fleas and
+                ticks. The tactical lead.
+              </p>
+            </div>
+          </div>
+          <div class="b-tile char-tile bg-white">
+            <img src="/assets/para/moxi.png" alt="Moxi character" />
+            <div>
+              <h3 style="color: var(--dark-teal)">Moxi</h3>
+              <p style="font-size: 0.9rem">
+                <strong>The Guardian.</strong> Specialized in internal defense against
+                life-threatening heartworms.
+              </p>
+            </div>
+          </div>
+          <div class="b-tile char-tile bg-white">
+            <img src="/assets/para/pyra.png" alt="Pyra character" />
+            <div>
+              <h3 style="color: var(--dark-teal)">Pyra</h3>
+              <p style="font-size: 0.9rem">
+                <strong>The Striker.</strong> Engineered for precision removal of roundworms and
+                hookworms.
+              </p>
+            </div>
+          </div>
+          <div class="b-tile char-tile bg-white">
+            <img src="/assets/para/prazi.png" alt="Prazi character" />
+            <div>
+              <h3 style="color: var(--dark-teal)">Prazi</h3>
+              <p style="font-size: 0.9rem">
+                <strong>The Specialist.</strong> The final line of defense against segmented
+                tapeworms.
+              </p>
+            </div>
+          </div>
 
-			<!-- ROW 7: 4 CHARACTERS -->
-			<div class="b-tile char-tile bg-white">
-				<img src="/assets/para/loti.png" alt="Loti character" />
-				<div>
-					<h3 style="color: var(--dark-teal);">Loti</h3>
-					<p style="font-size: 0.9rem;"><strong>Fast &amp; Agile.</strong> Optimized for high-velocity captures of fleas and ticks. The tactical lead.</p>
-				</div>
-			</div>
-			<div class="b-tile char-tile bg-white">
-				<img src="/assets/para/moxi.png" alt="Moxi character" />
-				<div>
-					<h3 style="color: var(--dark-teal);">Moxi</h3>
-					<p style="font-size: 0.9rem;"><strong>The Guardian.</strong> Specialized in internal defense against life-threatening heartworms.</p>
-				</div>
-			</div>
-			<div class="b-tile char-tile bg-white">
-				<img src="/assets/para/pyra.png" alt="Pyra character" />
-				<div>
-					<h3 style="color: var(--dark-teal);">Pyra</h3>
-					<p style="font-size: 0.9rem;"><strong>The Striker.</strong> Engineered for precision removal of roundworms and hookworms.</p>
-				</div>
-			</div>
-			<div class="b-tile char-tile bg-white">
-				<img src="/assets/para/prazi.png" alt="Prazi character" />
-				<div>
-					<h3 style="color: var(--dark-teal);">Prazi</h3>
-					<p style="font-size: 0.9rem;"><strong>The Specialist.</strong> The final line of defense against segmented tapeworms.</p>
-				</div>
-			</div>
+          <!-- ROW 8: GAMEPLAY HEADER -->
+          <div class="b-tile bg-dark-teal span-col-4">
+            <span class="meta" style="color: var(--lime)">UX &mdash; Game Flow &mdash; UI</span>
+            <h2>Mechanics as Messaging</h2>
+            <p style="color: var(--light-grey); max-width: 700px">
+              The educational game loop reinforces product benefits through play. Every interaction
+              is a brand touchpoint.
+            </p>
+          </div>
 
-			<!-- ROW 8: GAMEPLAY HEADER -->
-			<div class="b-tile bg-dark-teal span-col-4">
-				<span class="meta" style="color: var(--lime);">UX &mdash; Game Flow &mdash; UI</span>
-				<h2>Mechanics as Messaging</h2>
-				<p style="color: var(--light-grey); max-width: 700px;">The educational game loop reinforces product benefits through play. Every interaction is a brand touchpoint.</p>
-			</div>
+          <!-- ROW 9: GAMEPLAY STEPS -->
+          <div class="b-tile bg-teal">
+            <span class="meta" style="color: var(--lime)">01 &mdash; Scan</span>
+            <h3>No App Download</h3>
+            <p style="color: var(--light-grey)">
+              QR code launches directly in mobile browser. Zero friction entry — 8th Wall powers the
+              AR natively.
+            </p>
+          </div>
+          <div class="b-tile contain-tile">
+            <img src="/assets/para/hunt.png" alt="Hunt gameplay screen" />
+          </div>
+          <div class="b-tile contain-tile">
+            <img src="/assets/para/learn.png" alt="Learn gameplay screen" />
+          </div>
+          <div class="b-tile contain-tile">
+            <img src="/assets/para/win.png" alt="Win screen" />
+          </div>
 
-			<!-- ROW 9: GAMEPLAY STEPS -->
-			<div class="b-tile bg-teal">
-				<span class="meta" style="color: var(--lime);">01 &mdash; Scan</span>
-				<h3>No App Download</h3>
-				<p style="color: var(--light-grey);">QR code launches directly in mobile browser. Zero friction entry — 8th Wall powers the AR natively.</p>
-			</div>
-			<div class="b-tile contain-tile">
-				<img src="/assets/para/hunt.png" alt="Hunt gameplay screen" />
-			</div>
-			<div class="b-tile contain-tile">
-				<img src="/assets/para/learn.png" alt="Learn gameplay screen" />
-			</div>
-			<div class="b-tile contain-tile">
-				<img src="/assets/para/win.png" alt="Win screen" />
-			</div>
+          <!-- ROW 10: GAMEPLAY STEP LABELS -->
+          <div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem">
+            <!-- spacer for scan -->
+          </div>
+          <div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem">
+            <span class="meta" style="color: var(--dark-teal)">02 &mdash; Hunt</span>
+            <p style="font-size: 0.9rem">Touch parasites to capture and read brand factoids.</p>
+          </div>
+          <div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem">
+            <span class="meta" style="color: var(--dark-teal)">03 &mdash; Learn</span>
+            <p style="font-size: 0.9rem">
+              Tap the parasite icon — a popup explains how the medication targets that parasite.
+            </p>
+          </div>
+          <div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem">
+            <span class="meta" style="color: var(--dark-teal)">04 &mdash; Win</span>
+            <p style="font-size: 0.9rem">
+              2,100+ sign-ups. One user maxed the leaderboard at nearly 6,000 parasites.
+            </p>
+          </div>
 
-			<!-- ROW 10: GAMEPLAY STEP LABELS -->
-			<div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem;">
-				<!-- spacer for scan -->
-			</div>
-			<div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem;">
-				<span class="meta" style="color: var(--dark-teal);">02 &mdash; Hunt</span>
-				<p style="font-size: 0.9rem;">Touch parasites to capture and read brand factoids.</p>
-			</div>
-			<div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem;">
-				<span class="meta" style="color: var(--dark-teal);">03 &mdash; Learn</span>
-				<p style="font-size: 0.9rem;">Tap the parasite icon — a popup explains how the medication targets that parasite.</p>
-			</div>
-			<div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem;">
-				<span class="meta" style="color: var(--dark-teal);">04 &mdash; Win</span>
-				<p style="font-size: 0.9rem;">2,100+ sign-ups. One user maxed the leaderboard at nearly 6,000 parasites.</p>
-			</div>
+          <!-- ROW 11: CREDELIO QUATTRO CALLOUT -->
+          <div class="b-tile bg-orange span-col-4" style="justify-content: center">
+            <div
+              style="
+                font-size: clamp(1rem, 2vw, 1.6rem);
+                font-weight: 700;
+                line-height: 1.5;
+                max-width: 900px;
+              "
+            >
+              "Credelio Quattro is the only pharmaceutical that treats all 6 parasites — so it makes
+              sense you have to visit the booth to complete the game and claim your prize."
+            </div>
+          </div>
 
-			<!-- ROW 11: CREDELIO QUATTRO CALLOUT -->
-			<div class="b-tile bg-orange span-col-4" style="justify-content: center;">
-				<div style="font-size: clamp(1rem, 2vw, 1.6rem); font-weight: 700; line-height: 1.5; max-width: 900px;">"Credelio Quattro is the only pharmaceutical that treats all 6 parasites — so it makes sense you have to visit the booth to complete the game and claim your prize."</div>
-			</div>
+          <!-- ROW 12: TECHNICAL + PEOPLE PHOTO -->
+          <div class="b-tile bg-light-grey span-col-2">
+            <span class="meta" style="color: var(--dark-teal)">The Technical Pivot</span>
+            <h2>Refining the Experience</h2>
+            <p>
+              Translating 2D comic aesthetic into performant 3D WebAR required rigorous oversight.
+              As <strong>Product Designer for UX and UI</strong>, I identified friction points
+              before they hit the show floor.
+            </p>
+            <ul style="list-style: none; line-height: 2; font-size: 0.9rem; margin-top: 1rem">
+              <li>
+                <strong>Input Sensitivity:</strong> Raycasting adjustments for snappy parasite
+                captures
+              </li>
+              <li>
+                <strong>Asset Performance:</strong> 3D model optimization with video team and vendor
+              </li>
+              <li><strong>UX Friction Audit:</strong> Scaling solutions for post-tradeshow use</li>
+            </ul>
+            <p style="margin-top: 1.5rem; font-size: 0.95rem; font-style: italic">
+              A 6-month sprint. Long days, technical hurdles — and what leadership called Elanco’s
+              <strong>"best VMX ever."</strong>
+            </p>
+          </div>
+          <div class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/para/people-gathering-booth.png"
+              alt="Crowd gathering at the Parasite Hunter booth"
+            />
+          </div>
 
-			<!-- ROW 12: TECHNICAL + PEOPLE PHOTO -->
-			<div class="b-tile bg-light-grey span-col-2">
-				<span class="meta" style="color: var(--dark-teal);">The Technical Pivot</span>
-				<h2>Refining the Experience</h2>
-				<p>Translating 2D comic aesthetic into performant 3D WebAR required rigorous oversight. As <strong>Product Designer for UX and UI</strong>, I identified friction points before they hit the show floor.</p>
-				<ul style="list-style: none; line-height: 2; font-size: 0.9rem; margin-top: 1rem;">
-					<li><strong>Input Sensitivity:</strong> Raycasting adjustments for snappy parasite captures</li>
-					<li><strong>Asset Performance:</strong> 3D model optimization with video team and vendor</li>
-					<li><strong>UX Friction Audit:</strong> Scaling solutions for post-tradeshow use</li>
-				</ul>
-				<p style="margin-top: 1.5rem; font-size: 0.95rem; font-style: italic;">A 6-month sprint. Long days, technical hurdles — and what leadership called Elanco’s <strong>"best VMX ever."</strong></p>
-			</div>
-			<div class="b-tile img-tile span-col-2">
-				<img src="/assets/para/people-gathering-booth.png" alt="Crowd gathering at the Parasite Hunter booth" />
-			</div>
+          <!-- ROW 13: ADRIANA QUOTE -->
+          <div class="b-tile bg-yellow span-col-4" style="justify-content: center">
+            <div
+              style="
+                font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+                font-weight: 700;
+                line-height: 1.5;
+                max-width: 900px;
+              "
+            >
+              "I saw Heather as people gleefully killed parasites on their phone... You have all
+              created something to be deeply proud of."
+            </div>
+            <p
+              style="
+                margin-top: 1rem;
+                font-size: 0.85rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+              "
+            >
+              — Adriana Zardus, Account Director
+            </p>
+          </div>
 
-			<!-- ROW 13: ADRIANA QUOTE -->
-			<div class="b-tile bg-yellow span-col-4" style="justify-content: center;">
-				<div style="font-size: clamp(1.1rem, 2.2vw, 1.6rem); font-weight: 700; line-height: 1.5; max-width: 900px;">"I saw Heather as people gleefully killed parasites on their phone... You have all created something to be deeply proud of."</div>
-				<p style="margin-top: 1rem; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em;">— Adriana Zardus, Account Director</p>
-			</div>
+          <!-- ROW 14: LEADERBOARD + TROPHIES -->
+          <div class="b-tile bg-dark-teal span-col-2">
+            <span class="meta" style="color: var(--lime)">Engagement Strategy</span>
+            <h2>Leaderboards Incite Competition</h2>
+            <p style="color: var(--light-grey)">
+              The <strong style="color: #fff">Mini Toby Trophy</strong> mirrored our 12-foot "Toby"
+              installation from the prior year — brand continuity as a tangible collectible that
+              rewarded mastery and drove attendees back to the booth daily.
+            </p>
+          </div>
+          <div class="b-tile img-tile">
+            <img
+              src="/assets/para/trophy-mask.png"
+              alt="1st, 2nd, 3rd place Parasite Hunter trophies"
+            />
+          </div>
+          <div class="b-tile img-tile">
+            <img
+              src="/assets/para/parasite-hunter-game-kid.png"
+              alt="Young attendee playing Parasite Hunter at VMX 2026"
+            />
+          </div>
 
-			<!-- ROW 14: LEADERBOARD + TROPHIES -->
-			<div class="b-tile bg-dark-teal span-col-2">
-				<span class="meta" style="color: var(--lime);">Engagement Strategy</span>
-				<h2>Leaderboards Incite Competition</h2>
-				<p style="color: var(--light-grey);">The <strong style="color: #fff;">Mini Toby Trophy</strong> mirrored our 12-foot "Toby" installation from the prior year — brand continuity as a tangible collectible that rewarded mastery and drove attendees back to the booth daily.</p>
-			</div>
-			<div class="b-tile img-tile">
-				<img src="/assets/para/trophy-mask.png" alt="1st, 2nd, 3rd place Parasite Hunter trophies" />
-			</div>
-			<div class="b-tile img-tile">
-				<img src="/assets/para/parasite-hunter-game-kid.png" alt="Young attendee playing Parasite Hunter at VMX 2026" />
-			</div>
+          <!-- ROW 15: RESULTS STATS -->
+          <div class="b-tile bg-teal">
+            <div class="stat-num">3×</div>
+            <h3>High-Value Retention</h3>
+            <p style="color: var(--light-grey); font-size: 0.9rem">
+              Participants engaged 3× longer than with traditional booth materials.
+            </p>
+          </div>
+          <div class="b-tile bg-lime">
+            <div class="stat-num">2,100+</div>
+            <h3>Qualified Leads</h3>
+            <p style="font-size: 0.9rem">
+              Active sign-ups with users returning daily to defend leaderboard rank.
+            </p>
+          </div>
+          <div class="b-tile bg-yellow">
+            <div class="stat-num">100%</div>
+            <h3>IP Integrity</h3>
+            <p style="font-size: 0.9rem">
+              2D comic assets into 3D space — brand recognition consistent across all media.
+            </p>
+          </div>
+          <div class="b-tile bg-orange">
+            <div class="stat-num">&#8734;</div>
+            <h3>Spatial Footprint</h3>
+            <p style="font-size: 0.9rem">
+              1.2M sq. ft. turned into a brand-owned experience beyond the booth barrier.
+            </p>
+          </div>
 
-			<!-- ROW 15: RESULTS STATS -->
-			<div class="b-tile bg-teal">
-				<div class="stat-num">3×</div>
-				<h3>High-Value Retention</h3>
-				<p style="color: var(--light-grey); font-size: 0.9rem;">Participants engaged 3× longer than with traditional booth materials.</p>
-			</div>
-			<div class="b-tile bg-lime">
-				<div class="stat-num">2,100+</div>
-				<h3>Qualified Leads</h3>
-				<p style="font-size: 0.9rem;">Active sign-ups with users returning daily to defend leaderboard rank.</p>
-			</div>
-			<div class="b-tile bg-yellow">
-				<div class="stat-num">100%</div>
-				<h3>IP Integrity</h3>
-				<p style="font-size: 0.9rem;">2D comic assets into 3D space — brand recognition consistent across all media.</p>
-			</div>
-			<div class="b-tile bg-orange">
-				<div class="stat-num">&#8734;</div>
-				<h3>Spatial Footprint</h3>
-				<p style="font-size: 0.9rem;">1.2M sq. ft. turned into a brand-owned experience beyond the booth barrier.</p>
-			</div>
+          <!-- ROW 16: SHAWN QUOTE -->
+          <div class="b-tile bg-dark-teal span-col-4" style="justify-content: center">
+            <div
+              style="
+                font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+                font-weight: 700;
+                line-height: 1.5;
+                max-width: 900px;
+              "
+            >
+              "You delivered a new kind of experience for the VMX attendees... it was being talked
+              about everywhere I went. We were by far the best booth there."
+            </div>
+            <p
+              style="
+                margin-top: 1rem;
+                font-size: 0.85rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--lime);
+              "
+            >
+              — Shawn, Elanco Leadership
+            </p>
+          </div>
 
-			<!-- ROW 16: SHAWN QUOTE -->
-			<div class="b-tile bg-dark-teal span-col-4" style="justify-content: center;">
-				<div style="font-size: clamp(1.1rem, 2.2vw, 1.6rem); font-weight: 700; line-height: 1.5; max-width: 900px;">"You delivered a new kind of experience for the VMX attendees... it was being talked about everywhere I went. We were by far the best booth there."</div>
-				<p style="margin-top: 1rem; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--lime);">— Shawn, Elanco Leadership</p>
-			</div>
+          <!-- ROW 17: ROLE SUMMARY HEADER -->
+          <div class="b-tile bg-teal span-col-4">
+            <span class="meta" style="color: var(--lime)">Expertise in Action</span>
+            <h2>Bridging Vision and Execution</h2>
+          </div>
 
-			<!-- ROW 17: ROLE SUMMARY HEADER -->
-			<div class="b-tile bg-teal span-col-4">
-				<span class="meta" style="color: var(--lime);">Expertise in Action</span>
-				<h2>Bridging Vision and Execution</h2>
-			</div>
+          <!-- ROW 18: ROLE TILES -->
+          <div class="b-tile bg-light-grey">
+            <span class="meta" style="color: var(--dark-teal)">Creative Ownership</span>
+            <p>
+              Translated original 2D character designs into performant 3D assets while maintaining
+              the brand’s established Comic Style IP.
+            </p>
+          </div>
+          <div class="b-tile bg-light-grey">
+            <span class="meta" style="color: var(--dark-teal)">Technical Stewardship</span>
+            <p>
+              Architected WebAR deployment requirements — low-friction access and asset optimization
+              for high-density event environments.
+            </p>
+          </div>
+          <div class="b-tile bg-light-grey">
+            <span class="meta" style="color: var(--dark-teal)">Experience Strategy</span>
+            <p>
+              Game loop aligned with pedagogical goals — every catch reinforced product benefits
+              through active learning.
+            </p>
+          </div>
+          <div class="b-tile bg-light-grey">
+            <span class="meta" style="color: var(--dark-teal)">Studio Management</span>
+            <p>
+              Orchestrated 3D artists and developers as primary technical liaison, ensuring 1:1
+              delivery of creative vision.
+            </p>
+          </div>
 
-			<!-- ROW 18: ROLE TILES -->
-			<div class="b-tile bg-light-grey">
-				<span class="meta" style="color: var(--dark-teal);">Creative Ownership</span>
-				<p>Translated original 2D character designs into performant 3D assets while maintaining the brand’s established Comic Style IP.</p>
-			</div>
-			<div class="b-tile bg-light-grey">
-				<span class="meta" style="color: var(--dark-teal);">Technical Stewardship</span>
-				<p>Architected WebAR deployment requirements — low-friction access and asset optimization for high-density event environments.</p>
-			</div>
-			<div class="b-tile bg-light-grey">
-				<span class="meta" style="color: var(--dark-teal);">Experience Strategy</span>
-				<p>Game loop aligned with pedagogical goals — every catch reinforced product benefits through active learning.</p>
-			</div>
-			<div class="b-tile bg-light-grey">
-				<span class="meta" style="color: var(--dark-teal);">Studio Management</span>
-				<p>Orchestrated 3D artists and developers as primary technical liaison, ensuring 1:1 delivery of creative vision.</p>
-			</div>
+          <!-- ROW 19: CREDITS -->
+          <div class="b-tile bg-dark-teal span-col-2">
+            <span class="meta" style="color: var(--lime)">Parasite Hunter AR Team</span>
+            <ul class="list-clean" style="margin-top: 1rem">
+              <li><strong>Creative Technologist &amp; Studio Manager:</strong> Heather New</li>
+              <li><strong>3D Design &amp; Animation:</strong> Jason Wickersheim</li>
+              <li><strong>Creative Direction (Copy):</strong> Amy McVey</li>
+              <li><strong>Audio Direction:</strong> Dave Merriman</li>
+              <li><strong>Account Leadership:</strong> Adriana Zardus &amp; Jessica Ocampo</li>
+              <li><strong>Project Management:</strong> Kellie Innocenti</li>
+              <li><strong>Development Partners (PostPop):</strong> AJ (Lead) &amp; Carl (Dev)</li>
+            </ul>
+          </div>
+          <div class="b-tile bg-teal span-col-2">
+            <span class="meta" style="color: var(--lime)">Elanco Booth Experience</span>
+            <ul class="list-clean" style="margin-top: 1rem">
+              <li>
+                <strong>Executive Creative Leadership:</strong> George Bird, Josh Liotta, James
+                Holden, Tom Demetriou
+              </li>
+              <li>
+                <strong>Account &amp; PM:</strong> Bethany Zimmermann, Malarie Claudepierre, Angela
+                Peralta, Meredith Nelson, Pat McGloin
+              </li>
+              <li>
+                <strong>Studio &amp; Design:</strong> Casey Luttrell, Josh Ziegler, Stacey Prudden,
+                Kellsey Martin, Wes Huisenga, Josh Fotheringham, Jami Gettings, Chad McClure,
+                Spencer Tetik, Tyler Mleynek, Dan Boehne
+              </li>
+              <li>
+                <strong>Creative Team:</strong> Daniel Valencia, Iara Roa-Ferreira, Abby Winchester,
+                Andrea Ramos, Luke Lisi
+              </li>
+              <li>
+                <strong>Editorial &amp; Medical:</strong> Keith Ulrich, Kimberly Pavlovich, Yanne
+                Doucet
+              </li>
+            </ul>
+          </div>
 
-			<!-- ROW 19: CREDITS -->
-			<div class="b-tile bg-dark-teal span-col-2">
-				<span class="meta" style="color: var(--lime);">Parasite Hunter AR Team</span>
-				<ul class="list-clean" style="margin-top: 1rem;">
-					<li><strong>Creative Technologist &amp; Studio Manager:</strong> Heather New</li>
-					<li><strong>3D Design &amp; Animation:</strong> Jason Wickersheim</li>
-					<li><strong>Creative Direction (Copy):</strong> Amy McVey</li>
-					<li><strong>Audio Direction:</strong> Dave Merriman</li>
-					<li><strong>Account Leadership:</strong> Adriana Zardus &amp; Jessica Ocampo</li>
-					<li><strong>Project Management:</strong> Kellie Innocenti</li>
-					<li><strong>Development Partners (PostPop):</strong> AJ (Lead) &amp; Carl (Dev)</li>
-				</ul>
-			</div>
-			<div class="b-tile bg-teal span-col-2">
-				<span class="meta" style="color: var(--lime);">Elanco Booth Experience</span>
-				<ul class="list-clean" style="margin-top: 1rem;">
-					<li><strong>Executive Creative Leadership:</strong> George Bird, Josh Liotta, James Holden, Tom Demetriou</li>
-					<li><strong>Account &amp; PM:</strong> Bethany Zimmermann, Malarie Claudepierre, Angela Peralta, Meredith Nelson, Pat McGloin</li>
-					<li><strong>Studio &amp; Design:</strong> Casey Luttrell, Josh Ziegler, Stacey Prudden, Kellsey Martin, Wes Huisenga, Josh Fotheringham, Jami Gettings, Chad McClure, Spencer Tetik, Tyler Mleynek, Dan Boehne</li>
-					<li><strong>Creative Team:</strong> Daniel Valencia, Iara Roa-Ferreira, Abby Winchester, Andrea Ramos, Luke Lisi</li>
-					<li><strong>Editorial &amp; Medical:</strong> Keith Ulrich, Kimberly Pavlovich, Yanne Doucet</li>
-				</ul>
-			</div>
-
-			<!-- ROW 20: ASSET DISCLOSURE -->
-			<div class="b-tile span-col-4" style="min-height: auto; justify-content: center; text-align: center; padding: 2rem 2.5rem;">
-				<p style="font-size: 0.8rem; opacity: 0.6; width: 100%;">All photos, videos, and assets have individual credits due to a variety of contributors within the team listed above. Please request additional info for IP and usage rights by emailing contact(at)heathernew.com</p>
-			</div>
-
-		</div></div><!-- end bauhaus grid -->
-
+          <!-- ROW 20: ASSET DISCLOSURE -->
+          <div
+            class="b-tile span-col-4"
+            style="
+              min-height: auto;
+              justify-content: center;
+              text-align: center;
+              padding: 2rem 2.5rem;
+            "
+          >
+            <p style="font-size: 0.8rem; opacity: 0.6; width: 100%">
+              All photos, videos, and assets have individual credits due to a variety of
+              contributors within the team listed above. Please request additional info for IP and
+              usage rights by emailing contact(at)heathernew.com
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- end bauhaus grid -->
     </main>
-    
+
     <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
 
-	<!-- Scripts -->
-	<script type="module" src="../src/js/site-core.js"></script>
-	<script type="module" src="../src/js/parasite3d.js" defer></script>
-	<script>
-		let isPlaying = false;
-		let isPaused = false;
-		let pauseTimeout = null;
+    <!-- Scripts -->
+    <script type="module" src="../src/js/site-core.js"></script>
+    <script type="module" src="../src/js/parasite3d.js" defer></script>
+    <script>
+      let isPlaying = false;
+      let isPaused = false;
+      let pauseTimeout = null;
 
-		const demoBtn = document.getElementById('demoBtn');
-		const playOverlay = document.getElementById('phone-mock-overlay');
-		const gameVideo = document.getElementById('phone-mock-video');
-		const phoneContainer = document.getElementById('phone-mock-container');
+      const demoBtn = document.getElementById('demoBtn');
+      const playOverlay = document.getElementById('phone-mock-overlay');
+      const gameVideo = document.getElementById('phone-mock-video');
+      const phoneContainer = document.getElementById('phone-mock-container');
 
-		function showCover() {
-		  if (playOverlay) playOverlay.classList.remove('hidden');
-		  if (phoneContainer) phoneContainer.classList.remove('floating');
-		  if (demoBtn) demoBtn.style.display = 'inline-flex';
-		  isPlaying = false;
-		  isPaused = false;
-		  if (gameVideo) {
-			gameVideo.pause();
-			gameVideo.currentTime = 0;
-		  }
-		  if (pauseTimeout) {
-			clearTimeout(pauseTimeout);
-			pauseTimeout = null;
-		  }
-		}
+      function showCover() {
+        if (playOverlay) playOverlay.classList.remove('hidden');
+        if (phoneContainer) phoneContainer.classList.remove('floating');
+        if (demoBtn) demoBtn.style.display = 'inline-flex';
+        isPlaying = false;
+        isPaused = false;
+        if (gameVideo) {
+          gameVideo.pause();
+          gameVideo.currentTime = 0;
+        }
+        if (pauseTimeout) {
+          clearTimeout(pauseTimeout);
+          pauseTimeout = null;
+        }
+      }
 
-		function handlePlayDemo() {
-		  isPlaying = true;
-		  isPaused = false;
-		  if (playOverlay) playOverlay.classList.add('hidden');
-		  if (phoneContainer) phoneContainer.classList.add('floating');
-		  if (demoBtn) demoBtn.style.display = 'none';
-		  if (gameVideo) gameVideo.play();
-		}
+      function handlePlayDemo() {
+        isPlaying = true;
+        isPaused = false;
+        if (playOverlay) playOverlay.classList.add('hidden');
+        if (phoneContainer) phoneContainer.classList.add('floating');
+        if (demoBtn) demoBtn.style.display = 'none';
+        if (gameVideo) gameVideo.play();
+      }
 
-		function handleVideoClick() {
-		  if (!isPlaying) return;
+      function handleVideoClick() {
+        if (!isPlaying) return;
 
-		  if (isPaused) {
-			if (gameVideo) gameVideo.play();
-			isPaused = false;
-			if (pauseTimeout) {
-			  clearTimeout(pauseTimeout);
-			  pauseTimeout = null;
-			}
-		  } else {
-			if (gameVideo) gameVideo.pause();
-			isPaused = true;
-			pauseTimeout = setTimeout(() => {
-			  showCover();
-			}, 15000);
-		  }
-		}
+        if (isPaused) {
+          if (gameVideo) gameVideo.play();
+          isPaused = false;
+          if (pauseTimeout) {
+            clearTimeout(pauseTimeout);
+            pauseTimeout = null;
+          }
+        } else {
+          if (gameVideo) gameVideo.pause();
+          isPaused = true;
+          pauseTimeout = setTimeout(() => {
+            showCover();
+          }, 15000);
+        }
+      }
 
-		if (gameVideo) gameVideo.addEventListener('ended', showCover);
-		if (demoBtn) demoBtn.addEventListener('click', handlePlayDemo);
-		if (playOverlay) playOverlay.addEventListener('click', () => {
-		  if (!isPlaying) handlePlayDemo();
-		});
-		if (gameVideo) gameVideo.addEventListener('click', handleVideoClick);
-	</script>
-	<script>
-		document.addEventListener('DOMContentLoaded', () => {
-				window.sectionManager.register('section-parasite-hunter', 
-					() => { if (window.parasiteAnim) window.parasiteAnim.play(); }, 
-					() => { if (window.parasiteAnim) window.parasiteAnim.pause(); }
-				);
+      if (gameVideo) gameVideo.addEventListener('ended', showCover);
+      if (demoBtn) demoBtn.addEventListener('click', handlePlayDemo);
+      if (playOverlay)
+        playOverlay.addEventListener('click', () => {
+          if (!isPlaying) handlePlayDemo();
+        });
+      if (gameVideo) gameVideo.addEventListener('click', handleVideoClick);
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        window.sectionManager.register(
+          'section-parasite-hunter',
+          () => {
+            if (window.parasiteAnim) window.parasiteAnim.play();
+          },
+          () => {
+            if (window.parasiteAnim) window.parasiteAnim.pause();
+          }
+        );
 
-				const bootstrap = setInterval(() => {
-					if (window.parasiteAnim) {
-						window.parasiteAnim.play();
-						clearInterval(bootstrap);
-					}
-				}, 100);
-		});
-	</script>
-</body>
+        const bootstrap = setInterval(() => {
+          if (window.parasiteAnim) {
+            window.parasiteAnim.play();
+            clearInterval(bootstrap);
+          }
+        }, 100);
+      });
+    </script>
+  </body>
 </html>

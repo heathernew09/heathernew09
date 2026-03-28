@@ -1,217 +1,296 @@
-    <!-- Basic styles for the partial container -->
-    <style>
-        /* Tip: Scope your styles using a unique ID for this partial 
+<!-- Basic styles for the partial container -->
+<style>
+  /* Tip: Scope your styles using a unique ID for this partial 
            to avoid conflicts when included on other pages.
            Example: #my-new-partial .content { ... }
         */
-        #new-partial-container {
-            position: relative;
-            width: 100%;
-            min-height: 400px;
-            background: #111;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
+  #new-partial-container {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    background: #111;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 
-        #new-partial-container img {
-            max-width: 200px;
-            margin-bottom: 20px;
-            border: 2px solid #BFFF00;
-        }
+  #new-partial-container img {
+    max-width: 200px;
+    margin-bottom: 20px;
+    border: 2px solid #bfff00;
+  }
 
-        #new-partial-container a {
-            color: #BFFF00;
-            margin: 0 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        #new-partial-container a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  #new-partial-container a {
+    color: #bfff00;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  #new-partial-container a:hover {
+    text-decoration: underline;
+  }
+</style>
 
 <!-- PARTIAL CONTENT START -->
 <div id="new-partial-container">
-	<div class="font-info">
-        <h2>Manrope Typography System</h2>
-        <p class="lead">A clean, modern geometric sans-serif with excellent readability and subtle personality.</p>
-        
-        <div class="spec-grid">
-            <div class="spec-item">
-                <div class="spec-label">Font Family</div>
-                <div class="spec-value">Manrope</div>
-            </div>
-            <div class="spec-item">
-                <div class="spec-label">Base Size</div>
-                <div class="spec-value">18px</div>
-            </div>
-            <div class="spec-item">
-                <div class="spec-label">Scale Ratio</div>
-                <div class="spec-value">1.25 (Major Third)</div>
-            </div>
-            <div class="spec-item">
-                <div class="spec-label">Weights Used</div>
-                <div class="spec-value">400, 600, 700, 800</div>
-            </div>
-        </div>
-        
-        <div class="a11y-info">
-            <strong>Accessibility:</strong> All text meets WCAG AA standards for contrast. Base size of 18px ensures comfortable reading. Generous line-height (1.7) improves readability for users with dyslexia and cognitive differences.
-        </div>
-    </div>
-    
-    <div class="sample-section">
-        <h1>The quick brown fox jumps over the lazy dog</h1>
-        <p class="lead">H1 - 3.815rem (68.67px) / Weight: 800 / Line-height: 1.2 / Letter-spacing: -0.02em</p>
-        <p>Used for page titles and primary hero text. The extra-bold weight and tight letter-spacing create strong impact while maintaining geometric clarity.</p>
-    </div>
-    
-    <div class="sample-section">
-        <h2>Typography brings meaning to content</h2>
-        <p class="lead">H2 - 3.052rem (54.94px) / Weight: 700 / Line-height: 1.2</p>
-        <p>Major section headings that divide your content into digestible chunks. Still commanding presence but with slightly reduced visual weight compared to H1.</p>
-    </div>
-    
-    <div class="sample-section">
-        <h3>Clean hierarchy guides the reader</h3>
-        <p class="lead">H3 - 2.441rem (43.94px) / Weight: 700 / Line-height: 1.2</p>
-        <p>Subsection headings that maintain the bold voice of your upper hierarchy while creating clear content organization.</p>
-    </div>
-    
-    <div class="sample-section">
-        <h4>Geometric precision with humanist warmth</h4>
-        <p class="lead">H4 - 1.953rem (35.15px) / Weight: 600 / Line-height: 1.5</p>
-        <p>A versatile mid-level heading that works for cards, featured content, or content groupings. The semi-bold weight feels confident without overwhelming.</p>
-    </div>
-    
-    <div class="sample-section">
-        <h5>Details matter in user experience</h5>
-        <p class="lead">H5 - 1.563rem (28.13px) / Weight: 600 / Line-height: 1.5</p>
-        <p>Smaller section headers ideal for sidebar content, callouts, or nested content structures. The medium gray color helps create visual hierarchy.</p>
-    </div>
-    
-    <div class="sample-section">
-        <h6>Accessibility First Design</h6>
-        <p class="lead">H6 - 1.25rem (22.5px) / Weight: 600 / Uppercase / Letter-spacing: 0.05em</p>
-        <p>Your smallest heading level, styled with uppercase and increased letter-spacing to feel distinct from body text while maintaining clear hierarchy.</p>
-    </div>
-    
-    <div class="sample-section">
-        <h2>Body Text &amp; Readability</h2>
-        
-        <p class="lead">This is lead paragraph text (1.25rem) - perfect for introductory content that needs emphasis without being a heading. It draws readers into your content with comfortable sizing and spacing.</p>
-        
-        <p>Regular body text maintains excellent readability at 18px base size with a relaxed 1.7 line-height. This combination creates comfortable reading rhythms and reduces eye strain during longer reading sessions. The slightly larger base size ensures accessibility across devices and accommodates users who may have difficulty reading smaller text.</p>
-        
-        <p>Manrope's <strong>geometric construction</strong> gives it a modern, technical feel that aligns with your role as a Creative Technologist. Yet its <em>subtle humanist touches</em> keep it warm and approachable - not cold or sterile like pure geometric typefaces.</p>
-        
-        <p>The font includes features like proper kerning, multiple weights (we're using 400, 600, 700, and 800), and excellent unicode support. It's optimized for screen display while maintaining a distinct personality. <a href="#">Links maintain clear affordance</a> with color, underline, and adequate click/tap targets.</p>
-        
-        <p class="small">Small text (0.875rem / 14px) for captions, metadata, or supplementary information. Still readable but visually subordinate to main content.</p>
-    </div>
-    
-    <div class="sample-section">
-        <h2>Sample Content Structure</h2>
-        
-        <h3>Creative Technologist</h3>
-        <p>Twenty years of experience across design, development, and strategy. Building interactive experiences that merge technical precision with creative vision.</p>
-        
-        <h4>Current Focus Areas</h4>
-        <p>Leading ethical AI implementation with focus on IP indemnification and human oversight. Creating interactive experiences for healthcare and pharma clients including Abbott, Supernus, Elanco, and T-Mobile.</p>
-        
-        <h5>Technical Expertise</h5>
-        <p>Python automation, web development, WordPress, THREE.js, interactive design systems, and sophisticated section management for complex portfolio projects.</p>
-        
-        <h6>Studio Operations</h6>
-        <p>Managing creative technology workflows, building automation systems, and fostering innovation through the AI Garage initiative.</p>
-    </div>
-    
-    <div class="sample-section">
-        <h2>Why Manrope?</h2>
-        
-        <h4>Not Overused</h4>
-        <p>While clean and professional like Helvetica Neue, Manrope isn't ubiquitous. It gives your site a fresh, contemporary feel without following trends.</p>
-        
-        <h4>Excellent Variable Weights</h4>
-        <p>The font family offers weights from 200 to 800, giving you flexibility for emphasis and hierarchy without font switching.</p>
-        
-        <h4>Screen-Optimized</h4>
-        <p>Manrope was designed for digital interfaces, with careful attention to rendering at various sizes and pixel densities.</p>
-        
-        <h4>Geometric with Soul</h4>
-        <p>It bridges the gap between pure geometric typefaces (like Futura) and humanist sans-serifs, giving you the best of both worlds - clean lines with subtle organic warmth.</p>
-    </div>
-    
-    <div class="sample-section">
-        <h2>Next Steps</h2>
-        <p>This is just one option! If you'd like to explore:</p>
-        <ul style="margin: 1rem 0 1rem 1.5rem; line-height: 1.7;">
-            <li>Different font families with more character or contrast</li>
-            <li>Pairing headline fonts with different body fonts</li>
-            <li>Adjusting the typographic scale or weights</li>
-            <li>Alternative color treatments for hierarchy</li>
-        </ul>
-        <p>Let me know what resonates and what you'd like to adjust!</p>
+  <div class="font-info">
+    <h2>Manrope Typography System</h2>
+    <p class="lead">
+      A clean, modern geometric sans-serif with excellent readability and subtle personality.
+    </p>
+
+    <div class="spec-grid">
+      <div class="spec-item">
+        <div class="spec-label">Font Family</div>
+        <div class="spec-value">Manrope</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Base Size</div>
+        <div class="spec-value">18px</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Scale Ratio</div>
+        <div class="spec-value">1.25 (Major Third)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Weights Used</div>
+        <div class="spec-value">400, 600, 700, 800</div>
+      </div>
     </div>
 
+    <div class="a11y-info">
+      <strong>Accessibility:</strong> All text meets WCAG AA standards for contrast. Base size of
+      18px ensures comfortable reading. Generous line-height (1.7) improves readability for users
+      with dyslexia and cognitive differences.
+    </div>
+  </div>
+
+  <div class="sample-section">
+    <h1>The quick brown fox jumps over the lazy dog</h1>
+    <p class="lead">
+      H1 - 3.815rem (68.67px) / Weight: 800 / Line-height: 1.2 / Letter-spacing: -0.02em
+    </p>
+    <p>
+      Used for page titles and primary hero text. The extra-bold weight and tight letter-spacing
+      create strong impact while maintaining geometric clarity.
+    </p>
+  </div>
+
+  <div class="sample-section">
+    <h2>Typography brings meaning to content</h2>
+    <p class="lead">H2 - 3.052rem (54.94px) / Weight: 700 / Line-height: 1.2</p>
+    <p>
+      Major section headings that divide your content into digestible chunks. Still commanding
+      presence but with slightly reduced visual weight compared to H1.
+    </p>
+  </div>
+
+  <div class="sample-section">
+    <h3>Clean hierarchy guides the reader</h3>
+    <p class="lead">H3 - 2.441rem (43.94px) / Weight: 700 / Line-height: 1.2</p>
+    <p>
+      Subsection headings that maintain the bold voice of your upper hierarchy while creating clear
+      content organization.
+    </p>
+  </div>
+
+  <div class="sample-section">
+    <h4>Geometric precision with humanist warmth</h4>
+    <p class="lead">H4 - 1.953rem (35.15px) / Weight: 600 / Line-height: 1.5</p>
+    <p>
+      A versatile mid-level heading that works for cards, featured content, or content groupings.
+      The semi-bold weight feels confident without overwhelming.
+    </p>
+  </div>
+
+  <div class="sample-section">
+    <h5>Details matter in user experience</h5>
+    <p class="lead">H5 - 1.563rem (28.13px) / Weight: 600 / Line-height: 1.5</p>
+    <p>
+      Smaller section headers ideal for sidebar content, callouts, or nested content structures. The
+      medium gray color helps create visual hierarchy.
+    </p>
+  </div>
+
+  <div class="sample-section">
+    <h6>Accessibility First Design</h6>
+    <p class="lead">H6 - 1.25rem (22.5px) / Weight: 600 / Uppercase / Letter-spacing: 0.05em</p>
+    <p>
+      Your smallest heading level, styled with uppercase and increased letter-spacing to feel
+      distinct from body text while maintaining clear hierarchy.
+    </p>
+  </div>
+
+  <div class="sample-section">
+    <h2>Body Text &amp; Readability</h2>
+
+    <p class="lead">
+      This is lead paragraph text (1.25rem) - perfect for introductory content that needs emphasis
+      without being a heading. It draws readers into your content with comfortable sizing and
+      spacing.
+    </p>
+
+    <p>
+      Regular body text maintains excellent readability at 18px base size with a relaxed 1.7
+      line-height. This combination creates comfortable reading rhythms and reduces eye strain
+      during longer reading sessions. The slightly larger base size ensures accessibility across
+      devices and accommodates users who may have difficulty reading smaller text.
+    </p>
+
+    <p>
+      Manrope's <strong>geometric construction</strong> gives it a modern, technical feel that
+      aligns with your role as a Creative Technologist. Yet its
+      <em>subtle humanist touches</em> keep it warm and approachable - not cold or sterile like pure
+      geometric typefaces.
+    </p>
+
+    <p>
+      The font includes features like proper kerning, multiple weights (we're using 400, 600, 700,
+      and 800), and excellent unicode support. It's optimized for screen display while maintaining a
+      distinct personality. <a href="#">Links maintain clear affordance</a> with color, underline,
+      and adequate click/tap targets.
+    </p>
+
+    <p class="small">
+      Small text (0.875rem / 14px) for captions, metadata, or supplementary information. Still
+      readable but visually subordinate to main content.
+    </p>
+  </div>
+
+  <div class="sample-section">
+    <h2>Sample Content Structure</h2>
+
+    <h3>Creative Technologist</h3>
+    <p>
+      Twenty years of experience across design, development, and strategy. Building interactive
+      experiences that merge technical precision with creative vision.
+    </p>
+
+    <h4>Current Focus Areas</h4>
+    <p>
+      Leading ethical AI implementation with focus on IP indemnification and human oversight.
+      Creating interactive experiences for healthcare and pharma clients including Abbott, Supernus,
+      Elanco, and T-Mobile.
+    </p>
+
+    <h5>Technical Expertise</h5>
+    <p>
+      Python automation, web development, WordPress, THREE.js, interactive design systems, and
+      sophisticated section management for complex portfolio projects.
+    </p>
+
+    <h6>Studio Operations</h6>
+    <p>
+      Managing creative technology workflows, building automation systems, and fostering innovation
+      through the AI Garage initiative.
+    </p>
+  </div>
+
+  <div class="sample-section">
+    <h2>Why Manrope?</h2>
+
+    <h4>Not Overused</h4>
+    <p>
+      While clean and professional like Helvetica Neue, Manrope isn't ubiquitous. It gives your site
+      a fresh, contemporary feel without following trends.
+    </p>
+
+    <h4>Excellent Variable Weights</h4>
+    <p>
+      The font family offers weights from 200 to 800, giving you flexibility for emphasis and
+      hierarchy without font switching.
+    </p>
+
+    <h4>Screen-Optimized</h4>
+    <p>
+      Manrope was designed for digital interfaces, with careful attention to rendering at various
+      sizes and pixel densities.
+    </p>
+
+    <h4>Geometric with Soul</h4>
+    <p>
+      It bridges the gap between pure geometric typefaces (like Futura) and humanist sans-serifs,
+      giving you the best of both worlds - clean lines with subtle organic warmth.
+    </p>
+  </div>
+
+  <div class="sample-section">
+    <h2>Next Steps</h2>
+    <p>This is just one option! If you'd like to explore:</p>
+    <ul style="margin: 1rem 0 1rem 1.5rem; line-height: 1.7">
+      <li>Different font families with more character or contrast</li>
+      <li>Pairing headline fonts with different body fonts</li>
+      <li>Adjusting the typographic scale or weights</li>
+      <li>Alternative color treatments for hierarchy</li>
+    </ul>
+    <p>Let me know what resonates and what you'd like to adjust!</p>
+  </div>
 </div>
 
 <!-- LIBRARIES (Optional - Uncomment if needed) -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script> -->
 
 <script>
-(function() {
+  (function () {
     // --- SMART PATH CONFIGURATION ---
     // This logic automatically detects where the file is running and sets the correct
     // relative path to your root folder.
-    
-    let pathPrefix = './'; 
+
+    let pathPrefix = './';
     const pathname = window.location.pathname;
 
     // SIMPLIFIED LOGIC:
     // Only go up a level if we are explicitly in a known subfolder.
     // This prevents breaking other root-level HTML files (like about.html).
     if (pathname.includes('/pages/') || pathname.includes('/partials/')) {
-        pathPrefix = '../';
+      pathPrefix = '../';
     } else {
-        pathPrefix = './';
+      pathPrefix = './';
     }
 
     console.log(`[Partial] Path prefix set to: "${pathPrefix}"`);
 
     // --- AUTOMATIC LINK FIXER ---
     const container = document.getElementById('new-partial-container');
-    
-    if (container) {
-        // Fix all Images
-        const images = container.querySelectorAll('img');
-        images.forEach(img => {
-            const rawSrc = img.getAttribute('src');
-            // Only fix relative paths that don't start with http, //, or data:
-            if (rawSrc && !rawSrc.startsWith('http') && !rawSrc.startsWith('//') && !rawSrc.startsWith('data:')) {
-                // Remove potential leading slash or ./ to avoid double prefixes
-                const cleanSrc = rawSrc.replace(/^(\.\/|\/)/, ''); 
-                img.src = pathPrefix + cleanSrc;
-            }
-        });
 
-        // Fix all Links
-        const links = container.querySelectorAll('a');
-        links.forEach(link => {
-            const rawHref = link.getAttribute('href');
-            if (rawHref && !rawHref.startsWith('http') && !rawHref.startsWith('//') && !rawHref.startsWith('#')) {
-                const cleanHref = rawHref.replace(/^(\.\/|\/)/, '');
-                link.href = pathPrefix + cleanHref;
-            }
-        });
+    if (container) {
+      // Fix all Images
+      const images = container.querySelectorAll('img');
+      images.forEach((img) => {
+        const rawSrc = img.getAttribute('src');
+        // Only fix relative paths that don't start with http, //, or data:
+        if (
+          rawSrc &&
+          !rawSrc.startsWith('http') &&
+          !rawSrc.startsWith('//') &&
+          !rawSrc.startsWith('data:')
+        ) {
+          // Remove potential leading slash or ./ to avoid double prefixes
+          const cleanSrc = rawSrc.replace(/^(\.\/|\/)/, '');
+          img.src = pathPrefix + cleanSrc;
+        }
+      });
+
+      // Fix all Links
+      const links = container.querySelectorAll('a');
+      links.forEach((link) => {
+        const rawHref = link.getAttribute('href');
+        if (
+          rawHref &&
+          !rawHref.startsWith('http') &&
+          !rawHref.startsWith('//') &&
+          !rawHref.startsWith('#')
+        ) {
+          const cleanHref = rawHref.replace(/^(\.\/|\/)/, '');
+          link.href = pathPrefix + cleanHref;
+        }
+      });
     }
 
     // --- YOUR CUSTOM PARTIAL LOGIC BELOW ---
     // (e.g. Three.js initialization)
-
-})();
+  })();
 </script>

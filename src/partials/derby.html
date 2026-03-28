@@ -1,570 +1,598 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="cache-control" content="no-store,max-age=0" />
     <meta name="robots" content="noindex" />
     <title>Digital UX Designer Heather New</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-	<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-	<link rel="shortcut icon" href="/favicon/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-	<meta name="apple-mobile-web-app-title" content="HeatherNew" />
-	<link rel="manifest" href="/favicon/site.webmanifest" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="stylesheet" href="/css/global.css" />
-</head>
-    <body>
-	<style>@import url(https://fonts.googleapis.com/css?family=Lato:300,100,400);
+  </head>
+  <body>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Lato:300,100,400);
 
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  box-sizing: border-box;
-  position: relative;
-  list-style-type: none
-}
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+        position: relative;
+        list-style-type: none;
+      }
 
-a {
-  color: inherit;
-  text-decoration: none
-}
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-a.link {
-  color: #C4290D
-}
+      a.link {
+        color: #c4290d;
+      }
 
-html,
-body {
-  min-height: 100%
-}
+      html,
+      body {
+        min-height: 100%;
+      }
 
-body {
-  background: #eee url('https://subtlepatterns.com/patterns/pw_pattern.png');
-  font: 300 20px/1.5 "Lato", sans-serif;
-  color: #333
-}
+      body {
+        background: #eee url('https://subtlepatterns.com/patterns/pw_pattern.png');
+        font:
+          300 20px/1.5 'Lato',
+          sans-serif;
+        color: #333;
+      }
 
-header {
-  background-color: white;
-  padding: 0 30px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  line-height: 2em
-}
+      header {
+        background-color: white;
+        padding: 0 30px;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        line-height: 2em;
+      }
 
-.demo-wrapper {
-  padding: 30px
-}
+      .demo-wrapper {
+        padding: 30px;
+      }
 
-.portfolio-items {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  margin-bottom: 30px;
-  position: relative;
-  height: 740px
-}
+      .portfolio-items {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        margin-bottom: 30px;
+        position: relative;
+        height: 740px;
+      }
 
-.portfolio-items > li {
-  display: inline-block;
-  vertical-align: top
-}
+      .portfolio-items > li {
+        display: inline-block;
+        vertical-align: top;
+      }
 
-.item {
-  width: 324px;
-  height: 500px;
-  margin: 150px 20px 20px 0;
-  border-radius: 2px;
-  background-color: white;
-  font-size: 14px;
-  opacity: 0;
-  position: relative;
-  top: -300px;
-  box-shadow: 0px 10px 10px -5px rgba(0,0,0,0.5);
-  -webkit-transition: all .3s ease, opacity 2s ease,  top 1s ease;
-  -o-transition: all .3s ease, opacity 2s ease,  top 1s ease;
-  transition: all .3s ease, opacity 2s ease,  top 1s ease
-}
+      .item {
+        width: 324px;
+        height: 500px;
+        margin: 150px 20px 20px 0;
+        border-radius: 2px;
+        background-color: white;
+        font-size: 14px;
+        opacity: 0;
+        position: relative;
+        top: -300px;
+        box-shadow: 0px 10px 10px -5px rgba(0, 0, 0, 0.5);
+        -webkit-transition:
+          all 0.3s ease,
+          opacity 2s ease,
+          top 1s ease;
+        -o-transition:
+          all 0.3s ease,
+          opacity 2s ease,
+          top 1s ease;
+        transition:
+          all 0.3s ease,
+          opacity 2s ease,
+          top 1s ease;
+      }
 
-.item:nth-child(even) {
-  margin-top: 100px
-}
+      .item:nth-child(even) {
+        margin-top: 100px;
+      }
 
-.item:hover {
-  height: 565px;
-  /*padding: 15px;
+      .item:hover {
+        height: 565px;
+        /*padding: 15px;
   -webkit-transform: translateY(-68px);
   -ms-transform: translateY(-68px);
   -o-transform: translateY(-68px);
   transform: translateY(-68px)*/
-}
-
-.item:hover .date {
-  -webkit-transform: translate3d(0, 61px, 0);
-  -ms-transform: translate3d(0, 61px, 0);
-  -o-transform: translate3d(0, 61px, 0);
-  transform: translate3d(0, 61px, 0)
-}
-
-.item:hover figcaption {
-  -webkit-animation: show .25s ease-in .120s forwards;
-  -o-animation: show .25s ease-in .120s forwards;
-  animation: show .25s ease-in .120s forwards
-}
-
-.item:hover p:nth-of-type(1) span {
-  -webkit-animation: slideOut .25s ease-out .15s forwards;
-  -o-animation: slideOut .25s ease-out .15s forwards;
-  animation: slideOut .25s ease-out .15s forwards
-}
-
-.item:hover p:nth-of-type(2) span {
-  -webkit-animation: slideOut .2s  ease-out .3s forwards;
-  -o-animation: slideOut .2s  ease-out .3s forwards;
-  animation: slideOut .2s  ease-out .3s forwards
-}
-
-.item:hover .view {
-  height: 500px
-}
-
-.falldown {
-  top: 0;
-  opacity: 1;
-}
-
-figure {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.view {
-  overflow: hidden;
-  width: 100%;
-  height: 500px;
-  position: relative
-}
-
-.view img {
-  width: 324px;
-  height: 500px;
-  -webkit-transition: width .3s ease;
-  -o-transition: width .3s ease;
-  transition: width .3s ease;
-  position: absolute;
-
-}
-
-figcaption {
-  width: 100%;
-  padding: 0;
-  position: absolute;
-  overflow: hidden;
-  opacity: 0
-}
-
-figcaption p {
-  line-height: 25px !important;
-  font: bold 12px/18px "Arial", sans-serif;
-  text-transform: uppercase;
-  padding: 0 10px;
-  margin: 5px 0;
-  width: 100%;
-  background-color: #f0f0f0;
-  color: #333
-}
-
-figcaption span {
-  left: -100%;
-  opacity: 0
-}
-
-figcaption a {
-  color: #CC320F
-}
-
-.date {
-  z-index: 1;
-  width: 50px;
-  height: 30px;
-  line-height: 30px;
-  color: #fff;
-  font-weight: bold;
-  text-align: center;
-  border-radius: 1px;
-  background-color: #CC320F;
-  position: absolute;
-  bottom: 30px;
-  left: 15px;
-  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
-  -o-transition: -o-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
-  transition: -webkit-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
-  transition: -ms-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
-  transition: -o-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
-  transition: transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92)
-}
-
-@keyframes slideOut {
-  0% {
-    left: -100%;
-    opacity: 0
-  }
-
-  95% {
-    left: 0;
-    opacity: 0.2
-  }
-
-  100% {
-    opacity: 1;
-    left: 0
-  }
-}
-
-@keyframes show {
-  to {
-    opacity: 1
-  }
-}
-
-::-webkit-scrollbar {
-  width: 7px;
-  height: 7px;
-  cursor: pointer
-}
-
-::-webkit-scrollbar-track {
-  background-color: #ddd;
-  border-radius: 10px
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #C4290D
-}
-
-@-webkit-keyframes slideOut {
-  0% {
-    left: -100%;
-    opacity: 0
-  }
-
-  95% {
-    left: 0;
-    opacity: 0.2
-  }
-
-  100% {
-    opacity: 1;
-    left: 0
-  }
-}
-
-@-o-keyframes slideOut {
-  0% {
-    left: -100%;
-    opacity: 0
-  }
-
-  95% {
-    left: 0;
-    opacity: 0.2
-  }
-
-  100% {
-    opacity: 1;
-    left: 0
-  }
-}
-
-@-webkit-keyframes show {
-  to {
-    opacity: 1
-  }
-}
-
-@-o-keyframes show {
-  to {
-    opacity: 1
-  }
-}
-</style>
-		<div class="demo-wrapper">
-  
-  <h1>Roller Derby Poster Collection</h1>
-
-    <ul class="portfolio-items">
-    <li class="item">
-      <figure>
-        <div class="view">
-          <img src="https://heathernew.com/images/06_ictrg_rage_10_years.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: Rachel Rage</span></p>
-          <p><span>7 Year Itch</span></p>
-        </figcaption>
-      </figure>
-    </li>
-
-    <li class="item">
-      <figure>
-        <div class="view">
-         <img src="https://heathernew.com/images/07_ictrg_scotty_rocky.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: X-Mental</span></p>
-          <p><span>Rocky</span></p>
-        </figcaption>
-      </figure>
-    </li>
-
-    <li class="item">
-      <figure>
-        <div class="view">
-          <img src="https://heathernew.com/images/08_ictrd_saigon_kiss_pulpfiction.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: Saigon Kiss</span></p>
-          <p><span>Pulp Fiction</span></p>
-        </figcaption>
-      </figure>
-    </li>
-
-    <li class="item">
-      <figure>
-        <div class="view">
-          <img src="https://heathernew.com/images/09_ictrg_nuke_king_kong.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: Nuclear Bomb</span></p>
-          <p><span>King Kong</span></p>
-        </figcaption>
-      </figure>
-    </li>
-
-    <li class="item">
-      <figure>
-        <div class="view">
-          <img src="https://heathernew.com/images/10_ictrg_starwars_group.png" />
-        </div>
-        <figcaption>
-          <p><span>Jackie O'Jaw, Pistol Whip, Tom &amp; Scary, Pooter, Diamond, Heat, Chewy</span></p>
-          <p><span>Star Wars</span></p>
-        </figcaption>
-      </figure>
-    </li>
-	<li class="item">
-      <figure>
-        <div class="view">
-         <img src="https://heathernew.com/images/13_chewy-poster.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: Chewblocka</span></p>
-          <p><span>Action</span></p>
-        </figcaption>
-      </figure>
-    </li>
-	<li class="item">
-      <figure>
-        <div class="view">
-         <img src="https://heathernew.com/images/14_heat-poster.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: Heat</span></p>
-          <p><span>Action</span></p>
-        </figcaption>
-      </figure>
-    </li>
-    <li class="item">
-      <figure>
-        <div class="view">
-         <img src="https://heathernew.com/images/12_stormie-poster.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: Stormie Weather</span></p>
-          <p><span>Action</span></p>
-        </figcaption>
-      </figure>
-    </li>
-	<li class="item">
-      <figure>
-        <div class="view">
-         <img src="https://heathernew.com/images/11_rogue-poster.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: Rogue</span></p>
-          <p><span>Action Color Block</span></p>
-        </figcaption>
-      </figure>
-    </li>
-		
-	<li class="item">
-      <figure>
-        <div class="view">
-         <img src="https://heathernew.com/images/01_ictrg_dogpile_march21.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: Dogpile</span></p>
-          <p><span>Halftone Retro Feel - preseason</span></p>
-        </figcaption>
-      </figure>
-    </li>
-    
-    <li class="item">
-      <figure>
-        <div class="view">
-          <img src="https://heathernew.com/images/02_ictrg_slice_april25.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skater: Vanilla Slice</span></p>
-          <p><span>Retro Halftone poster </span></p>
-        </figcaption>
-      </figure>
-    </li>
-
-    <li class="item">
-      <figure>
-        <div class="view">
-          <img src="https://heathernew.com/images/03_ictrg-jugs_may30.png" />
-        </div>
-        <figcaption>
-          <p><span><a href="http://www.vladstudio.com/wallpaper/?love_knows_no_boundaries">Featured Skater: Subjugator (Jugs)</a></span></p>
-          <p><span>Monotone layer poster</span></p>
-        </figcaption>
-      </figure>
-      
-    </li>
-
-    <li class="item">
-      <figure>
-        <div class="view">
-          <img src="https://heathernew.com/images/05_ictrg-chewy_scotty_aug8.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skaters: Chewblocka &amp; Scotty</span></p>
-          <p><span>Brand exploration</span></p>
-        </figcaption>
-      </figure>
-    </li>
-   
-    <li class="item">
-      <figure>
-        <div class="view">
-          <img src="https://heathernew.com/images/04_ictrg_rage_jugs_sept19.png" />
-        </div>
-        <figcaption>
-          <p><span>Featured Skaters: Rage &amp; Subjugator (Jugs)</span></p>
-          <p><span>Finding the Wichita Flag</span></p>
-        </figcaption>
-      </figure>
-    </li>
-
-  </ul>
-  </div>
-    <script>// Wait for the document to be fully loaded before running the script
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // Select the main scrolling container
-  const list = document.querySelector('.portfolio-items');
-
-  // --- 1. Animate items into view as they become visible ---
-  const showVisibleItems = () => {
-    const containerWidth = list.clientWidth;
-    const containerScrollLeft = list.scrollLeft;
-
-    // Find all items that haven't been animated yet
-    const itemsToCheck = list.querySelectorAll('.item:not(.falldown)');
-    
-    itemsToCheck.forEach(item => {
-      const itemLeft = item.offsetLeft;
-      const itemWidth = item.offsetWidth;
-
-      // Check if the item is inside the visible area of the container
-      const isVisible = (itemLeft + itemWidth) > containerScrollLeft && 
-                        itemLeft < (containerScrollLeft + containerWidth);
-
-      if (isVisible) {
-        item.classList.add('falldown');
       }
-    });
-  };
 
-  // Initially check for visible items, then check again on every scroll event
-  showVisibleItems();
-  list.addEventListener('scroll', showVisibleItems);
+      .item:hover .date {
+        -webkit-transform: translate3d(0, 61px, 0);
+        -ms-transform: translate3d(0, 61px, 0);
+        -o-transform: translate3d(0, 61px, 0);
+        transform: translate3d(0, 61px, 0);
+      }
 
-  // --- 2. Image pan effect on mouse move ---
-  
-  // Use a WeakMap to cache data for each image without causing memory leaks
-  const imageCache = new WeakMap();
+      .item:hover figcaption {
+        -webkit-animation: show 0.25s ease-in 0.12s forwards;
+        -o-animation: show 0.25s ease-in 0.12s forwards;
+        animation: show 0.25s ease-in 0.12s forwards;
+      }
 
-  list.addEventListener('mousemove', (event) => {
-    // Use event delegation: only act if the mouse is over an image
-    const img = event.target.closest('img');
-    if (!img) return;
+      .item:hover p:nth-of-type(1) span {
+        -webkit-animation: slideOut 0.25s ease-out 0.15s forwards;
+        -o-animation: slideOut 0.25s ease-out 0.15s forwards;
+        animation: slideOut 0.25s ease-out 0.15s forwards;
+      }
 
-    let data = imageCache.get(img);
+      .item:hover p:nth-of-type(2) span {
+        -webkit-animation: slideOut 0.2s ease-out 0.3s forwards;
+        -o-animation: slideOut 0.2s ease-out 0.3s forwards;
+        animation: slideOut 0.2s ease-out 0.3s forwards;
+      }
 
-    // If this is the first time hovering, cache the necessary values
-    if (!data) {
-      const parent = img.closest('.view');
-      if (!parent) return; // Exit if the parent isn't found
-      
-      const computedStyle = window.getComputedStyle(img);
-      const top = parseInt(computedStyle.top, 10) || 0;
-      const left = parseInt(computedStyle.left, 10) || 0;
+      .item:hover .view {
+        height: 500px;
+      }
 
-      data = {
-        parent: parent,
-        // The amount the image can move, based on its negative offset
-        marginLeft: -left,
-        marginTop: -top,
-      };
-      imageCache.set(img, data);
-    }
-    
-    // Get the position of the parent container relative to the viewport
-    const parentRect = data.parent.getBoundingClientRect();
-    const originX = parentRect.left + window.scrollX;
-    const originY = parentRect.top + window.scrollY;
+      .falldown {
+        top: 0;
+        opacity: 1;
+      }
 
-    // Get the mouse position relative to the whole page
-    const posX = event.pageX;
-    const posY = event.pageY;
-    
-    // Only perform the calculation if there's room to pan
-    if (data.marginLeft > 0 && data.marginTop > 0) {
-      const moveX = -(posX - originX) / data.marginLeft;
-      const moveY = -(posY - originY) / data.marginTop;
-      
-      img.style.left = `${moveX}px`;
-      img.style.top = `${moveY}px`;
-    }
-  });
+      figure {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
 
-  // --- 3. Reset image position when the mouse leaves an item ---
-  list.addEventListener('mouseleave', () => {
-     const allImages = list.querySelectorAll('.item img');
-     allImages.forEach(img => {
-        img.style.left = '0';
-        img.style.top = '0';
-     });
-  }, true);
+      .view {
+        overflow: hidden;
+        width: 100%;
+        height: 500px;
+        position: relative;
+      }
 
+      .view img {
+        width: 324px;
+        height: 500px;
+        -webkit-transition: width 0.3s ease;
+        -o-transition: width 0.3s ease;
+        transition: width 0.3s ease;
+        position: absolute;
+      }
 
-  // --- 4. Horizontal scroll with the mouse wheel ---
-  list.addEventListener('wheel', (event) => {
-    // Prevent the default vertical page scroll
-    event.preventDefault();
+      figcaption {
+        width: 100%;
+        padding: 0;
+        position: absolute;
+        overflow: hidden;
+        opacity: 0;
+      }
 
-    // Scroll the container horizontally based on the vertical wheel delta
-    list.scrollLeft += event.deltaY;
-  });
-});</script>
-</body>
+      figcaption p {
+        line-height: 25px !important;
+        font:
+          bold 12px/18px 'Arial',
+          sans-serif;
+        text-transform: uppercase;
+        padding: 0 10px;
+        margin: 5px 0;
+        width: 100%;
+        background-color: #f0f0f0;
+        color: #333;
+      }
+
+      figcaption span {
+        left: -100%;
+        opacity: 0;
+      }
+
+      figcaption a {
+        color: #cc320f;
+      }
+
+      .date {
+        z-index: 1;
+        width: 50px;
+        height: 30px;
+        line-height: 30px;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 1px;
+        background-color: #cc320f;
+        position: absolute;
+        bottom: 30px;
+        left: 15px;
+        -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
+        -o-transition: -o-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
+        transition: -webkit-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
+        transition: -ms-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
+        transition: -o-transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
+        transition: transform 0.5s cubic-bezier(0.12, 1.6, 0.91, 0.92);
+      }
+
+      @keyframes slideOut {
+        0% {
+          left: -100%;
+          opacity: 0;
+        }
+
+        95% {
+          left: 0;
+          opacity: 0.2;
+        }
+
+        100% {
+          opacity: 1;
+          left: 0;
+        }
+      }
+
+      @keyframes show {
+        to {
+          opacity: 1;
+        }
+      }
+
+      ::-webkit-scrollbar {
+        width: 7px;
+        height: 7px;
+        cursor: pointer;
+      }
+
+      ::-webkit-scrollbar-track {
+        background-color: #ddd;
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #c4290d;
+      }
+
+      @-webkit-keyframes slideOut {
+        0% {
+          left: -100%;
+          opacity: 0;
+        }
+
+        95% {
+          left: 0;
+          opacity: 0.2;
+        }
+
+        100% {
+          opacity: 1;
+          left: 0;
+        }
+      }
+
+      @-o-keyframes slideOut {
+        0% {
+          left: -100%;
+          opacity: 0;
+        }
+
+        95% {
+          left: 0;
+          opacity: 0.2;
+        }
+
+        100% {
+          opacity: 1;
+          left: 0;
+        }
+      }
+
+      @-webkit-keyframes show {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @-o-keyframes show {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+    <div class="demo-wrapper">
+      <h1>Roller Derby Poster Collection</h1>
+
+      <ul class="portfolio-items">
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/06_ictrg_rage_10_years.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: Rachel Rage</span></p>
+              <p><span>7 Year Itch</span></p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/07_ictrg_scotty_rocky.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: X-Mental</span></p>
+              <p><span>Rocky</span></p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/08_ictrd_saigon_kiss_pulpfiction.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: Saigon Kiss</span></p>
+              <p><span>Pulp Fiction</span></p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/09_ictrg_nuke_king_kong.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: Nuclear Bomb</span></p>
+              <p><span>King Kong</span></p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/10_ictrg_starwars_group.png" />
+            </div>
+            <figcaption>
+              <p>
+                <span
+                  >Jackie O'Jaw, Pistol Whip, Tom &amp; Scary, Pooter, Diamond, Heat, Chewy</span
+                >
+              </p>
+              <p><span>Star Wars</span></p>
+            </figcaption>
+          </figure>
+        </li>
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/13_chewy-poster.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: Chewblocka</span></p>
+              <p><span>Action</span></p>
+            </figcaption>
+          </figure>
+        </li>
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/14_heat-poster.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: Heat</span></p>
+              <p><span>Action</span></p>
+            </figcaption>
+          </figure>
+        </li>
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/12_stormie-poster.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: Stormie Weather</span></p>
+              <p><span>Action</span></p>
+            </figcaption>
+          </figure>
+        </li>
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/11_rogue-poster.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: Rogue</span></p>
+              <p><span>Action Color Block</span></p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/01_ictrg_dogpile_march21.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: Dogpile</span></p>
+              <p><span>Halftone Retro Feel - preseason</span></p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/02_ictrg_slice_april25.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skater: Vanilla Slice</span></p>
+              <p><span>Retro Halftone poster </span></p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/03_ictrg-jugs_may30.png" />
+            </div>
+            <figcaption>
+              <p>
+                <span
+                  ><a href="http://www.vladstudio.com/wallpaper/?love_knows_no_boundaries"
+                    >Featured Skater: Subjugator (Jugs)</a
+                  ></span
+                >
+              </p>
+              <p><span>Monotone layer poster</span></p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/05_ictrg-chewy_scotty_aug8.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skaters: Chewblocka &amp; Scotty</span></p>
+              <p><span>Brand exploration</span></p>
+            </figcaption>
+          </figure>
+        </li>
+
+        <li class="item">
+          <figure>
+            <div class="view">
+              <img src="https://heathernew.com/images/04_ictrg_rage_jugs_sept19.png" />
+            </div>
+            <figcaption>
+              <p><span>Featured Skaters: Rage &amp; Subjugator (Jugs)</span></p>
+              <p><span>Finding the Wichita Flag</span></p>
+            </figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div>
+    <script>
+      // Wait for the document to be fully loaded before running the script
+      document.addEventListener('DOMContentLoaded', () => {
+        // Select the main scrolling container
+        const list = document.querySelector('.portfolio-items');
+
+        // --- 1. Animate items into view as they become visible ---
+        const showVisibleItems = () => {
+          const containerWidth = list.clientWidth;
+          const containerScrollLeft = list.scrollLeft;
+
+          // Find all items that haven't been animated yet
+          const itemsToCheck = list.querySelectorAll('.item:not(.falldown)');
+
+          itemsToCheck.forEach((item) => {
+            const itemLeft = item.offsetLeft;
+            const itemWidth = item.offsetWidth;
+
+            // Check if the item is inside the visible area of the container
+            const isVisible =
+              itemLeft + itemWidth > containerScrollLeft &&
+              itemLeft < containerScrollLeft + containerWidth;
+
+            if (isVisible) {
+              item.classList.add('falldown');
+            }
+          });
+        };
+
+        // Initially check for visible items, then check again on every scroll event
+        showVisibleItems();
+        list.addEventListener('scroll', showVisibleItems);
+
+        // --- 2. Image pan effect on mouse move ---
+
+        // Use a WeakMap to cache data for each image without causing memory leaks
+        const imageCache = new WeakMap();
+
+        list.addEventListener('mousemove', (event) => {
+          // Use event delegation: only act if the mouse is over an image
+          const img = event.target.closest('img');
+          if (!img) return;
+
+          let data = imageCache.get(img);
+
+          // If this is the first time hovering, cache the necessary values
+          if (!data) {
+            const parent = img.closest('.view');
+            if (!parent) return; // Exit if the parent isn't found
+
+            const computedStyle = window.getComputedStyle(img);
+            const top = parseInt(computedStyle.top, 10) || 0;
+            const left = parseInt(computedStyle.left, 10) || 0;
+
+            data = {
+              parent: parent,
+              // The amount the image can move, based on its negative offset
+              marginLeft: -left,
+              marginTop: -top,
+            };
+            imageCache.set(img, data);
+          }
+
+          // Get the position of the parent container relative to the viewport
+          const parentRect = data.parent.getBoundingClientRect();
+          const originX = parentRect.left + window.scrollX;
+          const originY = parentRect.top + window.scrollY;
+
+          // Get the mouse position relative to the whole page
+          const posX = event.pageX;
+          const posY = event.pageY;
+
+          // Only perform the calculation if there's room to pan
+          if (data.marginLeft > 0 && data.marginTop > 0) {
+            const moveX = -(posX - originX) / data.marginLeft;
+            const moveY = -(posY - originY) / data.marginTop;
+
+            img.style.left = `${moveX}px`;
+            img.style.top = `${moveY}px`;
+          }
+        });
+
+        // --- 3. Reset image position when the mouse leaves an item ---
+        list.addEventListener(
+          'mouseleave',
+          () => {
+            const allImages = list.querySelectorAll('.item img');
+            allImages.forEach((img) => {
+              img.style.left = '0';
+              img.style.top = '0';
+            });
+          },
+          true
+        );
+
+        // --- 4. Horizontal scroll with the mouse wheel ---
+        list.addEventListener('wheel', (event) => {
+          // Prevent the default vertical page scroll
+          event.preventDefault();
+
+          // Scroll the container horizontally based on the vertical wheel delta
+          list.scrollLeft += event.deltaY;
+        });
+      });
+    </script>
+  </body>
 </html>

@@ -1,8 +1,8 @@
 // nav.js
 // Injects the global navigation menu into the header and highlights the current page.
 
-document.addEventListener("DOMContentLoaded", () => {
-    const navHTML = `
+document.addEventListener('DOMContentLoaded', () => {
+  const navHTML = `
         <div class="header-content">
             <a href="/" class="logo">
                 <img src="/assets/heather-new-wordmark.svg" alt="Heather New" style="height: 25px; width: auto;" width="150" height="25">
@@ -36,33 +36,33 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     `;
 
-    const header = document.querySelector(".site-header");
-    if (header) {
-        // Only inject if the header is currently empty or contains the old manual nav
-        if (!header.dataset.injected) {
-            header.innerHTML = navHTML;
-            header.dataset.injected = "true";
-        }
+  const header = document.querySelector('.site-header');
+  if (header) {
+    // Only inject if the header is currently empty or contains the old manual nav
+    if (!header.dataset.injected) {
+      header.innerHTML = navHTML;
+      header.dataset.injected = 'true';
     }
+  }
 
-    // Set Active State
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll(".nav-link");
-    
-    navLinks.forEach(link => {
-        if (link.getAttribute("href") === currentPath) {
-            link.classList.add("active");
-        }
+  // Set Active State
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  navLinks.forEach((link) => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('active');
+    }
+  });
+
+  // Re-initialize hamburger menu logic if it exists on the page
+  const navIcon = document.getElementById('nav-block');
+  const overlay = document.getElementById('pages-overlay');
+  if (navIcon && overlay) {
+    navIcon.addEventListener('click', () => {
+      navIcon.classList.toggle('open');
+      overlay.classList.toggle('active');
+      document.body.classList.toggle('nav-open');
     });
-
-    // Re-initialize hamburger menu logic if it exists on the page
-    const navIcon = document.getElementById('nav-block');
-    const overlay = document.getElementById('pages-overlay');
-    if (navIcon && overlay) {
-        navIcon.addEventListener('click', () => {
-            navIcon.classList.toggle('open');
-            overlay.classList.toggle('active');
-            document.body.classList.toggle('nav-open');
-        });
-    }
+  }
 });

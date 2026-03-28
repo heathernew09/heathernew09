@@ -12,16 +12,23 @@
 
 ```html
 <!-- PhotoSwipe CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.css"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css"
+/>
 
 <!-- Gallery Styles -->
-<link rel="stylesheet" href="path/to/gallery-styles.css">
+<link rel="stylesheet" href="path/to/gallery-styles.css" />
 ```
 
 ### 2. Add Gallery HTML
 
 Copy the gallery HTML structure from `photoswipe-gallery.html`:
+
 - Start from `<div class="gallery">` (or include `.gallery-wrapper` for padding/background)
 - End at the closing `</div>` for gallery
 - Add your own images following the pattern
@@ -59,12 +66,12 @@ Copy the initialization script from the HTML file (everything in the last `<scri
 ```html
 <!-- Standard item (1 column × 1 row) -->
 <figure class="gallery-item">
-
-<!-- Portrait item (1 column × 2 rows) -->
-<figure class="gallery-item vertical">
-
-<!-- Landscape item (2 columns × 1 row) -->
-<figure class="gallery-item horizontal">
+  <!-- Portrait item (1 column × 2 rows) -->
+  <figure class="gallery-item vertical">
+    <!-- Landscape item (2 columns × 1 row) -->
+    <figure class="gallery-item horizontal"></figure>
+  </figure>
+</figure>
 ```
 
 ## Responsive Breakpoints
@@ -78,6 +85,7 @@ Copy the initialization script from the HTML file (everything in the last `<scri
 ## Customization Tips
 
 ### Adjust Grid Spacing
+
 ```css
 .gallery {
   gap: 12px; /* Change from 8px */
@@ -85,6 +93,7 @@ Copy the initialization script from the HTML file (everything in the last `<scri
 ```
 
 ### Change Row Heights
+
 ```css
 .gallery {
   grid-auto-rows: 250px; /* Change from 200px */
@@ -92,6 +101,7 @@ Copy the initialization script from the HTML file (everything in the last `<scri
 ```
 
 ### Adjust Max Width
+
 ```css
 .gallery {
   max-width: 1600px; /* Change from 1400px */
@@ -120,19 +130,27 @@ If your template already has padding/background, you can skip `.gallery-wrapper`
 ## Adding New Images
 
 ```html
-<figure class="gallery-item [vertical|horizontal]" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+<figure
+  class="gallery-item [vertical|horizontal]"
+  itemprop="associatedMedia"
+  itemscope
+  itemtype="http://schema.org/ImageObject"
+>
   <a href="path/to/full-size-image.jpg" itemprop="contentUrl" data-size="1920x1080">
-    <img class="lazyload fadein" 
-         src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg'%20viewBox%3D'0%200%201920%201080'%20%2F%3E"
-         data-src="path/to/thumbnail-image.jpg" 
-         itemprop="thumbnail" 
-         alt="Image description">
+    <img
+      class="lazyload fadein"
+      src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http://www.w3.org/2000/svg'%20viewBox%3D'0%200%201920%201080'%20%2F%3E"
+      data-src="path/to/thumbnail-image.jpg"
+      itemprop="thumbnail"
+      alt="Image description"
+    />
   </a>
   <figcaption class="gallery-caption" itemprop="caption description">Your Caption</figcaption>
 </figure>
 ```
 
 Replace:
+
 - `path/to/full-size-image.jpg` - Full resolution image for lightbox
 - `data-size="1920x1080"` - Actual pixel dimensions of full-size image
 - `viewBox='0 0 1920 1080'` - Matches aspect ratio for placeholder

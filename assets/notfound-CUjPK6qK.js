@@ -1,4 +1,263 @@
-import"./site-core-B3OiY5_E.js";/* empty css               */const p={adjectives:["Lethal","Toxic","Savage","Brutal","Iron","Rebel","Vicious","Atomic","Neon","Wicked","Smashing","Fearless","Rogue","Hellish","Ruthless","Fierce","Psycho","Bloody","Radical"],nouns:["Bruiser","Crusher","Destroyer","Menace","Valkyrie","Banshee","Viper","Phantom","Riot","Hurricane","Annihilator","Havoc","Threat","Punisher","Assassin","Fury","Monster","Machine"],derbyTerms:["Jammer","Blocker","Pivot","Skater","Roller","Whip","Track","Quad","Derby","Wheels","Apex"],verbs:["Smash","Whip","Block","Roll","Crush","Strike","Bash"],alphabetNames:{A:["Alice","Athena","Artemis","Abby","Aria","Axel","Amethyst"],B:["Betty","Blaze","Bella","Bonnie","Bex","Buffy","Bellatrix"],C:["Cleo","Carmine","Cherry","Chloe","Cora","Crimson","Calamity"],D:["Daisy","Dixie","Dakota","Delilah","Darcy","Dagger"],E:["Elektra","Eve","Elvira","Eris","Eden","Echo"],F:["Fiona","Foxy","Flora","Faye","Frankie","Fury"],G:["Gia","Greta","Gwen","Goldie","Galaxy","Gorgon"],H:["Harley","Hera","Hazel","Helga","Hilda","Havoc"],I:["Ivy","Iris","Isolde","Ignacia","Ina","Iron"],J:["Jett","Jinx","Jade","Jezebel","Jojo","Justice"],K:["Kat","Karma","Kiki","Kira","Killer","Khaos"],L:["Lola","Luna","Lilith","Lexi","Lulu","Lethal"],M:["Moxie","Maeve","Macy","Medusa","Margot","Malice"],N:["Nova","Nyx","Nikki","Nellie","Nina","Nebula"],O:["Onyx","Olga","Olivia","Ophelia","Octavia","Omega"],P:["Pepper","Penny","Pixie","Pandora","Pearl","Poison"],Q:["Quinn","Queenie","Qira","Quake","Quartz"],R:["Roxy","Raven","Ruby","Rizzo","Ramona","Riot"],S:["Stella","Sadie","Scarlett","Siren","Sasha","Savage"],T:["Trixie","Tallulah","Tara","Trinity","Tess","Terror"],U:["Uma","Ursula","Ulrica","Unity","Ultra"],V:["Vera","Valkyrie","Venus","Veda","Vixen","Viper"],W:["Wanda","Winifred","Willow","Whisper","Willa","Wrath"],X:["Xena","Xanthe","Xia","Xyla","Xenon"],Y:["Yara","Yolanda","Yvaine","Yuki","Yankee"],Z:["Zelda","Zara","Zoe","Zephyr","Ziggy","Zap"]}},x=[["adjective","name"],["name","static_the","noun"],["interest","derbyTerm"],["static_the","adjective","interest"],["adjective","name","noun"],["verb","name"]];let c=[],y=JSON.parse(localStorage.getItem("derbyNameHistory")||"[]");const l=e=>e[Math.floor(Math.random()*e.length)];function v(e){y[0]!==e&&(y.unshift(e),y.length>3&&y.pop(),localStorage.setItem("derbyNameHistory",JSON.stringify(y)),f())}function f(){const e=document.getElementById("chatFeed");e&&(e.innerHTML="",y.forEach((a,n)=>{const t=document.createElement("div");t.className="chat-bubble",t.style.animationDelay=`${n*.1}s`,t.innerHTML=`Track assigned: <strong>${a}</strong>`,e.appendChild(t)}))}function w(){const e=document.getElementById("userName").value.trim(),a=document.getElementById("userInterest").value.trim(),n=e||l(["Skater","Derby","Danger","Brawler"]),t=a||l(["Chaos","Metal","Candy","Lightning"]);c=x[Math.floor(Math.random()*x.length)].map(i=>B(i,n,t)),document.getElementById("resultArea").classList.add("active"),k(),v(c.map(i=>i.text).join(" "))}function B(e,a,n){let t="",r=!1;switch(e){case"name":let i=a.charAt(0).toUpperCase();/^[A-Z]$/.test(i)||(i=l(Object.keys(p.alphabetNames)));const s=p.alphabetNames[i];let h=l(s),m=0;for(;h.toLowerCase()===a.toLowerCase()&&m<10;)h=l(s),m++;t=h;break;case"interest":t=n;break;case"adjective":t=l(p.adjectives);break;case"noun":t=l(p.nouns);break;case"derbyTerm":t=l(p.derbyTerms);break;case"verb":t=l(p.verbs);break;case"static_the":t="the",r=!0;break}return{text:t,type:e,isStatic:r}}function E(e){const a=c[e];if(a.isStatic)return;let n=document.getElementById("userName").value.trim()||"Danger",t=document.getElementById("userInterest").value.trim()||"Chaos",r=a.text,i=0;for(;r===a.text&&i<10;)r=B(a.type,n,t).text,i++;c[e].text=r,k(e)}function k(e=-1){const a=document.getElementById("nameDisplay");a.innerHTML="",c.forEach((r,i)=>{const s=document.createElement("div");r.isStatic?(s.className="name-part static-part",s.innerText=r.text):(s.className="name-part",i===e&&s.classList.add("pop-anim"),s.innerHTML=`
+import './site-core-B3OiY5_E.js';
+/* empty css               */ const p = {
+    adjectives: [
+      'Lethal',
+      'Toxic',
+      'Savage',
+      'Brutal',
+      'Iron',
+      'Rebel',
+      'Vicious',
+      'Atomic',
+      'Neon',
+      'Wicked',
+      'Smashing',
+      'Fearless',
+      'Rogue',
+      'Hellish',
+      'Ruthless',
+      'Fierce',
+      'Psycho',
+      'Bloody',
+      'Radical',
+    ],
+    nouns: [
+      'Bruiser',
+      'Crusher',
+      'Destroyer',
+      'Menace',
+      'Valkyrie',
+      'Banshee',
+      'Viper',
+      'Phantom',
+      'Riot',
+      'Hurricane',
+      'Annihilator',
+      'Havoc',
+      'Threat',
+      'Punisher',
+      'Assassin',
+      'Fury',
+      'Monster',
+      'Machine',
+    ],
+    derbyTerms: [
+      'Jammer',
+      'Blocker',
+      'Pivot',
+      'Skater',
+      'Roller',
+      'Whip',
+      'Track',
+      'Quad',
+      'Derby',
+      'Wheels',
+      'Apex',
+    ],
+    verbs: ['Smash', 'Whip', 'Block', 'Roll', 'Crush', 'Strike', 'Bash'],
+    alphabetNames: {
+      A: ['Alice', 'Athena', 'Artemis', 'Abby', 'Aria', 'Axel', 'Amethyst'],
+      B: ['Betty', 'Blaze', 'Bella', 'Bonnie', 'Bex', 'Buffy', 'Bellatrix'],
+      C: ['Cleo', 'Carmine', 'Cherry', 'Chloe', 'Cora', 'Crimson', 'Calamity'],
+      D: ['Daisy', 'Dixie', 'Dakota', 'Delilah', 'Darcy', 'Dagger'],
+      E: ['Elektra', 'Eve', 'Elvira', 'Eris', 'Eden', 'Echo'],
+      F: ['Fiona', 'Foxy', 'Flora', 'Faye', 'Frankie', 'Fury'],
+      G: ['Gia', 'Greta', 'Gwen', 'Goldie', 'Galaxy', 'Gorgon'],
+      H: ['Harley', 'Hera', 'Hazel', 'Helga', 'Hilda', 'Havoc'],
+      I: ['Ivy', 'Iris', 'Isolde', 'Ignacia', 'Ina', 'Iron'],
+      J: ['Jett', 'Jinx', 'Jade', 'Jezebel', 'Jojo', 'Justice'],
+      K: ['Kat', 'Karma', 'Kiki', 'Kira', 'Killer', 'Khaos'],
+      L: ['Lola', 'Luna', 'Lilith', 'Lexi', 'Lulu', 'Lethal'],
+      M: ['Moxie', 'Maeve', 'Macy', 'Medusa', 'Margot', 'Malice'],
+      N: ['Nova', 'Nyx', 'Nikki', 'Nellie', 'Nina', 'Nebula'],
+      O: ['Onyx', 'Olga', 'Olivia', 'Ophelia', 'Octavia', 'Omega'],
+      P: ['Pepper', 'Penny', 'Pixie', 'Pandora', 'Pearl', 'Poison'],
+      Q: ['Quinn', 'Queenie', 'Qira', 'Quake', 'Quartz'],
+      R: ['Roxy', 'Raven', 'Ruby', 'Rizzo', 'Ramona', 'Riot'],
+      S: ['Stella', 'Sadie', 'Scarlett', 'Siren', 'Sasha', 'Savage'],
+      T: ['Trixie', 'Tallulah', 'Tara', 'Trinity', 'Tess', 'Terror'],
+      U: ['Uma', 'Ursula', 'Ulrica', 'Unity', 'Ultra'],
+      V: ['Vera', 'Valkyrie', 'Venus', 'Veda', 'Vixen', 'Viper'],
+      W: ['Wanda', 'Winifred', 'Willow', 'Whisper', 'Willa', 'Wrath'],
+      X: ['Xena', 'Xanthe', 'Xia', 'Xyla', 'Xenon'],
+      Y: ['Yara', 'Yolanda', 'Yvaine', 'Yuki', 'Yankee'],
+      Z: ['Zelda', 'Zara', 'Zoe', 'Zephyr', 'Ziggy', 'Zap'],
+    },
+  },
+  x = [
+    ['adjective', 'name'],
+    ['name', 'static_the', 'noun'],
+    ['interest', 'derbyTerm'],
+    ['static_the', 'adjective', 'interest'],
+    ['adjective', 'name', 'noun'],
+    ['verb', 'name'],
+  ];
+let c = [],
+  y = JSON.parse(localStorage.getItem('derbyNameHistory') || '[]');
+const l = (e) => e[Math.floor(Math.random() * e.length)];
+function v(e) {
+  y[0] !== e &&
+    (y.unshift(e),
+    y.length > 3 && y.pop(),
+    localStorage.setItem('derbyNameHistory', JSON.stringify(y)),
+    f());
+}
+function f() {
+  const e = document.getElementById('chatFeed');
+  e &&
+    ((e.innerHTML = ''),
+    y.forEach((a, n) => {
+      const t = document.createElement('div');
+      ((t.className = 'chat-bubble'),
+        (t.style.animationDelay = `${n * 0.1}s`),
+        (t.innerHTML = `Track assigned: <strong>${a}</strong>`),
+        e.appendChild(t));
+    }));
+}
+function w() {
+  const e = document.getElementById('userName').value.trim(),
+    a = document.getElementById('userInterest').value.trim(),
+    n = e || l(['Skater', 'Derby', 'Danger', 'Brawler']),
+    t = a || l(['Chaos', 'Metal', 'Candy', 'Lightning']);
+  ((c = x[Math.floor(Math.random() * x.length)].map((i) => B(i, n, t))),
+    document.getElementById('resultArea').classList.add('active'),
+    k(),
+    v(c.map((i) => i.text).join(' ')));
+}
+function B(e, a, n) {
+  let t = '',
+    r = !1;
+  switch (e) {
+    case 'name':
+      let i = a.charAt(0).toUpperCase();
+      /^[A-Z]$/.test(i) || (i = l(Object.keys(p.alphabetNames)));
+      const s = p.alphabetNames[i];
+      let h = l(s),
+        m = 0;
+      for (; h.toLowerCase() === a.toLowerCase() && m < 10; ) ((h = l(s)), m++);
+      t = h;
+      break;
+    case 'interest':
+      t = n;
+      break;
+    case 'adjective':
+      t = l(p.adjectives);
+      break;
+    case 'noun':
+      t = l(p.nouns);
+      break;
+    case 'derbyTerm':
+      t = l(p.derbyTerms);
+      break;
+    case 'verb':
+      t = l(p.verbs);
+      break;
+    case 'static_the':
+      ((t = 'the'), (r = !0));
+      break;
+  }
+  return { text: t, type: e, isStatic: r };
+}
+function E(e) {
+  const a = c[e];
+  if (a.isStatic) return;
+  let n = document.getElementById('userName').value.trim() || 'Danger',
+    t = document.getElementById('userInterest').value.trim() || 'Chaos',
+    r = a.text,
+    i = 0;
+  for (; r === a.text && i < 10; ) ((r = B(a.type, n, t).text), i++);
+  ((c[e].text = r), k(e));
+}
+function k(e = -1) {
+  const a = document.getElementById('nameDisplay');
+  ((a.innerHTML = ''),
+    c.forEach((r, i) => {
+      const s = document.createElement('div');
+      (r.isStatic
+        ? ((s.className = 'name-part static-part'), (s.innerText = r.text))
+        : ((s.className = 'name-part'),
+          i === e && s.classList.add('pop-anim'),
+          (s.innerHTML = `
                 ${r.text}
                 <span class="swap-icon">↻ Smash</span>
-            `,s.onclick=()=>E(i)),a.appendChild(s)});const n=document.getElementById("copyBtn");n&&(n.innerText="Copy Text");const t=document.getElementById("exportBtn");t&&(t.innerHTML="⬇ Export VIP Pass"),v(c.map(r=>r.text).join(" "))}function N(){const e=c.map(n=>n.text).join(" "),a=document.createElement("textarea");a.value=e,document.body.appendChild(a),a.select();try{document.execCommand("copy"),document.getElementById("copyBtn").innerText="Copied! 🤘"}catch(n){console.error("Failed to copy",n)}document.body.removeChild(a)}function S(){const e=document.getElementById("exportBtn");e.innerHTML="Generating... ⏳";const a=document.getElementById("svg-name-group");a.innerHTML="";const n=340,t=50,r=n-(c.length-1)*t/2;c.forEach((d,u)=>{const o=document.createElementNS("http://www.w3.org/2000/svg","text");o.setAttribute("x","200"),o.setAttribute("y",r+u*t),o.setAttribute("fill",d.isStatic?"#7a7a7a":"#1a1a1a"),o.setAttribute("font-size",d.isStatic?"28":"48"),o.setAttribute("font-weight",d.isStatic?"600":"900"),d.isStatic&&o.setAttribute("font-style","italic"),o.setAttribute("text-anchor","middle"),o.setAttribute("text-transform","uppercase"),o.textContent=d.text,a.appendChild(o)});const i=document.getElementById("vip-badge-svg");let h=new XMLSerializer().serializeToString(i);const m=document.createElement("canvas");m.width=400,m.height=600;const I=m.getContext("2d"),g=new Image,T=new Blob([h],{type:"image/svg+xml;charset=utf-8"}),b=URL.createObjectURL(T);g.onload=function(){I.drawImage(g,0,0),URL.revokeObjectURL(b);const d=m.toDataURL("image/png"),u=document.createElement("a");u.href=d;const o=c.map(L=>L.text).join("-").toUpperCase().replace(/[^A-Z0-9-]/g,"");u.download=`VIP-PASS-${o}.png`,document.body.appendChild(u),u.click(),document.body.removeChild(u),e.innerHTML="Exported! 🎟️",setTimeout(()=>{e.innerHTML="⬇ Export VIP Pass"},2e3)},g.onerror=function(){console.error("Failed to render SVG to canvas."),e.innerHTML="Error :("},g.src=b}window.generateNewName=w;window.copyName=N;window.swapPart=E;window.exportVIPPass=S;document.addEventListener("keypress",function(e){e.key==="Enter"&&w()});f();
+            `),
+          (s.onclick = () => E(i))),
+        a.appendChild(s));
+    }));
+  const n = document.getElementById('copyBtn');
+  n && (n.innerText = 'Copy Text');
+  const t = document.getElementById('exportBtn');
+  (t && (t.innerHTML = '⬇ Export VIP Pass'), v(c.map((r) => r.text).join(' ')));
+}
+function N() {
+  const e = c.map((n) => n.text).join(' '),
+    a = document.createElement('textarea');
+  ((a.value = e), document.body.appendChild(a), a.select());
+  try {
+    (document.execCommand('copy'), (document.getElementById('copyBtn').innerText = 'Copied! 🤘'));
+  } catch (n) {
+    console.error('Failed to copy', n);
+  }
+  document.body.removeChild(a);
+}
+function S() {
+  const e = document.getElementById('exportBtn');
+  e.innerHTML = 'Generating... ⏳';
+  const a = document.getElementById('svg-name-group');
+  a.innerHTML = '';
+  const n = 340,
+    t = 50,
+    r = n - ((c.length - 1) * t) / 2;
+  c.forEach((d, u) => {
+    const o = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    (o.setAttribute('x', '200'),
+      o.setAttribute('y', r + u * t),
+      o.setAttribute('fill', d.isStatic ? '#7a7a7a' : '#1a1a1a'),
+      o.setAttribute('font-size', d.isStatic ? '28' : '48'),
+      o.setAttribute('font-weight', d.isStatic ? '600' : '900'),
+      d.isStatic && o.setAttribute('font-style', 'italic'),
+      o.setAttribute('text-anchor', 'middle'),
+      o.setAttribute('text-transform', 'uppercase'),
+      (o.textContent = d.text),
+      a.appendChild(o));
+  });
+  const i = document.getElementById('vip-badge-svg');
+  let h = new XMLSerializer().serializeToString(i);
+  const m = document.createElement('canvas');
+  ((m.width = 400), (m.height = 600));
+  const I = m.getContext('2d'),
+    g = new Image(),
+    T = new Blob([h], { type: 'image/svg+xml;charset=utf-8' }),
+    b = URL.createObjectURL(T);
+  ((g.onload = function () {
+    (I.drawImage(g, 0, 0), URL.revokeObjectURL(b));
+    const d = m.toDataURL('image/png'),
+      u = document.createElement('a');
+    u.href = d;
+    const o = c
+      .map((L) => L.text)
+      .join('-')
+      .toUpperCase()
+      .replace(/[^A-Z0-9-]/g, '');
+    ((u.download = `VIP-PASS-${o}.png`),
+      document.body.appendChild(u),
+      u.click(),
+      document.body.removeChild(u),
+      (e.innerHTML = 'Exported! 🎟️'),
+      setTimeout(() => {
+        e.innerHTML = '⬇ Export VIP Pass';
+      }, 2e3));
+  }),
+    (g.onerror = function () {
+      (console.error('Failed to render SVG to canvas.'), (e.innerHTML = 'Error :('));
+    }),
+    (g.src = b));
+}
+window.generateNewName = w;
+window.copyName = N;
+window.swapPart = E;
+window.exportVIPPass = S;
+document.addEventListener('keypress', function (e) {
+  e.key === 'Enter' && w();
+});
+f();
