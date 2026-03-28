@@ -28,10 +28,10 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "🔍 Linting code with ESLint..."
-npm run lint
+echo "🔍 Linting code with ESLint (auto-fixing repairable issues)..."
+npm run lint:fix
 if [ $? -ne 0 ]; then
-    echo "❌ Linting errors found. Please fix before deploying. Aborting."
+    echo "❌ Linting errors found that couldn't be auto-fixed. Please fix before deploying. Aborting."
     exit 1
 fi
 
