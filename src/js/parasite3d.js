@@ -7,6 +7,7 @@
     let activeAttack = null, hoveredParasite = null;
     let frame = 0, interval = null;
     let isMuted = false;
+    let squishAudio = null; // Singleton audio object
     
     // 1. LOAD SAVED DATA IMMEDIATELY
     let squishCount = parseInt(localStorage.getItem('totalSquishes')) || 0;
@@ -51,6 +52,23 @@
             const img = new Image();
             img.src = `/assets/para/sprite_attacks/sprite-attacks-min/${type}_attack-min.png`;
         });
+
+        // Initialize Audio
+        squishAudio = new Audio('/assets/para/audio/Squish.wav');
+        squishAudio.load();
+
+        // Audio Warm-up (Unblock Context)
+        const unblockAudio = () => {
+            const tempAudio = new Audio('/assets/para/audio/Squish.wav');
+            tempAudio.volume = 0;
+            tempAudio.play().then(() => {
+                console.log("Trudy: Audio context unblocked.");
+                window.removeEventListener('click', unblockAudio);
+                window.removeEventListener('touchstart', unblockAudio);
+            }).catch(() => {});
+        };
+        window.addEventListener('click', unblockAudio);
+        window.addEventListener('touchstart', unblockAudio);
 
         // --- SCENE INITIALIZATION ---
         scene = new THREE.Scene();
@@ -141,11 +159,13 @@
 			countEl.classList.add('score-pop');
 		}
 
-        if (isMuted) return;
-        const audio = new Audio('/assets/para/audio/Squish.wav');
-        audio.volume = 0.4;
-        audio.playbackRate = 0.9 + Math.random() * 0.4; 
-        audio.play().catch(e => {});
+        if (isMuted || !squishAudio) return;
+        const sound = squishAudio.cloneNode();
+        sound.volume = 0.6;
+        sound.playbackRate = 0.9 + Math.random() * 0.4; 
+        sound.play().catch(e => {
+            console.warn("Trudy: Audio play failed.", e);
+        });
     }
 
     function loadModels() {
@@ -217,14 +237,16 @@
                 if (rc.intersectObject(p, true).length > 0) currentHover = p;
             });
 
-            if (currentHover) {
-                if (hoveredParasite !== currentHover) {
-                    hoveredParasite = currentHover;
-                    captureParasite(currentHover);
+            if (!activeAttack) {
+                if (currentHover) {
+                    if (hoveredParasite !== currentHover) {
+                        hoveredParasite = currentHover;
+                        captureParasite(currentHover);
+                    }
+                } else if (hoveredParasite) {
+                    hoveredParasite = null;
+                    stopAttack();
                 }
-            } else if (hoveredParasite) {
-                hoveredParasite = null;
-                stopAttack();
             }
         }
 
