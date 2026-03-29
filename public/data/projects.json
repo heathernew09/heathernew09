@@ -75,6 +75,24 @@
     "className": "bg-light"
   },
   {
+    "id": "which-swatch",
+    "title": "Which Swatch",
+    "subtitle": "Gamified Brand Training",
+    "category": "Interactive",
+    "description": "Built for the Studio Roadshow, this high-velocity trivia game tests design precision against brand hex codes. A scrappy, AI-assisted build that proved the power of quick-turn interactive kiosks.",
+    "visual": {
+      "type": "image",
+      "src": "/assets/studio/which-swatch.png",
+      "alt": "Which Swatch trivia game"
+    },
+    "tech": ["Vanilla JS", "CSS Animation", "AI Workflow"],
+    "cta": {
+      "text": "View Project",
+      "link": "/pages/studio-roadshow.html"
+    },
+    "className": "bg-white"
+  },
+  {
     "id": "subway",
     "title": "Subway Digital",
     "subtitle": "Global Menu Board Assets",

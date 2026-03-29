@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio Roadshow: Which Swatch - Heather New</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="../src/css/global.css" />
+    <style>
+      :root {
+        --teal: #1bb1a5;
+        --primary-teal: #2b8a92;
+        --dark-teal: #146068;
+        --accent-lime: #bfff00;
+        --accent-orange: #f97316;
+        --dark-gray: #333333;
+        --medium-gray: #666666;
+        --light-gray: #f5f5f5;
+        --white: #ffffff;
+        --text-dark: #111111;
+        --border: 1px solid var(--text-dark);
+        --yellow: #f6b352;
+      }
+
+      body {
+        background-color: #fff;
+      }
+
+      /* ─── HERO ─────────────────────────────────────────── */
+      .hero-title-block {
+        width: 100%;
+        padding: 7vw 4vw 5vw;
+        border-bottom: var(--border);
+        background: #fff;
+      }
+      .hero-title-block h1 {
+        font-size: clamp(2.5rem, 8vw, 8rem);
+        line-height: 0.85;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        margin-bottom: 2rem;
+        max-width: 12ch;
+      }
+      .hero-title-block .subtitle {
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        font-weight: 500;
+        line-height: 1.5;
+        max-width: 900px;
+        color: var(--text-dark);
+      }
+
+      /* ─── BAUHAUS GRID ─────────────────────────────────── */
+      .portfolio-section {
+        padding: 0;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+      }
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-auto-rows: auto;
+        width: 100%;
+        max-width: 1400px;
+        border-left: var(--border);
+        background: #fff;
+      }
+      .b-tile {
+        container-type: inline-size;
+        border-right: var(--border);
+        border-bottom: var(--border);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease;
+        min-height: 240px;
+      }
+      .b-tile h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+      }
+      .b-tile h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .b-tile .meta {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        opacity: 0.85;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .span-col-1 {
+        grid-column: span 2;
+      }
+      .span-col-2 {
+        grid-column: span 4;
+      }
+      .span-col-3 {
+        grid-column: span 6;
+      }
+      .span-col-4 {
+        grid-column: span 8;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
+      .span-col-1-5 {
+        grid-column: span 3;
+      }
+      .span-col-2-5 {
+        grid-column: span 5;
+      }
+
+      .bg-white {
+        background-color: #fff;
+        color: var(--text-dark);
+      }
+      .bg-dark-gray {
+        background-color: var(--dark-gray);
+        color: #fff;
+      }
+      .bg-light-gray {
+        background-color: var(--light-gray);
+        color: var(--text-dark);
+      }
+      .bg-orange {
+        background-color: var(--accent-orange);
+        color: #fff;
+      }
+      .bg-yellow {
+        background-color: var(--yellow);
+        color: var(--text-dark);
+      }
+      .bg-teal {
+        background-color: var(--teal);
+        color: #fff;
+      }
+      .bg-dark-teal {
+        background-color: var(--dark-teal);
+        color: #fff;
+      }
+      .bg-lime {
+        background-color: var(--accent-lime);
+        color: var(--text-dark);
+      }
+
+      .img-tile {
+        padding: 0;
+        display: block;
+      }
+      .img-tile img,
+      .img-tile video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .img-tile:hover img {
+        transform: scale(1.04);
+      }
+
+      .pull-quote {
+        font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+      .story-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      /* Sticker Styles */
+      .sticker {
+        width: 85%;
+        height: auto;
+        margin: auto;
+        filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .sticker:hover {
+        transform: scale(1.1) rotate(0deg) !important;
+      }
+
+      /* Swatch Sequential Animation */
+      .fan-gif {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .fan-gif.active {
+        opacity: 1;
+      }
+
+      /* Birdhouse Container */
+      .birdhouse {
+        background: var(--teal);
+        position: relative;
+        overflow: hidden;
+        cursor: crosshair;
+        padding: 0 !important;
+        min-height: 240px;
+      }
+      .birdhouse-instructions {
+        position: absolute;
+        bottom: 15px;
+        width: 100%;
+        text-align: center;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.9);
+        pointer-events: none;
+        font-weight: 800;
+        text-transform: uppercase;
+        z-index: 10;
+        letter-spacing: 0.1em;
+      }
+      .flying-bird {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 96px;
+        height: 96px;
+        margin-left: -48px;
+        margin-top: -48px;
+        pointer-events: none;
+        will-change: transform;
+        filter: drop-shadow(0 10px 5px rgba(0, 0, 0, 0.1));
+      }
+      .bird {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-position: left center;
+        background-size: 864px 96px;
+        animation: playBird 0.4s steps(9) infinite;
+        transition: transform 0.2s ease-out;
+      }
+      .color-default,
+      .color-orange {
+        background-image: url('https://studio.heather.codes/images/bird-orange.png');
+      }
+      .color-purple {
+        background-image: url('https://studio.heather.codes/images/bird-orange.png');
+        filter: hue-rotate(240deg) saturate(1.5);
+      }
+      .color-green {
+        background-image: url('https://studio.heather.codes/images/bird-orange.png');
+        filter: hue-rotate(100deg) saturate(2);
+      }
+      @keyframes playBird {
+        100% {
+          background-position: -864px;
+        }
+      }
+
+      /* Iframe (16:9 LOCKED) */
+      .game-iframe-container {
+        width: 100%;
+        aspect-ratio: 16/9;
+        min-height: 400px;
+        border: none;
+        background: #000;
+        display: block;
+      }
+
+      @media (max-width: 900px) {
+        .game-iframe-container {
+          min-height: 300px;
+        }
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 1.2rem 2.5rem;
+        background: var(--text-dark);
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 800;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        transition: all 0.3s ease;
+        border: 2px solid var(--text-dark);
+      }
+      .cta-button:hover {
+        background: transparent;
+        color: var(--text-dark);
+        transform: translateY(-3px);
+      }
+
+      @media (max-width: 1100px) {
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-1,
+        .span-col-2,
+        .span-col-3,
+        .span-col-4,
+        .span-col-1-5,
+        .span-col-2-5 {
+          grid-column: span 2;
+        }
+      }
+      @media (max-width: 600px) {
+        .bauhaus-grid {
+          grid-template-columns: 1fr;
+        }
+        .span-col-1,
+        .span-col-2,
+        .span-col-3,
+        .span-col-4,
+        .span-col-1-5,
+        .span-col-2-5 {
+          grid-column: span 1;
+        }
+        .span-row-2 {
+          grid-row: span 1;
+        }
+      }
+    </style>
+  </head>
+  <body id="roadshow-page" class="page-template">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <main id="main-content">
+      <div class="hero-title-block">
+        <h1>Which Swatch</h1>
+        <p class="subtitle">
+          A high-velocity hexcode trivia game built to engage the MERGE Chicago office during the
+          week-long vendor Roadshow.
+        </p>
+      </div>
+
+      <div class="portfolio-section">
+        <div class="bauhaus-grid">
+          <!-- HERO ROW: STICKER IMAGE + META + THE SPARK -->
+          <div
+            class="b-tile bg-light-gray span-col-2 span-row-2"
+            style="overflow: visible; display: flex; align-items: center; justify-content: center"
+          >
+            <img
+              src="/assets/studio/studio-roadshow-sticker.png"
+              alt="Studio Roadshow Sticker"
+              style="
+                width: 110%;
+                transform: rotate(-6deg) translateY(-30px);
+                filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+              "
+            />
+          </div>
+          <div class="b-tile bg-white span-col-1">
+            <span class="meta">Company</span>
+            <p><strong>MERGE Studio</strong></p>
+          </div>
+          <div class="b-tile bg-yellow span-col-1">
+            <span class="meta">Event</span>
+            <p><strong>Studio Roadshow</strong></p>
+          </div>
+          <div class="b-tile bg-orange span-col-2 span-row-2">
+            <span class="meta">The Spark</span>
+            <h3>One week. Jam-packed vendors.</h3>
+            <p class="story-text">
+              Studio was looking for fun things we could build to engage people. We had one week in
+              the Chicago office filled with vendors like Shutterstock and Getty. It was an
+              exploration of print materials and clever products we can offer clients.
+            </p>
+          </div>
+          <div class="b-tile bg-dark-teal span-col-1">
+            <span class="meta">Role</span>
+            <p><strong>UX & Tech</strong></p>
+          </div>
+          <div class="b-tile birdhouse span-col-1" id="birdhouse">
+            <div class="flying-bird" id="flying-bird">
+              <div class="bird color-default" id="bird"></div>
+            </div>
+          </div>
+
+          <!-- CONSOLIDATED INTRO ROW -->
+          <div class="b-tile bg-white span-col-2">
+            <div style="display: flex; gap: 1.5rem; align-items: flex-start">
+              <div
+                style="
+                  flex-shrink: 0;
+                  width: 80px;
+                  height: 80px;
+                  background-image: url(&quot;data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E&quot;);
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                "
+              ></div>
+              <p
+                class="pull-quote"
+                style="
+                  color: var(--text-dark);
+                  font-size: 2.4rem;
+                  line-height: 1.05;
+                  letter-spacing: -0.02em;
+                "
+              >
+                By understanding colors a trained eye can identify the color by the code!
+              </p>
+            </div>
+          </div>
+          <div class="b-tile bg-white span-col-2">
+            <span class="meta">Know the drill?</span>
+            <p class="story-text" style="font-size: 0.95rem; line-height: 1.5">
+              Hey everyone! We all know the drill, right? RGB for digital, CMYK for print.<br /><br />
+              Hex codes, spot colors, client brand guides... making sure that perfect 'Crimson Fire'
+              red doesn't turn into 'Muddy Maroon' when it hits the press. It's crucial, it's
+              detailed... and let's be honest, sometimes it feels like a pop quiz we didn't study
+              for.<br /><br />
+              What if we could turn that daily color challenge into a game?
+            </p>
+          </div>
+
+          <!-- LIVE GAME IFRAME (16:9 LOCKED) -->
+          <div class="b-tile span-col-4 bg-dark-gray" style="padding: 0; min-height: auto">
+            <iframe
+              src="https://studio.heather.codes/"
+              class="game-iframe-container"
+              title="Which Swatch Game"
+            ></iframe>
+          </div>
+          <div
+            class="b-tile bg-yellow span-col-4"
+            style="
+              min-height: 120px;
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+              padding: 2rem 4rem;
+            "
+          >
+            <span class="meta" style="margin: 0">Ready to test your eye?</span>
+            <a href="https://studio.heather.codes/" target="_blank" class="cta-button"
+              >Play the Game Fullscreen</a
+            >
+          </div>
+
+          <!-- AI ACCELERATION STORY (RESTACKED) -->
+          <div class="b-tile bg-light-gray span-col-2">
+            <span class="meta">The Workflow</span>
+            <h3>Prompt-to-Spreadsheet</h3>
+            <p class="story-text">
+              I asked Gemini to collect all client name swatches into a spreadsheet. This AI pivot
+              moved us from data collection to build in hours, proving that AI is the ultimate
+              scrappy toolkit.
+            </p>
+          </div>
+          <div class="b-tile img-tile span-col-2 span-row-2">
+            <img
+              src="/assets/studio/2026-03-29_1029_code-hexcode-gemini-blue-gold.png"
+              alt="Gemini Prompt for Swatches"
+            />
+          </div>
+          <div class="b-tile img-tile span-col-2" style="background: var(--teal)">
+            <video
+              controls
+              playsinline
+              muted
+              loop
+              style="width: 100%; height: 100%; object-fit: contain"
+            >
+              <source src="/assets/studio/2026-03-29_1036_swatch-sheet.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <!-- TEAM & ANIMATION -->
+          <div
+            class="b-tile bg-white span-col-2"
+            style="
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: 1rem;
+              position: relative;
+            "
+          >
+            <div class="swatch-fan-container" style="position: relative; width: 100%; height: 100%">
+              <img
+                src="/assets/studio/swatch-fan.gif"
+                class="fan-gif"
+                id="fan-opening"
+                alt="Color Swatch Opening"
+              />
+              <img
+                src="/assets/studio/swatch-fan-reverse.gif"
+                class="fan-gif"
+                id="fan-closing"
+                alt="Color Swatch Closing"
+              />
+            </div>
+          </div>
+          <div class="b-tile bg-white span-col-2">
+            <span class="meta">Collaborators</span>
+            <h3>UI & Animation</h3>
+            <p class="story-text">
+              Worked with <strong>Jack</strong> on UI. <strong>Amy McVey</strong> provided copy.
+              Jack animated a bird flap, and I used AI to generate CSS paths.
+            </p>
+            <p class="story-text" style="margin-top: 1rem; font-style: italic; font-size: 0.9rem">
+              The upside-down bird stayed for the jest of it.
+            </p>
+          </div>
+
+          <!-- AUDIO & LIME HEADLINE -->
+          <div class="b-tile bg-dark-teal span-col-2">
+            <span class="meta">Audio</span>
+            <h3>Dave's Audio Bits</h3>
+            <p class="story-text">
+              Dave matched the vibe with audio triggers for correct/incorrect answers, turning a
+              simple quiz into a visceral experience. He also animated the **swatch fan**.
+            </p>
+            <audio controls style="width: 100%; margin-top: auto">
+              <source
+                src="/assets/studio/MERGE Studio Game Music - 4_22_25, 4.10 PM.mp3"
+                type="audio/mpeg"
+              />
+            </audio>
+          </div>
+          <div
+            class="b-tile bg-lime span-col-2"
+            style="justify-content: center; align-items: center; text-align: center; padding: 2rem"
+          >
+            <h2
+              style="
+                color: var(--dark-teal);
+                text-transform: uppercase;
+                font-size: clamp(2rem, 4.5vw, 4.5rem);
+                line-height: 0.9;
+                letter-spacing: -0.04em;
+              "
+            >
+              Swatches, Hexcodes and Brands, Oh My!
+            </h2>
+          </div>
+
+          <!-- REVEAL & HEADER IMAGE ROW (40/60 Split) -->
+          <div class="b-tile bg-yellow span-col-1-5">
+            <span class="meta">The Reveal</span>
+            <h3>"Score 6 or more, nice work!"</h3>
+            <p class="story-text" style="font-size: 0.95rem">
+              Mirrored to the break room display. Correct answers earned points, but mistakes cost
+              you. High-stakes office trivia.
+            </p>
+          </div>
+          <div class="b-tile img-tile span-col-2-5">
+            <img
+              src="/assets/studio/website-header-merge-studio.png"
+              alt="Studio Roadshow Headline"
+            />
+          </div>
+
+          <!-- STICKERS & IMPACT ROW -->
+          <div class="b-tile bg-dark-gray span-col-2">
+            <div style="display: flex; gap: 1.5rem; align-items: flex-start">
+              <div
+                style="
+                  flex-shrink: 0;
+                  width: 80px;
+                  height: 80px;
+                  background-image: url(&quot;data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E&quot;);
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                "
+              ></div>
+              <div>
+                <span class="meta" style="color: var(--accent-lime)"
+                  >Heather New &mdash; Impact</span
+                >
+                <p class="pull-quote" style="font-size: 1.4rem; color: #fff; line-height: 1.2">
+                  "This project became my gateway into not just designing the flow, but building
+                  these experiences."
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="b-tile bg-white span-col-1"
+            style="display: flex; align-items: center; justify-content: center; padding: 1rem"
+          >
+            <img
+              src="/assets/studio/top-10-sticker.png"
+              class="sticker"
+              style="transform: rotate(-8deg)"
+              alt="Top 10"
+            />
+          </div>
+          <div
+            class="b-tile bg-white span-col-1"
+            style="display: flex; align-items: center; justify-content: center; padding: 1rem"
+          >
+            <img
+              src="/assets/studio/one-minute-sticker.png"
+              class="sticker"
+              style="transform: rotate(5deg)"
+              alt="One Minute"
+            />
+          </div>
+
+          <!-- CREDITS -->
+          <div class="b-tile bg-white span-col-4">
+            <span class="meta" style="color: var(--primary-teal)">The Launch Squad</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 4rem; margin-top: 1rem">
+              <ul class="list-clean">
+                <li>
+                  <strong style="color: var(--teal)">Heather New:</strong> UX, Tech & QR Wheel Cover
+                </li>
+                <li><strong style="color: var(--accent-orange)">Jack:</strong> UI & Animation</li>
+                <li>
+                  <strong style="color: var(--primary-teal)">Jody Flaherty:</strong> Road, Clouds &
+                  Van Design
+                </li>
+              </ul>
+              <ul class="list-clean">
+                <li><strong style="color: var(--primary-teal)">Amy McVey:</strong> Copywriting</li>
+                <li>
+                  <strong style="color: var(--teal)">David Merriman:</strong> Audio Design & Swatch
+                  Fan
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+    <script type="module" src="../src/js/site-core.js" defer></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const birdhouse = document.getElementById('birdhouse');
+        const flyingBird = document.getElementById('flying-bird');
+        const bird = document.getElementById('bird');
+        if (birdhouse && flyingBird && bird) {
+          let isHovering = false;
+          let rect = birdhouse.getBoundingClientRect();
+          let targetX = rect.width / 2;
+          let targetY = rect.height / 2;
+          let birdX = targetX;
+          let birdY = targetY;
+          let facingRight = true;
+          let currentAngle = 0;
+
+          window.addEventListener('resize', () => {
+            rect = birdhouse.getBoundingClientRect();
+          });
+          birdhouse.addEventListener('mousemove', (e) => {
+            rect = birdhouse.getBoundingClientRect();
+            if (isHovering) {
+              targetX = e.clientX - rect.left;
+              targetY = e.clientY - rect.top;
+            }
+          });
+          birdhouse.addEventListener('mouseenter', (e) => {
+            isHovering = true;
+            rect = birdhouse.getBoundingClientRect();
+            targetX = e.clientX - rect.left;
+            targetY = e.clientY - rect.top;
+          });
+          birdhouse.addEventListener('mouseleave', () => {
+            isHovering = false;
+          });
+
+          const birdColors = ['default', 'orange', 'purple', 'green'];
+          let birdColorIndex = 0;
+          birdhouse.addEventListener('click', () => {
+            bird.classList.remove(`color-${birdColors[birdColorIndex]}`);
+            birdColorIndex = (birdColorIndex + 1) % birdColors.length;
+            bird.classList.add(`color-${birdColors[birdColorIndex]}`);
+          });
+
+          function animateBird() {
+            if (!isHovering) {
+              const time = Date.now() * 0.0015;
+              const centerX = rect.width / 2;
+              const centerY = rect.height / 2;
+              targetX = centerX + Math.cos(time) * (rect.width * 0.35);
+              targetY = centerY + Math.sin(time * 1.2) * (rect.height * 0.35);
+            }
+            let dx = targetX - birdX;
+            let dy = targetY - birdY;
+            birdX += dx * 0.05;
+            birdY += dy * 0.05;
+            if (dx > 1) {
+              facingRight = true;
+            } else if (dx < -1) {
+              facingRight = false;
+            }
+            let targetAngle = 0;
+            if (Math.abs(dx) > 1 || Math.abs(dy) > 1) {
+              const directionMultiplier = facingRight ? 1 : -1;
+              targetAngle = Math.atan2(dy * directionMultiplier, Math.abs(dx)) * (180 / Math.PI);
+            }
+            currentAngle += (targetAngle - currentAngle) * 0.15;
+            flyingBird.style.transform = `translate(${birdX}px, ${birdY}px) rotate(${currentAngle}deg)`;
+            bird.style.transform = `scaleX(${facingRight ? -1 : 1})`;
+            requestAnimationFrame(animateBird);
+          }
+          setTimeout(() => {
+            rect = birdhouse.getBoundingClientRect();
+            targetX = birdX = rect.width / 2;
+            targetY = birdY = rect.height / 2;
+            animateBird();
+          }, 100);
+        }
+
+        // Swatch Fan Sequencer
+        const openingGif = document.getElementById('fan-opening');
+        const closingGif = document.getElementById('fan-closing');
+
+        if (openingGif && closingGif) {
+          const restartGif = (el) => {
+            const src = el.src.split('?')[0];
+            el.src = src + '?t=' + Date.now();
+          };
+
+          const runSequence = () => {
+            openingGif.classList.add('active');
+            closingGif.classList.remove('active');
+            restartGif(openingGif);
+
+            setTimeout(() => {
+              openingGif.classList.remove('active');
+              closingGif.classList.add('active');
+              restartGif(closingGif);
+              setTimeout(runSequence, 3000);
+            }, 3000);
+          };
+          runSequence();
+        }
+      });
+    </script>
+  </body>
+</html>
