@@ -24,260 +24,509 @@
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
     <link rel="stylesheet" href="/src/css/global.css" />
-    <link rel="stylesheet" href="/src/css/home.css" />
 
     <style>
       :root {
-        --bg-color: #f4f4f4;
-        --text-dark: #111111;
         --teal: #1bb1a5;
-        --orange: #f66c0f;
-        --lime: #b2f81d;
+        --primary-teal: #2b8a92;
+        --dark-teal: #146068;
+        --accent-lime: #bfff00;
+        --accent-orange: #f97316;
+        --dark-gray: #333333;
+        --medium-gray: #666666;
+        --light-gray: #f5f5f5;
+        --white: #ffffff;
+        --text-dark: #111111;
+        --border: 1px solid var(--text-dark);
+        --yellow: #f6b352;
       }
 
       body {
-        background-color: var(--bg-color);
-        color: var(--text-dark);
-        font-family: 'Manrope', sans-serif;
-        overflow-x: hidden;
-      }
-
-      /* --- CONTACT HERO (Asymmetric Void) --- */
-      .contact-hero {
-        display: flex;
-        min-height: 90vh;
-        width: 100vw;
-        position: relative;
         background-color: #fff;
       }
 
-      .void-side {
-        flex: 0 0 40%;
-        background-color: var(--teal);
+      /* ─── HERO ─────────────────────────────────────────── */
+      .hero-title-block {
+        width: 100%;
+        padding: 7vw 4vw 5vw;
+        background: #fff;
+      }
+      .hero-title-block h1 {
+        font-size: clamp(2.5rem, 8vw, 8rem);
+        line-height: 0.85;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        margin-bottom: 2rem;
+        max-width: 12ch;
+      }
+      .hero-title-block .subtitle {
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        font-weight: 500;
+        line-height: 1.5;
+        max-width: 900px;
+        color: var(--text-dark);
+      }
+
+      /* ─── BAUHAUS GRID ─────────────────────────────────── */
+      .portfolio-section {
+        padding: 0;
+        background-color: #fff;
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        padding: 80px;
+      }
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-auto-rows: auto;
+        width: 100%;
+        max-width: 1400px;
+        border-left: var(--border);
+        border-top: var(--border);
+        background: #fff;
+      }
+      .b-tile {
+        container-type: inline-size;
+        border-right: var(--border);
+        border-bottom: var(--border);
+        padding: 2.5rem;
         position: relative;
         overflow: hidden;
-      }
-
-      .void-circle {
-        position: absolute;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        background-color: var(--orange);
-        right: -250px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1;
-      }
-
-      .void-side h1 {
-        font-size: 8rem;
-        line-height: 0.9;
-        font-weight: 800;
-        color: #fff;
-        position: relative;
-        z-index: 2;
-        letter-spacing: -4px;
-      }
-
-      .form-side {
-        flex: 1;
-        padding: 120px 80px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease;
+        min-height: 240px;
       }
 
+      /* Grid Spans */
+      .span-col-1 {
+        grid-column: span 2;
+      }
+      .span-col-2 {
+        grid-column: span 4;
+      }
+      .span-col-3 {
+        grid-column: span 6;
+      }
+      .span-col-4 {
+        grid-column: span 8;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
+
+      .bg-white {
+        background-color: #fff;
+        color: var(--text-dark);
+      }
+      .bg-dark-gray {
+        background-color: var(--dark-gray);
+        color: #fff;
+      }
+      .bg-light-gray {
+        background-color: var(--light-gray);
+        color: var(--text-dark);
+      }
+      .bg-orange {
+        background-color: var(--accent-orange);
+        color: #fff;
+      }
+      .bg-teal {
+        background-color: var(--teal);
+        color: #fff;
+      }
+      .bg-dark-teal {
+        background-color: var(--dark-teal);
+        color: #fff;
+      }
+      .bg-yellow {
+        background-color: var(--yellow);
+        color: var(--text-dark);
+      }
+      .bg-lime {
+        background-color: var(--accent-lime);
+        color: var(--text-dark);
+      }
+
+      /* Form Styles */
       .contact-form {
-        max-width: 600px;
         width: 100%;
       }
-
       .form-group {
-        margin-bottom: 60px;
-        position: relative;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding-bottom: 0.5rem;
       }
-
       .form-group label {
         display: block;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         font-weight: 800;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
         opacity: 0.6;
+        margin-bottom: 0.5rem;
       }
-
       .form-group input,
       .form-group textarea {
         width: 100%;
         background: transparent;
         border: none;
-        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-        padding: 10px 0;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         font-family: inherit;
         font-weight: 600;
-        color: var(--text-dark);
         outline: none;
-        transition: border-color 0.3s ease;
+        padding: 0.5rem 0;
       }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        border-color: var(--teal);
-      }
-
       .submit-btn {
-        background-color: var(--teal);
+        background: var(--text-dark);
         color: #fff;
         border: none;
-        padding: 20px 40px;
-        font-size: 1rem;
+        padding: 1.2rem 2.5rem;
         font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
         cursor: pointer;
-        transition:
-          transform 0.3s ease,
-          background-color 0.3s ease;
-        display: inline-block;
+        transition: all 0.3s ease;
+        align-self: flex-start;
+        margin-top: 1rem;
       }
-
       .submit-btn:hover {
-        background-color: var(--text-dark);
-        transform: translateY(-5px);
+        background: var(--teal);
+        transform: translateY(-3px);
       }
 
-      /* --- CONNECT TILES --- */
-      .connect-section {
-        padding: 120px 80px;
-        background-color: #f9f9f9;
+      /* Testimonial Bauhaus Logic */
+      .testimonial-card {
+        transition:
+          background-color 0.1s steps(1),
+          color 0.1s steps(1);
+        min-height: 300px;
+      }
+      .quote-icon {
+        width: 60px;
+        height: 60px;
+        background-color: var(--quote-color, var(--accent-orange));
+        mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        mask-size: contain;
+        -webkit-mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-repeat: no-repeat;
+        transition: background-color 0.1s steps(1);
+        position: absolute;
+      }
+      .quote-icon.top {
+        top: 1.5rem;
+        left: 1.5rem;
+      }
+      .quote-icon.bottom {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        transform: rotate(180deg);
       }
 
-      .connect-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 40px;
-        max-width: 1400px;
-        margin: 0 auto;
+      .quote-content {
+        padding: 3rem 1.5rem;
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
       }
-
-      .connect-tile {
-        background: #fff;
-        padding: 40px;
-        border-left: 4px solid var(--teal);
-        transition: transform 0.3s ease;
-        text-decoration: none;
-        color: inherit;
+      .quote-text {
+        font-size: 1.2rem;
+        line-height: 1.4;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        font-style: italic;
       }
-
-      .connect-tile:hover {
-        transform: translateY(-10px);
-      }
-
-      .connect-tile.orange {
-        border-color: var(--orange);
-      }
-      .connect-tile.lime {
-        border-color: var(--lime);
-      }
-
-      .connect-tile .meta {
-        font-size: 0.7rem;
+      .quote-author {
+        font-size: 0.85rem;
         font-weight: 800;
-        opacity: 0.5;
-        margin-bottom: 10px;
-        display: block;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0.8;
+      }
+      .quote-author::before {
+        content: '— ';
       }
 
-      .connect-tile h3 {
-        font-size: 1.5rem;
-        font-weight: 800;
+      @media (max-width: 1100px) {
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-1,
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 2;
+        }
       }
-
-      @media (max-width: 1024px) {
-        .contact-hero {
-          flex-direction: column;
+      @media (max-width: 600px) {
+        .bauhaus-grid {
+          grid-template-columns: 1fr;
         }
-        .void-side {
-          flex: 0 0 auto;
-          padding: 60px 40px;
+        .span-col-1,
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 1;
         }
-        .void-side h1 {
-          font-size: 5rem;
-        }
-        .void-circle {
-          width: 300px;
-          height: 300px;
-          right: -150px;
-        }
-        .form-side {
-          padding: 60px 40px;
+        .span-row-2 {
+          grid-row: span 1;
         }
       }
     </style>
   </head>
   <body>
     <header class="site-header">
-      <div class="header-content">
-        <load src="../src/partials/nav.html" />
-      </div>
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
     </header>
 
-    <main>
-      <section class="contact-hero">
-        <div class="void-side">
-          <h1>LET'S<br />BUILD.</h1>
-          <div class="void-circle"></div>
-        </div>
-        <div class="form-side">
-          <form class="contact-form" action="#" method="POST">
-            <div class="form-group">
-              <label>NAME</label>
-              <input type="text" name="name" required placeholder="Your name" />
-            </div>
-            <div class="form-group">
-              <label>EMAIL</label>
-              <input type="email" name="email" required placeholder="email@address.com" />
-            </div>
-            <div class="form-group">
-              <label>PROJECT TYPE</label>
-              <input type="text" name="subject" placeholder="What are we making?" />
-            </div>
-            <div class="form-group">
-              <label>MESSAGE</label>
-              <textarea name="message" rows="4" placeholder="Tell me more..."></textarea>
-            </div>
-            <button type="submit" class="submit-btn">SEND MESSAGE</button>
-          </form>
-        </div>
-      </section>
+    <main id="main-content">
+      <div class="hero-title-block">
+        <h1>Let's Build.</h1>
+        <p class="subtitle">
+          Design for function. Collaborations built on creativity, trust, and a bit of fun.
+        </p>
+      </div>
 
-      <section class="connect-section">
-        <div class="connect-grid">
-          <a href="mailto:hello@heathernew.com" class="connect-tile">
-            <span class="meta">EMAIL</span>
-            <h3>hello@heathernew.com</h3>
+      <div class="portfolio-section">
+        <div class="bauhaus-grid" id="mainGrid">
+          <!-- FORM TILE -->
+          <div class="b-tile bg-white span-col-2 span-row-2">
+            <span class="meta">Get in touch</span>
+            <form class="contact-form" action="#" method="POST">
+              <div class="form-group">
+                <label>NAME</label>
+                <input type="text" name="name" required />
+              </div>
+              <div class="form-group">
+                <label>EMAIL</label>
+                <input type="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label>PROJECT TYPE</label>
+                <input type="text" name="subject" />
+              </div>
+              <div class="form-group">
+                <label>MESSAGE</label>
+                <textarea name="message" rows="3"></textarea>
+              </div>
+              <button type="submit" class="submit-btn">SEND MESSAGE</button>
+            </form>
+          </div>
+
+          <!-- SOCIAL TILES -->
+          <a
+            href="mailto:hello@heathernew.com"
+            class="b-tile bg-teal span-col-1"
+            style="text-decoration: none"
+          >
+            <span class="meta" style="color: #fff">EMAIL</span>
+            <h3 style="color: #fff; font-size: 1rem; text-transform: none">
+              hello@<br />heathernew.com
+            </h3>
           </a>
-          <a href="https://linkedin.com/in/heathernew" class="connect-tile orange">
+          <a
+            href="https://linkedin.com/in/heathernew09"
+            class="b-tile bg-yellow span-col-1"
+            style="text-decoration: none"
+          >
             <span class="meta">LINKEDIN</span>
-            <h3>in/heathernew</h3>
+            <h3 style="font-size: 1rem; text-transform: none">in/<br />heathernew09</h3>
           </a>
-          <a href="https://github.com/heathernew" class="connect-tile lime">
+          <a
+            href="https://github.com/heathernew09"
+            class="b-tile bg-lime span-col-1"
+            style="text-decoration: none"
+          >
             <span class="meta">GITHUB</span>
-            <h3>github/heathernew</h3>
+            <h3 style="font-size: 1rem; text-transform: none">github/<br />heathernew09</h3>
           </a>
+          <div class="b-tile bg-orange span-col-1">
+            <span class="meta" style="color: #fff">Location</span>
+            <h3 style="color: #fff; font-size: 1rem; text-transform: none">Chicago,<br />IL</h3>
+          </div>
+
+          <!-- TESTIMONIALS START HERE -->
+          <div id="testimonials-insertion-point" style="display: contents"></div>
         </div>
-      </section>
+      </div>
     </main>
 
-    <!-- Include Footer -->
-    <div id="footer-trigger">
-      <load src="../src/partials/footer.html" />
-    </div>
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
 
     <script type="module" src="/src/js/site-core.js"></script>
+    <script>
+      const testimonials = [
+        {
+          text: 'Your work is simply lovely. You have captured the vision that I have for the website.',
+          author: 'Dr. APH',
+        },
+        {
+          text: 'I like your willingness to help and throw in ideas. I like it that you kick our ass in muscle pump class.',
+          author: 'S.G.',
+        },
+        {
+          text: 'I love working with you! I know that you can always find a good solution.',
+          author: 'S.S.',
+        },
+        {
+          text: 'Thanks for keeping me sane everyday. Appreciate your talent, dedication and friendship.',
+          author: 'G.W.',
+        },
+        {
+          text: 'Heather, You Rock! You have a heart of gold, and I love working with you.',
+          author: 'J.W.',
+        },
+        {
+          text: 'Grateful for not making me feel like an idiot when I ask dumb tech questions.',
+          author: 'J.Wo.',
+        },
+        {
+          text: 'Thank you for your expertise, hardwork and dedication this year.',
+          author: 'S.G.',
+        },
+        { text: 'Heather, You are SUCH a badass!', author: 'J.W.' },
+        {
+          text: 'I was impressed after first meeting you and finding out that you were a roller girl!',
+          author: 'C.F.',
+        },
+        { text: 'Heather, You ARE thebomb.com I\'m so happy you are on our team.', author: 'J.W.' },
+        {
+          text: 'I probably would have never figured out web design if it weren\'t for your patience and help.',
+          author: 'M.W.',
+        },
+        {
+          text: 'As a colleague you bring smarts, spunk and solutions. As a friend, you bring support.',
+          author: 'J.W.',
+        },
+        { text: 'Thank you for always being willing to help!', author: 'A.P.' },
+        {
+          text: 'I\'m grateful you fix any stupid goof up I\'ve created on my computer!',
+          author: 'L.K.',
+        },
+        { text: 'You might be the coolest person I know. Keep kicking ass.', author: 'S.B.' },
+        {
+          text: 'Heather, you are the handiest woman I know. I bow to your mad skills.',
+          author: 'A.BC',
+        },
+        {
+          text: 'You\'re an awesome artist / designer / programmer / derby girl / handyman / dog mom!',
+          author: 'M.C.',
+        },
+        { text: 'Cute, smart, athletic, and fun is what you are Heather.', author: 'D.C.' },
+        {
+          text: 'If there is a zombie Apocalypse, I will trip everyone else so you can escape.',
+          author: 'Lori K',
+        },
+        { text: 'Heather, I love your innovative mind & spirit.', author: 'A.C.' },
+        {
+          text: 'Thanks for bein my right-hand, having our backs and being a stellar friend.',
+          author: 'J.W.',
+        },
+        {
+          text: 'Thank you for your calm smarts. I absolutely love working with you!',
+          author: 'S.S.',
+        },
+        { text: 'Heather, You do awesome work!', author: 'A.P.' },
+        { text: 'You are \'rock solid\' team player who gets it done.', author: 'S.G.' },
+        {
+          text: 'Hope you have the best of success because I think you\'re super talented.',
+          author: 'F.S.',
+        },
+      ];
+
+      const themes = [
+        { bg: '#136368', text: '#FFFFFF', quote: '#B2FF00' }, // Dark Teal + Lime
+        { bg: '#333333', text: '#FFFFFF', quote: '#B2FF00' }, // Dark Grey + Lime
+        { bg: '#5E5E5E', text: '#FFFFFF', quote: '#B2FF00' }, // Medium Grey + Lime
+        { bg: '#F4F4F4', text: '#111111', quote: '#FF6B00' }, // Light Grey + Orange
+        { bg: '#0D9488', text: '#FFFFFF', quote: '#FFC837' }, // Bright Teal + Yellow
+        { bg: '#FF6B00', text: '#111111', quote: '#F4F4F4' }, // Orange + Light Grey
+        { bg: '#FFC837', text: '#111111', quote: '#136368' }, // Yellow + Teal
+        { bg: '#B2FF00', text: '#111111', quote: '#5E5E5E' }, // Lime + Grey
+      ];
+
+      const insertionPoint = document.getElementById('testimonials-insertion-point');
+      const cards = [];
+
+      function initGrid() {
+        let currentOccupancy = 0;
+        testimonials.forEach((testimonial, index) => {
+          const initialTheme = themes[index % themes.length];
+          const card = document.createElement('div');
+
+          const isLong = testimonial.text.length > 80;
+          let units = isLong ? 4 : 2;
+
+          // Logic: If we only have 2 units left in the row but this is a long one (4),
+          // we force it to be short (2) to keep the grid even and border-locked.
+          const remainingInRow = 8 - (currentOccupancy % 8);
+          if (remainingInRow === 2 && units === 4) {
+            units = 2;
+          }
+
+          const spanClass = `span-col-${units / 2}`;
+          card.className = `b-tile testimonial-card ${spanClass}`;
+          card.dataset.themeIndex = index % themes.length;
+          card.dataset.units = units;
+
+          card.style.backgroundColor = initialTheme.bg;
+          card.style.color = initialTheme.text;
+          card.style.setProperty('--quote-color', initialTheme.quote);
+
+          card.innerHTML = `
+            <div class="quote-icon top"></div>
+            <div class="quote-content">
+              <div class="quote-text">${testimonial.text}</div>
+              <div class="quote-author">${testimonial.author}</div>
+            </div>
+            <div class="quote-icon bottom"></div>
+          `;
+
+          insertionPoint.appendChild(card);
+          cards.push(card);
+          currentOccupancy += units;
+        });
+
+        // Final Row Cleanup: Fill any remaining 2, 4, or 6 unit gaps
+        const finalRemainder = currentOccupancy % 8;
+        if (finalRemainder !== 0) {
+          const lastCard = cards[cards.length - 1];
+          const gap = 8 - finalRemainder;
+          const currentUnits = parseInt(lastCard.dataset.units);
+          const newUnits = currentUnits + gap;
+
+          lastCard.classList.remove(`span-col-${currentUnits / 2}`);
+          lastCard.classList.add(`span-col-${newUnits / 2}`);
+        }
+      }
+
+      function animateColors() {
+        const count = 1; // Swap 1 at a time
+        for (let i = 0; i < count; i++) {
+          const card = cards[Math.floor(Math.random() * cards.length)];
+          let currentThemeIndex = parseInt(card.dataset.themeIndex);
+          let newThemeIndex = Math.floor(Math.random() * themes.length);
+          while (newThemeIndex === currentThemeIndex) {
+            newThemeIndex = Math.floor(Math.random() * themes.length);
+          }
+          const newTheme = themes[newThemeIndex];
+          card.style.backgroundColor = newTheme.bg;
+          card.style.color = newTheme.text;
+          card.style.setProperty('--quote-color', newTheme.quote);
+          card.dataset.themeIndex = newThemeIndex;
+        }
+      }
+
+      initGrid();
+      setInterval(animateColors, 6000);
+    </script>
   </body>
 </html>

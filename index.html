@@ -356,6 +356,59 @@
         margin-bottom: 2rem;
       }
 
+      /* Testimonials Bauhaus Style */
+      .testimonial-card {
+        transition:
+          background-color 0.1s steps(1),
+          color 0.1s steps(1);
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .quote-icon {
+        background-color: var(--quote-color, var(--orange));
+        mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        transition: background-color 0.1s steps(1);
+        width: 60px;
+        height: 60px;
+        position: absolute;
+      }
+      .quote-icon.top {
+        top: 1.5rem;
+        left: 1.5rem;
+      }
+      .quote-icon.bottom {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        transform: rotate(180deg);
+      }
+
+      .quote-text {
+        font-size: 1.15rem;
+        line-height: 1.4;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        padding: 3rem 1rem 0;
+      }
+      .quote-author {
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: auto;
+        opacity: 0.8;
+        padding: 0 1rem 1rem;
+      }
+      .quote-author::before {
+        content: '— ';
+      }
+
       .site-header {
         position: static !important;
       }
@@ -830,7 +883,7 @@
           <div class="bauhaus-circle" style="background-color: var(--bg-color)"></div>
         </div>
         <div class="b-tile img-tile bg-mid-grey">
-          <a href="https://studio.heather.codes"
+          <a href="/pages/studio-roadshow.html"
             ><img
               src="/assets/studio-roadshow-Rm6eGY1z-Rm6eGY1z.png"
               alt="Studio Roadshow"
@@ -838,7 +891,16 @@
           /></a>
         </div>
 
-        <!-- Row 11 (Footer/Contact Area) -->
+        <!-- Row 11: Testimonials Header -->
+        <div class="b-tile span-col-4 bg-white">
+          <span class="meta">Collaborations</span>
+          <h2 style="font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 0">What People Say</h2>
+        </div>
+
+        <!-- Dynamic Testimonial Grid Injection -->
+        <div id="testimonials-container" style="display: contents"></div>
+
+        <!-- Row 12 (Footer/Contact Area) -->
         <div class="b-tile bg-dark-teal span-col-3">
           <span class="meta" style="color: var(--lime)">Let's Connect</span>
           <h2 style="font-size: 4rem; letter-spacing: -2px; margin-top: 1rem">
@@ -867,7 +929,7 @@
         </div>
 
         <div class="b-tile bg-lime">
-          <a href="https://studio.heather.codes" class="arrow-link"
+          <a href="/pages/studio-roadshow.html" class="arrow-link"
             ><h3 style="font-size: 1.5em">Studio<br />Roadshow <span>→</span></h3></a
           >
           <span class="meta">Which Swatch?</span>
@@ -1171,6 +1233,89 @@
             gsap.to(item.el, animProps);
           });
         });
+
+        // Testimonials Logic
+        const testimonialsData = [
+          {
+            text: 'Your work is simply lovely. You have captured the vision that I have for the website.',
+            author: 'Dr. APH',
+          },
+          {
+            text: 'Heather, You Rock! You have a heart of gold, and I love working with you.',
+            author: 'J.W.',
+          },
+          { text: 'Heather, You are SUCH a badass!', author: 'J.W.' },
+          {
+            text: 'I love working with you! I know that you can always find a good solution.',
+            author: 'S.S.',
+          },
+          {
+            text: 'Grateful for not making me feel like an idiot when I ask dumb tech questions.',
+            author: 'J.Wo.',
+          },
+          {
+            text: 'As a colleague you bring smarts, spunk and solutions. As a friend, you bring support.',
+            author: 'J.W.',
+          },
+          { text: 'You might be the coolest person I know. Keep kicking ass.', author: 'S.B.' },
+          { text: 'Heather, I love your innovative mind & spirit.', author: 'A.C.' },
+        ];
+
+        const testimonialThemes = [
+          { bg: '#136368', text: '#FFFFFF', quote: '#B2FF00' }, // Dark Teal + Lime
+          { bg: '#333333', text: '#FFFFFF', quote: '#B2FF00' }, // Dark Grey + Lime
+          { bg: '#f6b352', text: '#111111', quote: '#1bb1a5' }, // Yellow + Teal
+          { bg: '#f4f4f4', text: '#111111', quote: '#f66c0f' }, // Light Grey + Orange
+          { bg: '#1bb1a5', text: '#FFFFFF', quote: '#f6b352' }, // Teal + Yellow
+          { bg: '#f66c0f', text: '#FFFFFF', quote: '#f4f4f4' }, // Orange + Light Grey
+        ];
+
+        const tContainer = document.getElementById('testimonials-container');
+        const tCards = [];
+
+        function initTestimonials() {
+          if (!tContainer) return;
+
+          testimonialsData.forEach((t, i) => {
+            const theme = testimonialThemes[i % testimonialThemes.length];
+            const card = document.createElement('div');
+            card.className = 'b-tile testimonial-card';
+            card.dataset.themeIndex = i % testimonialThemes.length;
+
+            card.style.backgroundColor = theme.bg;
+            card.style.color = theme.text;
+            card.style.setProperty('--quote-color', theme.quote);
+
+            card.innerHTML = `
+                    <div class="quote-icon top"></div>
+                    <div class="quote-text">${t.text}</div>
+                    <div class="quote-author">${t.author}</div>
+                    <div class="quote-icon bottom"></div>
+                `;
+
+            tContainer.appendChild(card);
+            tCards.push(card);
+          });
+        }
+
+        function animateTestimonials() {
+          const count = 1; // Swap 1 at a time
+          for (let i = 0; i < count; i++) {
+            const card = tCards[Math.floor(Math.random() * tCards.length)];
+            let nextIndex = Math.floor(Math.random() * testimonialThemes.length);
+            while (nextIndex == card.dataset.themeIndex) {
+              nextIndex = Math.floor(Math.random() * testimonialThemes.length);
+            }
+            const theme = testimonialThemes[nextIndex];
+            card.style.backgroundColor = theme.bg;
+            card.style.color = theme.text;
+            card.style.setProperty('--quote-color', theme.quote);
+            card.dataset.themeIndex = nextIndex;
+          }
+        }
+
+        initTestimonials();
+        setInterval(animateTestimonials, 6000);
       });
     </script>
   </body>
