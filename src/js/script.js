@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     eurotrip: {
       title: 'Eurotrip Recap 2025',
       description:
-        "I was so inspired after taking vacation that I took a few days to build out a digital recap. I compiled 1500 videos from a shared album with my wife, selectively chose some to share as well as 70+ youtube videos. Seeing Salvador Dali's place, Antoni Gaudi's work, and Van Goghs stomping grounds gave me a new outlook as an artist and a designer.",
+        'I was so inspired after taking vacation that I took a few days to build out a digital recap. I compiled 1500 videos from a shared album with my wife, selectively chose some to share as well as 70+ youtube videos. Seeing Salvador Dali\'s place, Antoni Gaudi\'s work, and Van Goghs stomping grounds gave me a new outlook as an artist and a designer.',
       link: 'https://eurotrip.heather.codes',
       linkText: 'Recap My Trip',
     },
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       author: 'DR. APH',
     },
     {
-      text: "You're an awesome artist / designer / programmer / derby girl / handyman / dog mom / coworker!",
+      text: 'You\'re an awesome artist / designer / programmer / derby girl / handyman / dog mom / coworker!',
       author: 'M.C',
     },
     {
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
       author: 'George B.',
     },
     {
-      text: "I probably would have never figured out web design if it weren't for your patience and help anytime I had a question. You're a kick ass human and always inspiring me to design my life.",
+      text: 'I probably would have never figured out web design if it weren\'t for your patience and help anytime I had a question. You\'re a kick ass human and always inspiring me to design my life.',
       author: 'M.W.',
     },
     {
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     { text: 'Holy sh*t, that’s impressive!', author: 'W. H.' },
     { text: 'Heather for the win with foresight!', author: 'M. M.' },
     {
-      text: "Just wanted to follow up on this and give a shout out to Heather. She's been working with the client and their dev team for the better part of a year to try and get to the bottom of this issue. Trying all kinds of file sizes, etc. Appreciate your patience and persistence, Heather. You're awesome.",
+      text: 'Just wanted to follow up on this and give a shout out to Heather. She\'s been working with the client and their dev team for the better part of a year to try and get to the bottom of this issue. Trying all kinds of file sizes, etc. Appreciate your patience and persistence, Heather. You\'re awesome.',
       author: 'J.C.',
     },
     {
@@ -417,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const timelineWidth = totalYears * 120; // 120px per year for more space
     timelineContentWrapper.style.width = `${timelineWidth}px`;
 
-    timelineContentWrapper.innerHTML = `<div class="timeline-axis"></div>`; // Clear and add axis
+    timelineContentWrapper.innerHTML = '<div class="timeline-axis"></div>'; // Clear and add axis
 
     const yearToPercent = (year) => ((year - startYear) / totalYears) * 100;
 

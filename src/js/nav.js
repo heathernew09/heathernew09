@@ -181,7 +181,7 @@
     'color: #ffffff; background: #000000; font-size: 18px; padding: 10px; border-radius: 5px;'
   );
   console.log(
-    "%cLet's talk! Connect with me here: https://linkedin.com/in/heathernew09",
+    '%cLet\'s talk! Connect with me here: https://linkedin.com/in/heathernew09',
     'font-size: 14px; color: #333;'
   );
 })();

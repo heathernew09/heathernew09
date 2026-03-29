@@ -73,5 +73,23 @@
       "link": "/pages/hotspot.html"
     },
     "className": "bg-light"
+  },
+  {
+    "id": "subway",
+    "title": "Subway Digital",
+    "subtitle": "Global Menu Board Assets",
+    "category": "Digital Assets",
+    "description": "Scaling and optimizing digital assets for global deployment across Subway's international network of quick-service restaurants.",
+    "visual": {
+      "type": "image",
+      "src": "/assets/subway-static-menu-BItI84Kx-BItI84Kx.png",
+      "alt": "Subway Digital Menu Board"
+    },
+    "tech": ["Asset Optimization", "Digital Signage", "Workflow Automation"],
+    "cta": {
+      "text": "View Project",
+      "link": "/pages/subway.html"
+    },
+    "className": "bg-white"
   }
 ]

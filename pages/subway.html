@@ -1,0 +1,816 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="cache-control" content="no-store,max-age=0" />
+    <title>Subway Digital Assets - Heather New - Creative Technologist</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="../src/css/global.css" />
+    <style>
+      :root {
+        --teal: #1bb1a5;
+        --dark-teal: #247b82;
+        --yellow: #f6b352;
+        --orange: #f66c0f;
+        --lime: #b2f81d;
+        --light-grey: #e0e0e0;
+        --mid-grey: #cccccc;
+        --text-dark: #111111;
+        --bg-color: #f4f4f4;
+        --border: 1px solid var(--text-dark);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg-color);
+        color: var(--text-dark);
+        font-family: 'Manrope', sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* ─── HERO ─────────────────────────────────────────── */
+      .hero-title-block {
+        width: 100%;
+        padding: 7vw 4vw 5vw;
+        border-bottom: var(--border);
+        background: #fff;
+      }
+
+      .hero-title-block h1 {
+        font-size: clamp(2.5rem, 8vw, 8rem);
+        line-height: 0.85;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        margin-bottom: 2rem;
+        max-width: 8ch; /* Forces the drop to three lines */
+      }
+
+      .hero-title-block .subtitle {
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        font-weight: 500;
+        line-height: 1.5;
+        max-width: 50%; /* NARROWED TO HALF PAGE */
+        color: var(--text-dark);
+      }
+
+      /* ─── MENU ANIMATION SECTION ──────────────────────── */
+      .menu-animation-section {
+        width: 100%;
+        min-height: 900px;
+        padding: 60px 20px;
+        background-image: url('/assets/subway/subway-menupage.png');
+        background-size: contain;
+        background-position: top center;
+        background-repeat: no-repeat;
+        border-bottom: var(--border);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 100px;
+        overflow: hidden;
+      }
+
+      .menu-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        max-width: 1200px;
+        width: 100%;
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 20px;
+        border-radius: 16px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        z-index: 5; /* Lower than animation area */
+      }
+
+      .menu-card {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: 230px;
+        min-width: 180px;
+        height: 300px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        transition: transform 0.3s ease;
+        position: relative;
+      }
+
+      .menu-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .menu-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        display: block;
+      }
+
+      .menu-card .card-content {
+        padding: 16px;
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .menu-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+      }
+
+      #animation-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 10; /* Higher than menu-container */
+      }
+
+      .animated-card-duplicate {
+        position: absolute;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        width: 250px;
+        height: 300px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        opacity: 1;
+      }
+
+      .animated-card-duplicate img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        display: block;
+      }
+      .animated-card-duplicate .card-content {
+        padding: 16px;
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .animated-card-duplicate h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+      }
+
+      /* ─── BAUHAUS GRID ─────────────────────────────────── */
+      .portfolio-section {
+        padding: 0;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+      }
+
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(240px, auto);
+        width: 100%;
+        max-width: 1400px;
+        border-left: var(--border);
+        background: #fff;
+      }
+
+      .b-tile {
+        container-type: inline-size;
+        border-right: var(--border);
+        border-bottom: var(--border);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease;
+      }
+
+      .b-tile h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+      }
+
+      .b-tile h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .b-tile p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .b-tile .meta {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        opacity: 0.85;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .span-col-2 {
+        grid-column: span 2;
+      }
+      .span-col-3 {
+        grid-column: span 3;
+      }
+      .span-col-4 {
+        grid-column: span 4;
+      }
+
+      .bg-white {
+        background-color: #fff;
+      }
+      .bg-teal {
+        background-color: var(--teal);
+        color: #fff;
+      }
+      .bg-dark-teal {
+        background-color: var(--dark-teal);
+        color: #fff;
+      }
+      .bg-yellow {
+        background-color: var(--yellow);
+        color: var(--text-dark);
+      }
+      .bg-orange {
+        background-color: var(--orange);
+        color: #fff;
+      }
+      .bg-lime {
+        background-color: var(--lime);
+        color: var(--text-dark);
+      }
+      .bg-light-grey {
+        background-color: var(--light-grey);
+        color: var(--text-dark);
+      }
+      .bg-mid-grey {
+        background-color: var(--mid-grey);
+        color: var(--text-dark);
+      }
+
+      .img-tile {
+        padding: 0;
+        display: block;
+      }
+      .img-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .img-tile:hover img {
+        transform: scale(1.04);
+      }
+
+      @media (max-width: 900px) {
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 2;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .bauhaus-grid {
+          grid-template-columns: 1fr;
+        }
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 1;
+        }
+      }
+    </style>
+  </head>
+  <body id="subway-page" class="page-template">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <main id="main-content">
+      <!-- HERO SECTION -->
+      <div class="hero-title-block">
+        <h1>Subway Digital Assets</h1>
+        <p class="subtitle">
+          Digital Menu Boards, Website and the App so through our MERGE studio team. I lead the
+          delivery efforts, process creation and asset management. Providing assets for 28,000+
+          locations with professional polish.
+        </p>
+      </div>
+
+      <!-- MENU ANIMATION SECTION -->
+      <div class="menu-animation-section">
+        <div class="menu-container">
+          <div class="menu-card" id="card1">
+            <img
+              src="https://media.amp.subway.com/adaptivemedia/rendition?id=31006e12336c27a8f400425a26bc2cdd1d99d850&clid=srow&prid=SubCropBgd&wd=330&grv=Center&hofs=0&vofs=0&cwd=7750&cht=7750&op=png&bwd=275&bht=275"
+              alt="Meal of the Day"
+              onerror="
+                this.onerror = null;
+                this.src = 'https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';
+              "
+            />
+            <div class="card-content">
+              <h3>MEAL OF THE DAY</h3>
+            </div>
+          </div>
+          <div class="menu-card" id="card2">
+            <img
+              src="https://www.subway.com/ns/images/Menu/USA/ENG/US_W3_2024_SubwaySeriesCombined_PCPCard_ParentSmall_Light_D.jpg"
+              alt="Snacks, Sides & Desserts"
+              onerror="
+                this.onerror = null;
+                this.src = 'https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';
+              "
+            />
+            <div class="card-content">
+              <h3>SANDWICHES</h3>
+            </div>
+          </div>
+          <div class="menu-card" id="card3">
+            <img
+              src="https://www.subway.com/ns/images/Menu/USA/ENG/US_W3_2024_NoBreadyBowls_ParentSmall_Light_D_RL.jpg"
+              alt="Protein Bowls"
+              onerror="
+                this.onerror = null;
+                this.src = 'https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';
+              "
+            />
+            <div class="card-content">
+              <h3>PROTEIN BOWLS</h3>
+            </div>
+          </div>
+          <div class="menu-card" id="card4">
+            <img
+              src="https://media.amp.subway.com/adaptivemedia/rendition?id=9be3a7cc47822d93c68cb00e337a92001c1d6629&clid=srow&prid=SubCropBgd&wd=330&grv=Center&hofs=0&vofs=0&cwd=7750&cht=7750&op=png&bwd=275&bht=275"
+              alt="Wraps"
+              onerror="
+                this.onerror = null;
+                this.src = 'https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';
+              "
+            />
+            <div class="card-content">
+              <h3>SNACKS, SIDES & DESSERTS</h3>
+            </div>
+          </div>
+        </div>
+        <div id="animation-area"></div>
+        <button
+          id="replay-btn"
+          style="
+            position: absolute;
+            top: 11px;
+            right: 161px;
+            z-index: 1000;
+            padding: 17px 4px;
+            background: rgb(0, 138, 53);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            display: none;
+            transition:
+              opacity 0.5s ease,
+              transform 0.3s ease;
+            width: clamp(120px, 15vw, 180px);
+            font-size: clamp(0.6rem, 1vw, 0.8rem);
+          "
+        >
+          Reset Animation
+        </button>
+      </div>
+
+      <!-- BAUHAUS GRID -->
+      <div class="portfolio-section">
+        <div class="bauhaus-grid">
+          <!-- Row 1 -->
+          <div
+            class="b-tile bg-dark-teal span-col-2"
+            style="justify-content: flex-start; gap: 1.5rem"
+          >
+            <div>
+              <span class="meta" style="color: var(--lime)">Process & Delivery</span>
+              <h2 style="margin-top: 0.5rem">Global Scale</h2>
+              <p style="color: var(--light-grey)">
+                Managing the end-to-end lifecycle of digital menu boards for North America and
+                global markets.
+              </p>
+            </div>
+          </div>
+          <div class="b-tile bg-white span-col-2">
+            <span class="meta" style="color: var(--dark-teal)">Subway &mdash; MERGE</span>
+            <h2>Global Delivery</h2>
+            <p>
+              Providing seamless asset deployment for 28,000+ locations, ensuring professional
+              polish at every endpoint.
+            </p>
+          </div>
+
+          <!-- Challenge -->
+          <div class="b-tile bg-orange span-col-4">
+            <span class="meta">The Challenge</span>
+            <h2>Consistency at Scale.</h2>
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: flex-start;
+              "
+            >
+              <p style="font-size: 1.1rem; line-height: 1.6">
+                Managing content for thousands of digital endpoints requires a highly disciplined
+                approach to asset creation. The goal was to develop a scalable pipeline that ensured
+                every menu board, regardless of local hardware or resolution, delivered a premium
+                brand experience.
+              </p>
+              <ul style="list-style: none; line-height: 2.2; font-size: 1rem">
+                <li>&#8594; Automated asset optimization workflows</li>
+                <li>&#8594; Dynamic resolution and orientation support</li>
+                <li>&#8594; Brand-consistent motion graphics</li>
+                <li>&#8594; Seamless multi-market deployment</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Features -->
+          <div class="b-tile bg-yellow span-col-2">
+            <span class="meta">Innovation</span>
+            <h2>Modular Asset Management</h2>
+            <p>
+              Transitioning from static, heavy video files to a modular, data-driven system enabled
+              real-time menu updates and significantly reduced the overhead for local marketing
+              adaptations.
+            </p>
+          </div>
+          <div class="b-tile bg-light-grey span-col-2">
+            <span class="meta">Result</span>
+            <h2>Optimized Delivery</h2>
+            <p>
+              Drastic reduction in file weights without compromising visual fidelity, ensuring
+              faster updates and higher uptime across the entire franchise network.
+            </p>
+          </div>
+
+          <!-- Footer Disclosure -->
+          <div
+            class="b-tile span-col-4"
+            style="
+              min-height: auto;
+              justify-content: center;
+              text-align: center;
+              padding: 2rem 2.5rem;
+            "
+          >
+            <p style="font-size: 0.8rem; opacity: 0.6; width: 100%">
+              All Subway assets and photography are copyright of Subway IP LLC and MERGE.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+    <script type="module" src="../src/js/site-core.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const duplicateOffsetBase = 10;
+        const duplicateStagger = 60;
+        const maxDuplicates = 60;
+        const initialLoadDelay = 1000;
+        const estimatedDuration = maxDuplicates * duplicateStagger;
+        const interCardDelay = estimatedDuration / 2;
+        const sequenceSwitchDelay = 1000;
+        const sequence2ZIndexOffset = 1000;
+        const sequence3ZIndexOffset = 2000;
+
+        const cardWidth = 250;
+        const cardHeight = 300;
+
+        const originalCardsConfig = [
+          {
+            id: 'card1',
+            directionName: 'Meal of the Day',
+            animationType: 'settle',
+            stackingPath: 'hillyPath',
+            pathParams: {
+              baseOffsetMultipliers: [-0.9, 0.9],
+              amplitudeX: 15,
+              amplitudeY: -60,
+              frequency: Math.PI / 8,
+            },
+          },
+          {
+            id: 'card2',
+            directionName: 'Snacks & Sides',
+            animationType: 'settle',
+            stackingPath: 'hillyPath',
+            pathParams: {
+              baseOffsetMultipliers: [-0.4, 0.9],
+              amplitudeX: 10,
+              amplitudeY: -80,
+              frequency: Math.PI / 9,
+            },
+            stopCondition: 'midScreen',
+          },
+          {
+            id: 'card3',
+            directionName: 'Protein Bowls',
+            animationType: 'settle',
+            stackingPath: 'hillyPath',
+            pathParams: {
+              baseOffsetMultipliers: [0.4, 0.9],
+              amplitudeX: 15,
+              amplitudeY: -60,
+              frequency: Math.PI / 8,
+            },
+          },
+          {
+            id: 'card4',
+            directionName: 'Wraps',
+            animationType: 'settle',
+            offsetMultipliers: [1, 1],
+          },
+        ];
+
+        const animationArea = document.getElementById('animation-area');
+        const replayBtn = document.getElementById('replay-btn');
+
+        let currentSequence = 1;
+        let animationsCompleted = 0;
+        let highestZIndex = 0;
+
+        function resetAnimation() {
+          // Fade out current animation
+          animationArea.style.transition = 'opacity 0.8s ease';
+          animationArea.style.opacity = '0';
+          replayBtn.style.opacity = '0';
+
+          setTimeout(() => {
+            animationArea.innerHTML = '';
+            animationArea.style.opacity = '1';
+            animationArea.style.transition = 'none';
+
+            // Reset state
+            currentSequence = 1;
+            animationsCompleted = 0;
+            highestZIndex = 0;
+
+            replayBtn.style.display = 'none';
+            replayBtn.style.opacity = '1';
+
+            startSequence(currentSequence);
+          }, 800);
+        }
+
+        replayBtn.addEventListener('click', resetAnimation);
+
+        function getSequenceConfig(cardIndex, sequenceNum) {
+          const originalIndex = cardIndex;
+          let sourceIndex;
+
+          if (sequenceNum === 1) {
+            sourceIndex = originalIndex;
+          } else if (sequenceNum === 2) {
+            switch (originalIndex) {
+              case 0:
+                sourceIndex = 3;
+                break;
+              case 1:
+                sourceIndex = 2;
+                break;
+              case 2:
+                sourceIndex = 0;
+                break;
+              case 3:
+                sourceIndex = 1;
+                break;
+              default:
+                sourceIndex = originalIndex;
+            }
+          } else {
+            switch (originalIndex) {
+              case 0:
+                sourceIndex = 1;
+                break;
+              case 1:
+                sourceIndex = 3;
+                break;
+              case 2:
+                sourceIndex = 2;
+                break;
+              case 3:
+                sourceIndex = 0;
+                break;
+              default:
+                sourceIndex = originalIndex;
+            }
+          }
+
+          const sourceConfig = originalCardsConfig[sourceIndex];
+          return {
+            id: originalCardsConfig[originalIndex].id,
+            directionName: originalCardsConfig[originalIndex].directionName,
+            animationType: sourceConfig.animationType,
+            stackingPath: sourceConfig.stackingPath,
+            pathParams: sourceConfig.pathParams ? { ...sourceConfig.pathParams } : undefined,
+            offsetMultipliers: sourceConfig.offsetMultipliers
+              ? [...sourceConfig.offsetMultipliers]
+              : undefined,
+            stopCondition: sourceConfig.stopCondition,
+          };
+        }
+
+        function animateCardStream(cardElement, config, onCompleteCallback) {
+          if (!cardElement) {
+            if (onCompleteCallback) onCompleteCallback();
+            return;
+          }
+
+          const sectionRect = document
+            .querySelector('.menu-animation-section')
+            .getBoundingClientRect();
+          const originalCardRect = cardElement.getBoundingClientRect();
+
+          const relativeLeft = originalCardRect.left - sectionRect.left;
+          const relativeTop = originalCardRect.top - sectionRect.top;
+
+          let i = 0;
+          const midScreenStopY = sectionRect.height * 0.6;
+
+          function createNextDuplicate() {
+            let currentOffsetX, currentOffsetY;
+
+            if (config.stackingPath === 'hillyPath' && config.pathParams) {
+              const params = config.pathParams;
+              let baseX = i * duplicateOffsetBase * params.baseOffsetMultipliers[0];
+              let baseY = i * duplicateOffsetBase * params.baseOffsetMultipliers[1];
+              const angle = params.frequency * i;
+              const hillDevX = params.amplitudeX * Math.cos(angle);
+              const hillDevY = params.amplitudeY * Math.sin(angle);
+              currentOffsetX = baseX + hillDevX;
+              currentOffsetY = baseY + hillDevY;
+            } else {
+              currentOffsetX =
+                i *
+                duplicateOffsetBase *
+                (config.offsetMultipliers ? config.offsetMultipliers[0] : 0);
+              currentOffsetY =
+                i *
+                duplicateOffsetBase *
+                (config.offsetMultipliers ? config.offsetMultipliers[1] : 0);
+            }
+
+            const dupCalculatedLeft = relativeLeft + currentOffsetX;
+            const dupCalculatedTop = relativeTop + currentOffsetY;
+
+            let stopStream = false;
+            if (config.stopCondition === 'midScreen') {
+              if (dupCalculatedTop > midScreenStopY) {
+                stopStream = true;
+              }
+            } else {
+              const isCurrentCardVisibleInsideSection = !(
+                dupCalculatedTop + cardHeight < 0 ||
+                dupCalculatedTop > sectionRect.height ||
+                dupCalculatedLeft + cardWidth < 0 ||
+                dupCalculatedLeft > sectionRect.width
+              );
+              if (!isCurrentCardVisibleInsideSection) {
+                stopStream = true;
+              }
+            }
+
+            if (stopStream || i >= maxDuplicates) {
+              if (onCompleteCallback) onCompleteCallback();
+              return;
+            }
+
+            const duplicate = cardElement.cloneNode(true);
+            duplicate.id = '';
+            duplicate.classList.remove('menu-card');
+            duplicate.classList.add('animated-card-duplicate');
+            duplicate.style.width = `${cardWidth}px`;
+            duplicate.style.height = `${cardHeight}px`;
+            duplicate.style.left = `${dupCalculatedLeft}px`;
+            duplicate.style.top = `${dupCalculatedTop}px`;
+
+            highestZIndex++;
+            let zIndexValue = highestZIndex;
+            if (currentSequence === 2) {
+              zIndexValue += sequence2ZIndexOffset;
+            } else if (currentSequence === 3) {
+              zIndexValue += sequence3ZIndexOffset;
+            }
+            duplicate.style.zIndex = `${zIndexValue}`;
+
+            animationArea.appendChild(duplicate);
+            i++;
+            setTimeout(createNextDuplicate, duplicateStagger);
+          }
+          createNextDuplicate();
+        }
+
+        function handleSequenceCompletion() {
+          animationsCompleted++;
+          if (animationsCompleted >= originalCardsConfig.length) {
+            if (currentSequence === 1) {
+              currentSequence = 2;
+              animationsCompleted = 0;
+              setTimeout(() => startSequence(currentSequence), sequenceSwitchDelay);
+            } else if (currentSequence === 2) {
+              currentSequence = 3;
+              animationsCompleted = 0;
+              setTimeout(() => startSequence(currentSequence), sequenceSwitchDelay);
+            } else if (currentSequence === 3) {
+              // Sequence 3 finished
+              replayBtn.style.display = 'block';
+            }
+          }
+        }
+
+        function startSequence(sequenceNum) {
+          originalCardsConfig.forEach((_, index) => {
+            setTimeout(() => {
+              const cardConfigForSequence = getSequenceConfig(index, sequenceNum);
+              const cardElement = document.getElementById(cardConfigForSequence.id);
+              if (cardElement) {
+                animateCardStream(cardElement, cardConfigForSequence, handleSequenceCompletion);
+              } else {
+                handleSequenceCompletion();
+              }
+            }, index * interCardDelay);
+          });
+        }
+
+        setTimeout(() => {
+          startSequence(currentSequence);
+        }, initialLoadDelay);
+      });
+    </script>
+  </body>
+</html>

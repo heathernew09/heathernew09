@@ -138,7 +138,7 @@ function initHeroInteractions() {
 
     const tooltip = document.createElement('div');
     tooltip.className = 'phone-tooltip';
-    tooltip.innerText = "good luck even my dog couldn't get me on the phone.";
+    tooltip.innerText = 'good luck even my dog couldn\'t get me on the phone.';
     document.body.appendChild(tooltip);
 
     const rect = target.getBoundingClientRect();
