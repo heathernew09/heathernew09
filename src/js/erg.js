@@ -73,7 +73,7 @@
         height: height,
         wireframes: false,
         background: 'transparent',
-        pixelRatio: window.devicePixelRatio || 1,
+        pixelRatio: 1, // Enforce 1 to prevent stretching on high-DPI screens
       },
     });
 

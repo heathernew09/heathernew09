@@ -424,10 +424,11 @@
       clearTimeout(window.mergeworld_loopTimeout);
       if (window.mergeworld_isPaused) return;
 
-      const delay = currentStage >= STAGES.length - 1 ? 45000 : 400;
+      const isLastStage = currentStage >= STAGES.length - 1;
+      const delay = isLastStage ? 10000 : 600; // 10s pause at end, then loop
 
       window.mergeworld_loopTimeout = setTimeout(() => {
-        if (currentStage >= STAGES.length - 1) {
+        if (isLastStage) {
           currentStage = -1;
           updateUI();
           setTimeout(() => {
@@ -436,7 +437,7 @@
               updateUI();
               scheduleNext();
             }
-          }, 300);
+          }, 500);
         } else {
           currentStage++;
           updateUI();
