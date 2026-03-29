@@ -371,6 +371,35 @@
       },
     };
 
+    // 3. BUTTON WIRING
+    if (resetBtn) {
+      resetBtn.onclick = () => {
+        currentStage = -1;
+        updateUI();
+        if (!window.mergeworld_isPaused) scheduleNext();
+      };
+    }
+
+    if (backBtn) {
+      backBtn.onclick = () => {
+        if (currentStage > -1) {
+          currentStage--;
+          updateUI();
+          if (!window.mergeworld_isPaused) scheduleNext();
+        }
+      };
+    }
+
+    if (forwardBtn) {
+      forwardBtn.onclick = () => {
+        if (currentStage < STAGES.length - 1) {
+          currentStage++;
+          updateUI();
+          if (!window.mergeworld_isPaused) scheduleNext();
+        }
+      };
+    }
+
     function updateUI() {
       if (!stageLabel) return;
       stageLabel.textContent = currentStage >= 0 ? STAGES[currentStage].label : 'Ready';

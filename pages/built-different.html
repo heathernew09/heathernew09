@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="cache-control" content="no-store,max-age=0" />
-    <title>Modular Agency Website on SiteCore - Heather New - Creative Technologist</title>
+    <title>Built Different - MERGE Brand - Heather New - Creative Technologist</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -15,9 +15,312 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="HeatherNew" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-    <meta property="og:image" content="/images/built-og.png" />
     <link rel="stylesheet" href="../src/css/global.css" />
     <link rel="stylesheet" href="../src/css/built-different.css" />
+    <style>
+      :root {
+        --primary-teal: #2b8a92;
+        --accent-lime: #bfff00;
+        --accent-orange: #f97316;
+        --dark-gray: #333333;
+        --medium-gray: #666666;
+        --light-gray: #f5f5f5;
+        --white: #ffffff;
+        --color-studio: #00a99d;
+        --color-work: #e87a00;
+        --color-services: #f1c40f;
+        --color-clients: #98cb4a;
+        --color-contacts: #ecf0f1;
+        --text-dark: #111111;
+        --border: 1px solid var(--text-dark);
+      }
+
+      body {
+        background-color: #fff;
+      }
+
+      /* ─── HERO ─────────────────────────────────────────── */
+      .hero-title-block {
+        width: 100%;
+        padding: 7vw 4vw 5vw;
+        border-bottom: var(--border);
+        background: #fff;
+      }
+      .hero-title-block h1 {
+        font-size: clamp(2.5rem, 8vw, 8rem);
+        line-height: 0.85;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        margin-bottom: 2rem;
+        max-width: 8ch;
+      }
+      .hero-title-block .subtitle {
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        font-weight: 500;
+        line-height: 1.5;
+        max-width: 50%;
+        color: var(--text-dark);
+      }
+
+      /* ─── BAUHAUS GRID ─────────────────────────────────── */
+      .portfolio-section {
+        padding: 0;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+      }
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(240px, auto);
+        width: 100%;
+        max-width: 1400px;
+        border-left: var(--border);
+        background: #fff;
+      }
+      .b-tile {
+        container-type: inline-size;
+        border-right: var(--border);
+        border-bottom: var(--border);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease;
+      }
+      .b-tile h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+      }
+      .b-tile h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .b-tile .meta {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        opacity: 0.85;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .span-col-2 {
+        grid-column: span 2;
+      }
+      .span-col-3 {
+        grid-column: span 3;
+      }
+      .span-col-4 {
+        grid-column: span 4;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
+
+      .span-col-404-text {
+        grid-column: span 3;
+      }
+      .span-col-404-img {
+        grid-column: span 1;
+      }
+
+      .bg-primary-teal {
+        background-color: var(--primary-teal);
+        color: #fff;
+      }
+      .bg-accent-lime {
+        background-color: var(--accent-lime);
+        color: var(--text-dark);
+      }
+      .bg-dark-gray {
+        background-color: var(--dark-gray);
+        color: #fff;
+      }
+      .bg-white {
+        background-color: #fff;
+        color: var(--text-dark);
+      }
+      .bg-services {
+        background-color: var(--color-services);
+        color: var(--text-dark);
+      }
+
+      .img-tile {
+        padding: 0;
+        display: block;
+      }
+      .img-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .img-tile:hover img {
+        transform: scale(1.04);
+      }
+
+      .list-clean {
+        list-style: none;
+        line-height: 2;
+        font-size: 0.95rem;
+      }
+      .testimonial-quote {
+        font-size: clamp(1.2rem, 2.5vw, 2rem);
+        font-style: italic;
+        font-weight: 500;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+      }
+
+      /* Interaction Adjustments */
+      #section-mergeworld-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        display: block;
+      }
+      #container-mergeworld {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #f8fdfc;
+      }
+      #section-flappym-container {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      #container-flappym {
+        width: 100%;
+        height: 100%;
+        min-height: 450px;
+        background: var(--dark-gray);
+        border-top: none;
+      }
+      #section-erg-container {
+        width: 100%;
+        height: 100%;
+        min-height: 600px;
+        display: block;
+      }
+      #erg-canvas-container {
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+        background: #fff;
+      }
+
+      .web-thumb-tilted {
+        width: 100%;
+        transform: rotate(-12deg) scale(1.1);
+        margin-top: 2rem;
+      }
+      .tshirt-render {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      /* Mergeworld Bauhaus Grid Overrides */
+      #container-mergeworld .marketing-column {
+        display: none;
+      }
+      #container-mergeworld .page-container {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+      #container-mergeworld .demo-column {
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      #container-mergeworld .demo-container {
+        max-width: none;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: transparent;
+      }
+      #container-mergeworld .control-bar {
+        margin: 1rem auto;
+        width: 90%;
+      }
+
+      #container-mergeworld [data-stage] {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+      #container-mergeworld [data-stage].visible {
+        opacity: 1;
+      }
+
+      /* Accessibility Button */
+      .btn-accessible {
+        display: inline-block;
+        padding: 12px 24px;
+        border: 2px solid var(--primary-teal);
+        color: var(--primary-teal);
+        background: transparent;
+        border-radius: 30px;
+        font-weight: 800;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        transition: all 0.3s ease;
+      }
+      .btn-accessible:hover {
+        background: var(--primary-teal);
+        color: #fff;
+      }
+
+      @media (max-width: 900px) {
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-3,
+        .span-col-4,
+        .span-col-404-text {
+          grid-column: span 2;
+        }
+        .span-col-404-img {
+          grid-column: span 1;
+        }
+      }
+      @media (max-width: 600px) {
+        .bauhaus-grid {
+          grid-template-columns: 1fr;
+        }
+        .span-col-2,
+        .span-col-3,
+        .span-col-4,
+        .span-col-404-text,
+        .span-col-404-img {
+          grid-column: span 1;
+        }
+      }
+    </style>
   </head>
   <body id="built-different-page" class="page-template">
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
@@ -27,150 +330,275 @@
     </header>
 
     <main id="main-content">
-      <section class="merge-hero">
-        <div class="container">
-          <img src="/assets/merge/static_hero.png" alt="Static Hero" class="img-hero" />
-        </div>
-      </section>
+      <!-- HERO HEADER -->
+      <div class="hero-title-block">
+        <h1>Built Different</h1>
+        <p class="subtitle">
+          Leading the delivery and UI architecture for the MERGE agency website—a modular, Atomic
+          Design system built on SiteCore, optimized for high-performance engagement.
+        </p>
+      </div>
 
-      <section id="section-mergeworld-container">
-        <div class="hero-3d">
-          <div id="container-mergeworld">
-            <load src="../src/partials/section-mergeworld.html" />
+      <div class="portfolio-section">
+        <div class="bauhaus-grid">
+          <!-- MERGE HERO STATIC IMAGE -->
+          <div class="b-tile img-tile span-col-4">
+            <img src="/assets/merge/static_hero.png" alt="MERGE Agency Website" />
           </div>
-        </div>
-      </section>
 
-      <section class="section execution-context bg-dark text-white">
-        <div class="container">
-          <div class="testimonial-full-width">
-            <div class="testimonial-block">
-              <p class="test-txt">
-                "I'm thrilled to share how impressed she was. The website proved to be a valuable
-                co-pilot to my engagement! I know we want to do more with the website, but it’s just
-                as exciting to celebrate the moments of impression along the way! Well Done!"
+          <!-- ROW 1: WEBSITE INTERACTIVE (2 COLS) -->
+          <div
+            class="b-tile span-col-2"
+            style="min-height: 850px; justify-content: flex-start; gap: 2rem"
+          >
+            <div class="marketing-content">
+              <span class="meta">UI Architecture</span>
+              <h2>Modular Design System &amp; Web Architecture</h2>
+
+              <div
+                style="
+                  margin: 2rem 0;
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 1rem;
+                  font-size: 0.85rem;
+                "
+              >
+                <div><strong>Client:</strong> MERGE</div>
+                <div><strong>Role:</strong> UI Designer</div>
+                <div><strong>Stakeholders:</strong> CMOs &amp; CTOs</div>
+                <div><strong>Timeline:</strong> 3 Month Sprint</div>
+              </div>
+
+              <h3>Solving for Scale, Not Just Aesthetics</h3>
+              <p>
+                On the surface, it's clean corporate communication. Under the hood, it's a
+                performance-optimized, responsive framework designed to scale.
               </p>
-              <p class="test-auth">— Heidi West, CRO MERGE</p>
+
+              <a
+                href="https://mergeworld.com"
+                target="_blank"
+                class="btn-accessible"
+                style="margin: 2rem 0"
+                >Visit MERGEWORLD.COM</a
+              >
+
+              <h3>Bridging Design & Development</h3>
+              <p>
+                Static Figma files can be hard to translate to dev accurately. Often I'd take
+                components and built out demos to communicate my vision and get stakeholder
+                approval.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+          <div class="b-tile span-col-2" style="padding: 0">
+            <section id="section-mergeworld-container">
+              <div id="container-mergeworld">
+                <load src="../src/partials/section-mergeworld.html" />
+              </div>
+            </section>
+          </div>
 
-      <section id="section-flappym-container">
-        <div class="container-thumbnail">
-          <img
-            src="/assets/404/search-desktop.png"
-            class="img-responsive web-thumb-merge"
-            alt="404 page"
-          />
-          <div class="text-content">
-            <h3>Even our errors are Built Different</h3>
-            <p>
-              <strong>The Problem:</strong> 404 Error pages usually result in a 100% bounce rate.
+          <!-- ROW 2: FULL WIDTH TESTIMONIAL -->
+          <div class="b-tile bg-dark-gray span-col-4">
+            <span class="meta" style="color: var(--accent-lime)">Engagement Insight</span>
+            <p class="testimonial-quote">
+              "The website proved to be a valuable co-pilot to my engagement! I know we want to do
+              more, but it’s just as exciting to celebrate the moments of impression along the way!"
             </p>
-            <p><strong>The Solution:</strong> Turning Dead Ends into Brand Moments "Flappy M."</p>
-            <ul class="tech-specs">
-              <li><strong>Tech Stack:</strong> Raw JavaScript (Physics-based animation)</li>
-              <li><strong>Performance:</strong> Zero heavy game engines.</li>
-            </ul>
+            <p class="meta">&mdash; Heidi West, CRO MERGE</p>
           </div>
-        </div>
-        <div id="container-flappym"><load src="../src/partials/flappym.html" /></div>
-      </section>
 
-      <section class="section culture border-top">
-        <div class="container">
-          <div class="two-col-tshirt">
-            <div class="media-content">
-              <img
-                src="/assets/merge/built-different-tshirt2.png"
-                alt="MERGE Built Different Tshirt"
-                class="tshirt-float"
-              />
-            </div>
-            <div class="media-text">
+          <!-- ROW 3: 404 WEB IMAGE TILTED + TEXT (~60%) -->
+          <div
+            class="b-tile span-col-404-img bg-light-gray"
+            style="display: flex; align-items: center; justify-content: center; overflow: visible"
+          >
+            <img src="/assets/404/search-desktop.png" alt="404 page" class="web-thumb-tilted" />
+          </div>
+          <div class="b-tile span-col-404-text bg-white" style="justify-content: center">
+            <span class="meta">Innovation</span>
+            <h2>Even our errors are Built Different.</h2>
+            <p style="font-size: 1.2rem; line-height: 1.6">
+              404 Error pages usually result in a 100% bounce rate. We turned a dead end into a
+              brand moment by creating "Flappy M"—a physics-based browser game using raw JavaScript
+              that keeps users engaged even when they're lost.
+            </p>
+          </div>
+
+          <!-- ROW 4: FLAPPY M GAME FULL WIDTH -->
+          <div class="b-tile bg-dark-gray span-col-4" style="padding: 0">
+            <section id="section-flappym-container">
+              <div id="container-flappym">
+                <load src="../src/partials/flappym.html" />
+              </div>
+            </section>
+          </div>
+
+          <!-- ROW 5: CULTURE T-SHIRT (2 COLS, TALL) -->
+          <div
+            class="b-tile span-col-2"
+            style="
+              min-height: 800px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: #fff;
+            "
+          >
+            <img
+              src="/assets/merge/built-different-tshirt2.png"
+              alt="MERGE Built Different Tshirt"
+              class="tshirt-render"
+            />
+          </div>
+          <div class="b-tile bg-services span-col-2" style="justify-content: flex-start; gap: 3rem">
+            <div>
+              <span class="meta">Cultural Branding</span>
               <h2>Extending the Brand System</h2>
-              <p class="section-intro">
+              <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 2rem">
                 I meet the brand where it lives—whether that's in code, on a t-shirt, or within
                 internal culture.
               </p>
-              <div class="role-grid">
-                <div class="role-cat">
-                  <h5>Physical Brand (MMMERCH)</h5>
-                  <p>
-                    Translated the "MERGE" identity into physical goods, winning the agency-wide
-                    design competition.
-                  </p>
-                </div>
-                <div class="role-cat">
-                  <h5>Cultural Architecture (ERG)</h5>
-                  <p>Built the design system for our internal Diversity &amp; Inclusion groups.</p>
-                  <p><strong>Click on the ERG logo coins below.</strong></p>
-                </div>
+
+              <h3 style="text-transform: uppercase; font-size: 1.2rem">Physical Brand (MMMERCH)</h3>
+              <p>
+                Translated the "MERGE" identity into physical goods, winning the agency-wide design
+                competition. It's about taking digital precision and applying it to tangible brand
+                advocacy.
+              </p>
+            </div>
+          </div>
+
+          <!-- ROW 6: ERG PHYSICS FULL WIDTH -->
+          <div class="b-tile bg-white span-col-4" style="padding: 0">
+            <section id="section-erg-container">
+              <div style="padding: 2.5rem 2.5rem 0">
+                <span class="meta">Cultural Architecture (ERG)</span>
+                <h3>Inclusion in Motion</h3>
+                <p>
+                  Built the design system for our internal Diversity & Inclusion groups.
+                  Physics-based interaction model for our ERG ecosystem.
+                  <strong>Click on the logo coins below.</strong>
+                </p>
+              </div>
+              <div id="erg-canvas-container"></div>
+            </section>
+          </div>
+
+          <!-- ROW 7: SECONDARY TESTIMONIALS (2 COLS) -->
+          <div class="b-tile bg-dark-gray span-col-2">
+            <p style="font-size: 1.1rem; line-height: 1.4; font-style: italic">
+              "Heather - Your ability to jump in and take feedback with grace... has been invaluable
+              to the success of this build."
+            </p>
+            <p class="meta" style="margin-top: 1rem; color: var(--accent-lime)">
+              &mdash; Maja Cyrulik, Sr. Director, Digital Engineering
+            </p>
+          </div>
+          <div class="b-tile bg-dark-gray span-col-2">
+            <p style="font-size: 1.1rem; line-height: 1.4; font-style: italic">
+              "This has been an incredible team to work with. The vision was matched by the
+              execution at every level."
+            </p>
+            <p class="meta" style="margin-top: 1rem; color: var(--accent-lime)">
+              &mdash; Katie Lucas, VP Group Experience Lead
+            </p>
+          </div>
+
+          <!-- ROW 8: CREDITS SOPHISTICATED -->
+          <div class="b-tile bg-primary-teal span-col-4" style="padding: 4rem 2.5rem">
+            <span class="meta" style="color: var(--accent-lime); margin-bottom: 2rem"
+              >Collaborative Excellence &mdash; The Launch Squad</span
+            >
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 3rem;
+              "
+            >
+              <div class="credit-group">
+                <h4
+                  style="
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    font-size: 0.9rem;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  Core Team
+                </h4>
+                <ul class="list-clean" style="font-weight: 500">
+                  <li>
+                    <strong style="font-weight: 800">Heather New:</strong> Creative Technologist
+                  </li>
+                  <li>
+                    <strong style="font-weight: 800">Austin Melendez:</strong> Dev Engineering
+                  </li>
+                  <li><strong style="font-weight: 800">Ryan Reece:</strong> Dev Engineering</li>
+                  <li><strong style="font-weight: 800">Tom Farina:</strong> Dev Engineering</li>
+                </ul>
+              </div>
+              <div class="credit-group">
+                <h4
+                  style="
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    font-size: 0.9rem;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  Leadership
+                </h4>
+                <ul class="list-clean" style="font-weight: 500">
+                  <li><strong style="font-weight: 800">Katie Lukas:</strong> Leadership</li>
+                  <li><strong style="font-weight: 800">TTa Cruver:</strong> Project Management</li>
+                  <li>
+                    <strong style="font-weight: 800">Suzanne Brendle:</strong> Content Strategy
+                  </li>
+                  <li><strong style="font-weight: 800">Hanna Dodd:</strong> Requirements</li>
+                </ul>
+              </div>
+              <div class="credit-group">
+                <h4
+                  style="
+                    font-weight: 800;
+                    text-transform: uppercase;
+                    font-size: 0.9rem;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+                    padding-bottom: 0.5rem;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  Support
+                </h4>
+                <ul class="list-clean" style="font-weight: 500">
+                  <li><strong style="font-weight: 800">Misty Castaldi:</strong> UX Support</li>
+                  <li><strong style="font-weight: 800">Adam Fox:</strong> UI Kit</li>
+                  <li><strong style="font-weight: 800">Evan Cohen:</strong> Analytics</li>
+                </ul>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      <section id="section-erg-container" class="section">
-        <div id="container-erg"><div id="erg-canvas-container"></div></div>
-      </section>
-
-      <section class="section execution-context bg-dark text-white">
-        <div class="container">
-          <div class="testimonial-container-2">
-            <div class="testimonial-block">
-              <p class="test-txt">
-                "Heather - Your ability to jump in and take feedback with grace..."
-              </p>
-              <p class="test-auth">— Maja Cyrulik, Sr. Director, Digital Engineering</p>
-            </div>
-            <div class="testimonial-block">
-              <p class="test-txt">"This has been an incredible team to work with..."</p>
-              <p class="test-auth">— Katie Lucas, VP Group Experience Lead</p>
-            </div>
+          <!-- DISCLOSURE -->
+          <div
+            class="b-tile span-col-4"
+            style="min-height: auto; text-align: center; padding: 2rem"
+          >
+            <p style="font-size: 0.8rem; opacity: 0.6">
+              All MERGE brand assets and photography are copyright of MERGE. Collaborative
+              excellence drives every pixel.
+            </p>
           </div>
         </div>
-      </section>
-
-      <section class="section credits border-top">
-        <div class="container-narrow">
-          <h2>The Launch Squad</h2>
-          <div class="credits-grid-1">
-            <div class="credit-col">
-              <h4>MERGE Website MVP Team</h4>
-              <ul>
-                <li><strong>Creative Technologist &amp; UI:</strong> Heather New</li>
-                <li>
-                  <strong>Dev Engineering (Pure ART):</strong> Austin Melendez, Ryan Reece, Tom
-                  Farina
-                </li>
-                <li><strong>Project Management:</strong> TTa Cruver [cite: 7]</li>
-                <li><strong>Content Strategy Lead:</strong> Suzanne Brendle</li>
-                <li><strong>Leadership &amp; Guidance:</strong> Katie Lukas</li>
-
-                <li><strong>Requirements &amp; Confluence:</strong> Hanna Dodd</li>
-                <li><strong>UI Kit &amp; UX Support:</strong> Misty Castaldi &amp; Adam Fox</li>
-                <li><strong>Analytics &amp; Tracking:</strong> Evan Cohen</li>
-
-                <li>
-                  <strong>TechOps &amp; Security:</strong> Wale Akomolafe, Roze San Nicolas, Matthew
-                  Macaluso, Nathan Telander, Jason Dittmer
-                </li>
-
-                <li>
-                  <strong>Site Build, Content &amp; QA:</strong> Wyatt Avison, Jane Dorsey, Sam
-                  Holt, Vivien Leung, Julia Payul
-                </li>
-                <li><strong>Content Creation:</strong> Allison Martin</li>
-                <li><strong>Support:</strong> Jeff Glenn</li>
-              </ul>
-            </div>
-          </div>
-          <p class="asset-disclosure">Collaboration creates greatness.</p>
-        </div>
-      </section>
+      </div>
     </main>
 
     <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
@@ -182,34 +610,38 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        // 1. FLAPPY M Initialization
+        // 1. FLAPPY M
         if (typeof window.initFlappyGame === 'function') {
           window.initFlappyGame();
         }
 
-        // 2. MERGEWORLD: The script in section-mergeworld.html usually self-starts,
-        // but we ensure the manager knows about it
-        window.sectionManager.register(
-          'section-mergeworld-container',
-          () => {
-            if (window.mergeworldAnim && typeof window.mergeworldAnim.play === 'function') {
-              window.mergeworldAnim.play();
-            }
-            document.getElementById('container-mergeworld').classList.add('active');
-          },
-          () => {
-            if (window.mergeworldAnim && typeof window.mergeworldAnim.pause === 'function') {
-              window.mergeworldAnim.pause();
-            }
-            document.getElementById('container-mergeworld').classList.remove('active');
+        // 2. MERGEWORLD
+        setTimeout(() => {
+          if (window.sectionManager) {
+            window.sectionManager.register(
+              'section-mergeworld-container',
+              () => {
+                if (window.mergeworldAnim && typeof window.mergeworldAnim.play === 'function') {
+                  window.mergeworldAnim.play();
+                }
+                document.getElementById('container-mergeworld').classList.add('active');
+              },
+              () => {
+                if (window.mergeworldAnim && typeof window.mergeworldAnim.pause === 'function') {
+                  window.mergeworldAnim.pause();
+                }
+                document.getElementById('container-mergeworld').classList.remove('active');
+              }
+            );
           }
-        );
+        }, 800);
 
-        // 3. ERG PHYSICS: The erg.js script usually self-registers,
-        // but we can ensure it's triggered
-        if (typeof window.initErgPhysics === 'function') {
-          window.initErgPhysics();
-        }
+        // 3. ERG PHYSICS
+        setTimeout(() => {
+          if (typeof window.initErgPhysics === 'function') {
+            window.initErgPhysics();
+          }
+        }, 500);
       });
     </script>
   </body>
