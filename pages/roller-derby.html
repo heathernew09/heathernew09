@@ -7,7 +7,7 @@
       name="description"
       content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology."
     />
-    <title>Creative Technologist in Chicago - Heather New</title>
+    <title>Design x Derby - Heather New - Creative Technologist</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -34,6 +34,7 @@
     <!-- Import GSAP for high-performance elevated motion -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
+    <link rel="stylesheet" href="/src/css/global.css" />
     <style>
       :root {
         --bg-color: #f4f4f4;
@@ -385,24 +386,20 @@
         width: 100%;
         height: 100%;
         object-fit: cover; /* Make the video content cover the entire container area, cropping if needed, without stretching */
-        /* Alternative for no cropping: use 'object-fit: contain;' instead. It might leave bars if the video dimensions don't exactly match 16:9. */
       }
       .ict-logo-new {
         max-width: 80%;
         height: auto;
       }
     </style>
-    <script type="module" crossorigin src="/assets/modulepreload-polyfill-B5Qt9EMX.js"></script>
-    <script type="module" crossorigin src="/assets/site-core-Cit16Jds.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/about-CvxCc7U7.css" />
-    <link rel="stylesheet" crossorigin href="/assets/global-DzYtbLOr.css" />
-    <link rel="stylesheet" crossorigin href="/assets/home-CF4ttIi8.css" />
   </head>
-  <header class="site-header">
-    <div class="header-content"><load src="../src/partials/nav.html" /></div>
-  </header>
   <body>
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <!--Nav Menu-->
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
     <header class="hero">
       <div class="hero-title-block">
         <h1>DESIGN</h1>
@@ -426,7 +423,7 @@
         <!-- Sweaty Heather smiling -->
         <div class="b-tile img-tile">
           <img
-            src="/public/images/ictrg/heat-her-up-roller-derby.png"
+            src="/assets/ictrg/heat-her-up-roller-derby.png"
             alt="Heather Heat Up Roller Derby"
             class="img-responsive"
           />
@@ -464,17 +461,13 @@
 
         <!-- Facebook cover / Bring the Heat poster -->
         <div class="b-tile img-tile hover-invert">
-          <img
-            src="/public/images/ictrg/ictrg-old-logo.png"
-            alt="Old ICTRG"
-            class="img-responsive"
-          />
+          <img src="/assets/ictrg/ictrg-old-logo.png" alt="Old ICTRG" class="img-responsive" />
         </div>
 
         <!-- Row 3 (completing the span-row-2 output block): Design Stack, 10 yrs, new logo -->
         <div class="b-tile img-tile">
           <img
-            src="/public/images/ictrg/epic-medal-heather-holding.png"
+            src="/assets/ictrg/epic-medal-heather-holding.png"
             alt="EPIC"
             class="img-responsive"
           />
@@ -486,9 +479,17 @@
         </div>
 
         <!-- Revised Logo -->
-        <div class="b-tile" style="background-color: #d51f30">
+        <div
+          class="b-tile"
+          style="
+            background-color: #d51f30;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
           <img
-            src="/public/images/ictrg/ict-roller-derby-logo-revised.png"
+            src="/assets/ictrg/ict-roller-derby-logo-revised.png"
             alt="ICT Roller Derby Revised Logo"
             class="ict-logo-new"
           />
@@ -509,7 +510,7 @@
         <!-- Website build screenshot -->
         <div class="b-tile img-tile">
           <img
-            src="/public/images/ictrg/ict-roller-derby-website-build.png"
+            src="/assets/ictrg/ict-roller-derby-website-build.png"
             alt="ICT Roller Derby Website Build"
             class="img-responsive"
           />
@@ -518,7 +519,7 @@
         <!-- Web developer at work -->
         <div class="b-tile img-tile">
           <img
-            src="/public/images/web-developer-at-work-min.png"
+            src="/assets/web-developer-at-work-min.png"
             alt="Web Developer At Work"
             class="img-responsive"
           />
@@ -543,10 +544,7 @@
           <div class="video-responsive-container">
             <br />
             <video controls>
-              <source
-                src="/public/images/ictrg/roller-derby-educational-film.mp4"
-                type="video/mp4"
-              />
+              <source src="/assets/ictrg/roller-derby-educational-film.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -561,10 +559,7 @@
           <h3 style="margin-top: auto; line-height: 1.3">Pie A Skater</h3>
           <div class="video-responsive-container">
             <video controls>
-              <source
-                src="/public/images/ictrg/ICT-roller-derby-pie-a-skater.mp4"
-                type="video/mp4"
-              />
+              <source src="/assets/ictrg/ICT-roller-derby-pie-a-skater.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -582,17 +577,13 @@
         </div>
         <!-- Row 15: Jersey render  -->
         <div class="b-tile img-tile">
-          <img
-            src="/public/images/ictrg/2016-season-pass.jpg"
-            alt="Season Pass"
-            class="img-responsive"
-          />
+          <img src="/assets/ictrg/2016-season-pass.jpg" alt="Season Pass" class="img-responsive" />
         </div>
 
         <!-- Black jersey with sleeves -->
         <div class="b-tile img-tile">
           <img
-            src="/public/images/ictrg/10-years-of-Wichita-Roller-Derby-ICTRG-min.png"
+            src="/assets/ictrg/10-years-of-Wichita-Roller-Derby-ICTRG-min.png"
             class="img-responsive"
           />
         </div>
@@ -600,7 +591,7 @@
         <!-- Row 14 & 15: Giant MVP + 2×2 staccato grid -->
         <div class="b-tile img-tile bg-yellow hover-invert span-col-2 span-row-2">
           <img
-            src="/public/images/ictrg/ict-roller-derby-jersey-render.png"
+            src="/assets/ictrg/ict-roller-derby-jersey-render.png"
             class="img-responsive"
             alt="ICT Jersey Render"
           />
@@ -609,7 +600,7 @@
         <!-- 10-year anniversary tee -->
         <div class="b-tile img-tile bg-white">
           <img
-            src="/public/images/ictrg/10-year-anniversary-tee-ICTRollerGirls-min-549x600.png"
+            src="/assets/ictrg/10-year-anniversary-tee-ICTRollerGirls-min-549x600.png"
             class="img-responsive"
             alt="10 Year Anniversary Tee"
           />
@@ -618,7 +609,7 @@
         <!-- Roller Mouse mascot -->
         <div class="b-tile img-tile bg-orange">
           <img
-            src="/public/images/ictrg/rollermouse.jpg"
+            src="/assets/ictrg/rollermouse.jpg"
             alt="Roller Mouse Mascot"
             class="img-responsive"
           />
@@ -627,7 +618,7 @@
         <!-- All-star team full bleed -->
         <div class="b-tile img-tile span-col-2">
           <img
-            src="/public/images/ictrg/all-stars-ict-roller-derby.jpeg"
+            src="/assets/ictrg/all-stars-ict-roller-derby.jpeg"
             alt="ICT Roller Derby All Star Team"
             class="img-responsive"
           />
@@ -657,7 +648,7 @@
         <!-- Heat Her up -->
         <div class="b-tile img-tile span-col-2">
           <img
-            src="/public/images/ictrg/heat-her-up-facebook-cover.jpg"
+            src="/assets/ictrg/heat-her-up-facebook-cover.jpg"
             alt="Heather getting hit in roller derby action"
             class="img-responsive"
           />
@@ -666,7 +657,7 @@
         <!-- Epic medal side by side -->
         <div class="b-tile img-tile span-col-2">
           <img
-            src="/public/images/ictrg/epic-medal-side-by-side.png"
+            src="/assets/ictrg/epic-medal-side-by-side.png"
             alt="Epic Medal Side by Side Creation"
             class="img-responsive"
           />
@@ -690,7 +681,7 @@
         <!-- DP holding the epic medal -->
         <div class="b-tile img-tile bg-yellow">
           <img
-            src="/public/images/ictrg/epic-medal-dogpile.png"
+            src="/assets/ictrg/epic-medal-dogpile.png"
             alt="Dogpile wearing the Epic Medal"
             class="img-responsive"
           />
@@ -699,7 +690,7 @@
         <!-- Epic medal build step 0 -->
         <div class="b-tile img-tile">
           <img
-            src="/public/images/ictrg/epic-medal-0.png"
+            src="/assets/ictrg/epic-medal-0.png"
             alt="Epic Medal Build Step 1"
             class="img-responsive"
           />
@@ -708,7 +699,7 @@
         <!-- Epic medal build step 1 -->
         <div class="b-tile img-tile bg-mid-grey">
           <img
-            src="/public/images/ictrg/epic-medal-1.png"
+            src="/assets/ictrg/epic-medal-1.png"
             alt="Epic Medal Build Step 2"
             class="img-responsive"
           />
@@ -729,7 +720,7 @@
         <!-- Row 13: Full panoramic love you image -->
         <div class="b-tile img-tile span-col-4" style="min-height: 450px">
           <img
-            src="/public/images/ictrg/heat-love-you.jpg"
+            src="/assets/ictrg/heat-love-you.jpg"
             alt="Heather love you — Team affection"
             class="img-responsive"
           />
@@ -931,61 +922,11 @@
     </script>
     <!-- Include Footer -->
     <div id="footer-trigger">
-      <div class="footer-scroll-wrapper" id="footer-trigger">
-        <footer class="footer-section">
-          <div class="footer-track">
-            <div id="mouse-skater" class="mouse-skater">
-              <!-- Separate container for flipping to avoid matrix conflicts -->
-              <div class="mouse-flip-container" id="mouse-flipper">
-                <img
-                  src="/assets/mouse_skate.png"
-                  alt="Magic Mouse on Roller Skates"
-                  class="mouse-static"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div class="footer-content-bio">
-            <h3>Heather New</h3>
-            <p>
-              Creative Technologist specializing in interactive experiences at the intersection of
-              design, code, and technology.
-            </p>
-          </div>
-
-          <div class="footer-nav">
-            <p class="copyright">
-              &copy; <span id="current-year"></span> Heather New |
-              <a href="/pages/privacy.html">Privacy Policy</a> |
-              <a href="/pages/sitemap.xml">Sitemap</a>
-            </p>
-            <p class="build-info">Deployment Status: <span id="build-date">Checking...</span></p>
-          </div>
-        </footer>
-      </div>
-      <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        try {
-          const buildDate = new Date(__BUILD_DATE__);
-          const options = {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-          };
-          document.getElementById('build-date').textContent = buildDate.toLocaleDateString(
-            undefined,
-            options
-          );
-        } catch (e) {
-          document.getElementById('build-date').textContent = 'Live';
-        }
-      </script>
+      <load src="../src/partials/footer.html" />
     </div>
 
     <!-- Scripts -->
+    <script type="module" src="/src/js/site-core.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   </body>
 </html>

@@ -48,22 +48,33 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "🌐 Starting local preview server for verification..."
-# Run preview in background and get its PID
-npm run preview > /dev/null 2>&1 &
+# Run preview with host flag (exposes on network for phone testing too)
+npx vite preview --host --port 4173 > /tmp/vite_preview_output.txt 2>&1 &
 PREVIEW_PID=$!
 
-# Wait a second for server to initialize
+# Wait for server to initialize
 sleep 2
 
-# Attempt to open Chrome automatically (Mac specific)
-open -a "Google Chrome" http://localhost:4173 || open http://localhost:4173
+# Extract the local + network URLs from vite output
+LOCAL_URL=$(grep -o 'http://localhost:[0-9]*' /tmp/vite_preview_output.txt | head -1)
+NETWORK_URL=$(grep -o 'http://[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*:[0-9]*' /tmp/vite_preview_output.txt | head -1)
+LOCAL_URL=${LOCAL_URL:-"http://localhost:4173"}
 
-# Wait for user input to enforce visual check
+echo ""
+echo "  Desktop: $LOCAL_URL"
+echo "  Phone:   ${NETWORK_URL:-"(run 'ifconfig | grep inet' to find your local IP)"}"
+echo ""
+
+# Open in browser
+open -a "Google Chrome" "$LOCAL_URL" 2>/dev/null || open "$LOCAL_URL"
+
+echo "  Browse all pages. Check mobile viewport. When ready:"
 echo ""
 read -p "🛑 RADIA CHECK: Does the compiled local preview look exactly as intended? (y/n): " CONFIRM
 
 # Kill the preview server
-kill $PREVIEW_PID
+kill $PREVIEW_PID 2>/dev/null
+rm -f /tmp/vite_preview_output.txt
 
 if [[ $CONFIRM != "y" && $CONFIRM != "Y" ]]; then
     echo "❌ Deployment halted by user or agent. Fix the build before proceeding."

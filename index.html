@@ -318,9 +318,41 @@
         transform: scale(1.05);
       }
 
+      /* Remove default link styling from tile anchors */
+      a.b-tile {
+        text-decoration: none;
+        color: inherit;
+      }
+
       /* Specific Interactive Hover Effects */
       .hover-invert:hover {
         background-color: var(--text-dark) !important;
+        color: var(--lime) !important;
+      }
+
+      /* Race Against the Plates — dramatic color block sweep on hover */
+      .hover-flash {
+        position: relative;
+        overflow: hidden;
+      }
+      .hover-flash::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: var(--text-dark);
+        transform: translateX(-105%);
+        transition: transform 0.45s cubic-bezier(0.76, 0, 0.24, 1);
+        z-index: 0;
+      }
+      .hover-flash:hover::before {
+        transform: translateX(0);
+      }
+      .hover-flash > * {
+        position: relative;
+        z-index: 1;
+      }
+      .hover-flash:hover,
+      .hover-flash:hover .meta {
         color: var(--lime) !important;
       }
 
@@ -446,6 +478,29 @@
         color: #000;
         border: 0;
       }
+      .which-swatch-tile {
+      }
+      @media (max-width: 600px) {
+        .which-swatch-tile {
+        }
+        html,
+        body {
+          max-width: 100%;
+          overflow-x: hidden;
+        }
+        .hero {
+          width: 100%;
+        }
+        .pages-main-nav a {
+          font-size: 1rem;
+          white-space: normal;
+          word-break: break-word;
+        }
+        .pages-menu-content {
+          padding-left: 1.5rem !important;
+          padding-right: 1.5rem !important;
+        }
+      }
     </style>
     <link
       rel="modulepreload"
@@ -474,54 +529,7 @@
   <body>
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <header class="site-header">
-      <div class="header-content">
-        <div class="header-content">
-          <a href="/" class="logo">
-            <img
-              src="/assets/heather-new-wordmark.svg"
-              alt="Heather New"
-              style="height: 25px; width: auto"
-              width="150"
-              height="25"
-            />
-          </a>
-        </div>
-
-        <div class="pages-menu-overlay" id="pages-overlay">
-          <div class="pages-menu-content">
-            <nav class="pages-main-nav">
-              <a href="/" class="home-link-nav">Home</a>
-              <a href="/pages/parasite-hunter.html">Parasite Hunter AR Game</a>
-              <a href="/pages/built-different.html">The Modular Brand: MERGE</a>
-              <a href="/pages/decision-tree.html">Interactive Zen Garden</a>
-              <a href="/pages/hotspot.html">Wall of Flame Interactive</a>
-              <a href="/pages/generative-portrait-wall.html">Generative Portrait Wall</a>
-              <div
-                class="nav-bottom-group"
-                style="
-                  margin-top: 3rem;
-                  border-top: 1px solid rgba(255, 255, 255, 0.2);
-                  padding-top: 2rem;
-                  display: flex;
-                  flex-direction: column;
-                  gap: 1rem;
-                "
-              >
-                <a href="/pages/about.html">About</a>
-                <a href="/pages/contact.html">Contact</a>
-              </div>
-            </nav>
-          </div>
-        </div>
-
-        <div class="pages-nav-icon" id="nav-block">
-          <div id="nav-hamburger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
+      <div class="header-content"><load src="src/partials/nav.html" /></div>
     </header>
     <!-- Hero Wrapper -->
     <header class="hero">
@@ -551,7 +559,7 @@
             them a new way to interact and learn with parasites swarming all over the tradeshow
             floor, including our competitors booths.
           </p>
-          <a href="#" class="arrow-link">View Project <span>→</span></a>
+          <a href="/pages/parasite-hunter.html" class="arrow-link">View Project <span>→</span></a>
         </div>
 
         <div class="b-tile bg-lime" style="align-items: center; justify-content: center">
@@ -638,17 +646,31 @@
             digest the message. At any time an attendee can tap and start interacting with the
             decision tree revealing UI elements that present dermatology options for their patients.
           </p>
-          <a href="#" class="arrow-link" style="margin-top: 1.5rem">View Project <span>→</span></a>
+          <a href="/pages/decision-tree.html" class="arrow-link" style="margin-top: 1.5rem"
+            >View Project <span>→</span></a
+          >
         </div>
 
-        <div class="b-tile img-text">
+        <div class="b-tile bg-light-grey span-col-2 hover-invert">
+          <div>
+            <span class="meta">Galliprant Booth Games</span>
+            <h2>Wall of Flame</h2>
+          </div>
+          <p>
+            An interactive digital wall of flame that operates as gamified learning engages people
+            and gives representatives a chance to start conversations.
+          </p>
+          <a href="/pages/hotspot.html" class="arrow-link">View Project <span>→</span></a>
+        </div>
+
+        <div class="b-tile img-text" style="padding: 0">
           <img
             src="/assets/red-lens-reveal-hXB-LZfb-hXB-LZfb.png"
             alt="Red Lens Reveal"
             class="img-responsive"
           />
           <div style="padding: 2.5em">
-            <h2 style="font-size: 1.25rem">Can you decode the message? →</h2>
+            <h2 style="font-size: 1.25rem">Can you decode the message?</h2>
             <span class="meta">Secret Message</span>
           </div>
         </div>
@@ -675,20 +697,11 @@
           />
         </div>
 
-        <div class="b-tile bg-light-grey span-col-2 hover-invert">
-          <div>
-            <span class="meta">Galliprant Booth Games</span>
-            <h2>Wall of Flame</h2>
-          </div>
-          <p>
-            An interactive digital wall of flame that operates as gamified learning engages people
-            and gives representatives a chance to start conversations.
-          </p>
-          <a href="/pages/hotspot.html" class="arrow-link">View Project <span>→</span></a>
-        </div>
-
         <!-- Row 6: Exploration -->
-        <div class="b-tile bg-teal span-col-2 hover-invert">
+        <a
+          href="/pages/generative-portrait-wall.html"
+          class="b-tile bg-teal span-col-2 hover-invert"
+        >
           <div>
             <span class="meta">ETHICAL AI PRACTICES</span>
             <h2>Generative Art</h2>
@@ -699,6 +712,14 @@
             Shutterstock’s AI tool which we carefully vetted. It became front and center on our
             website.
           </p>
+        </a>
+
+        <div class="b-tile span-col-2 img-tile">
+          <img
+            src="/assets/merge-m-artificial-intelligence-generation-SGtLacsC-uDr5ioVS.png"
+            alt="MERGE M AI Shutterstock"
+            class="img-responsive"
+          />
         </div>
 
         <div class="b-tile bg-light-grey hot-spot-audio">
@@ -734,7 +755,7 @@
                       btn.innerText = 'Pause';
                     })
                     .catch((error) => {
-                      // Fallback in case the browser blocks it or the file is missing
+                      // Fallback in case the browser breaks it or the file is missing
                       console.error('Audio playback failed:', error);
                       btn.innerText = 'Play';
                     });
@@ -771,14 +792,6 @@
           >
         </div>
 
-        <div class="b-tile span-col-2 img-tile">
-          <img
-            src="/assets/merge-m-artificial-intelligence-generation-SGtLacsC-uDr5ioVS.png"
-            alt="MERGE M AI Shutterstock"
-            class="img-responsive"
-          />
-        </div>
-
         <div
           class="b-tile img-tile bg-mid-grey"
           style="text-align: right; justify-content: flex-end"
@@ -807,14 +820,14 @@
           />
         </div>
 
-        <div class="b-tile bg-orange span-col-2">
+        <a href="/pages/biomarin.html" class="b-tile bg-orange span-col-2 hover-flash">
           <span class="meta">Race Against the Plates</span>
           <h2>Kiosk Quiz</h2>
           <p style="max-width: 400px">
             With Achondroplasia you only have a certain amount of time to act while bones are still
             growing, Doctors were able to test their knowledge while racing against the clock.
           </p>
-        </div>
+        </a>
 
         <div class="b-tile bg-yellow">
           <a href="/pages/biomarin.html"
@@ -847,7 +860,7 @@
 
         <!-- Row 10: Staccato Finish -->
         <div class="b-tile img-tile bg-white">
-          <a href="/pages/roller-derby.html"
+          <a href="/pages/derby.html"
             ><img
               src="/assets/roller-derby-throwback-5XF6oyq5-5XF6oyq5.png"
               alt="Roller Derby Throwback"
@@ -879,9 +892,13 @@
           </div>
         </div>
 
-        <div class="b-tile bg-orange">
-          <div class="bauhaus-circle" style="background-color: var(--bg-color)"></div>
+        <div class="b-tile bg-lime which-swatch-tile">
+          <a href="/pages/studio-roadshow.html" class="arrow-link"
+            ><h3 style="font-size: 1.5em">Studio<br />Roadshow <span>→</span></h3></a
+          >
+          <span class="meta">Which Swatch?</span>
         </div>
+
         <div class="b-tile img-tile bg-mid-grey">
           <a href="/pages/studio-roadshow.html"
             ><img
@@ -928,11 +945,11 @@
           </div>
         </div>
 
-        <div class="b-tile bg-lime">
-          <a href="/pages/studio-roadshow.html" class="arrow-link"
-            ><h3 style="font-size: 1.5em">Studio<br />Roadshow <span>→</span></h3></a
-          >
-          <span class="meta">Which Swatch?</span>
+        <div class="b-tile bg-orange">
+          <div class="bauhaus-circle" style="background-color: var(--bg-color)"></div>
+          <p style="font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; line-height: 1.3">
+            I can take an idea, concept it out and build to completion.
+          </p>
         </div>
       </div>
     </main>

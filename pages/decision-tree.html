@@ -185,83 +185,62 @@
           grid-row: span 1;
         }
       }
+      /* Headline bauhaus override */
+      .section-title.hero-title {
+        text-align: left;
+        text-transform: uppercase;
+        letter-spacing: -0.03em;
+        padding: 0 4vw;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+      }
     </style>
   </head>
   <body id="decision-tree-page" class="page-template">
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
     <header class="site-header">
-      <div class="header-content">
-        <div class="header-content">
-          <a href="/" class="logo">
-            <img
-              src="/assets/heather-new-wordmark.svg"
-              alt="Heather New"
-              style="height: 25px; width: auto"
-              width="150"
-              height="25"
-            />
-          </a>
-        </div>
-
-        <div class="pages-menu-overlay" id="pages-overlay">
-          <div class="pages-menu-content">
-            <nav class="pages-main-nav">
-              <a href="/" class="home-link-nav">Home</a>
-              <a href="/pages/parasite-hunter.html">Parasite Hunter AR Game</a>
-              <a href="/pages/built-different.html">The Modular Brand: MERGE</a>
-              <a href="/pages/decision-tree.html">Interactive Zen Garden</a>
-              <a href="/pages/hotspot.html">Wall of Flame Interactive</a>
-              <a href="/pages/generative-portrait-wall.html">Generative Portrait Wall</a>
-              <div
-                class="nav-bottom-group"
-                style="
-                  margin-top: 3rem;
-                  border-top: 1px solid rgba(255, 255, 255, 0.2);
-                  padding-top: 2rem;
-                  display: flex;
-                  flex-direction: column;
-                  gap: 1rem;
-                "
-              >
-                <a href="/pages/about.html">About</a>
-                <a href="/pages/contact.html">Contact</a>
-              </div>
-            </nav>
-          </div>
-        </div>
-
-        <div class="pages-nav-icon" id="nav-block">
-          <div id="nav-hamburger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      </div>
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
     </header>
 
     <main id="main-content">
       <div id="tree-partial-container">
-        <h1 class="section-title hero-title">The Zen Garden Decision Tree</h1>
+        <h1 class="section-title hero-title">The Zen Garden<br />Decision Tree</h1>
         <div id="tree-screen-wrapper">
           <img
             id="tree-decorative-frame"
             src="/assets/tree/frame.png"
             alt="Decorative Wood Frame"
           />
-          <iframe
-            id="tree-iframe"
-            title="Interactive Decision Tree"
-            scrolling="no"
-            src="https://decisiontree.builtmerge.com/"
-          ></iframe>
+          <video
+            id="tree-video"
+            controls
+            playsinline
+            style="
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              position: relative;
+              z-index: 2;
+              display: block;
+            "
+          >
+            <source src="/video/decision-tree/decision-tree-demo.mp4" type="video/mp4" />
+          </video>
         </div>
 
         <div class="tree-cta-block">
-          <p class="text-center">
-            Interact with the artwork above. Navigate through the branches to uncover the path
-            forward.
+          <p
+            class="text-center"
+            style="
+              font-size: 1.25rem;
+              font-weight: 600;
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 2rem 0;
+            "
+          >
+            Taking static medical information and beautifying it with technology. Interact with the
+            artwork above. Navigate through the branches to uncover the path forward.
           </p>
         </div>
       </div>
@@ -283,7 +262,7 @@
           <div class="b-tile bg-lime">
             <span class="meta">Role</span>
             <p style="font-weight: 800; font-size: 1.1rem; line-height: 1.8">
-              I designed it.<br />I built it.<br />I compiled the assets.<br />I hosted it.
+              I designed it.<br />I built it.<br />I compiled the assets.
             </p>
             <span class="meta" style="margin-top: auto">Creative Technologist</span>
           </div>
@@ -299,6 +278,26 @@
             <img
               src="/assets/tree/decision-tree-hamilton-install.JPG"
               alt="Full booth installation"
+            />
+          </div>
+
+          <!-- ROW 2B: HEATHER AT THE DISPLAY -->
+          <div class="b-tile img-tile span-col-2">
+            <img
+              src="/images/decision-tree/heather-showing-display.jpg"
+              alt="Heather New presenting the Zen Garden Decision Tree display"
+            />
+          </div>
+          <div class="b-tile img-tile">
+            <img
+              src="/images/decision-tree/heather-pointing-demo.jpg"
+              alt="Heather New demonstrating the interactive decision tree"
+            />
+          </div>
+          <div class="b-tile img-tile">
+            <img
+              src="/images/decision-tree/attendee-interaction.jpg"
+              alt="Attendee interacting with the Zen Garden decision tree"
             />
           </div>
 
@@ -318,13 +317,23 @@
             </div>
           </div>
 
-          <!-- ROW 4: BOOTH PHOTO + BRANCHES -->
+          <!-- ROW 4: BOOTH PHOTO + PROCESS HEADER -->
           <div class="b-tile img-tile span-col-2">
             <img
               src="/assets/tree/zen-garden-hamilton-photo-credit.JPEG"
               alt="Zen Garden full booth at the event"
             />
           </div>
+          <div class="b-tile bg-teal span-col-2">
+            <span class="meta" style="color: var(--lime)">Process</span>
+            <h2>The Seed &amp; Growth</h2>
+            <p style="max-width: 700px; color: rgba(255, 255, 255, 0.85)">
+              The architecture started on paper — then AI pressure-tested the branching logic before
+              a single vector was drawn.
+            </p>
+          </div>
+
+          <!-- ROW 5: BRANCHES + SKETCHES -->
           <div class="b-tile bg-dark-teal span-col-2">
             <span class="meta" style="color: var(--lime)">The Three Branches</span>
             <div>
@@ -338,17 +347,7 @@
             </p>
           </div>
 
-          <!-- ROW 5: SEED & GROWTH HEADER -->
-          <div class="b-tile bg-teal span-col-4">
-            <span class="meta" style="color: var(--lime)">Process</span>
-            <h2>The Seed &amp; Growth</h2>
-            <p style="max-width: 700px">
-              The architecture started on paper — then AI pressure-tested the branching logic before
-              a single vector was drawn.
-            </p>
-          </div>
-
-          <!-- ROW 6: SKETCHES -->
+          <!-- SKETCHES (same row on desktop, stacked below Three Branches on mobile) -->
           <div class="b-tile img-tile span-col-2">
             <img src="/assets/tree/sketch-three.jpeg" alt="Refined concept sketch" />
           </div>
@@ -402,7 +401,7 @@
           </div>
 
           <!-- ROW 11: CODE OUTPUT + BRIDGING TEXT -->
-          <div class="b-tile img-tile span-col-3">
+          <div class="b-tile img-tile span-col-2">
             <img src="/assets/tree/figma-make-code-output.png" alt="Figma Make code output" />
           </div>
           <div class="b-tile bg-teal">
@@ -411,6 +410,21 @@
               Figma Make as the translation layer — visual intent to working component without loss
               of fidelity.
             </p>
+          </div>
+          <div
+            class="b-tile bg-dark-teal"
+            style="padding: 1rem; display: flex; align-items: center; justify-content: center"
+          >
+            <video
+              class="img-responsive"
+              autoplay
+              loop
+              muted
+              playsinline
+              style="width: 100%; max-height: 180px; object-fit: contain; display: block"
+            >
+              <source src="/assets/tree/decision-tree-demo-figma-make.mp4" type="video/mp4" />
+            </video>
           </div>
 
           <!-- ROW 12: RENDER SCREENS -->
@@ -429,63 +443,15 @@
             </p>
           </div>
 
-          <!-- ROW 13: VIDEO -->
-          <div class="b-tile span-col-4 bg-dark-teal" style="padding: 0">
-            <div style="padding: 2.5rem 2.5rem 1.5rem">
+          <!-- ROW 13: LOGIC IN MOTION -->
+          <div class="b-tile span-col-4 bg-dark-teal">
+            <div style="padding: 1rem 2.5rem 1.5rem">
               <span class="meta" style="color: var(--lime)">The Logic in Motion</span>
               <h2>The Living Tree</h2>
               <p style="color: var(--light-grey); margin-top: 0.5rem">
-                Watch the tree route a user from symptom to treatment option.
+                Visualizing the pathway from symptom to solution.
               </p>
             </div>
-            <video
-              class="img-responsive"
-              controls
-              playsinline
-              muted
-              style="width: 100%; display: block"
-            >
-              <source src="/assets/tree/decision-tree-demo-figma-make.mp4" type="video/mp4" />
-            </video>
-          </div>
-
-          <!-- ROW 14: CODEPEN -->
-          <div
-            class="b-tile span-col-4"
-            style="flex-direction: column; gap: 2rem; min-height: auto"
-          >
-            <div>
-              <span class="meta" style="color: var(--dark-teal)"
-                >Modular Component Architecture</span
-              >
-              <h2>Deep dive into the components.</h2>
-            </div>
-            <p
-              class="codepen"
-              data-height="500"
-              data-default-tab="result"
-              data-slug-hash="EayEdoK"
-              data-pen-title="Decision Tree UI Components"
-              data-user="ladywebhawk"
-              style="
-                height: 500px;
-                box-sizing: border-box;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 2px solid;
-                margin: 0;
-                padding: 1em;
-              "
-            >
-              <span
-                >See the Pen
-                <a href="https://codepen.io/ladywebhawk/pen/EayEdoK">Decision Tree UI Components</a>
-                by Heather New (<a href="https://codepen.io/ladywebhawk">@ladywebhawk</a>) on
-                <a href="https://codepen.io">CodePen</a>.</span
-              >
-            </p>
-            <script async src="https://public.codepenassets.com/embed/index.js"></script>
           </div>
 
           <!-- ROW 15: CREDITS -->
