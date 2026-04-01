@@ -59,7 +59,7 @@
         top: 310px;
         left: 150px;
         z-index: 100;
-        background: #000000d9;
+        background: #666666d9;
         padding: 10px 20px;
         border: 10px solid var(--accent-lime);
         pointer-events: none;
@@ -331,8 +331,13 @@
         <div class="bauhaus-grid">
           <!-- ROW 1: INTRO + PHONE MOCK -->
           <div
-            class="b-tile bg-dark-teal span-col-2"
-            style="justify-content: center; gap: 2.5rem; text-align: center"
+            class="b-tile span-col-2"
+            style="
+              justify-content: center;
+              gap: 2.5rem;
+              text-align: center;
+              background-color: #666666;
+            "
           >
             <div>
               <span class="meta" style="color: var(--lime)"
@@ -636,21 +641,11 @@
               No app. Just a QR code and you're in.
             </p>
           </div>
-          <div
-            class="b-tile bg-white"
-            style="min-height: auto; padding: 1.5rem 2.5rem; border-left: 4px solid var(--teal)"
-          >
+          <div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem">
             <span class="meta" style="color: var(--dark-teal)">02 &mdash; Hunt</span>
             <p style="font-size: 0.9rem; font-weight: 600">Tap parasites. Earn points.</p>
           </div>
-          <div
-            class="b-tile bg-white"
-            style="
-              min-height: auto;
-              padding: 1.5rem 2.5rem;
-              border-left: 4px solid var(--dark-teal);
-            "
-          >
+          <div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem">
             <span class="meta" style="color: var(--dark-teal)">03 &mdash; Learn</span>
             <p style="font-size: 0.9rem; font-weight: 600">
               Tap the icon. Discover how the med works.

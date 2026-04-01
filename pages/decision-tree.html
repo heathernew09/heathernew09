@@ -102,7 +102,7 @@
         grid-column: span 3;
       }
       .span-col-4 {
-        grid-column: span 4;
+        grid-column: span 8;
       }
       .span-row-2 {
         grid-row: span 2;
@@ -205,6 +205,12 @@
     <main id="main-content">
       <div id="tree-partial-container">
         <h1 class="section-title hero-title">The Zen Garden<br />Decision Tree</h1>
+        <div class="tree-cta-block" style="padding: 0 4vw 2rem">
+          <p style="font-size: 1.25rem; font-weight: 600; max-width: 800px; text-align: left">
+            Taking static medical information and beautifying it with technology. Interact with the
+            artwork above. Navigate through the branches to uncover the path forward.
+          </p>
+        </div>
         <div id="tree-screen-wrapper">
           <img
             id="tree-decorative-frame"
@@ -227,29 +233,13 @@
             <source src="/video/decision-tree/decision-tree-demo.mp4" type="video/mp4" />
           </video>
         </div>
-
-        <div class="tree-cta-block">
-          <p
-            class="text-center"
-            style="
-              font-size: 1.25rem;
-              font-weight: 600;
-              max-width: 800px;
-              margin: 0 auto;
-              padding: 2rem 0;
-            "
-          >
-            Taking static medical information and beautifying it with technology. Interact with the
-            artwork above. Navigate through the branches to uncover the path forward.
-          </p>
-        </div>
       </div>
 
       <!-- Bauhaus Grid -->
       <div class="portfolio-section">
         <div class="bauhaus-grid">
           <!-- ROW 1: CONTEXT + ROLE -->
-          <div class="b-tile bg-dark-teal span-col-3">
+          <div class="b-tile span-col-3" style="background-color: #666666">
             <span class="meta" style="color: var(--lime)">WVC / VMX &mdash; Elanco</span>
             <h2>The Zen Garden<br />Decision Tree</h2>
             <p>
@@ -334,7 +324,7 @@
           </div>
 
           <!-- ROW 5: BRANCHES + SKETCHES -->
-          <div class="b-tile bg-dark-teal span-col-2">
+          <div class="b-tile span-col-2" style="background-color: #666666">
             <span class="meta" style="color: var(--lime)">The Three Branches</span>
             <div>
               <h3 style="color: var(--lime); margin-bottom: 0.75rem">Inflammation</h3>
@@ -350,12 +340,6 @@
           <!-- SKETCHES (same row on desktop, stacked below Three Branches on mobile) -->
           <div class="b-tile img-tile span-col-2">
             <img src="/assets/tree/sketch-three.jpeg" alt="Refined concept sketch" />
-          </div>
-          <div class="b-tile img-tile">
-            <img src="/assets/tree/sketch-one.jpg" alt="Initial concept sketch" />
-          </div>
-          <div class="b-tile img-tile">
-            <img src="/assets/tree/map-zen-render.png" alt="Zen Garden map render" />
           </div>
 
           <!-- ROW 7: AI BONSAI FULL WIDTH -->
@@ -393,11 +377,8 @@
             <h2>Elanco brand assets as ground truth.<br />Generative prompts as pressure.</h2>
             <p>Iterating until the aesthetic held up at trade show scale.</p>
           </div>
-          <div class="b-tile img-tile">
-            <img src="/assets/tree/ai-prompt-my-source-images.png" alt="AI prompt source images" />
-          </div>
-          <div class="b-tile img-tile">
-            <img src="/assets/tree/ai-prompt1.png" alt="AI prompt iteration" />
+          <div class="b-tile img-tile span-col-2">
+            <img src="/assets/tree/ai-prompt2.png" alt="AI prompt iteration" />
           </div>
 
           <!-- ROW 11: CODE OUTPUT + BRIDGING TEXT -->
@@ -412,8 +393,14 @@
             </p>
           </div>
           <div
-            class="b-tile bg-dark-teal"
-            style="padding: 1rem; display: flex; align-items: center; justify-content: center"
+            class="b-tile"
+            style="
+              background-color: #666666;
+              padding: 1rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
           >
             <video
               class="img-responsive"
@@ -431,10 +418,7 @@
           <div class="b-tile img-tile span-col-4">
             <img src="/assets/tree/ai-prompt-render-screen2.png" alt="Final render screen" />
           </div>
-          <div class="b-tile img-tile span-col-2">
-            <img src="/assets/tree/ai-prompt-render-screen.jpg" alt="Render screen detail" />
-          </div>
-          <div class="b-tile bg-lime span-col-2">
+          <div class="b-tile bg-lime span-col-4">
             <span class="meta">Final Visual Polish</span>
             <h2>Alive, not just functional.</h2>
             <p>
@@ -455,7 +439,7 @@
           </div>
 
           <!-- ROW 15: CREDITS -->
-          <div class="b-tile bg-dark-teal span-col-2">
+          <div class="b-tile span-col-2" style="background-color: #666666">
             <span class="meta" style="color: var(--lime)">Decision Tree Core</span>
             <ul class="list-clean" style="margin-top: 1rem">
               <li><strong>Creative Technologist:</strong> Heather New</li>
