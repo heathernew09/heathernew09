@@ -1225,6 +1225,16 @@ RESULTS SECTION
   margin: 0;
 }
 
+.bg-soft-black {
+  background-color: #666666 !important;
+  color: var(--accent-lime) !important;
+}
+
+.bg-soft-black .meta {
+  color: var(--accent-lime) !important;
+  opacity: 1 !important;
+}
+
 /* ============================================
    Buttons
    ============================================ */

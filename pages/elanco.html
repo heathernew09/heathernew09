@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elanco Projects - Heather New - Creative Technologist</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="../src/css/global.css" />
+    <link rel="stylesheet" href="../src/css/template.css" />
+    <style>
+      :root {
+        --teal: #1bb1a5;
+        --dark-teal: #247b82;
+        --yellow: #f6b352;
+        --orange: #f66c0f;
+        --lime: #b2f81d;
+        --light-grey: #e0e0e0;
+        --mid-grey: #cccccc;
+        --text-dark: #111111;
+        --bg-color: #f4f4f4;
+      }
+
+      .portfolio-section {
+        padding: 4rem 2vw 8rem;
+        background-color: var(--bg-color);
+        display: flex;
+        justify-content: center;
+      }
+
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(240px, auto);
+        width: 100%;
+        max-width: 1400px;
+        border-top: 1px solid var(--text-dark);
+        border-left: 1px solid var(--text-dark);
+        background: var(--bg-color);
+      }
+
+      .b-tile {
+        container-type: inline-size;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .b-tile h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+      }
+
+      .b-tile h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+      }
+
+      .b-tile p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .b-tile .meta {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.7;
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+
+      .span-col-2 {
+        grid-column: span 2;
+      }
+      .span-col-3 {
+        grid-column: span 3;
+      }
+      .span-col-4 {
+        grid-column: span 4;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
+
+      .bg-white {
+        background-color: #fff;
+      }
+      .bg-teal {
+        background-color: var(--teal);
+        color: #fff;
+      }
+      .bg-dark-teal {
+        background-color: var(--dark-teal);
+        color: #fff;
+      }
+      .bg-orange {
+        background-color: var(--orange);
+        color: #fff;
+      }
+      .bg-lime {
+        background-color: var(--lime);
+        color: var(--text-dark);
+      }
+      .bg-soft-black {
+        background-color: #666666;
+        color: var(--lime);
+      }
+
+      .img-tile {
+        padding: 0;
+        display: block;
+      }
+      .img-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .hero-mini {
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        background: var(--dark-teal);
+        color: white;
+      }
+      .hero-mini h1 {
+        font-size: clamp(3rem, 8vw, 5rem);
+        font-weight: 800;
+        letter-spacing: -3px;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body id="elanco-page" class="page-template">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <header class="hero-mini">
+      <h1>Beyond the Hunt</h1>
+      <p style="margin-top: 1rem; font-weight: 600; opacity: 0.9">
+        Additional Experiential Work for Elanco
+      </p>
+    </header>
+
+    <main id="main-content">
+      <div class="portfolio-section">
+        <div class="bauhaus-grid">
+          <!-- ROW 1 -->
+          <div class="b-tile bg-soft-black span-col-2">
+            <span class="meta">Experiential Strategy</span>
+            <h2>Go Beyond</h2>
+            <p>
+              The "Go Beyond" wall was a centerpiece of the VMX 2026 experience, pushing the
+              boundaries of traditional booth design.
+            </p>
+          </div>
+          <div class="b-tile img-tile span-col-2">
+            <img src="/assets/para/go-beyond-wall.JPEG" alt="Go Beyond Wall" />
+          </div>
+
+          <!-- ROW 2 -->
+          <div class="b-tile img-tile span-col-2">
+            <img src="/assets/para/go-beyond-elanco.JPEG" alt="Go Beyond Elanco" />
+          </div>
+          <div class="b-tile bg-orange span-col-2">
+            <span class="meta">Brand Extension</span>
+            <h2>Spatial Impact</h2>
+            <p>
+              Creating memorable brand moments through large-scale environmental design and
+              interactive touchpoints.
+            </p>
+          </div>
+
+          <!-- ROW 3 -->
+          <div class="b-tile bg-teal span-col-4">
+            <span class="meta" style="color: var(--lime)">More Elanco Projects</span>
+            <p style="font-size: 1.5rem; font-weight: 700">
+              This collection showcases the breadth of work dedicated to transforming pharmaceutical
+              data into engaging human experiences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+    <script type="module" src="../src/js/site-core.js"></script>
+  </body>
+</html>
