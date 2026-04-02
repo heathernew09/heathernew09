@@ -231,7 +231,7 @@
     </header>
 
     <header class="hero-title-block">
-      <h1 class="section-title hero-title">The zen garden decision tree</h1>
+      <h1 class="section-title hero-title" style="max-width: 10ch">THE ZEN GARDEN DECISION TREE</h1>
       <div class="subtitle">
         Taking static medical information and beautifying it with technology. Interact with the
         artwork above. Navigate through the branches to uncover the path forward.
@@ -241,6 +241,7 @@
     <style>
       #tree-partial-container {
         padding-top: 0 !important;
+        margin-bottom: 4rem; /* Add space below frame to prevent grid overlap */
       }
     </style>
 
@@ -359,7 +360,7 @@
           </div>
 
           <!-- ROW 5: BRANCHES + SKETCHES -->
-          <div class="b-tile span-col-2 soft-black">
+          <div class="b-tile span-col-3 soft-black">
             <span class="meta">The Three Branches</span>
             <div>
               <h3 style="color: var(--lime); margin-bottom: 0.75rem">Inflammation</h3>
@@ -372,8 +373,8 @@
             </p>
           </div>
 
-          <!-- SKETCHES (same row on desktop, stacked below Three Branches on mobile) -->
-          <div class="b-tile img-tile span-col-2">
+          <!-- Refined concept sketch -->
+          <div class="b-tile img-tile span-col-1">
             <img src="/assets/tree/sketch-three.jpeg" alt="Refined concept sketch" />
           </div>
 
@@ -468,28 +469,32 @@
           </div>
 
           <!-- ROW 15: CREDITS -->
-          <div class="b-tile span-col-2 soft-black">
-            <span class="meta">Decision Tree Core</span>
-            <ul class="list-clean" style="margin-top: 1rem">
-              <li><strong>Creative Technologist:</strong> Heather New</li>
-              <li><strong>Creative Direction:</strong> Amy McVey</li>
-              <li><strong>Account Leadership:</strong> Adriana Zardus &amp; Jessica Ocampo</li>
-              <li><strong>Project Management:</strong> Angela Peralta</li>
-              <li><strong>Booth Partner:</strong> Hamilton</li>
-            </ul>
-          </div>
-          <div class="b-tile bg-teal span-col-2">
-            <span class="meta" style="color: var(--lime)">Elanco Experience Team</span>
-            <ul class="list-clean" style="margin-top: 1rem">
-              <li>
-                <strong>Creative Leadership:</strong> Tom Demetriou, George Bird, Josh Liotta, James
-                Holden
-              </li>
-              <li>
-                <strong>Design &amp; Studio:</strong> Casey Luttrell, Stacey Prudden, Jami Gettings,
-                Chad McClure, Spencer Tetik
-              </li>
-            </ul>
+          <div class="b-tile span-col-4 soft-black">
+            <div class="grid-2" style="gap: 4rem">
+              <div>
+                <span class="meta">Decision Tree Core</span>
+                <ul class="list-clean" style="margin-top: 1rem">
+                  <li><strong>Creative Technologist:</strong> Heather New</li>
+                  <li><strong>Creative Direction:</strong> Amy McVey</li>
+                  <li><strong>Account Leadership:</strong> Adriana Zardus &amp; Jessica Ocampo</li>
+                  <li><strong>Project Management:</strong> Angela Peralta</li>
+                  <li><strong>Booth Partner:</strong> Hamilton</li>
+                </ul>
+              </div>
+              <div>
+                <span class="meta">Elanco Experience Team</span>
+                <ul class="list-clean" style="margin-top: 1rem">
+                  <li>
+                    <strong>Creative Leadership:</strong> Tom Demetriou, George Bird, Josh Liotta,
+                    James Holden
+                  </li>
+                  <li>
+                    <strong>Design &amp; Studio:</strong> Casey Luttrell, Stacey Prudden, Jami
+                    Gettings, Chad McClure, Spencer Tetik
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
