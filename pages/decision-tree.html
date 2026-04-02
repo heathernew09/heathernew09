@@ -102,7 +102,7 @@
         grid-column: span 3;
       }
       .span-col-4 {
-        grid-column: span 8;
+        grid-column: span 4;
       }
       .span-row-2 {
         grid-row: span 2;
@@ -221,6 +221,17 @@
         max-width: 900px;
         color: var(--text-dark);
       }
+
+      #tree-partial-container {
+        padding-top: 0 !important;
+        margin-bottom: 4rem;
+      }
+
+      /* Prevent image stretching for specific technical diagrams */
+      .no-stretch img {
+        object-fit: contain !important;
+        background: #f4f4f4;
+      }
     </style>
   </head>
   <body id="decision-tree-page" class="page-template">
@@ -231,19 +242,12 @@
     </header>
 
     <header class="hero-title-block">
-      <h1 class="section-title hero-title" style="max-width: 10ch">THE ZEN GARDEN DECISION TREE</h1>
+      <h1 class="section-title hero-title" style="max-width: 20ch">THE ZEN GARDEN DECISION TREE</h1>
       <div class="subtitle">
         Taking static medical information and beautifying it with technology. Interact with the
         artwork above. Navigate through the branches to uncover the path forward.
       </div>
     </header>
-
-    <style>
-      #tree-partial-container {
-        padding-top: 0 !important;
-        margin-bottom: 4rem; /* Add space below frame to prevent grid overlap */
-      }
-    </style>
 
     <main id="main-content">
       <div id="tree-partial-container">
@@ -343,14 +347,8 @@
             </div>
           </div>
 
-          <!-- ROW 4: BOOTH PHOTO + PROCESS HEADER -->
-          <div class="b-tile img-tile span-col-2">
-            <img
-              src="/assets/tree/zen-garden-hamilton-photo-credit.JPEG"
-              alt="Zen Garden full booth at the event"
-            />
-          </div>
-          <div class="b-tile bg-teal span-col-2">
+          <!-- ROW 4: PROCESS STACKED -->
+          <div class="b-tile bg-teal span-col-4">
             <span class="meta" style="color: var(--lime)">Process</span>
             <h2>The Seed &amp; Growth</h2>
             <p style="max-width: 700px; color: rgba(255, 255, 255, 0.85)">
@@ -358,23 +356,30 @@
               a single vector was drawn.
             </p>
           </div>
-
-          <!-- ROW 5: BRANCHES + SKETCHES -->
-          <div class="b-tile span-col-3 soft-black">
+          <div class="b-tile span-col-4 soft-black">
             <span class="meta">The Three Branches</span>
-            <div>
-              <h3 style="color: var(--lime); margin-bottom: 0.75rem">Inflammation</h3>
-              <h3 style="color: var(--yellow); margin-bottom: 0.75rem">Parasites</h3>
-              <h3 style="color: #fff">Itch Inspection</h3>
+            <div class="grid-2" style="gap: 4rem">
+              <div>
+                <h3 style="color: var(--lime); margin-bottom: 0.75rem">Inflammation</h3>
+                <h3 style="color: var(--yellow); margin-bottom: 0.75rem">Parasites</h3>
+                <h3 style="color: #fff">Itch Inspection</h3>
+              </div>
+              <p style="margin-top: auto">
+                Each pathway guides the attendee from symptom to treatment option — mirroring how a
+                vet actually thinks through a dermatology case.
+              </p>
             </div>
-            <p style="margin-top: auto">
-              Each pathway guides the attendee from symptom to treatment option — mirroring how a
-              vet actually thinks through a dermatology case.
-            </p>
           </div>
 
-          <!-- Refined concept sketch -->
-          <div class="b-tile img-tile span-col-1">
+          <!-- ROW 5: BOOTH + SKETCH (50/50) -->
+          <div class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/tree/zen-garden-hamilton-photo-credit.JPEG"
+              alt="Zen Garden full booth at the event"
+            />
+          </div>
+          <!-- Refined concept sketch (50% width) -->
+          <div class="b-tile img-tile span-col-2">
             <img src="/assets/tree/sketch-three.jpeg" alt="Refined concept sketch" />
           </div>
 
@@ -413,7 +418,7 @@
             <h2>Elanco brand assets as ground truth.<br />Generative prompts as pressure.</h2>
             <p>Iterating until the aesthetic held up at trade show scale.</p>
           </div>
-          <div class="b-tile img-tile span-col-2">
+          <div class="b-tile img-tile span-col-2 no-stretch">
             <img src="/assets/tree/ai-prompt2.png" alt="AI prompt iteration" />
           </div>
 
@@ -421,7 +426,7 @@
           <div class="b-tile img-tile span-col-2">
             <img src="/assets/tree/figma-make-code-output.png" alt="Figma Make code output" />
           </div>
-          <div class="b-tile bg-teal">
+          <div class="b-tile bg-teal span-col-2">
             <span class="meta" style="color: var(--lime)">Bridging Design &amp; Code</span>
             <p style="font-weight: 700; font-size: 1.05rem">
               Figma Make as the translation layer — visual intent to working component without loss
@@ -429,7 +434,7 @@
             </p>
           </div>
           <div
-            class="b-tile soft-black"
+            class="b-tile soft-black span-col-4"
             style="padding: 1rem; display: flex; align-items: center; justify-content: center"
           >
             <video
@@ -438,7 +443,7 @@
               loop
               muted
               playsinline
-              style="width: 100%; max-height: 180px; object-fit: contain; display: block"
+              style="width: 100%; max-height: 400px; object-fit: contain; display: block"
             >
               <source src="/assets/tree/decision-tree-demo-figma-make.mp4" type="video/mp4" />
             </video>
@@ -531,28 +536,11 @@
               <a href="/pages/privacy.html">Privacy Policy</a> |
               <a href="/pages/sitemap.xml">Sitemap</a>
             </p>
-            <p class="build-info">Deployment Status: <span id="build-date">Checking...</span></p>
           </div>
         </footer>
       </div>
       <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
-        try {
-          const buildDate = new Date(__BUILD_DATE__);
-          const options = {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-          };
-          document.getElementById('build-date').textContent = buildDate.toLocaleDateString(
-            undefined,
-            options
-          );
-        } catch (e) {
-          document.getElementById('build-date').textContent = 'Live';
-        }
       </script>
     </div>
   </body>
