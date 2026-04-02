@@ -769,13 +769,13 @@
           </script>
         </div>
 
-        <div class="b-tile img-tile">
+        <a href="/pages/hotspot.html" class="b-tile img-tile hover-invert" style="display: block">
           <img
             src="/assets/hot-spot-interactive-Bmds_bCs-CfoEWYCo.png"
             alt="Hot Spot Interactive"
             class="img-responsive"
           />
-        </div>
+        </a>
 
         <!-- Row 7: Spatial Design Break -->
         <div class="b-tile bg-lime">
@@ -925,19 +925,25 @@
           </h2>
           <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap">
             <a
-              href="mailto:hello@heathernew.com"
+              href="mailto:contact@heathernew.com"
+              target="_blank"
+              rel="noopener"
               class="arrow-link"
               style="color: var(--lime); font-size: 1.2rem"
               >Email Me <span>→</span></a
             >
             <a
               href="https://linkedin.com/in/heathernew09"
+              target="_blank"
+              rel="noopener"
               class="arrow-link"
               style="color: var(--yellow); font-size: 1.2rem"
               >LinkedIn <span>→</span></a
             >
             <a
               href="https://github.com/heathernew09"
+              target="_blank"
+              rel="noopener"
               class="arrow-link"
               style="color: #fff; font-size: 1.2rem"
               >GitHub <span>→</span></a
@@ -945,12 +951,52 @@
           </div>
         </div>
 
-        <div class="b-tile bg-orange">
-          <div class="bauhaus-circle" style="background-color: var(--bg-color)"></div>
-          <p style="font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; line-height: 1.3">
+        <div class="b-tile bg-orange idea-block" style="transition: background-color 0.4s ease">
+          <div
+            class="bauhaus-circle idea-circle"
+            style="
+              background-color: var(--bg-color);
+              cursor: pointer;
+              transition:
+                transform 0.4s ease,
+                background-color 0.4s ease;
+            "
+            onclick="toggleIdeaBlock(this)"
+          ></div>
+          <p
+            class="idea-text"
+            style="
+              font-size: 1.1rem;
+              font-weight: 700;
+              margin-top: 1.5rem;
+              line-height: 1.3;
+              transition: color 0.4s ease;
+            "
+          >
             I can take an idea, concept it out and build to completion.
           </p>
         </div>
+
+        <script>
+          function toggleIdeaBlock(circle) {
+            const block = circle.closest('.idea-block');
+            const text = block.querySelector('.idea-text');
+
+            if (block.classList.contains('idea-inverted')) {
+              block.classList.remove('idea-inverted');
+              block.style.backgroundColor = 'var(--orange)';
+              circle.style.backgroundColor = 'var(--bg-color)';
+              circle.style.transform = 'scale(1)';
+              text.style.color = '#fff';
+            } else {
+              block.classList.add('idea-inverted');
+              block.style.backgroundColor = '#fff';
+              circle.style.backgroundColor = 'var(--orange)';
+              circle.style.transform = 'scale(1.5)';
+              text.style.color = 'var(--orange)';
+            }
+          }
+        </script>
       </div>
     </main>
 

@@ -43,7 +43,6 @@
       .hero-title-block {
         width: 100%;
         padding: 7vw 4vw 5vw;
-        border-bottom: var(--border);
         background: #fff;
       }
       .hero-title-block h1 {
@@ -607,8 +606,9 @@
 
           <!-- DISCLOSURE -->
           <div
+            id="built-different-disclosure"
             class="b-tile span-col-4"
-            style="min-height: auto; text-align: center; padding: 2rem"
+            style="text-align: center; padding: 2rem"
           >
             <p style="font-size: 0.8rem; opacity: 0.6">
               All MERGE brand assets and photography are copyright of MERGE. Collaborative
@@ -618,6 +618,13 @@
         </div>
       </div>
     </main>
+
+    <style>
+      #built-different-disclosure {
+        min-height: 0 !important;
+        height: auto !important;
+      }
+    </style>
 
     <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
 
