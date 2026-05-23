@@ -557,18 +557,9 @@
     </header>
 
     <main id="main-content">
-      <!-- HERO IMAGE — full width, outside page wrapper -->
-      <div style="width: 100%; overflow: hidden; max-height: 60vh">
-        <img
-          src="/assets/merge/gpw-grid-filled.png"
-          alt="The MERGE Gen Portrait booth at full scale"
-          style="width: 100%; height: 60vh; object-fit: cover; display: block"
-        />
-      </div>
-
       <div class="page-wrapper">
         <!-- HERO -->
-        <section class="hero" aria-label="Project title">
+        <section id="tile-gpw-intro" class="hero" aria-label="Project title">
           <div class="hero-title-block">
             <h1>Generative<br />Portrait Wall</h1>
             <p class="subtitle">Algorithmic Art Direction &amp; Event Technology &mdash; MERGE</p>
@@ -583,7 +574,7 @@
         </section>
 
         <!-- SECTION 1: ALGORITHMIC DESIGN -->
-        <section class="section" aria-labelledby="algo-heading">
+        <section id="tile-gpw-algo-design" class="section" aria-labelledby="algo-heading">
           <p class="section-label">01 &mdash; The Algorithmic Design</p>
           <div class="grid-2">
             <div>
@@ -601,7 +592,7 @@
             </div>
 
             <!-- Block System Diagram -->
-            <div>
+            <div id="tile-gpw-block-diagram">
               <div
                 class="block-system"
                 role="img"
@@ -644,7 +635,7 @@
             </div>
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem">
-            <figure style="margin: 0">
+            <figure id="tile-gpw-grid-wireframe" style="margin: 0">
               <img
                 src="/assets/merge/gpw-grid-wireframe.png"
                 alt="Grid layout — wireframe state"
@@ -654,7 +645,7 @@
                 Wireframe
               </figcaption>
             </figure>
-            <figure style="margin: 0">
+            <figure id="tile-gpw-wall-reveal" style="margin: 0">
               <img
                 src="/assets/merge/gpw-wall-reveal.png"
                 alt="The portrait wall — full reveal at the event"
@@ -668,7 +659,7 @@
         </section>
 
         <!-- SECTION 2: HARDWARE ECOSYSTEM -->
-        <section class="section" aria-labelledby="hw-heading">
+        <section id="tile-gpw-hardware-ecosystem" class="section" aria-labelledby="hw-heading">
           <p class="section-label">02 &mdash; The Hardware Ecosystem</p>
           <h2 id="hw-heading">Orchestrating the Stack</h2>
           <p>
@@ -677,6 +668,7 @@
           </p>
 
           <div
+            id="tile-gpw-hardware-flow"
             class="hardware-flow"
             role="img"
             aria-label="Hardware flow: touchscreen input to camera processing to portrait display"
@@ -709,7 +701,7 @@
         </section>
 
         <!-- SECTION 3: PSYCHOGRAPHIC INPUT -->
-        <section class="section" aria-labelledby="psych-heading">
+        <section id="tile-gpw-psych-input" class="section" aria-labelledby="psych-heading">
           <p class="section-label">03 &mdash; From Data to Visuals</p>
           <div class="grid-2">
             <div>
@@ -724,7 +716,7 @@
                 inevitable.
               </p>
             </div>
-            <div class="grid-3" style="align-content: start">
+            <div id="tile-gpw-driver-cards" class="grid-3" style="align-content: start">
               <div style="border: var(--border); padding: 1.25rem">
                 <p
                   style="
@@ -803,12 +795,12 @@
         </section>
 
         <!-- SECTION 4: SECURITY BY DESIGN -->
-        <section class="section" aria-labelledby="security-heading">
+        <section id="tile-gpw-security" class="section" aria-labelledby="security-heading">
           <p class="section-label">04 &mdash; Security by Design</p>
           <h2 id="security-heading">Enterprise Maturity</h2>
           <p>This is the part most creative technologists don't think about. I do.</p>
 
-          <div class="compliance-block">
+          <div id="tile-gpw-compliance-block" class="compliance-block">
             <div class="compliance-split">
               <div>
                 <span class="compliance-tag">HIPAA / HiTrust Compliant</span>
@@ -833,7 +825,7 @@
         </section>
 
         <!-- SECTION 5: BRAND TRANSLATION -->
-        <section class="section" aria-labelledby="brand-heading">
+        <section id="tile-gpw-brand-translation" class="section" aria-labelledby="brand-heading">
           <p class="section-label">05 &mdash; Brand Translation</p>
           <div
             class="brand-split"
@@ -854,13 +846,14 @@
               </p>
             </div>
             <img
+              id="tile-gpw-booth-wide"
               src="/assets/merge/gpw-booth-wide.png"
               alt="The MERGE Gen Portrait booth at the event"
               style="width: 100%; display: block"
             />
           </div>
 
-          <div class="attributes-grid">
+          <div id="tile-gpw-attributes" class="attributes-grid">
             <div class="attribute-card">
               <h3>Curious</h3>
               <p>
@@ -887,6 +880,7 @@
 
         <!-- RESULTS: PORTRAIT GALLERY -->
         <div
+          id="tile-gpw-kiosk-photos"
           style="
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -907,7 +901,7 @@
           />
         </div>
 
-        <section class="section" aria-labelledby="results-heading">
+        <section id="tile-gpw-results" class="section" aria-labelledby="results-heading">
           <p class="section-label">06 &mdash; Results</p>
           <h2 id="results-heading">The Wall in Action</h2>
           <p>
@@ -915,7 +909,11 @@
             looks intentional.
           </p>
 
-          <div class="portrait-gallery" aria-label="Generated portrait wall results">
+          <div
+            id="tile-gpw-portrait-gallery"
+            class="portrait-gallery"
+            aria-label="Generated portrait wall results"
+          >
             <img
               src="/assets/merge/gpw-portrait-01.png"
               alt="Generated portrait — attendee 01"
@@ -945,7 +943,7 @@
         </section>
 
         <!-- CREDITS -->
-        <section class="section" aria-labelledby="credits-heading" style="border-bottom: none">
+        <section id="tile-gpw-credits" class="section" aria-labelledby="credits-heading" style="border-bottom: none">
           <p class="section-label">Credits</p>
           <h2 id="credits-heading">The Team</h2>
 
@@ -988,48 +986,17 @@
             </ul>
           </div>
 
-          <p class="asset-disclosure">
+          <p id="tile-gpw-disclosure" class="asset-disclosure">
             All photos, videos, and assets have individual credits due to a variety of contributors.
             Please request additional info for IP and usage rights by emailing
-            contact(at)heathernew.com
+            <a href="mailto:contact@heathernew.com">contact@heathernew.com</a>
           </p>
         </section>
       </div>
     </main>
 
     <!-- Footer -->
-    <div id="footer-trigger">
-      <div class="footer-scroll-wrapper" id="footer-trigger">
-        <footer class="footer-section">
-          <div class="footer-track">
-            <div id="mouse-skater" class="mouse-skater">
-              <div class="mouse-flip-container" id="mouse-flipper">
-                <img
-                  src="/assets/mouse_skate.png"
-                  alt="Magic Mouse on Roller Skates"
-                  class="mouse-static"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="footer-content-bio">
-            <h3>Heather New</h3>
-            <p>
-              Creative Technologist specializing in interactive experiences at the intersection of
-              design, code, and technology.
-            </p>
-          </div>
-          <div class="footer-nav">
-            <p class="copyright">
-              &copy; <span id="current-year"></span> Heather New |
-              <a href="/pages/privacy.html">Privacy Policy</a> |
-              <a href="/pages/sitemap.xml">Sitemap</a>
-            </p>
-            <p class="build-info">Deployment Status: <span id="build-date">Checking...</span></p>
-          </div>
-        </footer>
-      </div>
-    </div>
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
 
     <script>
       document.getElementById('current-year').textContent = new Date().getFullYear();

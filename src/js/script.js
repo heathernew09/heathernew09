@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Roller Derby Design Evolution',
       description:
         'A comprehensive three-year design journey showcasing jersey design, website development, and evolving poster series. Each year brought a unique theme while maintaining brand consistency and improving accessibility.',
-      link: 'https://heathernew.com/derby.html',
+      link: 'https://heathernew.com/pages/roller-derby.html',
       linkText: 'View Roller Derby Posters',
     },
     inspector: {

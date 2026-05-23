@@ -71,6 +71,7 @@
         grid-auto-rows: auto;
         width: 100%;
         max-width: 1400px;
+        border-top: 1px solid #000;
         border-left: var(--border);
         background: #fff;
       }
@@ -131,39 +132,6 @@
       }
       .span-col-2-5 {
         grid-column: span 5;
-      }
-
-      .bg-white {
-        background-color: #fff;
-        color: var(--text-dark);
-      }
-      .bg-dark-gray {
-        background-color: var(--dark-gray);
-        color: #fff;
-      }
-      .bg-light-gray {
-        background-color: var(--light-gray);
-        color: var(--text-dark);
-      }
-      .bg-orange {
-        background-color: var(--accent-orange);
-        color: #fff;
-      }
-      .bg-yellow {
-        background-color: var(--yellow);
-        color: var(--text-dark);
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
-      .bg-lime {
-        background-color: var(--accent-lime);
-        color: var(--text-dark);
       }
 
       .img-tile {
@@ -365,6 +333,7 @@
         <div class="bauhaus-grid">
           <!-- HERO ROW: STICKER IMAGE + META + THE SPARK -->
           <div
+            id="tile-roadshow-hero"
             class="b-tile bg-light-gray span-col-2 span-row-2"
             style="overflow: visible; display: flex; align-items: center; justify-content: center"
           >
@@ -378,15 +347,15 @@
               "
             />
           </div>
-          <div class="b-tile bg-white span-col-1">
+          <div id="tile-roadshow-company" class="b-tile bg-white span-col-1">
             <span class="meta">Company</span>
             <p><strong>MERGE Studio</strong></p>
           </div>
-          <div class="b-tile bg-yellow span-col-1">
+          <div id="tile-roadshow-event" class="b-tile bg-yellow span-col-1">
             <span class="meta">Event</span>
             <p><strong>Studio Roadshow</strong></p>
           </div>
-          <div class="b-tile bg-orange span-col-2 span-row-2">
+          <div id="tile-roadshow-spark" class="b-tile bg-orange span-col-2 span-row-2">
             <span class="meta">The Spark</span>
             <h3>One week. Jam-packed vendors.</h3>
             <p class="story-text">
@@ -395,18 +364,18 @@
               exploration of print materials and clever products we can offer clients.
             </p>
           </div>
-          <div class="b-tile bg-dark-teal span-col-1">
+          <div id="tile-roadshow-role" class="b-tile bg-dark-teal span-col-1">
             <span class="meta">Role</span>
             <p><strong>UX & Tech</strong></p>
           </div>
-          <div class="b-tile birdhouse span-col-1" id="birdhouse">
+          <div id="tile-roadshow-birdhouse" class="b-tile birdhouse span-col-1" id="birdhouse">
             <div class="flying-bird" id="flying-bird">
               <div class="bird color-default" id="bird"></div>
             </div>
           </div>
 
           <!-- CONSOLIDATED INTRO ROW -->
-          <div class="b-tile bg-white span-col-2">
+          <div id="tile-roadshow-quote" class="b-tile bg-white span-col-2">
             <div style="display: flex; gap: 1.5rem; align-items: flex-start">
               <div
                 style="
@@ -431,7 +400,7 @@
               </p>
             </div>
           </div>
-          <div class="b-tile bg-white span-col-2">
+          <div id="tile-roadshow-drill" class="b-tile bg-white span-col-2">
             <span class="meta">Know the drill?</span>
             <p class="story-text" style="font-size: 0.95rem; line-height: 1.5">
               Hey everyone! We all know the drill, right? RGB for digital, CMYK for print.<br /><br />
@@ -444,7 +413,7 @@
           </div>
 
           <!-- LIVE GAME IFRAME (16:9 LOCKED) -->
-          <div class="b-tile span-col-4 bg-dark-gray" style="padding: 0; min-height: auto">
+          <div id="tile-roadshow-game-iframe" class="b-tile span-col-4 bg-dark-gray" style="padding: 0; min-height: auto">
             <iframe
               src="https://studio.heather.codes/"
               class="game-iframe-container"
@@ -452,6 +421,7 @@
             ></iframe>
           </div>
           <div
+            id="tile-roadshow-play-cta"
             class="b-tile bg-yellow span-col-4"
             style="
               min-height: 120px;
@@ -462,13 +432,13 @@
             "
           >
             <span class="meta" style="margin: 0">Ready to test your eye?</span>
-            <a href="https://studio.heather.codes/" target="_blank" class="cta-button"
+            <a href="https://studio.heather.codes/" target="_blank" rel="noopener" class="cta-button"
               >Play the Game Fullscreen</a
             >
           </div>
 
           <!-- AI ACCELERATION STORY (RESTACKED) -->
-          <div class="b-tile bg-light-gray span-col-2">
+          <div id="tile-roadshow-workflow" class="b-tile bg-light-gray span-col-2">
             <span class="meta">The Workflow</span>
             <h3>Prompt-to-Spreadsheet</h3>
             <p class="story-text">
@@ -477,13 +447,14 @@
               scrappy toolkit.
             </p>
           </div>
-          <div class="b-tile img-tile span-col-2 span-row-2">
+          <div id="tile-roadshow-gemini-prompt" class="b-tile img-tile span-col-2 span-row-2 bg-ai-process">
+            <span class="meta">Generative Process</span>
             <img
               src="/assets/studio/2026-03-29_1029_code-hexcode-gemini-blue-gold.png"
               alt="Gemini Prompt for Swatches"
             />
           </div>
-          <div class="b-tile img-tile span-col-2" style="background: var(--teal)">
+          <div id="tile-roadshow-swatch-video" class="b-tile img-tile span-col-2" style="background: var(--teal)">
             <video
               controls
               playsinline
@@ -497,6 +468,7 @@
 
           <!-- TEAM & ANIMATION -->
           <div
+            id="tile-roadshow-swatch-animation"
             class="b-tile bg-white span-col-2"
             style="
               display: flex;
@@ -521,7 +493,7 @@
               />
             </div>
           </div>
-          <div class="b-tile bg-white span-col-2">
+          <div id="tile-roadshow-ui-animation" class="b-tile bg-white span-col-2">
             <span class="meta">Collaborators</span>
             <h3>UI & Animation</h3>
             <p class="story-text">
@@ -534,7 +506,7 @@
           </div>
 
           <!-- AUDIO & LIME HEADLINE -->
-          <div class="b-tile bg-dark-teal span-col-2">
+          <div id="tile-roadshow-audio" class="b-tile bg-dark-teal span-col-2">
             <span class="meta">Audio</span>
             <h3>Dave's Audio Bits</h3>
             <p class="story-text">
@@ -549,6 +521,7 @@
             </audio>
           </div>
           <div
+            id="tile-roadshow-headline"
             class="b-tile bg-lime span-col-2"
             style="justify-content: center; align-items: center; text-align: center; padding: 2rem"
           >
@@ -566,7 +539,7 @@
           </div>
 
           <!-- REVEAL & HEADER IMAGE ROW (40/60 Split) -->
-          <div class="b-tile bg-yellow span-col-1-5">
+          <div id="tile-roadshow-reveal" class="b-tile bg-yellow span-col-1-5">
             <span class="meta">The Reveal</span>
             <h3>"Score 6 or more, nice work!"</h3>
             <p class="story-text" style="font-size: 0.95rem">
@@ -574,7 +547,7 @@
               you. High-stakes office trivia.
             </p>
           </div>
-          <div class="b-tile img-tile span-col-2-5">
+          <div id="tile-roadshow-reveal-img" class="b-tile img-tile span-col-2-5">
             <img
               src="/assets/studio/website-header-merge-studio.png"
               alt="Studio Roadshow Headline"
@@ -582,7 +555,7 @@
           </div>
 
           <!-- STICKERS & IMPACT ROW -->
-          <div class="b-tile bg-dark-gray span-col-2">
+          <div id="tile-roadshow-impact" class="b-tile bg-dark-gray span-col-2">
             <div style="display: flex; gap: 1.5rem; align-items: flex-start">
               <div
                 style="
@@ -606,6 +579,7 @@
             </div>
           </div>
           <div
+            id="tile-roadshow-sticker-top10"
             class="b-tile bg-white span-col-1"
             style="display: flex; align-items: center; justify-content: center; padding: 1rem"
           >
@@ -617,6 +591,7 @@
             />
           </div>
           <div
+            id="tile-roadshow-sticker-minute"
             class="b-tile bg-white span-col-1"
             style="display: flex; align-items: center; justify-content: center; padding: 1rem"
           >
@@ -629,7 +604,7 @@
           </div>
 
           <!-- CREDITS -->
-          <div class="b-tile bg-white span-col-4">
+          <div id="tile-roadshow-credits" class="b-tile bg-white span-col-4">
             <span class="meta" style="color: var(--primary-teal)">The Launch Squad</span>
             <div style="display: flex; flex-wrap: wrap; gap: 4rem; margin-top: 1rem">
               <ul class="list-clean">

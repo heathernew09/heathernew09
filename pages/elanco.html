@@ -42,7 +42,7 @@
         grid-auto-rows: minmax(240px, auto);
         width: 100%;
         max-width: 1400px;
-        border-top: 1px solid var(--text-dark);
+        border-top: 1px solid #000;
         border-left: 1px solid var(--text-dark);
         background: var(--bg-color);
       }
@@ -103,28 +103,11 @@
         grid-row: span 2;
       }
 
-      .bg-white {
-        background-color: #fff;
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
-      .bg-orange {
-        background-color: var(--orange);
-        color: #fff;
-      }
-      .bg-lime {
-        background-color: var(--lime);
-        color: var(--text-dark);
-      }
       .bg-soft-black {
-        background-color: #666666;
-        color: var(--lime);
+        --tile-bg: var(--medium-gray);
+        --tile-text: var(--lime);
+        background-color: var(--tile-bg);
+        color: var(--tile-text);
       }
 
       .img-tile {
@@ -170,7 +153,7 @@
       <div class="portfolio-section">
         <div class="bauhaus-grid">
           <!-- ROW 1 -->
-          <div class="b-tile bg-soft-black span-col-2">
+          <div id="tile-elanco-go-beyond" class="b-tile bg-soft-black span-col-2">
             <span class="meta">Experiential Strategy</span>
             <h2>Go Beyond</h2>
             <p>
@@ -178,15 +161,15 @@
               boundaries of traditional booth design.
             </p>
           </div>
-          <div class="b-tile img-tile span-col-2">
+          <div id="tile-elanco-wall-img" class="b-tile img-tile span-col-2">
             <img src="/assets/para/go-beyond-wall.JPEG" alt="Go Beyond Wall" />
           </div>
 
           <!-- ROW 2 -->
-          <div class="b-tile img-tile span-col-2">
+          <div id="tile-elanco-beyond-img" class="b-tile img-tile span-col-2">
             <img src="/assets/para/go-beyond-elanco.JPEG" alt="Go Beyond Elanco" />
           </div>
-          <div class="b-tile bg-orange span-col-2">
+          <div id="tile-elanco-spatial-impact" class="b-tile bg-orange span-col-2">
             <span class="meta">Brand Extension</span>
             <h2>Spatial Impact</h2>
             <p>
@@ -196,7 +179,7 @@
           </div>
 
           <!-- ROW 3 -->
-          <div class="b-tile bg-teal span-col-4">
+          <div id="tile-elanco-more-projects" class="b-tile bg-teal span-col-4">
             <span class="meta" style="color: var(--lime)">More Elanco Projects</span>
             <p style="font-size: 1.5rem; font-weight: 700">
               This collection showcases the breadth of work dedicated to transforming pharmaceutical

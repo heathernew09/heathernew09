@@ -97,7 +97,7 @@
         grid-auto-rows: minmax(240px, auto);
         width: 100%;
         max-width: 1400px;
-        border-top: 1px solid var(--text-dark);
+        border-top: 1px solid #000;
         border-left: 1px solid var(--text-dark);
         background: var(--bg-color);
       }
@@ -115,6 +115,12 @@
         transition:
           background-color 0.4s ease,
           color 0.4s ease;
+      }
+
+      .hover-invert:hover,
+      a.b-tile:hover {
+        background-color: var(--tile-text) !important;
+        color: var(--tile-bg) !important;
       }
 
       .b-tile h2 {
@@ -159,38 +165,6 @@
         grid-row: span 2;
       }
 
-      .bg-white {
-        background-color: #fff;
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
-      .bg-yellow {
-        background-color: var(--yellow);
-        color: var(--text-dark);
-      }
-      .bg-orange {
-        background-color: var(--orange);
-        color: #fff;
-      }
-      .bg-lime {
-        background-color: var(--lime);
-        color: var(--text-dark);
-      }
-      .bg-light-grey {
-        background-color: var(--light-grey);
-        color: var(--text-dark);
-      }
-      .bg-mid-grey {
-        background-color: var(--mid-grey);
-        color: var(--text-dark);
-      }
-
       .img-tile {
         padding: 0;
         display: block;
@@ -203,7 +177,8 @@
         display: block;
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       }
-      .img-tile:hover img {
+      a.img-tile:hover img,
+      .img-tile:has(a):hover img {
         transform: scale(1.04);
       }
 
@@ -270,6 +245,30 @@
         }
       }
 
+      .btn-accessible {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        align-self: flex-start;
+        padding: 12px 24px;
+        border: 2px solid #fff;
+        color: #fff;
+        background: transparent;
+        border-radius: 30px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-family: 'Manrope', sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .btn-accessible:hover {
+        background: var(--lime);
+        border-color: var(--lime);
+        color: var(--text-dark);
+      }
+
       /* Hero controls override */
       .parasite-controls-container {
         position: absolute;
@@ -331,13 +330,9 @@
         <div class="bauhaus-grid">
           <!-- ROW 1: INTRO + PHONE MOCK -->
           <div
-            class="b-tile span-col-2"
-            style="
-              justify-content: center;
-              gap: 2.5rem;
-              text-align: center;
-              background-color: #666666;
-            "
+            id="tile-para-intro"
+            class="b-tile span-col-2 bg-dark-teal"
+            style="justify-content: center; gap: 2.5rem;"
           >
             <div>
               <span class="meta" style="color: var(--lime)"
@@ -349,7 +344,6 @@
                   color: var(--light-grey);
                   font-size: 1.2rem;
                   max-width: 600px;
-                  margin: 0 auto;
                 "
               >
                 An immersive WebAR game built on 8th Wall. Hunt parasites in augmented reality,
@@ -357,8 +351,8 @@
                 mobile browser.
               </p>
             </div>
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem">
-              <button id="demoBtn" class="btn btn-secondary">
+            <div style="display: flex; flex-direction: column; gap: 1.5rem">
+              <button id="demoBtn" class="btn-accessible">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <polygon points="5 3 19 12 5 21 5 3"></polygon>
                 </svg>
@@ -428,9 +422,9 @@
             </div>
           </div>
           <div
-            class="b-tile span-col-2"
+            id="tile-para-game-preview"
+            class="b-tile span-col-2 bg-medium-gray"
             style="
-              background: #666666;
               padding: 2rem;
               display: flex;
               align-items: center;
@@ -466,13 +460,13 @@
           </div>
 
           <!-- ROW 2: MAP + CHALLENGE -->
-          <div class="b-tile img-tile span-col-2">
+          <div id="tile-para-map" class="b-tile img-tile span-col-2">
             <img
               src="/assets/para/game-play-map-tradeshow-floor.png"
               alt="Map of tradeshow floor showing parasite hunt zones"
             />
           </div>
-          <div class="b-tile bg-orange span-col-2">
+          <div id="tile-para-challenge" class="b-tile bg-orange span-col-2">
             <span class="meta">The Challenge</span>
             <h2>Go<br />Beyond.</h2>
             <ul style="list-style: none; line-height: 2; font-size: 0.95rem; margin-top: auto">
@@ -484,71 +478,93 @@
           </div>
 
           <!-- ROW 3: CREATIVE DIRECTION HEADER -->
-          <div class="b-tile bg-teal span-col-4">
+          <div id="tile-para-process-header" class="b-tile bg-teal span-col-4">
             <span class="meta" style="color: var(--lime)">Creative Direction</span>
             <h2>From Storyboard to Spatial Reality</h2>
             <p style="max-width: 700px">
-              Pulling inspiration from Pokémon Go and Nintendo, we concepted AR opportunities. We
-              ultimately selected moving gameplay — parasites that scatter, react, and reward.
+              The characters for the parasite hunter game were built and created for the product
+              launch of Credelio Quattro in 2024. We had a story to tell, after building it into an
+              illustration we now built it into a game.
             </p>
           </div>
 
-          <!-- ROW 4: EVOLUTION IMAGES -->
-          <div class="b-tile img-tile span-col-2">
+          <!-- ROW 4: NARRATIVE VIDEO FULL WIDTH -->
+          <div
+            id="tile-para-flipbook"
+            class="b-tile video-tile bg-light-grey span-col-3"
+            style="padding: 2.5rem; justify-content: center; align-items: center"
+          >
+            <div style="max-width: 800px; width: 100%">
+              <span class="meta" style="color: var(--dark-teal)">The Narrative</span>
+              <video
+                autoplay
+                loop
+                muted
+                playsinline
+                style="
+                  width: 100%;
+                  height: auto;
+                  border-radius: 8px;
+                  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                "
+              >
+                <source src="/assets/para/comic-flipbook.mp4" type="video/mp4" />
+              </video>
+              <p
+                style="
+                  margin-top: 1.5rem;
+                  font-size: 1.1rem;
+                  font-weight: 600;
+                  color: var(--dark-teal);
+                  text-align: center;
+                "
+              >
+                Comic characters got a new life through movement.
+              </p>
+            </div>
+          </div>
+
+          <!-- ROW 5: EVOLUTION IMAGES & DESIGN DIRECTION (4 COLS) -->
+          <div id="tile-para-comic-img" class="b-tile img-tile">
             <img
               src="/assets/para/2025-innovation-lab-interactive-comic.jpg"
               alt="The Power of Four comic book"
             />
           </div>
-          <div class="b-tile video-tile bg-light-grey span-col-2" style="padding: 1.5rem">
-            <span class="meta" style="color: var(--dark-teal)">The Narrative</span>
-            <video
-              autoplay
-              loop
-              muted
-              playsinline
-              style="width: 100%; height: auto; border-radius: 8px"
-            >
-              <source src="/assets/para/comic-flipbook.mp4" type="video/mp4" />
-            </video>
-            <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--dark-teal)">
-              Comic characters got a new life through movement.
-            </p>
-          </div>
-          <div class="b-tile img-tile span-col-2">
+          <div id="tile-para-pyra-mask" class="b-tile img-tile">
             <img
               src="/assets/para/pyra-mask-selfie-mock.png"
               alt="AR face mask experiment resembling Pyra"
             />
           </div>
-
-          <!-- ROW 5: FLOATING PYRA + AR CARD CONCEPT -->
-          <div class="b-tile bg-mid-grey">
+          <div id="tile-para-design-direction" class="b-tile bg-mid-grey span-col-2">
             <span class="meta">Fun Experiments</span>
-            <h3>Design Direction</h3>
+            <h2>Experiment to Direction</h2>
             <p>
-              UX, UI, directed the 3D team — tested AR technologies, defined requirements, explored
-              what was possible before committing.
+              During the discovery phase of the project, I ran many experiments testing the
+              technology and building requirements for our project. Here are a couple fun examples.
+              I concepted out what a face filter might look like, with different character masks. I
+              also created AR cards, similar style to a Pokemon card with a QR code that comes to
+              live visually. I gleamed valuable insight from each experiment in how to bring our
+              product story to life.
             </p>
           </div>
-          <div class="b-tile img-tile span-col-2" style="min-height: 300px">
+
+          <!-- ROW 6: FLOATING PYRA -->
+          <div
+            id="tile-para-pyra-optimization"
+            class="b-tile bg-white"
+            style="min-height: 400px; display: flex; align-items: center; justify-content: center;"
+          >
             <img
               src="/assets/para/floating-pyra.gif"
               alt="Pyra spinning in 3D over an AR card"
-              style="object-fit: contain; background: #1a1a2e"
+              style="width: 100%; height: auto; object-fit: contain;"
             />
-          </div>
-          <div class="b-tile bg-dark-teal">
-            <span class="meta" style="color: var(--lime)">Concepting AR Cards</span>
-            <h3>Would takeaway cards go beyond?</h3>
-            <p style="color: var(--light-grey)">
-              Scan a QR, watch the card come to life. We considered it — and the 3D work informed
-              the final game.
-            </p>
           </div>
 
           <!-- ROW 6: CHARACTERS HEADER -->
-          <div class="b-tile bg-yellow span-col-4" style="justify-content: center">
+          <div id="tile-para-characters-header" class="b-tile bg-yellow span-col-4" style="justify-content: center">
             <span class="meta">Meet the Characters</span>
             <div
               style="
@@ -564,7 +580,7 @@
           </div>
 
           <!-- ROW 7: 4 CHARACTERS -->
-          <div class="b-tile char-tile bg-white">
+          <div id="tile-para-char-loti" class="b-tile char-tile bg-white">
             <img src="/assets/para/loti.png" alt="Loti character" />
             <div>
               <h3 style="color: var(--dark-teal)">Loti</h3>
@@ -574,7 +590,7 @@
               </p>
             </div>
           </div>
-          <div class="b-tile char-tile bg-white">
+          <div id="tile-para-char-moxi" class="b-tile char-tile bg-white">
             <img src="/assets/para/moxi.png" alt="Moxi character" />
             <div>
               <h3 style="color: var(--dark-teal)">Moxi</h3>
@@ -584,7 +600,7 @@
               </p>
             </div>
           </div>
-          <div class="b-tile char-tile bg-white">
+          <div id="tile-para-char-pyra" class="b-tile char-tile bg-white">
             <img src="/assets/para/pyra.png" alt="Pyra character" />
             <div>
               <h3 style="color: var(--dark-teal)">Pyra</h3>
@@ -594,7 +610,7 @@
               </p>
             </div>
           </div>
-          <div class="b-tile char-tile bg-white">
+          <div id="tile-para-char-prazi" class="b-tile char-tile bg-white">
             <img src="/assets/para/prazi.png" alt="Prazi character" />
             <div>
               <h3 style="color: var(--dark-teal)">Prazi</h3>
@@ -605,76 +621,89 @@
             </div>
           </div>
 
-          <!-- ROW 8: GAMEPLAY HEADER -->
-          <div class="b-tile bg-dark-teal span-col-4">
-            <span class="meta" style="color: var(--lime)">UX &mdash; Game Flow &mdash; UI</span>
-            <h2>Mechanics as Messaging</h2>
-            <p style="color: var(--light-grey); max-width: 700px">
-              The educational game loop reinforces product benefits through play. Every interaction
-              is a brand touchpoint.
-            </p>
-          </div>
-
-          <!-- ROW 9: GAMEPLAY STEPS -->
-          <div class="b-tile bg-teal">
+          <!-- STEP TILES — ROW A: Main content -->
+          <div id="tile-para-step-scan" class="b-tile bg-teal" style="justify-content: flex-start; gap: 1rem;">
             <span class="meta" style="color: var(--lime)">01 &mdash; Scan</span>
             <h3>No App Download</h3>
             <p style="color: var(--light-grey)">
-              QR code launches directly in mobile browser. Zero friction entry — 8th Wall powers the
-              AR natively.
+              QR code launches directly in mobile browser. Zero friction entry — 8th Wall powers
+              the AR natively.
             </p>
           </div>
-          <div class="b-tile contain-tile bg-white">
+          <div id="tile-para-step-hunt-img" class="b-tile contain-tile bg-white">
             <img src="/assets/para/hunt.png" alt="Hunt gameplay screen" />
           </div>
-          <div class="b-tile contain-tile bg-white">
+          <div id="tile-para-step-learn-img" class="b-tile contain-tile bg-white">
             <img src="/assets/para/learn.png" alt="Learn gameplay screen" />
           </div>
-          <div class="b-tile contain-tile bg-white">
+          <div id="tile-para-step-win-img" class="b-tile contain-tile bg-white">
             <img src="/assets/para/win.png" alt="Win screen" />
           </div>
 
-          <!-- ROW 10: GAMEPLAY STEP LABELS -->
-          <div class="b-tile bg-dark-teal" style="min-height: auto; padding: 1.5rem 2.5rem">
+          <!-- STEP TILES — ROW B: Labels -->
+          <div
+            id="tile-para-label-scan"
+            class="b-tile bg-dark-teal"
+            style="padding: 1.5rem 2.5rem"
+          >
             <span class="meta" style="color: var(--lime)">01 &mdash; Scan</span>
             <p style="font-size: 0.9rem; color: var(--light-grey)">
               No app. Just a QR code and you're in.
             </p>
           </div>
-          <div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem">
+          <div
+            id="tile-para-label-hunt"
+            class="b-tile bg-light-grey"
+            style="padding: 1.5rem 2.5rem"
+          >
             <span class="meta" style="color: var(--dark-teal)">02 &mdash; Hunt</span>
             <p style="font-size: 0.9rem; font-weight: 600">Tap parasites. Earn points.</p>
           </div>
-          <div class="b-tile bg-light-grey" style="min-height: auto; padding: 1.5rem 2.5rem">
+          <div
+            id="tile-para-label-learn"
+            class="b-tile bg-light-grey"
+            style="padding: 1.5rem 2.5rem"
+          >
             <span class="meta" style="color: var(--dark-teal)">03 &mdash; Learn</span>
             <p style="font-size: 0.9rem; font-weight: 600">
               Tap the icon. Discover how the med works.
             </p>
           </div>
-          <div class="b-tile bg-lime" style="min-height: auto; padding: 1.5rem 2.5rem">
+          <div
+            id="tile-para-label-win"
+            class="b-tile bg-lime"
+            style="padding: 1.5rem 2.5rem"
+          >
             <span class="meta" style="color: var(--dark-teal)">04 &mdash; Win</span>
             <p style="font-size: 0.9rem; font-weight: 700">
               2,100+ sign-ups. One player caught 6,000.
             </p>
           </div>
 
-          <!-- ROW 11: CREDELIO QUATTRO CALLOUT -->
-          <div class="b-tile bg-orange span-col-4" style="justify-content: center">
+          <!-- MECHANICS HEADER -->
+          <div id="tile-para-gameplay-header" class="b-tile span-col-3 bg-dark-gray">
+            <span class="meta" style="color: var(--lime)">UX &mdash; Game Flow &mdash; UI</span>
+            <h2 style="color: #fff">Mechanics as Messaging</h2>
+            <p style="color: #fff; max-width: 700px">
+              The educational game loop reinforces product benefits through play. Every interaction
+              is a brand touchpoint.
+            </p>
+          </div>
+          <div id="tile-para-quote-credelio" class="b-tile bg-orange" style="justify-content: center">
             <div
               style="
-                font-size: clamp(1rem, 2vw, 1.6rem);
+                font-size: 0.95rem;
                 font-weight: 700;
-                line-height: 1.5;
-                max-width: 900px;
+                line-height: 1.4;
               "
             >
-              "Credelio Quattro is the only pharmaceutical that treats all 6 parasites — so it makes
-              sense you have to visit the booth to complete the game and claim your prize."
+              "Credelio Quattro is the only pharmaceutical that treats all 6 parasites — so it
+              makes sense you have to visit the booth to complete the game and claim your prize."
             </div>
           </div>
 
           <!-- ROW 12: TECHNICAL + PEOPLE PHOTO -->
-          <div class="b-tile bg-light-grey span-col-2">
+          <div id="tile-para-team-tech" class="b-tile bg-light-grey span-col-2">
             <span class="meta" style="color: var(--dark-teal)">Team &amp; Technology</span>
             <h2>Refining the Experience</h2>
             <p>
@@ -703,15 +732,181 @@
               <strong>"best VMX ever."</strong>
             </p>
           </div>
-          <div class="b-tile img-tile span-col-2">
+          <div id="tile-para-booth-crowd" class="b-tile img-tile span-col-2">
             <img
               src="/assets/para/people-gathering-booth.png"
               alt="Crowd gathering at the Parasite Hunter booth"
             />
           </div>
 
-          <!-- ROW 13: ADRIANA QUOTE -->
-          <div class="b-tile bg-yellow span-col-4" style="justify-content: center">
+          <!-- ROW 13B: EVENT PHOTOS — WVC VEGAS 2026 -->
+          <div id="tile-para-event-columns" class="b-tile img-tile">
+            <img src="/assets/para/para-columns.JPG" alt="Parasite Hunter columns at the event" />
+          </div>
+          <div id="tile-para-event-winners" class="b-tile img-tile">
+            <img
+              src="/assets/para/parasite-hunter-winners.png"
+              alt="Parasite Hunter leaderboard winners"
+            />
+          </div>
+          <div id="tile-para-event-playing" class="b-tile img-tile">
+            <img
+              src="/assets/para/people-playing-parasite-hunter.jpg"
+              alt="People playing Parasite Hunter"
+            />
+          </div>
+          <div id="tile-para-event-qr" class="b-tile img-tile">
+            <img src="/assets/para/scan-to-play.JPG" alt="Scan to play QR code sign" />
+          </div>
+          <div id="tile-para-event-flea" class="b-tile img-tile">
+            <img
+              src="/assets/para/flea-on-debrah-parasite-hunter-game.png"
+              alt="Flea on Debrah in Parasite Hunter game"
+            />
+          </div>
+          <div id="tile-para-booth-vegas" class="b-tile img-tile">
+            <img
+              src="/images/parasite-hunter/booth-wvc-vegas-2026.jpg"
+              alt="Parasite Hunter booth at WVC Vegas 2026"
+            />
+          </div>
+          <div id="tile-para-player-1" class="b-tile img-tile">
+            <img
+              src="/images/parasite-hunter/player-1.jpg"
+              alt="Attendee playing Parasite Hunter at WVC"
+            />
+          </div>
+          <div id="tile-para-player-2" class="b-tile img-tile">
+            <img
+              src="/images/parasite-hunter/player-2.jpg"
+              alt="Player hunting parasites on their phone"
+            />
+          </div>
+          <div id="tile-para-award-vegas" class="b-tile img-tile span-col-2">
+            <img
+              src="/images/parasite-hunter/team-award-wvc-2026.jpg"
+              alt="Team award at WVC Vegas 2026 — Best Booth"
+            />
+          </div>
+          <div id="tile-para-player-3" class="b-tile img-tile">
+            <img
+              src="/images/parasite-hunter/player-3.jpg"
+              alt="Player at the Parasite Hunter booth"
+            />
+          </div>
+          <div id="tile-para-stat-retention" class="b-tile bg-teal">
+            <div class="stat-num">3×</div>
+            <h3>High-Value Retention</h3>
+            <p style="color: var(--light-grey); font-size: 0.9rem">
+              Participants engaged 3× longer than with traditional booth materials.
+            </p>
+          </div>
+
+          <!-- ROW 14: LEADERBOARD + TROPHIES -->
+          <div class="b-tile bg-dark-teal span-col-3">
+            <span class="meta" style="color: var(--lime)">Engagement Strategy</span>
+            <h2>Leaderboards Incite Competition</h2>
+            <p style="color: var(--light-grey)">
+              The <strong style="color: #fff">Mini Toby Trophy</strong> mirrored our 12-foot "Toby"
+              installation from the prior year — brand continuity as a tangible collectible that
+              rewarded mastery and drove attendees back to the booth daily.
+            </p>
+          </div>
+          <div id="tile-para-game-kid" class="b-tile img-tile">
+            <img
+              src="/assets/para/parasite-hunter-game-kid.png"
+              alt="Young attendee playing Parasite Hunter at VMX 2026"
+            />
+          </div>
+
+          <!-- ROW 15: RESULTS STATS -->
+          <div id="tile-para-stat-leads" class="b-tile bg-lime">
+            <div class="stat-num">2,100+</div>
+            <h3>Qualified Leads</h3>
+            <p style="font-size: 0.9rem">
+              Active sign-ups with users returning daily to defend leaderboard rank.
+            </p>
+          </div>
+          <div id="tile-para-stat-ip" class="b-tile bg-yellow">
+            <div class="stat-num">100%</div>
+            <h3>IP Integrity</h3>
+            <p style="font-size: 0.9rem">
+              2D comic assets into 3D space — brand recognition consistent across all media.
+            </p>
+          </div>
+          <div id="tile-para-stat-footprint" class="b-tile bg-orange">
+            <div class="stat-num">&#8734;</div>
+            <h3>Spatial Footprint</h3>
+            <p style="font-size: 0.9rem">
+              1.2M sq. ft. turned into a brand-owned experience beyond the booth barrier.
+            </p>
+          </div>
+
+          <!-- ROW 16: SHAWN QUOTE -->
+          <div id="tile-para-quote-shawn" class="b-tile bg-medium-gray" style="justify-content: center">
+            <div
+              style="
+                font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+                font-weight: 700;
+                line-height: 1.5;
+                max-width: 900px;
+              "
+            >
+              "You delivered a new kind of experience for the VMX attendees... it was being talked
+              about everywhere I went. We were by far the best booth there."
+            </div>
+            <p
+              style="
+                margin-top: 1rem;
+                font-size: 0.85rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: var(--text-dark);
+              "
+            >
+              — Shawn, Elanco Leadership
+            </p>
+          </div>
+
+          <!-- ROW 17: ROLE SUMMARY HEADER -->
+          <div id="tile-para-expertise-header" class="b-tile bg-teal span-col-4">
+            <span class="meta" style="color: var(--lime)">Expertise in Action</span>
+            <h2>Bridging Vision and Execution</h2>
+          </div>
+
+          <!-- ROW 18: ROLE TILES -->
+          <div id="tile-para-expertise-ownership" class="b-tile bg-dark-teal" style="color: #fff">
+            <span class="meta" style="color: var(--lime)">Creative Ownership</span>
+            <p>
+              Translated original 2D character designs into performant 3D assets while maintaining
+              the brand’s established Comic Style IP.
+            </p>
+          </div>
+          <div id="tile-para-expertise-stewardship" class="b-tile bg-dark-teal" style="color: #fff">
+            <span class="meta" style="color: var(--lime)">Technical Stewardship</span>
+            <p>
+              Architected WebAR deployment requirements — low-friction access and asset optimization
+              for high-density event environments.
+            </p>
+          </div>
+          <div id="tile-para-expertise-strategy" class="b-tile bg-dark-teal" style="color: #fff">
+            <span class="meta" style="color: var(--lime)">Experience Strategy</span>
+            <p>
+              Game loop aligned with pedagogical goals — every catch reinforced product benefits
+              through active learning.
+            </p>
+          </div>
+          <div id="tile-para-expertise-studio" class="b-tile bg-dark-teal" style="color: #fff">
+            <span class="meta" style="color: var(--lime)">Studio Management</span>
+            <p>
+              Orchestrated 3D artists and developers as primary technical liaison, ensuring 1:1
+              delivery of creative vision.
+            </p>
+          </div>
+
+          <!-- ADRIANA QUOTE -->
+          <div id="tile-para-quote-adriana" class="b-tile bg-yellow span-col-4" style="justify-content: center">
             <div
               style="
                 font-size: clamp(1.1rem, 2.2vw, 1.6rem);
@@ -736,174 +931,8 @@
             </p>
           </div>
 
-          <!-- ROW 13B: EVENT PHOTOS — WVC VEGAS 2026 -->
-          <div class="b-tile img-tile">
-            <img src="/assets/para/para-columns.JPG" alt="Parasite Hunter columns at the event" />
-          </div>
-          <div class="b-tile img-tile">
-            <img
-              src="/assets/para/parasite-hunter-winners.png"
-              alt="Parasite Hunter leaderboard winners"
-            />
-          </div>
-          <div class="b-tile img-tile">
-            <img
-              src="/assets/para/people-playing-parasite-hunter.jpg"
-              alt="People playing Parasite Hunter"
-            />
-          </div>
-          <div class="b-tile img-tile">
-            <img src="/assets/para/scan-to-play.JPG" alt="Scan to play QR code sign" />
-          </div>
-          <div class="b-tile img-tile span-col-2">
-            <img
-              src="/assets/para/flea-on-debrah-parasite-hunter-game.png"
-              alt="Flea on Debrah in Parasite Hunter game"
-            />
-          </div>
-          <div class="b-tile img-tile span-col-2">
-            <img
-              src="/images/parasite-hunter/booth-wvc-vegas-2026.jpg"
-              alt="Parasite Hunter booth at WVC Vegas 2026"
-            />
-          </div>
-          <div class="b-tile img-tile">
-            <img
-              src="/images/parasite-hunter/player-1.jpg"
-              alt="Attendee playing Parasite Hunter at WVC"
-            />
-          </div>
-          <div class="b-tile img-tile">
-            <img
-              src="/images/parasite-hunter/player-2.jpg"
-              alt="Player hunting parasites on their phone"
-            />
-          </div>
-          <div class="b-tile img-tile span-col-2">
-            <img
-              src="/images/parasite-hunter/team-award-wvc-2026.jpg"
-              alt="Team award at WVC Vegas 2026 — Best Booth"
-            />
-          </div>
-          <div class="b-tile img-tile span-col-2">
-            <img
-              src="/images/parasite-hunter/player-3.jpg"
-              alt="Player at the Parasite Hunter booth"
-            />
-          </div>
-
-          <!-- ROW 14: LEADERBOARD + TROPHIES -->
-          <div class="b-tile bg-dark-teal span-col-2">
-            <span class="meta" style="color: var(--lime)">Engagement Strategy</span>
-            <h2>Leaderboards Incite Competition</h2>
-            <p style="color: var(--light-grey)">
-              The <strong style="color: #fff">Mini Toby Trophy</strong> mirrored our 12-foot "Toby"
-              installation from the prior year — brand continuity as a tangible collectible that
-              rewarded mastery and drove attendees back to the booth daily.
-            </p>
-          </div>
-          <div class="b-tile img-tile">
-            <img
-              src="/assets/para/parasite-hunter-game-kid.png"
-              alt="Young attendee playing Parasite Hunter at VMX 2026"
-            />
-          </div>
-
-          <!-- ROW 15: RESULTS STATS -->
-          <div class="b-tile bg-teal">
-            <div class="stat-num">3×</div>
-            <h3>High-Value Retention</h3>
-            <p style="color: var(--light-grey); font-size: 0.9rem">
-              Participants engaged 3× longer than with traditional booth materials.
-            </p>
-          </div>
-          <div class="b-tile bg-lime">
-            <div class="stat-num">2,100+</div>
-            <h3>Qualified Leads</h3>
-            <p style="font-size: 0.9rem">
-              Active sign-ups with users returning daily to defend leaderboard rank.
-            </p>
-          </div>
-          <div class="b-tile bg-yellow">
-            <div class="stat-num">100%</div>
-            <h3>IP Integrity</h3>
-            <p style="font-size: 0.9rem">
-              2D comic assets into 3D space — brand recognition consistent across all media.
-            </p>
-          </div>
-          <div class="b-tile bg-orange">
-            <div class="stat-num">&#8734;</div>
-            <h3>Spatial Footprint</h3>
-            <p style="font-size: 0.9rem">
-              1.2M sq. ft. turned into a brand-owned experience beyond the booth barrier.
-            </p>
-          </div>
-
-          <!-- ROW 16: SHAWN QUOTE -->
-          <div class="b-tile bg-dark-teal span-col-4" style="justify-content: center">
-            <div
-              style="
-                font-size: clamp(1.1rem, 2.2vw, 1.6rem);
-                font-weight: 700;
-                line-height: 1.5;
-                max-width: 900px;
-              "
-            >
-              "You delivered a new kind of experience for the VMX attendees... it was being talked
-              about everywhere I went. We were by far the best booth there."
-            </div>
-            <p
-              style="
-                margin-top: 1rem;
-                font-size: 0.85rem;
-                font-weight: 800;
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                color: var(--lime);
-              "
-            >
-              — Shawn, Elanco Leadership
-            </p>
-          </div>
-
-          <!-- ROW 17: ROLE SUMMARY HEADER -->
-          <div class="b-tile bg-teal span-col-4">
-            <span class="meta" style="color: var(--lime)">Expertise in Action</span>
-            <h2>Bridging Vision and Execution</h2>
-          </div>
-
-          <!-- ROW 18: ROLE TILES -->
-          <div class="b-tile bg-light-grey">
-            <span class="meta" style="color: var(--dark-teal)">Creative Ownership</span>
-            <p>
-              Translated original 2D character designs into performant 3D assets while maintaining
-              the brand’s established Comic Style IP.
-            </p>
-          </div>
-          <div class="b-tile bg-light-grey">
-            <span class="meta" style="color: var(--dark-teal)">Technical Stewardship</span>
-            <p>
-              Architected WebAR deployment requirements — low-friction access and asset optimization
-              for high-density event environments.
-            </p>
-          </div>
-          <div class="b-tile bg-light-grey">
-            <span class="meta" style="color: var(--dark-teal)">Experience Strategy</span>
-            <p>
-              Game loop aligned with pedagogical goals — every catch reinforced product benefits
-              through active learning.
-            </p>
-          </div>
-          <div class="b-tile bg-light-grey">
-            <span class="meta" style="color: var(--dark-teal)">Studio Management</span>
-            <p>
-              Orchestrated 3D artists and developers as primary technical liaison, ensuring 1:1
-              delivery of creative vision.
-            </p>
-          </div>
-
           <!-- ROW 19: CREDITS -->
-          <div class="b-tile span-col-2" style="background-color: #666666">
+          <div id="tile-para-credits-ar" class="b-tile span-col-2 bg-dark-gray" style="justify-content: flex-start; gap: 1rem;">
             <span class="meta" style="color: var(--lime)">Parasite Hunter AR Team</span>
             <ul class="list-clean" style="margin-top: 1rem">
               <li><strong>Creative Technologist &amp; Studio Manager:</strong> Heather New</li>
@@ -915,7 +944,7 @@
               <li><strong>Development Partners (PostPop):</strong> AJ (Lead) &amp; Carl (Dev)</li>
             </ul>
           </div>
-          <div class="b-tile bg-teal span-col-2">
+          <div id="tile-para-credits-booth" class="b-tile bg-dark-teal span-col-2" style="color: #fff">
             <span class="meta" style="color: var(--lime)">Elanco Booth Experience</span>
             <ul class="list-clean" style="margin-top: 1rem">
               <li>
@@ -942,25 +971,26 @@
             </ul>
           </div>
 
-          <!-- ROW 20: SEE MORE ELANCO -->
+          <!-- ROW 20: ELANCO LINK + DISCLOSURE (REBALANCED) -->
           <a
+            id="tile-para-elanco-link"
             href="/pages/elanco.html"
-            class="b-tile bg-orange span-col-4 hover-invert"
+            class="b-tile bg-orange span-col-2 hover-invert"
             style="
               text-decoration: none;
-              color: inherit;
+              color: #fff;
               justify-content: center;
               align-items: center;
               text-align: center;
             "
           >
             <span class="meta">Beyond the Hunt</span>
-            <h2 style="margin: 0">See more Elanco projects <span>→</span></h2>
+            <h2 style="margin: 0">See more Elanco projects <span>&rarr;</span></h2>
           </a>
 
-          <!-- ROW 21: ASSET DISCLOSURE -->
           <div
-            class="b-tile span-col-4"
+            id="tile-para-disclosure"
+            class="b-tile span-col-2"
             style="
               min-height: auto;
               justify-content: center;
@@ -1068,4 +1098,3 @@
     </script>
   </body>
 </html>
-l>

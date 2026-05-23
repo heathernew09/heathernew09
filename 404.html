@@ -25,7 +25,7 @@
     </header>
 
     <main id="main-content">
-      <div class="derby-container">
+      <div id="tile-404-container" class="derby-container">
         <span class="header-404">Error 404</span>
         <h1>Off The Track!</h1>
         <p class="subtitle">
@@ -33,7 +33,7 @@
           before you get back out there, let's find your ultimate Derby alias.
         </p>
 
-        <div class="input-grid">
+        <div id="tile-404-inputs" class="input-grid">
           <div class="form-group">
             <label for="userName">Your First Name</label>
             <input type="text" id="userName" placeholder="e.g. Sarah, Alex..." />
@@ -44,9 +44,9 @@
           </div>
         </div>
 
-        <button class="btn-derby" onclick="generateNewName()">Generate Alias ⚡</button>
+        <button id="tile-404-generate-btn" class="btn-derby" onclick="generateNewName()">Generate Alias ⚡</button>
 
-        <div class="result-area" id="resultArea">
+        <div id="tile-404-results" class="result-area" id="resultArea">
           <div class="instruction">
             <svg viewBox="0 0 24 24" width="20" height="20">
               <path
@@ -68,7 +68,7 @@
             </button>
           </div>
 
-          <div class="derby-history">
+          <div id="tile-404-history" class="derby-history">
             <h5>Recent Hits</h5>
             <div id="chatFeed" class="chat-feed">
               <!-- History injected here -->
@@ -76,7 +76,7 @@
           </div>
         </div>
 
-        <a href="/" class="home-link">← Back to the track</a>
+        <a id="tile-404-back-link" href="/" class="home-link">← Back to the track</a>
       </div>
 
       <!-- Hidden SVG template for the VIP Badge -->

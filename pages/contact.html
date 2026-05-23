@@ -82,7 +82,7 @@
         width: 100%;
         max-width: 1400px;
         border-left: var(--border);
-        border-top: var(--border);
+        border-top: 1px solid #000;
         background: #fff;
       }
       .b-tile {
@@ -116,39 +116,6 @@
       }
       .span-row-2 {
         grid-row: span 2;
-      }
-
-      .bg-white {
-        background-color: #fff;
-        color: var(--text-dark);
-      }
-      .bg-dark-gray {
-        background-color: var(--dark-gray);
-        color: #fff;
-      }
-      .bg-light-gray {
-        background-color: var(--light-gray);
-        color: var(--text-dark);
-      }
-      .bg-orange {
-        background-color: var(--accent-orange);
-        color: #fff;
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
-      .bg-yellow {
-        background-color: var(--yellow);
-        color: var(--text-dark);
-      }
-      .bg-lime {
-        background-color: var(--accent-lime);
-        color: var(--text-dark);
       }
 
       /* Form Styles */
@@ -298,7 +265,7 @@
       <div class="portfolio-section">
         <div class="bauhaus-grid" id="mainGrid">
           <!-- FORM TILE -->
-          <div class="b-tile bg-white span-col-2 span-row-2">
+          <div id="tile-contact-form" class="b-tile bg-white span-col-2 span-row-2">
             <span class="meta">Get in touch</span>
             <form class="contact-form" action="#" method="POST">
               <div class="form-group">
@@ -323,6 +290,7 @@
 
           <!-- SOCIAL TILES -->
           <a
+            id="tile-contact-email"
             href="mailto:contact@heathernew.com"
             target="_blank"
             rel="noopener"
@@ -335,6 +303,7 @@
             </h3>
           </a>
           <a
+            id="tile-contact-linkedin"
             href="https://linkedin.com/in/heathernew09"
             target="_blank"
             rel="noopener"
@@ -345,6 +314,7 @@
             <h3 style="font-size: 1rem; text-transform: none">in/<br />heathernew09</h3>
           </a>
           <a
+            id="tile-contact-github"
             href="https://github.com/heathernew09"
             target="_blank"
             rel="noopener"
@@ -354,7 +324,7 @@
             <span class="meta">GITHUB</span>
             <h3 style="font-size: 1rem; text-transform: none">github/<br />heathernew09</h3>
           </a>
-          <div class="b-tile bg-orange span-col-1">
+          <div id="tile-contact-location" class="b-tile bg-orange span-col-1">
             <span class="meta" style="color: #fff">Location</span>
             <h3 style="color: #fff; font-size: 1rem; text-transform: none">Chicago,<br />IL</h3>
           </div>
@@ -450,7 +420,7 @@
 
       const themes = [
         { bg: '#136368', text: '#FFFFFF', quote: '#B2FF00' }, // Dark Teal + Lime
-        { bg: '#333333', text: '#FFFFFF', quote: '#B2FF00' }, // Dark Grey + Lime
+        { bg: '#666666', text: '#FFFFFF', quote: '#B2FF00' }, // Soft Black + Lime
         { bg: '#5E5E5E', text: '#FFFFFF', quote: '#B2FF00' }, // Medium Grey + Lime
         { bg: '#F4F4F4', text: '#111111', quote: '#FF6B00' }, // Light Grey + Orange
         { bg: '#0D9488', text: '#FFFFFF', quote: '#FFC837' }, // Bright Teal + Yellow
