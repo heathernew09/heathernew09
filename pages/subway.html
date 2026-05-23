@@ -44,33 +44,152 @@
       }
 
       /* ─── HERO ─────────────────────────────────────────── */
+      .page-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100vw;
+        min-height: 60vh;
+      }
       .hero-title-block {
-        width: 100%;
         padding: 7vw 4vw 5vw;
         background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
-
       .hero-title-block h1 {
-        font-size: clamp(2.5rem, 8vw, 8rem);
+        font-size: clamp(2.5rem, 6vw, 7rem);
         line-height: 0.85;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: -0.04em;
         margin-bottom: 2rem;
-        max-width: 8ch; /* Forces the drop to three lines */
+        max-width: 8ch;
       }
-
       .hero-title-block .subtitle {
-        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        font-size: clamp(1rem, 1.4vw, 1.3rem);
         font-weight: 500;
         line-height: 1.5;
-        max-width: 50%; /* NARROWED TO HALF PAGE */
+        max-width: 44ch;
         color: var(--text-dark);
       }
-      @media (max-width: 600px) {
-        .hero-title-block .subtitle {
-          max-width: 100%;
-        }
+
+      /* ─── MONITOR FRAME ────────────────────────────────── */
+      .hero-monitor-col {
+        background: #f4f4f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 3rem 4rem;
+        overflow: hidden;
+      }
+      .monitor-outer {
+        width: 100%;
+        max-width: 620px;
+        filter: drop-shadow(0 24px 48px rgba(0,0,0,0.28));
+      }
+      .monitor-body {
+        background: #1c1c1e;
+        border-radius: 14px 14px 0 0;
+        padding: 10px 10px 0;
+        position: relative;
+      }
+      .monitor-body::before {
+        content: '';
+        display: block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #3a3a3c;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+      }
+      .monitor-screen {
+        border-radius: 6px 6px 0 0;
+        overflow: hidden;
+        aspect-ratio: 16 / 10;
+        position: relative;
+        background: #000;
+      }
+      /* Animation section overrides when inside monitor */
+      .monitor-screen .menu-animation-section {
+        width: 100%;
+        min-height: 0;
+        height: 100%;
+        padding-top: 16px;
+        padding-bottom: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+        border-bottom: none;
+        background-size: cover;
+        background-position: top left;
+      }
+      .monitor-screen .menu-container {
+        gap: 8px;
+        padding: 8px;
+        border-radius: 8px;
+        margin-top: 3.5em;
+      }
+      .monitor-screen .menu-card {
+        flex-basis: 100px;
+        min-width: 100px;
+        max-width: 100px;
+        height: 140px;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .monitor-screen .menu-card img,
+      .monitor-screen .animated-card-duplicate img {
+        width: 100px !important;
+        max-width: 100px !important;
+        height: 105px !important;
+        max-height: 105px !important;
+        object-fit: cover !important;
+        display: block !important;
+        border-radius: 0 !important;
+        flex-shrink: 0 !important;
+      }
+      .monitor-screen .animated-card-duplicate {
+        border-radius: 6px !important;
+        overflow: hidden !important;
+        height: 140px !important;
+        width: 100px !important;
+      }
+      .monitor-screen .menu-card .card-content {
+        padding: 6px;
+      }
+      .monitor-screen .menu-card h3,
+      .monitor-screen .animated-card-duplicate h3 {
+        font-size: 0.55rem;
+      }
+      .monitor-screen #replay-btn {
+        display: none !important;
+      }
+      .monitor-chin {
+        background: #1c1c1e;
+        height: 18px;
+        border-radius: 0 0 4px 4px;
+      }
+      .monitor-neck {
+        width: 28%;
+        height: 20px;
+        background: #2c2c2e;
+        margin: 0 auto;
+        clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+      }
+      .monitor-stand {
+        width: 50%;
+        height: 10px;
+        background: #3a3a3c;
+        margin: 0 auto;
+        border-radius: 0 0 6px 6px;
+      }
+
+      @media (max-width: 768px) {
+        .page-hero { grid-template-columns: 1fr; }
+        .hero-monitor-col { display: none; }
       }
 
       /* ─── MENU ANIMATION SECTION ──────────────────────── */
@@ -219,6 +338,7 @@
         grid-auto-rows: minmax(240px, auto);
         width: 100%;
         max-width: 1400px;
+        border-top: 1px solid #000;
         border-left: var(--border);
         background: #fff;
       }
@@ -239,6 +359,7 @@
       }
 
       .b-tile h2 {
+        margin-top: 0.5rem;
         font-size: clamp(1.8rem, 3vw, 2.5rem);
         font-weight: 800;
         line-height: 1.1;
@@ -275,38 +396,6 @@
       }
       .span-col-4 {
         grid-column: span 4;
-      }
-
-      .bg-white {
-        background-color: #fff;
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
-      .bg-yellow {
-        background-color: var(--yellow);
-        color: var(--text-dark);
-      }
-      .bg-orange {
-        background-color: var(--orange);
-        color: #fff;
-      }
-      .bg-lime {
-        background-color: var(--lime);
-        color: var(--text-dark);
-      }
-      .bg-light-grey {
-        background-color: var(--light-grey);
-        color: var(--text-dark);
-      }
-      .bg-mid-grey {
-        background-color: var(--mid-grey);
-        color: var(--text-dark);
       }
 
       .img-tile {
@@ -354,128 +443,96 @@
 
     <main id="main-content">
       <!-- HERO SECTION -->
-      <div class="hero-title-block">
-        <h1>Subway Digital Assets</h1>
-        <p class="subtitle">
-          Digital Menu Boards, Website and the App so through our MERGE studio team. I lead the
-          delivery efforts, process creation and asset management. Providing assets for 28,000+
-          locations with professional polish.
-        </p>
-      </div>
-
-      <!-- MENU ANIMATION SECTION -->
-      <div class="menu-animation-section">
-        <div class="menu-container">
-          <div class="menu-card" id="card1">
-            <img
-              src="https://media.amp.subway.com/adaptivemedia/rendition?id=31006e12336c27a8f400425a26bc2cdd1d99d850&clid=srow&prid=SubCropBgd&wd=330&grv=Center&hofs=0&vofs=0&cwd=7750&cht=7750&op=png&bwd=275&bht=275"
-              alt="Meal of the Day"
-              onerror="
-                this.onerror = null;
-                this.src = 'https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';
-              "
-            />
-            <div class="card-content">
-              <h3>MEAL OF THE DAY</h3>
+      <header class="page-hero">
+        <div class="hero-title-block">
+          <h1>Subway Digital Assets</h1>
+          <p class="subtitle">
+            Digital Menu Boards, Website and the App so through our MERGE studio team. I lead the
+            delivery efforts, process creation and asset management. Providing assets for 28,000+
+            locations with professional polish.
+          </p>
+        </div>
+        <div class="hero-monitor-col">
+          <div class="monitor-outer">
+            <div class="monitor-body">
+              <div class="monitor-screen">
+                <div class="menu-animation-section">
+                  <div class="menu-container">
+                    <div class="menu-card" id="card1">
+                      <img
+                        src="https://media.amp.subway.com/adaptivemedia/rendition?id=31006e12336c27a8f400425a26bc2cdd1d99d850&clid=srow&prid=SubCropBgd&wd=330&grv=Center&hofs=0&vofs=0&cwd=7750&cht=7750&op=png&bwd=275&bht=275"
+                        alt="Meal of the Day"
+                        onerror="this.onerror=null;this.src='https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';"
+                      />
+                      <div class="card-content"><h3>MEAL OF THE DAY</h3></div>
+                    </div>
+                    <div class="menu-card" id="card2">
+                      <img
+                        src="https://www.subway.com/ns/images/Menu/USA/ENG/US_W3_2024_SubwaySeriesCombined_PCPCard_ParentSmall_Light_D.jpg"
+                        alt="Sandwiches"
+                        onerror="this.onerror=null;this.src='https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';"
+                      />
+                      <div class="card-content"><h3>SANDWICHES</h3></div>
+                    </div>
+                    <div class="menu-card" id="card3">
+                      <img
+                        src="https://www.subway.com/ns/images/Menu/USA/ENG/US_W3_2024_NoBreadyBowls_ParentSmall_Light_D_RL.jpg"
+                        alt="Protein Bowls"
+                        onerror="this.onerror=null;this.src='https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';"
+                      />
+                      <div class="card-content"><h3>PROTEIN BOWLS</h3></div>
+                    </div>
+                    <div class="menu-card" id="card4">
+                      <img
+                        src="https://media.amp.subway.com/adaptivemedia/rendition?id=9be3a7cc47822d93c68cb00e337a92001c1d6629&clid=srow&prid=SubCropBgd&wd=330&grv=Center&hofs=0&vofs=0&cwd=7750&cht=7750&op=png&bwd=275&bht=275"
+                        alt="Wraps"
+                        onerror="this.onerror=null;this.src='https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';"
+                      />
+                      <div class="card-content"><h3>SNACKS, SIDES &amp; DESSERTS</h3></div>
+                    </div>
+                  </div>
+                  <div id="animation-area"></div>
+                  <button id="replay-btn" style="display:none">Reset Animation</button>
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="menu-card" id="card2">
-            <img
-              src="https://www.subway.com/ns/images/Menu/USA/ENG/US_W3_2024_SubwaySeriesCombined_PCPCard_ParentSmall_Light_D.jpg"
-              alt="Snacks, Sides & Desserts"
-              onerror="
-                this.onerror = null;
-                this.src = 'https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';
-              "
-            />
-            <div class="card-content">
-              <h3>SANDWICHES</h3>
-            </div>
-          </div>
-          <div class="menu-card" id="card3">
-            <img
-              src="https://www.subway.com/ns/images/Menu/USA/ENG/US_W3_2024_NoBreadyBowls_ParentSmall_Light_D_RL.jpg"
-              alt="Protein Bowls"
-              onerror="
-                this.onerror = null;
-                this.src = 'https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';
-              "
-            />
-            <div class="card-content">
-              <h3>PROTEIN BOWLS</h3>
-            </div>
-          </div>
-          <div class="menu-card" id="card4">
-            <img
-              src="https://media.amp.subway.com/adaptivemedia/rendition?id=9be3a7cc47822d93c68cb00e337a92001c1d6629&clid=srow&prid=SubCropBgd&wd=330&grv=Center&hofs=0&vofs=0&cwd=7750&cht=7750&op=png&bwd=275&bht=275"
-              alt="Wraps"
-              onerror="
-                this.onerror = null;
-                this.src = 'https://placehold.co/250x220/cccccc/ffffff?text=Image+Not+Found';
-              "
-            />
-            <div class="card-content">
-              <h3>SNACKS, SIDES & DESSERTS</h3>
-            </div>
+            <div class="monitor-chin"></div>
+            <div class="monitor-neck"></div>
+            <div class="monitor-stand"></div>
           </div>
         </div>
-        <div id="animation-area"></div>
-        <button
-          id="replay-btn"
-          style="
-            position: absolute;
-            top: 11px;
-            right: 161px;
-            z-index: 1000;
-            padding: 17px 4px;
-            background: rgb(0, 138, 53);
-            color: rgb(255, 255, 255);
-            border: none;
-            border-radius: 4px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            display: none;
-            transition:
-              opacity 0.5s ease,
-              transform 0.3s ease;
-            width: clamp(120px, 15vw, 180px);
-            font-size: clamp(0.6rem, 1vw, 0.8rem);
-          "
-        >
-          Reset Animation
-        </button>
-      </div>
+      </header>
 
       <!-- BAUHAUS GRID -->
       <div class="portfolio-section">
         <div class="bauhaus-grid">
           <!-- Row 1 -->
           <div
+            id="tile-subway-process-delivery"
             class="b-tile span-col-2"
             style="justify-content: flex-start; gap: 1.5rem; background-color: #666666"
           >
             <div>
               <span class="meta" style="color: var(--lime)">Process & Delivery</span>
-              <h2 style="margin-top: 0.5rem">Global Scale</h2>
+              <h2>Website Assets</h2>
               <p style="color: var(--light-grey)">
-                Managing the end-to-end lifecycle of digital menu boards for North America and
-                global markets.
+                I manage the assets needed for the website — including many different placement
+                specs and a DAM of photography and assets.
               </p>
             </div>
           </div>
-          <div class="b-tile bg-white span-col-2">
-            <span class="meta" style="color: var(--dark-teal)">Subway &mdash; MERGE</span>
-            <h2>Global Delivery</h2>
+          <div id="tile-subway-global-delivery" class="b-tile bg-white span-col-2">
+            <span class="meta" style="color: var(--dark-teal)">MERGE &mdash; Stratacache</span>
+            <h2>Digital Menu Board</h2>
             <p>
-              Providing seamless asset deployment for 28,000+ locations, ensuring professional
-              polish at every endpoint.
+              Digital menu boards across 24,000+ locations swap featured assets, need many different
+              variations, ingredient changes and more. Prepping the boards and delivering pristine
+              files to our partner is my team's specialty.
             </p>
           </div>
 
           <!-- Challenge -->
-          <div class="b-tile bg-orange span-col-4">
+          <div id="tile-subway-challenge" class="b-tile bg-orange span-col-4">
             <span class="meta">The Challenge</span>
             <h2>Consistency at Scale.</h2>
             <div
@@ -502,26 +559,27 @@
           </div>
 
           <!-- Features -->
-          <div class="b-tile bg-yellow span-col-2">
+          <div id="tile-subway-innovation" class="b-tile bg-yellow span-col-2">
             <span class="meta">Innovation</span>
-            <h2>Modular Asset Management</h2>
+            <h2>Customized Workflows</h2>
             <p>
-              Transitioning from static, heavy video files to a modular, data-driven system enabled
-              real-time menu updates and significantly reduced the overhead for local marketing
-              adaptations.
+              Our team has developed custom plugins to automate processes within InDesign and Figma
+              to scale efforts and reduce the weight of manual production. Making our lives easier,
+              the timelines shorter, and clients happier.
             </p>
           </div>
-          <div class="b-tile bg-light-grey span-col-2">
+          <div id="tile-subway-result" class="b-tile bg-light-grey span-col-2">
             <span class="meta">Result</span>
-            <h2>Optimized Delivery</h2>
+            <h2>Optimized Process</h2>
             <p>
-              Drastic reduction in file weights without compromising visual fidelity, ensuring
-              faster updates and higher uptime across the entire franchise network.
+              Team alignment and documentation outlines each process allowing the rapid onboarding
+              for team members to jump in for urgent requests.
             </p>
           </div>
 
           <!-- Footer Disclosure -->
           <div
+            id="tile-subway-disclosure"
             class="b-tile span-col-4"
             style="
               min-height: auto;

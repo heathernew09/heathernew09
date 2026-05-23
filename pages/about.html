@@ -190,7 +190,7 @@
         width: 100%;
         max-width: 1400px;
         /* The defining borders of the structural grid */
-        border-top: 1px solid var(--text-dark);
+        border-top: 1px solid #000;
         border-left: 1px solid var(--text-dark);
         background: var(--bg-color);
       }
@@ -342,38 +342,6 @@
       }
 
       /* Background Colors */
-      .bg-white {
-        background-color: #ffffff;
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
-      .bg-yellow {
-        background-color: var(--yellow);
-        color: var(--text-dark);
-      }
-      .bg-orange {
-        background-color: var(--orange);
-        color: #fff;
-      }
-      .bg-lime {
-        background-color: var(--lime);
-        color: var(--text-dark);
-      }
-      .bg-light-grey {
-        background-color: var(--light-grey);
-        color: var(--text-dark);
-      }
-      .bg-mid-grey {
-        background-color: var(--mid-grey);
-        color: var(--text-dark);
-      }
-
       /* Image & Video Tiles */
       .img-tile {
         padding: 0;
@@ -482,7 +450,7 @@
     <main class="portfolio-section">
       <div class="bauhaus-grid">
         <!-- Row 1: Heavy Opening -->
-        <div class="b-tile bg-dark-teal span-col-3">
+        <div id="tile-about-intro" class="b-tile bg-dark-teal span-col-3">
           <span class="meta" style="color: var(--lime)">Creator, Builder, Maker</span>
           <div
             style="
@@ -498,6 +466,7 @@
         </div>
 
         <div
+          id="tile-about-profile"
           class="b-tile bg-lime"
           style="align-items: center; justify-content: center; padding: 1.5rem"
         >
@@ -509,11 +478,11 @@
         </div>
 
         <!-- Row 2: Editorial Quote -->
-        <div class="b-tile img-tile">
+        <div id="tile-about-dodie" class="b-tile img-tile">
           <img src="/assets/dodie-computer-CVYft9mU.png" alt="Dodie at the computer" />
         </div>
 
-        <div class="b-tile bg-yellow span-col-3">
+        <div id="tile-about-quote" class="b-tile bg-yellow span-col-3">
           <div
             style="
               font-size: 2.2rem;
@@ -531,11 +500,11 @@
         </div>
 
         <!-- Row 3: Origin Story Cluster -->
-        <div class="b-tile img-tile">
+        <div id="tile-about-eggdrop" class="b-tile img-tile">
           <img src="/images/eggdrop.png" alt="Abstract geometric structure" />
         </div>
 
-        <div class="b-tile span-col-2 bg-light-grey hover-invert">
+        <div id="tile-about-hexagon" class="b-tile span-col-2 bg-light-grey hover-invert">
           <div>
             <span class="meta">Origin Story</span>
             <h2>The Hexagon</h2>
@@ -550,14 +519,14 @@
           </p>
         </div>
 
-        <div class="b-tile bg-teal hover-invert" style="justify-content: center">
+        <div id="tile-about-hyperstudio" class="b-tile bg-teal hover-invert" style="justify-content: center">
           <h2 style="font-size: 2rem; margin: 0; line-height: 1.1">
             Hyper Studio was my gateway drug.
           </h2>
         </div>
 
         <!-- Row 4: Resilience & Derby Cluster -->
-        <div class="b-tile bg-white span-col-2" style="justify-content: flex-end">
+        <div id="tile-about-grit" class="b-tile bg-white span-col-2" style="justify-content: flex-end">
           <div>
             <span class="meta">Resilience</span>
             <h3 style="margin-bottom: 1rem">Built with Grit</h3>
@@ -570,7 +539,8 @@
         </div>
 
         <a
-          href="https://heathernew.com/pages/derby.html"
+          id="tile-about-derby-posters"
+          href="/pages/roller-derby.html"
           class="b-tile img-tile"
           style="text-decoration: none; position: relative"
         >
@@ -588,7 +558,7 @@
           </div>
         </a>
 
-        <div class="b-tile bg-lime" style="padding: 0">
+        <div id="tile-about-animation" class="b-tile bg-lime" style="padding: 0">
           <div style="padding: 2.5rem; padding-bottom: 1.5rem">
             <div
               class="bauhaus-circle"
@@ -601,14 +571,14 @@
         </div>
 
         <!-- Row 4: Travel / Inspiration -->
-        <div class="b-tile img-tile span-col-2">
+        <div id="tile-about-travel-img" class="b-tile img-tile span-col-2">
           <img
             src="https://eurotrip.heather.codes/images/marseille_heather.jpg"
             alt="Architecture in Spain and France"
           />
         </div>
 
-        <div class="b-tile bg-teal span-col-2 hover-invert">
+        <div id="tile-about-travel-text" class="b-tile bg-teal span-col-2 hover-invert">
           <div>
             <span class="meta">Inspiration Everywhere</span>
             <h2>Barcelona to Grenoble - The Catalans</h2>
@@ -620,13 +590,13 @@
             spice cabinet in our kitchen. I can't wait for our next trip. Japan is my number one
             destination spot.
           </p>
-          <a href="https://eurotrip.heather.codes" class="arrow-link"
+          <a href="https://eurotrip.heather.codes" target="_blank" rel="noopener" class="arrow-link"
             >View Project <span>→</span></a
           >
         </div>
 
         <!-- Row 5: The Triptych + Bridging -->
-        <div class="b-tile bg-dark-teal hover-invert">
+        <div id="tile-about-engineer" class="b-tile bg-dark-teal hover-invert">
           <span class="meta" style="color: var(--lime)">01</span>
           <h3 style="margin-bottom: 1rem">The Engineer</h3>
           <p style="font-size: 0.95rem">
@@ -635,7 +605,7 @@
           </p>
         </div>
 
-        <div class="b-tile bg-white">
+        <div id="tile-about-artist" class="b-tile bg-white">
           <span class="meta" style="color: var(--teal)">02</span>
           <h3 style="margin-bottom: 1rem">The Artist</h3>
           <p style="font-size: 0.95rem">
@@ -644,7 +614,7 @@
           </p>
         </div>
 
-        <div class="b-tile bg-lime hover-invert">
+        <div id="tile-about-leader" class="b-tile bg-lime hover-invert">
           <span class="meta" style="color: var(--text-dark)">03</span>
           <h3 style="margin-bottom: 1rem">The Leader</h3>
           <p style="font-size: 0.95rem">
@@ -653,7 +623,7 @@
           </p>
         </div>
 
-        <div class="b-tile bg-orange">
+        <div id="tile-about-philosophy" class="b-tile bg-orange">
           <span class="meta">Philosophy</span>
           <h3 style="margin-bottom: 1rem">Bridging the Divide</h3>
           <p style="font-size: 0.95rem">
@@ -663,7 +633,7 @@
         </div>
 
         <!-- Row 5: Capabilities & Education -->
-        <div class="b-tile bg-white span-col-3">
+        <div id="tile-about-capabilities" class="b-tile bg-white span-col-3">
           <span class="meta" style="color: var(--teal); font-size: 1.5rem">Capabilities</span>
           <div class="inner-grid-3">
             <div>
@@ -699,7 +669,7 @@
           </div>
         </div>
 
-        <div class="b-tile bg-yellow">
+        <div id="tile-about-education" class="b-tile bg-yellow">
           <span class="meta">Education</span>
           <h3>Management Cert</h3>
           <p style="margin-bottom: 1rem">MERGE University</p>
@@ -710,7 +680,7 @@
         </div>
 
         <!-- Row 6: Timeline Full Width -->
-        <div class="b-tile bg-light-grey span-col-4">
+        <div id="tile-about-timeline" class="b-tile bg-light-grey span-col-4">
           <span class="meta" style="color: var(--dark-teal); font-size: 1.5rem; margin-bottom: 0"
             >Career Timeline</span
           >
@@ -746,7 +716,7 @@
         </div>
 
         <!-- Row 8: Constant Iteration -->
-        <div class="b-tile bg-yellow span-col-2" style="justify-content: flex-end">
+        <div id="tile-about-dots" class="b-tile bg-yellow span-col-2" style="justify-content: flex-end">
           <div>
             <span class="meta">Perspectives</span>
             <h2>Connecting<br />the dots</h2>
@@ -758,48 +728,52 @@
           </div>
         </div>
 
-        <div class="b-tile img-tile span-col-2">
+        <div id="tile-about-computer" class="b-tile img-tile span-col-2">
           <img src="/assets/heather-working-computer.png" alt="Heather working at computer" />
         </div>
 
         <!-- --- REMIXED FINAL SECTION --- -->
 
         <!-- Row 9: Massive Panoramic Break -->
-        <div class="b-tile img-tile span-col-4" style="aspect-ratio: 16 / 9">
+        <div id="tile-about-panoramic" class="b-tile img-tile span-col-4" style="aspect-ratio: 16 / 9">
           <img src="/assets/chartruse_thoughts.jpg" alt="Chartreuse Thoughts" />
         </div>
 
         <!-- Row 10 & 11: Giant Image next to 2x2 Staccato Grid -->
-        <div class="b-tile img-tile span-col-2 span-row-2">
+        <div id="tile-about-printer" class="b-tile img-tile span-col-2 span-row-2">
           <img src="/assets/heather-3d-printer.png" alt="Heather with 3D Printer" />
         </div>
 
-        <div class="b-tile bg-white">
+        <div id="tile-about-deco-1" class="b-tile bg-white">
           <div
             class="bauhaus-square"
             style="background-color: var(--lime); border-radius: 0 50% 50% 50%"
           ></div>
+          <div style="font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; line-height: 1; text-transform: uppercase; color: var(--lime);">Design</div>
         </div>
-        <div class="b-tile bg-orange">
+        <div id="tile-about-deco-2" class="b-tile bg-orange">
           <div class="bauhaus-circle" style="background-color: var(--bg-color)"></div>
+          <div style="font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; line-height: 1; text-transform: uppercase; color: var(--bg-color);">Tech</div>
         </div>
 
         <!-- (Row 11 continuation) -->
-        <div class="b-tile bg-mid-grey">
+        <div id="tile-about-deco-3" class="b-tile bg-mid-grey">
           <div
             class="bauhaus-square"
             style="background-color: var(--teal); border-radius: 50% 0 0 0"
           ></div>
+          <div style="font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; line-height: 1; text-transform: uppercase; color: var(--teal);">Code</div>
         </div>
-        <div class="b-tile bg-teal">
+        <div id="tile-about-deco-4" class="b-tile bg-teal">
           <div
             class="bauhaus-circle"
             style="background-color: var(--dark-teal); border-radius: 0 0 50% 50%"
           ></div>
+          <div style="font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; line-height: 1; text-transform: uppercase; color: var(--dark-teal);">Strategy</div>
         </div>
 
         <!-- Row 12: Footer Area -->
-        <div class="b-tile bg-lime">
+        <div id="tile-about-back-top" class="b-tile bg-lime">
           <div
             class="bauhaus-circle"
             style="background-color: var(--text-dark); border-radius: 50% 0 50% 50%"
@@ -807,7 +781,7 @@
           <a href="#" class="arrow-link" style="margin-top: auto">Back to Top <span>↑</span></a>
         </div>
 
-        <div class="b-tile bg-dark-teal span-col-3">
+        <div id="tile-about-connect" class="b-tile bg-dark-teal span-col-3">
           <span class="meta" style="color: var(--lime)">Let's Connect</span>
           <h2
             style="
@@ -820,13 +794,28 @@
             console.log("Hello World");
           </h2>
           <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap">
-            <a href="#" class="arrow-link" style="color: var(--lime); font-size: 1.2rem"
+            <a
+              href="mailto:contact@heathernew.com"
+              target="_blank"
+              rel="noopener"
+              class="arrow-link"
+              style="color: var(--lime); font-size: 1.2rem"
               >Email Me <span>→</span></a
             >
-            <a href="#" class="arrow-link" style="color: var(--yellow); font-size: 1.2rem"
+            <a
+              href="https://linkedin.com/in/heathernew09"
+              target="_blank"
+              rel="noopener"
+              class="arrow-link"
+              style="color: var(--yellow); font-size: 1.2rem"
               >LinkedIn <span>→</span></a
             >
-            <a href="#" class="arrow-link" style="color: #fff; font-size: 1.2rem"
+            <a
+              href="https://github.com/heathernew09"
+              target="_blank"
+              rel="noopener"
+              class="arrow-link"
+              style="color: #fff; font-size: 1.2rem"
               >GitHub <span>→</span></a
             >
           </div>

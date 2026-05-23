@@ -170,7 +170,7 @@
         width: 100%;
         max-width: 1400px;
         /* The defining borders of the structural grid */
-        border-top: 1px solid var(--text-dark);
+        border-top: 1px solid #000;
         border-left: 1px solid var(--text-dark);
         background: var(--bg-color);
       }
@@ -270,39 +270,6 @@
         opacity: 0.7;
       }
 
-      /* Background Colors */
-      .bg-white {
-        background-color: #ffffff;
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
-      .bg-yellow {
-        background-color: var(--yellow);
-        color: var(--text-dark);
-      }
-      .bg-orange {
-        background-color: var(--orange);
-        color: #fff;
-      }
-      .bg-lime {
-        background-color: var(--lime);
-        color: var(--text-dark);
-      }
-      .bg-light-grey {
-        background-color: var(--light-grey);
-        color: var(--text-dark);
-      }
-      .bg-mid-grey {
-        background-color: var(--mid-grey);
-        color: var(--text-dark);
-      }
-
       /* Image Tiles */
       .img-tile {
         padding: 0;
@@ -318,14 +285,16 @@
         object-fit: cover;
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       }
-      .img-tile:hover img {
+      a.img-tile:hover img,
+      .img-tile:has(a):hover img {
         transform: scale(1.05);
       }
 
-      /* Specific Interactive Hover Effects */
-      .hover-invert:hover {
-        background-color: #666666 !important;
-        color: var(--lime) !important;
+      /* Hover inversion — swaps bg and text color */
+      .hover-invert:hover,
+      a.b-tile:hover {
+        background-color: var(--tile-text) !important;
+        color: var(--tile-bg) !important;
       }
 
       .arrow-link {
@@ -376,7 +345,7 @@
       <div class="header-content"><load src="../src/partials/nav.html" /></div>
     </header>
     <!-- Hero Wrapper -->
-    <header class="hero">
+    <header id="tile-heather-hero-grid" class="hero">
       <div id="grid-container"></div>
 
       <div class="hero-overlay">
@@ -393,7 +362,7 @@
     <main class="portfolio-section">
       <div class="bauhaus-grid">
         <!-- Row 1 -->
-        <div class="b-tile span-col-2 bg-light-grey hover-invert">
+        <div id="tile-heather-intro" class="b-tile span-col-2 bg-light-grey hover-invert">
           <div>
             <span class="meta">Web-Based AR Experience</span>
             <h2>Parasite Hunter AR</h2>
@@ -403,19 +372,19 @@
             them a new way to interact and learn with parasites swarming all over the tradeshow
             floor, including our competitors booths.
           </p>
-          <a href="#" class="arrow-link">View Project <span>→</span></a>
+          <a href="/pages/parasite-hunter.html" class="arrow-link">View Project <span>→</span></a>
         </div>
 
-        <div class="b-tile bg-lime" style="align-items: center; justify-content: center">
+        <div id="tile-heather-dodie" class="b-tile bg-lime" style="align-items: center; justify-content: center">
           <img src="/public/images/boom-background.png" alt="Boom" />Boom and worm gif
         </div>
 
-        <div class="b-tile bg-dark-teal">
+        <div id="tile-heather-dalmatian" class="b-tile bg-dark-teal">
           <img src="/public/images/dalmation-illustration.png" alt="Dalmatian Illustration" />
         </div>
 
         <!-- Row 2 -->
-        <div class="b-tile bg-yellow span-row-2">
+        <div id="tile-heather-results" class="b-tile bg-yellow span-row-2">
           <h3 style="margin-bottom: 1.5rem">Results</h3>
           <ul style="list-style: none; line-height: 2; font-weight: 600; font-size: 1.1rem">
             <li>
@@ -430,7 +399,7 @@
           <h3>Awarded Best Booth at WVC 2026</h3>
         </div>
 
-        <div class="b-tile span-col-2 span-row-2 img-tile">
+        <div id="tile-heather-game-intro" class="b-tile span-col-2 span-row-2 img-tile">
           <a href="/pages/parasite-hunter.html"
             ><img
               src="/public/images/parasite-hunter-game-introscreen.png"
@@ -438,7 +407,7 @@
           /></a>
         </div>
 
-        <div class="b-tile bg-white">
+        <div id="tile-heather-comic-intro" class="b-tile bg-white">
           <span class="meta">2024 Interactive</span>
           <h3 style="font-size: 1.5rem; margin-bottom: 1rem">Comic Book</h3>
           <p style="font-size: 0.95rem; margin-bottom: 1rem">
@@ -452,6 +421,7 @@
           <a
             href="https://comic.heather.codes/"
             target="_blank"
+            rel="noopener"
             class="arrow-link"
             style="font-size: 1rem; color: var(--teal)"
             >View Project <span>→</span></a
@@ -459,7 +429,7 @@
         </div>
 
         <!-- Row 3 -->
-        <a href="/pages/parasite-hunter.html">
+        <a id="tile-heather-leaderboard" href="/pages/parasite-hunter.html">
           <img
             src="/public/images/parasite-hunter-leaderboard.png"
             alt="Parasite Hunter Leaderboard"
@@ -467,7 +437,7 @@
         </a>
 
         <!-- Row 4 -->
-        <div class="b-tile bg-orange span-col-2">
+        <div id="tile-heather-tree-intro" class="b-tile bg-orange span-col-2">
           <span class="meta">Touch Enabled Interactive</span>
           <h2>Interactive<br />Zen Garden</h2>
           <p>
@@ -475,16 +445,18 @@
             digest the message. At any time an attendee can tap and start interacting with the
             decision tree revealing UI elements that present dermatology options for their patients.
           </p>
-          <a href="#" class="arrow-link" style="margin-top: 1.5rem">View Project <span>→</span></a>
+          <a href="/pages/decision-tree.html" class="arrow-link" style="margin-top: 1.5rem"
+            >View Project <span>→</span></a
+          >
         </div>
 
-        <div class="bg-teal">
+        <div id="tile-heather-red-lens" class="bg-teal">
           <img src="/public/images/red-lens-reveal.png" alt="Red Lens Reveal" />
           <h2 style="font-size: 1.25rem">Can you decode the message? →</h2>
           <span class="meta">Secret Message</span>
         </div>
 
-        <div class="b-tile bg-white">
+        <div id="tile-heather-question-mark" class="b-tile bg-white">
           <img src="/public/images/question-mark.png" alt="Question Education" />
 
           <p style="font-weight: 800; font-size: 1.1rem; margin-top: auto">
@@ -494,11 +466,11 @@
         </div>
 
         <!-- Row 5 -->
-        <div class="b-tile img-tile span-col-2">
+        <div id="tile-heather-tree-illustration" class="b-tile img-tile span-col-2">
           <img src="/public/images/decision-tree-bonzai.png" alt="Zen Garden Tree Illustration" />
         </div>
 
-        <div class="b-tile bg-light-grey span-col-2 hover-invert">
+        <div id="tile-heather-hotspot-intro" class="b-tile bg-light-grey span-col-2 hover-invert">
           <div>
             <span class="meta">Galliprant Booth Games</span>
             <h2>Wall of Flame</h2>
@@ -511,7 +483,7 @@
         </div>
 
         <!-- Row 6: Exploration -->
-        <div class="b-tile bg-teal span-col-2 hover-invert">
+        <div id="tile-heather-ethical-ai" class="b-tile bg-teal span-col-2 hover-invert">
           <div>
             <span class="meta">ETHICAL AI PRACTICES</span>
             <h2>Generative Art</h2>
@@ -524,7 +496,7 @@
           </p>
         </div>
 
-        <div class="b-tile bg-light-grey">
+        <div id="tile-heather-audio-bit" class="b-tile bg-light-grey">
           <!--<audio autoplay muted src="/assets/hotspot/audio/enflame.mp3"></audio>
 				     <audio controls loop src="/assets/hotspot/audio/enflame.mp3"></audio>
 					 <audio id="enflameAudio" src="/assets/hotspot/audio/enflame.mp3"></audio>-->
@@ -538,12 +510,12 @@
           <h3>Hot Spot Audio Bit</h3>
         </div>
 
-        <div class="b-tile-nopad img-tile">
+        <div id="tile-heather-hotspot-ball" class="b-tile-nopad img-tile">
           <img src="/public/images/hot-spot-interactive.png" alt="Hot Spot Interactive" />
         </div>
 
         <!-- Row 7: Spatial Design Break -->
-        <div class="b-tile bg-lime">
+        <div id="tile-heather-built-different" class="b-tile bg-lime">
           <div style="width: 50%; height: auto">
             <br />
             <img
@@ -558,14 +530,14 @@
           >
         </div>
 
-        <div class="b-tile span-col-2 img-tile">
+        <div id="tile-heather-tree-map" class="b-tile span-col-2 img-tile">
           <img
             src="/public/images/merge-m-artificial-intelligence-generation.png"
             alt="Interactive Zen Garden Map Render"
           />
         </div>
 
-        <div class="b-tile-nopad bg-mid-grey" style="text-align: right; justify-content: flex-end">
+        <div id="tile-heather-merge-erg" class="b-tile-nopad bg-mid-grey" style="text-align: right; justify-content: flex-end">
           <img
             src="/public/images/merge-erg-logo-design.png"
             alt="MERGE ERG Logo Design"
@@ -574,7 +546,7 @@
         </div>
 
         <!-- Row 8 & 9: Complex Intersection -->
-        <div class="b-tile-nopad bg-dark-teal span-row-2 hover-invert">
+        <div id="tile-heather-recognition" class="b-tile-nopad bg-dark-teal span-row-2 hover-invert">
           <div style="padding: 1em; position: absolute; bottom: 2rem; left: 2rem; z-index: 2">
             <span class="meta" style="color: var(--lime)">Recognition</span>
             <h4 style="margin-top: 2rem; margin-bottom: 1rem">
@@ -586,7 +558,7 @@
           <img src="/public/images/certificates-magic-mak.png" alt="M@M Certificate Magic Makers" />
         </div>
 
-        <div class="b-tile bg-orange span-col-2">
+        <div id="tile-heather-biomarin-quiz" class="b-tile bg-orange span-col-2">
           <span class="meta">Race Against the Plates</span>
           <h2>Kiosk Quiz</h2>
           <p style="max-width: 400px">
@@ -595,7 +567,7 @@
           </p>
         </div>
 
-        <div class="b-tile bg-yellow">
+        <div id="tile-heather-biomarin-learning" class="b-tile bg-yellow">
           <img
             src="/public/images/gamified-learning-with-biomarin.png"
             alt="Gamified Learning Biomarin"
@@ -604,11 +576,11 @@
         </div>
 
         <!-- Row 9 -->
-        <div class="b-tile-nopad span-col-2">
+        <div id="tile-heather-subway-static" class="b-tile-nopad span-col-2">
           <img src="/public/images/subway-static-menu.png" alt="Subway Static Menu" />
         </div>
 
-        <div class="b-tile bg-white">
+        <div id="tile-heather-subway-link" class="b-tile bg-white">
           <div style="position: absolute; bottom: 2rem; left: 2rem; z-index: 2">
             <span class="meta">Another thing I do →</span>
             <h3>Subway Digital Assets,<br />Digital Menus</h3>
@@ -616,7 +588,7 @@
         </div>
 
         <!-- Row 10: Staccato Finish -->
-        <div class="b-tile-nopad bg-white">
+        <div id="tile-heather-derby-throwback" class="b-tile-nopad bg-white">
           <!--<div class="bauhaus-circle" style="background-color: var(--text-dark); border-radius: 50% 0 50% 50%;"></div>-->
           <img
             src="/public/images/roller-derby-throwback.png"
@@ -627,6 +599,7 @@
 
         <!-- Scalable ⌘+Z Tile -->
         <div
+          id="tile-heather-command-z"
           class="b-tile bg-yellow hover-invert"
           style="display: flex; align-items: center; justify-content: center; padding: 0"
         >
@@ -649,11 +622,11 @@
           </div>
         </div>
 
-        <div class="b-tile bg-orange">
+        <div id="tile-heather-deco-orange" class="b-tile bg-orange">
           <div class="bauhaus-circle" style="background-color: var(--bg-color)"></div>
         </div>
-        <div class="b-tile-nopad bg-mid-grey">
-          <a href="https://studio.heather.codes"
+        <div id="tile-heather-roadshow-img" class="b-tile-nopad bg-mid-grey">
+          <a href="https://studio.heather.codes" target="_blank" rel="noopener"
             ><img
               src="/public/images/studio-roadshow.png"
               alt="Studio Roadshow"
@@ -662,7 +635,7 @@
         </div>
 
         <!-- Row 11 (Footer/Contact Area) -->
-        <div class="b-tile span-col-3" style="background-color: #666666">
+        <div id="tile-heather-connect" class="b-tile span-col-3 bg-medium-gray">
           <span class="meta" style="color: var(--lime)">Let's Connect</span>
           <h2 style="font-size: 4rem; letter-spacing: -2px; margin-top: 1rem">
             Function determines form
@@ -677,7 +650,7 @@
               >Email Me <span>→</span></a
             >
             <a
-              href="https://linkedin.com/in/heathernew"
+              href="https://linkedin.com/in/heathernew09"
               target="_blank"
               rel="noopener"
               class="arrow-link"
@@ -685,7 +658,7 @@
               >LinkedIn <span>→</span></a
             >
             <a
-              href="https://github.com/heathernew"
+              href="https://github.com/heathernew09"
               target="_blank"
               rel="noopener"
               class="arrow-link"
@@ -696,10 +669,11 @@
         </div>
 
         <div
+          id="tile-heather-roadshow-link"
           class="b-tile-nopad bg-lime"
           style="display: flex; align-items: center; justify-content: center; padding: 0"
         >
-          <a href="https://studio.heather.codes" class="arrow-link"
+          <a href="https://studio.heather.codes" target="_blank" rel="noopener" class="arrow-link"
             ><h3>Studio Roadshow <span>→</span></h3></a
           >
           <span class="meta">Which Swatch?</span>
@@ -708,60 +682,7 @@
     </main>
 
     <!-- Include Footer -->
-    <div id="footer-trigger">
-      <div class="footer-scroll-wrapper" id="footer-trigger">
-        <footer class="footer-section">
-          <div class="footer-track">
-            <div id="mouse-skater" class="mouse-skater">
-              <!-- Separate container for flipping to avoid matrix conflicts -->
-              <div class="mouse-flip-container" id="mouse-flipper">
-                <img
-                  src="/assets/mouse_skate.png"
-                  alt="Magic Mouse on Roller Skates"
-                  class="mouse-static"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div class="footer-content-bio">
-            <h3>Heather New</h3>
-            <p>
-              Creative Technologist specializing in interactive experiences at the intersection of
-              design, code, and technology.
-            </p>
-          </div>
-
-          <div class="footer-nav">
-            <p class="copyright">
-              &copy; <span id="current-year"></span> Heather New |
-              <a href="/pages/privacy.html">Privacy Policy</a> |
-              <a href="/pages/sitemap.xml">Sitemap</a>
-            </p>
-            <p class="build-info">Deployment Status: <span id="build-date">Checking...</span></p>
-          </div>
-        </footer>
-      </div>
-      <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        try {
-          const buildDate = new Date(__BUILD_DATE__);
-          const options = {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-          };
-          document.getElementById('build-date').textContent = buildDate.toLocaleDateString(
-            undefined,
-            options
-          );
-        } catch (e) {
-          document.getElementById('build-date').textContent = 'Live';
-        }
-      </script>
-    </div>
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
 
     <!-- Scripts -->
 

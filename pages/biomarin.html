@@ -42,6 +42,7 @@
         grid-auto-rows: minmax(240px, auto);
         width: 100%;
         max-width: 1400px;
+        border-top: 1px solid #000;
         border-left: 1px solid var(--text-dark);
         background: #fff;
       }
@@ -100,38 +101,6 @@
       }
       .span-row-2 {
         grid-row: span 2;
-      }
-
-      .bg-white {
-        background-color: #fff;
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
-      .bg-yellow {
-        background-color: var(--yellow);
-        color: var(--text-dark);
-      }
-      .bg-orange {
-        background-color: var(--orange);
-        color: #fff;
-      }
-      .bg-lime {
-        background-color: var(--lime);
-        color: var(--text-dark);
-      }
-      .bg-light-grey {
-        background-color: var(--light-grey);
-        color: var(--text-dark);
-      }
-      .bg-mid-grey {
-        background-color: var(--mid-grey);
-        color: var(--text-dark);
       }
 
       .img-tile {
@@ -271,6 +240,7 @@
         <div class="bauhaus-grid">
           <!-- ROW 1: INTRO + LARGE PHOTO -->
           <div
+            id="tile-biomarin-intro"
             class="b-tile bg-dark-teal span-col-2"
             style="justify-content: flex-start; gap: 1.5rem"
           >
@@ -290,6 +260,7 @@
                 href="https://quiz.heather.codes"
                 class="btn btn-secondary"
                 target="_blank"
+                rel="noopener"
                 style="margin-bottom: 1.5rem; display: inline-flex; align-items: center; gap: 10px"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -334,7 +305,7 @@
               </div>
             </div>
           </div>
-          <div class="b-tile img-tile span-col-2">
+          <div id="tile-biomarin-hero-img" class="b-tile img-tile span-col-2">
             <img
               src="/public/images/PES_2025_1_biomarin-interactive-experience.jpg"
               alt="BioMarin PES 2025 Booth Interactive"
@@ -368,6 +339,7 @@
             </div>
           </div>
           <div
+            id="tile-biomarin-bone-timer"
             class="b-tile"
             style="display: flex; align-items: center; justify-content: center; background: #1a1a1a"
           >
@@ -642,6 +614,7 @@
             </svg>
           </div>
           <div
+            id="tile-biomarin-interaction"
             class="b-tile span-col-2"
             style="justify-content: center; text-align: left; background-color: #666666"
           >
@@ -657,7 +630,7 @@
           </div>
 
           <!-- ROW 4: VISUAL STORYTELLING -->
-          <div class="b-tile bg-teal span-col-4">
+          <div id="tile-biomarin-gamifying" class="b-tile bg-teal span-col-4">
             <span class="meta" style="color: var(--lime)">Visual Storytelling</span>
             <h2>Gamifying Scientific Data</h2>
             <p style="max-width: 700px">
@@ -668,14 +641,14 @@
           </div>
 
           <!-- ROW 5: RESULTS -->
-          <div class="b-tile img-tile span-col-3" style="min-height: 400px; background: #fff">
+          <div id="tile-biomarin-win-img" class="b-tile img-tile span-col-3" style="min-height: 400px; background: #fff">
             <img
               src="/public/images/biomarin-quiz-win.png"
               alt="Interactive Quiz Win Screen"
               style="object-fit: contain"
             />
           </div>
-          <div class="b-tile bg-light-grey">
+          <div id="tile-biomarin-stat-dwell" class="b-tile bg-light-grey">
             <div class="stat-num">3×</div>
             <h3>Booth Dwell Time</h3>
             <p style="font-size: 0.9rem">
@@ -685,7 +658,7 @@
           </div>
 
           <!-- ROW 6: IMPACT -->
-          <div class="b-tile bg-yellow span-col-4">
+          <div id="tile-biomarin-impact" class="b-tile bg-yellow span-col-4">
             <span class="meta" style="color: var(--dark-teal)">Impact</span>
             <h2>Beat the Clock</h2>
             <p style="max-width: 800px">
@@ -695,7 +668,7 @@
           </div>
 
           <!-- ROW 7: CREDITS -->
-          <div class="b-tile bg-dark-teal span-col-4">
+          <div id="tile-biomarin-credits" class="b-tile bg-dark-teal span-col-4">
             <span class="meta" style="color: var(--lime)">BioMarin Interactive Team</span>
             <ul
               class="list-clean"
@@ -724,6 +697,7 @@
 
           <!-- ROW 8: ASSET DISCLOSURE -->
           <div
+            id="tile-biomarin-disclosure"
             class="b-tile span-col-4"
             style="
               min-height: auto;
@@ -734,7 +708,7 @@
           >
             <p style="font-size: 0.8rem; opacity: 0.6; width: 100%">
               All photos and assets are copyright of BioMarin and MERGE. Please request additional
-              info for usage rights by emailing contact(at)heathernew.com
+              info for usage rights by emailing <a href="mailto:contact@heathernew.com">contact@heathernew.com</a>
             </p>
           </div>
         </div>
@@ -815,4 +789,3 @@
     </script>
   </body>
 </html>
-/html>

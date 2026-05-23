@@ -17,6 +17,7 @@
     <link rel="manifest" href="/favicon/site.webmanifest" />
     <link rel="stylesheet" href="../src/css/global.css" />
     <link rel="stylesheet" href="../src/css/built-different.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
       :root {
         --primary-teal: #2b8a92;
@@ -40,10 +41,19 @@
       }
 
       /* ─── HERO ─────────────────────────────────────────── */
+      .page-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100vw;
+        min-height: 60vh;
+      }
       .hero-title-block {
-        width: 100%;
-        padding: 7vw 4vw 5vw;
-        background: #fff;
+        grid-column: 1;
+        background-color: #ffffff;
+        padding: 7vw 4vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
       .hero-title-block h1 {
         font-size: clamp(2.5rem, 8vw, 8rem);
@@ -58,13 +68,54 @@
         font-size: clamp(1rem, 1.8vw, 1.4rem);
         font-weight: 500;
         line-height: 1.5;
-        max-width: 50%;
+        max-width: 50ch;
         color: var(--text-dark);
       }
-      @media (max-width: 600px) {
-        .hero-title-block .subtitle {
-          max-width: 100%;
-        }
+      .hero-visual-block {
+        grid-column: 2;
+        background-color: #ffffff;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-image: url('/assets/merge-m.svg');
+        mask-image: url('/assets/merge-m.svg');
+        -webkit-mask-size: auto 80%;
+        mask-size: auto 80%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+      }
+      #bd-grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+        gap: var(--grid-gap);
+      }
+      .bd-shape-wrapper {
+        position: relative;
+        width: var(--shape-size);
+        height: var(--shape-size);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .bd-shape {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-origin: center center;
+      }
+      .bd-shape.circle { border-radius: 50%; }
+      .bd-shape.square { border-radius: 0; }
+      @media (max-width: 768px) {
+        .page-hero { grid-template-columns: 1fr; }
+        .hero-visual-block { display: none; }
       }
 
       /* ─── BAUHAUS GRID ─────────────────────────────────── */
@@ -77,9 +128,10 @@
       .bauhaus-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: minmax(240px, auto);
+        grid-auto-rows: auto;
         width: 100%;
         max-width: 1400px;
+        border-top: 1px solid #000;
         border-left: var(--border);
         background: #fff;
       }
@@ -93,6 +145,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        min-height: 240px;
         transition:
           background-color 0.4s ease,
           color 0.4s ease;
@@ -140,24 +193,22 @@
       }
 
       .bg-primary-teal {
-        background-color: var(--primary-teal);
-        color: #fff;
+        --tile-bg: var(--primary-teal);
+        --tile-text: #fff;
+        background-color: var(--tile-bg);
+        color: var(--tile-text);
       }
       .bg-accent-lime {
-        background-color: var(--accent-lime);
-        color: var(--text-dark);
-      }
-      .bg-dark-gray {
-        background-color: var(--dark-gray);
-        color: #fff;
-      }
-      .bg-white {
-        background-color: #fff;
-        color: var(--text-dark);
+        --tile-bg: var(--accent-lime);
+        --tile-text: var(--text-dark);
+        background-color: var(--tile-bg);
+        color: var(--tile-text);
       }
       .bg-services {
-        background-color: var(--color-services);
-        color: var(--text-dark);
+        --tile-bg: var(--color-services);
+        --tile-text: var(--text-dark);
+        background-color: var(--tile-bg);
+        color: var(--tile-text);
       }
 
       .img-tile {
@@ -186,6 +237,46 @@
         font-weight: 500;
         line-height: 1.3;
         margin-bottom: 1.5rem;
+      }
+      .quote-icon {
+        background-color: var(--quote-color, var(--accent-lime));
+        mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+      }
+      .quote-icon.top {
+        top: 1.5rem;
+        left: 1.5rem;
+      }
+      .quote-icon.bottom {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        transform: rotate(180deg);
+      }
+      .quote-text {
+        font-size: 1.15rem;
+        line-height: 1.4;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        padding: 3rem 1rem 0;
+      }
+      .quote-author {
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: auto;
+        opacity: 0.8;
+        padding: 0 1rem 1rem;
+      }
+      .quote-author::before {
+        content: '— ';
       }
 
       /* Interaction Adjustments */
@@ -348,68 +439,88 @@
 
     <main id="main-content">
       <!-- HERO HEADER -->
-      <div class="hero-title-block">
-        <h1>Built Different</h1>
-        <p class="subtitle">
-          Leading the delivery and UI architecture for the MERGE agency website—a modular, Atomic
-          Design system built on SiteCore, optimized for high-performance engagement.
-        </p>
-      </div>
+      <header class="page-hero">
+        <div class="hero-title-block">
+          <h1>Built Different</h1>
+          <p class="subtitle">
+            Leading the delivery and UI architecture for the MERGE agency website—a modular, atomic
+            design system built on SiteCore, optimized for high-performance engagement.
+          </p>
+        </div>
+        <div class="hero-visual-block">
+          <div id="bd-grid-container"></div>
+        </div>
+      </header>
 
       <div class="portfolio-section">
         <div class="bauhaus-grid">
           <!-- MERGE HERO STATIC IMAGE -->
-          <div class="b-tile img-tile span-col-4">
+          <div id="tile-built-static-hero" class="b-tile img-tile span-col-4">
             <img src="/assets/merge/static_hero.png" alt="MERGE Agency Website" />
           </div>
 
-          <!-- ROW 1: WEBSITE INTERACTIVE (2 COLS) -->
-          <div
-            class="b-tile span-col-2"
-            style="min-height: 850px; justify-content: flex-start; gap: 2rem"
-          >
-            <div class="marketing-content">
-              <span class="meta">UI Architecture</span>
-              <h2>Modular Design System &amp; Web Architecture</h2>
+          <!-- LEFT COLUMN: intro-text grows to fill, cro-quote pinned to bottom -->
+          <div class="span-col-2 span-row-2" style="display: flex; flex-direction: column;">
+            <div
+              id="tile-built-intro-text"
+              class="b-tile"
+              style="flex: 1; justify-content: flex-start; gap: 2rem"
+            >
+              <div class="marketing-content">
+                <span class="meta">UI Architecture</span>
+                <h2>Modular Design System &amp; Web Architecture</h2>
 
-              <div
-                style="
-                  margin: 2rem 0;
-                  display: grid;
-                  grid-template-columns: 1fr 1fr;
-                  gap: 1rem;
-                  font-size: 0.85rem;
-                "
-              >
-                <div><strong>Client:</strong> MERGE</div>
-                <div><strong>Role:</strong> UI Designer</div>
-                <div><strong>Stakeholders:</strong> CMOs &amp; CTOs</div>
-                <div><strong>Timeline:</strong> 3 Month Sprint</div>
+                <div
+                  style="
+                    margin: 2rem 0;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 1rem;
+                    font-size: 0.85rem;
+                  "
+                >
+                  <div><strong>Client:</strong> MERGE</div>
+                  <div><strong>Role:</strong> UI Designer</div>
+                  <div><strong>Stakeholders:</strong> CMOs &amp; CTOs</div>
+                  <div><strong>Timeline:</strong> 3 Month Sprint</div>
+                </div>
+
+                <h3>Solving for Scale, Not Just Aesthetics</h3>
+                <p>
+                  On the surface, it’s clean corporate communication. Under the hood, it’s a
+                  performance-optimized, responsive framework designed to scale.
+                </p>
+
+                <a
+                  href="https://mergeworld.com"
+                  target="_blank"
+                  rel="noopener"
+                  class="btn-accessible"
+                  style="margin: 2rem 0"
+                  >Visit MERGEWORLD.COM</a
+                >
+
+                <h3>Bridging Design & Development</h3>
+                <p>
+                  Static Figma files can be hard to translate to dev accurately. Often I’d take
+                  components and built out demos to communicate my vision and get stakeholder
+                  approval.
+                </p>
               </div>
-
-              <h3>Solving for Scale, Not Just Aesthetics</h3>
-              <p>
-                On the surface, it's clean corporate communication. Under the hood, it's a
-                performance-optimized, responsive framework designed to scale.
-              </p>
-
-              <a
-                href="https://mergeworld.com"
-                target="_blank"
-                class="btn-accessible"
-                style="margin: 2rem 0"
-                >Visit MERGEWORLD.COM</a
-              >
-
-              <h3>Bridging Design & Development</h3>
-              <p>
-                Static Figma files can be hard to translate to dev accurately. Often I'd take
-                components and built out demos to communicate my vision and get stakeholder
-                approval.
-              </p>
+            </div>
+            <div id="tile-built-cro-quote" class="b-tile bg-dark-gray" style="--quote-color: var(--accent-lime); min-height: 0">
+              <div class="quote-icon top"></div>
+              <div class="quote-text">
+                "The website proved to be a valuable co-pilot to my engagement! I know we want to do
+                more, but it’s just as exciting to celebrate the moments of impression along the way!"
+              </div>
+              <div class="quote-author">Heidi West, CRO MERGE</div>
+              <div class="quote-icon bottom"></div>
             </div>
           </div>
-          <div class="b-tile span-col-2" style="padding: 0">
+
+          <!-- RIGHT COLUMN: interactive demo spans full height -->
+          <div id="tile-built-interactive-demo" class="b-tile span-col-2 span-row-2" style="padding: 0">
             <section id="section-mergeworld-container">
               <div id="container-mergeworld">
                 <load src="../src/partials/section-mergeworld.html" />
@@ -417,24 +528,15 @@
             </section>
           </div>
 
-          <!-- ROW 2: FULL WIDTH TESTIMONIAL -->
-          <div class="b-tile bg-dark-gray span-col-4">
-            <span class="meta" style="color: var(--accent-lime)">Engagement Insight</span>
-            <p class="testimonial-quote">
-              "The website proved to be a valuable co-pilot to my engagement! I know we want to do
-              more, but it’s just as exciting to celebrate the moments of impression along the way!"
-            </p>
-            <p class="meta">&mdash; Heidi West, CRO MERGE</p>
-          </div>
-
           <!-- ROW 3: 404 WEB IMAGE TILTED + TEXT (~60%) -->
           <div
+            id="tile-built-404-visual"
             class="b-tile span-col-404-img bg-light-gray"
             style="display: flex; align-items: center; justify-content: center; overflow: visible"
           >
             <img src="/assets/404/search-desktop.png" alt="404 page" class="web-thumb-tilted" />
           </div>
-          <div class="b-tile span-col-404-text bg-white" style="justify-content: center">
+          <div id="tile-built-404-text" class="b-tile span-col-404-text bg-white" style="justify-content: center">
             <span class="meta">Innovation</span>
             <h2>Even our errors are Built Different.</h2>
             <p style="font-size: 1.2rem; line-height: 1.6">
@@ -445,7 +547,7 @@
           </div>
 
           <!-- ROW 4: FLAPPY M GAME FULL WIDTH -->
-          <div class="b-tile bg-dark-gray span-col-4" style="padding: 0">
+          <div id="tile-built-flappym" class="b-tile bg-dark-gray span-col-4" style="padding: 0">
             <section id="section-flappym-container">
               <div id="container-flappym">
                 <load src="../src/partials/flappym.html" />
@@ -455,6 +557,7 @@
 
           <!-- ROW 5: CULTURE T-SHIRT (2 COLS, TALL) -->
           <div
+            id="tile-built-tshirt"
             class="b-tile span-col-2"
             style="
               min-height: 800px;
@@ -470,7 +573,7 @@
               class="tshirt-render"
             />
           </div>
-          <div class="b-tile bg-services span-col-2" style="justify-content: flex-start; gap: 3rem">
+          <div id="tile-built-extending-brand" class="b-tile bg-orange span-col-2" style="justify-content: flex-start; gap: 3rem">
             <div>
               <span class="meta">Cultural Branding</span>
               <h2>Extending the Brand System</h2>
@@ -489,15 +592,20 @@
           </div>
 
           <!-- ROW 6: ERG PHYSICS FULL WIDTH -->
-          <div class="b-tile bg-white span-col-4" style="padding: 0">
+          <div id="tile-built-erg-physics" class="b-tile bg-white span-col-4" style="padding: 0">
             <section id="section-erg-container">
               <div style="padding: 2.5rem 2.5rem 0">
                 <span class="meta">Cultural Architecture (ERG)</span>
                 <h3>Inclusion in Motion</h3>
                 <p>
-                  Built the design system for our internal Diversity & Inclusion groups.
-                  Physics-based interaction model for our ERG ecosystem.
-                  <strong>Click on the logo coins below.</strong>
+                  MERGE has 9 ERGs including: Caregivers, Interfaith, Generational, LGBTQIA+,
+                  Military, POC, Women in Tech, Remote, and Wellness. These ERGs have different
+                  initiatives in MERGE but we all have a collective mission to uphold Diversity,
+                  Equality and Inclusion. I designed a system for modeling each group, bold colors,
+                  simple symbolism, M to tie us together. The interaction below became a quick idea
+                  exploration to show them to you. It is using physics-based interaction models that
+                  I feel conceptually fit our ecosystem.
+                  <strong>Click the logo coins below to interact. Hold to move. Mouse to the far right to keep scrolling down the page.</strong>
                 </p>
               </div>
               <div id="erg-canvas-container"></div>
@@ -505,27 +613,27 @@
           </div>
 
           <!-- ROW 7: SECONDARY TESTIMONIALS (2 COLS) -->
-          <div class="b-tile bg-dark-gray span-col-2">
-            <p style="font-size: 1.1rem; line-height: 1.4; font-style: italic">
+          <div id="tile-built-maja-quote" class="b-tile bg-dark-gray span-col-2" style="--quote-color: var(--accent-lime)">
+            <div class="quote-icon top"></div>
+            <div class="quote-text">
               "Heather - Your ability to jump in and take feedback with grace... has been invaluable
               to the success of this build."
-            </p>
-            <p class="meta" style="margin-top: 1rem; color: var(--accent-lime)">
-              &mdash; Maja Cyrulik, Sr. Director, Digital Engineering
-            </p>
+            </div>
+            <div class="quote-author">Maja Cyrulik, Sr. Director, Digital Engineering</div>
+            <div class="quote-icon bottom"></div>
           </div>
-          <div class="b-tile bg-dark-gray span-col-2">
-            <p style="font-size: 1.1rem; line-height: 1.4; font-style: italic">
+          <div id="tile-built-katie-quote" class="b-tile bg-dark-gray span-col-2" style="--quote-color: var(--accent-lime)">
+            <div class="quote-icon top"></div>
+            <div class="quote-text">
               "This has been an incredible team to work with. The vision was matched by the
               execution at every level."
-            </p>
-            <p class="meta" style="margin-top: 1rem; color: var(--accent-lime)">
-              &mdash; Katie Lucas, VP Group Experience Lead
-            </p>
+            </div>
+            <div class="quote-author">Katie Lucas, VP Group Experience Lead</div>
+            <div class="quote-icon bottom"></div>
           </div>
 
           <!-- ROW 8: CREDITS SOPHISTICATED -->
-          <div class="b-tile bg-primary-teal span-col-4" style="padding: 4rem 2.5rem">
+          <div id="tile-built-credits" class="b-tile bg-primary-teal span-col-4" style="padding: 4rem 2.5rem">
             <span class="meta" style="color: var(--accent-lime); margin-bottom: 2rem"
               >Collaborative Excellence &mdash; The Launch Squad</span
             >
@@ -551,7 +659,7 @@
                 </h4>
                 <ul class="list-clean" style="font-weight: 500">
                   <li>
-                    <strong style="font-weight: 800">Heather New:</strong> Creative Technologist
+                    <strong style="font-weight: 800">Heather New:</strong> UI Designer
                   </li>
                   <li>
                     <strong style="font-weight: 800">Austin Melendez:</strong> Dev Engineering
@@ -608,7 +716,7 @@
           <div
             id="built-different-disclosure"
             class="b-tile span-col-4"
-            style="text-align: center; padding: 2rem"
+            style="text-align: center; padding: 1rem 2rem"
           >
             <p style="font-size: 0.8rem; opacity: 0.6">
               All MERGE brand assets and photography are copyright of MERGE. Collaborative
@@ -629,6 +737,136 @@
     <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('bd-grid-container');
+
+        const colors = ['#1BB1A5', '#247B82', '#F6B352', '#F66C0F', '#B2F81D', '#E0E0E0', '#CCCCCC'];
+        const sizeScales = [0.15, 0.35, 0.6, 0.9, 1.2];
+
+        let gridItems = [];
+        let cols = 0, rows = 0;
+        const radius = 180;
+        const shapeSize = 25;
+        const gridGap = 15;
+
+        function generateGrid() {
+          container.innerHTML = '';
+          gridItems = [];
+
+          const parent = container.parentElement;
+          const containerWidth = parent.clientWidth - 40;
+          const containerHeight = parent.clientHeight - 40;
+
+          cols = Math.floor(containerWidth / (shapeSize + gridGap));
+          rows = Math.floor(containerHeight / (shapeSize + gridGap));
+
+          container.style.setProperty('--shape-size', shapeSize + 'px');
+          container.style.setProperty('--grid-gap', gridGap + 'px');
+          container.style.width = `${cols * (shapeSize + gridGap)}px`;
+          container.style.height = `${rows * (shapeSize + gridGap)}px`;
+
+          for (let i = 0; i < cols * rows; i++) {
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('bd-shape-wrapper');
+
+            const itemColor = colors[Math.floor(Math.random() * colors.length)];
+            const scaleClass = sizeScales[Math.floor(Math.random() * sizeScales.length)];
+            const isSquare = Math.random() > 0.85;
+
+            const shape = document.createElement('div');
+            shape.classList.add('bd-shape', isSquare ? 'square' : 'circle');
+            shape.style.backgroundColor = itemColor;
+
+            gsap.set(shape, { scale: scaleClass });
+            wrapper.appendChild(shape);
+            container.appendChild(wrapper);
+
+            gridItems.push({
+              el: shape,
+              isSquare,
+              baseScale: scaleClass,
+              active: false,
+              cx: 0,
+              cy: 0,
+            });
+          }
+
+          calculateCenters();
+        }
+
+        function calculateCenters() {
+          gridItems.forEach((item) => {
+            const rect = item.el.getBoundingClientRect();
+            item.cx = rect.left + rect.width / 2;
+            item.cy = rect.top + rect.height / 2;
+          });
+        }
+
+        window.addEventListener('resize', () => {
+          clearTimeout(window.bdResizeTimer);
+          window.bdResizeTimer = setTimeout(generateGrid, 150);
+        });
+
+        generateGrid();
+
+        const handleMove = (x, y) => {
+          gridItems.forEach((item) => {
+            const dx = item.cx - x;
+            const dy = item.cy - y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < radius) {
+              const force = (radius - dist) / radius;
+              gsap.to(item.el, {
+                scale: item.baseScale + force * 1.5,
+                x: -dx * force * 0.4,
+                y: -dy * force * 0.4,
+                rotation: force * (item.isSquare ? 90 : -45),
+                borderRadius: item.isSquare ? `${force * 50}%` : `${50 - force * 20}%`,
+                duration: 0.4,
+                ease: 'power2.out',
+                overwrite: 'auto',
+              });
+              item.active = true;
+            } else if (item.active) {
+              gsap.to(item.el, {
+                scale: item.baseScale,
+                x: 0,
+                y: 0,
+                rotation: 0,
+                borderRadius: item.isSquare ? '0%' : '50%',
+                duration: 0.8,
+                ease: 'elastic.out(1, 0.4)',
+                overwrite: 'auto',
+              });
+              item.active = false;
+            }
+          });
+        };
+
+        window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+        window.addEventListener('touchmove', (e) => {
+          if (e.touches.length > 0) handleMove(e.touches[0].clientX, e.touches[0].clientY);
+        });
+
+        window.addEventListener('click', (e) => {
+          gridItems.forEach((item) => {
+            const dx = item.cx - e.clientX;
+            const dy = item.cy - e.clientY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const pulse = item.baseScale + Math.max(0, 1 - dist / 300) * 1.2;
+            gsap.to(item.el, {
+              scale: pulse,
+              duration: 0.4,
+              ease: 'power2.out',
+              onComplete: () => gsap.to(item.el, { scale: item.baseScale, duration: 0.8, ease: 'elastic.out(1, 0.4)' }),
+            });
+          });
+        });
+      });
+    </script>
     <script type="module" src="../src/js/site-core.js" defer></script>
     <script type="module" src="../src/js/flappym.js" defer></script>
     <script type="module" src="../src/js/erg.js" defer></script>

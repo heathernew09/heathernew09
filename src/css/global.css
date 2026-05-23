@@ -6,12 +6,20 @@
 :root {
   /* Color palette */
   --primary-teal: #2b8a92;
+  --teal: #1bb1a5;
+  --dark-teal: #146068;
   --accent-lime: #bfff00;
-  --accent-orange: #f97316;
+  --lime: #b2f81d;
+  --orange: #ff7500;
+  --yellow: #f6b352;
+  --baby-blue: #e8f5f7;
   --dark-gray: #333333;
   --medium-gray: #666666;
+  --mid-grey: #cccccc;
   --light-gray: #f5f5f5;
+  --light-grey: #f5f5f5;
   --white: #ffffff;
+  --text-dark: #111111;
 
   --color-studio: #00a99d;
   --color-work: #e87a00;
@@ -1082,6 +1090,82 @@ RESULTS SECTION
 .bg-dark {
   background-color: var(--dark-gray);
 }
+.b-tile {
+  --tile-bg: var(--light-gray);
+  --tile-text: var(--text-dark);
+}
+.bg-white {
+  --tile-bg: #fff;
+  --tile-text: var(--text-dark);
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-orange {
+  --tile-bg: var(--orange);
+  --tile-text: #fff;
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-teal {
+  --tile-bg: var(--teal);
+  --tile-text: #fff;
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-dark-teal {
+  --tile-bg: var(--dark-teal);
+  --tile-text: #fff;
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-yellow {
+  --tile-bg: var(--yellow);
+  --tile-text: var(--text-dark);
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-lime {
+  --tile-bg: var(--lime);
+  --tile-text: var(--text-dark);
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-mid-grey {
+  --tile-bg: var(--mid-grey);
+  --tile-text: var(--text-dark);
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-light-grey {
+  --tile-bg: var(--light-grey);
+  --tile-text: var(--text-dark);
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-baby-blue {
+  --tile-bg: var(--baby-blue);
+  --tile-text: var(--text-dark);
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-dark-gray {
+  --tile-bg: var(--dark-gray);
+  --tile-text: #fff;
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-medium-gray {
+  --tile-bg: var(--medium-gray);
+  --tile-text: #fff;
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
+.bg-light-gray {
+  --tile-bg: var(--light-gray);
+  --tile-text: var(--dark-gray);
+  background-color: var(--tile-bg);
+  color: var(--tile-text);
+}
 /* ============================================
    CREDITS SECTION
    ============================================ */
@@ -1233,6 +1317,20 @@ RESULTS SECTION
 .bg-soft-black .meta {
   color: var(--accent-lime) !important;
   opacity: 1 !important;
+}
+
+.bg-ai-process {
+  background-color: #f8f9fa !important;
+  background-image: radial-gradient(#d1d5db 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+  border: 2px dashed #d1d5db !important;
+}
+
+.bg-ai-process .meta {
+  background: var(--dark-gray);
+  color: var(--white);
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 /* ============================================

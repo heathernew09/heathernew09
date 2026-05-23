@@ -20,6 +20,7 @@
     <script type="module" crossorigin src="/assets/site-core-Cit16Jds.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/decision-tree-fNIY3Lyz.css" />
     <link rel="stylesheet" crossorigin href="/assets/global-BpFj_ECW.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
       :root {
         --teal: #1bb1a5;
@@ -46,7 +47,7 @@
         grid-auto-rows: minmax(240px, auto);
         width: 100%;
         max-width: 1400px;
-        border-top: 1px solid var(--text-dark);
+        border-top: 1px solid #000;
         border-left: 1px solid var(--text-dark);
         background: var(--bg-color);
       }
@@ -106,38 +107,6 @@
       }
       .span-row-2 {
         grid-row: span 2;
-      }
-
-      .bg-white {
-        background-color: #fff;
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
-      .bg-yellow {
-        background-color: var(--yellow);
-        color: var(--text-dark);
-      }
-      .bg-orange {
-        background-color: var(--orange);
-        color: #fff;
-      }
-      .bg-lime {
-        background-color: var(--lime);
-        color: var(--text-dark);
-      }
-      .bg-light-grey {
-        background-color: var(--light-grey);
-        color: var(--text-dark);
-      }
-      .bg-mid-grey {
-        background-color: var(--mid-grey);
-        color: var(--text-dark);
       }
 
       /* Accessibility contrast class */
@@ -208,23 +177,77 @@
       }
 
       /* ─── HERO ─────────────────────────────────────────── */
-      .hero-title-block {
-        width: 100%;
-        padding: 7vw 4vw 5vw;
-        background: #fff;
+      .page-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100vw;
+        min-height: 680px;
+        border-bottom: 1px solid var(--text-dark);
       }
-
+      .hero-title-block {
+        grid-column: 1;
+        background-color: #ffffff;
+        padding: 7vw 4vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
       .hero-title-block .subtitle {
         font-size: clamp(1rem, 1.8vw, 1.4rem);
         font-weight: 500;
         line-height: 1.5;
-        max-width: 900px;
+        max-width: 50ch;
         color: var(--text-dark);
+        margin-top: 1.5rem;
+      }
+      .hero-visual-block {
+        grid-column: 2;
+        background-color: #ffffff;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 680px;
+      }
+      #dt-grid-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 15px;
+      }
+      .dt-shape-wrapper {
+        position: relative;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .dt-shape {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-origin: center center;
+      }
+      .dt-shape.circle { border-radius: 50%; }
+      .dt-shape.square { border-radius: 0; }
+      @media (max-width: 768px) {
+        .page-hero { grid-template-columns: 1fr; }
+        .hero-visual-block { display: none; }
       }
 
-      #tree-partial-container {
-        padding-top: 0 !important;
-        margin-bottom: 4rem;
+      /* ─── BG CLASSES (local override for built CSS) ─────── */
+      .bg-teal {
+        background-color: var(--teal);
+        color: #fff;
+      }
+      .bg-lime {
+        background-color: var(--lime);
+        color: var(--text-dark);
       }
 
       /* Prevent image stretching for specific technical diagrams */
@@ -241,16 +264,23 @@
       <div class="header-content"><load src="../src/partials/nav.html" /></div>
     </header>
 
-    <header class="hero-title-block">
-      <h1 class="section-title hero-title" style="max-width: 20ch">THE ZEN GARDEN DECISION TREE</h1>
-      <div class="subtitle">
-        Taking static medical information and beautifying it with technology. Interact with the
-        artwork above. Navigate through the branches to uncover the path forward.
+    <header class="page-hero">
+      <div class="hero-title-block">
+        <span class="meta" style="font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; display: block">The Zen Garden</span>
+        <h1 class="section-title hero-title" style="max-width: 20ch">DECISION TREE</h1>
+        <div class="subtitle">
+          Taking static medical information and beautifying it with technology was the task for this
+          project. Users are guided through the decisions faced when a dog comes into a vet's practice
+          with a dermatology issue. There are options — we present them in an interactive, fun way.
+        </div>
+      </div>
+      <div class="hero-visual-block">
+        <div id="dt-grid-container"></div>
       </div>
     </header>
 
     <main id="main-content">
-      <div id="tree-partial-container">
+      <div id="tree-partial-container" style="display:none">
         <div id="tree-screen-wrapper">
           <img
             id="tree-decorative-frame"
@@ -278,8 +308,8 @@
       <!-- Bauhaus Grid -->
       <div class="portfolio-section">
         <div class="bauhaus-grid">
-          <!-- ROW 1: CONTEXT + ROLE -->
-          <div class="b-tile span-col-3 soft-black">
+          <!-- ROW 1: CONTEXT + VIDEO -->
+          <div class="b-tile span-col-2 soft-black">
             <span class="meta">WVC / VMX &mdash; Elanco</span>
             <h2>The Zen Garden<br />Decision Tree</h2>
             <p>
@@ -289,22 +319,29 @@
               One clear outcome.
             </p>
           </div>
-          <div class="b-tile bg-lime">
-            <span class="meta">Role</span>
+          <div id="tile-tree-demo-video" class="b-tile img-tile span-col-2">
+            <video autoplay loop muted playsinline>
+              <source src="/video/decision-tree/decision-tree-demo.mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          <!-- ROW 2: ROLE + PHOTO -->
+          <div class="b-tile bg-lime span-col-1">
+            <div>
+              <span class="meta">Role</span>
+              <span class="meta" style="display: block; margin-top: 0.25rem">Creative Technologist</span>
+            </div>
             <p style="font-weight: 800; font-size: 1.1rem; line-height: 1.8">
               I designed it.<br />I built it.<br />I compiled the assets.
             </p>
-            <span class="meta" style="margin-top: auto">Creative Technologist</span>
           </div>
-
-          <!-- ROW 2: RESULTS PHOTOS -->
-          <div class="b-tile img-tile span-col-2">
+          <div class="b-tile img-tile span-col-1">
             <img
               src="/assets/tree/decision-tree-people-standing.JPG"
               alt="Attendees engaging with the Zen Garden decision tree at the event"
             />
           </div>
-          <div class="b-tile img-tile span-col-2">
+          <div class="b-tile img-tile span-col-1">
             <img
               src="/assets/tree/decision-tree-hamilton-install.JPG"
               alt="Full booth installation"
@@ -312,27 +349,27 @@
           </div>
 
           <!-- ROW 2B: HEATHER AT THE DISPLAY -->
-          <div class="b-tile img-tile span-col-2">
+          <div id="tile-tree-heather-display" class="b-tile img-tile span-col-1">
             <img
-              src="/images/decision-tree/heather-showing-display.jpg"
-              alt="Heather New presenting the Zen Garden Decision Tree display"
+              src="/assets/tree/zen-garden-hamilton-photo-credit.JPEG"
+              alt="Zen Garden full booth at the event"
             />
           </div>
-          <div class="b-tile img-tile">
+          <div class="b-tile img-tile span-col-2">
             <img
               src="/images/decision-tree/heather-pointing-demo.jpg"
               alt="Heather New demonstrating the interactive decision tree"
             />
           </div>
-          <div class="b-tile img-tile">
+          <div class="b-tile img-tile span-col-2">
             <img
               src="/images/decision-tree/attendee-interaction.jpg"
               alt="Attendee interacting with the Zen Garden decision tree"
             />
           </div>
 
-          <!-- ROW 3: RESULTS QUOTE -->
-          <div class="b-tile bg-yellow span-col-4" style="justify-content: center">
+          <!-- ROW 3: RESULTS QUOTE + BRANCHES -->
+          <div id="tile-tree-results-quote" class="b-tile bg-yellow span-col-2" style="justify-content: center">
             <div
               style="
                 font-size: clamp(1.1rem, 2.2vw, 1.8rem);
@@ -346,17 +383,7 @@
               multi-day event."
             </div>
           </div>
-
-          <!-- ROW 4: PROCESS STACKED -->
-          <div class="b-tile bg-teal span-col-4">
-            <span class="meta" style="color: var(--lime)">Process</span>
-            <h2>The Seed &amp; Growth</h2>
-            <p style="max-width: 700px; color: rgba(255, 255, 255, 0.85)">
-              The architecture started on paper — then AI pressure-tested the branching logic before
-              a single vector was drawn.
-            </p>
-          </div>
-          <div class="b-tile span-col-4 soft-black">
+          <div id="tile-tree-branches" class="b-tile span-col-2 soft-black">
             <span class="meta">The Three Branches</span>
             <div class="grid-2" style="gap: 4rem">
               <div>
@@ -371,70 +398,18 @@
             </div>
           </div>
 
-          <!-- ROW 5: BOOTH + SKETCH (50/50) -->
-          <div class="b-tile img-tile span-col-2">
-            <img
-              src="/assets/tree/zen-garden-hamilton-photo-credit.JPEG"
-              alt="Zen Garden full booth at the event"
-            />
-          </div>
-          <!-- Refined concept sketch (50% width) -->
-          <div class="b-tile img-tile span-col-2">
-            <img src="/assets/tree/sketch-three.jpeg" alt="Refined concept sketch" />
-          </div>
-
-          <!-- ROW 7: AI BONSAI FULL WIDTH -->
-          <div class="b-tile img-tile span-col-4" style="min-height: 180px">
-            <img
-              src="/assets/tree/screenshot_bonsai_tree_AI_system_2026Mar07_1.png"
-              alt="AI-assisted bonsai branching structure"
-            />
-          </div>
-
-          <!-- ROW 8: BONSAI PHOTO + SVG TEXT -->
-          <div class="b-tile img-tile span-col-2">
-            <img src="/assets/tree/tree_shutterstock_2702278941.jpg" alt="Bonsai tree reference" />
-          </div>
-          <div class="b-tile bg-light-grey span-col-2">
-            <span class="meta" style="color: var(--dark-teal)">Precision Vector Architecture</span>
-            <h2>Hand-crafted.<br />Node by node.</h2>
-            <p>
-              Every branch built as an optimized SVG — crisp at any resolution, with clean hooks for
-              the interactive logic.
-            </p>
-          </div>
-
-          <!-- ROW 9: SVG BUILD FULL WIDTH -->
-          <div class="b-tile img-tile span-col-4">
-            <img
-              src="/assets/tree/svg-build-illustrator-windows.png"
-              alt="SVG architecture build in Adobe Illustrator"
-            />
-          </div>
-
-          <!-- ROW 10: AI ITERATION -->
-          <div class="b-tile bg-orange span-col-2">
-            <span class="meta">Input &amp; Iteration</span>
-            <h2>Elanco brand assets as ground truth.<br />Generative prompts as pressure.</h2>
-            <p>Iterating until the aesthetic held up at trade show scale.</p>
-          </div>
-          <div class="b-tile img-tile span-col-2 no-stretch">
-            <img src="/assets/tree/ai-prompt2.png" alt="AI prompt iteration" />
-          </div>
-
-          <!-- ROW 11: CODE OUTPUT + BRIDGING TEXT -->
-          <div class="b-tile img-tile span-col-2">
-            <img src="/assets/tree/figma-make-code-output.png" alt="Figma Make code output" />
-          </div>
-          <div class="b-tile bg-teal span-col-2">
-            <span class="meta" style="color: var(--lime)">Bridging Design &amp; Code</span>
-            <p style="font-weight: 700; font-size: 1.05rem">
-              Figma Make as the translation layer — visual intent to working component without loss
-              of fidelity.
+          <!-- PROCESS: HEADER + FIGMA VIDEO SIDE BY SIDE -->
+          <div id="tile-tree-process-header" class="b-tile bg-teal span-col-2">
+            <span class="meta" style="color: var(--lime)">Process</span>
+            <h2 style="color: #fff">The Seed &amp; Growth</h2>
+            <p style="max-width: 700px; color: rgba(255, 255, 255, 0.85)">
+              The architecture started on paper — then AI pressure-tested the branching logic before
+              a single vector was drawn.
             </p>
           </div>
           <div
-            class="b-tile soft-black span-col-4"
+            id="tile-tree-figma-make-video"
+            class="b-tile soft-black span-col-2"
             style="padding: 1rem; display: flex; align-items: center; justify-content: center"
           >
             <video
@@ -449,11 +424,45 @@
             </video>
           </div>
 
+          <!-- BOOTH + SKETCH -->
+          <div id="tile-tree-sketch-three" class="b-tile img-tile span-col-2">
+            <img src="/assets/tree/sketch-three.jpeg" alt="Refined concept sketch" />
+          </div>
+
+          <!-- BONSAI PHOTO + AI BONSAI -->
+          <div id="tile-tree-ai-bonsai" class="b-tile no-stretch span-col-2" style="background: #f4f4f4">
+            <span class="meta">Generative Process</span>
+            <img
+              src="/assets/tree/screenshot_bonsai_tree_AI_system_2026Mar07_1.png"
+              alt="AI-assisted bonsai branching structure"
+              style="object-fit: contain; width: 100%; height: auto"
+            />
+          </div>
+          <div id="tile-tree-bonsai-photo" class="b-tile img-tile span-col-4">
+            <img src="/assets/tree/tree_shutterstock_2702278941.jpg" alt="Bonsai tree reference" />
+          </div>
+
+          <!-- SVG BUILD + VECTOR ARCHITECTURE SIDE BY SIDE -->
+          <div id="tile-tree-svg-build" class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/tree/svg-build-illustrator-windows.png"
+              alt="SVG architecture build in Adobe Illustrator"
+            />
+          </div>
+          <div id="tile-tree-vector-architecture" class="b-tile bg-light-grey span-col-2">
+            <span class="meta" style="color: var(--dark-teal)">Precision Vector Architecture</span>
+            <h2>Hand-crafted.<br />Node by node.</h2>
+            <p>
+              Every branch built as an optimized SVG — crisp at any resolution, with clean hooks for
+              the interactive logic.
+            </p>
+          </div>
+
           <!-- ROW 12: RENDER SCREENS -->
-          <div class="b-tile img-tile span-col-4">
+          <div id="tile-tree-render-screens" class="b-tile img-tile span-col-4">
             <img src="/assets/tree/ai-prompt-render-screen2.png" alt="Final render screen" />
           </div>
-          <div class="b-tile bg-lime span-col-4">
+          <div id="tile-tree-visual-polish" class="b-tile bg-lime span-col-2">
             <span class="meta">Final Visual Polish</span>
             <h2>Alive, not just functional.</h2>
             <p>
@@ -463,18 +472,18 @@
           </div>
 
           <!-- ROW 13: LOGIC IN MOTION -->
-          <div class="b-tile span-col-4 soft-black">
-            <div style="padding: 1rem 2.5rem 1.5rem">
-              <span class="meta">The Logic in Motion</span>
-              <h2>The Living Tree</h2>
-              <p style="color: rgba(255, 255, 255, 0.8); margin-top: 0.5rem">
-                Visualizing the pathway from symptom to solution.
-              </p>
-            </div>
+          <div id="tile-tree-logic-motion" class="b-tile span-col-2 bg-orange">
+            <span class="meta">Impact</span>
+            <h2>Scaling Interactive Tool</h2>
+            <p style="margin-top: 0.5rem">
+              The experience got so much positive feedback that we've entered stages of scaling it
+              to different placements. It's been used in multiple tradeshows but we're also looking
+              at implementing it on more platforms.
+            </p>
           </div>
 
           <!-- ROW 15: CREDITS -->
-          <div class="b-tile span-col-4 soft-black">
+          <div id="tile-tree-credits" class="b-tile span-col-4 soft-black">
             <div class="grid-2" style="gap: 4rem">
               <div>
                 <span class="meta">Decision Tree Core</span>
@@ -506,42 +515,156 @@
       <!-- end bauhaus grid -->
     </main>
 
-    <div id="footer-trigger">
-      <div class="footer-scroll-wrapper" id="footer-trigger">
-        <footer class="footer-section">
-          <div class="footer-track">
-            <div id="mouse-skater" class="mouse-skater">
-              <!-- Separate container for flipping to avoid matrix conflicts -->
-              <div class="mouse-flip-container" id="mouse-flipper">
-                <img
-                  src="/assets/mouse_skate.png"
-                  alt="Magic Mouse on Roller Skates"
-                  class="mouse-static"
-                />
-              </div>
-            </div>
-          </div>
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
 
-          <div class="footer-content-bio">
-            <h3>Heather New</h3>
-            <p>
-              Creative Technologist specializing in interactive experiences at the intersection of
-              design, code, and technology.
-            </p>
-          </div>
+    <script>
+      window.addEventListener('load', () => {
+        const container = document.getElementById('dt-grid-container');
 
-          <div class="footer-nav">
-            <p class="copyright">
-              &copy; <span id="current-year"></span> Heather New |
-              <a href="/pages/privacy.html">Privacy Policy</a> |
-              <a href="/pages/sitemap.xml">Sitemap</a>
-            </p>
-          </div>
-        </footer>
-      </div>
-      <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-      </script>
-    </div>
+        const colorBehaviors = {
+          '#1BB1A5': 'vortex',
+          '#247B82': 'implode',
+          '#F6B352': 'converge',
+          '#F66C0F': 'scatter',
+          '#B2F81D': 'float',
+          '#E0E0E0': 'blink',
+          '#CCCCCC': 'flip',
+        };
+        const colors = Object.keys(colorBehaviors);
+        const sizeScales = [0.15, 0.35, 0.6, 0.9, 1.2];
+
+        let gridItems = [];
+        let cols = 0;
+        let rows = 0;
+        const radius = 180;
+        const shapeSize = 25;
+        const gridGap = 15;
+
+        function generateGrid() {
+          container.innerHTML = '';
+          gridItems = [];
+
+          const parent = container.parentElement;
+          const containerWidth = (parent.clientWidth || window.innerWidth / 2) - 40;
+          const containerHeight = (parent.clientHeight || window.innerHeight * 0.6) - 40;
+
+          cols = Math.floor(containerWidth / (shapeSize + gridGap));
+          rows = Math.floor(containerHeight / (shapeSize + gridGap));
+
+          container.style.width = `${cols * (shapeSize + gridGap)}px`;
+          container.style.height = `${rows * (shapeSize + gridGap)}px`;
+
+          for (let i = 0; i < cols * rows; i++) {
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('dt-shape-wrapper');
+
+            const shape = document.createElement('div');
+            const isSquare = Math.random() > 0.85;
+            const scaleClass = sizeScales[Math.floor(Math.random() * sizeScales.length)];
+
+            shape.classList.add('dt-shape', isSquare ? 'square' : 'circle');
+            const itemColor = colors[Math.floor(Math.random() * colors.length)];
+            shape.style.backgroundColor = itemColor;
+
+            gsap.set(shape, { scale: scaleClass });
+
+            wrapper.appendChild(shape);
+            container.appendChild(wrapper);
+
+            gridItems.push({
+              el: shape,
+              isSquare,
+              baseScale: scaleClass,
+              colorHex: itemColor,
+              active: false,
+              cx: 0,
+              cy: 0,
+            });
+          }
+
+          calculateCenters();
+        }
+
+        function calculateCenters() {
+          gridItems.forEach((item) => {
+            const rect = item.el.getBoundingClientRect();
+            item.cx = rect.left + rect.width / 2;
+            item.cy = rect.top + rect.height / 2;
+          });
+        }
+
+        window.addEventListener('resize', () => {
+          clearTimeout(window.resizeTimer);
+          window.resizeTimer = setTimeout(generateGrid, 150);
+        });
+
+        generateGrid();
+
+        const handleMove = (x, y) => {
+          gridItems.forEach((item) => {
+            const dx = item.cx - x;
+            const dy = item.cy - y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < radius) {
+              const force = (radius - dist) / radius;
+              gsap.to(item.el, {
+                scale: item.baseScale + force * 1.5,
+                x: -dx * force * 0.4,
+                y: -dy * force * 0.4,
+                rotation: item.isSquare ? force * 90 : force * -45,
+                borderRadius: item.isSquare ? `${force * 50}%` : `${50 - force * 20}%`,
+                duration: 0.4,
+                ease: 'power2.out',
+                overwrite: 'auto',
+              });
+              item.active = true;
+            } else if (item.active) {
+              gsap.to(item.el, {
+                scale: item.baseScale,
+                x: 0,
+                y: 0,
+                rotation: 0,
+                borderRadius: item.isSquare ? '0%' : '50%',
+                duration: 0.8,
+                ease: 'elastic.out(1, 0.4)',
+                overwrite: 'auto',
+              });
+              item.active = false;
+            }
+          });
+        };
+
+        window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
+        window.addEventListener('touchmove', (e) => {
+          if (e.touches.length > 0) handleMove(e.touches[0].clientX, e.touches[0].clientY);
+        });
+
+        window.addEventListener('click', (e) => {
+          const clickX = e.clientX;
+          const clickY = e.clientY;
+
+          gridItems.forEach((item) => {
+            const dx = item.cx - clickX;
+            const dy = item.cy - clickY;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            const animProps = {
+              scale: item.baseScale + Math.max(0, 1 - dist / 300) * 1.2,
+              duration: 0.4,
+              ease: 'power2.out',
+              onComplete: () =>
+                gsap.to(item.el, {
+                  scale: item.baseScale,
+                  duration: 0.8,
+                  ease: 'elastic.out(1, 0.4)',
+                }),
+            };
+
+            if (Object.keys(animProps).length) gsap.to(item.el, animProps);
+          });
+        });
+      });
+    </script>
   </body>
 </html>

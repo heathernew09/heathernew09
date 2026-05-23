@@ -72,6 +72,7 @@
         grid-auto-rows: auto;
         width: 100%;
         max-width: 1400px;
+        border-top: 1px solid #000;
         border-left: var(--border);
         background: #fff;
       }
@@ -135,37 +136,11 @@
         grid-column: span 3;
       }
 
-      .bg-white {
-        background-color: #fff;
-        color: var(--text-dark);
-      }
-      .bg-dark-gray {
-        background-color: var(--dark-gray);
-        color: #fff;
-      }
-      .bg-light-gray {
-        background-color: var(--light-gray);
-        color: var(--text-dark);
-      }
-      .bg-orange {
-        background-color: var(--accent-orange);
-        color: #fff;
-      }
-      .bg-yellow {
-        background-color: #f6b352;
-        color: var(--text-dark);
-      }
-      .bg-teal {
-        background-color: var(--teal);
-        color: #fff;
-      }
-      .bg-dark-teal {
-        background-color: var(--dark-teal);
-        color: #fff;
-      }
       .bg-maroon {
-        background-color: var(--maroon);
-        color: #fff;
+        --tile-bg: var(--maroon);
+        --tile-text: #fff;
+        background-color: var(--tile-bg);
+        color: var(--tile-text);
       }
 
       .img-tile {
@@ -196,6 +171,37 @@
         line-height: 1.3;
         margin-bottom: 1.5rem;
       }
+      .quote-icon {
+        background-color: var(--quote-color, var(--lime));
+        mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+      }
+      .quote-icon.top { top: 1.5rem; left: 1.5rem; }
+      .quote-icon.bottom { bottom: 1.5rem; right: 1.5rem; transform: rotate(180deg); }
+      .quote-text {
+        font-size: 1.15rem;
+        line-height: 1.4;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        padding: 3rem 1rem 0;
+      }
+      .quote-author {
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: auto;
+        opacity: 0.8;
+        padding: 0 1rem 1rem;
+      }
+      .quote-author::before { content: '— '; }
 
       .fireball-quiz-container {
         width: 100%;
@@ -221,6 +227,9 @@
       }
       .gallery-item img {
         border-radius: 0 !important;
+      }
+      .gallery-item.horizontal.threehoriz {
+        grid-column: span 3;
       }
 
       @media (max-width: 1100px) {
@@ -273,32 +282,32 @@
       <div class="portfolio-section">
         <div class="bauhaus-grid">
           <!-- HERO ROW: IMAGE + 2x2 META -->
-          <div class="b-tile img-tile span-col-2 span-row-2">
+          <div id="tile-hotspot-intro" class="b-tile img-tile span-col-2 span-row-2">
             <img
               src="/assets/hotspot/hotspot-screen-inplay.png"
               alt="Wall of Flame Hero"
               style="object-position: center"
             />
           </div>
-          <div class="b-tile bg-white span-col-1">
+          <div id="tile-hotspot-client" class="b-tile bg-white span-col-1">
             <span class="meta">Client</span>
             <p><strong>Elanco</strong></p>
           </div>
-          <div class="b-tile bg-yellow span-col-1">
+          <div id="tile-hotspot-event" class="b-tile bg-yellow span-col-1">
             <span class="meta">Event</span>
             <p><strong>AVMA 2025</strong></p>
           </div>
-          <div class="b-tile bg-dark-teal span-col-1">
+          <div id="tile-hotspot-role" class="b-tile bg-dark-teal span-col-1">
             <span class="meta">Role</span>
             <p><strong>Creative Technologist</strong></p>
           </div>
-          <div class="b-tile bg-light-gray span-col-1">
+          <div id="tile-hotspot-award" class="b-tile bg-light-gray span-col-1">
             <span class="meta">Award</span>
             <p><strong>Best Exhibit</strong></p>
           </div>
 
           <!-- STRATEGY -->
-          <div class="b-tile bg-orange span-col-4">
+          <div id="tile-hotspot-strategy" class="b-tile bg-orange span-col-4">
             <span class="meta">Disruption Strategy</span>
             <h2>Conquesting the Floor</h2>
             <p style="max-width: 800px; font-size: 1.2rem; line-height: 1.6">
@@ -308,7 +317,7 @@
           </div>
 
           <!-- QUIZ + TECH SPECS -->
-          <div class="b-tile bg-white span-col-2">
+          <div id="tile-hotspot-interaction-text" class="b-tile bg-white span-col-2">
             <div style="margin-bottom: 2rem">
               <span class="meta">Interaction Model</span>
               <h2>We Set the Booth on Fire!</h2>
@@ -328,6 +337,7 @@
             </div>
           </div>
           <div
+            id="tile-hotspot-quiz-interactive"
             class="b-tile bg-maroon span-col-2"
             style="padding: 1rem; display: flex; align-items: center; justify-content: center"
           >
@@ -391,8 +401,8 @@
             <img src="/assets/hotspot/galliprant-white-model.png" alt="Booth White Model" />
           </div>
 
-          <!-- VIDEO DEMO (50% Centered) -->
-          <div class="b-tile bg-yellow span-col-1">
+          <!-- VIDEO DEMO -->
+          <div class="b-tile bg-yellow span-col-2">
             <div
               style="
                 display: flex;
@@ -425,7 +435,6 @@
               <source src="/assets/hotspot/AVMA-galliprant-hot-spot-demo.mp4" type="video/mp4" />
             </video>
           </div>
-          <div class="b-tile bg-orange span-col-1"></div>
 
           <!-- GALLERY -->
           <div
@@ -438,6 +447,7 @@
           <!-- INDUSTRY RECOGNITION (3 and 5 Ratio) -->
           <!-- Row 1 & 2 Left: Tilted Award (3 out of 8 equivalent) -->
           <div
+            id="tile-hotspot-award-visual"
             class="b-tile bg-light-gray span-row-2"
             style="
               grid-column: span 3;
@@ -459,80 +469,32 @@
             />
           </div>
 
-          <!-- Row 1 Right: George Bird (5 out of 8 equivalent) -->
+          <!-- Row 1 Right: George Bird -->
           <div
+            id="tile-hotspot-george-quote"
             class="b-tile"
-            style="grid-column: span 5; justify-content: center; background-color: #666666"
+            style="grid-column: span 5; background-color: #666666; color: #fff; --quote-color: var(--accent-lime); position: relative;"
           >
-            <div>
-              <span class="meta" style="color: var(--accent-lime)"
-                >Industry Leadership &mdash; George Bird</span
-              >
-              <blockquote
-                style="
-                  background: transparent;
-                  border-left: 4px solid var(--accent-lime);
-                  color: #fff;
-                  padding-left: 1.5rem;
-                  margin: 1rem 0;
-                "
-              >
-                <p
-                  class="testimonial-quote"
-                  style="font-size: 1.3rem; line-height: 1.4; font-style: italic; margin-bottom: 0"
-                >
-                  "Elanco gave us the opportunity to push the boundaries of engagement to create an
-                  interactive space that captivated a crowd... brought to life a fun, educational,
-                  and engaging extension of the brand."
-                </p>
-              </blockquote>
-            </div>
+            <div class="quote-icon top"></div>
+            <div class="quote-text">"Elanco gave us the opportunity to push the boundaries of engagement to create an interactive space that captivated a crowd... brought to life a fun, educational, and engaging extension of the brand."</div>
+            <div class="quote-author">George Bird — Industry Leadership</div>
+            <div class="quote-icon bottom"></div>
           </div>
 
-          <!-- Row 2 Right: Casey Luttrell (5 out of 8 equivalent) -->
+          <!-- Row 2 Right: Casey Luttrell -->
           <div
+            id="tile-hotspot-casey-quote"
             class="b-tile bg-dark-teal"
-            style="grid-column: span 5; justify-content: center; position: relative"
+            style="grid-column: span 5; color: #fff; --quote-color: var(--lime); position: relative;"
           >
-            <div
-              style="
-                display: flex;
-                gap: 1.5rem;
-                align-items: flex-start;
-                position: relative;
-                z-index: 1;
-              "
-            >
-              <div
-                style="
-                  flex-shrink: 0;
-                  margin-top: 0.5rem;
-                  width: 150px;
-                  height: 150px;
-                  background-image: url(&quot;data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E&quot;);
-                  background-size: contain;
-                  background-repeat: no-repeat;
-                  opacity: 0.8;
-                "
-              ></div>
-              <div>
-                <span class="meta" style="color: #fff; opacity: 0.9"
-                  >Studio Recognition &mdash; Casey Luttrell</span
-                >
-                <p
-                  class="testimonial-quote"
-                  style="color: #fff; font-size: 1.3rem; line-height: 1.4; font-style: italic"
-                >
-                  "Wanted to pop in and shout out Heather New... I am guessing the game Heather
-                  built had everything to do with that!"
-                </p>
-              </div>
-            </div>
+            <div class="quote-icon top"></div>
+            <div class="quote-text">"Wanted to pop in and shout out Heather New... I am guessing the game Heather built had everything to do with that!"</div>
+            <div class="quote-author">Casey Luttrell — Studio Recognition</div>
+            <div class="quote-icon bottom"></div>
           </div>
 
-          <!-- PROTOTYPE (50% Centered with Flare) -->
-          <div class="b-tile bg-teal span-col-1"></div>
-          <div class="b-tile bg-light-gray span-col-2">
+          <!-- PROTOTYPE + AUDIO STACKED -->
+          <div id="tile-hotspot-prototyping" class="b-tile bg-light-gray span-col-2 span-row-2">
             <div>
               <span class="meta">Prototyping</span>
               <h3>Quiz Prototype: The Chicago Hot Dog</h3>
@@ -565,13 +527,11 @@
             </p>
             <script async src="https://public.codepenassets.com/embed/index.js"></script>
           </div>
-          <div class="b-tile bg-orange span-col-1"></div>
-
-          <!-- AUDIO BUILD (Swapped: Image Left, Text Right Dark Teal) -->
-          <div class="b-tile img-tile span-col-2">
+          <!-- AUDIO BUILD -->
+          <div id="tile-hotspot-daves-helpers" class="b-tile img-tile span-col-2">
             <img src="/assets/hotspot/daves-sound-helpers.png" alt="Audio setup" />
           </div>
-          <div class="b-tile bg-dark-teal span-col-2">
+          <div id="tile-hotspot-audio-process" class="b-tile bg-dark-teal span-col-2">
             <div>
               <span class="meta">Process</span>
               <h3>Building It: Audio</h3>
@@ -589,7 +549,7 @@
           </div>
 
           <!-- CREDITS -->
-          <div class="b-tile bg-white span-col-1-5">
+          <div id="tile-hotspot-core-team" class="b-tile bg-white span-col-1-5">
             <span class="meta" style="color: var(--primary-teal)">Core Team</span>
             <ul class="list-clean">
               <li>
@@ -611,7 +571,7 @@
               </li>
             </ul>
           </div>
-          <div class="b-tile bg-light-gray span-col-2-5">
+          <div id="tile-hotspot-launch-squad" class="b-tile bg-light-gray span-col-2-5">
             <span class="meta" style="color: var(--primary-teal)">Launch Squad</span>
             <ul class="list-clean" style="font-size: 0.85rem">
               <li>
@@ -639,6 +599,7 @@
 
           <!-- DISCLOSURE -->
           <div
+            id="tile-hotspot-disclosure"
             class="b-tile span-col-4"
             style="min-height: 0; text-align: center; padding: 1rem 2.5rem"
           >
