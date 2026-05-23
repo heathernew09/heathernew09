@@ -36,3 +36,7 @@ pages_backup_mess/
 *.bak
 dwsync.xml
 _notes/
+
+# Backup / scratch files
+index-backup.html
+*-pre-bauhaus.html
