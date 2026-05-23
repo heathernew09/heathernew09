@@ -233,11 +233,19 @@
         position: absolute;
         transform-origin: center center;
       }
-      .dt-shape.circle { border-radius: 50%; }
-      .dt-shape.square { border-radius: 0; }
+      .dt-shape.circle {
+        border-radius: 50%;
+      }
+      .dt-shape.square {
+        border-radius: 0;
+      }
       @media (max-width: 768px) {
-        .page-hero { grid-template-columns: 1fr; }
-        .hero-visual-block { display: none; }
+        .page-hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual-block {
+          display: none;
+        }
       }
 
       /* ─── BG CLASSES (local override for built CSS) ─────── */
@@ -266,12 +274,23 @@
 
     <header class="page-hero">
       <div class="hero-title-block">
-        <span class="meta" style="font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; display: block">The Zen Garden</span>
+        <span
+          class="meta"
+          style="
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+            display: block;
+          "
+          >The Zen Garden</span
+        >
         <h1 class="section-title hero-title" style="max-width: 20ch">DECISION TREE</h1>
         <div class="subtitle">
           Taking static medical information and beautifying it with technology was the task for this
-          project. Users are guided through the decisions faced when a dog comes into a vet's practice
-          with a dermatology issue. There are options — we present them in an interactive, fun way.
+          project. Users are guided through the decisions faced when a dog comes into a vet's
+          practice with a dermatology issue. There are options — we present them in an interactive,
+          fun way.
         </div>
       </div>
       <div class="hero-visual-block">
@@ -280,7 +299,7 @@
     </header>
 
     <main id="main-content">
-      <div id="tree-partial-container" style="display:none">
+      <div id="tree-partial-container" style="display: none">
         <div id="tree-screen-wrapper">
           <img
             id="tree-decorative-frame"
@@ -329,7 +348,9 @@
           <div class="b-tile bg-lime span-col-1">
             <div>
               <span class="meta">Role</span>
-              <span class="meta" style="display: block; margin-top: 0.25rem">Creative Technologist</span>
+              <span class="meta" style="display: block; margin-top: 0.25rem"
+                >Creative Technologist</span
+              >
             </div>
             <p style="font-weight: 800; font-size: 1.1rem; line-height: 1.8">
               I designed it.<br />I built it.<br />I compiled the assets.
@@ -369,7 +390,11 @@
           </div>
 
           <!-- ROW 3: RESULTS QUOTE + BRANCHES -->
-          <div id="tile-tree-results-quote" class="b-tile bg-yellow span-col-2" style="justify-content: center">
+          <div
+            id="tile-tree-results-quote"
+            class="b-tile bg-yellow span-col-2"
+            style="justify-content: center"
+          >
             <div
               style="
                 font-size: clamp(1.1rem, 2.2vw, 1.8rem);
@@ -430,7 +455,11 @@
           </div>
 
           <!-- BONSAI PHOTO + AI BONSAI -->
-          <div id="tile-tree-ai-bonsai" class="b-tile no-stretch span-col-2" style="background: #f4f4f4">
+          <div
+            id="tile-tree-ai-bonsai"
+            class="b-tile no-stretch span-col-2"
+            style="background: #f4f4f4"
+          >
             <span class="meta">Generative Process</span>
             <img
               src="/assets/tree/screenshot_bonsai_tree_AI_system_2026Mar07_1.png"

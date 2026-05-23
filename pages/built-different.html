@@ -111,11 +111,19 @@
         position: absolute;
         transform-origin: center center;
       }
-      .bd-shape.circle { border-radius: 50%; }
-      .bd-shape.square { border-radius: 0; }
+      .bd-shape.circle {
+        border-radius: 50%;
+      }
+      .bd-shape.square {
+        border-radius: 0;
+      }
       @media (max-width: 768px) {
-        .page-hero { grid-template-columns: 1fr; }
-        .hero-visual-block { display: none; }
+        .page-hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual-block {
+          display: none;
+        }
       }
 
       /* ─── BAUHAUS GRID ─────────────────────────────────── */
@@ -460,7 +468,7 @@
           </div>
 
           <!-- LEFT COLUMN: intro-text grows to fill, cro-quote pinned to bottom -->
-          <div class="span-col-2 span-row-2" style="display: flex; flex-direction: column;">
+          <div class="span-col-2 span-row-2" style="display: flex; flex-direction: column">
             <div
               id="tile-built-intro-text"
               class="b-tile"
@@ -508,11 +516,16 @@
                 </p>
               </div>
             </div>
-            <div id="tile-built-cro-quote" class="b-tile bg-dark-gray" style="--quote-color: var(--accent-lime); min-height: 0">
+            <div
+              id="tile-built-cro-quote"
+              class="b-tile bg-dark-gray"
+              style="--quote-color: var(--accent-lime); min-height: 0"
+            >
               <div class="quote-icon top"></div>
               <div class="quote-text">
                 "The website proved to be a valuable co-pilot to my engagement! I know we want to do
-                more, but it’s just as exciting to celebrate the moments of impression along the way!"
+                more, but it’s just as exciting to celebrate the moments of impression along the
+                way!"
               </div>
               <div class="quote-author">Heidi West, CRO MERGE</div>
               <div class="quote-icon bottom"></div>
@@ -520,7 +533,11 @@
           </div>
 
           <!-- RIGHT COLUMN: interactive demo spans full height -->
-          <div id="tile-built-interactive-demo" class="b-tile span-col-2 span-row-2" style="padding: 0">
+          <div
+            id="tile-built-interactive-demo"
+            class="b-tile span-col-2 span-row-2"
+            style="padding: 0"
+          >
             <section id="section-mergeworld-container">
               <div id="container-mergeworld">
                 <load src="../src/partials/section-mergeworld.html" />
@@ -536,7 +553,11 @@
           >
             <img src="/assets/404/search-desktop.png" alt="404 page" class="web-thumb-tilted" />
           </div>
-          <div id="tile-built-404-text" class="b-tile span-col-404-text bg-white" style="justify-content: center">
+          <div
+            id="tile-built-404-text"
+            class="b-tile span-col-404-text bg-white"
+            style="justify-content: center"
+          >
             <span class="meta">Innovation</span>
             <h2>Even our errors are Built Different.</h2>
             <p style="font-size: 1.2rem; line-height: 1.6">
@@ -573,7 +594,11 @@
               class="tshirt-render"
             />
           </div>
-          <div id="tile-built-extending-brand" class="b-tile bg-orange span-col-2" style="justify-content: flex-start; gap: 3rem">
+          <div
+            id="tile-built-extending-brand"
+            class="b-tile bg-orange span-col-2"
+            style="justify-content: flex-start; gap: 3rem"
+          >
             <div>
               <span class="meta">Cultural Branding</span>
               <h2>Extending the Brand System</h2>
@@ -605,7 +630,10 @@
                   simple symbolism, M to tie us together. The interaction below became a quick idea
                   exploration to show them to you. It is using physics-based interaction models that
                   I feel conceptually fit our ecosystem.
-                  <strong>Click the logo coins below to interact. Hold to move. Mouse to the far right to keep scrolling down the page.</strong>
+                  <strong
+                    >Click the logo coins below to interact. Hold to move. Mouse to the far right to
+                    keep scrolling down the page.</strong
+                  >
                 </p>
               </div>
               <div id="erg-canvas-container"></div>
@@ -613,7 +641,11 @@
           </div>
 
           <!-- ROW 7: SECONDARY TESTIMONIALS (2 COLS) -->
-          <div id="tile-built-maja-quote" class="b-tile bg-dark-gray span-col-2" style="--quote-color: var(--accent-lime)">
+          <div
+            id="tile-built-maja-quote"
+            class="b-tile bg-dark-gray span-col-2"
+            style="--quote-color: var(--accent-lime)"
+          >
             <div class="quote-icon top"></div>
             <div class="quote-text">
               "Heather - Your ability to jump in and take feedback with grace... has been invaluable
@@ -622,7 +654,11 @@
             <div class="quote-author">Maja Cyrulik, Sr. Director, Digital Engineering</div>
             <div class="quote-icon bottom"></div>
           </div>
-          <div id="tile-built-katie-quote" class="b-tile bg-dark-gray span-col-2" style="--quote-color: var(--accent-lime)">
+          <div
+            id="tile-built-katie-quote"
+            class="b-tile bg-dark-gray span-col-2"
+            style="--quote-color: var(--accent-lime)"
+          >
             <div class="quote-icon top"></div>
             <div class="quote-text">
               "This has been an incredible team to work with. The vision was matched by the
@@ -633,7 +669,11 @@
           </div>
 
           <!-- ROW 8: CREDITS SOPHISTICATED -->
-          <div id="tile-built-credits" class="b-tile bg-primary-teal span-col-4" style="padding: 4rem 2.5rem">
+          <div
+            id="tile-built-credits"
+            class="b-tile bg-primary-teal span-col-4"
+            style="padding: 4rem 2.5rem"
+          >
             <span class="meta" style="color: var(--accent-lime); margin-bottom: 2rem"
               >Collaborative Excellence &mdash; The Launch Squad</span
             >
@@ -658,9 +698,7 @@
                   Core Team
                 </h4>
                 <ul class="list-clean" style="font-weight: 500">
-                  <li>
-                    <strong style="font-weight: 800">Heather New:</strong> UI Designer
-                  </li>
+                  <li><strong style="font-weight: 800">Heather New:</strong> UI Designer</li>
                   <li>
                     <strong style="font-weight: 800">Austin Melendez:</strong> Dev Engineering
                   </li>
@@ -742,11 +780,20 @@
       document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('bd-grid-container');
 
-        const colors = ['#1BB1A5', '#247B82', '#F6B352', '#F66C0F', '#B2F81D', '#E0E0E0', '#CCCCCC'];
+        const colors = [
+          '#1BB1A5',
+          '#247B82',
+          '#F6B352',
+          '#F66C0F',
+          '#B2F81D',
+          '#E0E0E0',
+          '#CCCCCC',
+        ];
         const sizeScales = [0.15, 0.35, 0.6, 0.9, 1.2];
 
         let gridItems = [];
-        let cols = 0, rows = 0;
+        let cols = 0,
+          rows = 0;
         const radius = 180;
         const shapeSize = 25;
         const gridGap = 15;
@@ -861,7 +908,12 @@
               scale: pulse,
               duration: 0.4,
               ease: 'power2.out',
-              onComplete: () => gsap.to(item.el, { scale: item.baseScale, duration: 0.8, ease: 'elastic.out(1, 0.4)' }),
+              onComplete: () =>
+                gsap.to(item.el, {
+                  scale: item.baseScale,
+                  duration: 0.8,
+                  ease: 'elastic.out(1, 0.4)',
+                }),
             });
           });
         });

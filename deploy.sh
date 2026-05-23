@@ -49,7 +49,7 @@ fi
 
 echo "🌐 Starting local preview server for verification..."
 # Run preview with host flag (exposes on network for phone testing too)
-npx vite preview --host --port 4173 > /tmp/vite_preview_output.txt 2>&1 &
+npx vite preview --host --port 8888 > /tmp/vite_preview_output.txt 2>&1 &
 PREVIEW_PID=$!
 
 # Wait for server to initialize
@@ -58,7 +58,7 @@ sleep 2
 # Extract the local + network URLs from vite output
 LOCAL_URL=$(grep -o 'http://localhost:[0-9]*' /tmp/vite_preview_output.txt | head -1)
 NETWORK_URL=$(grep -o 'http://[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*:[0-9]*' /tmp/vite_preview_output.txt | head -1)
-LOCAL_URL=${LOCAL_URL:-"http://localhost:4173"}
+LOCAL_URL=${LOCAL_URL:-"http://localhost:8888"}
 
 echo ""
 echo "  Desktop: $LOCAL_URL"
