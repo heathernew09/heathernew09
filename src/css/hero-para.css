@@ -100,12 +100,12 @@
   background-color: var(--lime);
   color: var(--text-dark);
 }
-.bg-light-grey {
-  background-color: var(--light-grey);
+.bg-light-gray {
+  background-color: var(--light-gray);
   color: var(--text-dark);
 }
-.bg-mid-grey {
-  background-color: var(--mid-grey);
+.bg-mid-gray {
+  background-color: var(--mid-gray);
   color: var(--text-dark);
 }
 

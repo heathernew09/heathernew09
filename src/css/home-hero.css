@@ -727,7 +727,7 @@ body.galaxy-mode-active .accent-2 path {
 }
 
 .icon[data-id='sound'].muted svg path {
-  fill: var(--medium-gray);
+  fill: var(--mid-gray);
   opacity: 0.5;
 }
 

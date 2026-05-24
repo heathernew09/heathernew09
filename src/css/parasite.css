@@ -15,7 +15,7 @@
 .hero-sub {
   font-size: 1.953rem;
   font-weight: 600;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin-bottom: 0.5rem;
 }
 
@@ -121,7 +121,7 @@ small {
 
 .caption {
   text-align: center;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin-top: 1rem;
 }
 
@@ -163,7 +163,7 @@ small {
 
 .evo-step p {
   font-size: 1rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
 }
 
 /* ============================================
@@ -221,7 +221,7 @@ small {
 
 .char-card p {
   font-size: 1rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin-bottom: 1rem;
 }
 
@@ -277,7 +277,7 @@ small {
 
 .metric p {
   font-size: 1rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin: 0;
 }
 
@@ -549,7 +549,7 @@ blockquote {
 
 .result-card p {
   font-size: 1rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin: 0;
 }
 
@@ -682,7 +682,7 @@ blockquote {
 
 .proj-link p {
   font-size: 1rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   padding: 0 2rem;
   margin: 0 0 1rem 0;
 }

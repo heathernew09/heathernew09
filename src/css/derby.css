@@ -134,7 +134,7 @@ p.subtitle {
 .derby-container input {
   width: 100%;
   padding: 14px 16px;
-  border: 3px solid var(--medium-gray);
+  border: 3px solid var(--mid-gray);
   background: var(--light-gray);
   color: var(--dark-gray);
   font-size: 1.1rem;
@@ -179,7 +179,7 @@ p.subtitle {
 .result-area {
   margin-top: 40px;
   padding-top: 30px;
-  border-top: 4px solid var(--medium-gray);
+  border-top: 4px solid var(--mid-gray);
   display: none;
 }
 
@@ -310,7 +310,7 @@ p.subtitle {
 }
 
 .btn-outline-derby:hover {
-  background: var(--medium-gray);
+  background: var(--mid-gray);
   border-style: solid;
   color: var(--white);
 }

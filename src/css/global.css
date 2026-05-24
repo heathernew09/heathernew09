@@ -14,10 +14,8 @@
   --yellow: #f6b352;
   --baby-blue: #e8f5f7;
   --dark-gray: #333333;
-  --medium-gray: #666666;
-  --mid-grey: #cccccc;
-  --light-gray: #f5f5f5;
-  --light-grey: #f5f5f5;
+  --mid-gray: #666666;
+  --light-gray: #e0e0e0;
   --white: #ffffff;
   --text-dark: #111111;
 
@@ -60,7 +58,7 @@ small {
 
 .caption {
   text-align: center;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin-top: 1rem;
 }
 
@@ -572,7 +570,7 @@ a:hover {
 
 .build-info {
   font-size: 0.75rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin-top: 1rem;
   opacity: 0.7;
   font-family: monospace;
@@ -751,7 +749,7 @@ a.skip-to-content {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
 }
 
 .meta-item .value {
@@ -934,7 +932,7 @@ RESULTS SECTION
 
 .result-card p {
   font-size: 1rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin: 0;
 }
 /* ============================================
@@ -1130,14 +1128,14 @@ RESULTS SECTION
   background-color: var(--tile-bg);
   color: var(--tile-text);
 }
-.bg-mid-grey {
-  --tile-bg: var(--mid-grey);
-  --tile-text: var(--text-dark);
+.bg-mid-gray {
+  --tile-bg: var(--mid-gray);
+  --tile-text: #fff;
   background-color: var(--tile-bg);
   color: var(--tile-text);
 }
-.bg-light-grey {
-  --tile-bg: var(--light-grey);
+.bg-light-gray {
+  --tile-bg: var(--light-gray);
   --tile-text: var(--text-dark);
   background-color: var(--tile-bg);
   color: var(--tile-text);
@@ -1151,18 +1149,6 @@ RESULTS SECTION
 .bg-dark-gray {
   --tile-bg: var(--dark-gray);
   --tile-text: #fff;
-  background-color: var(--tile-bg);
-  color: var(--tile-text);
-}
-.bg-medium-gray {
-  --tile-bg: var(--medium-gray);
-  --tile-text: #fff;
-  background-color: var(--tile-bg);
-  color: var(--tile-text);
-}
-.bg-light-gray {
-  --tile-bg: var(--light-gray);
-  --tile-text: var(--dark-gray);
   background-color: var(--tile-bg);
   color: var(--tile-text);
 }
@@ -1206,7 +1192,7 @@ RESULTS SECTION
   margin-bottom: 0.75rem;
   margin-left: 0; /* Reset global li margin */
   line-height: 1.5;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
 }
 
 .credit-col li strong {
@@ -1305,7 +1291,7 @@ RESULTS SECTION
 
 .metric p {
   font-size: 1rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin: 0;
 }
 

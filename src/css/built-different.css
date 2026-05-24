@@ -943,7 +943,7 @@ body.galaxy-mode-active .blur-orb {
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
 }
 
 .popup-close {
@@ -954,7 +954,7 @@ body.galaxy-mode-active .blur-orb {
   border: none;
   font-size: 1.8rem;
   font-weight: 300;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   cursor: pointer;
   line-height: 1;
   transition:

@@ -47,8 +47,9 @@
         --yellow: #f6b352;
         --orange: #f66c0f;
         --lime: #b2f81d;
-        --light-grey: #e0e0e0;
-        --mid-grey: #cccccc;
+        --light-gray: #e0e0e0;
+        --mid-gray: #666666;
+        --white: #ffffff;
       }
 
       * {
@@ -310,14 +311,14 @@
         background-color: var(--tile-bg);
         color: var(--tile-text);
       }
-      .bg-light-grey {
-        --tile-bg: var(--light-grey);
+      .bg-light-gray {
+        --tile-bg: var(--light-gray);
         --tile-text: var(--text-dark);
         background-color: var(--tile-bg);
         color: var(--tile-text);
       }
-      .bg-mid-grey {
-        --tile-bg: var(--mid-grey);
+      .bg-mid-gray {
+        --tile-bg: var(--mid-gray);
         --tile-text: var(--text-dark);
         background-color: var(--tile-bg);
         color: var(--tile-text);
@@ -548,7 +549,7 @@
     <main class="portfolio-section">
       <div class="bauhaus-grid">
         <!-- Row 1 -->
-        <div id="tile-home-parasite-intro" class="b-tile span-col-2 bg-light-grey hover-invert">
+        <div id="tile-home-parasite-intro" class="b-tile span-col-2 bg-light-gray hover-invert">
           <div>
             <span class="meta">Web-Based AR Experience</span>
             <h2>Parasite Hunter AR</h2>
@@ -657,7 +658,7 @@
           >
         </div>
 
-        <div id="tile-home-hotspot-intro" class="b-tile bg-light-grey span-col-2 hover-invert">
+        <div id="tile-home-hotspot-intro" class="b-tile bg-light-gray span-col-2 hover-invert">
           <div>
             <span class="meta">Galliprant Booth Games</span>
             <h2>Wall of Flame</h2>
@@ -669,9 +670,8 @@
           <a href="/pages/hotspot.html" class="arrow-link">View Project <span>→</span></a>
         </div>
 
-        <a
+        <div
           id="tile-home-red-lens"
-          href="/pages/elanco.html"
           class="b-tile img-text"
           style="padding: 0"
         >
@@ -684,7 +684,7 @@
             <h2 style="font-size: 1.25rem">Can you decode the message?</h2>
             <span class="meta">Secret Message</span>
           </div>
-        </a>
+        </div>
 
         <div id="tile-home-question-mark" class="b-tile bg-white">
           <img
@@ -734,7 +734,7 @@
           />
         </div>
 
-        <div id="tile-home-hotspot-audio" class="b-tile bg-light-grey hot-spot-audio">
+        <div id="tile-home-hotspot-audio" class="b-tile bg-light-gray hot-spot-audio">
           <h3>Hot Spot Audio Bit</h3>
 
           <audio id="enflameAudio" src="/assets/hotspot/audio/enflame.mp3" preload="auto"></audio>
@@ -809,7 +809,7 @@
           >
         </div>
 
-        <div id="tile-home-merge-erg" class="b-tile img-tile bg-mid-grey">
+        <div id="tile-home-merge-erg" class="b-tile img-tile bg-mid-gray">
           <img
             src="/assets/merge-erg-logo-design-C-VZaCKA-C-VZaCKA.png"
             alt="MERGE ERG Logo Design"
@@ -915,7 +915,7 @@
           <a href="/pages/studio-roadshow.html" class="arrow-link">View Project <span>→</span></a>
         </div>
 
-        <div id="tile-home-swatch-img" class="b-tile img-tile bg-mid-grey">
+        <div id="tile-home-swatch-img" class="b-tile img-tile bg-mid-gray">
           <a href="/pages/studio-roadshow.html"
             ><img
               src="/assets/studio-roadshow-Rm6eGY1z-Rm6eGY1z.png"
@@ -1273,7 +1273,7 @@
         const _css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
         const testimonialThemes = [
           { bg: _css('--dark-teal'), text: _css('--white'), quote: _css('--lime') },
-          { bg: _css('--medium-gray'), text: _css('--white'), quote: _css('--lime') },
+          { bg: _css('--mid-gray'), text: _css('--white'), quote: _css('--lime') },
           { bg: _css('--yellow'), text: _css('--text-dark'), quote: _css('--teal') },
           { bg: _css('--light-gray'), text: _css('--text-dark'), quote: _css('--orange') },
           { bg: _css('--teal'), text: _css('--white'), quote: _css('--yellow') },
