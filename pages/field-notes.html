@@ -41,7 +41,11 @@
         --mid-grey: #cccccc;
       }
 
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
       body {
         background-color: var(--bg-color);
@@ -102,8 +106,12 @@
         cursor: pointer;
       }
 
-      .fn-shape.circle { border-radius: 50%; }
-      .fn-shape.square { border-radius: 0%; }
+      .fn-shape.circle {
+        border-radius: 50%;
+      }
+      .fn-shape.square {
+        border-radius: 0%;
+      }
 
       .section-title {
         font-size: clamp(3rem, 6vw, 6rem);
@@ -159,10 +167,18 @@
         justify-content: space-between;
       }
 
-      .span-col-2 { grid-column: span 2; }
-      .span-col-3 { grid-column: span 3; }
-      .span-col-4 { grid-column: span 4; }
-      .span-row-2 { grid-row: span 2; }
+      .span-col-2 {
+        grid-column: span 2;
+      }
+      .span-col-3 {
+        grid-column: span 3;
+      }
+      .span-col-4 {
+        grid-column: span 4;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
 
       .img-tile {
         padding: 0;
@@ -203,9 +219,18 @@
         width: fit-content;
       }
 
-      .status-live { background-color: var(--lime); color: var(--text-dark); }
-      .status-progress { background-color: var(--yellow); color: var(--text-dark); }
-      .status-planned { background-color: var(--light-grey); color: var(--text-dark); }
+      .status-live {
+        background-color: var(--lime);
+        color: var(--text-dark);
+      }
+      .status-progress {
+        background-color: var(--yellow);
+        color: var(--text-dark);
+      }
+      .status-planned {
+        background-color: var(--light-grey);
+        color: var(--text-dark);
+      }
 
       .arrow-link {
         display: inline-flex;
@@ -220,27 +245,70 @@
         display: inline-block;
         transition: transform 0.3s ease;
       }
-      .b-tile:hover .arrow-link span { transform: translateX(8px); }
+      .b-tile:hover .arrow-link span {
+        transform: translateX(8px);
+      }
 
-      .bg-dark-teal { background-color: var(--dark-teal); color: #fff; }
-      .bg-teal { background-color: var(--teal); color: #fff; }
-      .bg-lime { background-color: var(--lime); color: var(--text-dark); }
-      .bg-yellow { background-color: var(--yellow); color: var(--text-dark); }
-      .bg-orange { background-color: var(--orange); color: #fff; }
-      .bg-light-grey { background-color: var(--light-grey); color: var(--text-dark); }
-      .bg-mid-grey { background-color: var(--mid-grey); color: var(--text-dark); }
-      .bg-white { background-color: #fff; color: var(--text-dark); }
+      .bg-dark-teal {
+        background-color: var(--dark-teal);
+        color: #fff;
+      }
+      .bg-teal {
+        background-color: var(--teal);
+        color: #fff;
+      }
+      .bg-lime {
+        background-color: var(--lime);
+        color: var(--text-dark);
+      }
+      .bg-yellow {
+        background-color: var(--yellow);
+        color: var(--text-dark);
+      }
+      .bg-orange {
+        background-color: var(--orange);
+        color: #fff;
+      }
+      .bg-light-grey {
+        background-color: var(--light-grey);
+        color: var(--text-dark);
+      }
+      .bg-mid-grey {
+        background-color: var(--mid-grey);
+        color: var(--text-dark);
+      }
+      .bg-white {
+        background-color: #fff;
+        color: var(--text-dark);
+      }
 
       @media (max-width: 900px) {
-        .bauhaus-grid { grid-template-columns: repeat(2, 1fr); }
-        .span-col-3, .span-col-4 { grid-column: span 2; }
-        .page-hero { grid-template-columns: 1fr; }
-        .hero-visual-block { display: none; }
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 2;
+        }
+        .page-hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-visual-block {
+          display: none;
+        }
       }
       @media (max-width: 600px) {
-        .bauhaus-grid { grid-template-columns: 1fr; }
-        .span-col-2, .span-col-3, .span-col-4 { grid-column: span 1; }
-        .hero-title-block { padding: 2rem; }
+        .bauhaus-grid {
+          grid-template-columns: 1fr;
+        }
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 1;
+        }
+        .hero-title-block {
+          padding: 2rem;
+        }
       }
     </style>
   </head>
@@ -251,12 +319,14 @@
     </div>
   </header>
   <body>
-
     <header class="page-hero">
       <div class="hero-title-block">
         <span class="meta">AI Projects</span>
         <h1 class="section-title">Field Notes</h1>
-        <p class="subtitle">A living document. Agents, hardware builds, and automation tools — what they do, what problem they solve, and what's still cooking.</p>
+        <p class="subtitle">
+          A living document. Agents, hardware builds, and automation tools — what they do, what
+          problem they solve, and what's still cooking.
+        </p>
       </div>
       <div class="hero-visual-block">
         <div id="fn-grid-container"></div>
@@ -265,36 +335,50 @@
 
     <main class="portfolio-section">
       <div class="bauhaus-grid">
-
         <!-- Section: Agents -->
         <div id="fn-agents-header" class="b-tile bg-dark-teal span-col-2">
-          <span class="meta" style="color: var(--lime); font-size: 1.2rem;">NEO Ecosystem</span>
-          <p style="max-width: 60ch; opacity: 0.85; margin-top: 0.75rem">I'm currently building an Ecosystem using Claude Code and Antigravity. I've found a variety of skill files that have helped build this site, and compile ideas rapidly.</p>
+          <span class="meta" style="color: var(--lime); font-size: 1.2rem">NEO Ecosystem</span>
+          <p style="max-width: 60ch; opacity: 0.85; margin-top: 0.75rem">
+            I'm currently building an Ecosystem using Claude Code and Antigravity. I've found a
+            variety of skill files that have helped build this site, and compile ideas rapidly.
+          </p>
         </div>
 
         <!-- Ecosystem Dashboard -->
         <div id="fn-ecosystem-photo" class="b-tile img-tile span-col-2">
-          <img src="/assets/ecosystem/neo-ecosystem-dashboard.png" alt="NEO Ecosystem dashboard at ai.heather.codes showing agent avatars" />
+          <img
+            src="/assets/ecosystem/neo-ecosystem-dashboard.png"
+            alt="NEO Ecosystem dashboard at ai.heather.codes showing agent avatars"
+          />
         </div>
 
         <!-- Trudy -->
         <div id="fn-trudy" class="b-tile bg-white span-col-2">
           <span class="meta">Household Orchestrator</span>
           <h2>Trudy</h2>
-          <p>The hub. Trudy runs the household AI system — routing tasks, sending morning broadcasts, and keeping everything talking to everything else via iMessage.</p>
+          <p>
+            The hub. Trudy runs the household AI system — routing tasks, sending morning broadcasts,
+            and keeping everything talking to everything else via iMessage.
+          </p>
           <div class="status-tag status-live" style="margin-top: 1.5rem">Live</div>
         </div>
 
         <!-- Trudy Photo -->
         <div id="fn-trudy-photo" class="b-tile img-tile span-col-2">
-          <img src="/assets/ecosystem/trudy-log.png" alt="Trudy log showing agent routing — Paula, Radia, Billie, Trudy" />
+          <img
+            src="/assets/ecosystem/trudy-log.png"
+            alt="Trudy log showing agent routing — Paula, Radia, Billie, Trudy"
+          />
         </div>
 
         <!-- Radia -->
         <div id="fn-radia" class="b-tile bg-teal span-col-2">
           <span class="meta">Web Agent</span>
           <h2>Radia</h2>
-          <p>Handles web builds across heathernew.com and inspectorjo.com. Knows the codebase, enforces the deploy workflow, keeps Figma and code in sync.</p>
+          <p>
+            Handles web builds across heathernew.com and inspectorjo.com. Knows the codebase,
+            enforces the deploy workflow, keeps Figma and code in sync.
+          </p>
           <div class="status-tag status-live" style="margin-top: 1.5rem">Live</div>
         </div>
 
@@ -302,7 +386,11 @@
         <div id="fn-paula" class="b-tile bg-dark-teal span-col-2">
           <span class="meta">Creative Director & Brand Mentor</span>
           <h2>Paula</h2>
-          <p>Modeled after Paula Scher. Invoke for brainstorming, creative direction, portfolio decisions, and career positioning. She's a truth-teller — blunt without being cruel, and genuinely excited when something has the possibility of being terrific.</p>
+          <p>
+            Modeled after Paula Scher. Invoke for brainstorming, creative direction, portfolio
+            decisions, and career positioning. She's a truth-teller — blunt without being cruel, and
+            genuinely excited when something has the possibility of being terrific.
+          </p>
           <div class="status-tag status-live" style="margin-top: 1.5rem">Live</div>
         </div>
 
@@ -310,95 +398,170 @@
         <div id="fn-grace" class="b-tile bg-lime span-col-2">
           <span class="meta">Daily Creative</span>
           <h2>Grace</h2>
-          <p>Every morning Grace draws something, solves something, tells a story — generated through ComfyUI + Ollama. Delivered at 6:45am via Telegram.</p>
+          <p>
+            Every morning Grace draws something, solves something, tells a story — generated through
+            ComfyUI + Ollama. Delivered at 6:45am via Telegram.
+          </p>
           <div class="status-tag status-live" style="margin-top: 1.5rem">Live</div>
         </div>
 
         <!-- Grace Photo -->
         <div id="fn-grace-photo" class="b-tile img-tile span-col-2">
-          <img src="/assets/ecosystem/grace-log.png" alt="Grace daily log showing drawing challenge, Paula feedback, and tomorrow's prompt" />
+          <img
+            src="/assets/ecosystem/grace-log.png"
+            alt="Grace daily log showing drawing challenge, Paula feedback, and tomorrow's prompt"
+          />
         </div>
 
         <!-- Mel -->
         <div id="fn-mel" class="b-tile bg-yellow span-col-4">
           <span class="meta">Meal Planning</span>
           <h2>Mel</h2>
-          <p>111 recipes deep and growing. Mel runs the household meal-plan session — pulling from a curated recipe library and building weekly plans on demand. What's really cool is that Mel pushes the grocery list directly to a shared reminder list between my wife and I. If an ingredient is already in our pantry, it doesn't get added. Repeat ingredients across multiple recipes get combined automatically — no duplicates, no guesswork at the store.<br><br>I keep learning more about what this can do. I hope to add some automation and potentially delivery integration. It may also become a locally hosted touchscreen in the kitchen so I can pull up the recipe digitally — right now we keep paper copies in alphabetical order that we pull when it's time to cook. So far it's been a wonderful tool, helping us save money while enjoying meals we actually love.</p>
+          <p>
+            111 recipes deep and growing. Mel runs the household meal-plan session — pulling from a
+            curated recipe library and building weekly plans on demand. What's really cool is that
+            Mel pushes the grocery list directly to a shared reminder list between my wife and I. If
+            an ingredient is already in our pantry, it doesn't get added. Repeat ingredients across
+            multiple recipes get combined automatically — no duplicates, no guesswork at the
+            store.<br /><br />I keep learning more about what this can do. I hope to add some
+            automation and potentially delivery integration. It may also become a locally hosted
+            touchscreen in the kitchen so I can pull up the recipe digitally — right now we keep
+            paper copies in alphabetical order that we pull when it's time to cook. So far it's been
+            a wonderful tool, helping us save money while enjoying meals we actually love.
+          </p>
           <div class="status-tag status-live" style="margin-top: 1.5rem">Live</div>
         </div>
 
         <!-- Mel Dashboard -->
         <div id="fn-mel-photo" class="b-tile img-tile span-col-4">
-          <img src="/assets/mel/mel-dashboard.png" alt="Mel meal planning dashboard showing weekly plan, recipe library, and grocery list" />
+          <img
+            src="/assets/mel/mel-dashboard.png"
+            alt="Mel meal planning dashboard showing weekly plan, recipe library, and grocery list"
+          />
         </div>
 
         <!-- Mercury -->
         <div id="fn-mercury" class="b-tile bg-light-grey span-col-2">
           <span class="meta">Digital Scout</span>
           <h2>Mercury</h2>
-          <p>Runs reconnaissance missions between 3–4am while the household sleeps. Scans for infrastructure improvements, maker-space innovations, and creative signal. Reports findings to Trudy before the morning briefing — never speaks directly to anyone else.</p>
+          <p>
+            Runs reconnaissance missions between 3–4am while the household sleeps. Scans for
+            infrastructure improvements, maker-space innovations, and creative signal. Reports
+            findings to Trudy before the morning briefing — never speaks directly to anyone else.
+          </p>
           <div class="status-tag status-live" style="margin-top: 1.5rem">Live</div>
         </div>
 
         <!-- Mercury Photo -->
         <div id="fn-mercury-photo" class="b-tile img-tile span-col-2">
-          <img src="/assets/ecosystem/mercury-log.png" alt="Mercury log showing scouting status and hardware build findings" />
+          <img
+            src="/assets/ecosystem/mercury-log.png"
+            alt="Mercury log showing scouting status and hardware build findings"
+          />
         </div>
 
         <!-- Section: Hardware -->
-        <div id="fn-hardware-header" class="b-tile bg-teal span-col-4" style="min-height: 120px; justify-content: center">
-          <span class="meta" style="color: var(--lime); font-size: 1.2rem; margin: 0">Hardware Builds</span>
+        <div
+          id="fn-hardware-header"
+          class="b-tile bg-teal span-col-4"
+          style="min-height: 120px; justify-content: center"
+        >
+          <span class="meta" style="color: var(--lime); font-size: 1.2rem; margin: 0"
+            >Hardware Builds</span
+          >
         </div>
 
         <!-- Inspector Jo Thermal -->
         <div id="fn-thermal" class="b-tile bg-light-grey span-col-4">
           <span class="meta">Pi 5 + PureThermal Mini Pro</span>
           <h2>Thermal Timelapse</h2>
-          <p>Overnight heat-loss timelapse for roof inspections. Pi 5 paired with a PureThermal Mini Pro and Pi Cam 3. Hardware mostly in hand — software in progress.</p>
+          <p>
+            Overnight heat-loss timelapse for roof inspections. Pi 5 paired with a PureThermal Mini
+            Pro and Pi Cam 3. Hardware mostly in hand — software in progress.
+          </p>
           <div class="status-tag status-progress" style="margin-top: 1.5rem">In Progress</div>
         </div>
 
         <!-- Thermal Photo -->
         <div id="fn-thermal-photo" class="b-tile img-tile span-col-2">
-          <img src="/assets/thermal/therma-lego-front.jpg" alt="Pi 5 with thermal camera module in LEGO prototype housing" />
+          <img
+            src="/assets/thermal/therma-lego-front.jpg"
+            alt="Pi 5 with thermal camera module in LEGO prototype housing"
+          />
         </div>
 
         <!-- Thermal Software Photo -->
         <div id="fn-thermal-photo-b" class="b-tile img-tile span-col-2" style="background: #000">
-          <img src="/assets/thermal/thermal-software.png" alt="Inspector Jo thermal recording software — visible and thermal camera feeds side by side with session data" style="object-fit: contain" />
+          <img
+            src="/assets/thermal/thermal-software.png"
+            alt="Inspector Jo thermal recording software — visible and thermal camera feeds side by side with session data"
+            style="object-fit: contain"
+          />
         </div>
 
         <!-- NuTone: forced to new row -->
-        <div id="fn-nutone-main" class="b-tile bg-orange span-col-2" style="grid-column: 1 / span 2">
+        <div
+          id="fn-nutone-main"
+          class="b-tile bg-orange span-col-2"
+          style="grid-column: 1 / span 2"
+        >
           <span class="meta">Touchscreen Kiosk</span>
           <h2>NuTone</h2>
-          <p>A custom touchscreen music kiosk for the home — built around Plex, local music, and the Billie agent. Every feature is now programmed. What's left is physical: model the case, print it, install it.</p>
+          <p>
+            A custom touchscreen music kiosk for the home — built around Plex, local music, and the
+            Billie agent. Every feature is now programmed. What's left is physical: model the case,
+            print it, install it.
+          </p>
           <div class="status-tag status-progress" style="margin-top: 1.5rem">In Progress</div>
         </div>
 
         <!-- NuTone: Photo A -->
         <div id="fn-nutone-photo-a" class="b-tile img-tile span-col-2">
-          <img src="/assets/nutone/nutone-original.jpg" alt="Inside a vintage NuTone intercom unit" />
+          <img
+            src="/assets/nutone/nutone-original.jpg"
+            alt="Inside a vintage NuTone intercom unit"
+          />
         </div>
 
         <!-- NuTone: Origin -->
         <div id="fn-nutone-origin" class="b-tile bg-white span-col-2">
           <span class="meta">Origin</span>
           <h2>How It Started</h2>
-          <p>The NuTone name comes from the vintage intercom brand — the kind of whole-home audio system that was built into houses in the 60s and 70s. The idea: bring that concept back, but with modern hardware and a touchscreen interface built from scratch. No subscription. No cloud dependency. Just music, on demand, in the room you're in.</p>
+          <p>
+            The NuTone name comes from the vintage intercom brand — the kind of whole-home audio
+            system that was built into houses in the 60s and 70s. The idea: bring that concept back,
+            but with modern hardware and a touchscreen interface built from scratch. No
+            subscription. No cloud dependency. Just music, on demand, in the room you're in.
+          </p>
         </div>
 
         <!-- NuTone: Photo B -->
         <div id="fn-nutone-photo" class="b-tile img-tile span-col-2">
-          <img src="/assets/nutone/nutone-pi-testing.jpg" alt="NuTone Pi build with touchscreen UI running" />
+          <img
+            src="/assets/nutone/nutone-pi-testing.jpg"
+            alt="NuTone Pi build with touchscreen UI running"
+          />
         </div>
 
         <!-- NuTone: Tech Stack -->
         <div id="fn-nutone-stack" class="b-tile bg-mid-grey span-col-2">
           <span class="meta">Tech Stack</span>
           <h2>The Build</h2>
-          <p style="margin-bottom: 1rem">Raspberry Pi running a custom touchscreen interface. Plex Media Server handles the local library. The Billie agent connects the dots — taking requests, queuing tracks, managing playback across rooms.</p>
-          <ul style="list-style: none; font-size: 0.9rem; font-weight: 700; line-height: 2; text-transform: uppercase; letter-spacing: 0.05em">
+          <p style="margin-bottom: 1rem">
+            Raspberry Pi running a custom touchscreen interface. Plex Media Server handles the local
+            library. The Billie agent connects the dots — taking requests, queuing tracks, managing
+            playback across rooms.
+          </p>
+          <ul
+            style="
+              list-style: none;
+              font-size: 0.9rem;
+              font-weight: 700;
+              line-height: 2;
+              text-transform: uppercase;
+              letter-spacing: 0.05em;
+            "
+          >
             <li>Raspberry Pi</li>
             <li>Plex Media Server</li>
             <li>Billie Agent</li>
@@ -411,22 +574,42 @@
         <div id="fn-nutone-next" class="b-tile bg-teal span-col-2">
           <span class="meta" style="color: var(--lime)">What's Next</span>
           <h2>Case → Print → Install</h2>
-          <p style="opacity: 0.85">All the desired features are programmed and working. The remaining work is entirely physical: design a custom enclosure in CAD, model it, 3D print it on the Bambu, and do the final wall installation. The software is done — now it needs a body. Take a look at the concept of what the final install might look like. →</p>
-          <div class="status-tag status-progress" style="margin-top: 1.5rem; background: var(--yellow)">Next: 3D Print</div>
+          <p style="opacity: 0.85">
+            All the desired features are programmed and working. The remaining work is entirely
+            physical: design a custom enclosure in CAD, model it, 3D print it on the Bambu, and do
+            the final wall installation. The software is done — now it needs a body. Take a look at
+            the concept of what the final install might look like. →
+          </p>
+          <div
+            class="status-tag status-progress"
+            style="margin-top: 1.5rem; background: var(--yellow)"
+          >
+            Next: 3D Print
+          </div>
         </div>
 
         <!-- NuTone: Photo C -->
         <div id="fn-nutone-photo-b" class="b-tile img-tile span-col-2">
-          <img src="/assets/nutone/nutone-cardboard.jpg" alt="NuTone cardboard prototype mounted above original NuTone intercom on wall" />
+          <img
+            src="/assets/nutone/nutone-cardboard.jpg"
+            alt="NuTone cardboard prototype mounted above original NuTone intercom on wall"
+          />
         </div>
 
         <!-- NuTone: Photo C -->
         <div id="fn-nutone-photo-c" class="b-tile img-tile span-col-2">
-          <img src="/assets/nutone/nutone-concept.jpg" alt="NuTone concept render — touchscreen in original enclosure on wall" />
+          <img
+            src="/assets/nutone/nutone-concept.jpg"
+            alt="NuTone concept render — touchscreen in original enclosure on wall"
+          />
         </div>
 
         <!-- Section: Robots -->
-        <div id="fn-robots-header" class="b-tile bg-orange span-col-4" style="min-height: 120px; justify-content: center">
+        <div
+          id="fn-robots-header"
+          class="b-tile bg-orange span-col-4"
+          style="min-height: 120px; justify-content: center"
+        >
           <span class="meta" style="font-size: 1.2rem; margin: 0">Robots</span>
         </div>
 
@@ -434,36 +617,73 @@
         <div id="fn-mochan" class="b-tile bg-white span-col-2">
           <span class="meta">Microchip Robot Build</span>
           <h2>Mochan</h2>
-          <p>I'd been looking at different robots to build using microchips for a while. I fell in love with this little guy — the maker is an artist. It's hugely impressive. It's also hugely difficult.</p>
-          <p style="margin-top: 1rem">I learned a lot in the first build, burned my fingers a lot, upgraded my soldering iron, and I'm currently modifying this build to be wheel-less and respond to touch. <a href="https://www.youtube.com/watch?v=3hjvpyjxPsk" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-underline-offset: 3px">Watch the original →</a></p>
+          <p>
+            I'd been looking at different robots to build using microchips for a while. I fell in
+            love with this little guy — the maker is an artist. It's hugely impressive. It's also
+            hugely difficult.
+          </p>
+          <p style="margin-top: 1rem">
+            I learned a lot in the first build, burned my fingers a lot, upgraded my soldering iron,
+            and I'm currently modifying this build to be wheel-less and respond to touch.
+            <a
+              href="https://www.youtube.com/watch?v=3hjvpyjxPsk"
+              target="_blank"
+              rel="noopener"
+              style="color: inherit; text-decoration: underline; text-underline-offset: 3px"
+              >Watch the original →</a
+            >
+          </p>
           <div class="status-tag status-progress" style="margin-top: 1.5rem">In Progress</div>
         </div>
 
         <!-- Mochan 1 Photo -->
         <div id="fn-mochan-photo" class="b-tile img-tile span-col-2">
-          <img src="/assets/mochan/mochan-v1.png" alt="Mochan robot held in hand — OLED eyes glowing blue, exposed wiring and motors visible" />
+          <img
+            src="/assets/mochan/mochan-v1.png"
+            alt="Mochan robot held in hand — OLED eyes glowing blue, exposed wiring and motors visible"
+          />
         </div>
 
         <!-- Mochan 2 -->
         <div id="fn-mochan-2" class="b-tile bg-light-grey span-col-2">
           <span class="meta">Robot v2</span>
           <h2>Mochan 2</h2>
-          <p>Giving the robot with wheels another go. I've also tested and found I can add a collision sensor — which will prevent it from falling off my desk. It's a little smarter than the original design, since I have to rebuild anyway.</p>
+          <p>
+            Giving the robot with wheels another go. I've also tested and found I can add a
+            collision sensor — which will prevent it from falling off my desk. It's a little smarter
+            than the original design, since I have to rebuild anyway.
+          </p>
           <div class="status-tag status-progress" style="margin-top: 1.5rem">In Progress</div>
         </div>
 
         <!-- Mochan 2 Photo -->
         <div id="fn-mochan-photo-2" class="b-tile img-tile span-col-2">
-          <img src="/assets/mochan/mochan-build.png" alt="Hands assembling Mochan robot — soldering iron, solder, and components on workbench" />
+          <img
+            src="/assets/mochan/mochan-build.png"
+            alt="Hands assembling Mochan robot — soldering iron, solder, and components on workbench"
+          />
         </div>
 
         <!-- Connect -->
         <div id="fn-connect" class="b-tile bg-dark-teal span-col-4">
           <span class="meta" style="color: var(--lime)">Want to nerd out?</span>
-          <h2 style="font-size: clamp(1.8rem, 3vw, 2.8rem); letter-spacing: -1px; margin-top: 0.5rem; text-transform: none">These are my side experiments, they satisfy that curious itch.</h2>
-          <a href="/pages/contact.html" class="arrow-link" style="color: var(--lime); margin-top: 1.5rem">Get in touch <span>→</span></a>
+          <h2
+            style="
+              font-size: clamp(1.8rem, 3vw, 2.8rem);
+              letter-spacing: -1px;
+              margin-top: 0.5rem;
+              text-transform: none;
+            "
+          >
+            These are my side experiments, they satisfy that curious itch.
+          </h2>
+          <a
+            href="/pages/contact.html"
+            class="arrow-link"
+            style="color: var(--lime); margin-top: 1.5rem"
+            >Get in touch <span>→</span></a
+          >
         </div>
-
       </div>
     </main>
 
@@ -475,7 +695,15 @@
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('fn-grid-container');
-        const colors = ['#1BB1A5','#247B82','#F6B352','#F66C0F','#B2F81D','#E0E0E0','#CCCCCC'];
+        const colors = [
+          '#1BB1A5',
+          '#247B82',
+          '#F6B352',
+          '#F66C0F',
+          '#B2F81D',
+          '#E0E0E0',
+          '#CCCCCC',
+        ];
         const sizeScales = [0.15, 0.35, 0.6, 0.9, 1.2];
         let gridItems = [];
         const radius = 180;
@@ -504,7 +732,14 @@
             gsap.set(shape, { scale: scaleClass });
             wrapper.appendChild(shape);
             container.appendChild(wrapper);
-            gridItems.push({ el: shape, isSquare, baseScale: scaleClass, active: false, cx: 0, cy: 0 });
+            gridItems.push({
+              el: shape,
+              isSquare,
+              baseScale: scaleClass,
+              active: false,
+              cx: 0,
+              cy: 0,
+            });
           }
           gridItems.forEach((item) => {
             const rect = item.el.getBoundingClientRect();
@@ -533,14 +768,21 @@
                 y: -dy * force * 0.4,
                 rotation: item.isSquare ? force * 90 : force * -45,
                 borderRadius: item.isSquare ? `${force * 50}%` : `${50 - force * 20}%`,
-                duration: 0.4, ease: 'power2.out', overwrite: 'auto',
+                duration: 0.4,
+                ease: 'power2.out',
+                overwrite: 'auto',
               });
               item.active = true;
             } else if (item.active) {
               gsap.to(item.el, {
-                scale: item.baseScale, x: 0, y: 0, rotation: 0,
+                scale: item.baseScale,
+                x: 0,
+                y: 0,
+                rotation: 0,
                 borderRadius: item.isSquare ? '0%' : '50%',
-                duration: 0.8, ease: 'elastic.out(1, 0.4)', overwrite: 'auto',
+                duration: 0.8,
+                ease: 'elastic.out(1, 0.4)',
+                overwrite: 'auto',
               });
               item.active = false;
             }
