@@ -4,7 +4,7 @@
   --accent-lime: #bfff00;
   --accent-orange: #f97316;
   --dark-gray: #333333;
-  --medium-gray: #666666;
+  --mid-gray: #666666;
   --light-gray: #f5f5f5;
   --white: #ffffff;
   --color-studio: #00a99d;
@@ -40,7 +40,7 @@ small {
 }
 .caption {
   text-align: center;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin-top: 1rem;
 }
 h1 {
@@ -414,7 +414,7 @@ a:hover {
 }
 .build-info {
   font-size: 0.75rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin-top: 1rem;
   opacity: 0.7;
   font-family: monospace;
@@ -564,7 +564,7 @@ a.skip-to-content {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
 }
 .meta-item .value {
   font-size: 1.125rem;
@@ -706,7 +706,7 @@ a.skip-to-content {
 }
 .result-card p {
   font-size: 1rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin: 0;
 }
 .execution-context {
@@ -867,7 +867,7 @@ a.skip-to-content {
   margin-bottom: 0.75rem;
   margin-left: 0;
   line-height: 1.5;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
 }
 .credit-col li strong {
   color: var(--dark-gray);
@@ -941,7 +941,7 @@ a.skip-to-content {
 }
 .metric p {
   font-size: 1rem;
-  color: var(--medium-gray);
+  color: var(--mid-gray);
   margin: 0;
 }
 .btn {
