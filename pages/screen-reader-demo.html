@@ -541,6 +541,43 @@
         }
       }
 
+      // --- CORS Proxy with fallback chain ---
+      async function fetchViaProxy(url) {
+        const proxies = [
+          async () => {
+            const r = await fetch(`https://corsproxy.io/?url=${encodeURIComponent(url)}`);
+            if (!r.ok) throw new Error(`corsproxy.io returned ${r.status}`);
+            return await r.text();
+          },
+          async () => {
+            const r = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+            if (!r.ok) throw new Error(`allorigins returned ${r.status}`);
+            const data = await r.json();
+            if (!data.contents) throw new Error('allorigins returned empty content');
+            return data.contents;
+          },
+          async () => {
+            const r = await fetch(
+              `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}`
+            );
+            if (!r.ok) throw new Error(`codetabs returned ${r.status}`);
+            return await r.text();
+          },
+        ];
+
+        let lastError;
+        for (const proxy of proxies) {
+          try {
+            return await proxy();
+          } catch (err) {
+            lastError = err;
+          }
+        }
+        throw new Error(
+          `All proxy services failed (${lastError.message}). Try a different URL or check your connection.`
+        );
+      }
+
       // --- Fetch & Build UI ---
       ui.form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -554,15 +591,10 @@
         state.elements = [];
 
         try {
-          const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
-          const response = await fetch(proxyUrl);
-          if (!response.ok) throw new Error('Network response was not ok');
-
-          const data = await response.json();
-          if (!data.contents) throw new Error('No content returned from the website.');
+          const html = await fetchViaProxy(url);
 
           const parser = new DOMParser();
-          const doc = parser.parseFromString(data.contents, 'text/html');
+          const doc = parser.parseFromString(html, 'text/html');
 
           traverseDOM(doc.body, state.elements);
 
