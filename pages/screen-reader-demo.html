@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Screen Reader Simulator - Heather New</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <link rel="stylesheet" href="../src/css/global.css" />
+
+    <!-- Tailwind for the simulator UI — preflight disabled to preserve site chrome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      /* global tailwind */
+      tailwind.config = {
+        corePlugins: { preflight: false },
+      };
+    </script>
+
+    <style>
+      #screen-reader-main {
+        background: #f8fafc;
+        padding: 3rem 1.5rem 5rem;
+        min-height: 60vh;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <main id="main-content">
+      <div id="screen-reader-main">
+        <div class="max-w-6xl mx-auto space-y-6">
+          <!-- Header & Controls -->
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div class="flex items-center gap-3 mb-6">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-blue-600"
+              >
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+              </svg>
+              <h1
+                class="text-2xl font-bold text-slate-900"
+                style="font-size: 1.5rem; margin: 0; letter-spacing: normal; font-weight: 700"
+              >
+                Screen Reader Simulator
+              </h1>
+            </div>
+
+            <form id="fetchForm" class="flex gap-4">
+              <div class="relative flex-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path
+                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                  ></path>
+                </svg>
+                <input
+                  type="url"
+                  id="urlInput"
+                  value="https://example.com"
+                  placeholder="https://example.com"
+                  class="w-full pl-10 pr-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                  style="font-size: 1rem; font-family: inherit"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                id="fetchBtn"
+                class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                style="font-size: 1rem; font-family: inherit"
+              >
+                Fetch &amp; Analyze
+              </button>
+            </form>
+
+            <div
+              id="errorContainer"
+              class="hidden mt-4 p-4 bg-red-50 text-red-700 rounded-lg flex items-start gap-3"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="shrink-0 mt-0.5"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <p id="errorText" class="text-sm"></p>
+            </div>
+          </div>
+
+          <!-- Main Content Area (Hidden until data is loaded) -->
+          <div id="mainContent" class="hidden grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Left Column: Accessibility Tree -->
+            <div
+              class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-[600px]"
+            >
+              <div
+                class="p-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between"
+              >
+                <div class="flex items-center gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-slate-600"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                  </svg>
+                  <h2
+                    class="font-semibold text-slate-800"
+                    id="treeHeader"
+                    style="font-size: 1rem; margin: 0; font-weight: 600"
+                  >
+                    Accessibility Tree (0 nodes)
+                  </h2>
+                </div>
+              </div>
+
+              <div id="treeContainer" class="flex-1 overflow-y-auto p-4 space-y-2"></div>
+            </div>
+
+            <!-- Right Column: Controls & Settings -->
+            <div class="space-y-6">
+              <!-- Playback Controls -->
+              <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h3
+                  class="font-semibold text-slate-800 mb-4 flex items-center gap-2"
+                  style="font-size: 1rem; margin-bottom: 1rem; font-weight: 600"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-slate-500"
+                  >
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                  </svg>
+                  Reader Controls
+                </h3>
+
+                <div class="flex items-center justify-center gap-3">
+                  <button
+                    id="prevBtn"
+                    class="p-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                      <line x1="5" y1="19" x2="5" y2="5"></line>
+                    </svg>
+                  </button>
+
+                  <button
+                    id="playPauseBtn"
+                    class="p-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-md transition-colors"
+                  >
+                    <svg
+                      id="playIcon"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    <svg
+                      id="pauseIcon"
+                      class="hidden"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="6" y="4" width="4" height="16"></rect>
+                      <rect x="14" y="4" width="4" height="16"></rect>
+                    </svg>
+                  </button>
+
+                  <button
+                    id="stopBtn"
+                    class="p-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    </svg>
+                  </button>
+
+                  <button
+                    id="nextBtn"
+                    class="p-3 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                      <line x1="19" y1="5" x2="19" y2="19"></line>
+                    </svg>
+                  </button>
+                </div>
+
+                <div id="progressText" class="mt-6 text-center text-sm font-medium text-slate-500">
+                  Reading item 0 of 0
+                </div>
+              </div>
+
+              <!-- Voice Settings -->
+              <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                <h3
+                  class="font-semibold text-slate-800 mb-4 flex items-center gap-2"
+                  style="font-size: 1rem; margin-bottom: 1rem; font-weight: 600"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-slate-500"
+                  >
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                      d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                    ></path>
+                  </svg>
+                  Voice Configuration
+                </h3>
+
+                <div class="space-y-4">
+                  <div>
+                    <label
+                      class="block text-sm font-medium text-slate-700 mb-1"
+                      style="display: block; margin-bottom: 0.25rem"
+                      >Voice Profile</label
+                    >
+                    <select
+                      id="voiceSelect"
+                      class="w-full p-2 border border-slate-300 rounded-lg text-sm outline-none focus:ring-2 focus:ring-blue-500"
+                      style="font-size: 0.875rem; font-family: inherit"
+                    ></select>
+                  </div>
+
+                  <div>
+                    <label
+                      class="block text-sm font-medium text-slate-700 mb-1 flex justify-between"
+                      style="display: flex; justify-content: space-between; margin-bottom: 0.25rem"
+                    >
+                      <span>Reading Speed</span>
+                      <span id="rateLabel">1x</span>
+                    </label>
+                    <input
+                      type="range"
+                      id="rateInput"
+                      min="0.5"
+                      max="2"
+                      step="0.1"
+                      value="1"
+                      class="w-full accent-blue-600"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Info Widget -->
+              <div class="bg-blue-50 rounded-xl border border-blue-100 p-5">
+                <div class="flex items-start gap-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-blue-600 shrink-0 mt-0.5"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <p
+                    class="text-sm text-blue-800 leading-relaxed"
+                    style="font-size: 0.875rem; line-height: 1.6; margin: 0"
+                  >
+                    <strong>Note:</strong> This tool simulates basic screen reader behavior (like
+                    NVDA or JAWS) by analyzing static HTML elements, headings, ARIA labels, and Alt
+                    text.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+
+    <script type="module" src="../src/js/site-core.js" defer></script>
+
+    <script>
+      // --- State Management ---
+      const state = {
+        elements: [],
+        currentIndex: 0,
+        isPlaying: false,
+        voices: [],
+        selectedVoiceName: '',
+        rate: 1,
+      };
+
+      // --- DOM Elements ---
+      const ui = {
+        form: document.getElementById('fetchForm'),
+        urlInput: document.getElementById('urlInput'),
+        fetchBtn: document.getElementById('fetchBtn'),
+        errorContainer: document.getElementById('errorContainer'),
+        errorText: document.getElementById('errorText'),
+        mainContent: document.getElementById('mainContent'),
+        treeContainer: document.getElementById('treeContainer'),
+        treeHeader: document.getElementById('treeHeader'),
+        prevBtn: document.getElementById('prevBtn'),
+        playPauseBtn: document.getElementById('playPauseBtn'),
+        stopBtn: document.getElementById('stopBtn'),
+        nextBtn: document.getElementById('nextBtn'),
+        playIcon: document.getElementById('playIcon'),
+        pauseIcon: document.getElementById('pauseIcon'),
+        progressText: document.getElementById('progressText'),
+        voiceSelect: document.getElementById('voiceSelect'),
+        rateInput: document.getElementById('rateInput'),
+        rateLabel: document.getElementById('rateLabel'),
+      };
+
+      // --- Voice Initialization ---
+      function loadVoices() {
+        state.voices = window.speechSynthesis.getVoices();
+        ui.voiceSelect.innerHTML = '';
+
+        if (state.voices.length > 0) {
+          const defaultVoice = state.voices.find((v) => v.lang.includes('en-')) || state.voices[0];
+          state.selectedVoiceName = defaultVoice.name;
+
+          state.voices.forEach((voice) => {
+            const option = document.createElement('option');
+            option.value = voice.name;
+            option.textContent = `${voice.name} (${voice.lang})`;
+            if (voice.name === defaultVoice.name) option.selected = true;
+            ui.voiceSelect.appendChild(option);
+          });
+        }
+      }
+
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+      loadVoices();
+
+      // --- Core Parsing Logic ---
+      function traverseDOM(node, results, activeIds = []) {
+        let currentIds = [...activeIds];
+
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          if (node.id) currentIds.push(node.id);
+
+          const tag = node.tagName.toLowerCase();
+
+          if (['script', 'style', 'noscript', 'iframe', 'svg', 'canvas'].includes(tag)) return;
+          if (node.getAttribute('aria-hidden') === 'true') return;
+
+          const styleStr = node.getAttribute('style') || '';
+          if (styleStr.includes('display: none') || styleStr.includes('visibility: hidden')) return;
+
+          const ariaLabel = node.getAttribute('aria-label');
+          const alt = node.getAttribute('alt');
+          const role = node.getAttribute('role');
+          const href = node.getAttribute('href');
+
+          let spokenText = '';
+          let displayType = tag.toUpperCase();
+          let targetHash = null;
+
+          if (tag === 'img') {
+            spokenText = alt ? `Image. ${alt}` : 'Unlabeled image';
+            displayType = 'IMAGE';
+          } else if (tag.match(/^h[1-6]$/)) {
+            spokenText = `Heading level ${tag[1]}. ${node.textContent.trim()}`;
+            displayType = `HEADING ${tag[1]}`;
+          } else if (tag === 'a' || role === 'link') {
+            spokenText = `Link. ${node.textContent.trim()}`;
+            displayType = 'LINK';
+            if (href && href.startsWith('#') && href.length > 1) {
+              targetHash = href;
+            }
+          } else if (tag === 'button' || role === 'button') {
+            spokenText = `Button. ${node.textContent.trim()}`;
+            displayType = 'BUTTON';
+          } else if (tag === 'nav' || role === 'navigation') {
+            results.push({ spokenText: 'Navigation region', type: 'REGION', ids: currentIds });
+          } else if (ariaLabel) {
+            spokenText = `${ariaLabel}. ${role || tag}`;
+            displayType = `ARIA: ${role || tag}`;
+          }
+
+          if (spokenText && spokenText.trim().length > 0) {
+            results.push({ spokenText, type: displayType, ids: currentIds, hash: targetHash });
+            return;
+          }
+        }
+
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent.trim();
+          if (text.length > 1) {
+            results.push({ spokenText: text, type: 'TEXT', ids: currentIds });
+          }
+          return;
+        }
+
+        if (node.childNodes) {
+          node.childNodes.forEach((child) => traverseDOM(child, results, currentIds));
+        }
+      }
+
+      // --- Fetch & Build UI ---
+      ui.form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const url = ui.urlInput.value;
+        if (!url) return;
+
+        ui.fetchBtn.textContent = 'Scanning...';
+        ui.fetchBtn.disabled = true;
+        ui.errorContainer.classList.add('hidden');
+        stopPlayback();
+        state.elements = [];
+
+        try {
+          const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+          const response = await fetch(proxyUrl);
+          if (!response.ok) throw new Error('Network response was not ok');
+
+          const data = await response.json();
+          if (!data.contents) throw new Error('No content returned from the website.');
+
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(data.contents, 'text/html');
+
+          traverseDOM(doc.body, state.elements);
+
+          if (state.elements.length === 0) {
+            throw new Error(
+              'Could not parse any readable text from this page. It might be a blank page or rely entirely on client-side Javascript.'
+            );
+          }
+
+          renderTree();
+          ui.mainContent.classList.remove('hidden');
+        } catch (err) {
+          ui.errorText.textContent = `Failed to load page: ${err.message}`;
+          ui.errorContainer.classList.remove('hidden');
+          ui.mainContent.classList.add('hidden');
+        } finally {
+          ui.fetchBtn.textContent = 'Fetch & Analyze';
+          ui.fetchBtn.disabled = false;
+        }
+      });
+
+      // --- Handle Jumping for Skip Links ---
+      window.handleJumpLink = function (event, hash) {
+        event.stopPropagation();
+
+        const targetId = hash.substring(1);
+        const targetIndex = state.elements.findIndex((el) => el.ids && el.ids.includes(targetId));
+
+        if (targetIndex !== -1) {
+          jumpToItem(targetIndex);
+
+          setTimeout(() => {
+            const items = document.querySelectorAll('.tree-item');
+            if (items[targetIndex]) {
+              items[targetIndex].classList.add('ring-2', 'ring-indigo-500', 'ring-offset-2');
+              setTimeout(() => {
+                items[targetIndex].classList.remove('ring-2', 'ring-indigo-500', 'ring-offset-2');
+              }, 1000);
+            }
+          }, 100);
+        } else {
+          alert(`Could not find the target destination (id="${targetId}") on this page.`);
+        }
+      };
+
+      // --- Render Accessibility Tree ---
+      function renderTree() {
+        ui.treeContainer.innerHTML = '';
+        ui.treeHeader.textContent = `Accessibility Tree (${state.elements.length} nodes)`;
+
+        state.elements.forEach((el, idx) => {
+          const div = document.createElement('div');
+          div.className =
+            'tree-item p-3 rounded-lg border cursor-pointer transition-all border-slate-100 hover:border-slate-300 hover:bg-slate-50';
+          div.onclick = () => jumpToItem(idx);
+
+          let badgeClass = 'bg-slate-100 text-slate-600';
+          if (el.type.includes('HEADING')) badgeClass = 'bg-purple-100 text-purple-700';
+          else if (el.type === 'LINK') badgeClass = 'bg-blue-100 text-blue-700';
+          else if (el.type === 'BUTTON') badgeClass = 'bg-orange-100 text-orange-700';
+          else if (el.type === 'IMAGE') badgeClass = 'bg-green-100 text-green-700';
+
+          let jumpButtonHtml = '';
+          if (el.hash) {
+            jumpButtonHtml = `
+              <div class="mt-2 pl-8">
+                <button onclick="handleJumpLink(event, '${el.hash}')" class="text-xs font-semibold bg-indigo-100 hover:bg-indigo-200 text-indigo-700 px-3 py-1.5 rounded inline-flex items-center gap-1 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  Activate Skip Link (Jump to ${el.hash})
+                </button>
+              </div>
+            `;
+          }
+
+          div.innerHTML = `
+            <div class="flex flex-col">
+              <div class="flex items-start gap-3">
+                <span class="text-xs font-bold px-2 py-1 rounded mt-0.5 whitespace-nowrap ${badgeClass}">${el.type}</span>
+                <p class="text-sm text-slate-600" style="margin: 0; font-size: 0.875rem;">${el.spokenText}</p>
+              </div>
+              ${jumpButtonHtml}
+            </div>
+          `;
+          ui.treeContainer.appendChild(div);
+        });
+        updateUI();
+      }
+
+      // --- Playback Logic ---
+      function playCurrent() {
+        window.speechSynthesis.cancel();
+
+        if (!state.isPlaying || state.currentIndex >= state.elements.length) {
+          state.isPlaying = false;
+          updateUI();
+          return;
+        }
+
+        const element = state.elements[state.currentIndex];
+        const utterance = new SpeechSynthesisUtterance(element.spokenText);
+
+        utterance.rate = state.rate;
+        if (state.selectedVoiceName) {
+          const voice = state.voices.find((v) => v.name === state.selectedVoiceName);
+          if (voice) utterance.voice = voice;
+        }
+
+        utterance.onend = () => {
+          if (state.isPlaying) {
+            state.currentIndex++;
+            updateUI();
+            playCurrent();
+          }
+        };
+
+        utterance.onerror = (e) => {
+          if (e.error !== 'interrupted') {
+            console.error('Speech Synthesis Error:', e);
+            state.isPlaying = false;
+            updateUI();
+          }
+        };
+
+        window.speechSynthesis.speak(utterance);
+      }
+
+      function togglePlayPause() {
+        state.isPlaying = !state.isPlaying;
+        if (state.isPlaying) {
+          if (state.currentIndex >= state.elements.length) state.currentIndex = 0;
+          updateUI();
+          playCurrent();
+        } else {
+          window.speechSynthesis.cancel();
+          updateUI();
+        }
+      }
+
+      function stopPlayback() {
+        state.isPlaying = false;
+        state.currentIndex = 0;
+        window.speechSynthesis.cancel();
+        updateUI();
+      }
+
+      function jumpToItem(index) {
+        state.currentIndex = index;
+        state.isPlaying = true;
+        updateUI();
+        playCurrent();
+      }
+
+      // --- UI Updaters ---
+      function updateUI() {
+        if (state.isPlaying) {
+          ui.playIcon.classList.add('hidden');
+          ui.pauseIcon.classList.remove('hidden');
+        } else {
+          ui.playIcon.classList.remove('hidden');
+          ui.pauseIcon.classList.add('hidden');
+        }
+
+        if (state.elements.length > 0) {
+          ui.progressText.textContent = `Reading item ${state.currentIndex + 1} of ${state.elements.length}`;
+        }
+
+        const items = document.querySelectorAll('.tree-item');
+        items.forEach((item, idx) => {
+          const textElement = item.querySelector('p');
+          if (idx === state.currentIndex) {
+            item.classList.add('border-blue-500', 'bg-blue-50', 'shadow-sm');
+            item.classList.remove('border-slate-100');
+            if (textElement) {
+              textElement.classList.add('text-slate-900', 'font-medium');
+              textElement.classList.remove('text-slate-600');
+            }
+            item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          } else {
+            item.classList.remove('border-blue-500', 'bg-blue-50', 'shadow-sm');
+            item.classList.add('border-slate-100');
+            if (textElement) {
+              textElement.classList.remove('text-slate-900', 'font-medium');
+              textElement.classList.add('text-slate-600');
+            }
+          }
+        });
+      }
+
+      // --- Event Listeners ---
+      ui.playPauseBtn.addEventListener('click', togglePlayPause);
+      ui.stopBtn.addEventListener('click', stopPlayback);
+
+      ui.nextBtn.addEventListener('click', () => {
+        state.currentIndex = Math.min(state.currentIndex + 1, state.elements.length - 1);
+        if (state.isPlaying) playCurrent();
+        updateUI();
+      });
+
+      ui.prevBtn.addEventListener('click', () => {
+        state.currentIndex = Math.max(state.currentIndex - 1, 0);
+        if (state.isPlaying) playCurrent();
+        updateUI();
+      });
+
+      ui.voiceSelect.addEventListener('change', (e) => {
+        state.selectedVoiceName = e.target.value;
+      });
+
+      ui.rateInput.addEventListener('input', (e) => {
+        state.rate = parseFloat(e.target.value);
+        ui.rateLabel.textContent = `${state.rate}x`;
+      });
+
+      window.addEventListener('beforeunload', () => {
+        window.speechSynthesis.cancel();
+      });
+    </script>
+  </body>
+</html>

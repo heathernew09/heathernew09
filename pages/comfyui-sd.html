@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Deconstructing Diffusion — A technical look at how ComfyUI and Stable Diffusion work under the hood."
+    />
+    <title>Deconstructing Diffusion — Heather New</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/css/global.css" />
+    <link rel="stylesheet" href="/src/css/home.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <style>
+      :root {
+        --bg-color: #f4f4f4;
+        --text-dark: #111111;
+        --teal: #1bb1a5;
+        --dark-teal: #247b82;
+        --yellow: #f6b352;
+        --orange: #f66c0f;
+        --lime: #b2f81d;
+        --light-gray: #e0e0e0;
+        --mid-gray: #666666;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-dark);
+        font-family: 'Manrope', sans-serif;
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      .page-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100vw;
+        min-height: 480px;
+        border-bottom: 1px solid var(--text-dark);
+      }
+
+      .hero-title-block {
+        padding: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border-right: 1px solid var(--text-dark);
+      }
+
+      .hero-visual-block {
+        background-color: #000;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-visual-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .section-title {
+        font-size: clamp(3rem, 6vw, 6rem);
+        font-weight: 800;
+        letter-spacing: -3px;
+        line-height: 1;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+
+      .meta {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 1rem;
+        display: block;
+        opacity: 0.6;
+      }
+
+      .content-section {
+        padding: 8rem 2vw;
+        display: flex;
+        justify-content: center;
+      }
+
+      .content-container {
+        width: 100%;
+        max-width: 1400px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--text-dark);
+        border-left: 1px solid var(--text-dark);
+      }
+
+      .text-block {
+        grid-column: span 2;
+        padding: 4rem;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+      }
+
+      .image-block {
+        grid-column: span 2;
+        padding: 0;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+        background: #000;
+        overflow: hidden;
+      }
+
+      .image-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .full-width-block {
+        grid-column: span 4;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+        background: #000;
+      }
+
+      .full-width-block img {
+        width: 100%;
+        display: block;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+      }
+
+      .step-number {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 1rem;
+        color: var(--orange);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .code-block {
+        background: #111;
+        color: var(--lime);
+        padding: 2rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.9rem;
+        grid-column: span 4;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+        overflow-x: auto;
+      }
+
+      @media (max-width: 1024px) {
+        .page-hero {
+          grid-template-columns: 1fr;
+        }
+        .hero-title-block {
+          padding: 2rem;
+          border-right: none;
+          border-bottom: 1px solid var(--text-dark);
+        }
+        .text-block,
+        .image-block {
+          grid-column: span 4;
+          padding: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-content">
+        <load src="../src/partials/nav.html" />
+      </div>
+    </header>
+
+    <header class="page-hero">
+      <div class="hero-title-block">
+        <span class="meta">ComfyUI + Stable Diffusion</span>
+        <h1 class="section-title">Deconstructing<br />Diffusion</h1>
+        <p class="subtitle">
+          I spent some time looking under the hood of Stable Diffusion to understand exactly how AI
+          draws. By hooking into the ComfyUI API on my local M5 Pro, I ran a series of controlled
+          experiments to capture the internal "denoising" process at specific intervals.
+        </p>
+      </div>
+      <div class="hero-visual-block">
+        <img
+          src="/assets/comfyui/final.png"
+          alt="Final generated image of a futuristic cyberdeck"
+        />
+      </div>
+    </header>
+
+    <main class="content-section">
+      <div class="content-container">
+        <!-- Step 1 -->
+        <div class="image-block">
+          <img src="/assets/comfyui/step_01.png" alt="Step 01: Pure Noise" />
+        </div>
+        <div class="text-block">
+          <span class="step-number">Step 01</span>
+          <h2>The Latent Seed</h2>
+          <p>
+            Everything starts with noise. In Stable Diffusion, we don't work with pixels
+            immediately. Instead, we initialize a <strong>Latent Space</strong>—a compressed
+            representation of an image. At Step 01, this is just a matrix of random numbers
+            (Gaussian noise). The "Seed" you hear about is just the starting configuration of this
+            randomness.
+          </p>
+        </div>
+
+        <!-- Step 10 -->
+        <div class="text-block" style="border-left: 1px solid var(--text-dark); margin-left: -1px">
+          <span class="step-number">Step 10</span>
+          <h2>The U-Net Loop</h2>
+          <p>
+            This is where the heavy lifting happens. A neural network called the
+            <strong>U-Net</strong> takes that noise and the text prompt you provided. It's been
+            trained to predict what noise needs to be <em>subtracted</em> from the image to move it
+            closer to your description. By Step 10, you can see large structural forms starting to
+            emerge from the chaos.
+          </p>
+        </div>
+        <div class="image-block">
+          <img src="/assets/comfyui/step_10.png" alt="Step 10: Early Denoising" />
+        </div>
+
+        <!-- Step 20 -->
+        <div class="image-block">
+          <img src="/assets/comfyui/step_20.png" alt="Step 20: Refining Details" />
+        </div>
+        <div class="text-block">
+          <span class="step-number">Step 20</span>
+          <h2>Attention to Detail</h2>
+          <p>
+            As the denoising loop continues, the model moves from broad shapes to specific textures.
+            Using a mechanism called <strong>Cross-Attention</strong>, the U-Net looks back at your
+            prompt (e.g., "translucent orange casing") and ensures those concepts are physically
+            manifesting in the latent representation.
+          </p>
+        </div>
+
+        <!-- Step 30 -->
+        <div class="text-block" style="border-left: 1px solid var(--text-dark); margin-left: -1px">
+          <span class="step-number">Step 30</span>
+          <h2>The VAE Handshake</h2>
+          <p>
+            The final step is the most critical for human eyes. All the denoising happened in a
+            mathematical 4x8x128 latent space. To see it as a 1024x1024 image, we use the
+            <strong>VAE Decoder</strong>. It "uncompresses" the latent math back into the colorful
+            pixels we recognize.
+          </p>
+        </div>
+        <div class="image-block">
+          <img src="/assets/comfyui/step_30.png" alt="Step 30: Final Decode" />
+        </div>
+
+        <!-- Juggernaut XL Section -->
+        <div
+          class="text-block"
+          style="grid-column: span 2; background: var(--dark-teal); color: white"
+        >
+          <span class="step-number" style="color: var(--lime)">The Engine</span>
+          <h2 style="color: white">Juggernaut XL</h2>
+          <p>
+            The photorealistic quality of these generations is powered by
+            <strong>Juggernaut XL</strong>. Built on the SDXL architecture and refined by the team
+            at RunDiffusion, this model is specifically engineered for high-fidelity textures,
+            lifelike skin tones, and intricate mechanical details.
+          </p>
+          <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9">
+            Key features include GPT-4 vision-captioned datasets for better prompt adherence and a
+            "Positive/Negative Package Merging" technique that drastically improves lighting,
+            contrast, and atmospheric depth.
+          </p>
+        </div>
+        <div
+          class="image-block"
+          style="grid-column: span 2; border-left: 1px solid var(--text-dark); margin-left: -1px"
+        >
+          <img
+            src="/assets/comfyui/final.png"
+            alt="Juggernaut XL high detail output"
+            style="filter: contrast(1.1) brightness(1.1)"
+          />
+        </div>
+
+        <!-- Workflow Screenshot -->
+        <div class="full-width-block">
+          <img
+            src="/assets/comfyui/workflow-nodes.png"
+            alt="ComfyUI node-based workflow for diffusion visualization"
+          />
+        </div>
+
+        <!-- Stack Section -->
+        <div class="text-block" style="grid-column: span 2; background: var(--light-gray)">
+          <span class="step-number">The Stack</span>
+          <h2>Local AI Infrastructure</h2>
+          <p>
+            To keep this experiment entirely private and cost-effective, everything runs locally on
+            <strong>Neo (Apple M5 Pro)</strong>. This allows for rapid iteration and zero token
+            costs, utilizing the unified memory and GPU acceleration of Apple Silicon.
+          </p>
+          <ul
+            style="
+              list-style: none;
+              margin-top: 1.5rem;
+              font-family: 'JetBrains Mono', monospace;
+              font-size: 0.8rem;
+              font-weight: 700;
+              text-transform: uppercase;
+            "
+          >
+            <li>Hardware: M5 Pro &middot; 64GB RAM</li>
+            <li>Engine: ComfyUI (Local API)</li>
+            <li>Model: Juggernaut XL v9</li>
+            <li>Orchestration: Python &middot; Custom JSON Workflows</li>
+          </ul>
+        </div>
+        <div
+          class="text-block"
+          style="grid-column: span 2; border-left: 1px solid var(--text-dark); margin-left: -1px"
+        >
+          <p>
+            By treating ComfyUI as a programmable backend rather than just a UI, I was able to
+            automate the capture of internal latent states. This approach turns a generative model
+            into a transparent educational tool, bridging the gap between high-level creative
+            requests and low-level mathematical execution.
+          </p>
+        </div>
+
+        <!-- Engineering Section -->
+        <div class="text-block span-col-4" style="grid-column: span 4">
+          <h2>Engineering the Workflow</h2>
+          <p>
+            To capture these steps, I wrote a custom Python bridge that intercepts the ComfyUI
+            generation loop. Instead of one KSampler node, I chained multiple samplers together,
+            decoding the VAE at each checkpoint to externalize the "hidden" progress.
+          </p>
+        </div>
+
+        <div class="code-block">
+          # Chaining KSamplers to capture intermediate latents ksampler_id = str(node_id)
+          workflow[ksampler_id] = { "class_type": "KSamplerAdvanced", "inputs": { "start_at_step":
+          current_step, "end_at_step": target_step, "return_with_leftover_noise": "enable" } }
+        </div>
+
+        <div class="text-block span-col-4" style="grid-column: span 4; border-bottom: none">
+          <p>
+            This experiment proves that AI isn't "magic"—it's a series of extremely precise
+            mathematical transformations. Understanding these layers allows for much greater control
+            over the creative output, from ControlNet conditioning to custom LoRA training.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-trigger">
+      <load src="../src/partials/footer.html" />
+    </div>
+
+    <script type="module" src="/src/js/site-core.js"></script>
+  </body>
+</html>
