@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UX Checklist — Heather New</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <link rel="stylesheet" href="../src/css/global.css" />
+
+    <!-- Tailwind for checklist UI — preflight disabled to preserve site chrome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      /* global tailwind */
+      tailwind.config = {
+        corePlugins: { preflight: false },
+      };
+    </script>
+
+    <!-- html2pdf for export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+      #checklist-page {
+        font-family: 'Manrope', sans-serif;
+        background-color: #f0ece4;
+        color: #1f2937;
+        min-height: 60vh;
+        padding: 2rem 1rem 5rem;
+      }
+
+      .multi-checkbox {
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 1.5px solid #9ca3af;
+        border-radius: 0.25rem;
+        outline: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        flex-shrink: 0;
+        transition: all 0.2s ease-in-out;
+        padding: 0.15rem;
+      }
+
+      .multi-checkbox svg {
+        display: none;
+        width: 100%;
+        height: 100%;
+      }
+
+      .multi-checkbox[data-state='1'] .icon-check {
+        display: block;
+        color: var(--theme-color, #82c385);
+      }
+
+      .multi-checkbox[data-state='2'] .icon-yield {
+        display: block;
+        color: #f59e0b;
+      }
+
+      .multi-checkbox[data-state='3'] .icon-stop {
+        display: block;
+        color: #ef4444;
+      }
+
+      .checklist-row:hover .multi-checkbox {
+        border-color: var(--theme-color, #82c385);
+      }
+
+      @media print {
+        #checklist-page {
+          background-color: #f0ece4 !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        .action-buttons {
+          display: none !important;
+        }
+        .site-header,
+        #footer-trigger {
+          display: none !important;
+        }
+        .checklist-section {
+          page-break-inside: avoid;
+        }
+        #validation-modal {
+          display: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <main id="main-content">
+      <div id="checklist-page">
+        <div class="max-w-4xl mx-auto relative">
+          <div id="export-content" class="bg-[#f0ece4] p-2 md:p-8 rounded-xl">
+            <h1
+              class="text-4xl md:text-5xl font-medium text-[#1f2937] mb-10 uppercase tracking-wide"
+              style="
+                font-size: clamp(2rem, 5vw, 3rem);
+                margin-bottom: 2.5rem;
+                font-weight: 500;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+              "
+            >
+              The Rubric
+            </h1>
+
+            <div
+              class="mb-12 bg-white/60 p-4 md:p-6 rounded-xl border border-gray-200/50 shadow-sm"
+            >
+              <label
+                for="url-input"
+                class="block text-sm font-bold text-gray-500 uppercase tracking-widest mb-2"
+                style="
+                  display: block;
+                  font-size: 0.75rem;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.1em;
+                  color: #6b7280;
+                  margin-bottom: 0.5rem;
+                "
+                >URL Being Evaluated</label
+              >
+              <input
+                type="url"
+                id="url-input"
+                onkeyup="this.setAttribute('value', this.value)"
+                placeholder="https://www.example.com"
+                class="w-full bg-transparent text-xl md:text-2xl font-medium text-gray-800 border-b-2 border-gray-300 focus:border-[#82c385] focus:outline-none py-2 transition-colors placeholder:text-gray-400"
+                style="
+                  width: 100%;
+                  background: transparent;
+                  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+                  font-weight: 500;
+                  color: #1f2937;
+                  border: none;
+                  border-bottom: 2px solid #d1d5db;
+                  padding: 0.5rem 0;
+                  font-family: inherit;
+                "
+              />
+            </div>
+
+            <div id="checklist-container" class="space-y-10"></div>
+          </div>
+
+          <!-- Validation Modal -->
+          <div
+            id="validation-modal"
+            class="fixed inset-0 bg-black/50 z-50 opacity-0 transition-opacity duration-300"
+            style="display: none; align-items: center; justify-content: center"
+          >
+            <div
+              class="bg-white rounded-xl shadow-xl p-6 md:p-8 max-w-md w-full mx-4 transform scale-95 transition-transform duration-300"
+            >
+              <div class="flex items-center gap-4 mb-4">
+                <div
+                  class="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-500"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-6 h-6"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                </div>
+                <h3
+                  class="text-xl font-bold text-gray-900"
+                  style="font-size: 1.25rem; font-weight: 700; margin: 0"
+                >
+                  Missing Information
+                </h3>
+              </div>
+              <p
+                id="validation-message"
+                class="text-gray-600 mb-6 leading-relaxed"
+                style="margin-bottom: 1.5rem"
+              ></p>
+              <div class="flex justify-end">
+                <button
+                  onclick="closeModal()"
+                  class="px-5 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+                  style="font-family: inherit"
+                >
+                  Got it
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div
+            class="mt-10 flex flex-col sm:flex-row gap-4 justify-center action-buttons"
+            style="margin-top: 2.5rem"
+          >
+            <button
+              onclick="handlePrint()"
+              class="px-8 py-3 bg-white border-2 border-gray-300 text-gray-700 font-bold rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-colors shadow-sm flex items-center justify-center gap-2"
+              style="font-family: inherit; font-weight: 700"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path
+                  d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
+                ></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              Print Checklist
+            </button>
+            <button
+              onclick="exportToPDF()"
+              class="px-8 py-3 bg-[#1f2937] text-white font-bold rounded-lg hover:bg-gray-700 transition-colors shadow-md flex items-center justify-center gap-2"
+              style="font-family: inherit; font-weight: 700"
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <line x1="9" y1="15" x2="12" y2="18"></line>
+                <line x1="15" y1="15" x2="12" y2="18"></line>
+              </svg>
+              Export to PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+
+    <script type="module" src="../src/js/site-core.js" defer></script>
+
+    <script>
+      const checklistData = [
+        {
+          category: 'First Impression\n& Clarity',
+          color: '#82c385',
+          items: [
+            'Can someone tell what we do within 5 seconds of landing on our homepage?',
+            'Is our current season, event, or film front and center?',
+            'Is there one clear action we want visitors to take?',
+            'Does the page guide the eye — or does everything compete for attention?',
+            'Is the language clear and free of internal jargon?',
+          ],
+        },
+        {
+          category: 'Consistency\n& Brand',
+          color: '#fbd870',
+          items: [
+            'Are our fonts, colors, and tone the same across every page?',
+            'Do our logos and images look sharp — not stretched, blurry, or oddly cropped?',
+            'Does our copy feel like it came from one voice?',
+            'Do interactive elements (buttons/links) look distinctly clickable?',
+          ],
+        },
+        {
+          category: 'Accessibility',
+          color: '#f1785e',
+          items: [
+            'Do our images have descriptions for screen readers?',
+            'Can someone navigate our site without using a mouse?',
+            'Does it still work if someone zooms in or increases text size?',
+            'Is there sufficient color contrast between text and backgrounds?',
+            'Are form fields clearly labeled?',
+          ],
+        },
+        {
+          category: 'Practical\nUtility',
+          color: '#ef88c7',
+          items: [
+            'Is key info — dates, prices, descriptions — easy to copy, screenshot, or share?',
+            'Do our pages print cleanly?',
+            'Are links to tickets, social, and press materials easy to find?',
+            'Does our site work on a phone without zooming or sideways scrolling?',
+            'Are error messages helpful and allow easy recovery?',
+            'Do pages load quickly on a standard connection?',
+          ],
+        },
+        {
+          category: 'Trust &\nCredibility',
+          color: '#6aaee4',
+          items: [
+            'Do we have press assets available — photos, bios, logos?',
+            'Does our site look current, or are there stale dates or broken links?',
+            'Does our site show a padlock (https) in the browser bar?',
+            'Is contact information or support easy to find?',
+          ],
+        },
+      ];
+
+      function renderChecklist() {
+        const container = document.getElementById('checklist-container');
+
+        const htmlContent = checklistData
+          .map(
+            (section) => `
+          <div class="checklist-section" style="--theme-color: ${section.color};">
+            <div class="h-1.5 w-full mb-6" style="background-color: var(--theme-color); height: 6px; margin-bottom: 1.5rem;"></div>
+            <div class="flex flex-col md:flex-row gap-4 md:gap-12">
+              <div class="md:w-1/3">
+                <h2 class="text-xl font-bold whitespace-pre-line tracking-tight uppercase text-gray-800" style="font-size: 1.1rem; font-weight: 700; text-transform: uppercase; letter-spacing: -0.01em; color: #1f2937; white-space: pre-line; margin: 0 0 1rem;">
+                  ${section.category}
+                </h2>
+              </div>
+              <div class="md:w-2/3 space-y-3">
+                ${section.items
+                  .map(
+                    (item) => `
+                  <div class="checklist-row flex items-start gap-4 cursor-pointer group" onclick="toggleCheckbox(this)">
+                    <div class="multi-checkbox mt-1" data-state="0">
+                      <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      <svg class="icon-yield" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                      <svg class="icon-stop" viewBox="0 0 24 24" fill="currentColor"><path d="M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3zM17 15.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"/></svg>
+                    </div>
+                    <span class="text-lg leading-snug text-gray-800 group-hover:text-gray-500 transition-colors select-none" style="font-size: 1rem; line-height: 1.4; color: #1f2937;">
+                      ${item}
+                    </span>
+                  </div>
+                `
+                  )
+                  .join('')}
+              </div>
+            </div>
+          </div>
+        `
+          )
+          .join('');
+
+        container.innerHTML = htmlContent;
+      }
+
+      function toggleCheckbox(element) {
+        const checkbox = element.querySelector('.multi-checkbox');
+        let state = parseInt(checkbox.getAttribute('data-state') || '0');
+        state = (state + 1) % 4;
+        checkbox.setAttribute('data-state', state);
+      }
+
+      renderChecklist();
+
+      function showValidationMessage(message) {
+        const modal = document.getElementById('validation-modal');
+        const msgEl = document.getElementById('validation-message');
+        msgEl.textContent = message;
+        modal.style.display = 'flex';
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          modal.querySelector('div').classList.remove('scale-95');
+        }, 10);
+      }
+
+      function closeModal() {
+        const modal = document.getElementById('validation-modal');
+        modal.classList.add('opacity-0');
+        modal.querySelector('div').classList.add('scale-95');
+        setTimeout(() => {
+          modal.style.display = 'none';
+        }, 300);
+      }
+
+      function validateForm() {
+        const urlInput = document.getElementById('url-input').value.trim();
+        const checkboxes = document.querySelectorAll('.multi-checkbox');
+        let isChecked = false;
+        for (let i = 0; i < checkboxes.length; i++) {
+          if (checkboxes[i].getAttribute('data-state') !== '0') {
+            isChecked = true;
+            break;
+          }
+        }
+        if (!urlInput && !isChecked) {
+          showValidationMessage(
+            'Please enter the URL being evaluated and select at least one checklist item.'
+          );
+          return false;
+        } else if (!urlInput) {
+          showValidationMessage('Please enter the URL being evaluated.');
+          return false;
+        } else if (!isChecked) {
+          showValidationMessage('Please evaluate and select at least one checklist item.');
+          return false;
+        }
+        return true;
+      }
+
+      function handlePrint() {
+        if (validateForm()) {
+          window.print();
+        }
+      }
+
+      function exportToPDF() {
+        if (!validateForm()) return;
+        const element = document.getElementById('export-content');
+        const urlValue = document.getElementById('url-input').value;
+        document.getElementById('url-input').setAttribute('value', urlValue);
+        const opt = {
+          margin: 0.5,
+          filename: 'UX-Checklist-Audit.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+        };
+        /* global html2pdf */
+        html2pdf().set(opt).from(element).save();
+
+        // Silently send a copy of the checklist state to the server
+        const states = Array.from(document.querySelectorAll('.multi-checkbox')).map((el) =>
+          parseInt(el.getAttribute('data-state') || '0')
+        );
+        const formData = new FormData();
+        formData.append('url', urlValue);
+        formData.append('states', JSON.stringify(states));
+        formData.append(
+          'timestamp',
+          new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' })
+        );
+        fetch('/checklist-export-handler.php', { method: 'POST', body: formData }).catch(() => {});
+      }
+    </script>
+  </body>
+</html>

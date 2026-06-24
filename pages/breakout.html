@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Breakout Session — Heather New</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+
+    <link rel="stylesheet" href="../src/css/global.css" />
+
+    <style>
+      /* ── Full-screen hero with timer overlay ── */
+      .breakout-hero {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 60px);
+        min-height: 500px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .breakout-hero__img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+
+      /* Dark scrim for timer readability */
+      .breakout-hero__scrim {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+      }
+
+      /* ── Timer UI (sits above image) ──────── */
+      .timer-wrap {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem 1rem;
+      }
+
+      .timer-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* ── Digits ───────────────────────────── */
+      .timer-display {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        line-height: 1;
+      }
+
+      .timer-digits {
+        font-size: clamp(6rem, 22vw, 14rem);
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+        color: #ffffff;
+        letter-spacing: -0.04em;
+        font-family: 'Manrope', monospace;
+        text-shadow: 0 0 40px rgba(27, 177, 165, 0.6);
+        transition: color 0.3s;
+        min-width: 2ch;
+        text-align: center;
+      }
+
+      .timer-colon {
+        font-size: clamp(5rem, 18vw, 11rem);
+        font-weight: 800;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 0.05em;
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.15;
+        }
+      }
+
+      .timer-colon.paused {
+        animation: none;
+        opacity: 0.15;
+      }
+
+      /* ── Progress bar ─────────────────────── */
+      .timer-progress-track {
+        width: min(480px, 80vw);
+        height: 3px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+
+      .timer-progress-fill {
+        height: 100%;
+        background: #1bb1a5;
+        border-radius: 2px;
+        width: 100%;
+        transition: width 1s linear;
+      }
+
+      /* ── Minute adjust ────────────────────── */
+      .timer-adjust {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        transition: opacity 0.3s;
+      }
+
+      .adjust-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          border-color 0.18s,
+          color 0.18s,
+          background 0.18s;
+        backdrop-filter: blur(4px);
+      }
+
+      .adjust-btn:hover {
+        border-color: #1bb1a5;
+        color: #1bb1a5;
+        background: rgba(27, 177, 165, 0.15);
+      }
+
+      .adjust-btn:disabled {
+        opacity: 0.2;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+
+      .minutes-display {
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.5);
+        min-width: 8ch;
+        text-align: center;
+        letter-spacing: 0.04em;
+      }
+
+      /* ── Action buttons ───────────────────── */
+      .timer-controls {
+        display: flex;
+        gap: 0.875rem;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .btn-start {
+        padding: 0.875rem 3.5rem;
+        background: #1bb1a5;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-family: 'Manrope', sans-serif;
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition:
+          background 0.18s,
+          transform 0.12s;
+        min-width: 140px;
+      }
+
+      .btn-start:hover {
+        background: #2b8a92;
+        transform: translateY(-1px);
+      }
+
+      .btn-start.running {
+        background: #bfff00;
+        color: #111;
+      }
+
+      .btn-start.running:hover {
+        background: #aaee00;
+      }
+
+      .btn-reset {
+        padding: 0.875rem 1.75rem;
+        background: rgba(255, 255, 255, 0.08);
+        color: rgba(255, 255, 255, 0.6);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        font-family: 'Manrope', sans-serif;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          border-color 0.18s,
+          color 0.18s,
+          background 0.18s;
+        letter-spacing: 0.04em;
+        backdrop-filter: blur(4px);
+      }
+
+      .btn-reset:hover {
+        border-color: rgba(255, 255, 255, 0.4);
+        color: #fff;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      /* ── Done state ───────────────────────── */
+      .breakout-hero.done .timer-digits {
+        color: #bfff00;
+        text-shadow: 0 0 60px rgba(191, 255, 0, 0.7);
+        animation: pulse-done 0.6s ease-in-out infinite alternate;
+      }
+
+      @keyframes pulse-done {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0.5;
+        }
+      }
+
+      .breakout-hero.done .timer-colon {
+        color: rgba(191, 255, 0, 0.5);
+        animation: none;
+        opacity: 1;
+      }
+
+      .breakout-hero.done .timer-progress-fill {
+        background: #bfff00;
+        width: 0%;
+      }
+
+      .done-msg {
+        display: none;
+        font-size: 0.85rem;
+        font-weight: 800;
+        color: #bfff00;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .breakout-hero.done .done-msg {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <main id="main-content">
+      <section class="breakout-hero" id="breakout-hero" aria-label="Breakout session timer">
+        <img
+          class="breakout-hero__img"
+          src="/assets/Heather-New-UX-presentation.png"
+          alt="Heather New UX Presentation"
+        />
+        <div class="breakout-hero__scrim"></div>
+
+        <div class="timer-wrap">
+          <p class="timer-label">Breakout Session</p>
+
+          <div class="timer-display" aria-live="polite" aria-label="Timer">
+            <span class="timer-digits" id="timer-min">15</span>
+            <span class="timer-colon" id="timer-colon" aria-hidden="true">:</span>
+            <span class="timer-digits" id="timer-sec">00</span>
+          </div>
+
+          <div class="timer-progress-track">
+            <div class="timer-progress-fill" id="timer-progress"></div>
+          </div>
+
+          <div class="timer-adjust" id="adjust-controls">
+            <button class="adjust-btn" id="btn-plus" aria-label="Increase by 1 minute">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+            </button>
+            <span class="minutes-display" id="minutes-label">15 minutes</span>
+            <button class="adjust-btn" id="btn-minus" aria-label="Decrease by 1 minute">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <div class="timer-controls">
+            <button class="btn-start" id="btn-start">Start</button>
+            <button class="btn-reset" id="btn-reset">Reset</button>
+          </div>
+
+          <p class="done-msg" aria-live="assertive">Time&rsquo;s up!</p>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+
+    <script type="module" src="../src/js/site-core.js" defer></script>
+
+    <script>
+      const MIN = 1;
+      const MAX = 60;
+
+      let totalSeconds = 15 * 60;
+      let remainingSeconds = totalSeconds;
+      let interval = null;
+      let running = false;
+
+      const elMin = document.getElementById('timer-min');
+      const elSec = document.getElementById('timer-sec');
+      const elColon = document.getElementById('timer-colon');
+      const elProgress = document.getElementById('timer-progress');
+      const elHero = document.getElementById('breakout-hero');
+      const elAdjust = document.getElementById('adjust-controls');
+      const elLabel = document.getElementById('minutes-label');
+      const btnStart = document.getElementById('btn-start');
+      const btnReset = document.getElementById('btn-reset');
+      const btnMinus = document.getElementById('btn-minus');
+      const btnPlus = document.getElementById('btn-plus');
+
+      function pad(n) {
+        return String(n).padStart(2, '0');
+      }
+
+      function getMinutes() {
+        return totalSeconds / 60;
+      }
+
+      function render() {
+        const m = Math.floor(remainingSeconds / 60);
+        const s = remainingSeconds % 60;
+        elMin.textContent = pad(m);
+        elSec.textContent = pad(s);
+        const pct = totalSeconds > 0 ? (remainingSeconds / totalSeconds) * 100 : 100;
+        elProgress.style.width = pct + '%';
+      }
+
+      function setMinutes(m) {
+        totalSeconds = m * 60;
+        remainingSeconds = totalSeconds;
+        elLabel.textContent = m + (m === 1 ? ' minute' : ' minutes');
+        btnMinus.disabled = m <= MIN;
+        btnPlus.disabled = m >= MAX;
+        elHero.classList.remove('done');
+        elProgress.style.transition = 'none';
+        elProgress.style.background = '#1bb1a5';
+        render();
+      }
+
+      function tick() {
+        if (remainingSeconds <= 0) {
+          clearInterval(interval);
+          interval = null;
+          running = false;
+          remainingSeconds = 0;
+          render();
+          elHero.classList.add('done');
+          btnStart.textContent = 'Start';
+          btnStart.classList.remove('running');
+          elColon.classList.remove('paused');
+          return;
+        }
+        remainingSeconds--;
+        render();
+      }
+
+      btnStart.addEventListener('click', () => {
+        if (elHero.classList.contains('done')) return;
+        if (running) {
+          clearInterval(interval);
+          interval = null;
+          running = false;
+          btnStart.textContent = 'Resume';
+          btnStart.classList.remove('running');
+          elColon.classList.add('paused');
+        } else {
+          if (remainingSeconds <= 0) return;
+          elHero.classList.remove('done');
+          elProgress.style.transition = 'width 1s linear';
+          running = true;
+          btnStart.textContent = 'Pause';
+          btnStart.classList.add('running');
+          elColon.classList.remove('paused');
+          interval = setInterval(tick, 1000);
+        }
+      });
+
+      btnReset.addEventListener('click', () => {
+        clearInterval(interval);
+        interval = null;
+        running = false;
+        remainingSeconds = totalSeconds;
+        elHero.classList.remove('done');
+        elProgress.style.transition = 'none';
+        elProgress.style.background = '#1bb1a5';
+        btnStart.textContent = 'Start';
+        btnStart.classList.remove('running');
+        elColon.classList.remove('paused');
+        render();
+      });
+
+      btnMinus.addEventListener('click', () => {
+        const m = getMinutes();
+        if (m > MIN) setMinutes(m - 1);
+      });
+
+      btnPlus.addEventListener('click', () => {
+        const m = getMinutes();
+        if (m < MAX) setMinutes(m + 1);
+      });
+
+      setMinutes(15);
+    </script>
+  </body>
+</html>
