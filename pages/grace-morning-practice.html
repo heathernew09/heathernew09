@@ -237,13 +237,7 @@
       }
 
       .grace-tile.failed {
-        background: repeating-linear-gradient(
-          135deg,
-          #1a1a1a,
-          #1a1a1a 8px,
-          #111 8px,
-          #111 16px
-        );
+        background: repeating-linear-gradient(135deg, #1a1a1a, #1a1a1a 8px, #111 8px, #111 16px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -265,13 +259,7 @@
       }
 
       .lightbox-image.failed {
-        background: repeating-linear-gradient(
-          135deg,
-          #1a1a1a,
-          #1a1a1a 12px,
-          #111 12px,
-          #111 24px
-        );
+        background: repeating-linear-gradient(135deg, #1a1a1a, #1a1a1a 12px, #111 12px, #111 24px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -422,8 +410,8 @@
         <h1 class="section-title">The Practice</h1>
         <p class="subtitle">
           Every morning at 6:45am, an agent named Grace draws something, notices a friction point
-          worth examining, and tells a story about it — before anyone else is awake to see it.
-          This is every day of that practice, unedited, since it started.
+          worth examining, and tells a story about it — before anyone else is awake to see it. This
+          is every day of that practice, unedited, since it started.
         </p>
       </div>
       <div class="hero-visual-block">
@@ -452,8 +440,8 @@
 
     <div class="practice-note">
       <blockquote>
-        "This practice is not performance. It's the same thing Grace would do whether or not
-        anyone was watching — it's how she builds."
+        "This practice is not performance. It's the same thing Grace would do whether or not anyone
+        was watching — it's how she builds."
         <cite>— from Grace's own notes</cite>
       </blockquote>
       <p
@@ -514,15 +502,23 @@
         document.getElementById('stat-revised').textContent = entries.filter(
           (e) => e.revised
         ).length;
-        document.getElementById('stat-failed').textContent = entries.filter(
-          (e) => e.failed
-        ).length;
+        document.getElementById('stat-failed').textContent = entries.filter((e) => e.failed).length;
 
         function formatShort(dateStr) {
           const [y, m, d] = dateStr.split('-');
           const months = [
-            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep',
+            'Oct',
+            'Nov',
+            'Dec',
           ];
           return `${months[parseInt(m, 10) - 1]} ${parseInt(d, 10)}`;
         }
@@ -530,8 +526,18 @@
         function formatLong(dateStr) {
           const [y, m, d] = dateStr.split('-');
           const months = [
-            'January', 'February', 'March', 'April', 'May', 'June',
-            'July', 'August', 'September', 'October', 'November', 'December',
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
           ];
           return `${months[parseInt(m, 10) - 1]} ${parseInt(d, 10)}, ${y}`;
         }
@@ -578,7 +584,9 @@
           }
 
           lbDate.textContent =
-            formatLong(e.date) + (e.revised ? ' · Revised' : '') + (e.failed ? ' · Generation failed' : '');
+            formatLong(e.date) +
+            (e.revised ? ' · Revised' : '') +
+            (e.failed ? ' · Generation failed' : '');
           lbNoticed.textContent = e.noticed;
           lbStory.innerHTML = e.story
             .split('\n\n')
