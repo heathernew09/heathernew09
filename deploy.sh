@@ -127,5 +127,9 @@ rsync -avz --delete -e "ssh -i $SG_KEY -p $SG_PORT" dist/ "$SG_USER@$SG_HOST:$SG
 echo "🧹 Requesting server cache refresh..."
 ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "touch $SG_PATH/index.html"
 
+# Prune old backups — keep only the 2 most recent
+echo "🗑️  Pruning old backups (keeping 2 most recent)..."
+ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "ls -t ~/backup_portfolio_*.tar.gz 2>/dev/null | tail -n +3 | xargs rm -f"
+
 echo ""
 echo "✅ SUCCESS! The Radia Workflow is complete. Your portfolio is live at https://heathernew.com"
