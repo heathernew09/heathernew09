@@ -236,6 +236,53 @@
         background: var(--lime);
       }
 
+      .grace-tile.failed {
+        background: repeating-linear-gradient(
+          135deg,
+          #1a1a1a,
+          #1a1a1a 8px,
+          #111 8px,
+          #111 16px
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .grace-tile.failed .failed-label {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--orange);
+        text-align: center;
+        opacity: 0.85;
+      }
+
+      .grace-tile.failed .tile-date {
+        opacity: 1;
+        background: none;
+      }
+
+      .lightbox-image.failed {
+        background: repeating-linear-gradient(
+          135deg,
+          #1a1a1a,
+          #1a1a1a 12px,
+          #111 12px,
+          #111 24px
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'JetBrains Mono', monospace;
+        color: var(--orange);
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        text-align: center;
+        padding: 2rem;
+      }
+
       /* Lightbox */
       .lightbox {
         position: fixed;
@@ -398,8 +445,8 @@
         <span class="stat-label">Revised after Paula's challenge</span>
       </div>
       <div class="stat">
-        <span class="stat-value">0</span>
-        <span class="stat-label">Days skipped</span>
+        <span class="stat-value" id="stat-failed">—</span>
+        <span class="stat-label">Generations lost</span>
       </div>
     </div>
 
@@ -409,6 +456,20 @@
         anyone was watching — it's how she builds."
         <cite>— from Grace's own notes</cite>
       </blockquote>
+      <p
+        style="
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.8rem;
+          opacity: 0.6;
+          margin-top: 1.5rem;
+          max-width: 60ch;
+        "
+      >
+        Six mornings have no image — the story still came through, but ComfyUI returned a blank
+        frame. Two were isolated (Apr 13–14); four clustered into a ten-day stretch in June
+        (6/8–6/17), which looks more like a pipeline outage than bad luck, though there's no log to
+        confirm what actually broke. Nothing here is hidden or redone after the fact.
+      </p>
     </div>
 
     <main class="gallery-section">
@@ -420,9 +481,7 @@
       <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#8249;</button>
       <button class="lightbox-nav lightbox-next" id="lightbox-next">&#8250;</button>
       <div class="lightbox-inner">
-        <div class="lightbox-image">
-          <img id="lightbox-img" src="" alt="" />
-        </div>
+        <div class="lightbox-image" id="lightbox-image"></div>
         <div class="lightbox-text">
           <span class="lightbox-date" id="lightbox-date"></span>
           <p class="lightbox-noticed" id="lightbox-noticed"></p>
@@ -445,7 +504,8 @@
         const heroImg = document.getElementById('hero-image');
 
         const latest = entries[entries.length - 1];
-        heroImg.src = latest.image;
+        const latestWithImage = [...entries].reverse().find((e) => e.image) || latest;
+        heroImg.src = latestWithImage.image;
         heroImg.onload = () => heroImg.classList.add('loaded');
 
         document.getElementById('stat-days').textContent = entries.length;
@@ -453,6 +513,9 @@
           formatShort(entries[0].date) + ' → ' + formatShort(latest.date);
         document.getElementById('stat-revised').textContent = entries.filter(
           (e) => e.revised
+        ).length;
+        document.getElementById('stat-failed').textContent = entries.filter(
+          (e) => e.failed
         ).length;
 
         function formatShort(dateStr) {
@@ -474,20 +537,28 @@
         }
 
         grid.innerHTML = entries
-          .map(
-            (e, i) => `
+          .map((e, i) => {
+            if (e.failed) {
+              return `
+            <div class="grace-tile failed" data-index="${i}">
+              <span class="failed-label">NO<br />SIGNAL</span>
+              <span class="tile-date">${formatShort(e.date)}</span>
+            </div>
+          `;
+            }
+            return `
           <div class="grace-tile" data-index="${i}">
             <img src="${e.image}" alt="Grace's drawing from ${formatLong(e.date)}" loading="lazy" />
             ${e.revised ? '<span class="revised-dot" title="Revised after Paula\'s challenge"></span>' : ''}
             <span class="tile-date">${formatShort(e.date)}</span>
           </div>
-        `
-          )
+        `;
+          })
           .join('');
 
         // Lightbox
         const lightbox = document.getElementById('lightbox');
-        const lbImg = document.getElementById('lightbox-img');
+        const lbImageContainer = document.getElementById('lightbox-image');
         const lbDate = document.getElementById('lightbox-date');
         const lbNoticed = document.getElementById('lightbox-noticed');
         const lbStory = document.getElementById('lightbox-story');
@@ -496,9 +567,18 @@
         function openLightbox(index) {
           currentIndex = index;
           const e = entries[index];
-          lbImg.src = e.image;
-          lbImg.alt = `Grace's drawing from ${formatLong(e.date)}`;
-          lbDate.textContent = formatLong(e.date) + (e.revised ? ' · Revised' : '');
+
+          if (e.failed) {
+            lbImageContainer.className = 'lightbox-image failed';
+            lbImageContainer.innerHTML =
+              'NO SIGNAL<br />ComfyUI returned a blank frame this morning — image lost, story kept.';
+          } else {
+            lbImageContainer.className = 'lightbox-image';
+            lbImageContainer.innerHTML = `<img src="${e.image}" alt="Grace's drawing from ${formatLong(e.date)}" />`;
+          }
+
+          lbDate.textContent =
+            formatLong(e.date) + (e.revised ? ' · Revised' : '') + (e.failed ? ' · Generation failed' : '');
           lbNoticed.textContent = e.noticed;
           lbStory.innerHTML = e.story
             .split('\n\n')
