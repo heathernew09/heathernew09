@@ -30,7 +30,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Destination
-$to = 'hello@heathernew.com';
+$to = 'contact@heathernew.com';
 
 // Email subject
 $email_subject = "heathernew.com: " . ($subject ?: 'New Message') . " — from {$name}";
@@ -46,8 +46,8 @@ $body .= str_repeat("─", 40) . "\n";
 $body .= "Sent via heathernew.com contact form\n";
 
 // Headers
-$headers  = "From: {$name} <{$email}>\r\n";
-$headers .= "Reply-To: {$email}\r\n";
+$headers  = "From: heathernew.com <contact@heathernew.com>\r\n";
+$headers .= "Reply-To: {$name} <{$email}>\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
@@ -59,6 +59,6 @@ if ($sent) {
     echo json_encode(['success' => true, 'message' => 'Message sent! I\'ll be in touch soon.']);
 } else {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Something went wrong. Please email me directly at hello@heathernew.com']);
+    echo json_encode(['success' => false, 'message' => 'Something went wrong. Please email me directly at contact@heathernew.com']);
 }
 ?>

@@ -117,3 +117,39 @@
     opacity: 1;
   }
 }
+
+
+/* Ten nav items at 1.2rem need roughly 830px of height; a laptop viewport is
+   often under 800px, so the last items were cut off. Scoped to the overlay id
+   because global.css, nav.css and header.css all define .pages-main-nav a and
+   the winner depends on bundle order. */
+#pages-overlay .pages-menu-content {
+  overflow-y: auto;
+}
+
+@media (min-width: 769px) and (max-width: 1280px) {
+  #pages-overlay .pages-menu-content {
+    padding: 88px 48px;
+  }
+  #pages-overlay .pages-main-nav {
+    gap: 0.15rem;
+  }
+  #pages-overlay .pages-main-nav a {
+    font-size: 1.05rem;
+    padding: 0.6rem 0;
+  }
+}
+
+@media (min-width: 769px) and (max-height: 900px) {
+  #pages-overlay .pages-menu-content {
+    padding: 64px 48px;
+    justify-content: center;
+  }
+  #pages-overlay .pages-main-nav {
+    gap: 0.1rem;
+  }
+  #pages-overlay .pages-main-nav a {
+    font-size: 1.05rem;
+    padding: 0.55rem 0;
+  }
+}

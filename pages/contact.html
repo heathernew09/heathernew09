@@ -119,6 +119,20 @@
       }
 
       /* Form Styles */
+      .form-status {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        font-weight: 700;
+        line-height: 1.4;
+        min-height: 1.2em;
+      }
+      .form-status.is-error {
+        color: #b3261e;
+      }
+      .form-status.is-ok {
+        color: var(--dark-teal);
+      }
+
       .contact-form {
         width: 100%;
       }
@@ -282,7 +296,7 @@
           <!-- FORM TILE -->
           <div id="tile-contact-form" class="b-tile bg-white span-col-2 span-row-2">
             <span class="meta">Get in touch</span>
-            <form class="contact-form" action="#" method="POST">
+            <form class="contact-form" id="contact-form" action="/contact-handler.php" method="POST">
               <div class="form-group">
                 <label>NAME</label>
                 <input type="text" name="name" required />
@@ -300,6 +314,7 @@
                 <textarea name="message" rows="3"></textarea>
               </div>
               <button type="submit" class="submit-btn">SEND MESSAGE</button>
+              <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>
             </form>
           </div>
 
@@ -312,8 +327,8 @@
             class="b-tile bg-teal span-col-1"
             style="text-decoration: none"
           >
-            <span class="meta" style="color: #fff">EMAIL</span>
-            <h3 style="color: #fff; font-size: 1rem; text-transform: none">
+            <span class="meta" style="color: var(--text-dark)">EMAIL</span>
+            <h3 style="color: var(--text-dark); font-size: 1rem; text-transform: none">
               contact@<br />heathernew.com
             </h3>
           </a>
@@ -340,8 +355,8 @@
             <h3 style="font-size: 1rem; text-transform: none">github/<br />heathernew09</h3>
           </a>
           <div id="tile-contact-location" class="b-tile bg-orange span-col-1">
-            <span class="meta" style="color: #fff">Location</span>
-            <h3 style="color: #fff; font-size: 1rem; text-transform: none">Chicago,<br />IL</h3>
+            <span class="meta" style="color: var(--text-dark)">Location</span>
+            <h3 style="color: var(--text-dark); font-size: 1rem; text-transform: none">Chicago,<br />IL</h3>
           </div>
 
           <!-- TESTIMONIALS START HERE -->
@@ -518,6 +533,47 @@
 
       initGrid();
       setInterval(animateColors, 6000);
+    </script>
+    <script>
+      // Submit the contact form without leaving the page. The form keeps its
+      // action and method, so a plain POST still works if this never runs.
+      (function () {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+        const status = document.getElementById('contact-status');
+        const button = form.querySelector('.submit-btn');
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          status.className = 'form-status';
+          status.textContent = 'Sending...';
+          button.disabled = true;
+
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: new FormData(form),
+              headers: { Accept: 'application/json' },
+            });
+            const data = await res.json().catch(() => ({}));
+            if (res.ok && data.success) {
+              status.className = 'form-status is-ok';
+              status.textContent = data.message || "Message sent. I'll be in touch soon.";
+              form.reset();
+            } else {
+              status.className = 'form-status is-error';
+              status.textContent =
+                data.message || 'Something went wrong. Email contact@heathernew.com directly.';
+            }
+          } catch {
+            status.className = 'form-status is-error';
+            status.textContent =
+              'Could not reach the server. Email contact@heathernew.com directly.';
+          } finally {
+            button.disabled = false;
+          }
+        });
+      })();
     </script>
   </body>
 </html>

@@ -38,6 +38,13 @@
   box-sizing: border-box;
 }
 
+/* Reserve the scrollbar gutter at all times. Opening the menu sets
+   body overflow to hidden, which removes the scrollbar and widens the
+   content box — that was the sideways jump on menu open. */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family:
     'Manrope',
@@ -330,6 +337,45 @@ a:hover {
   height: 10px;
   background: var(--accent-lime);
   margin-left: 20px;
+}
+
+/* The menu holds 10 items at 1.2rem with 1rem of vertical padding each, which
+   needs roughly 830px of height. A laptop viewport is often under 800px, so the
+   last items were being cut off. Tighten the rhythm from laptop down to tablet
+   landscape, and again on any short viewport, since the real constraint is
+   height rather than width. */
+.pages-menu-content {
+  overflow-y: auto;
+}
+
+/* global.css, nav.css and header.css each define .pages-main-nav a, so plain
+   class rules here lose to whichever lands last in the bundle. Scoping to the
+   overlay id wins regardless of bundle order. */
+@media (min-width: 769px) and (max-width: 1280px) {
+  #pages-overlay .pages-menu-content {
+    padding: 88px 48px;
+  }
+  #pages-overlay .pages-main-nav {
+    gap: 0.15rem;
+  }
+  #pages-overlay .pages-main-nav a {
+    font-size: 1.05rem;
+    padding: 0.6rem 0;
+  }
+}
+
+@media (min-width: 769px) and (max-height: 900px) {
+  #pages-overlay .pages-menu-content {
+    padding: 72px 48px;
+    justify-content: center;
+  }
+  #pages-overlay .pages-main-nav {
+    gap: 0.1rem;
+  }
+  #pages-overlay .pages-main-nav a {
+    font-size: 1.05rem;
+    padding: 0.55rem 0;
+  }
 }
 
 /* Mobile Adjustments for Structural Corner Block */
