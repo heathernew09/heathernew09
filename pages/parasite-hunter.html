@@ -10,7 +10,7 @@
     <meta http-equiv="cache-control" content="no-store,max-age=0" />
     <title>Parasite Hunter - Heather New - Creative Technologist</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -338,6 +338,171 @@
         border-color: #ff4444 !important;
         color: #ff4444 !important;
         background: rgba(0, 0, 0, 0.7) !important;
+      }
+
+      /* ===== AVMA field-log visualisation =====================================
+         Scoped to .ph-viz. The original was a standalone document with global
+         *, html/body and :root rules; those are re-homed onto the container so
+         nothing escapes into the page. */
+      .ph-viz {
+        --ph-ink: #0b1b1e;
+        --ph-sub: #5b6b6e;
+        --ph-line: #e4e9e8;
+        --ph-bg: #ffffff;
+        width: 100%;
+        background: var(--ph-bg);
+        color: var(--ph-ink);
+        font-family: 'Space Grotesk', 'Manrope', system-ui, sans-serif;
+      }
+      .ph-viz * {
+        box-sizing: border-box;
+      }
+      .ph-viz .ph-wrap {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 32px 24px;
+      }
+      .ph-viz .ph-eyebrow {
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ph-sub);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 14px;
+      }
+      .ph-viz .ph-eyebrow::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #f65a33;
+        box-shadow: 0 0 0 3px rgba(246, 90, 51, 0.15);
+      }
+      .ph-viz .ph-title {
+        font-size: clamp(28px, 4.2vw, 52px);
+        line-height: 1.03;
+        margin: 0 0 10px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        color: var(--ph-ink);
+      }
+      .ph-viz .ph-num {
+        font-variant-numeric: tabular-nums;
+      }
+      .ph-viz .ph-sub {
+        max-width: 640px;
+        color: var(--ph-sub);
+        font-size: 15px;
+        line-height: 1.55;
+        margin: 0 0 6px;
+      }
+      .ph-viz .ph-statline {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        margin-top: 22px;
+        padding-top: 18px;
+        border-top: 1px solid var(--ph-line);
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 13px;
+        color: var(--ph-sub);
+      }
+      .ph-viz .ph-legend {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .ph-viz .ph-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .ph-viz .ph-swatch {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+      .ph-viz .ph-stage {
+        position: relative;
+        margin: 26px 32px 44px;
+        border: 1px solid var(--ph-line);
+        border-radius: 14px;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 1px 1px, #f2f5f4 1px, transparent 0) 0 0 / 16px 16px,
+          #ffffff;
+      }
+      .ph-viz #ph-base,
+      .ph-viz #ph-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .ph-viz #ph-overlay {
+        cursor: crosshair;
+      }
+      .ph-viz #ph-stageSizer {
+        width: 100%;
+        height: min(80vh, 760px);
+      }
+      .ph-viz .ph-tooltip {
+        position: fixed;
+        pointer-events: none;
+        transform: translate(-50%, -140%);
+        background: var(--ph-ink);
+        color: #fff;
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 12px;
+        padding: 7px 10px;
+        border-radius: 7px;
+        white-space: nowrap;
+        opacity: 0;
+        transition: opacity 0.08s ease;
+        z-index: 10;
+        letter-spacing: 0.02em;
+      }
+      .ph-viz .ph-tooltip::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -4px;
+        transform: translateX(-50%) rotate(45deg);
+        width: 8px;
+        height: 8px;
+        background: var(--ph-ink);
+      }
+      .ph-viz .ph-n {
+        font-weight: 700;
+      }
+      .ph-viz .ph-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 32px 40px;
+        color: var(--ph-sub);
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 11px;
+        letter-spacing: 0.04em;
+      }
+      @media (max-width: 640px) {
+        .ph-viz .ph-wrap {
+          padding: 28px 18px 18px;
+        }
+        .ph-viz .ph-stage {
+          margin: 20px 18px 34px;
+        }
+        .ph-viz .ph-foot {
+          padding: 0 18px 30px;
+        }
       }
     </style>
 
@@ -1096,6 +1261,41 @@
         </div>
       </div>
       <!-- end bauhaus grid -->
+
+      <!-- ============================================================
+           AVMA 2026 FIELD LOG — 21,241 catches, one dot each.
+           Self-contained: every selector is scoped under .ph-viz and every
+           id is ph- prefixed, so nothing leaks into the page's own styles.
+           ============================================================ -->
+      <section class="ph-viz" id="ph-viz" aria-labelledby="ph-viz-title">
+        <div class="ph-wrap">
+          <p class="ph-eyebrow">AVMA 2026 &middot; Three-Day Total</p>
+          <h2 class="ph-title" id="ph-viz-title">
+            Parasite Hunters caught <span class="ph-num" id="ph-headlineCount">21,241</span>
+            parasites at AVMA 2026.
+          </h2>
+          <p class="ph-sub">
+            Every dot below is one parasite trapped by an AVMA attendee across the three-day
+            conference. Hover to inspect a catch.
+          </p>
+          <div class="ph-statline">
+            <div class="ph-legend" id="ph-legend"></div>
+          </div>
+        </div>
+
+        <div
+          class="ph-stage"
+          role="img"
+          aria-label="A field of 21,241 dots, one for each parasite caught by attendees at AVMA 2026, coloured by species: ticks, fleas, hookworms, roundworms, tapeworms, heartworms and New World screwworm."
+        >
+          <div id="ph-stageSizer"></div>
+          <canvas id="ph-base"></canvas>
+          <canvas id="ph-overlay"></canvas>
+        </div>
+
+        <div class="ph-foot"><span>AVMA PARASITE HUNTER &middot; FIELD LOG</span></div>
+        <div class="ph-tooltip" id="ph-tooltip"><span class="ph-n" id="ph-ttNum"></span></div>
+      </section>
     </main>
 
     <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
@@ -1184,6 +1384,221 @@
           }
         }, 100);
       });
+    </script>
+    <script>
+      // AVMA field log: 21,241 dots on canvas, batched per species so the whole
+      // field is seven fill calls rather than 21,241. Positions are derived from
+      // a seeded pseudo-random so each specimen keeps its identity across resizes.
+      (function () {
+        const root = document.getElementById('ph-viz');
+        if (!root) return;
+
+        const TOTAL = 21241;
+        const SPECIES = [
+          { name: 'Ticks', singular: 'Tick', color: '#F68A33' },
+          { name: 'Fleas', singular: 'Flea', color: '#80BB4F' },
+          { name: 'Hookworms', singular: 'Hookworm', color: '#0099D8' },
+          { name: 'Roundworms', singular: 'Roundworm', color: '#00643C' },
+          { name: 'Tapeworms', singular: 'Tapeworm', color: '#EAAC18' },
+          { name: 'Heartworms', singular: 'Heartworm', color: '#EC008C' },
+          { name: 'New World Screwworm', singular: 'New World Screwworm', color: '#F65A33' },
+        ];
+        const COLORS = SPECIES.map((s) => s.color);
+
+        const sizer = document.getElementById('ph-stageSizer');
+        const base = document.getElementById('ph-base');
+        const overlay = document.getElementById('ph-overlay');
+        const tooltip = document.getElementById('ph-tooltip');
+        const ttNum = document.getElementById('ph-ttNum');
+        if (!sizer || !base || !overlay) return;
+
+        const bctx = base.getContext('2d');
+        const octx = overlay.getContext('2d');
+
+        function rnd(seed) {
+          const x = Math.sin(seed * 12.9898) * 43758.5453123;
+          return x - Math.floor(x);
+        }
+        function darken(hex, amt) {
+          const n = parseInt(hex.slice(1), 16);
+          const r = Math.max(0, Math.floor(((n >> 16) & 255) * amt));
+          const g = Math.max(0, Math.floor(((n >> 8) & 255) * amt));
+          const b = Math.max(0, Math.floor((n & 255) * amt));
+          return 'rgb(' + r + ',' + g + ',' + b + ')';
+        }
+        const STROKE = COLORS.map((c) => darken(c, 0.62));
+
+        let dpr = 1,
+          W = 0,
+          H = 0,
+          cols = 0,
+          rows = 0,
+          spacingX = 0,
+          spacingY = 0;
+        let dots = [];
+        let hoveredIdx = -1;
+
+        function computeLayout(w, h) {
+          const aspect = w / h;
+          cols = Math.max(1, Math.round(Math.sqrt(TOTAL * aspect)));
+          rows = Math.ceil(TOTAL / cols);
+          spacingX = w / cols;
+          spacingY = h / rows;
+          const baseR = Math.min(spacingX, spacingY) * 0.3;
+          dots = new Array(TOTAL);
+          for (let i = 0; i < TOTAL; i++) {
+            const col = i % cols;
+            const row = (i / cols) | 0;
+            const jx = (rnd(i * 1.37 + 1) - 0.5) * spacingX * 0.55;
+            const jy = (rnd(i * 2.91 + 7) - 0.5) * spacingY * 0.55;
+            const rr = baseR * (0.72 + rnd(i * 3.53 + 3) * 0.5);
+            const colorIdx = Math.floor(rnd(i * 5.19 + 11) * COLORS.length) % COLORS.length;
+            dots[i] = {
+              x: col * spacingX + spacingX / 2 + jx,
+              y: row * spacingY + spacingY / 2 + jy,
+              r: rr,
+              c: colorIdx,
+            };
+          }
+        }
+
+        function drawBase() {
+          bctx.clearRect(0, 0, W, H);
+          const byColor = COLORS.map(() => []);
+          for (let i = 0; i < dots.length; i++) byColor[dots[i].c].push(i);
+          for (let c = 0; c < COLORS.length; c++) {
+            bctx.beginPath();
+            const idxs = byColor[c];
+            for (let k = 0; k < idxs.length; k++) {
+              const d = dots[idxs[k]];
+              bctx.moveTo(d.x + d.r, d.y);
+              bctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+            }
+            bctx.fillStyle = COLORS[c];
+            bctx.fill();
+            bctx.lineWidth = 1;
+            bctx.strokeStyle = STROKE[c];
+            bctx.stroke();
+          }
+        }
+
+        function drawOverlay() {
+          octx.clearRect(0, 0, W, H);
+          if (hoveredIdx >= 0) {
+            const d = dots[hoveredIdx];
+            octx.beginPath();
+            octx.arc(d.x, d.y, d.r + 4.5, 0, Math.PI * 2);
+            octx.lineWidth = 2;
+            octx.strokeStyle = 'rgba(11,27,30,0.55)';
+            octx.stroke();
+          }
+        }
+
+        function resize() {
+          dpr = Math.max(1, window.devicePixelRatio || 1);
+          W = sizer.clientWidth;
+          H = sizer.clientHeight;
+          if (!W || !H) return;
+          [base, overlay].forEach((cv) => {
+            cv.width = W * dpr;
+            cv.height = H * dpr;
+            cv.style.width = W + 'px';
+            cv.style.height = H + 'px';
+          });
+          bctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          octx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          computeLayout(W, H);
+          drawBase();
+          drawOverlay();
+        }
+
+        function findDotAt(x, y) {
+          const col = Math.floor(x / spacingX);
+          const row = Math.floor(y / spacingY);
+          let best = -1,
+            bestDist = Infinity;
+          for (let rr = row - 1; rr <= row + 1; rr++) {
+            if (rr < 0 || rr >= rows) continue;
+            for (let cc = col - 1; cc <= col + 1; cc++) {
+              if (cc < 0 || cc >= cols) continue;
+              const idx = rr * cols + cc;
+              if (idx < 0 || idx >= dots.length) continue;
+              const d = dots[idx];
+              const dx = d.x - x,
+                dy = d.y - y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist <= d.r + 2.5 && dist < bestDist) {
+                bestDist = dist;
+                best = idx;
+              }
+            }
+          }
+          return best;
+        }
+
+        overlay.addEventListener('mousemove', (e) => {
+          const rect = overlay.getBoundingClientRect();
+          const idx = findDotAt(e.clientX - rect.left, e.clientY - rect.top);
+          if (idx !== hoveredIdx) {
+            hoveredIdx = idx;
+            drawOverlay();
+          }
+          if (idx >= 0) {
+            const d = dots[idx];
+            ttNum.textContent =
+              SPECIES[d.c].singular + ' \u00b7 Specimen #' + (idx + 1).toLocaleString();
+            tooltip.style.left = e.clientX + 'px';
+            tooltip.style.top = e.clientY + 'px';
+            tooltip.style.opacity = '1';
+          } else {
+            tooltip.style.opacity = '0';
+          }
+        });
+
+        overlay.addEventListener('mouseleave', () => {
+          hoveredIdx = -1;
+          tooltip.style.opacity = '0';
+          drawOverlay();
+        });
+
+        const legend = document.getElementById('ph-legend');
+        SPECIES.forEach((s) => {
+          const item = document.createElement('span');
+          item.className = 'ph-legend-item';
+          const dot = document.createElement('span');
+          dot.className = 'ph-swatch';
+          dot.style.background = s.color;
+          const label = document.createElement('span');
+          label.textContent = s.name;
+          item.appendChild(dot);
+          item.appendChild(label);
+          legend.appendChild(item);
+        });
+
+        document.getElementById('ph-headlineCount').textContent = TOTAL.toLocaleString();
+
+        let resizeTimer = null;
+        window.addEventListener('resize', () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(resize, 120);
+        });
+
+        // Only build the field once it is actually approaching the viewport.
+        if ('IntersectionObserver' in window) {
+          const io = new IntersectionObserver(
+            (entries) => {
+              if (entries.some((en) => en.isIntersecting)) {
+                io.disconnect();
+                resize();
+              }
+            },
+            { rootMargin: '300px' }
+          );
+          io.observe(root);
+        } else {
+          resize();
+        }
+      })();
     </script>
   </body>
 </html>
