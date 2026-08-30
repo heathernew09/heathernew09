@@ -390,7 +390,7 @@ a.b-tile:focus-visible .tile-link-text {
 
 @media (min-width: 769px) and (max-height: 900px) {
   #pages-overlay .pages-menu-content {
-    padding: 72px 48px;
+    padding: 64px 48px;
     justify-content: center;
   }
   #pages-overlay .pages-main-nav {
