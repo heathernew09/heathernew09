@@ -421,10 +421,18 @@
         cursor: pointer;
       }
       a.b-tile:hover .arrow-link,
-      a.b-tile:focus-visible .arrow-link {
+      a.b-tile:hover .tile-link-text,
+      a.b-tile:focus-visible .arrow-link,
+      a.b-tile:focus-visible .tile-link-text {
         text-decoration: underline;
         text-underline-offset: 4px;
         text-decoration-thickness: 2px;
+      }
+      /* The arrow stays out of the underline: a parent's decoration does not
+         span an atomic inline, so inline-block lets the glyph sit clear of it. */
+      .arrow-link span,
+      .tile-link-text span {
+        display: inline-block;
       }
       a.b-tile:focus-visible {
         outline: 3px solid var(--text-dark);
@@ -907,7 +915,12 @@
         </a>
 
         <!-- Row 7: Spatial Design Break -->
-        <div id="tile-home-built-different-link" class="b-tile bg-lime">
+        <a
+          href="/pages/built-different.html"
+          class="b-tile bg-lime"
+          id="tile-home-built-different-link"
+          style="text-decoration: none"
+        >
           <div>
             <img
               src="/assets/merge/404/404-M.gif"
@@ -916,10 +929,10 @@
             />
           </div>
 
-          <a href="/pages/built-different.html"
-            ><h3 style="margin-top: 2rem">MMMMMore here →</h3></a
-          >
-        </div>
+          <div class="tile-link-text">
+            <h3 style="margin-top: 2rem">MMMMMore here <span>→</span></h3>
+          </div>
+        </a>
 
         <div id="tile-home-merge-erg" class="b-tile img-tile bg-mid-gray">
           <img
@@ -961,16 +974,21 @@
           <span class="arrow-link">View Project <span>→</span></span>
         </a>
 
-        <div id="tile-home-biomarin-learning" class="b-tile bg-yellow">
-          <a href="/pages/biomarin.html"
-            ><img
+        <a
+          href="/pages/biomarin.html"
+          class="b-tile bg-yellow"
+          id="tile-home-biomarin-learning"
+          style="text-decoration: none"
+        >
+          <div class="tile-link-text">
+            <img
               src="/assets/skele-bones-CseBdNWT.png"
               alt="Gamified Learning Biomarin"
               class="scully"
             />
-            <h3 class="sculls">Gamified<br />Learning →</h3></a
-          >
-        </div>
+            <h3 class="sculls">Gamified<br />Learning <span>→</span></h3>
+          </div>
+        </a>
 
         <!-- Row 9 -->
         <div id="tile-home-subway-menus" class="b-tile img-tile span-col-2">
