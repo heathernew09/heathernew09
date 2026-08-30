@@ -149,7 +149,7 @@ a:hover {
 a.b-tile,
 a.b-tile:hover,
 a.b-tile:focus-visible {
-  color: inherit;
+  color: var(--tile-text, inherit);
 }
 
 a.b-tile:hover .arrow-link,
