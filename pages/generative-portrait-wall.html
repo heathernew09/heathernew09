@@ -127,17 +127,12 @@
         width: 100%;
       }
 
-      /* .page-wrapper had no rule at all, so every section ran the full width of
-         the viewport. Matches the roller-derby pattern: a centred 1400px column. */
-      .page-wrapper {
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
       .section {
         border-bottom: var(--border);
-        padding: 5vw 2vw;
+        /* 2vw alone put the text almost on the viewport edge. roller-derby gets
+           its breathing room from 2vw outside plus 2.5rem inside each tile; this
+           folds the equivalent into the section. */
+        padding: 5vw clamp(1.5rem, 4vw, 4rem);
       }
 
       .section-label {
