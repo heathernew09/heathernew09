@@ -575,14 +575,27 @@
         .hero {
           width: 100%;
         }
-        .pages-main-nav a {
-          font-size: 1rem;
-          white-space: normal;
-          word-break: break-word;
+      }
+
+      /* Match every other page: below 768px the drawer becomes a full-width,
+         centre-aligned menu with larger touch targets. */
+      @media (max-width: 768px) {
+        #pages-overlay .pages-menu-content {
+          max-width: 100%;
+          min-width: 100%;
+          padding: 80px 30px;
+          align-items: center;
+          justify-content: center;
+          clip-path: none !important;
+          -webkit-clip-path: none !important;
         }
-        .pages-menu-content {
-          padding-left: 1.5rem !important;
-          padding-right: 1.5rem !important;
+        #pages-overlay .pages-main-nav {
+          align-items: center;
+          text-align: center;
+        }
+        #pages-overlay .pages-main-nav a {
+          font-size: 1.5rem;
+          justify-content: center;
         }
       }
     </style>
