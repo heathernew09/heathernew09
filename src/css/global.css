@@ -1435,3 +1435,56 @@ RESULTS SECTION
   color: var(--white);
   transform: translateY(-2px);
 }
+
+/* Menu button reads as words rather than three bars. It is a real <button> now,
+   so it is reachable by keyboard; it used to be a div with a click handler.
+   The old bar rules still target `#nav-hamburger-icon span`, so the labels are
+   reset at a higher specificity, including under .active which carries the
+   rotate transforms. */
+.pages-nav-icon {
+  border: none;
+  font: inherit;
+  width: auto;
+  min-width: 92px;
+  padding: 0 1.5rem;
+}
+#nav-hamburger-icon {
+  position: static;
+  width: auto;
+  height: auto;
+}
+#nav-hamburger-icon .nav-label,
+#nav-hamburger-icon.active .nav-label {
+  position: static;
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  transform: none;
+  opacity: 1;
+  color: var(--white);
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+}
+#nav-hamburger-icon .nav-label-open,
+#nav-hamburger-icon .nav-label-close {
+  display: none;
+}
+#nav-hamburger-icon .nav-label-open {
+  display: inline-block;
+}
+.pages-nav-icon.active #nav-hamburger-icon .nav-label-open {
+  display: none;
+}
+.pages-nav-icon.active #nav-hamburger-icon .nav-label-close {
+  display: inline-block;
+}
+.pages-nav-icon:focus-visible {
+  outline: 3px solid var(--accent-lime, #bfff00);
+  outline-offset: -6px;
+}

@@ -121,18 +121,23 @@
       }
 
       /* ─── SECTION BASE ──────────────────────────────────── */
+      /* Mirrors roller-derby: main.portfolio-section centres a width-capped
+         column and carries the page gutter, the column holds the content. */
+      main#main-content {
+        padding: 4rem 2vw 8rem;
+        display: flex;
+        justify-content: center;
+      }
       .page-wrapper {
         max-width: 1400px;
-        margin: 0 auto;
         width: 100%;
       }
 
       .section {
         border-bottom: var(--border);
-        /* 2vw alone put the text almost on the viewport edge. roller-derby gets
-           its breathing room from 2vw outside plus 2.5rem inside each tile; this
-           folds the equivalent into the section. */
-        padding: 5vw clamp(1.5rem, 4vw, 4rem);
+        /* the outer main supplies the page gutter; this is the tile-level
+           padding, matching roller-derby's 2.5rem inside each b-tile */
+        padding: 5vw 2.5rem;
       }
 
       .section-label {

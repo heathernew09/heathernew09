@@ -166,6 +166,7 @@
       const isOpen = overlay?.classList.toggle('open');
       hamburger?.classList.toggle('active');
       navBlock?.classList.toggle('active');
+      navBlock?.setAttribute('aria-expanded', String(!!isOpen));
 
       // Toggle body scroll
       document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -178,6 +179,7 @@
       overlay?.classList.remove('open');
       hamburger?.classList.remove('active');
       navBlock?.classList.remove('active');
+      navBlock?.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
   });

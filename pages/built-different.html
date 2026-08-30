@@ -132,7 +132,9 @@
 
       /* ─── BAUHAUS GRID ─────────────────────────────────── */
       .portfolio-section {
-        padding: 0;
+        /* was padding: 0, so the grid sat on the viewport edge below 1400px.
+           roller-derby uses 4rem 2vw 8rem; same rhythm here. */
+        padding: 4rem 2vw 8rem;
         background-color: #fff;
         display: flex;
         justify-content: center;
