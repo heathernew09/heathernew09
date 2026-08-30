@@ -406,6 +406,14 @@
         }
       }
 
+      /* The tile itself is the link now, so the base a / a:hover colours would
+         recolour the whole cell. Tile anchors never take link colouring. */
+      a.b-tile,
+      a.b-tile:hover,
+      a.b-tile:focus-visible {
+        color: inherit;
+      }
+
       /* Hover: nothing moves. The whole cell is the link, so it takes a pointer
          cursor, and the tile's own link text underlines to show where it goes. */
       a.b-tile,
@@ -431,9 +439,6 @@
         font-size: 1.5rem;
         text-decoration: none;
         color: inherit;
-      }
-      .arrow-link:hover {
-        color: var(--lime) !important;
       }
       .arrow-link span {
         display: inline-block;

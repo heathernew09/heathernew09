@@ -144,6 +144,14 @@ a:hover {
   color: #1f6870;
 }
 
+/* Tiles are anchors, so the rule above would recolour a whole cell on hover.
+   Tile anchors keep their own text colour. */
+a.b-tile,
+a.b-tile:hover,
+a.b-tile:focus-visible {
+  color: inherit;
+}
+
 /* ============================================
    2. GLOBAL HEADER & NAVIGATION
    ============================================ */
