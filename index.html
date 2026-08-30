@@ -440,8 +440,9 @@
       }
 
       .arrow-link {
-        display: inline-flex;
-        align-items: center;
+        /* inline-block, not inline-flex: a flex item cannot escape the
+           parent underline, an atomic inline can. */
+        display: inline-block;
         margin-top: auto;
         font-weight: 800;
         font-size: 1.5rem;
@@ -1083,7 +1084,7 @@
 
         <!-- Row 12 (Footer/Contact Area) -->
         <div id="tile-home-connect" class="b-tile bg-dark-teal span-col-3">
-          <span class="meta" style="color: var(--dark-teal)">Let's Connect</span>
+          <span class="meta" style="color: var(--lime)">Let's Connect</span>
           <h2 style="font-size: 4rem; letter-spacing: -2px; margin-top: 1rem">
             design for function
           </h2>
