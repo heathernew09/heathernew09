@@ -726,6 +726,20 @@ a:hover {
   }
 }
 
+/* Available to screen readers and search engines, not to sighted users.
+   Used for page titles that are carried visually by a wordmark or a timer. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 a.skip-to-content {
   display: none;
 }
@@ -1100,13 +1114,13 @@ RESULTS SECTION
 }
 .bg-orange {
   --tile-bg: var(--orange);
-  --tile-text: #fff;
+  --tile-text: #111111;
   background-color: var(--tile-bg);
   color: var(--tile-text);
 }
 .bg-teal {
   --tile-bg: var(--teal);
-  --tile-text: #fff;
+  --tile-text: #111111;
   background-color: var(--tile-bg);
   color: var(--tile-text);
 }

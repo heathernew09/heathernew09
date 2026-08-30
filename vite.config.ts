@@ -4,11 +4,16 @@ import injectHTML from 'vite-plugin-html-inject';
 import { globSync } from 'glob';
 
 // Get all HTML files in pages and its subdirectories
+// Drafts and scaffolds that live in pages/ but must never ship. .gitignore keeps
+// them out of the repo; this keeps them out of dist/, which is a separate thing.
+const NO_SHIP = [/-pre-bauhaus\.html$/, /^pages\/template\.html$/];
+
 const pages = globSync('pages/**/*.html').reduce((acc, file) => {
   // Create a relative path from root to the file
   const relativePath = path.relative('.', file);
   // Skip index.html and 404.html as they are handled or not needed in pages
   if (relativePath === 'index.html' || relativePath === '404.html') return acc;
+  if (NO_SHIP.some((re) => re.test(relativePath))) return acc;
 
   // Use the relative path as the key (e.g., 'pages/about')
   const name = relativePath.replace(/\.html$/, '');

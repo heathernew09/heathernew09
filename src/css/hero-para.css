@@ -82,7 +82,7 @@
 }
 .bg-teal {
   background-color: var(--teal);
-  color: #fff;
+  color: #111111;
 }
 .bg-dark-teal {
   background-color: var(--dark-teal);
@@ -94,7 +94,7 @@
 }
 .bg-orange {
   background-color: var(--orange);
-  color: #fff;
+  color: #111111;
 }
 .bg-lime {
   background-color: var(--lime);

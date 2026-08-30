@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Parasite Hunter - a WebAR game for Elanco Credelio Quattro at VMX. Product design for UX and UI, translating a 2D comic aesthetic into performant 3D WebAR." />
     <meta http-equiv="cache-control" content="no-store,max-age=0" />
     <title>Parasite Hunter - Heather New - Creative Technologist</title>
     <link
@@ -117,10 +118,34 @@
           color 0.4s ease;
       }
 
+      /* Hover: the tile keeps its color and lifts onto a hard offset shadow.
+         Replaces the old bg/text inversion, which was too abrupt. */
+      .hover-invert,
+      a.b-tile {
+        transition:
+          transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
+          box-shadow 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+      }
       .hover-invert:hover,
-      a.b-tile:hover {
-        background-color: var(--tile-text) !important;
-        color: var(--tile-bg) !important;
+      a.b-tile:hover,
+      a.b-tile:focus-visible {
+        transform: translateY(-6px);
+        box-shadow: 8px 8px 0 var(--text-dark);
+      }
+      a.b-tile:focus-visible {
+        outline: 3px solid var(--text-dark);
+        outline-offset: 3px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .hover-invert,
+        a.b-tile {
+          transition: none;
+        }
+        .hover-invert:hover,
+        a.b-tile:hover,
+        a.b-tile:focus-visible {
+          transform: none;
+        }
       }
 
       .b-tile h2 {
@@ -309,6 +334,21 @@
         background: rgba(0, 0, 0, 0.7) !important;
       }
     </style>
+  
+    <link rel="canonical" href="https://heathernew.com/pages/parasite-hunter.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Heather New" />
+    <meta property="og:url" content="https://heathernew.com/pages/parasite-hunter.html" />
+    <meta property="og:title" content="Parasite Hunter - Heather New - Creative Technologist" />
+    <meta property="og:description" content="Parasite Hunter - a WebAR game for Elanco Credelio Quattro at VMX. Product design for UX and UI, translating a 2D comic aesthetic into performant 3D WebAR." />
+    <meta property="og:image" content="https://heathernew.com/assets/heathernew-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Heather New, Creative Technologist. Portfolio at heathernew.com." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Parasite Hunter - Heather New - Creative Technologist" />
+    <meta name="twitter:description" content="Parasite Hunter - a WebAR game for Elanco Credelio Quattro at VMX. Product design for UX and UI, translating a 2D comic aesthetic into performant 3D WebAR." />
+    <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
   </head>
   <body id="parasite-page" class="page-template">
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
@@ -338,7 +378,7 @@
               <span class="meta" style="color: var(--lime)"
                 >VMX 2026 / WVC 2026 &mdash; Elanco &mdash; MERGE PostPop</span
               >
-              <h2 style="margin-top: 1rem; font-size: 3rem">Parasite Hunter</h2>
+              <h1 style="margin-top: 1rem; font-size: 3rem">Parasite Hunter</h1>
               <p style="color: var(--light-gray); font-size: 1.2rem; max-width: 600px">
                 An immersive WebAR game built on 8th Wall. Hunt parasites in augmented reality,
                 learn about pet health, and explore interactive 3D experiences — all from your
@@ -473,7 +513,7 @@
 
           <!-- ROW 3: CREATIVE DIRECTION HEADER -->
           <div id="tile-para-process-header" class="b-tile bg-teal span-col-4">
-            <span class="meta" style="color: var(--lime)">Creative Direction</span>
+            <span class="meta" style="color: var(--text-dark)">Creative Direction</span>
             <h2>From Storyboard to Spatial Reality</h2>
             <p style="max-width: 700px">
               The characters for the parasite hunter game were built and created for the product
@@ -629,7 +669,7 @@
             class="b-tile bg-teal"
             style="justify-content: flex-start; gap: 1rem"
           >
-            <span class="meta" style="color: var(--lime)">01 &mdash; Scan</span>
+            <span class="meta" style="color: var(--text-dark)">01 &mdash; Scan</span>
             <h3>No App Download</h3>
             <p style="color: var(--light-gray)">
               QR code launches directly in mobile browser. Zero friction entry — 8th Wall powers the
@@ -800,7 +840,7 @@
 
           <!-- ROW 14: LEADERBOARD + TROPHIES -->
           <div class="b-tile bg-dark-teal span-col-3">
-            <span class="meta" style="color: var(--lime)">Engagement Strategy</span>
+            <span class="meta" style="color: var(--text-dark)">Engagement Strategy</span>
             <h2>Leaderboards Incite Competition</h2>
             <p style="color: var(--light-gray)">
               The <strong style="color: var(--white)">Mini Toby Trophy</strong> mirrored our 12-foot
@@ -870,7 +910,7 @@
 
           <!-- ROW 17: ROLE SUMMARY HEADER -->
           <div id="tile-para-expertise-header" class="b-tile bg-teal span-col-4">
-            <span class="meta" style="color: var(--lime)">Expertise in Action</span>
+            <span class="meta" style="color: var(--text-dark)">Expertise in Action</span>
             <h2>Bridging Vision and Execution</h2>
           </div>
 
