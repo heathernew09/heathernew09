@@ -274,7 +274,9 @@
         position: fixed;
         inset: 0;
         background: rgba(10, 10, 10, 0.95);
-        z-index: 100;
+        /* Above the site header (9999) and the nav overlay (10000/10001),
+           which were painting over the close button. */
+        z-index: 10100;
         display: none;
         overflow-y: auto;
       }
@@ -348,14 +350,36 @@
         color: #fff;
         font-family: 'JetBrains Mono', monospace;
         cursor: pointer;
-        z-index: 101;
+        z-index: 10101;
       }
 
+      /* Given its own disc so it stays legible over any artwork. */
       .lightbox-close {
         top: 1.5rem;
-        right: 2rem;
-        font-size: 2rem;
+        right: 1.5rem;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
         line-height: 1;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      .lightbox-close:hover {
+        background: rgba(255, 255, 255, 0.28);
+        transform: rotate(90deg);
+      }
+
+      .lightbox-close:focus-visible,
+      .lightbox-nav:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 3px;
       }
 
       .lightbox-nav {
@@ -487,9 +511,9 @@
     </main>
 
     <div class="lightbox" id="lightbox">
-      <button class="lightbox-close" id="lightbox-close">&times;</button>
-      <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#8249;</button>
-      <button class="lightbox-nav lightbox-next" id="lightbox-next">&#8250;</button>
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close image">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
+      <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">&#8250;</button>
       <div class="lightbox-inner">
         <div class="lightbox-image" id="lightbox-image"></div>
         <div class="lightbox-text">
