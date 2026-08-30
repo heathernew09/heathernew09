@@ -1,61 +1,140 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --teal:#1bb1a5; --lime:#b2f81d; --orange:#ff7500;
-    --ink:#111111; --paper:#f4f4f4;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{width:1200px;height:630px}
-  body{
-    font-family:'Manrope',system-ui,sans-serif;
-    background:var(--paper); color:var(--ink);
-    display:grid; grid-template-columns:1fr 300px; overflow:hidden;
-  }
-  .left{padding:74px 0 74px 78px; display:flex; flex-direction:column; justify-content:space-between}
-  .meta{
-    font-size:20px; font-weight:800; letter-spacing:.22em; text-transform:uppercase;
-  }
-  .name{
-    font-size:132px; font-weight:800; line-height:.88; letter-spacing:-.035em;
-  }
-  .name em{font-style:normal; display:block}
-  .rule{height:10px;background:var(--ink);width:190px;margin:26px 0 22px}
-  .role{
-    font-size:37px; font-weight:800; line-height:1.12; letter-spacing:-.015em; max-width:660px;
-  }
-  .role span{background:var(--lime); padding:0 6px}
-  .foot{font-size:21px;font-weight:700;letter-spacing:.04em;opacity:.72}
+  <head>
+    <meta charset="utf-8" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --teal: #1bb1a5;
+        --lime: #b2f81d;
+        --orange: #ff7500;
+        --ink: #111111;
+        --paper: #f4f4f4;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1200px;
+        height: 630px;
+      }
+      body {
+        font-family: 'Manrope', system-ui, sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        overflow: hidden;
+      }
+      .left {
+        padding: 74px 0 74px 78px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .meta {
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      .name {
+        font-size: 132px;
+        font-weight: 800;
+        line-height: 0.88;
+        letter-spacing: -0.035em;
+      }
+      .name em {
+        font-style: normal;
+        display: block;
+      }
+      .rule {
+        height: 10px;
+        background: var(--ink);
+        width: 190px;
+        margin: 26px 0 22px;
+      }
+      .role {
+        font-size: 37px;
+        font-weight: 800;
+        line-height: 1.12;
+        letter-spacing: -0.015em;
+        max-width: 660px;
+      }
+      .role span {
+        background: var(--lime);
+        padding: 0 6px;
+      }
+      .foot {
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        opacity: 0.72;
+      }
 
-  /* Bauhaus column: circle, square, quarter-arc — the same vocabulary as the site */
-  .right{position:relative;background:var(--teal)}
-  .sq{position:absolute;top:0;right:0;width:300px;height:210px;background:var(--orange)}
-  .circ{position:absolute;top:210px;right:0;width:300px;height:300px;border-radius:50%;background:var(--paper)}
-  .arc{position:absolute;bottom:0;right:0;width:300px;height:120px;background:var(--ink);
-       border-top-left-radius:300px}
-  .dot{position:absolute;border-radius:50%;background:var(--ink)}
-</style>
-</head>
-<body>
-  <div class="left">
-    <div class="meta">Portfolio &middot; heathernew.com</div>
-    <div>
-      <div class="name"><em>Heather</em><em>New</em></div>
-      <div class="rule"></div>
-      <div class="role">Creative Technologist. I <span>build</span> the thing, not just the deck.</div>
+      /* Bauhaus column: circle, square, quarter-arc — the same vocabulary as the site */
+      .right {
+        position: relative;
+        background: var(--teal);
+      }
+      .sq {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 210px;
+        background: var(--orange);
+      }
+      .circ {
+        position: absolute;
+        top: 210px;
+        right: 0;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: var(--paper);
+      }
+      .arc {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+        height: 120px;
+        background: var(--ink);
+        border-top-left-radius: 300px;
+      }
+      .dot {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--ink);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="left">
+      <div class="meta">Portfolio &middot; heathernew.com</div>
+      <div>
+        <div class="name"><em>Heather</em><em>New</em></div>
+        <div class="rule"></div>
+        <div class="role">
+          Creative Technologist. I <span>build</span> the thing, not just the deck.
+        </div>
+      </div>
+      <div class="foot">Interactive · Physical computing · On-device AI</div>
     </div>
-    <div class="foot">Interactive · Physical computing · On-device AI</div>
-  </div>
-  <div class="right">
-    <div class="sq"></div>
-    <div class="circ"></div>
-    <div class="arc"></div>
-    <div class="dot" style="width:26px;height:26px;top:52px;right:210px"></div>
-    <div class="dot" style="width:14px;height:14px;top:150px;right:255px"></div>
-    <div class="dot" style="width:20px;height:20px;top:104px;right:130px"></div>
-  </div>
-</body>
+    <div class="right">
+      <div class="sq"></div>
+      <div class="circ"></div>
+      <div class="arc"></div>
+      <div class="dot" style="width: 26px; height: 26px; top: 52px; right: 210px"></div>
+      <div class="dot" style="width: 14px; height: 14px; top: 150px; right: 255px"></div>
+      <div class="dot" style="width: 20px; height: 20px; top: 104px; right: 130px"></div>
+    </div>
+  </body>
 </html>

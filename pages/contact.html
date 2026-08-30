@@ -419,9 +419,9 @@
           text: 'I was impressed after first meeting you and finding out that you were a roller girl!',
           author: 'C.F.',
         },
-        { text: "Heather, You ARE thebomb.com I'm so happy you are on our team.", author: 'J.W.' },
+        { text: 'Heather, You ARE thebomb.com I\'m so happy you are on our team.', author: 'J.W.' },
         {
-          text: "I probably would have never figured out web design if it weren't for your patience and help.",
+          text: 'I probably would have never figured out web design if it weren\'t for your patience and help.',
           author: 'M.W.',
         },
         {
@@ -430,7 +430,7 @@
         },
         { text: 'Thank you for always being willing to help!', author: 'A.P.' },
         {
-          text: "I'm grateful you fix any stupid goof up I've created on my computer!",
+          text: 'I\'m grateful you fix any stupid goof up I\'ve created on my computer!',
           author: 'L.K.',
         },
         { text: 'You might be the coolest person I know. Keep kicking ass.', author: 'S.B.' },
@@ -439,7 +439,7 @@
           author: 'A.BC',
         },
         {
-          text: "You're an awesome artist / designer / programmer / derby girl / handyman / dog mom!",
+          text: 'You\'re an awesome artist / designer / programmer / derby girl / handyman / dog mom!',
           author: 'M.C.',
         },
         { text: 'Cute, smart, athletic, and fun is what you are Heather.', author: 'D.C.' },
@@ -457,9 +457,9 @@
           author: 'S.S.',
         },
         { text: 'Heather, You do awesome work!', author: 'A.P.' },
-        { text: "You are 'rock solid' team player who gets it done.", author: 'S.G.' },
+        { text: 'You are \'rock solid\' team player who gets it done.', author: 'S.G.' },
         {
-          text: "Hope you have the best of success because I think you're super talented.",
+          text: 'Hope you have the best of success because I think you\'re super talented.',
           author: 'F.S.',
         },
       ];
@@ -574,7 +574,7 @@
             const data = await res.json().catch(() => ({}));
             if (res.ok && data.success) {
               status.className = 'form-status is-ok';
-              status.textContent = data.message || "Message sent. I'll be in touch soon.";
+              status.textContent = data.message || 'Message sent. I\'ll be in touch soon.';
               form.reset();
             } else {
               status.className = 'form-status is-error';

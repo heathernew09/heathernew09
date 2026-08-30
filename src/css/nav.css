@@ -293,7 +293,6 @@
   }
 }
 
-
 /* Ten nav items at 1.2rem need roughly 830px of height; a laptop viewport is
    often under 800px, so the last items were cut off. Scoped to the overlay id
    because global.css, nav.css and header.css all define .pages-main-nav a and
