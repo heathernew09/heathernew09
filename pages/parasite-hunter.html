@@ -121,34 +121,21 @@
           color 0.4s ease;
       }
 
-      /* Hover: the tile keeps its color and lifts onto a hard offset shadow.
-         Replaces the old bg/text inversion, which was too abrupt. */
-      .hover-invert,
-      a.b-tile {
-        transition:
-          transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
-          box-shadow 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+      /* Hover: nothing moves. The whole cell is the link, so it takes a pointer
+         cursor, and the tile's own link text underlines to show where it goes. */
+      a.b-tile,
+      a.b-tile * {
+        cursor: pointer;
       }
-      .hover-invert:hover,
-      a.b-tile:hover,
-      a.b-tile:focus-visible {
-        transform: translateY(-6px);
-        box-shadow: 8px 8px 0 var(--text-dark);
+      a.b-tile:hover .arrow-link,
+      a.b-tile:focus-visible .arrow-link {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
       }
       a.b-tile:focus-visible {
         outline: 3px solid var(--text-dark);
         outline-offset: 3px;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .hover-invert,
-        a.b-tile {
-          transition: none;
-        }
-        .hover-invert:hover,
-        a.b-tile:hover,
-        a.b-tile:focus-visible {
-          transform: none;
-        }
       }
 
       .b-tile h2 {

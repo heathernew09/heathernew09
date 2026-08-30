@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="HeatherNew" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-<!-- Import GSAP for high-performance elevated motion -->
+    <!-- Import GSAP for high-performance elevated motion -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
@@ -406,34 +406,21 @@
         }
       }
 
-      /* Hover: the tile keeps its color and lifts onto a hard offset shadow.
-         Replaces the old bg/text inversion, which was too abrupt. */
-      .hover-invert,
-      a.b-tile {
-        transition:
-          transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
-          box-shadow 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+      /* Hover: nothing moves. The whole cell is the link, so it takes a pointer
+         cursor, and the tile's own link text underlines to show where it goes. */
+      a.b-tile,
+      a.b-tile * {
+        cursor: pointer;
       }
-      .hover-invert:hover,
-      a.b-tile:hover,
-      a.b-tile:focus-visible {
-        transform: translateY(-6px);
-        box-shadow: 8px 8px 0 var(--text-dark);
+      a.b-tile:hover .arrow-link,
+      a.b-tile:focus-visible .arrow-link {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
       }
       a.b-tile:focus-visible {
         outline: 3px solid var(--text-dark);
         outline-offset: 3px;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .hover-invert,
-        a.b-tile {
-          transition: none;
-        }
-        .hover-invert:hover,
-        a.b-tile:hover,
-        a.b-tile:focus-visible {
-          transform: none;
-        }
       }
 
       .arrow-link {
@@ -608,20 +595,29 @@
     ></script>
     <script type="module" crossorigin src="/assets/heather-CPKswIir-Ny8rHE4j.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/heather-CPKswIir-CrN3hXve.css" />
-  
+
     <link rel="canonical" href="https://heathernew.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Heather New" />
     <meta property="og:url" content="https://heathernew.com/" />
     <meta property="og:title" content="Creative Technologist in Chicago - Heather New" />
-    <meta property="og:description" content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology." />
+    <meta
+      property="og:description"
+      content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology."
+    />
     <meta property="og:image" content="https://heathernew.com/assets/heathernew-og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Heather New, Creative Technologist. Portfolio at heathernew.com." />
+    <meta
+      property="og:image:alt"
+      content="Heather New, Creative Technologist. Portfolio at heathernew.com."
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Creative Technologist in Chicago - Heather New" />
-    <meta name="twitter:description" content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology." />
+    <meta
+      name="twitter:description"
+      content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology."
+    />
     <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
   </head>
   <body>
@@ -647,7 +643,12 @@
     <main class="portfolio-section">
       <div class="bauhaus-grid">
         <!-- Row 1 -->
-        <a href="/pages/parasite-hunter.html" class="b-tile span-col-2 bg-light-gray" id="tile-home-parasite-intro" style="text-decoration: none">
+        <a
+          href="/pages/parasite-hunter.html"
+          class="b-tile span-col-2 bg-light-gray"
+          id="tile-home-parasite-intro"
+          style="text-decoration: none"
+        >
           <div>
             <span class="meta">Web-Based AR Experience</span>
             <h2>Parasite Hunter AR</h2>
@@ -699,11 +700,16 @@
           <h3>Awarded Best Booth at WVC 2026</h3>
         </div>
 
-        <a href="/pages/parasite-hunter.html" class="b-tile-fullimage span-col-2 span-row-2 img-tile" id="tile-home-parasite-game-intro" style="text-decoration: none">
+        <a
+          href="/pages/parasite-hunter.html"
+          class="b-tile-fullimage span-col-2 span-row-2 img-tile"
+          id="tile-home-parasite-game-intro"
+          style="text-decoration: none"
+        >
           <img
-              src="/assets/parasite-hunter-game-introscreen-CiuYj-AX-CiuYj-AX.png"
-              alt="Parasite Hunter Game Introscreen"
-              class="img-responsive"
+            src="/assets/parasite-hunter-game-introscreen-CiuYj-AX-CiuYj-AX.png"
+            alt="Parasite Hunter Game Introscreen"
+            class="img-responsive"
           />
         </a>
 
@@ -728,18 +734,26 @@
         </a>
 
         <!-- Row 3 -->
-        <a href="/pages/parasite-hunter.html" class="b-tile img-tile" id="tile-home-parasite-leaderboard" style="text-decoration: none">
-          
-            <img
-              src="/assets/parasite-hunter-leaderboard-BBffJhyN-BBffJhyN.png"
-              alt="Parasite Hunter Leaderboard"
-              class="img-responsive"
-            />
-          
+        <a
+          href="/pages/parasite-hunter.html"
+          class="b-tile img-tile"
+          id="tile-home-parasite-leaderboard"
+          style="text-decoration: none"
+        >
+          <img
+            src="/assets/parasite-hunter-leaderboard-BBffJhyN-BBffJhyN.png"
+            alt="Parasite Hunter Leaderboard"
+            class="img-responsive"
+          />
         </a>
 
         <!-- Row 4 -->
-        <a href="/pages/decision-tree.html" class="b-tile bg-orange span-col-2" id="tile-home-tree-intro" style="text-decoration: none">
+        <a
+          href="/pages/decision-tree.html"
+          class="b-tile bg-orange span-col-2"
+          id="tile-home-tree-intro"
+          style="text-decoration: none"
+        >
           <span class="meta">Touch Enabled Interactive</span>
           <h2>Interactive<br />Zen Garden</h2>
           <p>
@@ -747,21 +761,15 @@
             digest the message. At any time an attendee can tap and start interacting with the
             decision tree revealing UI elements that present dermatology options for their patients.
           </p>
-          <span class="arrow-link" style="margin-top: 1.5rem">View Project <span>→</span></a
-          >
-       </span>        <span class="meta">Touch Enabled Interactive</span>
-          <h2>Interactive<br />Zen Garden</h2>
-          <p>
-            We added a beautiful looping digital experience to encourage conversation, to help
-            digest the message. At any time an attendee can tap and start interacting with the
-            decision tree revealing UI elements that present dermatology options for their patients.
-          </p>
-          <a href="/pages/decision-tree.html" class="arrow-link" style="margin-top: 1.5rem"
-            >View Project <span>→</span></a
-          >
+          <span class="arrow-link" style="margin-top: 1.5rem">View Project <span>→</span></span>
         </a>
 
-        <a href="/pages/hotspot.html" class="b-tile bg-light-gray span-col-2" id="tile-home-hotspot-intro" style="text-decoration: none">
+        <a
+          href="/pages/hotspot.html"
+          class="b-tile bg-light-gray span-col-2"
+          id="tile-home-hotspot-intro"
+          style="text-decoration: none"
+        >
           <div>
             <span class="meta">Galliprant Booth Games</span>
             <h2>Wall of Flame</h2>
@@ -968,18 +976,28 @@
           />
         </div>
 
-        <a href="/pages/subway.html" class="b-tile bg-white" id="tile-home-subway-link" style="text-decoration: none">
+        <a
+          href="/pages/subway.html"
+          class="b-tile bg-white"
+          id="tile-home-subway-link"
+          style="text-decoration: none"
+        >
           <span class="meta">Another thing I do</span>
           <h3>Subway Digital Assets<br />Digital Menus</h3>
           <span class="arrow-link">View Project <span>→</span></span>
         </a>
 
         <!-- Row 10: Staccato Finish -->
-        <a href="/pages/roller-derby.html" class="b-tile img-tile bg-white" id="tile-home-derby-throwback" style="text-decoration: none">
+        <a
+          href="/pages/roller-derby.html"
+          class="b-tile img-tile bg-white"
+          id="tile-home-derby-throwback"
+          style="text-decoration: none"
+        >
           <img
-              src="/assets/roller-derby-throwback-5XF6oyq5-5XF6oyq5.png"
-              alt="Roller Derby Throwback"
-              class="img-responsive"
+            src="/assets/roller-derby-throwback-5XF6oyq5-5XF6oyq5.png"
+            alt="Roller Derby Throwback"
+            class="img-responsive"
           />
         </a>
 
@@ -1007,17 +1025,27 @@
           </div>
         </div>
 
-        <a href="/pages/studio-roadshow.html" class="b-tile bg-lime" id="tile-home-swatch-link" style="text-decoration: none">
+        <a
+          href="/pages/studio-roadshow.html"
+          class="b-tile bg-lime"
+          id="tile-home-swatch-link"
+          style="text-decoration: none"
+        >
           <span class="meta">Which Swatch?</span>
           <h3 style="font-size: 1.5em">Studio<br />Roadshow</h3>
           <span class="arrow-link">View Project <span>→</span></span>
         </a>
 
-        <a href="/pages/studio-roadshow.html" class="b-tile img-tile bg-mid-gray" id="tile-home-swatch-img" style="text-decoration: none">
+        <a
+          href="/pages/studio-roadshow.html"
+          class="b-tile img-tile bg-mid-gray"
+          id="tile-home-swatch-img"
+          style="text-decoration: none"
+        >
           <img
-              src="/assets/studio-roadshow-Rm6eGY1z-Rm6eGY1z.png"
-              alt="Studio Roadshow"
-              class="img-responsive"
+            src="/assets/studio-roadshow-Rm6eGY1z-Rm6eGY1z.png"
+            alt="Studio Roadshow"
+            class="img-responsive"
           />
         </a>
 

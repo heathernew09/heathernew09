@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Design x Derby - the rebrand, website, jerseys, and merch for ICT Roller Derby's 10-year anniversary, plus a hand-fabricated medal." />
+    <meta
+      name="description"
+      content="Design x Derby - the rebrand, website, jerseys, and merch for ICT Roller Derby's 10-year anniversary, plus a hand-fabricated medal."
+    />
     <title>Design x Derby - Heather New - Creative Technologist</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,7 +22,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="HeatherNew" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-<!-- Import GSAP for high-performance elevated motion -->
+    <!-- Import GSAP for high-performance elevated motion -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <link rel="stylesheet" href="/src/css/global.css" />
@@ -242,34 +245,21 @@
         pointer-events: none;
       }
 
-      /* Hover: the tile keeps its color and lifts onto a hard offset shadow.
-         Replaces the old bg/text inversion, which was too abrupt. */
-      .hover-invert,
-      a.b-tile {
-        transition:
-          transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
-          box-shadow 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+      /* Hover: nothing moves. The whole cell is the link, so it takes a pointer
+         cursor, and the tile's own link text underlines to show where it goes. */
+      a.b-tile,
+      a.b-tile * {
+        cursor: pointer;
       }
-      .hover-invert:hover,
-      a.b-tile:hover,
-      a.b-tile:focus-visible {
-        transform: translateY(-6px);
-        box-shadow: 8px 8px 0 var(--text-dark);
+      a.b-tile:hover .arrow-link,
+      a.b-tile:focus-visible .arrow-link {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
       }
       a.b-tile:focus-visible {
         outline: 3px solid var(--text-dark);
         outline-offset: 3px;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .hover-invert,
-        a.b-tile {
-          transition: none;
-        }
-        .hover-invert:hover,
-        a.b-tile:hover,
-        a.b-tile:focus-visible {
-          transform: none;
-        }
       }
 
       .arrow-link {
@@ -357,20 +347,29 @@
         height: auto;
       }
     </style>
-  
+
     <link rel="canonical" href="https://heathernew.com/pages/roller-derby.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Heather New" />
     <meta property="og:url" content="https://heathernew.com/pages/roller-derby.html" />
     <meta property="og:title" content="Design x Derby - Heather New - Creative Technologist" />
-    <meta property="og:description" content="Design x Derby - the rebrand, website, jerseys, and merch for ICT Roller Derby's 10-year anniversary, plus a hand-fabricated medal." />
+    <meta
+      property="og:description"
+      content="Design x Derby - the rebrand, website, jerseys, and merch for ICT Roller Derby's 10-year anniversary, plus a hand-fabricated medal."
+    />
     <meta property="og:image" content="https://heathernew.com/assets/heathernew-og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Heather New, Creative Technologist. Portfolio at heathernew.com." />
+    <meta
+      property="og:image:alt"
+      content="Heather New, Creative Technologist. Portfolio at heathernew.com."
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Design x Derby - Heather New - Creative Technologist" />
-    <meta name="twitter:description" content="Design x Derby - the rebrand, website, jerseys, and merch for ICT Roller Derby's 10-year anniversary, plus a hand-fabricated medal." />
+    <meta
+      name="twitter:description"
+      content="Design x Derby - the rebrand, website, jerseys, and merch for ICT Roller Derby's 10-year anniversary, plus a hand-fabricated medal."
+    />
     <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
   </head>
   <body>
@@ -591,10 +590,7 @@
         </div>
 
         <!-- Row 14 & 15: Giant MVP + 2×2 staccato grid -->
-        <div
-          id="tile-derby-jersey-render"
-          class="b-tile img-tile bg-yellow span-col-2 span-row-2"
-        >
+        <div id="tile-derby-jersey-render" class="b-tile img-tile bg-yellow span-col-2 span-row-2">
           <img
             src="/assets/ictrg/ict-roller-derby-jersey-render.png"
             class="img-responsive"
@@ -629,7 +625,12 @@
           />
         </div>
 
-        <a href="/pages/roller-derby.html" class="b-tile bg-white span-col-2" id="tile-derby-poster-campaigns" style="text-decoration: none">
+        <a
+          href="/pages/roller-derby.html"
+          class="b-tile bg-white span-col-2"
+          id="tile-derby-poster-campaigns"
+          style="text-decoration: none"
+        >
           <span class="meta">Visual Direction &amp; Execution</span>
           <h3
             style="
@@ -645,28 +646,8 @@
             3 Seasons, 3 Distinct Visual Styles. A collection blending action photography with heavy
             typography to drive bout attendance and community hype.
           </p>
-          <span class="arrow-link" style="font-size: 1rem; color: var(--teal)">Poster Gallery <span>→</span></a
-          >
-       </span>        <span class="meta">Visual Direction &amp; Execution</span>
-          <h3
-            style="
-              font-size: 2rem;
-              margin-bottom: 1rem;
-              font-weight: 800;
-              text-transform: uppercase;
-            "
-          >
-            Poster Campaigns
-          </h3>
-          <p style="font-size: 1.05rem; margin-bottom: 1rem">
-            3 Seasons, 3 Distinct Visual Styles. A collection blending action photography with heavy
-            typography to drive bout attendance and community hype.
-          </p>
-          <a
-            href="/pages/roller-derby.html"
-            class="arrow-link"
-            style="font-size: 1rem; color: var(--teal)"
-            >Poster Gallery <span>→</span></a
+          <span class="arrow-link" style="font-size: 1rem; color: var(--teal)"
+            >Poster Gallery <span>→</span></span
           >
         </a>
 
@@ -760,7 +741,12 @@
         </div>
 
         <!-- Row 16: Footer area -->
-        <a href="#main-content" class="b-tile bg-lime" id="tile-derby-back-top" style="text-decoration: none">
+        <a
+          href="#main-content"
+          class="b-tile bg-lime"
+          id="tile-derby-back-top"
+          style="text-decoration: none"
+        >
           <div
             style="
               width: 80px;
@@ -770,20 +756,7 @@
               margin-bottom: 2rem;
             "
           ></div>
-          <span class="arrow-link" style="margin-top: auto">Back to Top <span>↑</span></a
-          >
-       </span>        <div
-            style="
-              width: 80px;
-              height: 80px;
-              border-radius: 50% 0 50% 50%;
-              background-color: var(--text-dark);
-              margin-bottom: 2rem;
-            "
-          ></div>
-          <a href="#main-content" class="arrow-link" style="margin-top: auto"
-            >Back to Top <span>↑</span></a
-          >
+          <span class="arrow-link" style="margin-top: auto">Back to Top <span>↑</span></span>
         </a>
 
         <div id="tile-derby-connect" class="b-tile bg-dark-teal span-col-3">

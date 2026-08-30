@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="HeatherNew" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
-<!-- Import GSAP for high-performance elevated motion -->
+    <!-- Import GSAP for high-performance elevated motion -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <style>
@@ -281,34 +281,21 @@
         transform: scale(1.05);
       }
 
-      /* Hover: the tile keeps its color and lifts onto a hard offset shadow.
-         Replaces the old bg/text inversion, which was too abrupt. */
-      .hover-invert,
-      a.b-tile {
-        transition:
-          transform 0.25s cubic-bezier(0.25, 1, 0.5, 1),
-          box-shadow 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+      /* Hover: nothing moves. The whole cell is the link, so it takes a pointer
+         cursor, and the tile's own link text underlines to show where it goes. */
+      a.b-tile,
+      a.b-tile * {
+        cursor: pointer;
       }
-      .hover-invert:hover,
-      a.b-tile:hover,
-      a.b-tile:focus-visible {
-        transform: translateY(-6px);
-        box-shadow: 8px 8px 0 var(--text-dark);
+      a.b-tile:hover .arrow-link,
+      a.b-tile:focus-visible .arrow-link {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
       }
       a.b-tile:focus-visible {
         outline: 3px solid var(--text-dark);
         outline-offset: 3px;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .hover-invert,
-        a.b-tile {
-          transition: none;
-        }
-        .hover-invert:hover,
-        a.b-tile:hover,
-        a.b-tile:focus-visible {
-          transform: none;
-        }
       }
 
       .arrow-link {
@@ -353,20 +340,29 @@
     <link rel="stylesheet" crossorigin href="/assets/global-DzYtbLOr.css" />
     <link rel="stylesheet" crossorigin href="/assets/home-CF4ttIi8.css" />
     <link rel="stylesheet" crossorigin href="/assets/home-hero-CvxCc7U7.css" />
-  
+
     <link rel="canonical" href="https://heathernew.com/pages/heather.html" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Heather New" />
     <meta property="og:url" content="https://heathernew.com/pages/heather.html" />
     <meta property="og:title" content="Creative Technologist in Chicago - Heather New" />
-    <meta property="og:description" content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology." />
+    <meta
+      property="og:description"
+      content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology."
+    />
     <meta property="og:image" content="https://heathernew.com/assets/heathernew-og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Heather New, Creative Technologist. Portfolio at heathernew.com." />
+    <meta
+      property="og:image:alt"
+      content="Heather New, Creative Technologist. Portfolio at heathernew.com."
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Creative Technologist in Chicago - Heather New" />
-    <meta name="twitter:description" content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology." />
+    <meta
+      name="twitter:description"
+      content="Heather New - Creative Technologist in Chicago. Specialized in building interactive experiences at the intersection of design, code, and physical technology."
+    />
     <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
   </head>
   <body>
@@ -391,7 +387,12 @@
     <main class="portfolio-section">
       <div class="bauhaus-grid">
         <!-- Row 1 -->
-        <a href="/pages/parasite-hunter.html" class="b-tile span-col-2 bg-light-gray" id="tile-heather-intro" style="text-decoration: none">
+        <a
+          href="/pages/parasite-hunter.html"
+          class="b-tile span-col-2 bg-light-gray"
+          id="tile-heather-intro"
+          style="text-decoration: none"
+        >
           <div>
             <span class="meta">Web-Based AR Experience</span>
             <h2>Parasite Hunter AR</h2>
@@ -432,14 +433,26 @@
           <h3>Awarded Best Booth at WVC 2026</h3>
         </div>
 
-        <a href="/pages/parasite-hunter.html" class="b-tile span-col-2 span-row-2 img-tile" id="tile-heather-game-intro" style="text-decoration: none">
+        <a
+          href="/pages/parasite-hunter.html"
+          class="b-tile span-col-2 span-row-2 img-tile"
+          id="tile-heather-game-intro"
+          style="text-decoration: none"
+        >
           <img
-              src="/images/para/parasite-hunter-game-introscreen.png"
-              alt="Parasite Hunter Game Introscreen"
+            src="/images/para/parasite-hunter-game-introscreen.png"
+            alt="Parasite Hunter Game Introscreen"
           />
         </a>
 
-        <a href="https://comic.heather.codes/" target="_blank" rel="noopener" class="b-tile bg-white" id="tile-heather-comic-intro" style="text-decoration: none">
+        <a
+          href="https://comic.heather.codes/"
+          target="_blank"
+          rel="noopener"
+          class="b-tile bg-white"
+          id="tile-heather-comic-intro"
+          style="text-decoration: none"
+        >
           <span class="meta">2024 Interactive</span>
           <h3 style="font-size: 1.5rem; margin-bottom: 1rem">Comic Book</h3>
           <p style="font-size: 0.95rem; margin-bottom: 1rem">
@@ -450,38 +463,23 @@
             The comic book introduces their powers. The original experience was on a kiosk with a
             large touch screen tv, with page turns.<!--I have created an interactive experience with the content to display the illustrations with a bit more impact.-->
           </p>
-          <span class="arrow-link" style="font-size: 1rem; color: var(--teal)">View Project <span>→</span></a
-          >
-       </span>        <span class="meta">2024 Interactive</span>
-          <h3 style="font-size: 1.5rem; margin-bottom: 1rem">Comic Book</h3>
-          <p style="font-size: 0.95rem; margin-bottom: 1rem">
-            We helped the product launch of Credelio Quattro. The Power of Four active ingredients =
-            6 types of parasites are annihilated, even the tricky ones, tapeworms!
-          </p>
-          <p style="font-size: 0.95rem; margin-bottom: 1rem">
-            The comic book introduces their powers. The original experience was on a kiosk with a
-            large touch screen tv, with page turns.<!--I have created an interactive experience with the content to display the illustrations with a bit more impact.-->
-          </p>
-          <a
-            href="https://comic.heather.codes/"
-            target="_blank"
-            rel="noopener"
-            class="arrow-link"
-            style="font-size: 1rem; color: var(--teal)"
-            >View Project <span>→</span></a
+          <span class="arrow-link" style="font-size: 1rem; color: var(--teal)"
+            >View Project <span>→</span></span
           >
         </a>
 
         <!-- Row 3 -->
         <a id="tile-heather-leaderboard" href="/pages/parasite-hunter.html">
-          <img
-            src="/images/parasite-hunter-leaderboard.png"
-            alt="Parasite Hunter Leaderboard"
-          />
+          <img src="/images/parasite-hunter-leaderboard.png" alt="Parasite Hunter Leaderboard" />
         </a>
 
         <!-- Row 4 -->
-        <a href="/pages/decision-tree.html" class="b-tile bg-orange span-col-2" id="tile-heather-tree-intro" style="text-decoration: none">
+        <a
+          href="/pages/decision-tree.html"
+          class="b-tile bg-orange span-col-2"
+          id="tile-heather-tree-intro"
+          style="text-decoration: none"
+        >
           <span class="meta">Touch Enabled Interactive</span>
           <h2>Interactive<br />Zen Garden</h2>
           <p>
@@ -489,18 +487,7 @@
             digest the message. At any time an attendee can tap and start interacting with the
             decision tree revealing UI elements that present dermatology options for their patients.
           </p>
-          <span class="arrow-link" style="margin-top: 1.5rem">View Project <span>→</span></a
-          >
-       </span>        <span class="meta">Touch Enabled Interactive</span>
-          <h2>Interactive<br />Zen Garden</h2>
-          <p>
-            We added a beautiful looping digital experience to encourage conversation, to help
-            digest the message. At any time an attendee can tap and start interacting with the
-            decision tree revealing UI elements that present dermatology options for their patients.
-          </p>
-          <a href="/pages/decision-tree.html" class="arrow-link" style="margin-top: 1.5rem"
-            >View Project <span>→</span></a
-          >
+          <span class="arrow-link" style="margin-top: 1.5rem">View Project <span>→</span></span>
         </a>
 
         <div id="tile-heather-red-lens" class="bg-teal">
@@ -523,7 +510,12 @@
           <img src="/images/decision-tree-bonzai.png" alt="Zen Garden Tree Illustration" />
         </div>
 
-        <a href="/pages/hotspot.html" class="b-tile bg-light-gray span-col-2" id="tile-heather-hotspot-intro" style="text-decoration: none">
+        <a
+          href="/pages/hotspot.html"
+          class="b-tile bg-light-gray span-col-2"
+          id="tile-heather-hotspot-intro"
+          style="text-decoration: none"
+        >
           <div>
             <span class="meta">Galliprant Booth Games</span>
             <h2>Wall of Flame</h2>
@@ -603,10 +595,7 @@
         </div>
 
         <!-- Row 8 & 9: Complex Intersection -->
-        <div
-          id="tile-heather-recognition"
-          class="b-tile-nopad bg-dark-teal span-row-2"
-        >
+        <div id="tile-heather-recognition" class="b-tile-nopad bg-dark-teal span-row-2">
           <div style="padding: 1em; position: absolute; bottom: 2rem; left: 2rem; z-index: 2">
             <span class="meta" style="color: var(--lime)">Recognition</span>
             <h4 style="margin-top: 2rem; margin-bottom: 1rem">
@@ -628,10 +617,7 @@
         </div>
 
         <div id="tile-heather-biomarin-learning" class="b-tile bg-yellow">
-          <img
-            src="/images/gamified-learning-with-biomarin.png"
-            alt="Gamified Learning Biomarin"
-          />
+          <img src="/images/gamified-learning-with-biomarin.png" alt="Gamified Learning Biomarin" />
           <h3>Gamified<br />Learning →</h3>
         </div>
 
@@ -685,11 +671,18 @@
         <div id="tile-heather-deco-orange" class="b-tile bg-orange">
           <div class="bauhaus-circle" style="background-color: var(--bg-color)"></div>
         </div>
-        <a href="https://studio.heather.codes" target="_blank" rel="noopener" class="b-tile-nopad bg-mid-gray" id="tile-heather-roadshow-img" style="text-decoration: none">
+        <a
+          href="https://studio.heather.codes"
+          target="_blank"
+          rel="noopener"
+          class="b-tile-nopad bg-mid-gray"
+          id="tile-heather-roadshow-img"
+          style="text-decoration: none"
+        >
           <img
-              src="/images/studio/studio-roadshow.png"
-              alt="Studio Roadshow"
-              style="width: 100%; height: 100%; object-fit: cover"
+            src="/images/studio/studio-roadshow.png"
+            alt="Studio Roadshow"
+            style="width: 100%; height: 100%; object-fit: cover"
           />
         </a>
 
@@ -727,13 +720,23 @@
           </div>
         </div>
 
-        <a href="https://studio.heather.codes" target="_blank" rel="noopener" class="b-tile-nopad bg-lime" id="tile-heather-roadshow-link" style="display: flex; align-items: center; justify-content: center; padding: 0; text-decoration: none">
-          <span class="arrow-link"><h3>Studio Roadshow <span>→</span></h3></a
-          >
-          <span class="meta">Which Swatch?</span>
-       </span>        <a href="https://studio.heather.codes" target="_blank" rel="noopener" class="arrow-link"
-            ><h3>Studio Roadshow <span>→</span></h3></a
-          >
+        <a
+          href="https://studio.heather.codes"
+          target="_blank"
+          rel="noopener"
+          class="b-tile-nopad bg-lime"
+          id="tile-heather-roadshow-link"
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            text-decoration: none;
+          "
+        >
+          <div class="arrow-link">
+            <h3>Studio Roadshow <span>→</span></h3>
+          </div>
           <span class="meta">Which Swatch?</span>
         </a>
       </div>
