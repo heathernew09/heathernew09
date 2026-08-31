@@ -248,15 +248,25 @@
         .bauhaus-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .span-col-1.span-col-2.span-col-3.span-col-4.span-col-2-5.span-col-1-5 {
+        .span-col-1,
+        .span-col-2,
+        .span-col-3,
+        .span-col-4,
+        .span-col-2-5,
+        .span-col-1-5 {
           grid-column: span 2;
         }
       }
-      @media (max-width: 600px) {
+      @media (max-width: 768px) {
         .bauhaus-grid {
           grid-template-columns: 1fr;
         }
-        .span-col-1.span-col-2.span-col-3.span-col-4.span-col-2-5.span-col-1-5 {
+        .span-col-1,
+        .span-col-2,
+        .span-col-3,
+        .span-col-4,
+        .span-col-2-5,
+        .span-col-1-5 {
           grid-column: span 1;
         }
         .span-row-2 {

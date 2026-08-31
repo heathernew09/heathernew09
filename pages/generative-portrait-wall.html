@@ -509,7 +509,9 @@
         .portrait-gallery {
           grid-template-columns: repeat(4, 1fr);
         }
-        .portrait-img.portrait-img:nth-child(4).portrait-img:nth-child(5) {
+        .portrait-img,
+        .portrait-img:nth-child(4),
+        .portrait-img:nth-child(5) {
           grid-column: span 2;
         }
         .credits-grid {
@@ -520,17 +522,20 @@
         }
       }
 
-      @media (max-width: 600px) {
+      @media (max-width: 768px) {
         .portrait-gallery {
           grid-template-columns: repeat(2, 1fr);
         }
-        .portrait-img.portrait-img:nth-child(4).portrait-img:nth-child(5) {
+        .portrait-img,
+        .portrait-img:nth-child(4),
+        .portrait-img:nth-child(5) {
           grid-column: span 1;
         }
         .block-system {
           grid-template-columns: repeat(2, 1fr);
         }
-        .block.span-2.block.span-3 {
+        .block.span-2,
+        .block.span-3 {
           grid-column: span 1;
         }
       }

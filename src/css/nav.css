@@ -388,17 +388,44 @@
 }
 
 /* ===== Mobile: every grid cell stacks full-width ==========================
-   The per-page 600px rules mostly did this, but span classes and page-local
-   overrides kept beating them in places (and elanco never had them at all).
-   This is deliberately blunt: below 768px there is one column, and every
-   cell spans it, no matter what a span-col/span-row class says. */
+   The per-page rules set 1 column grid, and every cell spans 1 column full width. */
 @media (max-width: 768px) {
   .bauhaus-grid {
     grid-template-columns: 1fr !important;
   }
-  .bauhaus-grid > * {
+  .bauhaus-grid > *,
+  .span-col-1,
+  .span-col-2,
+  .span-col-3,
+  .span-col-4,
+  .span-col-1-5,
+  .span-col-2-5,
+  .span-col-404-text,
+  .span-col-404-img {
     grid-column: 1 / -1 !important;
+  }
+  .span-row-2 {
     grid-row: auto !important;
+  }
+  .grid-2,
+  .grid-3,
+  .grid-4,
+  .inner-grid-3,
+  .inner-grid-4,
+  .role-grid,
+  .results-grid,
+  .metrics,
+  .credits-grid,
+  .feature-grid,
+  .attributes-grid,
+  .trophy-layout,
+  .char-flex,
+  .evolution-flow,
+  .two-col-tshirt,
+  .journal-cluster,
+  .journal-cluster-3,
+  .narrative-split {
+    grid-template-columns: 1fr !important;
   }
 
   /* The menu button: an older rule forced width: 60px here, which clipped

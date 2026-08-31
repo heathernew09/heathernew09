@@ -234,10 +234,12 @@
         .bauhaus-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .span-col-3.span-col-4 {
+        .span-col-3,
+        .span-col-4 {
           grid-column: span 2;
         }
-        .inner-grid-3.inner-grid-4 {
+        .inner-grid-3,
+        .inner-grid-4 {
           grid-template-columns: 1fr;
         }
         .hero-overlay {
@@ -259,11 +261,13 @@
           z-index: 50; /* Lowered from 105 so it sits behind the overlay (which is 100) */
         }
       }
-      @media (max-width: 600px) {
+      @media (max-width: 768px) {
         .bauhaus-grid {
           grid-template-columns: 1fr;
         }
-        .span-col-2.span-col-3.span-col-4 {
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
           grid-column: span 1;
         }
         .span-row-2 {
