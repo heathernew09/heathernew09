@@ -386,3 +386,27 @@
     padding: 0 1.25rem;
   }
 }
+
+/* ===== Mobile: every grid cell stacks full-width ==========================
+   The per-page 600px rules mostly did this, but span classes and page-local
+   overrides kept beating them in places (and elanco never had them at all).
+   This is deliberately blunt: below 768px there is one column, and every
+   cell spans it, no matter what a span-col/span-row class says. */
+@media (max-width: 768px) {
+  .bauhaus-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .bauhaus-grid > * {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
+
+  /* The menu button: an older rule forced width: 60px here, which clipped
+     MENU and hid CLOSE once the bars became words. */
+  .pages-nav-icon {
+    width: auto !important;
+    height: 60px;
+    min-width: 88px;
+    padding: 0 1.25rem;
+  }
+}

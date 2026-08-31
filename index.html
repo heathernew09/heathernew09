@@ -643,6 +643,24 @@
           justify-content: center;
         }
       }
+
+      /* Mobile: one column, every cell full width, and the menu button sized
+         to its label. Duplicated here because this page has its own CSS. */
+      @media (max-width: 768px) {
+        .bauhaus-grid {
+          grid-template-columns: 1fr !important;
+        }
+        .bauhaus-grid > * {
+          grid-column: 1 / -1 !important;
+          grid-row: auto !important;
+        }
+        .pages-nav-icon {
+          width: auto !important;
+          height: 60px;
+          min-width: 88px;
+          padding: 0 1.25rem;
+        }
+      }
     </style>
     <link
       rel="modulepreload"

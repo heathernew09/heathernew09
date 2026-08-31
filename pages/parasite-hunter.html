@@ -497,6 +497,37 @@
           padding: 0 18px 30px;
         }
       }
+
+      /* Mobile: the 3D hero is a fixed 800px and its canvas swallows vertical
+         swipes, which is why the page felt stuck. pan-y hands scrolling back
+         to the page, and the hero shrinks so there is less of it to cross. */
+      @media (max-width: 768px) {
+        .hero-3d {
+          height: 60vh;
+          min-height: 420px;
+        }
+      }
+      .hero-3d,
+      .hero-3d canvas {
+        touch-action: pan-y;
+      }
+
+      /* Bauhaus scrollbar: square, hard edges, lime on ink. Desktop browsers
+         show it; phones keep their overlay bars, where pan-y does the work. */
+      html {
+        scrollbar-color: var(--lime) var(--text-dark);
+      }
+      ::-webkit-scrollbar {
+        width: 14px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--text-dark);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--lime);
+        border: 3px solid var(--text-dark);
+        border-radius: 0;
+      }
     </style>
 
     <link rel="canonical" href="https://heathernew.com/pages/parasite-hunter.html" />
