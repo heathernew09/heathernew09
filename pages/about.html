@@ -238,10 +238,7 @@
         .span-col-4 {
           grid-column: span 2;
         }
-        .inner-grid-3,
-        .inner-grid-4 {
-          grid-template-columns: 1fr;
-        }
+
         .hero-overlay {
           left: 20px;
           right: 20px;
@@ -273,6 +270,10 @@
       }
 
       @media (max-width: 768px) {
+        .inner-grid-3,
+        .inner-grid-4 {
+          grid-template-columns: 1fr;
+        }
         .bauhaus-grid > *,
         .span-col-2,
         .span-col-3,
