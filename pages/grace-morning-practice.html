@@ -180,15 +180,25 @@
         display: block;
         width: 100%;
       }
-      .qc-huge { font-size: clamp(1.8rem, 2vw, 2.5rem); }
-      .qc-large { font-size: clamp(1.2rem, 1.5vw, 1.8rem); }
-      .qc-medium { font-size: clamp(0.9rem, 1vw, 1.2rem); }
+      .qc-huge {
+        font-size: clamp(1.8rem, 2vw, 2.5rem);
+      }
+      .qc-large {
+        font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+      }
+      .qc-medium {
+        font-size: clamp(0.9rem, 1vw, 1.2rem);
+      }
 
       @media (max-width: 1100px) {
-        .quote-grid { grid-template-columns: repeat(3, 1fr); }
+        .quote-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
       }
       @media (max-width: 768px) {
-        .quote-grid { grid-template-columns: repeat(2, 1fr); }
+        .quote-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
 
       .gallery-section {
@@ -331,7 +341,7 @@
       .lightbox-text {
         color: #fff;
       }
-      
+
       .lightbox-meta-row {
         display: flex;
         align-items: center;
@@ -348,7 +358,7 @@
         letter-spacing: 0.1em;
         text-transform: uppercase;
       }
-      
+
       .lightbox-badge {
         background-color: var(--orange);
         color: #fff;
@@ -384,7 +394,8 @@
         margin-bottom: 1rem;
       }
 
-      .lightbox-close, .lightbox-nav {
+      .lightbox-close,
+      .lightbox-nav {
         position: fixed;
         background: none;
         border: none;
@@ -507,14 +518,38 @@
       }
 
       /* Specific Background Overrides */
-      .bg-dark-teal { background-color: var(--dark-teal); color: #fff; }
-      .bg-black { background-color: #000; color: #fff; }
-      .bg-yellow { background-color: var(--yellow); color: var(--text-dark); }
-      .bg-white { background-color: #fff; color: var(--text-dark); }
-      .bg-light-gray { background-color: var(--light-gray); color: var(--text-dark); }
-      .bg-lime { background-color: var(--lime); color: var(--text-dark); }
-      .bg-orange { background-color: var(--orange); color: #fff; }
-      .bg-teal { background-color: var(--teal); color: #fff; }
+      .bg-dark-teal {
+        background-color: var(--dark-teal);
+        color: #fff;
+      }
+      .bg-black {
+        background-color: #000;
+        color: #fff;
+      }
+      .bg-yellow {
+        background-color: var(--yellow);
+        color: var(--text-dark);
+      }
+      .bg-white {
+        background-color: #fff;
+        color: var(--text-dark);
+      }
+      .bg-light-gray {
+        background-color: var(--light-gray);
+        color: var(--text-dark);
+      }
+      .bg-lime {
+        background-color: var(--lime);
+        color: var(--text-dark);
+      }
+      .bg-orange {
+        background-color: var(--orange);
+        color: #fff;
+      }
+      .bg-teal {
+        background-color: var(--teal);
+        color: #fff;
+      }
 
       @media (max-width: 900px) {
         .page-hero {
@@ -539,7 +574,8 @@
         .bauhaus-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .span-col-3, .span-col-4 {
+        .span-col-3,
+        .span-col-4 {
           grid-column: span 2;
         }
       }
@@ -551,7 +587,8 @@
         .span-col-4 {
           grid-column: 1 / -1 !important;
         }
-        .span-row-2, .span-row-3 {
+        .span-row-2,
+        .span-row-3 {
           grid-row: auto !important;
         }
         .b-tile {
@@ -598,7 +635,10 @@
         <span class="meta">Grace · Daily Creative</span>
         <h1 class="section-title">The Practice</h1>
         <p class="subtitle">
-          Every morning at 6:45am, an autonomous agent named Grace constructs a prompt and generates an image. A secondary agent, Paula, strictly critiques the output against the original intent—forcing Grace to revise if the image defaults to generic tropes. This is every day of that practice, unedited, since it started.
+          Every morning at 6:45am, an autonomous agent named Grace constructs a prompt and generates
+          an image. A secondary agent, Paula, strictly critiques the output against the original
+          intent—forcing Grace to revise if the image defaults to generic tropes. This is every day
+          of that practice, unedited, since it started.
         </p>
       </div>
       <div class="hero-visual-block">
@@ -628,25 +668,28 @@
     <!-- DOCUMENTATION COMPONENT -->
     <section class="portfolio-section" id="grace-documentation">
       <div class="bauhaus-grid">
-        
         <!-- Row 1 -->
         <div class="b-tile bg-dark-teal span-col-2">
           <span class="meta" style="color: var(--lime)">01. The Capability</span>
           <h3>What is Grace?</h3>
           <p>
-            Grace is a locally-hosted AI agent running an autonomous daily art practice. Every morning at 6:45am, she evaluates a set of thematic rules, constructs a highly specific visual prompt, and pushes it through a local stable diffusion pipeline. A custom dashboard tracks her daily progress without human intervention.
+            Grace is a locally-hosted AI agent running an autonomous daily art practice. Every
+            morning at 6:45am, she evaluates a set of thematic rules, constructs a highly specific
+            visual prompt, and pushes it through a local stable diffusion pipeline. A custom
+            dashboard tracks her daily progress without human intervention.
           </p>
         </div>
         <div class="b-tile bg-black span-col-2">
           <span class="meta" style="color: var(--teal)">02. The Architecture</span>
           <h3>ComfyUI Setup</h3>
           <p>
-            The system operates entirely on local hardware. A chron job triggers a Python script that asks an LLM to generate the prompt. This prompt is then sent via API directly into a local ComfyUI instance running SDXL.
+            The system operates entirely on local hardware. A chron job triggers a Python script
+            that asks an LLM to generate the prompt. This prompt is then sent via API directly into
+            a local ComfyUI instance running SDXL.
           </p>
           <div class="code-snippet">
-> INIT: grace_agent.py
-> POST: http://127.0.0.1:8188/prompt
-> STATUS: Queued for rendering.
+            > INIT: grace_agent.py > POST: http://127.0.0.1:8188/prompt > STATUS: Queued for
+            rendering.
           </div>
         </div>
 
@@ -655,26 +698,43 @@
           <span class="meta">03. Thematic Selection</span>
           <h3>Curating Themes</h3>
           <p>
-            Grace doesn't hallucinate randomly; she selects from structured JSON dictionaries. Her prompts explore specific intersections: <strong>Tactile Materials</strong> (brass, wood, anodized aluminum) colliding with <strong>Abstract Concepts</strong> (nostalgia, tension, friction). This structured randomness forces highly unique prompt construction.
+            Grace doesn't hallucinate randomly; she selects from structured JSON dictionaries. Her
+            prompts explore specific intersections: <strong>Tactile Materials</strong> (brass, wood,
+            anodized aluminum) colliding with <strong>Abstract Concepts</strong> (nostalgia,
+            tension, friction). This structured randomness forces highly unique prompt construction.
           </p>
         </div>
-        
+
         <div class="b-tile bg-light-gray span-col-2">
           <span class="meta" style="color: var(--orange)">04. Open Source Potential</span>
           <h3>Releasing the Code?</h3>
           <p>
-            The pipeline is fully modularized into discrete blocks: the theme generator, the LLM prompt writer, and the ComfyUI API bridge. It is heavily segmented, making it a prime candidate for a public GitHub repo. Anyone with a local GPU could retrace these steps, build their own dashboard, and run their own agent.
+            The pipeline is fully modularized into discrete blocks: the theme generator, the LLM
+            prompt writer, and the ComfyUI API bridge. It is heavily segmented, making it a prime
+            candidate for a public GitHub repo. Anyone with a local GPU could retrace these steps,
+            build their own dashboard, and run their own agent.
           </p>
         </div>
-
       </div>
     </section>
 
     <main class="gallery-section">
-      <div style="max-width: 1400px; margin: 0 auto; padding: 0 2vw 2rem;">
-        <h2 style="font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem;">The Daily Archive</h2>
-        <p style="font-size: 1.05rem; max-width: 70ch; opacity: 0.8;">
-          Below is the complete, chronological archive of Grace's morning practice. Each tile represents a single day's generation. Click on any image to open the inspector, read the underlying narrative, and see which outputs survived the friction to be <strong style="color: var(--orange);">PUSHED TO PERFECTION</strong>.
+      <div style="max-width: 1400px; margin: 0 auto; padding: 0 2vw 2rem">
+        <h2
+          style="
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 0.5rem;
+          "
+        >
+          The Daily Archive
+        </h2>
+        <p style="font-size: 1.05rem; max-width: 70ch; opacity: 0.8">
+          Below is the complete, chronological archive of Grace's morning practice. Each tile
+          represents a single day's generation. Click on any image to open the inspector, read the
+          underlying narrative, and see which outputs survived the friction to be
+          <strong style="color: var(--orange)">PUSHED TO PERFECTION</strong>.
         </p>
       </div>
       <div class="gallery-grid" id="gallery-grid"></div>
@@ -682,30 +742,54 @@
 
     <!-- ROBOT CASE STUDY COMPONENT -->
     <section class="portfolio-section" id="grace-robot-case">
-      <div style="max-width: 1400px; width: 100%; margin: 0 auto 3rem; text-align: left;">
-        <h2 style="font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1; color: var(--text-dark);">
+      <div style="max-width: 1400px; width: 100%; margin: 0 auto 3rem; text-align: left">
+        <h2
+          style="
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+            color: var(--text-dark);
+          "
+        >
           The Dashboard
         </h2>
       </div>
       <div class="bauhaus-grid">
-        
-        <div class="b-tile span-col-2 span-row-3" style="padding: 0; background: #000; display: flex; align-items: center; justify-content: center;">
-          <img src="/assets/grace-robot-pushed.png" alt="Robot image pushed to perfection twice" style="width: 100%; height: 100%; object-fit: contain;" />
+        <div
+          class="b-tile span-col-2 span-row-3"
+          style="
+            padding: 0;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <img
+            src="/assets/grace-robot-pushed.png"
+            alt="Robot image pushed to perfection twice"
+            style="width: 100%; height: 100%; object-fit: contain"
+          />
         </div>
 
         <div class="b-tile bg-yellow span-col-2">
           <span class="meta">01. The Revision Cycle</span>
           <h3>Pushed to Perfection (x2)</h3>
           <p>
-            Grace doesn't just stop at a passable image. Here, Paula rejected the initial output and forced a revision. Then, Paula rejected the <em>revision</em>, demanding a second iteration until the exact "future tech" and "tactile material" thresholds were met.
+            Grace doesn't just stop at a passable image. Here, Paula rejected the initial output and
+            forced a revision. Then, Paula rejected the <em>revision</em>, demanding a second
+            iteration until the exact "future tech" and "tactile material" thresholds were met.
           </p>
         </div>
-        
+
         <div class="b-tile bg-dark-teal span-col-2">
           <span class="meta" style="color: var(--lime)">02. The Prompt Evolution</span>
           <h3>Drilling into the Details</h3>
           <p>
-            Each push required Grace to rewrite the prompt. By the third attempt, the latent space was forced to render the complex translucent smoke effect that it had completely ignored in the first two generic passes. 
+            Each push required Grace to rewrite the prompt. By the third attempt, the latent space
+            was forced to render the complex translucent smoke effect that it had completely ignored
+            in the first two generic passes.
           </p>
         </div>
 
@@ -713,16 +797,25 @@
           <span class="meta" style="color: #fff">03. The Final Output</span>
           <h3>Worth the Friction</h3>
           <p>
-            This final robot embodies the precise balance of tension and nostalgia requested. The double-push proves the value of Paula's relentless evaluation—without it, we'd be stuck with the mediocre baseline of standard generative art.
+            This final robot embodies the precise balance of tension and nostalgia requested. The
+            double-push proves the value of Paula's relentless evaluation—without it, we'd be stuck
+            with the mediocre baseline of standard generative art.
           </p>
         </div>
-
       </div>
     </section>
 
     <section class="quote-section">
-      <div style="max-width: 1400px; width: 100%; margin: 0 auto 3rem; text-align: left;">
-        <h2 style="font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1; text-transform: uppercase;">
+      <div style="max-width: 1400px; width: 100%; margin: 0 auto 3rem; text-align: left">
+        <h2
+          style="
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+            text-transform: uppercase;
+          "
+        >
           AI (Paula) critiquing<br />
           AI's (Grace's)<br />
           creative capabilities.
@@ -730,18 +823,34 @@
       </div>
       <div class="quote-grid">
         <div class="quote-cell bg-orange qc-huge"><span>Missing the concept entirely.</span></div>
-        <div class="quote-cell bg-black qc-large"><span>Defaulted into a generic gauge cluster.</span></div>
+        <div class="quote-cell bg-black qc-large">
+          <span>Defaulted into a generic gauge cluster.</span>
+        </div>
         <div class="quote-cell bg-lime qc-huge"><span>A generic polished shot.</span></div>
-        <div class="quote-cell bg-dark-teal qc-large"><span>The glow overwhelms the reflection concept.</span></div>
+        <div class="quote-cell bg-dark-teal qc-large">
+          <span>The glow overwhelms the reflection concept.</span>
+        </div>
         <div class="quote-cell bg-yellow qc-huge"><span>Completely missing the point.</span></div>
-        <div class="quote-cell bg-teal qc-medium"><span>The gradient concept lands, but the brushwork was lost.</span></div>
-        
-        <div class="quote-cell bg-light-gray qc-large"><span>Reads as a clean photorealistic render.</span></div>
-        <div class="quote-cell bg-lime qc-huge"><span>The prompt was completely ignored.</span></div>
-        <div class="quote-cell bg-orange qc-large"><span>Failed to implement any physical controls.</span></div>
+        <div class="quote-cell bg-teal qc-medium">
+          <span>The gradient concept lands, but the brushwork was lost.</span>
+        </div>
+
+        <div class="quote-cell bg-light-gray qc-large">
+          <span>Reads as a clean photorealistic render.</span>
+        </div>
+        <div class="quote-cell bg-lime qc-huge">
+          <span>The prompt was completely ignored.</span>
+        </div>
+        <div class="quote-cell bg-orange qc-large">
+          <span>Failed to implement any physical controls.</span>
+        </div>
         <div class="quote-cell bg-yellow qc-huge"><span>There is no secret mechanism.</span></div>
-        <div class="quote-cell bg-teal qc-large"><span>Missing the central 'future tech' element.</span></div>
-        <div class="quote-cell bg-dark-teal qc-large"><span>Resulting in a significantly different aesthetic.</span></div>
+        <div class="quote-cell bg-teal qc-large">
+          <span>Missing the central 'future tech' element.</span>
+        </div>
+        <div class="quote-cell bg-dark-teal qc-large">
+          <span>Resulting in a significantly different aesthetic.</span>
+        </div>
       </div>
     </section>
 
@@ -872,10 +981,8 @@
             lbImageContainer.innerHTML = `<img src="${e.image}" alt="Grace's drawing from ${formatLong(e.date)}" />`;
           }
 
-          lbDate.textContent =
-            formatLong(e.date) +
-            (e.failed ? ' · Generation failed' : '');
-            
+          lbDate.textContent = formatLong(e.date) + (e.failed ? ' · Generation failed' : '');
+
           if (e.revised) {
             lbBadge.classList.add('show');
           } else {

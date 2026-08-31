@@ -113,8 +113,6 @@
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-
-
 .pages-menu-content {
   position: absolute;
   top: 0;
@@ -362,10 +360,10 @@
 @media (max-width: 768px) {
   /* Prevent image overflow in CSS Grid */
   .bauhaus-grid > *,
-  [class*="span-col-"] {
+  [class*='span-col-'] {
     min-width: 0;
   }
-  
+
   .span-col-1,
   .span-col-2,
   .span-col-3,
