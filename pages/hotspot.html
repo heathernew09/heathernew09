@@ -151,8 +151,7 @@
         padding: 0;
         display: block;
       }
-      .img-tile img,
-      .img-tile video {
+      .img-tile img.img-tile video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -213,7 +212,7 @@
         padding: 0 1rem 1rem;
       }
       .quote-author::before {
-        content: '— ';
+        content: '';
       }
 
       .fireball-quiz-container {
@@ -249,12 +248,7 @@
         .bauhaus-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .span-col-1,
-        .span-col-2,
-        .span-col-3,
-        .span-col-4,
-        .span-col-2-5,
-        .span-col-1-5 {
+        .span-col-1.span-col-2.span-col-3.span-col-4.span-col-2-5.span-col-1-5 {
           grid-column: span 2;
         }
       }
@@ -262,12 +256,7 @@
         .bauhaus-grid {
           grid-template-columns: 1fr;
         }
-        .span-col-1,
-        .span-col-2,
-        .span-col-3,
-        .span-col-4,
-        .span-col-2-5,
-        .span-col-1-5 {
+        .span-col-1.span-col-2.span-col-3.span-col-4.span-col-2-5.span-col-1-5 {
           grid-column: span 1;
         }
         .span-row-2 {
@@ -530,7 +519,7 @@
               interactive space that captivated a crowd... brought to life a fun, educational, and
               engaging extension of the brand."
             </div>
-            <div class="quote-author">George Bird — Industry Leadership</div>
+            <div class="quote-author">George Bird, Industry Leadership</div>
             <div class="quote-icon bottom"></div>
           </div>
 
@@ -545,7 +534,7 @@
               "Wanted to pop in and shout out Heather New... I am guessing the game Heather built
               had everything to do with that!"
             </div>
-            <div class="quote-author">Casey Luttrell — Studio Recognition</div>
+            <div class="quote-author">Casey Luttrell, Studio Recognition</div>
             <div class="quote-icon bottom"></div>
           </div>
 
@@ -592,7 +581,7 @@
               <span class="meta">Process</span>
               <h3>Building It: Audio</h3>
               <p>
-                David Merriman helped whip up the sounds using everyday items—fizzles and crinkles
+                David Merriman helped whip up the sounds using everyday items, fizzles and crinkles
                 help create the fire illusion.
               </p>
               <audio controls style="width: 100%; margin-top: 2rem">

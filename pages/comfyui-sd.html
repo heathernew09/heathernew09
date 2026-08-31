@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Deconstructing Diffusion — A technical look at how ComfyUI and Stable Diffusion work under the hood."
+      content="Deconstructing Diffusion, A technical look at how ComfyUI and Stable Diffusion work under the hood."
     />
-    <title>Deconstructing Diffusion — Heather New</title>
+    <title>Deconstructing Diffusion - Heather New</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -186,8 +186,7 @@
           border-right: none;
           border-bottom: 1px solid var(--text-dark);
         }
-        .text-block,
-        .image-block {
+        .text-block.image-block {
           grid-column: span 4;
           padding: 2rem;
         }
@@ -198,10 +197,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Heather New" />
     <meta property="og:url" content="https://heathernew.com/pages/comfyui-sd.html" />
-    <meta property="og:title" content="Deconstructing Diffusion — Heather New" />
+    <meta property="og:title" content="Deconstructing Diffusion - Heather New" />
     <meta
       property="og:description"
-      content="Deconstructing Diffusion — A technical look at how ComfyUI and Stable Diffusion work under the hood."
+      content="Deconstructing Diffusion, A technical look at how ComfyUI and Stable Diffusion work under the hood."
     />
     <meta property="og:image" content="https://heathernew.com/assets/heathernew-og.png" />
     <meta property="og:image:width" content="1200" />
@@ -211,10 +210,10 @@
       content="Heather New, Creative Technologist. Portfolio at heathernew.com."
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Deconstructing Diffusion — Heather New" />
+    <meta name="twitter:title" content="Deconstructing Diffusion - Heather New" />
     <meta
       name="twitter:description"
-      content="Deconstructing Diffusion — A technical look at how ComfyUI and Stable Diffusion work under the hood."
+      content="Deconstructing Diffusion, A technical look at how ComfyUI and Stable Diffusion work under the hood."
     />
     <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
   </head>
@@ -254,7 +253,7 @@
           <h2>The Latent Seed</h2>
           <p>
             Everything starts with noise. In Stable Diffusion, we don't work with pixels
-            immediately. Instead, we initialize a <strong>Latent Space</strong>—a compressed
+            immediately. Instead, we initialize a <strong>Latent Space</strong>, a compressed
             representation of an image. At Step 01, this is just a matrix of random numbers
             (Gaussian noise). The "Seed" you hear about is just the starting configuration of this
             randomness.
@@ -400,7 +399,7 @@
 
         <div class="text-block span-col-4" style="grid-column: span 4; border-bottom: none">
           <p>
-            This experiment proves that AI isn't "magic"—it's a series of extremely precise
+            This experiment proves that AI isn't "magic", it's a series of extremely precise
             mathematical transformations. Understanding these layers allows for much greater control
             over the creative output, from ControlNet conditioning to custom LoRA training.
           </p>

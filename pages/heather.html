@@ -201,8 +201,7 @@
         .bauhaus-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .span-col-3,
-        .span-col-4 {
+        .span-col-3.span-col-4 {
           grid-column: span 2;
         }
         .hero-overlay {
@@ -219,9 +218,7 @@
         .bauhaus-grid {
           grid-template-columns: 1fr;
         }
-        .span-col-2,
-        .span-col-3,
-        .span-col-4 {
+        .span-col-2.span-col-3.span-col-4 {
           grid-column: span 1;
         }
         .span-row-2 {
@@ -276,8 +273,7 @@
         object-fit: cover;
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       }
-      a.img-tile:hover img,
-      .img-tile:has(a):hover img {
+      a.img-tile:hover img.img-tile:has(a):hover img {
         transform: scale(1.05);
       }
 
@@ -305,8 +301,7 @@
       }
       /* The arrow stays out of the underline: a parent's decoration does not
          span an atomic inline, so inline-block lets the glyph sit clear of it. */
-      .arrow-link span,
-      .tile-link-text span {
+      .arrow-link span.tile-link-text span {
         display: inline-block;
       }
       a.b-tile:focus-visible {

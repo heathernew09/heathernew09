@@ -7,7 +7,7 @@
       name="description"
       content="Parasite Hunter - a WebAR game for Elanco Credelio Quattro at VMX. Product design for UX and UI, translating a 2D comic aesthetic into performant 3D WebAR."
     />
-    <meta http-equiv="cache-control" content="no-store,max-age=0" />
+    <meta http-equiv="cache-control" content="no-store, max-age=0" />
     <title>Parasite Hunter - Heather New - Creative Technologist</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
@@ -145,8 +145,7 @@
       }
       /* The arrow stays out of the underline: a parent's decoration does not
          span an atomic inline, so inline-block lets the glyph sit clear of it. */
-      .arrow-link span,
-      .tile-link-text span {
+      .arrow-link span.tile-link-text span {
         display: inline-block;
       }
       a.b-tile:focus-visible {
@@ -200,16 +199,14 @@
         padding: 0;
         display: block;
       }
-      .img-tile img,
-      .img-tile video {
+      .img-tile img.img-tile video {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       }
-      a.img-tile:hover img,
-      .img-tile:has(a):hover img {
+      a.img-tile:hover img.img-tile:has(a):hover img {
         transform: scale(1.04);
       }
 
@@ -256,8 +253,7 @@
         .bauhaus-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .span-col-3,
-        .span-col-4 {
+        .span-col-3.span-col-4 {
           grid-column: span 2;
         }
       }
@@ -266,9 +262,7 @@
         .bauhaus-grid {
           grid-template-columns: 1fr;
         }
-        .span-col-2,
-        .span-col-3,
-        .span-col-4 {
+        .span-col-2.span-col-3.span-col-4 {
           grid-column: span 1;
         }
         .span-row-2 {
@@ -438,8 +432,7 @@
           radial-gradient(circle at 1px 1px, #f2f5f4 1px, transparent 0) 0 0 / 16px 16px,
           #ffffff;
       }
-      .ph-viz #ph-base,
-      .ph-viz #ph-overlay {
+      .ph-viz #ph-base.ph-viz #ph-overlay {
         position: absolute;
         top: 0;
         left: 0;
@@ -1489,7 +1482,7 @@
             octx.beginPath();
             octx.arc(d.x, d.y, d.r + 4.5, 0, Math.PI * 2);
             octx.lineWidth = 2;
-            octx.strokeStyle = 'rgba(11,27,30,0.55)';
+            octx.strokeStyle = 'rgba(11, 27, 30, 0.55)';
             octx.stroke();
           }
         }

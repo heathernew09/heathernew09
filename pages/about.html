@@ -203,8 +203,7 @@
       }
 
       /* Nested Grids for Content Density */
-      .inner-grid-3,
-      .inner-grid-4 {
+      .inner-grid-3.inner-grid-4 {
         display: grid;
         gap: 2rem;
         margin-top: 1.5rem;
@@ -235,12 +234,10 @@
         .bauhaus-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .span-col-3,
-        .span-col-4 {
+        .span-col-3.span-col-4 {
           grid-column: span 2;
         }
-        .inner-grid-3,
-        .inner-grid-4 {
+        .inner-grid-3.inner-grid-4 {
           grid-template-columns: 1fr;
         }
         .hero-overlay {
@@ -266,9 +263,7 @@
         .bauhaus-grid {
           grid-template-columns: 1fr;
         }
-        .span-col-2,
-        .span-col-3,
-        .span-col-4 {
+        .span-col-2.span-col-3.span-col-4 {
           grid-column: span 1;
         }
         .span-row-2 {
@@ -338,15 +333,13 @@
         padding: 0;
         display: block;
       }
-      .img-tile img,
-      .img-tile video {
+      .img-tile img.img-tile video {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
       }
-      .img-tile:hover img,
-      .img-tile:hover video {
+      .img-tile:hover img.img-tile:hover video {
         transform: scale(1.05);
       }
 
@@ -512,7 +505,7 @@
             "You are so fun to work with because you are a real renaissance designer, one that
             appreciates all the visual elements of design and creating digital art/engagement."
           </div>
-          <span class="meta" style="margin-top: auto">— George B.</span>
+          <span class="meta" style="margin-top: auto">George B.</span>
         </div>
 
         <!-- Row 3: Origin Story Cluster -->
@@ -528,7 +521,7 @@
           <p>
             In 2005, a Design 1 challenge changed everything: create a paper container to protect an
             egg dropped from a flight of stairs. Inspired by soccer ball geometry, I built an
-            inverted dome with a hexagonal structure.<br /><br />It wasn't just about the drop—it
+            inverted dome with a hexagonal structure.<br /><br />It wasn't just about the drop, it
             was about geometric precision and thinking differently. Nearly 20 years later, that same
             egg is still intact, serving as a reminder that built-to-last solutions require a
             foundation of bold experimentation.
@@ -553,7 +546,7 @@
             <p style="font-size: 1.05rem">
               Before the "Creative Technologist" title, I was a Roller Derby MVP. That same spirit
               of teamwork defines my approach to technical problem-solving today. I don't believe in
-              dead ends—only different paths forward.
+              dead ends, only different paths forward.
             </p>
           </div>
         </div>
@@ -620,7 +613,7 @@
           <span class="arrow-link">View Project <span>→</span></span>
         </a>
 
-        <!-- Massive Panoramic Break — full width, sits above the triptych -->
+        <!-- Massive Panoramic Break, full width, sits above the triptych -->
         <div
           id="tile-about-panoramic"
           class="b-tile img-tile span-col-4"
@@ -892,7 +885,7 @@
             >
               <p style="font-size: 1.1rem; line-height: 1.6; max-width: 55ch; opacity: 0.85">
                 A living document of the AI agents, Raspberry Pi builds, and automation tools I run
-                day to day — what they do, what problem they solve, and what's still in progress.
+                day to day, what they do, what problem they solve, and what's still in progress.
               </p>
               <span
                 class="arrow-link"

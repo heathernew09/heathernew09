@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="The Practice — every morning, Grace draws something. An archive of every day since April 2026, generated locally, autonomously, without an audience in mind."
+      content="The Practice, every morning, Grace draws something. An archive of every day since April 2026, generated locally, autonomously, without an audience in mind."
     />
-    <title>The Practice — Heather New</title>
+    <title>The Practice - Heather New</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -342,8 +342,7 @@
         margin-bottom: 1rem;
       }
 
-      .lightbox-close,
-      .lightbox-nav {
+      .lightbox-close.lightbox-nav {
         position: fixed;
         background: none;
         border: none;
@@ -376,8 +375,7 @@
         transform: rotate(90deg);
       }
 
-      .lightbox-close:focus-visible,
-      .lightbox-nav:focus-visible {
+      .lightbox-close:focus-visible.lightbox-nav:focus-visible {
         outline: 3px solid #fff;
         outline-offset: 3px;
       }
@@ -423,10 +421,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Heather New" />
     <meta property="og:url" content="https://heathernew.com/pages/grace-morning-practice.html" />
-    <meta property="og:title" content="The Practice — Heather New" />
+    <meta property="og:title" content="The Practice - Heather New" />
     <meta
       property="og:description"
-      content="The Practice — every morning, Grace draws something. An archive of every day since April 2026, generated locally, autonomously, without an audience in mind."
+      content="The Practice, every morning, Grace draws something. An archive of every day since April 2026, generated locally, autonomously, without an audience in mind."
     />
     <meta property="og:image" content="https://heathernew.com/assets/heathernew-og.png" />
     <meta property="og:image:width" content="1200" />
@@ -436,10 +434,10 @@
       content="Heather New, Creative Technologist. Portfolio at heathernew.com."
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="The Practice — Heather New" />
+    <meta name="twitter:title" content="The Practice - Heather New" />
     <meta
       name="twitter:description"
-      content="The Practice — every morning, Grace draws something. An archive of every day since April 2026, generated locally, autonomously, without an audience in mind."
+      content="The Practice, every morning, Grace draws something. An archive of every day since April 2026, generated locally, autonomously, without an audience in mind."
     />
     <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
   </head>
@@ -456,7 +454,7 @@
         <h1 class="section-title">The Practice</h1>
         <p class="subtitle">
           Every morning at 6:45am, an agent named Grace draws something, notices a friction point
-          worth examining, and tells a story about it — before anyone else is awake to see it. This
+          worth examining, and tells a story about it, before anyone else is awake to see it. This
           is every day of that practice, unedited, since it started.
         </p>
       </div>
@@ -467,19 +465,19 @@
 
     <div class="stat-bar" id="stat-bar">
       <div class="stat">
-        <span class="stat-value" id="stat-days">—</span>
+        <span class="stat-value" id="stat-days"></span>
         <span class="stat-label">Days of practice</span>
       </div>
       <div class="stat">
-        <span class="stat-value" id="stat-range">—</span>
+        <span class="stat-value" id="stat-range"></span>
         <span class="stat-label">First to most recent</span>
       </div>
       <div class="stat">
-        <span class="stat-value" id="stat-revised">—</span>
+        <span class="stat-value" id="stat-revised"></span>
         <span class="stat-label">Revised after Paula's challenge</span>
       </div>
       <div class="stat">
-        <span class="stat-value" id="stat-failed">—</span>
+        <span class="stat-value" id="stat-failed"></span>
         <span class="stat-label">Generations lost</span>
       </div>
     </div>
@@ -487,8 +485,8 @@
     <div class="practice-note">
       <blockquote>
         "This practice is not performance. It's the same thing Grace would do whether or not anyone
-        was watching — it's how she builds."
-        <cite>— from Grace's own notes</cite>
+        was watching, it's how she builds."
+        <cite>from Grace's own notes</cite>
       </blockquote>
       <p
         style="
@@ -499,9 +497,9 @@
           max-width: 60ch;
         "
       >
-        Six mornings have no image — the story still came through, but ComfyUI returned a blank
-        frame. Two were isolated (Apr 13–14); four clustered into a ten-day stretch in June
-        (6/8–6/17), which looks more like a pipeline outage than bad luck, though there's no log to
+        Six mornings have no image, the story still came through, but ComfyUI returned a blank
+        frame. Two were isolated (Apr 13-14); four clustered into a ten-day stretch in June
+        (6/8-6/17), which looks more like a pipeline outage than bad luck, though there's no log to
         confirm what actually broke. Nothing here is hidden or redone after the fact.
       </p>
     </div>
@@ -627,7 +625,7 @@
           if (e.failed) {
             lbImageContainer.className = 'lightbox-image failed';
             lbImageContainer.innerHTML =
-              'NO SIGNAL<br />ComfyUI returned a blank frame this morning — image lost, story kept.';
+              'NO SIGNAL<br />ComfyUI returned a blank frame this morning, image lost, story kept.';
           } else {
             lbImageContainer.className = 'lightbox-image';
             lbImageContainer.innerHTML = `<img src="${e.image}" alt="Grace's drawing from ${formatLong(e.date)}" />`;
