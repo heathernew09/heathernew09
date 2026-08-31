@@ -394,6 +394,79 @@
         right: 0.5rem;
       }
 
+      /* --- BAUHAUS GRID COMPONENT (MODULAR) --- */
+      .portfolio-section {
+        padding: 4rem 2vw 8rem;
+        display: flex;
+        justify-content: center;
+        background-color: var(--bg-color);
+      }
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(240px, auto);
+        width: 100%;
+        max-width: 1400px;
+        border-top: 1px solid #000;
+        border-left: 1px solid var(--text-dark);
+        background: var(--bg-color);
+      }
+      .b-tile {
+        container-type: inline-size;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: #fff;
+      }
+      .b-tile h3 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+      }
+      .b-tile p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      .span-col-2 {
+        grid-column: span 2;
+      }
+      .span-col-3 {
+        grid-column: span 3;
+      }
+      .span-col-4 {
+        grid-column: span 4;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
+
+      /* Code block utility */
+      .code-snippet {
+        background: #111;
+        color: var(--lime);
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.85rem;
+        padding: 1.5rem;
+        border-radius: 4px;
+        overflow-x: auto;
+        margin-top: 1.5rem;
+        line-height: 1.4;
+      }
+
+      /* Specific Background Overrides */
+      .bg-dark-teal { background-color: var(--dark-teal); color: #fff; }
+      .bg-black { background-color: #000; color: #fff; }
+      .bg-yellow { background-color: var(--yellow); color: var(--text-dark); }
+      .bg-white { background-color: #fff; color: var(--text-dark); }
+      .bg-light-gray { background-color: var(--light-gray); color: var(--text-dark); }
+
       @media (max-width: 900px) {
         .page-hero {
           grid-template-columns: 1fr;
@@ -413,6 +486,29 @@
         }
         .stat {
           flex: 1 1 45%;
+        }
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-3, .span-col-4 {
+          grid-column: span 2;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .bauhaus-grid > *,
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
+          grid-column: 1 / -1 !important;
+        }
+        .span-row-2 {
+          grid-row: auto !important;
+        }
+        .b-tile {
+          min-width: 0;
+          box-sizing: border-box;
+          max-width: 100% !important;
         }
       }
     </style>
@@ -503,6 +599,51 @@
         confirm what actually broke. Nothing here is hidden or redone after the fact.
       </p>
     </div>
+
+    <!-- DOCUMENTATION COMPONENT -->
+    <section class="portfolio-section" id="grace-documentation">
+      <div class="bauhaus-grid">
+        
+        <!-- Row 1 -->
+        <div class="b-tile bg-dark-teal span-col-2">
+          <span class="meta" style="color: var(--lime)">01. The Capability</span>
+          <h3>What is Grace?</h3>
+          <p>
+            Grace is a locally-hosted AI agent running an autonomous daily art practice. Every morning at 6:45am, she evaluates a set of thematic rules, constructs a highly specific visual prompt, and pushes it through a local stable diffusion pipeline. A custom dashboard tracks her daily progress without human intervention.
+          </p>
+        </div>
+        <div class="b-tile bg-black span-col-2">
+          <span class="meta" style="color: var(--teal)">02. The Architecture</span>
+          <h3>ComfyUI Setup</h3>
+          <p>
+            The system operates entirely on local hardware. A chron job triggers a Python script that asks an LLM to generate the prompt. This prompt is then sent via API directly into a local ComfyUI instance running SDXL.
+          </p>
+          <div class="code-snippet">
+> INIT: grace_agent.py
+> POST: http://127.0.0.1:8188/prompt
+> STATUS: Queued for rendering.
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="b-tile bg-yellow span-col-2">
+          <span class="meta">03. Thematic Selection</span>
+          <h3>Curating Themes</h3>
+          <p>
+            Grace doesn't hallucinate randomly; she selects from structured JSON dictionaries. Her prompts explore specific intersections: <strong>Tactile Materials</strong> (brass, wood, anodized aluminum) colliding with <strong>Abstract Concepts</strong> (nostalgia, tension, friction). This structured randomness forces highly unique prompt construction.
+          </p>
+        </div>
+        
+        <div class="b-tile bg-light-gray span-col-2">
+          <span class="meta" style="color: var(--orange)">04. Open Source Potential</span>
+          <h3>Releasing the Code?</h3>
+          <p>
+            The pipeline is fully modularized into discrete blocks: the theme generator, the LLM prompt writer, and the ComfyUI API bridge. It is heavily segmented, making it a prime candidate for a public GitHub repo. Anyone with a local GPU could retrace these steps, build their own dashboard, and run their own agent.
+          </p>
+        </div>
+
+      </div>
+    </section>
 
     <main class="gallery-section">
       <div class="gallery-grid" id="gallery-grid"></div>
