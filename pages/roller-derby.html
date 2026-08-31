@@ -162,11 +162,7 @@
         justify-content: space-between;
       }
 
-      /* Ensure non-link tiles do not have hover color changes or pointer */
-      div.b-tile:hover {
-        background-color: var(--tile-bg) !important;
-        color: var(--tile-text) !important;
-      }
+      /* Ensure non-link tiles do not have a pointer cursor */
       div.b-tile:not(:has(a)) {
         cursor: default;
       }
