@@ -147,6 +147,31 @@
         display: block;
       }
 
+      .practice-note {
+        padding: 3rem 2vw;
+        max-width: 1400px;
+        margin: 0 auto;
+        border-bottom: 1px solid var(--text-dark);
+      }
+
+      .practice-note blockquote {
+        font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+        font-weight: 600;
+        max-width: 60ch;
+        letter-spacing: -0.5px;
+      }
+
+      .practice-note cite {
+        display: block;
+        margin-top: 1rem;
+        font-family: 'JetBrains Mono', monospace;
+        font-style: normal;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        opacity: 0.6;
+      }
+
       .quote-section {
         padding: 4rem 2vw;
         display: flex;
@@ -337,6 +362,14 @@
       .lightbox-text {
         color: #fff;
       }
+      
+      .lightbox-meta-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
 
       .lightbox-date {
         font-family: 'JetBrains Mono', monospace;
@@ -345,6 +378,21 @@
         font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
+      }
+      
+      .lightbox-badge {
+        background-color: var(--purple);
+        color: #fff;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        display: none;
+      }
+      .lightbox-badge.show {
+        display: inline-block;
       }
 
       .lightbox-noticed {
@@ -603,6 +651,28 @@
       </div>
     </div>
 
+    <div class="practice-note">
+      <blockquote>
+        "This practice is not performance. It's the same thing Grace would do whether or not anyone
+        was watching, it's how she builds."
+        <cite>from Grace's own notes</cite>
+      </blockquote>
+      <p
+        style="
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.8rem;
+          opacity: 0.6;
+          margin-top: 1.5rem;
+          max-width: 60ch;
+        "
+      >
+        Six mornings have no image, the story still came through, but ComfyUI returned a blank
+        frame. Two were isolated (Apr 13-14); four clustered into a ten-day stretch in June
+        (6/8-6/17), which looks more like a pipeline outage than bad luck, though there's no log to
+        confirm what actually broke. Nothing here is hidden or redone after the fact.
+      </p>
+    </div>
+
     <section class="quote-section">
       <div class="quote-grid">
         <div class="quote-cell c-orange qc-huge"><span>Missing the concept entirely.</span></div>
@@ -681,7 +751,10 @@
       <div class="lightbox-inner">
         <div class="lightbox-image" id="lightbox-image"></div>
         <div class="lightbox-text">
-          <span class="lightbox-date" id="lightbox-date"></span>
+          <div class="lightbox-meta-row">
+            <span class="lightbox-date" id="lightbox-date"></span>
+            <span class="lightbox-badge" id="lightbox-badge">Pushed to Perfection</span>
+          </div>
           <p class="lightbox-noticed" id="lightbox-noticed"></p>
           <div class="lightbox-story" id="lightbox-story"></div>
         </div>
@@ -782,6 +855,7 @@
 
         function openLightbox(index) {
           currentIndex = index;
+          const lbBadge = document.getElementById('lightbox-badge');
           const e = entries[index];
 
           if (e.failed) {
@@ -795,8 +869,14 @@
 
           lbDate.textContent =
             formatLong(e.date) +
-            (e.revised ? ' · Revised' : '') +
             (e.failed ? ' · Generation failed' : '');
+            
+          if (e.revised) {
+            lbBadge.classList.add('show');
+          } else {
+            lbBadge.classList.remove('show');
+          }
+
           lbNoticed.textContent = e.noticed;
           lbStory.innerHTML = e.story
             .split('\n\n')
