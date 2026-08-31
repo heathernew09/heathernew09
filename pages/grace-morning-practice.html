@@ -175,8 +175,9 @@
       .quote-section {
         padding: 4rem 2vw;
         display: flex;
-        justify-content: center;
-        background-color: var(--text-dark);
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
       }
       .quote-grid {
         display: grid;
@@ -184,12 +185,12 @@
         grid-auto-rows: minmax(200px, 1fr);
         width: 100%;
         max-width: 1400px;
-        border-top: 1px solid #333;
-        border-left: 1px solid #333;
+        border-top: 1px solid var(--text-dark);
+        border-left: 1px solid var(--text-dark);
       }
       .quote-cell {
-        border-right: 1px solid #333;
-        border-bottom: 1px solid #333;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
         padding: 1.5rem;
         display: flex;
         align-items: center;
@@ -208,12 +209,10 @@
       .qc-large { font-size: clamp(1.2rem, 1.5vw, 1.8rem); }
       .qc-medium { font-size: clamp(0.9rem, 1vw, 1.2rem); }
       
-      .c-lime { color: var(--lime); }
-      .c-orange { color: var(--orange); }
-      .c-yellow { color: var(--yellow); }
-      .c-white { color: #fff; }
-      .c-purple { color: var(--purple); }
-      .c-teal { color: var(--teal); }
+      .bg-lime { background-color: var(--lime); color: var(--text-dark); }
+      .bg-orange { background-color: var(--orange); color: #fff; }
+      .bg-purple { background-color: var(--purple); color: #fff; }
+      .bg-teal { background-color: var(--teal); color: #fff; }
 
       @media (max-width: 1100px) {
         .quote-grid { grid-template-columns: repeat(3, 1fr); }
@@ -670,20 +669,27 @@
     </div>
 
     <section class="quote-section">
+      <div style="max-width: 1400px; width: 100%; margin: 0 auto 3rem; text-align: left;">
+        <h2 style="font-size: clamp(3rem, 5vw, 4.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1; text-transform: uppercase;">
+          AI (Paula) critiquing<br />
+          AI's (Grace's)<br />
+          creative capabilities.
+        </h2>
+      </div>
       <div class="quote-grid">
-        <div class="quote-cell c-orange qc-huge"><span>Missing the concept entirely.</span></div>
-        <div class="quote-cell c-white qc-large"><span>Defaulted into a generic gauge cluster.</span></div>
-        <div class="quote-cell c-lime qc-huge"><span>A generic polished shot.</span></div>
-        <div class="quote-cell c-purple qc-large"><span>The glow overwhelms the reflection concept.</span></div>
-        <div class="quote-cell c-yellow qc-huge"><span>Completely missing the point.</span></div>
-        <div class="quote-cell c-teal qc-medium"><span>The gradient concept lands, but the brushwork was lost.</span></div>
+        <div class="quote-cell bg-orange qc-huge"><span>Missing the concept entirely.</span></div>
+        <div class="quote-cell bg-black qc-large"><span>Defaulted into a generic gauge cluster.</span></div>
+        <div class="quote-cell bg-lime qc-huge"><span>A generic polished shot.</span></div>
+        <div class="quote-cell bg-purple qc-large"><span>The glow overwhelms the reflection concept.</span></div>
+        <div class="quote-cell bg-yellow qc-huge"><span>Completely missing the point.</span></div>
+        <div class="quote-cell bg-teal qc-medium"><span>The gradient concept lands, but the brushwork was lost.</span></div>
         
-        <div class="quote-cell c-white qc-large"><span>Reads as a clean photorealistic render.</span></div>
-        <div class="quote-cell c-lime qc-huge"><span>The prompt was completely ignored.</span></div>
-        <div class="quote-cell c-orange qc-large"><span>Failed to implement any physical controls.</span></div>
-        <div class="quote-cell c-yellow qc-huge"><span>There is no secret mechanism.</span></div>
-        <div class="quote-cell c-teal qc-large"><span>Missing the central 'future tech' element.</span></div>
-        <div class="quote-cell c-purple qc-large"><span>Resulting in a significantly different aesthetic.</span></div>
+        <div class="quote-cell bg-light-gray qc-large"><span>Reads as a clean photorealistic render.</span></div>
+        <div class="quote-cell bg-lime qc-huge"><span>The prompt was completely ignored.</span></div>
+        <div class="quote-cell bg-orange qc-large"><span>Failed to implement any physical controls.</span></div>
+        <div class="quote-cell bg-yellow qc-huge"><span>There is no secret mechanism.</span></div>
+        <div class="quote-cell bg-teal qc-large"><span>Missing the central 'future tech' element.</span></div>
+        <div class="quote-cell bg-purple qc-large"><span>Resulting in a significantly different aesthetic.</span></div>
       </div>
     </section>
 
