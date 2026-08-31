@@ -279,3 +279,18 @@
     grid-column: 1;
   }
 }
+
+@media (max-width: 768px) {
+  #fireball .grid-2,
+  .sensory-container,
+  .gallery {
+    grid-template-columns: 1fr !important;
+  }
+  .gallery-item.horizontal,
+  .gallery-item.horizontal.threehoriz {
+    grid-column: span 1 !important;
+  }
+  .gallery-item.vertical {
+    grid-row: auto !important;
+  }
+}

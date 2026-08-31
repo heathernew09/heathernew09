@@ -217,53 +217,7 @@ a.b-tile:focus-visible .tile-link-text {
     transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Hamburger to X Animation */
-#nav-hamburger-icon {
-  width: 30px;
-  height: 20px;
-  position: relative;
-  transform: rotate(0deg);
-  transition: 0.5s ease-in-out;
-  cursor: pointer;
-}
 
-#nav-hamburger-icon span {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: var(--white);
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: 0.25s ease-in-out;
-}
-
-#nav-hamburger-icon span:nth-child(1) {
-  top: 0px;
-}
-#nav-hamburger-icon span:nth-child(2) {
-  top: 8px;
-}
-#nav-hamburger-icon span:nth-child(3) {
-  top: 16px;
-}
-
-#pages-overlay.open + .pages-nav-icon #nav-hamburger-icon span:nth-child(1) {
-  top: 8px;
-  transform: rotate(135deg);
-}
-
-#pages-overlay.open + .pages-nav-icon #nav-hamburger-icon span:nth-child(2) {
-  opacity: 0;
-  left: -60px;
-}
-
-#pages-overlay.open + .pages-nav-icon #nav-hamburger-icon span:nth-child(3) {
-  top: 8px;
-  transform: rotate(-135deg);
-}
 
 #pages-overlay.open + .pages-nav-icon {
   background: var(--accent-orange);
@@ -1495,13 +1449,14 @@ RESULTS SECTION
   }
 }
 
-/* ===== Mobile: every grid cell stacks full-width ==========================
-   The per-page rules set 1 column grid, and every cell spans 1 column full width. */
+/* ===== Mobile: every grid cell stacks full-width ========================== */
 @media (max-width: 768px) {
-  .bauhaus-grid {
-    grid-template-columns: 1fr !important;
-  }
+  /* Prevent image overflow in CSS Grid */
   .bauhaus-grid > *,
+  [class*="span-col-"] {
+    min-width: 0;
+  }
+  
   .span-col-1,
   .span-col-2,
   .span-col-3,

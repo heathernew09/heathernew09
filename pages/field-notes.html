@@ -291,19 +291,18 @@
         }
         .page-hero {
           grid-template-columns: 1fr;
+          min-height: auto;
         }
         .hero-visual-block {
           display: none;
         }
       }
       @media (max-width: 768px) {
-        .bauhaus-grid {
-          grid-template-columns: 1fr;
-        }
+        .bauhaus-grid > *,
         .span-col-2,
         .span-col-3,
         .span-col-4 {
-          grid-column: span 1;
+          grid-column: 1 / -1 !important;
         }
         .hero-title-block {
           padding: 2rem;

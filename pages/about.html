@@ -261,17 +261,26 @@
           z-index: 50; /* Lowered from 105 so it sits behind the overlay (which is 100) */
         }
       }
+      /* Prevent image blowouts */
+      .bauhaus-grid > *,
+      .b-tile {
+        min-width: 0;
+      }
+      .b-tile img,
+      .img-tile img {
+        max-width: 100%;
+        height: auto;
+      }
+
       @media (max-width: 768px) {
-        .bauhaus-grid {
-          grid-template-columns: 1fr;
-        }
+        .bauhaus-grid > *,
         .span-col-2,
         .span-col-3,
         .span-col-4 {
-          grid-column: span 1;
+          grid-column: 1 / -1 !important;
         }
         .span-row-2 {
-          grid-row: span 1;
+          grid-row: auto !important;
           min-height: 300px;
         }
         .hero-overlay {
