@@ -160,9 +160,15 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        transition:
-          background-color 0.4s ease,
-          color 0.4s ease;
+      }
+
+      /* Ensure non-link tiles do not have hover color changes or pointer */
+      div.b-tile:hover {
+        background-color: var(--tile-bg) !important;
+        color: var(--tile-text) !important;
+      }
+      div.b-tile:not(:has(a)) {
+        cursor: default;
       }
 
       .span-col-2 {
@@ -544,7 +550,7 @@
 
         <!-- 16:9 Responsive Video -->
         <div id="tile-derby-edu-film" class="b-tile video-tile span-col-2 span-row-2">
-          <h3 style="margin-top: auto; line-height: 1.3">Roller Derby Educational Film</h3>
+          <h3 style="line-height: 1.2; color: var(--lime); font-size: clamp(2.5rem, 4vw, 4rem); padding: 3rem 2.5rem; margin: 0;">Roller Derby Educational Film</h3>
           <div class="video-responsive-container">
             <br />
             <video controls>
