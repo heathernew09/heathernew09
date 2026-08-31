@@ -333,6 +333,56 @@
         color: inherit;
       }
 
+      /* Menu button labels. The homepage does not resolve src/css/global.css,
+         so these have to live here too or both words render at once. */
+      .pages-nav-icon {
+        border: none;
+        font: inherit;
+        width: auto;
+        min-width: 92px;
+        padding: 0 1.5rem;
+      }
+      #nav-hamburger-icon {
+        position: static;
+        width: auto;
+        height: auto;
+      }
+      #nav-hamburger-icon .nav-label,
+      #nav-hamburger-icon.active .nav-label {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        border-radius: 0;
+        transform: none;
+        opacity: 1;
+        color: var(--white, #fff);
+        font-family: inherit;
+        font-weight: 800;
+        font-size: 0.9rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        line-height: 1;
+        white-space: nowrap;
+      }
+      #nav-hamburger-icon .nav-label-open,
+      #nav-hamburger-icon .nav-label-close {
+        display: none;
+      }
+      #nav-hamburger-icon .nav-label-open {
+        display: inline-block;
+      }
+      .pages-nav-icon.active #nav-hamburger-icon .nav-label-open {
+        display: none;
+      }
+      .pages-nav-icon.active #nav-hamburger-icon .nav-label-close {
+        display: inline-block;
+      }
+      .pages-nav-icon:focus-visible {
+        outline: 3px solid var(--lime, #bfff00);
+        outline-offset: -6px;
+      }
+
       /* Ten nav items at 1.2rem need roughly 830px of height; a laptop viewport is
          often under 800px, so the last items were cut off. Scoped to the overlay id
          because global.css, nav.css and header.css all define .pages-main-nav a and

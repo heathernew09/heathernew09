@@ -380,3 +380,9 @@
   outline: 3px solid var(--accent-lime, #bfff00);
   outline-offset: -6px;
 }
+
+@media (max-width: 768px) {
+  .header-content {
+    padding: 0 1.25rem;
+  }
+}
