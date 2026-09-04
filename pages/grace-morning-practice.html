@@ -104,6 +104,16 @@
         opacity: 0.8;
       }
 
+      .headline-outline {
+        color: var(--lime);
+        -webkit-text-stroke: 3px var(--text-dark);
+      }
+
+      .inktober-section {
+        padding: 4rem 2vw 5rem;
+        border-bottom: 1px solid var(--text-dark);
+      }
+
       .meta {
         font-size: 0.75rem;
         font-weight: 800;
@@ -175,10 +185,17 @@
         line-height: 1;
         letter-spacing: -1px;
         text-transform: uppercase;
+        /* Grid/flex items default to min-width: auto, which lets long words push
+           the cell wider than its 1fr track instead of wrapping. Without this,
+           the grid overflows the page at viewports wide enough to show 6 columns. */
+        min-width: 0;
       }
       .quote-cell span {
         display: block;
         width: 100%;
+        /* break-word only, not word-break: it wraps at spaces first and only
+           splits a word mid-letter as a last resort, when nothing else fits */
+        overflow-wrap: break-word;
       }
       .qc-huge {
         font-size: clamp(1.8rem, 2vw, 2.5rem);
@@ -718,6 +735,19 @@
       </div>
     </section>
 
+    <section class="inktober-section" id="inktober-fest" hidden>
+      <div style="max-width: 1400px; margin: 0 auto; padding: 0 2vw 2rem">
+        <h2 class="section-title headline-outline">Inktober</h2>
+        <p class="subtitle" style="max-width: 70ch">
+          For all of October, Grace trades her usual photographic style for pure black-and-white ink
+          illustration, one official Inktober prompt word a day, drawn as the single, undivided
+          focus of the frame. Same practice, same 6:45am ritual, a different set of rules for the
+          month.
+        </p>
+      </div>
+      <div class="gallery-grid" id="inktober-grid"></div>
+    </section>
+
     <main class="gallery-section">
       <div style="max-width: 1400px; margin: 0 auto; padding: 0 2vw 2rem">
         <h2
@@ -886,6 +916,8 @@
         const entries = await res.json();
 
         const grid = document.getElementById('gallery-grid');
+        const inktoberGrid = document.getElementById('inktober-grid');
+        const inktoberSection = document.getElementById('inktober-fest');
         const heroImg = document.getElementById('hero-image');
 
         const latest = entries[entries.length - 1];
@@ -939,25 +971,38 @@
           return `${months[parseInt(m, 10) - 1]} ${parseInt(d, 10)}, ${y}`;
         }
 
-        grid.innerHTML = entries
-          .map((e, i) => {
-            if (e.failed) {
-              return `
+        function tileHTML(e, i) {
+          if (e.failed) {
+            return `
             <div class="grace-tile failed" data-index="${i}">
               <span class="failed-label">NO<br />SIGNAL</span>
               <span class="tile-date">${formatShort(e.date)}</span>
             </div>
           `;
-            }
-            return `
+          }
+          return `
           <div class="grace-tile" data-index="${i}">
             <img src="${e.image}" alt="Grace's drawing from ${formatLong(e.date)}" loading="lazy" />
             ${e.revised ? '<span class="revised-dot" title="Revised after Paula\'s challenge"></span>' : ''}
             <span class="tile-date">${formatShort(e.date)}</span>
           </div>
         `;
-          })
-          .join('');
+        }
+
+        // Inktober (October 2026) gets its own grouped showcase; everything
+        // else stays in the general chronological archive below it.
+        const inktoberIndices = [];
+        const regularIndices = [];
+        entries.forEach((e, i) =>
+          (e.date.startsWith('2026-10') ? inktoberIndices : regularIndices).push(i)
+        );
+
+        grid.innerHTML = regularIndices.map((i) => tileHTML(entries[i], i)).join('');
+
+        if (inktoberIndices.length) {
+          inktoberGrid.innerHTML = inktoberIndices.map((i) => tileHTML(entries[i], i)).join('');
+          inktoberSection.hidden = false;
+        }
 
         // Lightbox
         const lightbox = document.getElementById('lightbox');
@@ -1008,11 +1053,13 @@
           openLightbox(currentIndex);
         }
 
-        grid.addEventListener('click', (ev) => {
+        function handleTileClick(ev) {
           const tile = ev.target.closest('.grace-tile');
           if (!tile) return;
           openLightbox(parseInt(tile.dataset.index, 10));
-        });
+        }
+        grid.addEventListener('click', handleTileClick);
+        inktoberGrid.addEventListener('click', handleTileClick);
 
         document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
         document.getElementById('lightbox-prev').addEventListener('click', () => showRelative(-1));
