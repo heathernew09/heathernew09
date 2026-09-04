@@ -20,7 +20,25 @@ SG_KEY="$HOME/.ssh/id_ed25519_siteground"
 
 cd "$REPO_DIR"
 
-echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting weekly Grace archive check"
+# launchd now fires this daily (see com.heathernew.grace-weekly-deploy.plist).
+# For October 2026 (Inktober), deploy every day; every other month, only
+# actually run on Sunday, reproducing the old weekly cadence. This is
+# self-expiring — no manual revert needed once October ends.
+TODAY_YEAR=$(date +%Y)
+TODAY_MONTH=$(date +%-m)
+TODAY_WEEKDAY=$(date +%u)   # 1=Monday .. 7=Sunday
+IS_INKTOBER=false
+[ "$TODAY_YEAR" = "2026" ] && [ "$TODAY_MONTH" = "10" ] && IS_INKTOBER=true
+
+if [ "$IS_INKTOBER" = false ] && [ "$TODAY_WEEKDAY" != "7" ]; then
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Not October 2026 and not Sunday — skipping (weekly cadence outside Inktober)."
+    exit 0
+fi
+
+CADENCE_LABEL="Weekly"
+[ "$IS_INKTOBER" = true ] && CADENCE_LABEL="Daily (Inktober)"
+
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting Grace archive check ($CADENCE_LABEL cadence)"
 
 git checkout main
 git pull --ff-only origin main || echo "  (pull skipped/failed — continuing with local main)"
@@ -48,7 +66,7 @@ if git diff --cached --quiet; then
 fi
 
 git commit -m "$(cat <<EOF
-Weekly Grace archive update: $NEW_COUNT new day(s) through $LATEST_DATE
+$CADENCE_LABEL Grace archive update: $NEW_COUNT new day(s) through $LATEST_DATE
 
 This was built utilizing a variety of AI tools orchestrated by a human.
 EOF
