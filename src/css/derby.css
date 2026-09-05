@@ -289,6 +289,15 @@ p.subtitle {
   animation: ransomPop 0.2s ease;
 }
 
+.name-part.legendary {
+  border-color: var(--accent-lime);
+  box-shadow: 4px 4px 0 var(--accent-lime);
+}
+
+.name-part.legendary:not(.static-part):hover {
+  box-shadow: 6px 6px 0 var(--accent-lime);
+}
+
 .action-buttons {
   display: flex;
   gap: 15px;

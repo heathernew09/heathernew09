@@ -20,6 +20,28 @@ const vocab = {
     'Psycho',
     'Bloody',
     'Radical',
+    'Feral',
+    'Unhinged',
+    'Unbothered',
+    'Certified',
+    'Undefeated',
+    'Chaotic',
+    'Iconic',
+    'Unmatched',
+    'Extra',
+    'Goated',
+    'Diabolical',
+    'Unstoppable',
+    'Rowdy',
+    'Rabid',
+    'Untamed',
+    'Reckless',
+    'Volatile',
+    'Explosive',
+    'Relentless',
+    'Notorious',
+    'Merciless',
+    'Deranged',
   ],
   nouns: [
     'Bruiser',
@@ -40,6 +62,23 @@ const vocab = {
     'Fury',
     'Monster',
     'Machine',
+    'Warlord',
+    'Reckoning',
+    'Vendetta',
+    'Renegade',
+    'Outlaw',
+    'Villain',
+    'Gremlin',
+    'Maverick',
+    'Berserker',
+    'Executioner',
+    'Nightmare',
+    'Juggernaut',
+    'Warhead',
+    'Tempest',
+    'Marauder',
+    'Predator',
+    'Wrecker',
   ],
   derbyTerms: [
     'Jammer',
@@ -53,8 +92,133 @@ const vocab = {
     'Derby',
     'Wheels',
     'Apex',
+    'Bout',
+    'Jam',
+    'Hitter',
+    'Wall',
+    'Power-Jam',
+    'Grand-Slam',
+    'Toe-Stop',
+    'Lead-Jammer',
+    'Star-Pass',
   ],
-  verbs: ['Smash', 'Whip', 'Block', 'Roll', 'Crush', 'Strike', 'Bash'],
+  verbs: [
+    'Smash',
+    'Whip',
+    'Block',
+    'Roll',
+    'Crush',
+    'Strike',
+    'Bash',
+    'Wreck',
+    'Slam',
+    'Juke',
+    'Grind',
+    'Stomp',
+    'Clobber',
+    'Demolish',
+    'Unleash',
+    'Detonate',
+  ],
+  animals: [
+    'Viper',
+    'Wolverine',
+    'Falcon',
+    'Piranha',
+    'Hyena',
+    'Cobra',
+    'Panther',
+    'Badger',
+    'Hornet',
+    'Rhino',
+    'Scorpion',
+    'Mongoose',
+    'Raptor',
+    'Jackal',
+    'Barracuda',
+    'Grizzly',
+    'Wasp',
+    'Vulture',
+    'Coyote',
+    'Komodo',
+  ],
+  colors: [
+    'Crimson',
+    'Neon',
+    'Cobalt',
+    'Scarlet',
+    'Electric',
+    'Toxic-Green',
+    'Midnight',
+    'Chrome',
+    'Magenta',
+    'Amber',
+    'Obsidian',
+    'Violet',
+    'Blaze-Orange',
+    'Silver',
+    'Jet-Black',
+    'Hot-Pink',
+  ],
+  // Blend fodder for the portmanteau engine — mashed against the skater's
+  // own name/interest so the result is never just their word regurgitated.
+  chaosThemeWords: [
+    'Tornado',
+    'Avalanche',
+    'Hurricane',
+    'Stampede',
+    'Wildfire',
+    'Blizzard',
+    'Meltdown',
+    'Mayhem',
+    'Vortex',
+    'Rampage',
+    'Sabotage',
+    'Disaster',
+    'Wrecking',
+    'Ruckus',
+    'Apocalypse',
+    'Chaos',
+    'Carnage',
+    'Frenzy',
+    'Onslaught',
+  ],
+  // Hand-curated pun aliases — the "guaranteed laugh" wildcard slot. Procedural
+  // generation is great for volume, but the classic derby-name pun (a straight
+  // name that sounds like something else) is hard to fake algorithmically well,
+  // so a handful of real ones are seeded in as a rare pull.
+  curatedPuns: [
+    'Justice Wynn',
+    'Always Wright',
+    'Neva Loose',
+    'Wynn Diesel',
+    'Fatality Wynn',
+    'Percy Verance',
+    'Anna Mosity',
+    'Barb Dwyer',
+    'Mel Practice',
+    'Sasha Distraction',
+    'Bea Line',
+    'Constance Fear',
+    'Paige Turner',
+    'Holly Wood',
+    'Robyn Banks',
+    'Cher Nobyl',
+    'Terry Bull',
+    'Gail Force',
+    'Wanda Round',
+    'Rex Karnation',
+    'Anne Ihilate',
+    'Chase N. Payne',
+    'Kerry Oki',
+    'Bree Zee',
+    'Trixie Trapp',
+    'Val Kyrie',
+    'Fury Ocious',
+    'Mo Mentum',
+    'Vic Torious',
+    'Xtra Ordinary',
+  ],
   alphabetNames: {
     A: ['Alice', 'Athena', 'Artemis', 'Abby', 'Aria', 'Axel', 'Amethyst'],
     B: ['Betty', 'Blaze', 'Bella', 'Bonnie', 'Bex', 'Buffy', 'Bellatrix'],
@@ -85,19 +249,85 @@ const vocab = {
   },
 };
 
+// Each template is a recipe of slot types plus a weight. Higher weight = drawn
+// more often. Templates that fold in the skater's own name/interest are
+// weighted heaviest so results usually feel personal; the blend + curated-pun
+// slots are rarer "did that really just happen" pulls.
 const templates = [
-  ['adjective', 'name'],
-  ['name', 'static_the', 'noun'],
-  ['interest', 'derbyTerm'],
-  ['static_the', 'adjective', 'interest'],
-  ['adjective', 'name', 'noun'],
-  ['verb', 'name'],
+  { parts: ['adjective', 'name'], weight: 3 },
+  { parts: ['name', 'static_the', 'noun'], weight: 3 },
+  { parts: ['interest', 'derbyTerm'], weight: 2 },
+  { parts: ['static_the', 'adjective', 'interest'], weight: 2 },
+  { parts: ['adjective', 'name', 'noun'], weight: 2 },
+  { parts: ['verb', 'name'], weight: 2 },
+  { parts: ['color', 'animal'], weight: 2 },
+  { parts: ['blendInterest'], weight: 3 },
+  { parts: ['blendName'], weight: 2 },
+  { parts: ['adjective', 'color', 'noun'], weight: 1 },
+  { parts: ['curatedPun'], weight: 2 },
+  { parts: ['name', 'static_the', 'animal'], weight: 2 },
 ];
 
 let currentNameParts = [];
 let nameHistory = JSON.parse(localStorage.getItem('derbyNameHistory') || '[]');
+let recentWords = JSON.parse(localStorage.getItem('derbyRecentWords') || '[]');
 
 const pickRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+// Picks a word the viewer hasn't seen in their last ~25 pulls, so mashing the
+// button (or "smash to reroll") doesn't just cycle the same three favorites.
+function pickFresh(arr) {
+  const fresh = arr.filter((word) => !recentWords.includes(word));
+  const choice = pickRandom(fresh.length ? fresh : arr);
+  recentWords.push(choice);
+  if (recentWords.length > 25) recentWords.shift();
+  localStorage.setItem('derbyRecentWords', JSON.stringify(recentWords));
+  return choice;
+}
+
+function pickWeightedTemplate() {
+  const total = templates.reduce((sum, t) => sum + t.weight, 0);
+  let roll = Math.random() * total;
+  for (const t of templates) {
+    if (roll < t.weight) return t.parts;
+    roll -= t.weight;
+  }
+  return templates[0].parts;
+}
+
+// Portmanteau blender: fuses two words into one instead of just concatenating
+// them. It first looks for real letter overlap where word A's ending matches
+// word B's start (e.g. "comic" + "iconic" -> "comiconic"); if there's no
+// natural seam it falls back to slicing word A at ~60% and welding word B on,
+// which still reads as one invented word rather than "A" + "B" glued together.
+function blendWords(a, b) {
+  a = a.toLowerCase().replace(/[^a-z]/g, '');
+  b = b.toLowerCase().replace(/[^a-z]/g, '');
+  if (!a) return b;
+  if (!b) return a;
+  if (a.length < 3) return a + b;
+
+  const maxOverlap = Math.min(a.length, b.length) - 1;
+  for (let len = maxOverlap; len >= 2; len--) {
+    if (a.slice(-len) === b.slice(0, len)) {
+      return a.slice(0, a.length - len) + b;
+    }
+  }
+
+  const cut = Math.max(1, Math.min(a.length - 1, Math.ceil(a.length * 0.6)));
+  return a.slice(0, cut) + b;
+}
+
+const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+
+// Takes the raw user text, keeps just the first word, and blends it against a
+// random chaos/animal word so the output is a genuinely new invented word —
+// not their input read back at them.
+function blendFromUserWord(userWord) {
+  const base = userWord.trim().split(/\s+/)[0] || userWord;
+  const theme = pickRandom([...vocab.chaosThemeWords, ...vocab.animals]);
+  return capitalize(blendWords(base, theme));
+}
 
 function saveToHistory(fullName) {
   // Avoid duplicates if same name clicked multiple times
@@ -130,7 +360,7 @@ function generateNewName() {
   const name = rawName || pickRandom(['Skater', 'Derby', 'Danger', 'Brawler']);
   const interest = rawInterest || pickRandom(['Chaos', 'Metal', 'Candy', 'Lightning']);
 
-  const template = templates[Math.floor(Math.random() * templates.length)];
+  const template = pickWeightedTemplate();
 
   currentNameParts = template.map((slotType) => {
     return generatePartData(slotType, name, interest);
@@ -144,6 +374,7 @@ function generateNewName() {
 function generatePartData(slotType, userName, userInterest) {
   let text = '';
   let isStatic = false;
+  let isLegendary = false;
 
   switch (slotType) {
     case 'name':
@@ -153,7 +384,7 @@ function generatePartData(slotType, userName, userInterest) {
       }
 
       const possibleNames = vocab.alphabetNames[firstLetter];
-      let chosenAlias = pickRandom(possibleNames);
+      let chosenAlias = pickFresh(possibleNames);
 
       let nameAttempts = 0;
       while (chosenAlias.toLowerCase() === userName.toLowerCase() && nameAttempts < 10) {
@@ -167,16 +398,32 @@ function generatePartData(slotType, userName, userInterest) {
       text = userInterest;
       break;
     case 'adjective':
-      text = pickRandom(vocab.adjectives);
+      text = pickFresh(vocab.adjectives);
       break;
     case 'noun':
-      text = pickRandom(vocab.nouns);
+      text = pickFresh(vocab.nouns);
       break;
     case 'derbyTerm':
-      text = pickRandom(vocab.derbyTerms);
+      text = pickFresh(vocab.derbyTerms);
       break;
     case 'verb':
-      text = pickRandom(vocab.verbs);
+      text = pickFresh(vocab.verbs);
+      break;
+    case 'animal':
+      text = pickFresh(vocab.animals);
+      break;
+    case 'color':
+      text = pickFresh(vocab.colors);
+      break;
+    case 'blendInterest':
+      text = blendFromUserWord(userInterest);
+      break;
+    case 'blendName':
+      text = blendFromUserWord(userName);
+      break;
+    case 'curatedPun':
+      text = pickFresh(vocab.curatedPuns);
+      isLegendary = true;
       break;
     case 'static_the':
       text = 'the';
@@ -184,7 +431,7 @@ function generatePartData(slotType, userName, userInterest) {
       break;
   }
 
-  return { text, type: slotType, isStatic };
+  return { text, type: slotType, isStatic, isLegendary };
 }
 
 function swapPart(index) {
@@ -218,6 +465,7 @@ function renderName(animatedIndex = -1) {
       el.innerText = part.text;
     } else {
       el.className = 'name-part';
+      if (part.isLegendary) el.classList.add('legendary');
       if (index === animatedIndex) {
         el.classList.add('pop-anim');
       }
