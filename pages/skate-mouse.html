@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Case Study: The Magic Mouse Quad Skate. Transforming an Apple Magic Mouse into a functional mini quad roller skate."
+    />
+    <title>Magic Mouse Skate - Heather New - Creative Technologist</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <!-- Import GSAP for high-performance elevated motion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="/src/css/global.css" />
+    <style>
+      :root {
+        --bg-color: #f4f4f4;
+        --text-dark: #111111;
+        --grid-gap: 30px;
+        --shape-size: 35px;
+        --teal: #1bb1a5;
+        --dark-teal: #247b82;
+        --yellow: #f6b352;
+        --orange: #f66c0f;
+        --lime: #b2f81d;
+        --light-gray: #e0e0e0;
+        --mid-gray: #666666;
+        --derby-red: #a72218;
+        --filament-red: #e63946;
+        --filament-blue: #1d3557;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-dark);
+        font-family: 'Manrope', sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* --- HERO --- */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        width: 100vw;
+        min-height: 60vh;
+        border-bottom: 1px solid var(--text-dark);
+      }
+
+      .hero-title-block {
+        grid-column: 1;
+        background-color: #ffffff;
+        padding: 7vw 4vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .hero-title-block h1 {
+        font-size: 8vw;
+        line-height: 0.85;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        white-space: nowrap;
+      }
+
+      .wordmark-line {
+        display: block;
+      }
+
+      .hero-visual-block {
+        grid-column: 2;
+        background-color: #ffffff;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-visual-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* --- PORTFOLIO GRID --- */
+      .portfolio-section {
+        padding: 4rem 2vw 8rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(240px, auto);
+        width: 100%;
+        max-width: 1400px;
+        border-top: 1px solid #000;
+        border-left: 1px solid var(--text-dark);
+      }
+
+      .b-tile {
+        container-type: inline-size;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      div.b-tile:not(:has(a)) {
+        cursor: default;
+      }
+
+      .span-col-2 { grid-column: span 2; }
+      .span-col-3 { grid-column: span 3; }
+      .span-col-4 { grid-column: span 4; }
+      .span-row-2 { grid-row: span 2; }
+
+      .b-tile h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+      }
+
+      .b-tile h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+      }
+
+      .b-tile p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      .b-tile .meta {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.7;
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+
+      .bg-white { background-color: #ffffff; }
+      .bg-black { background-color: #111111; color: var(--lime); }
+      .bg-teal { background-color: var(--teal); }
+      .bg-dark-teal { background-color: var(--dark-teal); color: #fff; }
+      .bg-yellow { background-color: var(--yellow); }
+      .bg-orange { background-color: var(--orange); }
+      .bg-lime { background-color: var(--lime); }
+      .bg-light-gray { background-color: var(--light-gray); }
+      .bg-mid-gray { background-color: var(--mid-gray); color: #fff; }
+
+      .img-tile {
+        padding: 0;
+        display: block;
+      }
+      .img-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      a.img-tile:hover img.img-tile:has(a):hover img {
+        transform: scale(1.05);
+      }
+
+      a.b-tile,
+      a.b-tile:hover,
+      a.b-tile:focus-visible {
+        color: inherit;
+        text-decoration: none;
+      }
+      a.b-tile,
+      a.b-tile * {
+        cursor: pointer;
+      }
+      a.b-tile:hover .arrow-link,
+      a.b-tile:hover .tile-link-text,
+      a.b-tile:focus-visible .arrow-link,
+      a.b-tile:focus-visible .tile-link-text {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
+      }
+      .arrow-link span.tile-link-text span {
+        display: inline-block;
+      }
+      a.b-tile:focus-visible {
+        outline: 3px solid var(--text-dark);
+        outline-offset: 3px;
+      }
+
+      .arrow-link {
+        display: inline-block;
+        margin-top: auto;
+        font-weight: 800;
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: inherit;
+      }
+      .arrow-link span {
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+      .b-tile:hover .arrow-link span {
+        transform: translateX(10px);
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          height: auto;
+          min-height: 100vh;
+        }
+        .hero-title-block {
+          grid-column: 1;
+          order: 2;
+          padding: 8vw 4vw;
+          border-right: none;
+          border-bottom: none;
+        }
+        .hero-title-block h1 {
+          font-size: 14vw;
+        }
+        .hero-visual-block {
+          grid-column: 1;
+          order: 1;
+          min-height: 50vh;
+          border-bottom: 1px solid var(--text-dark);
+        }
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 2;
+        }
+      }
+      @media (max-width: 768px) {
+        .bauhaus-grid {
+          grid-template-columns: 1fr;
+        }
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 1;
+        }
+        .span-row-2 {
+          grid-row: span 1;
+          min-height: 300px;
+        }
+        .mobile-stack {
+          flex-direction: column !important;
+        }
+        .mobile-stack > div,
+        .mobile-stack > img {
+          width: 100% !important;
+          height: auto !important;
+          flex: none !important;
+        }
+      }
+      .skip-to-content {
+        display: none;
+      }
+    </style>
+
+    <link rel="canonical" href="https://heathernew.com/pages/skate-mouse.html" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <!--Nav Menu-->
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <header class="hero">
+      <div class="hero-title-block">
+        <h1><span class="wordmark-line">MOUSE</span><span class="wordmark-line">+ SKATE</span></h1>
+        <p style="font-size: 1.25rem; line-height: 1.6; color: #444; max-width: 600px; margin-top: 2rem;">
+          I created this mouse concept as a fun way to connect my love for skating and my agility around a computer. You'll find it in my footer peeking out and responding to your movement around the page. Now it's become a real life thing thanks to AI, a labor day weekend and my 3d printer. Check out the process below. Yes, it rolls.
+        </p>
+      </div>
+      <div class="hero-visual-block">
+        <img src="/assets/rollermouse-B8N_3DBK.jpg" alt="Magic Mouse Skate High-Res Render" />
+      </div>
+    </header>
+
+    <main class="portfolio-section" id="main-content">
+      <div class="bauhaus-grid">
+        <!-- 1. Intro (span-col-4, Teal bg) -->
+        <div class="b-tile bg-dark-teal span-col-4" style="justify-content: center;">
+          <span class="meta" style="color: var(--lime);">Project Goal</span>
+          <h2 style="font-size: 4rem; color: #fff;">3d printed Rolling<br/>Mini Quad Roller Skate</h2>
+          <p style="font-size: 1.1rem; line-height: 1.6; max-width: 80ch;">
+            Transform the sleek, minimalist Apple Magic Mouse into a fully functional (aesthetically and mechanically) mini quad roller skate. Driven by a rapid, iterative CAD workflow using OpenSCAD for parametric precision.
+          </p>
+        </div>
+
+        <!-- 2. Final Photos (Two span-col-2 images) -->
+        <div class="b-tile img-tile span-col-2">
+          <img src="/assets/magic-mouse/Left Column.png" alt="Finished skate top" />
+        </div>
+        <div class="b-tile img-tile span-col-2">
+          <img src="/assets/magic-mouse/Right Column.png" alt="Finished skate bottom" />
+        </div>
+
+        <!-- 3. Key Wins (span-col-1) -->
+        <div class="b-tile bg-yellow" style="justify-content: center;">
+          <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 800;">KEY WINS</h3>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; font-size: 1.1rem; font-weight: 600;">
+            <li>&bull; Zero-Support Geometry</li>
+            <li>&bull; Mechanical Glue-Assembly</li>
+            <li>&bull; Self-Gapping Glue Nuts</li>
+            <li>&bull; Flawless Fitment</li>
+          </ul>
+        </div>
+
+        <!-- 4. The Process (span-col-2) -->
+        <div class="b-tile bg-light-gray span-col-2" style="justify-content: center;">
+          <div>
+            <span class="meta" style="color: var(--teal);">Methodology</span>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">THE PROCESS</h2>
+          </div>
+          <p style="margin-bottom: 1rem;">
+            <strong>Parametric Coding:</strong> Building every component via mathematical variables, allowing us to instantly scale, slam, and stretch the design.
+          </p>
+          <p>
+            <strong>Subtractive Sculpting:</strong> Carved a massive 3D ellipsoid bowl out of the top of the plate to exactly cradle the mouse's curvature for a gapless, snap-in fit.
+          </p>
+        </div>
+
+        <!-- 5. Self-Gapping (span-col-1) -->
+        <div class="b-tile bg-orange" style="justify-content: center;">
+          <span class="meta">Innovation</span>
+          <h2 style="font-size: 2rem;">SELF-GAPPING<br />GLUE NUTS</h2>
+          <p style="font-size: 1rem; line-height: 1.5;">
+            A custom hollowed hex nut caps the axle to an exact depth, automatically leaving a perfect 0.8mm gap for the wheel to spin freely.
+          </p>
+        </div>
+
+        <!-- 7. The Evolution (span-col-4) -->
+        <div class="b-tile bg-white span-col-4" style="display: flex; justify-content: center; align-items: center; padding: 0;">
+          <h2 style="font-size: 3rem; margin: 0; text-align: center; width: 100%;">The Evolution: Human + AI Pair Programming</h2>
+        </div>
+
+        <!-- 8. First Draft Row -->
+        <div class="b-tile bg-teal span-col-2" style="justify-content: center;">
+          <span class="meta" style="color: #fff;">The Beginning</span>
+          <h3 style="margin: 1rem 0 0.5rem 0; color: #fff;">THE First Draft</h3>
+          <p style="color: #fff; font-size: 1rem;">
+            Our initial block-in of the skate geometry. Before any aggressive styling, dropping, or 3D cupping was applied, we established the basic proportions.
+          </p>
+        </div>
+        <div class="b-tile img-tile span-col-1">
+          <img src="/assets/magic-mouse/width-measure.png" alt="Width measure" />
+        </div>
+        <div class="b-tile img-tile span-col-1">
+          <img src="/assets/magic-mouse/length-measure.png" alt="Length measure" />
+        </div>
+
+        <!-- 9. image_set_draft (1400) -->
+        <div class="b-tile img-tile span-col-4 mobile-stack" style="display: flex; flex-direction: row; gap: 1px;">
+          <img src="/assets/magic-mouse/First Draft Render 1.png" alt="Draft set 1" style="flex: 1; object-fit: contain; height: auto;" />
+          <img src="/assets/magic-mouse/First Draft Render 2.png" alt="Draft set 2" style="flex: 1; object-fit: contain; height: auto;" />
+          <img src="/assets/magic-mouse/First Draft Render 3.png" alt="Draft set 3" style="flex: 1; object-fit: contain; height: auto;" />
+        </div>
+
+        <!-- 10. real-skate-reference -->
+        <div class="b-tile bg-yellow span-col-2" style="justify-content: center;">
+          <span class="meta">Modeling and refining the design</span>
+          <h3 style="margin: 1rem 0 0.5rem 0; color: #111;">Visual Grounding</h3>
+          <p style="font-size: 1rem; color: #111; margin-bottom: 1rem;">
+            Why upload photos? Providing real-world references gives the AI instant geometric context. Instead of struggling to describe complex spatial relationships, these photographs of my actual roller derby skates grounded the AI in authentic proportions and aggressive stance profiles.
+          </p>
+          <div style="background-color: #111; color: var(--yellow); padding: 1rem; border-radius: 4px; font-style: italic; font-size: 0.95rem; line-height: 1.4;">
+            <strong style="color: #fff; display: block; margin-bottom: 0.25rem;">Prompt Callout:</strong>
+            "something i noticed is the toe stop angles directly down right now... let's only look at the toe stop here. it's angled out, maybe 45degree angle not straight down..."
+          </div>
+        </div>
+        <div class="b-tile img-tile span-col-2">
+          <img src="/assets/magic-mouse/Toe Stop Angle Reference.png" alt="Toe Stop Angle Reference" />
+        </div>
+
+        <!-- 11. real-skate-row -->
+        <div class="b-tile img-tile span-col-2">
+          <img src="/assets/magic-mouse/left skate.png" alt="Left skate" />
+        </div>
+        <div class="b-tile img-tile span-col-2">
+          <img src="/assets/magic-mouse/right-skate.png" alt="Right skate" />
+        </div>
+
+        <!-- 12. reference-scad -->
+        <div class="b-tile bg-white span-col-2" style="justify-content: center;">
+          <span class="meta">Scaling and repositioning</span>
+          <h3 style="margin: 1rem 0 0.5rem 0; color: #111;">Applying the Reference</h3>
+          <p style="font-size: 1rem; color: #111;">
+            Directly applying the geometry from the skate photos, the AI iteratively pitched the toe stop boss forward and flattened the rubber wedge to match the derby profile. The base block was aggressively slimmed down into a sleek, skeletal silhouette.
+          </p>
+        </div>
+        <div class="b-tile img-tile span-col-2">
+          <img src="/assets/magic-mouse/scad-colors.png" alt="Toe Stop Pitch Update 1" />
+        </div>
+
+        <!-- 13. row -->
+        <div class="b-tile img-tile span-col-4">
+          <img src="/assets/magic-mouse/toestop-render-print.png" alt="Toe Stop Pitch Update 2" style="width: 100%; height: auto; display: block; object-fit: contain;" />
+        </div>
+
+        <!-- 14. big-print-row -->
+        <div class="b-tile img-tile span-col-4">
+          <img src="/assets/magic-mouse/big-print-test.png" alt="Skeletal Silhouette 2 & 3" style="width: 100%; height: auto; display: block; object-fit: contain;" />
+        </div>
+
+        <!-- 15. teal-polish -->
+        <div class="b-tile bg-dark-teal span-col-2" style="color: white; display: flex; flex-direction: column; justify-content: center; gap: 2rem;">
+          <div>
+            <span class="meta" style="color: var(--lime);">Specific edits and revisions</span>
+            <p style="font-size: 1.1rem; line-height: 1.5; color: rgba(255,255,255,0.9); font-style: italic; margin-top: 1rem;">
+              "Printing different versions showed us where we needed to dial in the different areas. Scaling for a mouse to look exactly as I wanted was a balance between size, width, length. There is also a delicate curve to the mouse and rails to match.”
+            </p>
+          </div>
+          <div>
+            <h3 style="margin: 0 0 0.5rem 0; color: #fff;">Communicating to the AI</h3>
+            <p style="font-size: 1rem; color: #fff; margin-bottom: 1rem;">
+              Often the results would be as I asked, often the solutions the AI proposed would add additional hurtles. The solution was a balancing act between what I was directing and what it was interpreting. I took many screenshots and circled areas in markup to direct and clarify which section I wanted edited.
+            </p>
+            <p style="font-size: 1rem; color: #fff;">
+              To prevent messy 3D printer supports from ruining the center cradle, we carved a massive "Skeleton Window" entirely through the block. This completely eliminated blind overhangs while saving material. Each test print I adjusted wether the skate would print wheels down or wheels up. The final print was wheels up, this gave the bottom of the plate a perfect finish.
+            </p>
+          </div>
+        </div>
+        <div class="b-tile img-tile span-col-2" style="display: flex; flex-direction: column;">
+          <img src="/assets/magic-mouse/2026-09-05_0211_screenshot_slivers.png" alt="Sliver Removal" style="height: 50%;" />
+          <img src="/assets/magic-mouse/2026-09-05_0218_screenshot.png" alt="Skeleton Window" style="height: 50%;" />
+        </div>
+
+        <!-- 16. orange-row-skate -->
+        <div class="b-tile bg-orange span-col-2" style="justify-content: center;">
+          <p style="font-style: italic; font-size: 1.2rem; font-weight: 600; margin: 0 0 2rem 0; line-height: 1.4; color: #111;">
+            "i can't wait to print this! i printed v13... it probably has an hour left."
+          </p>
+          <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem; color: #111;">Refining the design</h3>
+          <p style="font-size: 1.05rem; line-height: 1.5; color: #111;">
+            Moving from digital to physical. These early test prints confirmed our overall geometry but immediately highlighted areas where the printer struggled with overhangs and thin walls. Supplying the AI with these images helped me establish my intent and what I wanted to improve. We were able to dial in the curves of the mouse left to right but also front to back to nest it with the black rails perfectly.
+          </p>
+        </div>
+        <div class="b-tile img-tile span-col-2">
+          <img src="/assets/magic-mouse/light-blue-test-print.png" alt="Test Print Check 2" />
+        </div>
+
+        <!-- 17. Gray Row -->
+        <div class="b-tile bg-light-gray span-col-4 mobile-stack" style="display: flex; flex-direction: row; padding: 0;">
+          <div style="width: 500px;">
+            <img src="/assets/magic-mouse/gray-scale-print.png" alt="Gap in Bolt Fix" style="width: 100%; height: auto; display: block; object-fit: contain;" />
+          </div>
+          <div style="flex: 1; padding: 2.5rem; display: flex; flex-direction: column; justify-content: center;">
+            <p style="font-style: italic; font-size: 1.2rem; font-weight: 600; margin: 0 0 2rem 0; line-height: 1.4; color: #111;">
+              "to print in place multi colors this small thing would take 11 hours and waste a lot of filament. I envision being able to push the toe stop bolt into a hole and glue it."
+            </p>
+            <h3 style="margin: 1rem 0 0.5rem 0;">The Mechanical Pivot</h3>
+            <p style="font-size: 1.05rem; line-height: 1.5;">
+              Rather than wasting 11 hours and spools of filament on automated AMS color swaps, we re-architected the CAD for modular glue-assembly. We engineered precise 6.4mm anchor holes, bare axles, and slip-over nuts so the skate could be assembled by hand perfectly.
+            </p>
+          </div>
+        </div>
+
+        <div class="b-tile img-tile span-col-4">
+          <img src="/assets/magic-mouse/3d-print-versions_1.jpg" alt="3D Print Versions 1" style="width: 100%; height: auto; display: block; object-fit: contain;" />
+        </div>
+
+        <!-- 18. White row (Version History & Final Stats) -->
+        <div class="b-tile bg-white span-col-2" style="justify-content: center;">
+          <div>
+            <span class="meta">Evolution</span>
+            <h2>Version History</h2>
+          </div>
+          <p style="font-size: 1.05rem; margin-bottom: 1.5rem;">
+            We rapidly progressed through 21 major iterations.<br/>
+            V1-V3 established base geometry.<br/>
+            V6-V8 chopped the plate down to exactly 77x36mm.<br/>
+            V9-V10 introduced the breakthrough "3D Cradle".<br/>
+            V17 brought the mechanical glue-assembly overhaul, separating parts for zero-waste printing.<br/>
+            V21 was our final version. It includes printing in place with swappable wide body wheels.
+          </p>
+          <div>
+            <img src="/assets/magic-mouse/version-history-print.png" alt="Iteration timeline" style="width: 100%; border-radius: 8px;" />
+          </div>
+        </div>
+
+        <div class="b-tile bg-teal span-col-2" style="justify-content: center;">
+          <div>
+            <span class="meta" style="color: #fff;">Final Specs</span>
+            <h2 style="font-size: 3rem; color: #111; line-height: 1.1;">V21 THICC GIRL<br/>WHEELS EDITION</h2>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem;">
+            <div style="display: flex; gap: 1rem;">
+              <div style="flex: 1;">
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">Plate</h3>
+                <p style="font-weight: 700; font-size: 1.5rem; color: #111;">77mm × 36mm</p>
+              </div>
+              <div style="flex: 1;">
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">Wheelbase</h3>
+                <p style="font-weight: 700; font-size: 1.5rem; color: #111;">58mm</p>
+              </div>
+            </div>
+            <div style="display: flex; gap: 1rem;">
+              <div style="flex: 1;">
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">Wheels</h3>
+                <p style="font-weight: 700; font-size: 1.5rem; color: #111;">22mm Ø × 18mm W</p>
+              </div>
+              <div style="flex: 1;">
+                <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 0.5rem;">Toe Stop</h3>
+                <p style="font-weight: 700; font-size: 1.5rem; color: #111;">35° tilt, 22mm Ø</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-tile img-tile span-col-4">
+          <img src="/assets/magic-mouse/3d-print-versions_2.jpg" alt="3D Print Versions 2" style="width: 100%; height: auto; display: block; object-fit: contain;" />
+        </div>
+
+        <!-- 19. Paton-heather row -->
+        <div class="b-tile img-tile span-col-2" style="background-color: #fcfcf4;">
+          <img src="/assets/magic-mouse/paton.png" alt="V17 Assembly Render" style="object-fit: contain; padding: 2rem;" />
+        </div>
+        <div class="b-tile img-tile span-col-2">
+          <img src="/assets/magic-mouse/Heather-peeling.png" alt="Heather peeling" />
+        </div>
+
+        <!-- 20. finished-mouse-video -->
+        <div class="b-tile img-tile span-col-4" style="background-color: var(--teal);">
+          <video 
+            src="/assets/magic-mouse/mouse-skate-video.mp4" 
+            controls 
+            autoplay 
+            muted 
+            playsinline 
+            style="object-fit: cover; width: 100%; height: 100%;"
+          ></video>
+        </div>
+
+        <!-- 21. Back to Top / Let's Connect -->
+        <a href="#main-content" class="b-tile bg-lime" id="tile-derby-back-top" style="text-decoration: none">
+          <div style="width: 80px; height: 80px; border-radius: 50% 0 50% 50%; background-color: var(--text-dark); margin-bottom: 2rem;"></div>
+          <span class="arrow-link" style="margin-top: auto">Back to Top <span>↑</span></span>
+        </a>
+
+        <div class="b-tile bg-dark-teal span-col-3">
+          <span class="meta" style="color: var(--lime)">Let's Connect</span>
+          <h2 style="font-size: 4rem; letter-spacing: -2px; margin-top: 1rem; color: #fff;">
+            Keep Rolling.
+          </h2>
+          <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap">
+            <a href="mailto:heather@heathernew.com" target="_blank" rel="noopener" class="arrow-link" style="color: var(--lime); font-size: 1.2rem">Email Me <span>→</span></a>
+            <a href="https://linkedin.com/in/heather-new" target="_blank" rel="noopener" class="arrow-link" style="color: var(--yellow); font-size: 1.2rem">LinkedIn <span>→</span></a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../src/js/site-core.js"></script>
+  </body>
+</html>
