@@ -483,7 +483,7 @@ function renderName(animatedIndex = -1) {
   if (copyBtn) copyBtn.innerText = 'Copy Text';
 
   const exportBtn = document.getElementById('exportBtn');
-  if (exportBtn) exportBtn.innerHTML = '⬇ Export VIP Pass';
+  if (exportBtn) exportBtn.innerHTML = '⬇ Export MVP Medal';
 
   saveToHistory(currentNameParts.map((p) => p.text).join(' '));
 }
@@ -504,31 +504,91 @@ function copyName() {
   document.body.removeChild(tempTextArea);
 }
 
+const MEDAL_FONT = 'Manrope, Arial Black, Impact, sans-serif';
+
+// Splits a multi-word name into the two lines whose longest-line width is
+// smallest, so e.g. a 3-word name doesn't lopsidedly dump 2 words on line one
+// and strand a single word on line two.
+function balancedTwoLineSplit(words, widthAt, fontSize) {
+  let best = null;
+  for (let i = 1; i < words.length; i++) {
+    const line1 = words.slice(0, i).join(' ');
+    const line2 = words.slice(i).join(' ');
+    const score = Math.max(widthAt(line1, fontSize), widthAt(line2, fontSize));
+    if (!best || score < best.score) best = { lines: [line1, line2], score };
+  }
+  return best.lines;
+}
+
+// Fits the derby name inside the medal face on (at most) two centered lines,
+// shrinking the font down to a floor to keep a comfortable margin from the
+// medal's edge. Uses a scratch canvas so the measurement matches the font
+// actually used in the exported PNG.
+function fitMedalText(fullName) {
+  const maxWidth = 210;
+  const maxFontSize = 44;
+  const minFontSize = 14;
+  const text = fullName.toUpperCase();
+  const words = text.split(' ');
+
+  const measureCtx = document.createElement('canvas').getContext('2d');
+  const widthAt = (line, size) => {
+    measureCtx.font = `900 ${size}px ${MEDAL_FONT}`;
+    return measureCtx.measureText(line).width;
+  };
+
+  let fontSize = maxFontSize;
+  let lines = words.length > 1 ? balancedTwoLineSplit(words, widthAt, fontSize) : [text];
+
+  const longestLineWidth = () => Math.max(...lines.map((line) => widthAt(line, fontSize)));
+  while (fontSize > minFontSize && longestLineWidth() > maxWidth) {
+    fontSize -= 2;
+    // Re-balance the split at each size: the narrowest split can shift as
+    // the font shrinks (rare, but cheap to keep correct).
+    if (words.length > 1) lines = balancedTwoLineSplit(words, widthAt, fontSize);
+  }
+
+  return { lines, fontSize };
+}
+
 function exportVIPPass() {
   const exportBtn = document.getElementById('exportBtn');
   exportBtn.innerHTML = 'Generating... ⏳';
 
-  // 1. Prepare dynamic SVG content
+  // 1. Prepare dynamic SVG content: engraved-looking gold text, auto-sized
+  // (and wrapped onto a second line if needed) to fit the medal face.
   const svgGroup = document.getElementById('svg-name-group');
   svgGroup.innerHTML = '';
 
-  // Vertical centering logic based on how many words we have
-  const centerY = 340;
-  const spacing = 50;
-  const startY = centerY - ((currentNameParts.length - 1) * spacing) / 2;
+  const fullName = currentNameParts.map((p) => p.text).join(' ');
+  const { lines, fontSize } = fitMedalText(fullName);
+  const lineHeight = fontSize * 1.3;
+  const centerY = 415;
+  const startY = centerY - ((lines.length - 1) * lineHeight) / 2;
 
-  currentNameParts.forEach((part, index) => {
-    const textEl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    textEl.setAttribute('x', '200');
-    textEl.setAttribute('y', startY + index * spacing);
-    textEl.setAttribute('fill', part.isStatic ? '#7a7a7a' : '#1a1a1a');
-    textEl.setAttribute('font-size', part.isStatic ? '28' : '48');
-    textEl.setAttribute('font-weight', part.isStatic ? '600' : '900');
-    if (part.isStatic) textEl.setAttribute('font-style', 'italic');
-    textEl.setAttribute('text-anchor', 'middle');
-    textEl.setAttribute('text-transform', 'uppercase');
-    textEl.textContent = part.text;
-    svgGroup.appendChild(textEl);
+  const svgNS = 'http://www.w3.org/2000/svg';
+  lines.forEach((line, index) => {
+    const y = startY + index * lineHeight;
+
+    const shadow = document.createElementNS(svgNS, 'text');
+    shadow.setAttribute('x', '200');
+    shadow.setAttribute('y', y + 2.5);
+    shadow.setAttribute('fill', '#7a5a12');
+    shadow.setAttribute('font-size', String(fontSize));
+    shadow.setAttribute('font-weight', '900');
+    shadow.setAttribute('text-anchor', 'middle');
+    shadow.textContent = line;
+    svgGroup.appendChild(shadow);
+
+    const face = document.createElementNS(svgNS, 'text');
+    face.setAttribute('x', '200');
+    face.setAttribute('y', y);
+    face.setAttribute('fill', '#fff6d5');
+    face.setAttribute('font-size', String(fontSize));
+    face.setAttribute('font-weight', '900');
+    face.setAttribute('text-anchor', 'middle');
+    face.textContent = line;
+    svgGroup.appendChild(face);
   });
 
   // 2. Convert SVG to string
@@ -539,7 +599,7 @@ function exportVIPPass() {
   // 3. Draw on Canvas to extract PNG
   const canvas = document.createElement('canvas');
   canvas.width = 400;
-  canvas.height = 600;
+  canvas.height = 620;
   const ctx = canvas.getContext('2d');
 
   const img = new Image();
@@ -555,20 +615,19 @@ function exportVIPPass() {
     const downloadLink = document.createElement('a');
     downloadLink.href = pngData;
 
-    const safeName = currentNameParts
-      .map((p) => p.text)
-      .join('-')
+    const safeName = fullName
+      .replace(/\s+/g, '-')
       .toUpperCase()
       .replace(/[^A-Z0-9-]/g, '');
-    downloadLink.download = `VIP-PASS-${safeName}.png`;
+    downloadLink.download = `MVP-MEDAL-${safeName}.png`;
 
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
 
-    exportBtn.innerHTML = 'Exported! 🎟️';
+    exportBtn.innerHTML = 'Exported! 🏅';
     setTimeout(() => {
-      exportBtn.innerHTML = '⬇ Export VIP Pass';
+      exportBtn.innerHTML = '⬇ Export MVP Medal';
     }, 2000);
   };
 

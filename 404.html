@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Off the track. A roller derby alias generator hiding on the 404 page of Heather New's portfolio."
+      content="Off the track. A roller derby name generator hiding on the 404 page of Heather New's portfolio."
     />
-    <title>404 - Roller Derby Alias Generator - Heather New</title>
+    <title>404 - Roller Derby Name Generator - Heather New</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -25,10 +25,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Heather New" />
     <meta property="og:url" content="https://heathernew.com/404.html" />
-    <meta property="og:title" content="404 - Roller Derby Alias Generator - Heather New" />
+    <meta property="og:title" content="404 - Roller Derby Name Generator - Heather New" />
     <meta
       property="og:description"
-      content="Off the track. A roller derby alias generator hiding on the 404 page of Heather New's portfolio."
+      content="Off the track. A roller derby name generator hiding on the 404 page of Heather New's portfolio."
     />
     <meta property="og:image" content="https://heathernew.com/assets/heathernew-og.png" />
     <meta property="og:image:width" content="1200" />
@@ -38,10 +38,10 @@
       content="Heather New, Creative Technologist. Portfolio at heathernew.com."
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="404 - Roller Derby Alias Generator - Heather New" />
+    <meta name="twitter:title" content="404 - Roller Derby Name Generator - Heather New" />
     <meta
       name="twitter:description"
-      content="Off the track. A roller derby alias generator hiding on the 404 page of Heather New's portfolio."
+      content="Off the track. A roller derby name generator hiding on the 404 page of Heather New's portfolio."
     />
     <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
   </head>
@@ -58,7 +58,7 @@
         <h1>Off The Track!</h1>
         <p class="subtitle">
           Looks like you got hip-checked into the bleachers. The page you want is missing, but
-          before you get back out there, let's find your ultimate Derby alias.
+          before you get back out there, let's find your ultimate Derby Name.
         </p>
 
         <div id="tile-404-inputs" class="input-grid">
@@ -73,7 +73,7 @@
         </div>
 
         <button id="tile-404-generate-btn" class="btn-derby" onclick="generateNewName()">
-          Generate Alias ⚡
+          Generate Derby Name ⚡
         </button>
 
         <div id="resultArea" class="result-area">
@@ -94,7 +94,7 @@
           <div class="action-buttons">
             <button class="btn-outline-derby" onclick="copyName()" id="copyBtn">Copy Text</button>
             <button class="btn-outline-derby btn-export" onclick="exportVIPPass()" id="exportBtn">
-              ⬇ Export VIP Pass
+              ⬇ Export MVP Medal
             </button>
           </div>
 
@@ -109,136 +109,123 @@
         <a id="tile-404-back-link" href="/" class="home-link">← Back to the track</a>
       </div>
 
-      <!-- Hidden SVG template for the VIP Badge -->
+      <!-- Hidden SVG template for the MVP medal export -->
       <div id="svg-container">
         <svg
           id="vip-badge-svg"
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 400 600"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 400 620"
           width="400"
-          height="600"
+          height="620"
           style="font-family: 'Manrope', 'Arial Black', Impact, sans-serif"
         >
           <defs>
-            <pattern id="checker" width="40" height="40" patternUnits="userSpaceOnUse">
-              <rect width="40" height="40" fill="#1a1a1a" />
-              <rect width="20" height="20" fill="#252525" />
-              <rect x="20" y="20" width="20" height="20" fill="#252525" />
-            </pattern>
+            <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fff6d5" />
+              <stop offset="25%" stop-color="#ffe98a" />
+              <stop offset="55%" stop-color="#e8b923" />
+              <stop offset="80%" stop-color="#c9971b" />
+              <stop offset="100%" stop-color="#9c7415" />
+            </linearGradient>
+            <radialGradient id="starGrad" cx="35%" cy="30%" r="80%">
+              <stop offset="0%" stop-color="#e8c250" />
+              <stop offset="60%" stop-color="#c9971b" />
+              <stop offset="100%" stop-color="#9c7415" />
+            </radialGradient>
+            <linearGradient id="ribbonStripes" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c81d25" />
+              <stop offset="33%" stop-color="#c81d25" />
+              <stop offset="33%" stop-color="#ffffff" />
+              <stop offset="66%" stop-color="#ffffff" />
+              <stop offset="66%" stop-color="#1c3f94" />
+              <stop offset="100%" stop-color="#1c3f94" />
+            </linearGradient>
+            <filter id="medalShadow" x="-40%" y="-40%" width="180%" height="180%">
+              <feDropShadow
+                dx="0"
+                dy="8"
+                stdDeviation="9"
+                flood-color="#000000"
+                flood-opacity="0.35"
+              />
+            </filter>
+            <path
+              id="starShape"
+              d="M0,-100 L22.45,-30.9 L95.11,-30.9 L36.33,11.8 L58.78,80.9 L0,38.2 L-58.78,80.9 L-36.33,11.8 L-95.11,-30.9 L-22.45,-30.9 Z"
+            />
           </defs>
 
-          <rect
-            x="10"
-            y="40"
-            width="380"
-            height="550"
-            fill="url(#checker)"
-            stroke="#ffffff"
-            stroke-width="8"
-          />
-          <rect
-            x="150"
-            y="10"
-            width="100"
-            height="25"
-            rx="12.5"
-            fill="#333"
-            stroke="#fff"
-            stroke-width="4"
-          />
-          <rect
-            x="120"
-            y="25"
-            width="160"
-            height="15"
-            fill="#e60000"
-            stroke="#fff"
-            stroke-width="3"
-          />
-          <circle cx="200" cy="55" r="8" fill="#1a1a1a" stroke="#fff" stroke-width="3" />
-          <rect
-            x="20"
-            y="80"
-            width="360"
-            height="80"
-            fill="#e60000"
-            stroke="#ffffff"
-            stroke-width="4"
-          />
-          <text
-            x="200"
-            y="135"
-            fill="#ffffff"
-            font-size="52"
-            font-weight="900"
-            text-anchor="middle"
-            letter-spacing="4"
-          >
-            VIP ACCESS
-          </text>
-          <text
-            x="200"
-            y="185"
-            fill="#BFFF00"
-            font-size="22"
-            font-weight="800"
-            text-anchor="middle"
-            letter-spacing="2"
-          >
-            ALL AREA BACKSTAGE PASS
-          </text>
-          <rect
-            x="30"
-            y="230"
-            width="340"
-            height="220"
-            fill="#ffffff"
-            stroke="#1a1a1a"
-            stroke-width="6"
-            transform="rotate(-2, 200, 340)"
-          />
-          <g id="svg-name-group" transform="rotate(-2, 200, 340)"></g>
-          <rect
-            x="10"
-            y="490"
-            width="380"
-            height="60"
-            fill="#1a1a1a"
-            stroke="#ffffff"
-            stroke-width="4"
-          />
-          <text
-            x="200"
-            y="520"
-            fill="#f97316"
-            font-size="16"
-            font-weight="900"
-            text-anchor="middle"
-            letter-spacing="3"
-          >
-            ROLLER DERBY INITIATIONAL
-          </text>
-          <text
-            x="200"
-            y="540"
-            fill="#7a7a7a"
-            font-size="12"
-            font-weight="800"
-            text-anchor="middle"
-            letter-spacing="1"
-          >
-            OFFICIAL MEAT GRINDER ALUMNI
-          </text>
-          <path
-            d="M50 565 v20 m10 -20 v20 m5 -20 v20 m15 -20 v20 m10 -20 v20 m5 -20 v20 m20 -20 v20 m10 -20 v20 m5 -20 v20 m15 -20 v20"
-            stroke="#ffffff"
-            stroke-width="3"
-          />
-          <path
-            d="M220 565 v20 m10 -20 v20 m5 -20 v20 m15 -20 v20 m10 -20 v20 m5 -20 v20 m20 -20 v20 m10 -20 v20 m5 -20 v20 m15 -20 v20"
-            stroke="#ffffff"
-            stroke-width="3"
-          />
+          <g filter="url(#medalShadow)">
+            <!-- Ribbon -->
+            <path d="M160,0 L195,0 L220,250 L182,250 Z" fill="url(#ribbonStripes)" />
+            <path d="M240,0 L205,0 L178,250 L216,250 Z" fill="url(#ribbonStripes)" />
+            <circle
+              cx="199"
+              cy="252"
+              r="11"
+              fill="url(#goldGrad)"
+              stroke="#7a5a12"
+              stroke-width="2"
+            />
+
+            <!-- Medal disc -->
+            <circle cx="200" cy="410" r="160" fill="#9c7415" />
+            <circle
+              cx="200"
+              cy="410"
+              r="150"
+              fill="url(#goldGrad)"
+              stroke="#7a5a12"
+              stroke-width="3"
+            />
+            <circle
+              cx="200"
+              cy="410"
+              r="133"
+              fill="none"
+              stroke="#9c7415"
+              stroke-width="2"
+              opacity="0.5"
+            />
+
+            <!-- Ring of small stars -->
+            <g fill="#c9971b">
+              <use xlink:href="#starShape" transform="translate(200,292) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(259,307.8) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(302.2,351) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(318,410) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(302.2,469) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(259,512.2) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(200,528) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(141,512.2) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(97.8,469) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(82,410) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(97.8,351) scale(0.09)" />
+              <use xlink:href="#starShape" transform="translate(141,307.8) scale(0.09)" />
+            </g>
+
+            <!-- Backdrop star -->
+            <use
+              xlink:href="#starShape"
+              transform="translate(200,410) rotate(-8) scale(1.15)"
+              fill="url(#starGrad)"
+            />
+
+            <!-- Torch -->
+            <path d="M186,355 L214,355 L209,374 L191,374 Z" fill="#8a6a1a" />
+            <rect x="197" y="374" width="6" height="24" fill="#8a6a1a" />
+            <rect x="187" y="398" width="26" height="6" rx="2" fill="#8a6a1a" />
+            <path
+              d="M200,308 C211,323 215,334 205,347 C208,338 199,334 196,340 C190,329 189,318 200,308 Z"
+              fill="#ffe98a"
+              stroke="#c9971b"
+              stroke-width="1"
+            />
+
+            <!-- Derby name is injected here, sized to fit -->
+            <g id="svg-name-group"></g>
+          </g>
         </svg>
       </div>
     </main>
