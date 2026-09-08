@@ -29,6 +29,7 @@ pages_backup_mess/
 .vscode/
 .claude/
 .gemini/
+.agents/
 
 # Misc
 *.log
