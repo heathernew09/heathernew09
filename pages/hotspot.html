@@ -140,7 +140,14 @@
         grid-column: span 3;
       }
 
-      .bg-maroon {
+      /* Compound selector (not just .bg-maroon) so this reliably beats
+         global.css's .b-tile { --tile-bg: var(--light-gray) } default —
+         equal-specificity single-class selectors are order-dependent, and
+         Vite's production build loads global.css's <link> AFTER this
+         page's own inline <style> regardless of their order in source
+         (opposite of dev mode), which was silently resetting this tile
+         back to light gray live while looking correct in dev. */
+      .b-tile.bg-maroon {
         --tile-bg: var(--maroon);
         --tile-text: #fff;
         background-color: var(--tile-bg);
