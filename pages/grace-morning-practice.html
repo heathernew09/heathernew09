@@ -54,7 +54,9 @@
       .page-hero {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        width: 100vw;
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
         min-height: 480px;
         border-bottom: 1px solid var(--text-dark);
       }
@@ -79,6 +81,15 @@
       .hero-visual-block img {
         width: 100%;
         height: 100%;
+        /* Capped on the image itself, not the row: the row's height should
+           come from whatever hero-title-block's actual text content needs
+           (it can be a full paragraph, and forcing the row shorter than
+           that overflows the text past the section — this is what broke
+           on 2026-09-23). This only reins in the image when it would
+           otherwise stretch tall to match a wide, aspect-ratio-driven row;
+           .hero-visual-block's flex centering keeps it looking intentional
+           either way. */
+        max-height: 760px;
         object-fit: cover;
         opacity: 0;
         transition: opacity 0.6s ease;
@@ -169,6 +180,11 @@
         border-left: 1px solid var(--text-dark);
       }
       .quote-cell {
+        /* Lets the font-size clamps below read the cell's own rendered width
+           (via cqi) instead of the viewport's — the cell's width is set by
+           the grid track and doesn't track vw 1:1, so a vw-based font-size
+           can outgrow the cell it's sitting in. */
+        container-type: inline-size;
         border-right: 1px solid var(--text-dark);
         border-bottom: 1px solid var(--text-dark);
         padding: 1.5rem;
@@ -192,14 +208,25 @@
            splits a word mid-letter as a last resort, when nothing else fits */
         overflow-wrap: break-word;
       }
-      .qc-huge {
-        font-size: clamp(1.8rem, 2vw, 2.5rem);
+      /* cqi is 1% of the nearest ancestor query container's inline size.
+         Set on the SPAN, not on .qc-huge/.quote-cell itself: a query
+         container can't use cqi to size its own font-size (self-reference —
+         Chromium silently falls back to the viewport instead of the cell's
+         actual width, which is what shipped broken here the first time).
+         Values scale with the cell's real rendered width at every
+         breakpoint (6/3/2 columns) instead of the viewport's. Longest words
+         in each tier ("photorealistic", "significantly", "mechanism.")
+         measured with Playwright against the smallest real cell width
+         (6-col desktop, ~185px content box) to pick the multiplier — see
+         2026-09-23 session notes. */
+      .qc-huge span {
+        font-size: clamp(1rem, 9cqi, 1.7rem);
       }
-      .qc-large {
-        font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+      .qc-large span {
+        font-size: clamp(0.85rem, 6.5cqi, 1.3rem);
       }
-      .qc-medium {
-        font-size: clamp(0.9rem, 1vw, 1.2rem);
+      .qc-medium span {
+        font-size: clamp(0.7rem, 5cqi, 0.95rem);
       }
 
       @media (max-width: 1100px) {
@@ -1076,6 +1103,72 @@
           if (ev.key === 'Escape') closeLightbox();
           if (ev.key === 'ArrowLeft') showRelative(-1);
           if (ev.key === 'ArrowRight') showRelative(1);
+        });
+      })();
+    </script>
+    <script>
+      // Quote-grid auto-fit: the CSS clamp()/cqi sizing applies one formula
+      // to every tile in a size tier, so it's bottlenecked by the single
+      // longest word across ALL of them ("mechanism.") even though most
+      // tiles have much shorter words and room to run bigger. This sizes
+      // each tile's text individually — as large as it can go without its
+      // own longest word ever breaking mid-letter — by measuring real
+      // rendered word widths rather than guessing at a shared formula.
+      (function () {
+        const TIER_MAX = { 'qc-huge': 44, 'qc-large': 30, 'qc-medium': 20 }; // px
+        const TIER_MIN = { 'qc-huge': 16, 'qc-large': 13, 'qc-medium': 11 }; // px
+        const REF_SIZE = 100; // px — measure at a large reference size for precision
+
+        const probe = document.createElement('span');
+        probe.style.position = 'absolute';
+        probe.style.visibility = 'hidden';
+        probe.style.whiteSpace = 'nowrap';
+        probe.style.top = '-9999px';
+        document.body.appendChild(probe);
+
+        function longestWordWidth(span, fontSize) {
+          const cs = getComputedStyle(span);
+          probe.style.fontFamily = cs.fontFamily;
+          probe.style.fontWeight = cs.fontWeight;
+          probe.style.letterSpacing = cs.letterSpacing;
+          probe.style.textTransform = cs.textTransform;
+          probe.style.fontSize = fontSize + 'px';
+          const words = span.textContent.trim().split(/\s+/);
+          let max = 0;
+          for (const w of words) {
+            probe.textContent = w;
+            max = Math.max(max, probe.getBoundingClientRect().width);
+          }
+          return max;
+        }
+
+        function fitQuoteText() {
+          document.querySelectorAll('.quote-cell').forEach((cell) => {
+            const span = cell.querySelector('span');
+            if (!span) return;
+            const tier = ['qc-huge', 'qc-large', 'qc-medium'].find((t) =>
+              cell.classList.contains(t)
+            );
+            if (!tier) return;
+
+            const available = span.clientWidth;
+            const refWidth = longestWordWidth(span, REF_SIZE);
+            if (refWidth === 0) return;
+
+            // Scale from the reference measurement, with a small safety
+            // margin so sub-pixel rounding never tips a word back over.
+            let size = (available / refWidth) * REF_SIZE * 0.95;
+            size = Math.min(TIER_MAX[tier], Math.max(TIER_MIN[tier], size));
+            span.style.fontSize = size.toFixed(1) + 'px';
+          });
+        }
+
+        // Wait for the real webfont so metrics aren't measured against a
+        // fallback font, then fit, then re-fit on resize/column changes.
+        (document.fonts ? document.fonts.ready : Promise.resolve()).then(fitQuoteText);
+        window.addEventListener('resize', () => {
+          clearTimeout(window.quoteFitTimer);
+          window.quoteFitTimer = setTimeout(fitQuoteText, 150);
         });
       })();
     </script>

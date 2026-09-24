@@ -58,8 +58,12 @@
       /* --- HERO SECTION --- */
       .hero {
         position: relative;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+        height: 70vh;
+        max-height: 760px;
+        min-height: 500px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -770,6 +774,7 @@
     <script>
       document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('grid-container');
+        const hero = container.closest('.hero');
 
         // Bauhaus color palette and assigned specific click behaviors
         const colorBehaviors = {
@@ -796,8 +801,13 @@
           container.innerHTML = '';
           gridItems = [];
 
-          const containerWidth = window.innerWidth - 80;
-          const containerHeight = window.innerHeight - 80;
+          // Sized off the hero's own box, not the window — the hero now
+          // has a max-width/max-height, so it's often smaller than the
+          // viewport, and sizing this off window.innerWidth/Height would
+          // over-generate shapes that just get clipped by .hero's overflow.
+          const heroRect = hero.getBoundingClientRect();
+          const containerWidth = heroRect.width - 80;
+          const containerHeight = heroRect.height - 80;
 
           cols = Math.floor(containerWidth / (shapeSize + gridGap));
           rows = Math.floor(containerHeight / (shapeSize + gridGap));
@@ -855,7 +865,7 @@
 
         // Core Interaction: Magnetic Mouse Hover
         const handleMove = (x, y) => {
-          if (y > window.innerHeight) return;
+          if (y > hero.getBoundingClientRect().bottom) return;
 
           gridItems.forEach((item) => {
             const dx = item.cx - x;
@@ -899,7 +909,7 @@
 
         // Color-specific behaviors on click
         window.addEventListener('click', (e) => {
-          if (e.clientY > window.innerHeight) return;
+          if (e.clientY > hero.getBoundingClientRect().bottom) return;
 
           const clickX = e.clientX;
           const clickY = e.clientY;

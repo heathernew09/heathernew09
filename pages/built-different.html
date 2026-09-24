@@ -41,19 +41,21 @@
       }
 
       body {
-        background-color: #fff;
+        background-color: #f4f4f4;
       }
 
       /* ─── HERO ─────────────────────────────────────────── */
       .page-hero {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        width: 100vw;
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
         min-height: 60vh;
       }
       .hero-title-block {
         grid-column: 1;
-        background-color: #ffffff;
+        background-color: #f4f4f4;
         padding: 7vw 4vw;
         display: flex;
         flex-direction: column;
@@ -77,7 +79,7 @@
       }
       .hero-visual-block {
         grid-column: 2;
-        background-color: #ffffff;
+        background-color: #f4f4f4;
         position: relative;
         overflow: hidden;
         display: flex;
@@ -139,7 +141,7 @@
         /* was padding: 0, so the grid sat on the viewport edge below 1400px.
            roller-derby uses 4rem 2vw 8rem; same rhythm here. */
         padding: 4rem 2vw 8rem;
-        background-color: #fff;
+        background-color: #f4f4f4;
         display: flex;
         justify-content: center;
       }
@@ -151,7 +153,7 @@
         max-width: 1400px;
         border-top: 1px solid #000;
         border-left: var(--border);
-        background: #fff;
+        background: #f4f4f4;
       }
       .b-tile {
         container-type: inline-size;

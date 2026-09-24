@@ -83,7 +83,7 @@
 
     // --- SCENE INITIALIZATION ---
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xffffff);
+    scene.background = new THREE.Color(0xf4f4f4);
 
     const w = container.clientWidth;
     const h = container.clientHeight || 800;

@@ -76,14 +76,16 @@
       .hero {
         display: grid;
         grid-template-columns: 1fr 2fr;
-        width: 100vw;
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
         min-height: 60vh;
         border-bottom: 1px solid var(--text-dark);
       }
 
       .hero-title-block {
         grid-column: 1;
-        background-color: #ffffff;
+        background-color: var(--bg-color);
         padding: 7vw 4vw;
         display: flex;
         flex-direction: column;
@@ -105,7 +107,7 @@
 
       .hero-visual-block {
         grid-column: 2;
-        background-color: #ffffff;
+        background-color: var(--bg-color);
         position: relative;
         overflow: hidden;
         display: flex;

@@ -33,9 +33,13 @@
         --bg-color: #f4f4f4;
       }
 
+      body {
+        background-color: var(--bg-color);
+      }
+
       .portfolio-section {
         padding: 0;
-        background-color: #fff;
+        background-color: var(--bg-color);
         display: flex;
         justify-content: center;
       }
@@ -48,7 +52,7 @@
         max-width: 1400px;
         border-top: 1px solid #000;
         border-left: 1px solid var(--text-dark);
-        background: #fff;
+        background: var(--bg-color);
       }
       .b-tile {
         container-type: inline-size;
