@@ -24,6 +24,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
       :root {
+        /* global.css's shared body/footer rules reference --bg-color and,
+           in the production build, Vite emits <link> tags for external CSS
+           AFTER this page's own inline <style> regardless of their order
+           in source — so global.css's rule wins the cascade there even
+           though this page's own inline body rule (below) wins in dev.
+           Defining it here means it resolves correctly either way. */
+        --bg-color: #f4f4f4;
         --primary-teal: #2b8a92;
         --accent-lime: #bfff00;
         --accent-orange: #f97316;
