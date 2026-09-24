@@ -1029,23 +1029,12 @@
     <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
 
     <script>
+      /* The #build-date block that used to live here was dead code and threw
+         on every load: no #build-date element exists anywhere on the site, so
+         the catch block's own fallback (also targeting #build-date) threw a
+         second, uncaught TypeError. #current-year does exist, via the footer
+         partial, so that line stays. Removed 2026-09-24. */
       document.getElementById('current-year').textContent = new Date().getFullYear();
-      try {
-        const buildDate = new Date(__BUILD_DATE__);
-        const options = {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-        };
-        document.getElementById('build-date').textContent = buildDate.toLocaleDateString(
-          undefined,
-          options
-        );
-      } catch (e) {
-        document.getElementById('build-date').textContent = 'Live';
-      }
     </script>
   </body>
 </html>
