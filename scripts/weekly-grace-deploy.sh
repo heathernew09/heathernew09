@@ -87,6 +87,9 @@ rsync -avz --delete -e "ssh -i $SG_KEY -p $SG_PORT" dist/ "$SG_USER@$SG_HOST:$SG
 
 echo "Refreshing server cache..."
 ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "touch $SG_PATH/index.html"
+# touch alone does not clear SiteGround's dynamic cache; without this the
+# live page can keep serving yesterday's archive after a successful deploy.
+ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "site-tools-client domain update id=1 flush_cache=1 include_aliases=1" || echo "  (cache flush failed, continuing)"
 
 echo "Pruning old backups (keeping 2 most recent)..."
 ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "ls -t ~/backup_portfolio_*.tar.gz 2>/dev/null | tail -n +3 | xargs rm -f"

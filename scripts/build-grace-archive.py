@@ -4,7 +4,8 @@ Build/refresh the Grace daily-art archive for heathernew.com.
 
 Reads ~/Documents/Grace/heather/art + stories, converts new days to
 web-sized WebP, and rewrites public/data/grace-archive.json. Idempotent —
-safe to run daily or weekly; only processes dates not already thumbnailed.
+safe to run daily or weekly; only processes dates not already thumbnailed,
+or whose source art is newer than its thumbnail (a redone day).
 
 Blank/failed ComfyUI generations (solid or near-solid color output) are
 detected automatically via pixel extrema rather than a hardcoded list, so
@@ -23,6 +24,8 @@ ART_DIR = Path.home() / "Documents/Grace/heather/art"
 STORIES_DIR = Path.home() / "Documents/Grace/heather/stories"
 OUT_IMG_DIR = Path.home() / "Sites/heathernew.com/public/assets/grace"
 OUT_JSON = Path.home() / "Sites/heathernew.com/public/data/grace-archive.json"
+# Grace records which image she actually sent ("original" or "revision") here.
+FEEDBACK = Path.home() / "Agents/ecosystem/data/grace-feedback.json"
 
 BLANK_SPAN_THRESHOLD = 10  # sum of per-channel (max-min); real art is well above this
 
@@ -37,9 +40,24 @@ def is_blank(path: Path) -> bool:
     return span < BLANK_SPAN_THRESHOLD
 
 
+def load_sent() -> dict:
+    """date -> "original" | "revision", for days Grace recorded it (2026-10-01 on).
+    Since then she sends the revision only if Paula scores it at least as well,
+    so "always prefer -r" would publish a different image than Telegram got."""
+    try:
+        history = json.loads(FEEDBACK.read_text()).get("history", [])
+    except Exception:
+        return {}
+    return {h["date"]: h["sent"] for h in history if h.get("date") and h.get("sent")}
+
+
+SENT = load_sent()
+
+
 def pick_source(date: str) -> tuple[Path | None, bool]:
-    """Return (usable_path_or_None, revised_bool). Prefers -r, falls back to base,
-    treats a candidate as unusable if it's blank."""
+    """Return (usable_path_or_None, revised_bool). Uses whichever image Grace
+    actually sent when that's recorded; otherwise prefers -r as before. Treats a
+    candidate as unusable if it's blank."""
     candidates = []
     r_path = ART_DIR / f"{date}-r.png"
     base_path = ART_DIR / f"{date}.png"
@@ -47,6 +65,8 @@ def pick_source(date: str) -> tuple[Path | None, bool]:
         candidates.append((r_path, True))
     if base_path.exists():
         candidates.append((base_path, False))
+    if SENT.get(date) == "original":
+        candidates.sort(key=lambda c: c[1])        # base first
 
     for path, revised in candidates:
         if not is_blank(path):
@@ -86,7 +106,10 @@ def main():
             continue
 
         out_path = OUT_IMG_DIR / f"{date}.webp"
-        if not out_path.exists():
+        # Rebuild when the source is newer than the published copy, so a redo
+        # of a day (grace-morning-practice.py --redo-draw) actually reaches the
+        # site instead of the first thumbnail sticking forever.
+        if not out_path.exists() or src.stat().st_mtime > out_path.stat().st_mtime:
             subprocess.run(
                 ["cwebp", "-q", "80", "-resize", "512", "512", str(src), "-o", str(out_path)],
                 check=True,
