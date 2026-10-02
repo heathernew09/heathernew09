@@ -38,6 +38,30 @@ fi
 CADENCE_LABEL="Weekly"
 [ "$IS_INKTOBER" = true ] && CADENCE_LABEL="Daily (Inktober)"
 
+# One deploy at a time. Grace triggers this script herself when her morning
+# run finishes, and launchd also fires it at 8am; if Neo was asleep, both can
+# start together on wake. The later one waits for the earlier to finish
+# rather than racing it on git commit/push and rsync. A lock left behind by
+# a process that no longer exists is treated as stale.
+LOCK_DIR="/tmp/grace-deploy.lock"
+for _ in $(seq 1 90); do                       # up to 15 minutes
+    if mkdir "$LOCK_DIR" 2>/dev/null; then
+        echo $$ > "$LOCK_DIR/pid"
+        break
+    fi
+    holder=$(cat "$LOCK_DIR/pid" 2>/dev/null || true)
+    if [ -n "$holder" ] && ! kill -0 "$holder" 2>/dev/null; then
+        rm -rf "$LOCK_DIR"; continue          # stale
+    fi
+    [ "${waited:-}" ] || { echo "  Another Grace deploy is running (pid ${holder:-?}); waiting..."; waited=1; }
+    sleep 10
+done
+if [ "$(cat "$LOCK_DIR/pid" 2>/dev/null || true)" != "$$" ]; then
+    echo "  Gave up waiting for the other deploy after 15 minutes; it will have published."
+    exit 0
+fi
+trap 'rm -rf "$LOCK_DIR"' EXIT
+
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting Grace archive check ($CADENCE_LABEL cadence)"
 
 git checkout main
