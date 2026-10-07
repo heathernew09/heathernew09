@@ -1,6 +1,10 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Heather New, Creative Technologist",
+  "short_name": "Heather New",
+  "description": "Portfolio of Heather New, a creative technologist in Chicago building interactive experiences where design, code, and physical technology meet.",
+  "lang": "en",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/favicon/web-app-manifest-192x192.png",
@@ -15,7 +19,7 @@
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#2b8a92",
+  "background_color": "#f4f4f4",
   "display": "standalone"
 }
