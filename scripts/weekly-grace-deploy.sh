@@ -107,7 +107,12 @@ ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" \
     "tar -czf backup_portfolio_$(date +%Y%m%d_%H%M%S).tar.gz --exclude='*.mp4' --exclude='*.mov' --exclude='*.MOV' --exclude='*.zip' --exclude='*.psd' -C www/heathernew.com/ public_html/"
 
 echo "Uploading to SiteGround..."
-rsync -avz --delete -e "ssh -i $SG_KEY -p $SG_PORT" dist/ "$SG_USER@$SG_HOST:$SG_PATH/"
+# Compare by content, not by date. Every build gives all of dist/ a fresh
+# modified time, so a date-based sync re-sent all ~1,350 files (12 GB) on
+# each deploy. --checksum sends only files whose bytes changed, and leaving
+# out -t (so no -a) keeps the server's dates, and therefore browser cache
+# validators, stable for files that did not change.
+rsync -rlvz --checksum --delete -e "ssh -i $SG_KEY -p $SG_PORT" dist/ "$SG_USER@$SG_HOST:$SG_PATH/"
 
 echo "Refreshing server cache..."
 ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "touch $SG_PATH/index.html"

@@ -121,11 +121,19 @@ ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "tar -czf backup_portfolio_$(
 
 # Deploy (Sync local dist/ to server public_html/)
 echo "🚀 Uploading compiled dist/ to SiteGround..."
-rsync -avz --delete -e "ssh -i $SG_KEY -p $SG_PORT" dist/ "$SG_USER@$SG_HOST:$SG_PATH/"
+# Compare by content, not by date. Every build gives all of dist/ a fresh
+# modified time, so a date-based sync re-sent all ~1,350 files (12 GB) on
+# each deploy. --checksum sends only files whose bytes changed, and leaving
+# out -t (so no -a) keeps the server's dates, and therefore browser cache
+# validators, stable for files that did not change.
+rsync -rlvz --checksum --delete -e "ssh -i $SG_KEY -p $SG_PORT" dist/ "$SG_USER@$SG_HOST:$SG_PATH/"
 
 # Invalidate Cache
 echo "🧹 Requesting server cache refresh..."
 ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "touch $SG_PATH/index.html"
+# touch alone does not clear SiteGround's dynamic cache; without this the
+# live site can keep serving the previous version after a successful deploy.
+ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "site-tools-client domain update id=1 flush_cache=1 include_aliases=1" || echo "  (cache flush failed, continuing)"
 
 # Prune old backups — keep only the 2 most recent
 echo "🗑️  Pruning old backups (keeping 2 most recent)..."
