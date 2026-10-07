@@ -1,5 +1,8 @@
 ErrorDocument 404 /404.html
 
+# The manifest was being served with no Content-Type at all.
+AddType application/manifest+json .webmanifest
+
 # Asset protection. Added 2026-10-06. This stops other sites embedding the 3D
 # models and images, and turns away crawlers that say who they are. It does
 # not stop a scraper that fakes its referer and user agent; nothing on shared
@@ -43,6 +46,17 @@ ErrorDocument 404 /404.html
   <FilesMatch "\.(gltf|glb|bin|webp)$">
     Header set Cache-Control "public, max-age=86400"
     Header always merge Vary Referer
+  </FilesMatch>
+
+  # Data files and the web manifest are not fingerprinted, so they must not
+  # be cached forever: grace-archive.json changes daily in October and a
+  # year-long cache would freeze the archive for returning visitors. Five
+  # minutes for data, a week for the manifest, which almost never changes.
+  <FilesMatch "\.json$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
+  <FilesMatch "\.webmanifest$">
+    Header set Cache-Control "public, max-age=604800"
   </FilesMatch>
 
   # Vite fingerprints these with a content hash, so the filename changes
