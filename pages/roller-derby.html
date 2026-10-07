@@ -101,42 +101,6 @@
         justify-content: center;
       }
 
-      #grid-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        width: 100%;
-        height: 100%;
-        gap: var(--grid-gap);
-      }
-
-      .shape-wrapper {
-        position: relative;
-        width: var(--shape-size);
-        height: var(--shape-size);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .shape {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        transform-origin: center center;
-        will-change: transform, border-radius;
-        transform: translateZ(0);
-        cursor: pointer;
-      }
-
-      .shape.circle {
-        border-radius: 50%;
-      }
-      .shape.square {
-        border-radius: 0%;
-      }
-
       /* --- PORTFOLIO GRID --- */
       .portfolio-section {
         padding: 4rem 2vw 8rem;
@@ -406,7 +370,7 @@
         <h1><span class="wordmark-line">DESIGN</span><span class="wordmark-line">× DERBY</span></h1>
       </div>
       <div class="hero-visual-block">
-        <div id="grid-container"></div>
+        <div class="derby-jam"></div>
       </div>
     </header>
 
@@ -438,7 +402,7 @@
             "
           >
             The league was celebrating 10 Years of ICT Roller Derby during my skating time. I
-            updated a 10 year old logo for legibility, accessibility and to market, amp merge and
+            updated a 10 year old logo for legibility, accessibility and to market, amp merch and
             really stir excitement for our premier Roller Derby League in Wichita Kansas.
           </p>
         </div>
@@ -813,155 +777,6 @@
       </div>
     </main>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const container = document.getElementById('grid-container');
-
-        const colorBehaviors = {
-          '#1BB1A5': 'vortex',
-          '#247B82': 'implode',
-          '#F6B352': 'converge',
-          '#F66C0F': 'scatter',
-          '#B2F81D': 'float',
-          '#E0E0E0': 'blink',
-          '#CCCCCC': 'flip',
-        };
-        const colors = Object.keys(colorBehaviors);
-        const sizeScales = [0.15, 0.35, 0.6, 0.9, 1.2];
-
-        let gridItems = [];
-        let cols = 0;
-        let rows = 0;
-        const radius = 180;
-        const shapeSize = 35;
-        const gridGap = 30;
-
-        function generateGrid() {
-          container.innerHTML = '';
-          gridItems = [];
-
-          const parent = container.parentElement;
-          const containerWidth = parent.clientWidth - 40;
-          const containerHeight = parent.clientHeight - 40;
-
-          cols = Math.floor(containerWidth / (shapeSize + gridGap));
-          rows = Math.floor(containerHeight / (shapeSize + gridGap));
-
-          container.style.width = `${cols * (shapeSize + gridGap)}px`;
-          container.style.height = `${rows * (shapeSize + gridGap)}px`;
-
-          for (let i = 0; i < cols * rows; i++) {
-            const wrapper = document.createElement('div');
-            wrapper.classList.add('shape-wrapper');
-
-            const shape = document.createElement('div');
-            const isSquare = Math.random() > 0.85;
-            const scaleClass = sizeScales[Math.floor(Math.random() * sizeScales.length)];
-
-            shape.classList.add('shape', isSquare ? 'square' : 'circle');
-            const itemColor = colors[Math.floor(Math.random() * colors.length)];
-            shape.style.backgroundColor = itemColor;
-
-            gsap.set(shape, { scale: scaleClass });
-
-            wrapper.appendChild(shape);
-            container.appendChild(wrapper);
-
-            gridItems.push({
-              el: shape,
-              isSquare,
-              baseScale: scaleClass,
-              colorHex: itemColor,
-              active: false,
-              cx: 0,
-              cy: 0,
-            });
-          }
-
-          calculateCenters();
-        }
-
-        function calculateCenters() {
-          gridItems.forEach((item) => {
-            const rect = item.el.getBoundingClientRect();
-            item.cx = rect.left + rect.width / 2;
-            item.cy = rect.top + rect.height / 2;
-          });
-        }
-
-        window.addEventListener('resize', () => {
-          clearTimeout(window.resizeTimer);
-          window.resizeTimer = setTimeout(generateGrid, 150);
-        });
-
-        generateGrid();
-
-        const handleMove = (x, y) => {
-          gridItems.forEach((item) => {
-            const dx = item.cx - x;
-            const dy = item.cy - y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            if (dist < radius) {
-              const force = (radius - dist) / radius;
-              gsap.to(item.el, {
-                scale: item.baseScale + force * 1.5,
-                x: -dx * force * 0.4,
-                y: -dy * force * 0.4,
-                rotation: item.isSquare ? force * 90 : force * -45,
-                borderRadius: item.isSquare ? `${force * 50}%` : `${50 - force * 20}%`,
-                duration: 0.4,
-                ease: 'power2.out',
-                overwrite: 'auto',
-              });
-              item.active = true;
-            } else if (item.active) {
-              gsap.to(item.el, {
-                scale: item.baseScale,
-                x: 0,
-                y: 0,
-                rotation: 0,
-                borderRadius: item.isSquare ? '0%' : '50%',
-                duration: 0.8,
-                ease: 'elastic.out(1, 0.4)',
-                overwrite: 'auto',
-              });
-              item.active = false;
-            }
-          });
-        };
-
-        window.addEventListener('mousemove', (e) => handleMove(e.clientX, e.clientY));
-        window.addEventListener('touchmove', (e) => {
-          if (e.touches.length > 0) handleMove(e.touches[0].clientX, e.touches[0].clientY);
-        });
-
-        window.addEventListener('click', (e) => {
-          const clickX = e.clientX;
-          const clickY = e.clientY;
-
-          gridItems.forEach((item) => {
-            const dx = item.cx - clickX;
-            const dy = item.cy - clickY;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-
-            const animProps = {
-              scale: item.baseScale + Math.max(0, 1 - dist / 300) * 1.2,
-              duration: 0.4,
-              ease: 'power2.out',
-              onComplete: () =>
-                gsap.to(item.el, {
-                  scale: item.baseScale,
-                  duration: 0.8,
-                  ease: 'elastic.out(1, 0.4)',
-                }),
-            };
-
-            if (Object.keys(animProps).length) gsap.to(item.el, animProps);
-          });
-        });
-      });
-    </script>
     <!-- Include Footer -->
     <div id="footer-trigger">
       <load src="../src/partials/footer.html" />
@@ -969,6 +784,7 @@
 
     <!-- Scripts -->
     <script type="module" src="/src/js/site-core.js"></script>
+    <script type="module" src="/src/js/derby-jam.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   </body>
 </html>

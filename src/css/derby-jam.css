@@ -1,0 +1,112 @@
+/* Design x Derby hero: a jam on a flat track. Built by src/js/derby-jam.js. */
+
+.derby-jam {
+  width: 100%;
+  max-width: 760px;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.derby-jam svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.derby-jam .track-line {
+  fill: none;
+  stroke: #111;
+  stroke-width: 3;
+}
+
+.derby-jam .start-line {
+  stroke: #111;
+  stroke-width: 2;
+}
+
+.derby-jam .skater-body {
+  stroke: #111;
+  stroke-width: 2;
+}
+
+.derby-jam .mark {
+  fill: #fff;
+}
+
+.derby-jam .score {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 44px;
+  fill: #111;
+  letter-spacing: -0.04em;
+}
+
+.derby-jam .clock {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  fill: #111;
+}
+
+/* Jammers are the only pieces you can pick up. */
+.derby-jam .jammer {
+  cursor: grab;
+  touch-action: none;
+  outline: none;
+}
+.derby-jam .jammer.is-held {
+  cursor: grabbing;
+}
+.derby-jam .jammer .halo {
+  fill: transparent;
+  stroke: none;
+}
+.derby-jam .jammer:hover .halo,
+.derby-jam .jammer.is-held .halo {
+  stroke: #111;
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+.derby-jam .jammer:focus-visible .halo {
+  stroke: #111;
+  stroke-width: 3;
+}
+
+.derby-jam__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  margin-top: 8px;
+}
+
+.derby-jam__bar p {
+  margin: 0;
+  flex: 1 1 280px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  font-weight: 500;
+  color: #111;
+}
+
+.derby-jam__bar button {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 10px 16px;
+  background: #111;
+  color: #fff;
+  border: 2px solid #111;
+  border-radius: 0;
+  cursor: pointer;
+}
+.derby-jam__bar button:hover {
+  background: #b2f81d;
+  color: #111;
+}
+.derby-jam__bar button:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+}
