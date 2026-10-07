@@ -587,8 +587,11 @@ a.b-tile:focus-visible .tile-link-text {
   transition: color 0.2s ease;
   font-weight: 600;
 }
-.footer-nav a:hover {
-  color: var(--accent-lime);
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: var(--orange);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .build-info {
