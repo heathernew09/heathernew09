@@ -63,7 +63,6 @@
         max-width: 1800px;
         margin: 0 auto;
         min-height: 60vh;
-        border-bottom: 1px solid var(--text-dark);
       }
 
       .hero-title-block {
@@ -75,8 +74,11 @@
         justify-content: center;
       }
 
+      /* Sized to stay inside the left half: 13vw pushed the wordmark across
+         the page and squeezed the shapes into a sliver. The cap matches the
+         hero's 1800px limit. */
       .hero-title-block h1 {
-        font-size: 13vw;
+        font-size: min(10.5vw, 185px);
         line-height: 0.85;
         font-weight: 800;
         text-transform: uppercase;

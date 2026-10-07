@@ -41,10 +41,37 @@
       }
 
       /* ─── HERO ─────────────────────────────────────────── */
-      .hero-title-block {
+      .page-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+        min-height: 600px;
+      }
+      .hero-title-block {
         padding: 7vw 4vw 5vw;
         background: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .hero-visual-block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        min-height: 600px;
+      }
+      @media (max-width: 900px) {
+        .page-hero {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+        .hero-visual-block {
+          min-height: 0;
+          height: 320px;
+        }
       }
       .hero-title-block h1 {
         font-size: clamp(2.5rem, 8vw, 8rem);
@@ -345,12 +372,17 @@
     </header>
 
     <main id="main-content">
-      <div class="hero-title-block">
-        <h1>Wall of Flame</h1>
-        <p class="subtitle">
-          Disrupting the tradeshow floor with visceral drama and clinical accuracy. A high-stakes
-          interactive experience for Elanco Galliprant at AVMA 2025.
-        </p>
+      <div class="page-hero">
+        <div class="hero-title-block">
+          <h1>Wall of Flame</h1>
+          <p class="subtitle">
+            Disrupting the tradeshow floor with visceral drama and clinical accuracy. A high-stakes
+            interactive experience for Elanco Galliprant at AVMA 2025.
+          </p>
+        </div>
+        <div class="hero-visual-block">
+          <div class="hero-shapes" data-shapes="flame"></div>
+        </div>
       </div>
 
       <div class="portfolio-section">
@@ -699,6 +731,7 @@
     </main>
 
     <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+    <script type="module" src="/src/js/hero-shapes.js"></script>
     <script type="module" src="../src/js/site-core.js" defer></script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {

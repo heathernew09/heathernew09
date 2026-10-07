@@ -1,0 +1,27 @@
+/* Shape block for the right half of a two-column page hero.
+   Built by src/js/hero-shapes.js. Decorative, hidden from screen readers. */
+
+.hero-shapes {
+  --hs-size: 28px;
+  --hs-gap: 14px;
+  display: grid;
+  gap: var(--hs-gap);
+  grid-auto-rows: var(--hs-size);
+}
+
+.hero-shapes i {
+  display: block;
+  width: var(--hs-size);
+  height: var(--hs-size);
+  transform: scale(var(--s, 1));
+}
+
+.hero-shapes i.circle {
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-shapes i {
+    transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  }
+}
