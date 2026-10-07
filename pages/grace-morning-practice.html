@@ -116,7 +116,9 @@
       }
 
       .inktober-section {
-        padding: 4rem 2vw 5rem;
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 4rem 0 5rem;
         border-bottom: 1px solid var(--text-dark);
       }
 
@@ -130,9 +132,12 @@
         opacity: 0.6;
       }
 
+      /* Same cap as .page-hero, so the page keeps one outer edge on wide screens. */
       .stat-bar {
         display: flex;
         flex-wrap: wrap;
+        max-width: 1800px;
+        margin: 0 auto;
         border-bottom: 1px solid var(--text-dark);
         font-family: 'JetBrains Mono', monospace;
       }
@@ -248,8 +253,9 @@
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
         gap: 2px;
-        background: #fff;
         padding: 2px;
+        max-width: 1800px;
+        margin: 0 auto;
       }
 
       .grace-tile {
@@ -733,7 +739,7 @@
     </section>
 
     <section class="inktober-section" id="inktober-fest" hidden>
-      <div style="max-width: 1400px; margin: 0 auto; padding: 0 2vw 2rem">
+      <div style="max-width: 1800px; margin: 0 auto; padding: 0 2rem 2rem">
         <h2 class="section-title">Inktober</h2>
         <p class="subtitle" style="max-width: 70ch">
           For all of October, Grace trades her usual photographic style for pure black-and-white ink
@@ -753,7 +759,7 @@
     </section>
 
     <main class="gallery-section">
-      <div style="max-width: 1400px; margin: 0 auto; padding: 0 2vw 2rem">
+      <div style="max-width: 1800px; margin: 0 auto; padding: 0 2rem 2rem">
         <h2
           style="
             font-size: clamp(2rem, 3vw, 2.5rem);
