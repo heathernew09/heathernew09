@@ -10,6 +10,13 @@ AddType application/manifest+json .webmanifest
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # One address per page. www and /index.html served full copies of the site,
+  # which search engines treat as duplicates of heathernew.com/.
+  RewriteCond %{HTTP_HOST} ^www\.heathernew\.com$ [NC]
+  RewriteRule ^(.*)$ https://heathernew.com/$1 [R=301,L]
+  RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+  RewriteRule ^index\.html$ https://heathernew.com/ [R=301,L]
+
   # AI training crawlers and bulk-download tools. Search engines, social link
   # previews (LinkedIn, Slack, facebookexternalhit) and user-initiated AI
   # fetchers (ChatGPT-User, Claude-User) are left alone on purpose, so a

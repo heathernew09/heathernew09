@@ -19,3 +19,5 @@ User-agent: ImagesiftBot
 User-agent: Omgilibot
 User-agent: PetalBot
 Disallow: /
+
+Sitemap: https://heathernew.com/sitemap.xml

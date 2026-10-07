@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite';
 import path from 'path';
+import fs from 'fs';
+import { execSync } from 'child_process';
 import injectHTML from 'vite-plugin-html-inject';
 import { globSync } from 'glob';
 
@@ -78,6 +80,65 @@ const GA_SNIPPET = `
   gtag('config', '${GA_ID}');
 `;
 
+const SITE_URL = 'https://heathernew.com';
+
+// Structured data for name searches: tells search engines this site is one
+// person and which profiles are hers. Added to the homepage and About only.
+const PERSON_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE_URL}/#heather`,
+      name: 'Heather New',
+      url: `${SITE_URL}/`,
+      jobTitle: 'Creative Technologist',
+      description:
+        'Creative technologist in Chicago building interactive experiences at the intersection of design, code, and physical technology.',
+      image: `${SITE_URL}/assets/heathernew-og.png`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Chicago',
+        addressRegion: 'IL',
+        addressCountry: 'US',
+      },
+      sameAs: ['https://linkedin.com/in/heathernew09', 'https://github.com/heathernew09'],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: `${SITE_URL}/`,
+      name: 'Heather New',
+      author: { '@id': `${SITE_URL}/#heather` },
+    },
+  ],
+};
+const SCHEMA_PAGES = ['/index.html', '/pages/about.html'];
+
+// sitemap.xml is written from the same page list the build uses, so a new
+// page appears in it automatically. Pages marked noindex are left out, and
+// each date is the page's last git commit.
+function buildSitemap() {
+  const files = ['index.html', ...Object.keys(pages).map((name) => `${name}.html`)];
+  const urls = files
+    .filter(
+      (file) => !/<meta\s+name="robots"\s+content="[^"]*noindex/.test(fs.readFileSync(file, 'utf8'))
+    )
+    .sort()
+    .map((file) => {
+      const loc = file === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${file}`;
+      let lastmod = '';
+      try {
+        const date = execSync(`git log -1 --format=%cs -- "${file}"`, { encoding: 'utf8' }).trim();
+        if (date) lastmod = `<lastmod>${date}</lastmod>`;
+      } catch {
+        // Not a git checkout: ship the sitemap without dates.
+      }
+      return `  <url><loc>${loc}</loc>${lastmod}</url>`;
+    });
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
+}
+
 function siteWideHead() {
   let isBuild = false;
   return {
@@ -88,7 +149,7 @@ function siteWideHead() {
     transformIndexHtml: {
       // 'pre' so Vite still bundles the injected module script.
       order: 'pre' as const,
-      handler() {
+      handler(_html: string, ctx: { path: string }) {
         const notice = {
           tag: 'script',
           attrs: { type: 'module', src: '/src/js/cookie-notice.js' },
@@ -96,7 +157,18 @@ function siteWideHead() {
         };
         // The Google tag only ships in the built site, so local dev sends no hits.
         if (!isBuild) return [notice];
+        const schema = SCHEMA_PAGES.includes(ctx.path)
+          ? [
+              {
+                tag: 'script',
+                attrs: { type: 'application/ld+json' },
+                children: JSON.stringify(PERSON_SCHEMA),
+                injectTo: 'head' as const,
+              },
+            ]
+          : [];
         return [
+          ...schema,
           {
             tag: 'script',
             attrs: { async: true, src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}` },
@@ -106,6 +178,9 @@ function siteWideHead() {
           notice,
         ];
       },
+    },
+    generateBundle() {
+      this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: buildSitemap() });
     },
   };
 }
