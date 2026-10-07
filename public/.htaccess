@@ -1,5 +1,28 @@
 ErrorDocument 404 /404.html
 
+# Asset protection. Added 2026-10-06. This stops other sites embedding the 3D
+# models and images, and turns away crawlers that say who they are. It does
+# not stop a scraper that fakes its referer and user agent; nothing on shared
+# hosting can.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # AI training crawlers and bulk-download tools. Search engines, social link
+  # previews (LinkedIn, Slack, facebookexternalhit) and user-initiated AI
+  # fetchers (ChatGPT-User, Claude-User) are left alone on purpose, so a
+  # recruiter asking an assistant about the site still gets an answer.
+  # robots.txt stays readable so these bots can see they are disallowed.
+  RewriteCond %{REQUEST_URI} !^/robots\.txt$
+  RewriteCond %{HTTP_USER_AGENT} (GPTBot|CCBot|ClaudeBot|anthropic-ai|Bytespider|Amazonbot|meta-externalagent|Diffbot|ImagesiftBot|Omgilibot|PetalBot|HTTrack|Scrapy|python-requests|wget) [NC]
+  RewriteRule ^ - [F,L]
+
+  # Hotlink rule. A blank referer is allowed: privacy browsers and extensions
+  # strip the header, and blocking it would break images for real visitors.
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://([a-z0-9-]+\.)?heathernew\.com(/|:|$) [NC]
+  RewriteRule \.(gltf|glb|bin|webp)$ - [F,L,NC]
+</IfModule>
+
 # Cache policy. Added 2026-09-24 after repeated "I'm still seeing the old
 # version" reports: the site previously sent no Cache-Control header at all,
 # only Last-Modified/ETag. With no explicit directive browsers fall back to
@@ -11,6 +34,15 @@ ErrorDocument 404 /404.html
   # hashed asset below, so a stale copy is what makes everything else stale.
   <FilesMatch "\.(html|htm)$">
     Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Models and unhashed images (Grace's archive). One day rather than forever,
+  # because a redo can replace a dated .webp in place. This sits above the
+  # hashed rule so fingerprinted .webp files still end up immutable. Vary
+  # keeps any cache from handing a hotlinker's 403 to a real visitor.
+  <FilesMatch "\.(gltf|glb|bin|webp)$">
+    Header set Cache-Control "public, max-age=86400"
+    Header always merge Vary Referer
   </FilesMatch>
 
   # Vite fingerprints these with a content hash, so the filename changes

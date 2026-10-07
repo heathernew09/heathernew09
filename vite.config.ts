@@ -21,10 +21,100 @@ const pages = globSync('pages/**/*.html').reduce((acc, file) => {
   return acc;
 }, {});
 
+// Google Analytics + the cookie notice, added to every page from one place.
+// Each page carries its own <head>, so doing this by hand means 29 edits and
+// every new page forgetting it.
+const GA_ID = 'G-C81YQBFXYN';
+
+// Where consent is legally required before analytics cookies: EEA, UK, Switzerland.
+const CONSENT_REGIONS = [
+  'AT',
+  'BE',
+  'BG',
+  'HR',
+  'CY',
+  'CZ',
+  'DK',
+  'EE',
+  'FI',
+  'FR',
+  'DE',
+  'GR',
+  'HU',
+  'IE',
+  'IT',
+  'LV',
+  'LT',
+  'LU',
+  'MT',
+  'NL',
+  'PL',
+  'PT',
+  'RO',
+  'SK',
+  'SI',
+  'ES',
+  'SE',
+  'IS',
+  'LI',
+  'NO',
+  'GB',
+  'CH',
+];
+
+// Consent defaults have to be set before 'config'. Analytics is on by default,
+// off by default in CONSENT_REGIONS, and a visitor's saved choice from the
+// cookie notice (src/js/cookie-notice.js) overrides either. Ads stay off.
+const GA_SNIPPET = `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted' });
+  gtag('consent', 'default', { analytics_storage: 'denied', region: ${JSON.stringify(CONSENT_REGIONS)} });
+  try {
+    var c = localStorage.getItem('hn-cookie-choice');
+    if (c === 'granted' || c === 'denied') gtag('consent', 'update', { analytics_storage: c });
+  } catch (e) {}
+  gtag('js', new Date());
+  gtag('config', '${GA_ID}');
+`;
+
+function siteWideHead() {
+  let isBuild = false;
+  return {
+    name: 'site-wide-head',
+    config(_config, { command }) {
+      isBuild = command === 'build';
+    },
+    transformIndexHtml: {
+      // 'pre' so Vite still bundles the injected module script.
+      order: 'pre' as const,
+      handler() {
+        const notice = {
+          tag: 'script',
+          attrs: { type: 'module', src: '/src/js/cookie-notice.js' },
+          injectTo: 'body' as const,
+        };
+        // The Google tag only ships in the built site, so local dev sends no hits.
+        if (!isBuild) return [notice];
+        return [
+          {
+            tag: 'script',
+            attrs: { async: true, src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}` },
+            injectTo: 'head-prepend' as const,
+          },
+          { tag: 'script', children: GA_SNIPPET, injectTo: 'head-prepend' as const },
+          notice,
+        ];
+      },
+    },
+  };
+}
+
 export default defineConfig({
   root: '.',
   publicDir: 'public',
   plugins: [
+    siteWideHead(),
     injectHTML({
       tagName: 'load',
       sourceAttr: 'src',

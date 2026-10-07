@@ -1,0 +1,192 @@
+/* Cookie notice. Loaded by src/js/cookie-notice.js on every page, including
+   the homepage, which does not load global.css. Colors are written out here
+   rather than read from global.css variables for that reason. */
+
+.hn-cookie {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 9000; /* under the nav overlay (10000) so the menu still covers it */
+  width: min(340px, calc(100vw - 32px));
+  font-family:
+    'Manrope',
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    sans-serif;
+  color: #111;
+}
+
+/* The cookie sits on the card's top edge, half over it. */
+.hn-cookie__plate {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin: 0 0 -38px 18px;
+  z-index: 1;
+}
+
+.hn-cookie__art {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hn-bite {
+  fill: #000;
+}
+
+.hn-cookie__card {
+  background: #fff;
+  border: 2px solid #111;
+  box-shadow: 6px 6px 0 #bfff00;
+  padding: 50px 18px 16px;
+  transition: opacity 0.3s ease;
+}
+
+.hn-cookie__card p {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.hn-cookie__card a {
+  color: #111;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.hn-cookie__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+}
+
+.hn-cookie__actions button {
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.hn-cookie__accept {
+  background: #111;
+  color: #fff;
+  border: 2px solid #111;
+  padding: 9px 16px;
+}
+
+.hn-cookie__accept:hover {
+  background: #bfff00;
+  color: #111;
+}
+
+.hn-cookie__decline {
+  background: none;
+  color: #111;
+  border: 0;
+  padding: 9px 2px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hn-cookie__actions button:focus-visible,
+.hn-cookie__card a:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 3px;
+}
+
+/* Crumbs are only seen once the cookie has rolled off them. */
+.hn-cookie__crumbs i {
+  position: absolute;
+  bottom: 6px;
+  width: 6px;
+  height: 6px;
+  background: #d9a05b;
+  border: 1px solid #111;
+  opacity: 0;
+}
+.hn-cookie__crumbs i:nth-child(1) {
+  left: 22px;
+}
+.hn-cookie__crumbs i:nth-child(2) {
+  left: 44px;
+  bottom: 12px;
+  border-radius: 50%;
+}
+.hn-cookie__crumbs i:nth-child(3) {
+  left: 60px;
+  width: 4px;
+  height: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* One entrance: the cookie rolls in, the card follows. */
+  .hn-cookie__art {
+    animation: hn-roll-in 0.7s cubic-bezier(0.2, 0.8, 0.3, 1) 0.5s backwards;
+  }
+  .hn-cookie__card {
+    animation: hn-card-in 0.35s ease 0.9s backwards;
+  }
+
+  /* Accept: card fades once the last bite lands. */
+  .hn-cookie.is-gone {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  /* No thanks: cookie rolls off the left edge and leaves crumbs. */
+  .hn-cookie.is-rolling .hn-cookie__art {
+    animation: hn-roll-out 0.7s cubic-bezier(0.5, 0, 0.9, 0.5) forwards;
+  }
+  .hn-cookie.is-rolling .hn-cookie__card {
+    opacity: 0;
+    transition-delay: 0.45s;
+  }
+  .hn-cookie.is-rolling .hn-cookie__crumbs i {
+    animation: hn-crumbs 0.9s ease 0.15s forwards;
+  }
+}
+
+@keyframes hn-roll-in {
+  from {
+    transform: translateX(-160px) rotate(-300deg);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes hn-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hn-roll-out {
+  to {
+    transform: translateX(-220px) rotate(-420deg);
+  }
+}
+
+@keyframes hn-crumbs {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
