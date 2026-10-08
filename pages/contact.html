@@ -189,9 +189,14 @@
         font-size: 1.5rem;
         font-family: inherit;
         font-weight: 600;
-        outline: none !important;
+        outline: none;
         padding: 0.75rem 0;
         color: var(--text-dark);
+      }
+      /* The field's own rule is the focus indicator: it goes from faint to solid. */
+      .form-group:focus-within {
+        border-bottom-color: var(--text-dark);
+        box-shadow: 0 2px 0 var(--text-dark);
       }
       .submit-btn {
         background: var(--text-dark);
@@ -320,6 +325,7 @@
     <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
   </head>
   <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <header class="site-header">
       <div class="header-content"><load src="../src/partials/nav.html" /></div>
     </header>
@@ -349,20 +355,20 @@
               method="POST"
             >
               <div class="form-group">
-                <label>NAME</label>
-                <input type="text" name="name" required />
+                <label for="contact-name">NAME</label>
+                <input type="text" id="contact-name" name="name" autocomplete="name" required />
               </div>
               <div class="form-group">
-                <label>EMAIL</label>
-                <input type="email" name="email" required />
+                <label for="contact-email">EMAIL</label>
+                <input type="email" id="contact-email" name="email" autocomplete="email" required />
               </div>
               <div class="form-group">
-                <label>PROJECT TYPE</label>
-                <input type="text" name="subject" />
+                <label for="contact-subject">PROJECT TYPE</label>
+                <input type="text" id="contact-subject" name="subject" />
               </div>
               <div class="form-group">
-                <label>MESSAGE</label>
-                <textarea name="message" rows="3"></textarea>
+                <label for="contact-message">MESSAGE</label>
+                <textarea id="contact-message" name="message" rows="3"></textarea>
               </div>
               <button type="submit" class="submit-btn">SEND MESSAGE</button>
               <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>
@@ -379,7 +385,10 @@
             style="text-decoration: none"
           >
             <span class="meta" style="color: var(--text-dark)">EMAIL</span>
-            <h3 style="color: var(--text-dark); font-size: 1rem; text-transform: none">
+            <h3
+              aria-level="2"
+              style="color: var(--text-dark); font-size: 1rem; text-transform: none"
+            >
               contact@<br />heathernew.com
             </h3>
           </a>
@@ -392,7 +401,9 @@
             style="text-decoration: none"
           >
             <span class="meta">LINKEDIN</span>
-            <h3 style="font-size: 1rem; text-transform: none">in/<br />heathernew09</h3>
+            <h3 aria-level="2" style="font-size: 1rem; text-transform: none">
+              in/<br />heathernew09
+            </h3>
           </a>
           <a
             id="tile-contact-github"
@@ -403,11 +414,16 @@
             style="text-decoration: none"
           >
             <span class="meta">GITHUB</span>
-            <h3 style="font-size: 1rem; text-transform: none">github/<br />heathernew09</h3>
+            <h3 aria-level="2" style="font-size: 1rem; text-transform: none">
+              github/<br />heathernew09
+            </h3>
           </a>
           <div id="tile-contact-location" class="b-tile bg-orange span-col-1">
             <span class="meta" style="color: var(--text-dark)">Location</span>
-            <h3 style="color: var(--text-dark); font-size: 1rem; text-transform: none">
+            <h3
+              aria-level="2"
+              style="color: var(--text-dark); font-size: 1rem; text-transform: none"
+            >
               Chicago,<br />IL
             </h3>
           </div>

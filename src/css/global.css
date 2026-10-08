@@ -153,6 +153,8 @@ a.b-tile:focus-visible {
   color: var(--tile-text, inherit);
 }
 
+a.arrow-link:hover,
+a.arrow-link:focus-visible,
 a.b-tile:hover .arrow-link,
 a.b-tile:hover .tile-link-text,
 a.b-tile:focus-visible .arrow-link,
@@ -766,8 +768,24 @@ a.b-tile:focus-visible .tile-link-text {
   border: 0;
 }
 
+/* Off screen until a keyboard user tabs to it, then pinned to the top left
+   corner above the site header and the menu overlay. */
 a.skip-to-content {
-  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10002;
+  padding: 0.85rem 1.25rem;
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-120%);
+}
+a.skip-to-content:focus {
+  transform: none;
+  outline: 3px solid var(--accent-lime, #bfff00);
+  outline-offset: -3px;
 }
 
 /* Grid for Heros */
@@ -1500,5 +1518,27 @@ RESULTS SECTION
     height: 60px;
     min-width: 88px;
     padding: 0 1.25rem;
+  }
+}
+
+/* Videos take keyboard focus, so they get the same ring as the menu button. */
+video:focus-visible {
+  outline: 3px solid var(--accent-lime, #bfff00);
+  outline-offset: -3px;
+}
+
+/* Visitors who ask their system for less motion get the end state of every
+   CSS animation and transition at once, instead of the movement. Transitions
+   are set to exactly 0s: any other value turns every style change on every
+   element into a transition, which breaks scripts that set a style and then
+   measure it (the quote grid on The Practice does). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
   }
 }

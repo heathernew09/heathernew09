@@ -1,6 +1,8 @@
 /**
  * SITE CORE: Unified Logic
  */
+import './motion-control.js';
+
 (function () {
   'use strict';
 
@@ -156,31 +158,74 @@
   if (document.getElementById('footer-trigger')) initFooterSkater();
 
   // Nav Logic
+  const menu = {
+    overlay: () => document.getElementById('pages-overlay'),
+    // Links the page can actually show. Some pages hide the Home link.
+    links: () =>
+      [...document.querySelectorAll('#pages-overlay .pages-main-nav a')].filter(
+        (a) => a.getClientRects().length
+      ),
+    button: () => document.getElementById('nav-block'),
+    isOpen: () => !!document.getElementById('pages-overlay')?.classList.contains('open'),
+  };
+
+  // Returns true once focus is inside the menu, and stops listening then.
+  function focusFirstLink() {
+    const overlay = menu.overlay();
+    if (!menu.isOpen()) return false;
+    if (!overlay.contains(document.activeElement)) menu.links()[0]?.focus();
+    const done = overlay.contains(document.activeElement);
+    if (done) overlay.removeEventListener('transitionend', focusFirstLink);
+    return done;
+  }
+
+  // Opening sends focus to the first link and closing hands it back to the
+  // Menu button, so a keyboard user is never left on the page behind the menu.
+  function setMenu(open, { restoreFocus = true } = {}) {
+    const overlay = menu.overlay();
+    const navBlock = menu.button();
+    if (!overlay) return;
+    overlay.classList.toggle('open', open);
+    document.getElementById('nav-hamburger-icon')?.classList.toggle('active', open);
+    navBlock?.classList.toggle('active', open);
+    navBlock?.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    overlay.removeEventListener('transitionend', focusFirstLink);
+    // The overlay fades in from visibility: hidden, and a hidden link cannot
+    // take focus, so keep trying as the fade's transitions finish.
+    if (open && !focusFirstLink()) overlay.addEventListener('transitionend', focusFirstLink);
+    if (!open && restoreFocus) navBlock?.focus();
+  }
+
   document.addEventListener('click', (e) => {
-    const overlay = document.getElementById('pages-overlay');
-    const navBlock = document.getElementById('nav-block');
-    const hamburger = document.getElementById('nav-hamburger-icon');
-
-    // Toggle menu when clicking hamburger block
     if (e.target.closest('#nav-block')) {
-      const isOpen = overlay?.classList.toggle('open');
-      hamburger?.classList.toggle('active');
-      navBlock?.classList.toggle('active');
-      navBlock?.setAttribute('aria-expanded', String(!!isOpen));
-
-      // Toggle body scroll
-      document.body.style.overflow = isOpen ? 'hidden' : '';
+      setMenu(!menu.isOpen());
       return;
     }
+    // A click on the backdrop closes the menu. So does a click on a link, but
+    // there the browser is about to navigate, so focus is left alone.
+    if (e.target === menu.overlay()) setMenu(false);
+    else if (e.target.closest('.pages-main-nav a')) setMenu(false, { restoreFocus: false });
+  });
 
-    // Close menu when clicking outside (on the overlay backdrop)
-    // OR when clicking a navigation link
-    if (e.target === overlay || e.target.closest('.pages-main-nav a')) {
-      overlay?.classList.remove('open');
-      hamburger?.classList.remove('active');
-      navBlock?.classList.remove('active');
-      navBlock?.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+  document.addEventListener('keydown', (e) => {
+    if (!menu.isOpen()) return;
+    if (e.key === 'Escape') {
+      setMenu(false);
+      return;
     }
+    if (e.key !== 'Tab') return;
+    // Keep Tab inside the menu: its links plus the Close button.
+    const stops = [...menu.links(), menu.button()].filter(Boolean);
+    const at = stops.indexOf(document.activeElement);
+    const next = e.shiftKey
+      ? at <= 0
+        ? stops.length - 1
+        : at - 1
+      : at === stops.length - 1
+        ? 0
+        : at + 1;
+    e.preventDefault();
+    stops[next].focus();
   });
 })();

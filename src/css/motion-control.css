@@ -1,0 +1,33 @@
+/* Pause and play button that sits on the corner of a GIF or looping video.
+   Self-contained: the homepage does not load global.css. */
+.motion-control {
+  position: absolute;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.motion-control svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.motion-control:hover {
+  background: #fff;
+  border-color: #111;
+  color: #111;
+}
+
+.motion-control:focus-visible {
+  outline: 3px solid #bfff00;
+  outline-offset: 2px;
+}

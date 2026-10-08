@@ -54,7 +54,7 @@ const COOKIE_SVG = `
 </svg>`;
 
 function build() {
-  const el = document.createElement('aside');
+  const el = document.createElement('div');
   el.className = 'hn-cookie';
   el.setAttribute('role', 'dialog');
   el.setAttribute('aria-label', 'Cookie choice');
