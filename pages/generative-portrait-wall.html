@@ -222,6 +222,14 @@
         left: 0.5rem;
       }
 
+      /* Labels on the bright blocks use the dark text color; grey fades into them. */
+      .block.filled-teal .block-label,
+      .block.filled-lime .block-label,
+      .block.filled-yellow .block-label,
+      .block.filled-orange .block-label {
+        color: var(--text-dark);
+      }
+
       .block.filled-teal {
         background: var(--teal);
       }
@@ -463,7 +471,7 @@
 
       .asset-disclosure {
         font-size: 0.8rem !important;
-        color: #777;
+        color: var(--text-grey);
         margin-top: 2rem;
         line-height: 1.6;
         text-align: center;
@@ -654,7 +662,7 @@
                   <span class="block-label">Block H</span>
                 </div>
               </div>
-              <p style="font-size: 0.75rem; color: #888; margin-top: 0.5rem">
+              <p style="font-size: 0.75rem; color: var(--text-grey); margin-top: 0.5rem">
                 Grid logic: Blocks A-H compose dynamically based on psychographic input
               </p>
             </div>
@@ -666,7 +674,7 @@
                 alt="Grid layout, wireframe state"
                 style="width: 100%; display: block"
               />
-              <figcaption style="font-size: 0.7rem; color: #888; margin-top: 0.4rem">
+              <figcaption style="font-size: 0.7rem; color: var(--text-grey); margin-top: 0.4rem">
                 Wireframe
               </figcaption>
             </figure>
@@ -676,7 +684,7 @@
                 alt="The portrait wall, full reveal at the event"
                 style="width: 100%; display: block"
               />
-              <figcaption style="font-size: 0.7rem; color: #888; margin-top: 0.4rem">
+              <figcaption style="font-size: 0.7rem; color: var(--text-grey); margin-top: 0.4rem">
                 At Scale
               </figcaption>
             </figure>
@@ -886,9 +894,9 @@
                 honest answers with surprising results.
               </p>
             </div>
-            <div class="attribute-card" style="background: var(--teal); color: white">
+            <div class="attribute-card" style="background: var(--teal); color: var(--text-dark)">
               <h3>Transformative</h3>
-              <p>
+              <p style="color: inherit">
                 A standard event survey becomes a mirror of your internal state. Data becomes art.
                 Instantly.
               </p>

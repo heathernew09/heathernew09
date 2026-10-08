@@ -136,7 +136,11 @@
         letter-spacing: 0.12em;
         margin-bottom: 1rem;
         display: block;
-        opacity: 0.6;
+        color: var(--text-grey);
+      }
+      /* Grey on the page and on light tiles. Colored tiles keep their own text color. */
+      .b-tile:not(.bg-light-gray):not(.bg-white) .meta {
+        color: inherit;
       }
 
       .portfolio-section {
@@ -597,11 +601,7 @@
           </div>
 
           <!-- NuTone: Tech Stack -->
-          <div
-            id="fn-nutone-stack"
-            class="b-tile bg-mid-gray span-col-2"
-            style="color: var(--lime)"
-          >
+          <div id="fn-nutone-stack" class="b-tile bg-mid-gray span-col-2" style="color: #fff">
             <span class="meta">Tech Stack</span>
             <h2>The Build</h2>
             <p style="margin-bottom: 1rem">

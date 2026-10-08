@@ -20,6 +20,13 @@
   --white: #ffffff;
   --text-dark: #111111;
 
+  /* Text versions of the brand colors. Bright teal, orange and light grey are
+     too pale to read as text on a light background (WCAG AA needs 4.5:1), so
+     text uses these and the bright ones stay for tiles and shapes. */
+  --text-teal: #146068;
+  --text-orange: #a84300;
+  --text-grey: #595959;
+
   --color-studio: #00a99d;
   --color-work: #e87a00;
   --color-services: #f1c40f;
@@ -135,7 +142,7 @@ li {
 }
 
 a {
-  color: var(--primary-teal);
+  color: var(--text-teal);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
@@ -585,13 +592,13 @@ a.b-tile:focus-visible .tile-link-text {
 
 .footer-nav a {
   text-decoration: none;
-  color: var(--primary-teal);
+  color: var(--text-teal);
   transition: color 0.2s ease;
   font-weight: 600;
 }
 .footer-nav a:hover,
 .footer-nav a:focus-visible {
-  color: var(--orange);
+  color: var(--text-orange);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -610,7 +617,7 @@ a.b-tile:focus-visible .tile-link-text {
 }
 .copyright {
   font-size: 0.875rem;
-  color: #aaa;
+  color: var(--text-grey);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -1261,7 +1268,7 @@ RESULTS SECTION
 .asset-disclosure {
   margin-top: 3rem;
   font-size: 0.8rem;
-  color: #999;
+  color: var(--text-grey);
   text-align: center;
   border-top: 1px solid #eee;
   padding-top: 2rem;

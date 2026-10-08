@@ -56,6 +56,9 @@
         --light-gray: #e0e0e0;
         --mid-gray: #666666;
         --white: #ffffff;
+        --text-teal: #146068;
+        --text-orange: #a84300;
+        --text-grey: #595959;
       }
 
       * {
@@ -127,7 +130,7 @@
 
       .hero-overlay h2 {
         font-size: 1.5rem;
-        color: var(--teal);
+        color: var(--text-teal);
         margin-bottom: 1.5rem;
         font-weight: 800;
       }
@@ -281,7 +284,6 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 1px;
-        opacity: 0.7;
       }
 
       /* Background Colors, define --tile-bg / --tile-text for hover inversion */
@@ -587,7 +589,6 @@
         text-transform: uppercase;
         letter-spacing: 0.1em;
         margin-top: auto;
-        opacity: 0.8;
         padding: 0 1rem 1rem;
       }
       .quote-author::before {
@@ -819,7 +820,7 @@
               The comic book introduces their powers. The original experience was on a kiosk with a
               large touch screen tv, with page turns.<!--I have created an interactive experience with the content to display the illustrations with a bit more impact.-->
             </p>
-            <span class="arrow-link" style="font-size: 1rem; color: var(--teal)"
+            <span class="arrow-link" style="font-size: 1rem; color: var(--text-teal)"
               >View Project <span>→</span></span
             >
           </a>
@@ -1122,9 +1123,7 @@
               >
                 ⌘+Z
               </div>
-              <span class="meta" style="font-size: 0.6rem; opacity: 0.5"
-                >Most Commonly used Command</span
-              >
+              <span class="meta" style="font-size: 0.6rem">Most Commonly used Command</span>
             </div>
           </div>
 
@@ -1506,8 +1505,8 @@
           { bg: _css('--mid-gray'), text: _css('--white'), quote: _css('--lime') },
           { bg: _css('--yellow'), text: _css('--text-dark'), quote: _css('--teal') },
           { bg: _css('--light-gray'), text: _css('--text-dark'), quote: _css('--orange') },
-          { bg: _css('--teal'), text: _css('--white'), quote: _css('--yellow') },
-          { bg: _css('--orange'), text: _css('--white'), quote: _css('--light-gray') },
+          { bg: _css('--teal'), text: _css('--text-dark'), quote: _css('--yellow') },
+          { bg: _css('--orange'), text: _css('--text-dark'), quote: _css('--light-gray') },
         ];
 
         const tContainer = document.getElementById('testimonials-container');

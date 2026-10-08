@@ -112,7 +112,7 @@
         font-size: 1.1rem;
         line-height: 1.6;
         max-width: 52ch;
-        opacity: 0.8;
+        color: var(--dark-gray);
       }
 
       .inktober-section {
@@ -129,7 +129,11 @@
         letter-spacing: 0.12em;
         margin-bottom: 1rem;
         display: block;
-        opacity: 0.6;
+        color: var(--text-grey);
+      }
+      /* Grey on the page and on light tiles. Colored tiles keep their own text color. */
+      .b-tile:not(.bg-light-gray):not(.bg-white) .meta {
+        color: inherit;
       }
 
       /* Same cap as .page-hero, so the page keeps one outer edge on wide screens. */
@@ -155,7 +159,7 @@
       .stat-value {
         font-size: 1.8rem;
         font-weight: 700;
-        color: var(--orange);
+        color: var(--text-orange);
         display: block;
       }
 
@@ -163,7 +167,7 @@
         font-size: 0.7rem;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        opacity: 0.6;
+        color: var(--text-grey);
         margin-top: 0.25rem;
         display: block;
       }
@@ -721,7 +725,7 @@
             </p>
           </div>
           <div class="b-tile bg-black span-col-2">
-            <span class="meta" style="color: var(--teal)">02. The Architecture</span>
+            <span class="meta" style="color: #fff">02. The Architecture</span>
             <h3 aria-level="2">ComfyUI Setup</h3>
             <p>
               The system operates entirely on local hardware. A chron job triggers a Python script
@@ -748,7 +752,7 @@
           </div>
 
           <div class="b-tile bg-light-gray span-col-2">
-            <span class="meta" style="color: var(--orange)">04. Open Source Potential</span>
+            <span class="meta" style="color: var(--text-orange)">04. Open Source Potential</span>
             <h3 aria-level="2">Releasing the Code?</h3>
             <p>
               The pipeline is fully modularized into discrete blocks: the theme generator, the LLM
@@ -772,7 +776,7 @@
               href="https://www.reddit.com/r/Inktober/"
               target="_blank"
               rel="noopener"
-              style="color: var(--orange); font-weight: 700"
+              style="color: var(--text-orange); font-weight: 700"
               >r/Inktober</a
             >.
           </p>
@@ -855,7 +859,7 @@
           </div>
 
           <div class="b-tile bg-orange span-col-2">
-            <span class="meta" style="color: #fff">03. The Final Output</span>
+            <span class="meta">03. The Final Output</span>
             <h3>Worth the Friction</h3>
             <p>
               This final robot embodies the precise balance of tension and nostalgia requested. The
