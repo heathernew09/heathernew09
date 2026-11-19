@@ -13,7 +13,10 @@ const NO_SHIP = [/-pre-bauhaus\.html$/, /^pages\/template\.html$/];
 // URL structure: case studies in /work/, Field Notes and its projects in
 // /field-notes/, presentation tools in /tools/, core pages at the root.
 // pages/ now only holds drafts and scaffolds, which never ship.
-const ROOT_PAGES = ['about.html', 'contact.html', 'privacy.html'];
+// kanban stays at /pages/kanban.html: SiteGround's password protection (Site
+// Tools > Security > Protected URLs) is tied to that exact path, and the CLI
+// can't create a new protected location. Move it only after re-protecting.
+const ROOT_PAGES = ['about.html', 'contact.html', 'privacy.html', 'pages/kanban.html'];
 const pages = [...globSync('{work,field-notes,tools}/**/*.html'), ...ROOT_PAGES].reduce((acc, file) => {
   const relativePath = path.relative('.', file);
   if (NO_SHIP.some((re) => re.test(relativePath))) return acc;
