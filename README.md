@@ -7,7 +7,7 @@ This is the source code for [heathernew.com](https://heathernew.com), a high-per
 
 ## 🚀 About the Artist & Engineer
 
-Heather is a **Creative Technologist** with 20+ years of experience specialized in building what others think is "impossible." As a founding member of the AI Garage and a former Roller Derby MVP, she brings a unique blend of technical precision and relentless grit to every build.
+Heather is a **Creative Technologist** with 20+ years of experience specialized in building what others think is "impossible." As one of the first members of the AI Garage and a former Roller Derby MVP, she brings a unique blend of technical precision and relentless grit to every build.
 
 ### Core Expertise:
 

@@ -203,8 +203,8 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       start: 2013,
       end: 2014,
-      title: 'Jr Web Dev',
-      subtitle: 'Whistler Outdoor',
+      title: 'Web Developer',
+      subtitle: 'Whistler Media',
       type: 'experience',
       color: '#556B2F',
     },
@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       start: 2016,
       end: 2021,
-      title: 'Sr Digital Developer',
+      title: 'Lead Developer',
       subtitle: 'Greteman Group',
       type: 'experience',
       color: '#06B6D4',
