@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="BUILT 26: a three-station NFC networking experience for MERGE's executive gathering at Salamander Resort. Archetype quiz, Pour &amp; Pair wine pairings, and personalized campfire stories."
+    />
+    <title>BUILT 26: Scan Station Alpha | Heather New</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="../src/css/global.css" />
+    <link rel="stylesheet" href="../src/css/built26.css" />
+
+    <link rel="canonical" href="https://heathernew.com/work/built-26.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Heather New" />
+    <meta property="og:url" content="https://heathernew.com/work/built-26.html" />
+    <meta property="og:title" content="BUILT 26: Scan Station Alpha | Heather New" />
+    <meta
+      property="og:description"
+      content="BUILT 26: a three-station NFC networking experience for MERGE's executive gathering at Salamander Resort. Archetype quiz, Pour &amp; Pair wine pairings, and personalized campfire stories."
+    />
+    <meta property="og:image" content="https://heathernew.com/assets/built26/tm-pour-pair-station.jpg" />
+    <meta
+      property="og:image:alt"
+      content="A Pour and Pair station at night at BUILT 26, photographed by Taylor Mickal Photography"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BUILT 26: Scan Station Alpha | Heather New" />
+    <meta
+      name="twitter:description"
+      content="BUILT 26: a three-station NFC networking experience for MERGE's executive gathering at Salamander Resort. Archetype quiz, Pour &amp; Pair wine pairings, and personalized campfire stories."
+    />
+    <meta name="twitter:image" content="https://heathernew.com/assets/built26/tm-pour-pair-station.jpg" />
+    <style>
+      :root {
+        --teal: #1bb1a5;
+        --primary-teal: #2b8a92;
+        --dark-teal: #146068;
+        --accent-lime: #bfff00;
+        --accent-orange: #f97316;
+        --dark-gray: #333333;
+        --mid-gray: #666666;
+        --light-gray: #f5f5f5;
+        --white: #ffffff;
+        --text-dark: #111111;
+        --border: 1px solid var(--text-dark);
+        --maroon: #3b1413;
+      }
+
+      body {
+        background-color: #f4f4f4;
+      }
+
+      /* ─── HERO ─────────────────────────────────────────── */
+      .page-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+        min-height: 600px;
+      }
+      .hero-title-block {
+        padding: 7vw 4vw 5vw;
+        background: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .hero-visual-block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        min-height: 600px;
+      }
+      @media (max-width: 900px) {
+        .page-hero {
+          grid-template-columns: 1fr;
+          min-height: 0;
+        }
+        .hero-visual-block {
+          min-height: 0;
+          height: 320px;
+        }
+      }
+      .hero-title-block h1 {
+        font-size: clamp(2.5rem, 8vw, 8rem);
+        line-height: 0.85;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        margin-bottom: 2rem;
+        max-width: 8ch;
+      }
+      .hero-title-block .subtitle {
+        font-size: clamp(1rem, 1.8vw, 1.4rem);
+        font-weight: 500;
+        line-height: 1.5;
+        max-width: 900px;
+        color: var(--text-dark);
+      }
+
+      /* ─── BAUHAUS GRID ─────────────────────────────────── */
+      .portfolio-section {
+        padding: 0 4vw 4vw 4vw;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+      }
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-auto-rows: auto;
+        width: 100%;
+        max-width: 1400px;
+        border-top: 1px solid #000;
+        border-left: var(--border);
+        background: #f4f4f4;
+      }
+      .b-tile {
+        container-type: inline-size;
+        border-right: var(--border);
+        border-bottom: var(--border);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease;
+        min-height: 240px;
+      }
+      .b-tile h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+      }
+      .b-tile h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .b-tile .meta {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .span-col-1 {
+        grid-column: span 2;
+      }
+      .span-col-2 {
+        grid-column: span 4;
+      }
+      .span-col-3 {
+        grid-column: span 6;
+      }
+      .span-col-4 {
+        grid-column: span 8;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
+
+      .span-col-2-5 {
+        grid-column: span 5;
+      }
+      .span-col-1-5 {
+        grid-column: span 3;
+      }
+
+      /* Compound selector (not just .bg-maroon) so this reliably beats
+         global.css's .b-tile { --tile-bg: var(--light-gray) } default —
+         equal-specificity single-class selectors are order-dependent, and
+         Vite's production build loads global.css's <link> AFTER this
+         page's own inline <style> regardless of their order in source
+         (opposite of dev mode), which was silently resetting this tile
+         back to light gray live while looking correct in dev. */
+      .b-tile.bg-maroon {
+        --tile-bg: var(--maroon);
+        --tile-text: #fff;
+        background-color: var(--tile-bg);
+        color: var(--tile-text);
+      }
+
+      .img-tile {
+        padding: 0;
+        display: block;
+      }
+      .img-tile img,
+      .img-tile video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .img-tile:hover img {
+        transform: scale(1.04);
+      }
+
+      .list-clean {
+        list-style: none;
+        line-height: 2;
+        font-size: 0.95rem;
+      }
+      .testimonial-quote {
+        font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+        font-style: italic;
+        font-weight: 500;
+        line-height: 1.3;
+        margin-bottom: 1.5rem;
+      }
+      .quote-icon {
+        background-color: var(--quote-color, var(--lime));
+        mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg width='265' height='266' viewBox='0 0 265 266' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M82.8125 66.5C55.4779 66.5 33.125 88.9373 33.125 116.375V199.5H115.938V116.375H49.6875C49.6875 97.9316 64.4385 83.125 82.8125 83.125V66.5ZM198.75 66.5C171.415 66.5 149.062 88.9373 149.062 116.375V199.5H231.875V116.375H165.625C165.625 97.9316 180.376 83.125 198.75 83.125V66.5ZM49.6875 133H99.375V182.875H49.6875V133ZM165.625 133H215.312V182.875H165.625V133Z' fill='%23FF7500'/%3E%3C/svg%3E");
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        width: 60px;
+        height: 60px;
+        position: absolute;
+      }
+      .quote-icon.top {
+        top: 1.5rem;
+        left: 1.5rem;
+      }
+      .quote-icon.bottom {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        transform: rotate(180deg);
+      }
+      .quote-text {
+        font-size: 1.15rem;
+        line-height: 1.4;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        padding: 3rem 1rem 0;
+      }
+      .quote-author {
+        font-size: 0.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: auto;
+        padding: 0 1rem 1rem;
+      }
+      .quote-author::before {
+        content: '';
+      }
+
+      .fireball-quiz-container {
+        width: 100%;
+        max-width: 600px;
+        aspect-ratio: 1/1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Gallery Bauhaus Blend */
+      .gallery {
+        gap: 0 !important;
+        border-top: var(--border);
+        border-left: var(--border);
+        margin-top: 0 !important;
+      }
+      .gallery-item {
+        border-radius: 0 !important;
+        border-right: var(--border);
+        border-bottom: var(--border);
+      }
+      .gallery-item img {
+        border-radius: 0 !important;
+      }
+      .gallery-item.horizontal.threehoriz {
+        grid-column: span 3;
+      }
+
+      @media (max-width: 1100px) {
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-1,
+        .span-col-2,
+        .span-col-3,
+        .span-col-4,
+        .span-col-2-5,
+        .span-col-1-5 {
+          grid-column: span 2;
+        }
+      }
+      @media (max-width: 768px) {
+        #fireball .grid-2,
+        .sensory-container,
+        .gallery {
+          grid-template-columns: 1fr !important;
+        }
+        #sensory-text,
+        #sensory-spec {
+          grid-column: 1 / -1 !important;
+        }
+        .bauhaus-grid > *,
+        .span-col-1,
+        .span-col-2,
+        .span-col-3,
+        .span-col-4,
+        .span-col-2-5,
+        .span-col-1-5,
+        .gallery-item.horizontal,
+        .gallery-item.horizontal.threehoriz {
+          grid-column: 1 / -1 !important;
+        }
+        .span-row-2,
+        .gallery-item.vertical {
+          grid-row: auto !important;
+        }
+        .fireball-quiz-container {
+          max-width: 100% !important;
+          width: 100% !important;
+        }
+        .b-tile {
+          min-width: 0 !important;
+          max-width: 100% !important;
+          box-sizing: border-box;
+        }
+        .b-tile img,
+        .b-tile video,
+        .img-tile img,
+        .img-tile video {
+          max-width: 100% !important;
+          height: auto !important;
+          object-fit: cover;
+        }
+      }
+    </style>
+
+  </head>
+  <body id="built26-page" class="page-template">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <main id="main-content">
+      <div class="page-hero">
+        <div class="hero-title-block">
+          <h1 class="built-logo"><img src="/assets/built26/built-26-logo.svg" alt="MERGE BUILT 26" width="877" height="252" /></h1>
+          <p class="subtitle">
+            One badge, three experiences. An NFC networking experience for MERGE's executive
+            gathering at Salamander Resort, from a welcome quiz to a wine pairing to a campfire
+            tale that knew your name.
+          </p>
+        </div>
+        <div class="hero-visual-block">
+          <figure class="built26-donut">
+            <div class="donut-stage">
+              <canvas aria-hidden="true"></canvas>
+            </div>
+            <figcaption>
+              <p class="donut-total"><b>79</b> attendees <span>·</span> <b>6</b> archetypes</p>
+              <!-- Colors are Heather's site palette; swap data-color values here to rebrand. -->
+              <ul class="donut-legend" aria-label="Attendee archetypes across 79 completed profiles">
+                <li tabindex="0" data-count="18" data-color="#f6b352" style="--swatch: #f6b352"><i></i>The Connector <span class="pct"></span><span class="sr-count"> (18 attendees)</span></li>
+                <li tabindex="0" data-count="13" data-color="#ff7500" style="--swatch: #ff7500"><i></i>The Spark <span class="pct"></span><span class="sr-count"> (13 attendees)</span></li>
+                <li tabindex="0" data-count="13" data-color="#b2f81d" style="--swatch: #b2f81d"><i></i>The Lens <span class="pct"></span><span class="sr-count"> (13 attendees)</span></li>
+                <li tabindex="0" data-count="12" data-color="#1bb1a5" style="--swatch: #1bb1a5"><i></i>The Maker <span class="pct"></span><span class="sr-count"> (12 attendees)</span></li>
+                <li tabindex="0" data-count="12" data-color="#146068" style="--swatch: #146068"><i></i>The Compass <span class="pct"></span><span class="sr-count"> (12 attendees)</span></li>
+                <li tabindex="0" data-count="11" data-color="#1a1a1a" style="--swatch: #1a1a1a"><i></i>The Anchor <span class="pct"></span><span class="sr-count"> (11 attendees)</span></li>
+              </ul>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="portfolio-section">
+        <div class="bauhaus-grid">
+          <!-- HERO ROW: IMAGE + 2x2 META -->
+          <div id="tile-built26-intro" class="b-tile img-tile span-col-2 span-row-2">
+            <img src="/assets/built26/tm-welcome-tap.jpg" alt="A guest touching the framed set of archetype pins beside a welcome touchscreen and Scan Badge Here reader" />
+          </div>
+          <div id="tile-built26-client" class="b-tile bg-white span-col-1">
+            <span class="meta">Client</span>
+            <p><strong>MERGE</strong></p>
+          </div>
+          <div id="tile-built26-event" class="b-tile bg-yellow span-col-1">
+            <span class="meta">Event</span>
+            <p><strong>BUILT 2026, Salamander Resort</strong></p>
+          </div>
+          <div id="tile-built26-role" class="b-tile bg-dark-teal span-col-1">
+            <span class="meta">Role</span>
+            <p><strong>Creative Technologist: UX, software, hardware</strong></p>
+          </div>
+          <div id="tile-built26-dates" class="b-tile bg-light-gray span-col-1">
+            <span class="meta">Dates</span>
+            <p><strong>November 1 to 4, 2026</strong></p>
+          </div>
+
+          <!-- CHALLENGE -->
+          <div id="tile-built26-challenge" class="b-tile bg-orange span-col-4">
+            <span class="meta">The Brief</span>
+            <h2>A Networking Event Like None Other</h2>
+            <p style="max-width: 920px; font-size: 1.2rem; line-height: 1.6">
+              Executives have seen every conference trick. For BUILT's second year, the technology
+              had to feel personal from the first moment, give strangers a reason and a script to
+              start talking, stay invisible with no data leaving the room, and hold up for four
+              days in a resort with no IT desk.
+            </p>
+          </div>
+
+          <!-- STATION 1 -->
+          <div id="tile-built26-station1" class="b-tile bg-white span-col-2">
+            <span class="meta">Station 1 · Arrival</span>
+            <img class="station-icon" src="/assets/built26/hi-icon.png" alt="" width="72" height="68" />
+            <h2>Welcome Registration</h2>
+            <p>
+              Guests tap their badge, get greeted by first name, and answer five quick questions
+              written for their role. Their answers reveal one of six archetypes, from The Spark
+              to The Connector to The Maker.
+            </p>
+          </div>
+          <div class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/built26/tm-welcome-quiz.jpg"
+              alt="A guest answering the welcome quiz on a touchscreen, badge resting on the Scan Badge Here reader, with the framed archetype pins beside it"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- THE LOGIC -->
+          <div id="tile-built26-logic" class="b-tile bg-dark-teal span-col-2">
+            <span class="meta">The Logic</span>
+            <h2>Getting to Know Our Attendees</h2>
+            <p>
+              We started from a base set of five questions, then rewrote them for each attendee's
+              title and discipline, so a CMO and a chief medical officer each answered in their own
+              language.
+            </p>
+            <p>
+              The archetypes aren't a scientific profile like DISC. They're math on your answers:
+              every choice is worth two points, either to one archetype or split between two, and
+              the highest total wins. Ties go to whichever archetype has the fewest people so far,
+              which kept the room balanced.
+            </p>
+            <p>
+              It still took real thought. We wanted every result to feel like it got you, and to
+              point you toward someone worth meeting.
+            </p>
+          </div>
+          <div id="tile-built26-pairs" class="b-tile bg-white span-col-2">
+            <span class="meta">Complementary Pairs</span>
+            <h3>Built to Meet Each Other</h3>
+            <p>
+              We paired archetypes by personality, so opposites with something to trade found each
+              other. Your pair carried straight into the next activation, the reception dinner.
+            </p>
+            <ul class="pair-list">
+              <li>
+                <span class="pair"><i style="--swatch: #ff7500"></i>The Spark</span>
+                <span class="pair-op">&harr;</span>
+                <span class="pair"><i style="--swatch: #1a1a1a"></i>The Anchor</span>
+                <small>Momentum meets grounding</small>
+              </li>
+              <li>
+                <span class="pair"><i style="--swatch: #f6b352"></i>The Connector</span>
+                <span class="pair-op">&harr;</span>
+                <span class="pair"><i style="--swatch: #1bb1a5"></i>The Maker</span>
+                <small>People meet things built by hand</small>
+              </li>
+              <li>
+                <span class="pair"><i style="--swatch: #b2f81d"></i>The Lens</span>
+                <span class="pair-op">&harr;</span>
+                <span class="pair"><i style="--swatch: #146068"></i>The Compass</span>
+                <small>New perspective meets a clear road map</small>
+              </li>
+            </ul>
+          </div>
+
+          <!-- STATION 2 -->
+          <figure id="tile-built26-receipt" class="b-tile span-col-2 receipt-tile">
+            <img
+              src="/assets/built26/pour-pair-receipt.png"
+              alt="Pour and Pair receipt with the MERGE Built logo: Hi, Phillip. Great choice with the Chardonnay, we hope you like it. You're: The Connector. Seek out: The Maker. Ask them: Who is the most fascinating person you've met here, and why did they stand out? What is a subtle detail about this gathering that most people seem to be missing?"
+              loading="lazy"
+            />
+          </figure>
+          <div id="tile-built26-station2" class="b-tile bg-yellow span-col-2 has-photo">
+            <span class="meta">Station 2 · Reception Dinner</span>
+            <h2>Pour &amp; Pair</h2>
+            <p>
+              A tap pours a wine matched to your archetype and prints a receipt: who you are, who
+              to seek out, and two questions to ask them. Come back for another glass and it sends
+              you to meet someone new.
+            </p>
+            <figure class="tile-photo">
+              <img src="/assets/built26/tm-pour-pair-station.jpg" alt="A Pour and Pair station at night: the lit Built 26 Pour and Pair sign above touchscreens and receipt printers, with a guest holding a glass of wine" loading="lazy" />
+            </figure>
+          </div>
+
+          <!-- STATION 2 PHOTOS -->
+          <div class="b-tile img-tile span-col-2 photo-row">
+            <img src="/assets/built26/tm-pour-pair-receipt-print.jpg" alt="A guest tearing off her Pour and Pair receipt as it prints, beside the station touchscreen" loading="lazy" />
+          </div>
+          <div class="b-tile img-tile span-col-2 photo-row">
+            <img src="/assets/built26/tm-pour-pair-conversation.jpg" alt="Heather New laughing with Stephanie Trunzo, CEO of MERGE, beside the Pour and Pair station under the patio heaters" loading="lazy" style="object-position: center 30%" />
+          </div>
+
+          <!-- STATION 3 -->
+          <div id="tile-built26-station3" class="b-tile bg-maroon built-pattern span-col-2">
+            <span class="meta">Station 3 · After Dinner</span>
+            <h2>Toasty Tales</h2>
+            <p>
+              At the bonfire, a tap plays a spooky campfire story over the speaker. It says your
+              name, knows what you do, and lets a monster loose in your world. People were shocked,
+              then they wanted to hear everyone else's.
+            </p>
+            <div class="mini-stats">
+              <div><b>48</b><span>plays</span></div>
+              <div><b>29</b><span>guests</span></div>
+              <div><b>1h 48m</b><span>by the fire</span></div>
+            </div>
+            <p>Guests came back for more: some re-tapped within seconds, and one returned across a 99-minute span.</p>
+            <span class="meta" style="margin-top: 1.5rem">Listen</span>
+            <h3>Heather's Toasty Tale</h3>
+            <p>
+              The story is generated based on her response to the archetype quiz question 4,
+              <strong>"What keeps you up at night?"</strong> Narrated on-device in Kokoro's Onyx voice.
+            </p>
+            <button type="button" class="story-play" aria-pressed="false">
+              <span class="story-play-icon" aria-hidden="true"></span><span class="story-play-label">Play Story</span>
+            </button>
+            <audio class="story-audio" src="/assets/built26/heather-toasty-tale.mp3" preload="none"></audio>
+          </div>
+          <div class="b-tile img-tile span-col-1" style="background: #000">
+            <video
+              controls
+              playsinline
+              preload="metadata"
+              poster="/assets/built26/toasty-tales-poster.jpg"
+              aria-label="Guests around the bonfire listening as a Toasty Tale is read aloud"
+            >
+              <source src="/assets/built26/toasty-tales.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <figure id="tile-built26-remote" class="b-tile span-col-1 toasty-remote">
+            <img
+              src="/assets/built26/toasty-tales-remote.jpg"
+              alt="Toasty Tales remote on a phone: buttons for What is Toasty Tales?, Play one for the group, I dare you, Warm up, Welcome, Something in the trees, Did you hear that?, What was that?, T-t-t-toasty, plus Stop and Replay story"
+              loading="lazy"
+            />
+            <figcaption>
+              The fireside remote: a phone soundboard for hosting the circle, from a welcome and a
+              group story to well-timed "What was that?" scares.
+            </figcaption>
+          </figure>
+
+          <!-- STATION 3 PHOTOS -->
+          <div class="b-tile img-tile span-col-2 photo-row">
+            <img src="/assets/built26/tm-fireside-wide.jpg" alt="The bonfire circle at night in front of the Salamander Resort clubhouse, guests in Adirondack chairs around the fire pit" loading="lazy" />
+          </div>
+          <div class="b-tile img-tile span-col-2 photo-row">
+            <img src="/assets/built26/tm-fireside-story.jpg" alt="Guests wrapped in blankets around the fire pit as a host stands by the fireside speaker" loading="lazy" />
+          </div>
+
+          <!-- TAILORING THE STORIES -->
+          <div id="tile-built26-tailoring" class="b-tile bg-yellow span-col-2">
+            <span class="meta">Tailoring the Stories</span>
+            <h2>Every Story Knew Your World</h2>
+            <p>
+              Before the event, I sorted every registered attendee into one of eight disciplines
+              using their title and the event team's guest list. That bucket shaped two things:
+              the version of the welcome quiz they saw, and the world their Toasty Tale took place
+              in.
+            </p>
+            <p>
+              One quiz question did the heavy lifting: <strong>"What keeps you up at night?"</strong>
+              Each discipline got its own version with four answers in its own language. Their
+              answer decided what their story was about.
+            </p>
+            <div class="story-math" aria-label="9 story sets times 4 answers times 6 archetypes equals 216 stories">
+              <div><b>8+1</b><span>disciplines + a general set for walk-ins</span></div>
+              <div class="op">&times;</div>
+              <div><b>4</b><span>answers</span></div>
+              <div class="op">&times;</div>
+              <div><b>6</b><span>archetypes</span></div>
+              <div class="op">=</div>
+              <div><b>216</b><span>stories</span></div>
+            </div>
+          </div>
+          <div id="tile-built26-disciplines" class="b-tile bg-white span-col-2">
+            <span class="meta">The Eight Disciplines</span>
+            <ul class="discipline-chips">
+              <li>Executive &amp; Brand Strategy</li>
+              <li>Marketing, Growth &amp; Commercial</li>
+              <li>Digital, Technology &amp; AI</li>
+              <li>Creative, Design &amp; Content</li>
+              <li>Clinical, Science &amp; Health Innovation</li>
+              <li>Data, Analytics &amp; Consumer Insights</li>
+              <li>Media, Publishing &amp; Industry Voices</li>
+              <li>Account, Partnership &amp; Delivery</li>
+            </ul>
+            <span class="meta" style="margin-top: 1.5rem">Example: Digital, Technology &amp; AI</span>
+            <p><strong>"What technology and AI issue keeps you up at night?"</strong></p>
+            <ul class="list-clean keeps-answers">
+              <li>Democratizing agentic AI across enterprise workflows while preserving governance</li>
+              <li>Bridging the gap between prototype validation and enterprise production scale</li>
+              <li>Staying ahead of radical architectural shifts like generative search and LLMs</li>
+              <li>Migrating legacy tech debt into modern stacks without breaking operational uptime</li>
+            </ul>
+          </div>
+
+          <!-- PROCESS + FLEET -->
+          <div id="tile-built26-process" class="b-tile bg-light-gray span-col-2 span-row-2">
+            <span class="meta">Process</span>
+            <h2>The Decisions That Mattered</h2>
+            <ul class="list-clean decision-list">
+              <li>
+                <strong>Prototype to persuade.</strong> I built the quiz logic as a Lovable.dev demo
+                for internal reviews, which got the idea approved before any hardware existed.
+              </li>
+              <li>
+                <strong>From live AI to approved AI.</strong> Our first prototype wrote stories live
+                with a local language model. In front of executives, surprises are a risk, so we
+                generated all 216 stories ahead of time from a layered prompt built on the quiz and
+                archetype data, then approved and edited every one for guardrails.
+              </li>
+              <li>
+                <strong>No waiting at the fire.</strong> Every story was narrated on-device before
+                guests arrived, with whisper, pause and lean-in cues turned into real pacing.
+              </li>
+              <li>
+                <strong>Built not to fail in a field.</strong> Two peer "brains" sync every 20
+                seconds so either can drop out, and answers save after every question.
+              </li>
+              <li>
+                <strong>Private by design.</strong> Local networks only. No cloud, no accounts, no
+                guest data leaving the venue.
+              </li>
+            </ul>
+          </div>
+          <div class="b-tile img-tile span-col-2">
+            <img src="/assets/built26/fireside-enclosure-open.jpg" alt="A fireside station opened up on top of a Sonos Move: the lid lifted to show the PN532 NFC reader mounted underneath, wired down to a Raspberry Pi 5 inside the printed enclosure" loading="lazy" style="object-position: center 4%" />
+          </div>
+          <div id="tile-built26-fleet" class="b-tile bg-dark-teal span-col-2">
+            <span class="meta">The Fleet</span>
+            <ul class="list-clean">
+              <li><strong>7 Raspberry Pis,</strong> each with a hand-soldered PN532 NFC reader</li>
+              <li><strong>2 brains:</strong> Pi 5, touchscreen, NVMe, real-time clock</li>
+              <li><strong>3 wine stations:</strong> Pi 4, touchscreen, receipt printer</li>
+              <li><strong>2 firesides:</strong> headless Pi, Sonos speaker</li>
+              <li><strong>Stack:</strong> Node, SQLite, React, Vite, WebSockets</li>
+              <li><strong>Voice:</strong> Kokoro-82M text-to-speech, rendered on-device</li>
+              <li><strong>Live:</strong> a remote control that fired sound bites</li>
+            </ul>
+          </div>
+
+          <!-- PROCESS: THE FLEET LAID OUT -->
+          <div class="b-tile img-tile span-col-4 wide-photo">
+            <img src="/assets/built26/tech-tabletop.jpg" alt="The whole build laid out on a table around a laptop: Raspberry Pis, red PN532 NFC readers, power supplies and cables, a touchscreen showing Welcome, an LCD reading Station 3, the router and a coffee mug" loading="lazy" />
+          </div>
+
+          <!-- FIRESIDE ENCLOSURE SKETCH -->
+          <div id="tile-built26-enclosure" class="b-tile bg-white span-col-2">
+            <span class="meta">Process · Sketch</span>
+            <h2>A Scan Point on Top of the Speaker</h2>
+            <p>
+              The fireside stations had to hide a Raspberry Pi and an NFC reader without turning the
+              Sonos Move into a gadget. I sketched an enclosure that sits on top of the speaker:
+            </p>
+            <ul class="list-clean decision-list">
+              <li>
+                <strong>"Scan here" lid.</strong> The PN532 reader mounts to the underside, right
+                under the icon, with a rim so the lid seats into the box.
+              </li>
+              <li>
+                <strong>A curved cutout.</strong> The bottom of the box arches around the speaker, so
+                its top controls stay visible and there's room for fingers to lift it.
+              </li>
+              <li>
+                <strong>Everything inside.</strong> The Pi mounts in the box, with a single exit for
+                the 5V power cord.
+              </li>
+            </ul>
+          </div>
+          <figure class="b-tile img-tile span-col-2 sketch-tile">
+            <img
+              src="/assets/built26/fireside-enclosure-sketch.jpg"
+              alt="Hand sketch of the fireside enclosure: a round box with a Scan Here lid sitting on a Sonos Move, with labeled views of the speaker top, the box bottom's curved cutout, the lid underside with a PN532 mount and fitting rim, and the inside of the box with a Raspberry Pi, a 5V power cord exit and a dome for finger gaps"
+              loading="lazy"
+            />
+          </figure>
+
+          <!-- SCAN SPOTS: 3D MODEL -->
+          <div class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/built26/scan-spot-model.jpg"
+              alt="Slicer screenshot of the Scan Badge Here cap: a dark square with a starburst holding the horseshoe M mark and raised Scan Badge Here lettering, split into three filament parts"
+              loading="lazy"
+              style="object-position: right center"
+            />
+          </div>
+          <div id="tile-built26-scanspots" class="b-tile bg-yellow span-col-2">
+            <span class="meta">Process · 3D Print</span>
+            <h2>Custom Scan Spots</h2>
+            <p>
+              A bare NFC reader is just a circuit board, so I modeled a cap for each one with the
+              event's horseshoe mark and a clear "Scan Badge Here." Each cap prints as three parts
+              in three colors: the body, the starburst and the lettering.
+            </p>
+            <p>The goal: no one should have to ask where to tap.</p>
+          </div>
+
+          <!-- RESULTS -->
+          <div id="tile-built26-results" class="b-tile bg-lime span-col-4">
+            <span class="meta">Results</span>
+            <div class="stat-row">
+              <div><div class="stat-num">216</div><p>personal stories</p></div>
+              <div><div class="stat-num">48</div><p>Toasty Tales plays in one night</p></div>
+              <div><div class="stat-num">79</div><p>completed profiles</p></div>
+              <div><div class="stat-num">21</div><p>Pour &amp; Pair taps</p></div>
+            </div>
+          </div>
+          <div
+            class="b-tile span-col-2"
+            style="background-color: #666666; color: #fff; --quote-color: var(--dark-teal); position: relative"
+          >
+            <div class="quote-icon top"></div>
+            <div class="quote-text">"It felt personal and engaging from the moment I arrived."</div>
+            <div class="quote-author">BUILT 2026 attendee</div>
+            <div class="quote-icon bottom"></div>
+          </div>
+          <div
+            class="b-tile bg-dark-teal span-col-2"
+            style="color: #fff; --quote-color: var(--lime); position: relative"
+          >
+            <div class="quote-icon top"></div>
+            <div class="quote-text">
+              "I loved the moments created to network. They were intentional but not forced."
+            </div>
+            <div class="quote-author">BUILT 2026 attendee</div>
+            <div class="quote-icon bottom"></div>
+          </div>
+
+          <!-- THE EVENT -->
+          <div class="b-tile img-tile span-col-2">
+            <img src="/assets/built26/keynote.jpg" alt="Stephanie Trunzo on the BUILT stage in front of the backlit MERGE Built sign" loading="lazy" />
+          </div>
+          <div
+            id="tile-built26-ceo-quote"
+            class="b-tile bg-orange span-col-2"
+            style="color: #fff; --quote-color: var(--maroon, #3b1413); position: relative"
+          >
+            <div class="quote-icon top"></div>
+            <div class="quote-text">
+              "Human connection can be strengthened through intelligent technology."
+            </div>
+            <div class="quote-author">Stephanie Trunzo, CEO, MERGE</div>
+            <div class="quote-icon bottom"></div>
+          </div>
+
+          <!-- DETAILS -->
+          <div class="b-tile img-tile span-col-1"><img src="/assets/built26/tm-horseshoes.jpg" alt="Gold chocolate horseshoes with the MERGE M, wrapped in cellophane and gold ribbon" loading="lazy" /></div>
+          <!-- Panel photo shows three speakers besides Stephanie: confirm with MERGE before publishing -->
+          <div class="b-tile img-tile span-col-1"><img src="/assets/built26/built-panel.jpg" alt="A BUILT panel discussion on stage, four speakers in white armchairs" loading="lazy" /></div>
+          <div class="b-tile img-tile span-col-1"><img src="/assets/built26/resort-horse.jpg" alt="A horse at the paddock fence at Salamander Resort on a clear autumn afternoon" loading="lazy" /></div>
+          <div class="b-tile img-tile span-col-1"><img src="/assets/built26/resort-fog.jpg" alt="Morning fog over the autumn trees and grounds at Salamander Resort" loading="lazy" /></div>
+
+          <div class="b-tile img-tile span-col-1"><img src="/assets/built26/tm-archetype-pins.jpg" alt="The framed set of six archetype pins" loading="lazy" /></div>
+          <div class="b-tile img-tile span-col-1"><img src="/assets/built26/tm-m-sign.jpg" alt="A teal MERGE M sign on a stake along an autumn path" loading="lazy" /></div>
+          <div class="b-tile img-tile span-col-1"><img src="/assets/built26/tm-fireside-blanket.jpg" alt="A folded Built blanket on a side table by the fire pit" loading="lazy" /></div>
+          <div class="b-tile img-tile span-col-1"><img src="/assets/built26/tm-flatlay.jpg" alt="Flat lay of the BUILT 26 kit: archetype pins, a gold horseshoe, a Built card and a MERGE card on a gray wool throw" loading="lazy" /></div>
+
+          <!-- GROUP -->
+          <div class="b-tile img-tile span-col-4 group-photo">
+            <img src="/assets/built26/tm-group.jpg" alt="The BUILT 2026 group on stage in front of the backlit MERGE Built sign" loading="lazy" />
+          </div>
+
+          <!-- CREDITS -->
+          <div id="tile-built26-credits" class="b-tile bg-white span-col-4">
+            <span class="meta">Credits</span>
+            <div class="credits-cols">
+              <div>
+                <h3>Scan Station Alpha</h3>
+                <ul class="list-clean">
+                  <li><strong>Creative Technologist (UX, software, hardware):</strong> Heather New</li>
+                  <li><strong>Graphic Design:</strong> Jeff Schroer</li>
+                  <li><strong>Copy Editing:</strong> Allison Martin</li>
+                </ul>
+              </div>
+              <div>
+                <h3>BUILT 2026</h3>
+                <ul class="list-clean">
+                  <li><strong>Host:</strong> Stephanie Trunzo, CEO, MERGE</li>
+                  <li><strong>Chief Marketing Officer:</strong> Paul Buranosky</li>
+                  <li><strong>Experience Director:</strong> George Bird</li>
+                  <li><strong>Project Management:</strong> Jessica Bonfig</li>
+                  <li><strong>Event Planning:</strong> Tricia Geris</li>
+                  <li><strong>Sr Tech Ops:</strong> Tyler Rogers</li>
+                  <li><strong>Event Tech Partner:</strong> Platinum XP</li>
+                  <li><strong>Videography:</strong> Chad McClure &amp; Jason Wickersheim</li>
+                  <li><strong>Event Photography:</strong> Taylor Mickal Photography</li>
+                </ul>
+              </div>
+            </div>
+            <p class="asset-disclosure">
+              Event photography by Taylor Mickal Photography. Photos, video and audio have
+              individual credits within the team listed above. For IP
+              and usage rights, email <a href="mailto:contact@heathernew.com">contact@heathernew.com</a>
+            </p>
+            <nav class="built-series" aria-label="BUILT series">
+              <a href="/work/generative-portrait-wall.html"><span>Year one · BUILT 2025</span>&larr; Generative Portrait Wall</a>
+              <a class="current" href="/work/built-26.html"><span>Year two · BUILT 2026</span>Scan Station Alpha</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+    <script type="module" src="/src/js/built26-donut.js"></script>
+    <script type="module">
+      // One button plays and pauses the story; it resets when the story ends.
+      const btn = document.querySelector('.story-play');
+      const audio = document.querySelector('.story-audio');
+      if (btn && audio) {
+        const label = btn.querySelector('.story-play-label');
+        const sync = (playing) => {
+          btn.setAttribute('aria-pressed', String(playing));
+          btn.classList.toggle('is-playing', playing);
+          label.textContent = playing ? 'Pause Story' : 'Play Story';
+        };
+        btn.addEventListener('click', () => (audio.paused ? audio.play() : audio.pause()));
+        audio.addEventListener('play', () => sync(true));
+        audio.addEventListener('pause', () => sync(false));
+        audio.addEventListener('ended', () => { audio.currentTime = 0; sync(false); });
+      }
+    </script>
+    <script type="module" src="../src/js/site-core.js" defer></script>
+  </body>
+</html>

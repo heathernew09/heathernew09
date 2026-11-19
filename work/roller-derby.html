@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Design x Derby, the rebrand, website, jerseys, and merch for ICT Roller Derby's 10-year anniversary, plus a hand-fabricated medal."
+    />
+    <title>Design x Derby, ICT Roller Derby Rebrand | Heather New</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <!-- Import GSAP for high-performance elevated motion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <link rel="stylesheet" href="/src/css/global.css" />
+    <style>
+      :root {
+        --bg-color: #f4f4f4;
+        --text-dark: #111111;
+        --grid-gap: 30px;
+        --shape-size: 35px;
+        --teal: #1bb1a5;
+        --dark-teal: #247b82;
+        --yellow: #f6b352;
+        --orange: #f66c0f;
+        --lime: #b2f81d;
+        --light-gray: #e0e0e0;
+        --mid-gray: #666666;
+        --derby-red: #a72218;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-dark);
+        font-family: 'Manrope', sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* --- HERO --- */
+      .hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+        min-height: 60vh;
+      }
+
+      .hero-title-block {
+        grid-column: 1;
+        background-color: var(--bg-color);
+        padding: 7vw 4vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      /* Sized to stay inside the left half: 13vw pushed the wordmark across
+         the page and squeezed the shapes into a sliver. The cap matches the
+         hero's 1800px limit. */
+      .hero-title-block h1 {
+        font-size: min(10.5vw, 185px);
+        line-height: 0.85;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        white-space: nowrap;
+      }
+
+      /* The wordmark stacks on two lines but is one heading. */
+      .wordmark-line {
+        display: block;
+      }
+
+      .hero-visual-block {
+        grid-column: 2;
+        background-color: var(--bg-color);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* --- PORTFOLIO GRID --- */
+      .portfolio-section {
+        padding: 4rem 2vw 8rem;
+        display: flex;
+        justify-content: center;
+      }
+
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(240px, auto);
+        width: 100%;
+        max-width: 1400px;
+        border-top: 1px solid #000;
+        border-left: 1px solid var(--text-dark);
+      }
+
+      .b-tile {
+        container-type: inline-size;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      /* Ensure non-link tiles do not have a pointer cursor */
+      div.b-tile:not(:has(a)) {
+        cursor: default;
+      }
+
+      .span-col-2 {
+        grid-column: span 2;
+      }
+      .span-col-3 {
+        grid-column: span 3;
+      }
+      .span-col-4 {
+        grid-column: span 4;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
+
+      .b-tile h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: -1px;
+      }
+
+      .b-tile h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+      }
+
+      .b-tile p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        font-weight: 400;
+      }
+
+      .b-tile .meta {
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+        display: inline-block;
+      }
+
+      .bg-black {
+        --tile-bg: #666666;
+        --tile-text: var(--lime);
+        background-color: var(--tile-bg);
+        color: var(--tile-text);
+      }
+
+      .img-tile {
+        padding: 0;
+        display: block;
+      }
+      .img-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      a.img-tile:hover img.img-tile:has(a):hover img {
+        transform: scale(1.05);
+      }
+
+      .video-tile {
+        padding: 0;
+        display: block;
+        overflow: hidden;
+        background-color: var(--text-dark);
+      }
+      .video-tile video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+      }
+
+      /* The tile itself is the link now, so the base a / a:hover colours would
+         recolour the whole cell. Tile anchors never take link colouring. */
+      a.b-tile,
+      a.b-tile:hover,
+      a.b-tile:focus-visible {
+        color: var(--tile-text, inherit);
+      }
+
+      /* Hover: nothing moves. The whole cell is the link, so it takes a pointer
+         cursor, and the tile's own link text underlines to show where it goes. */
+      a.b-tile,
+      a.b-tile * {
+        cursor: pointer;
+      }
+      a.b-tile:hover .arrow-link,
+      a.b-tile:hover .tile-link-text,
+      a.b-tile:focus-visible .arrow-link,
+      a.b-tile:focus-visible .tile-link-text {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
+      }
+      /* The arrow stays out of the underline: a parent's decoration does not
+         span an atomic inline, so inline-block lets the glyph sit clear of it. */
+      .arrow-link span.tile-link-text span {
+        display: inline-block;
+      }
+      a.b-tile:focus-visible {
+        outline: 3px solid var(--text-dark);
+        outline-offset: 3px;
+      }
+
+      .arrow-link {
+        /* inline-block, not inline-flex: a flex item cannot escape the
+           parent underline, an atomic inline can. */
+        display: inline-block;
+        margin-top: auto;
+        font-weight: 800;
+        font-size: 1.5rem;
+        text-decoration: none;
+        color: inherit;
+      }
+      .arrow-link span {
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+      .b-tile:hover .arrow-link span {
+        transform: translateX(10px);
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          height: auto;
+          min-height: 100vh;
+        }
+        .hero-title-block {
+          grid-column: 1;
+          padding: 8vw 4vw;
+          border-right: none;
+          border-bottom: 1px solid var(--text-dark);
+        }
+        .hero-title-block h1 {
+          font-size: 16vw;
+        }
+        .hero-visual-block {
+          grid-column: 1;
+          min-height: 50vh;
+        }
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 2;
+        }
+      }
+      @media (max-width: 768px) {
+        .bauhaus-grid {
+          grid-template-columns: 1fr;
+        }
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 1;
+        }
+        .span-row-2 {
+          grid-row: span 1;
+          min-height: 300px;
+        }
+      }
+      .skip-to-content {
+        display: none;
+      }
+
+      /* CSS to make the video responsive, fill space, and maintain 16:9 ratio */
+      .video-responsive-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio (9 / 16 = 0.5625) */
+        height: 0;
+        width: 100%; /* Fill the entire width of its parent (.b-tile) */
+        overflow: hidden;
+      }
+
+      .video-responsive-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Make the video content cover the entire container area, cropping if needed, without stretching */
+      }
+      .ict-logo-new {
+        max-width: 80%;
+        height: auto;
+      }
+    </style>
+
+    <link rel="canonical" href="https://heathernew.com/work/roller-derby.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Heather New" />
+    <meta property="og:url" content="https://heathernew.com/work/roller-derby.html" />
+    <meta property="og:title" content="Design x Derby, ICT Roller Derby Rebrand | Heather New" />
+    <meta
+      property="og:description"
+      content="Design x Derby, the rebrand, website, jerseys, and merch for ICT Roller Derby's 10-year anniversary, plus a hand-fabricated medal."
+    />
+    <meta property="og:image" content="https://heathernew.com/assets/heathernew-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Heather New, Creative Technologist. Portfolio at heathernew.com."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Design x Derby, ICT Roller Derby Rebrand | Heather New" />
+    <meta
+      name="twitter:description"
+      content="Design x Derby, the rebrand, website, jerseys, and merch for ICT Roller Derby's 10-year anniversary, plus a hand-fabricated medal."
+    />
+    <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
+  </head>
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <!--Nav Menu-->
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <main id="main-content">
+      <header class="hero">
+        <div class="hero-title-block">
+          <!-- One wordmark, one h1. The line break is presentational. -->
+          <h1>
+            <span class="wordmark-line">DESIGN</span><span class="wordmark-line">× DERBY</span>
+          </h1>
+        </div>
+        <div class="hero-visual-block">
+          <div class="derby-jam"></div>
+        </div>
+      </header>
+
+      <div class="portfolio-section">
+        <div class="bauhaus-grid">
+          <!-- Sweaty Heather smiling -->
+          <div id="tile-derby-heather-smiling" class="b-tile img-tile">
+            <img
+              src="/assets/ictrg/heat-her-up-roller-derby.png"
+              alt="Heather Heat Up Roller Derby"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- Row 1: Opening Statement -->
+          <div id="tile-derby-all-star" class="b-tile bg-dark-teal span-col-3">
+            <span class="meta" style="color: var(--lime)">ICT Roller Derby</span>
+            <h2 style="font-size: 5rem; letter-spacing: -2px; margin-top: 1rem">All Star</h2>
+            <h3 style="margin-top: 1.5rem; font-size: 1.1rem; font-weight: 700; opacity: 0.9">
+              MVP Jammer &bull; All Star Blocker &bull; Designer &amp; Marketing Committee
+            </h3>
+            <p
+              style="
+                margin-top: 1rem;
+                font-size: 1rem;
+                line-height: 1.6;
+                max-width: 60ch;
+                opacity: 0.85;
+              "
+            >
+              The league was celebrating 10 Years of ICT Roller Derby during my skating time. I
+              updated a 10 year old logo for legibility, accessibility and to market, amp merch and
+              really stir excitement for our premier Roller Derby League in Wichita Kansas.
+            </p>
+          </div>
+
+          <!-- Row 2: Output list (span row 2) + Logo Evolution + Poster tile -->
+          <div id="tile-derby-achievements" class="b-tile bg-yellow span-row-2">
+            <h3 style="margin-bottom: 1.5rem">Achievements</h3>
+            <ul style="list-style: none; line-height: 2; font-weight: 600; font-size: 1.1rem">
+              <li>Brand Refresh</li>
+              <li>Poster Campaigns</li>
+              <li>Jersey Design</li>
+              <li>Promo Videos</li>
+            </ul>
+          </div>
+
+          <div id="tile-derby-logo-evolution" class="b-tile span-col-2 bg-light-gray">
+            <div>
+              <span class="meta" style="color: var(--text-teal)">Brand Refresh</span>
+              <h2>Logo Evolution</h2>
+            </div>
+            <p style="margin-bottom: 0">
+              Honoring the league's history while cleaning up typography and modernizing the iconic
+              Rollergirl silhouette for maximum legibility on jerseys and merch.
+            </p>
+          </div>
+
+          <!-- Facebook cover / Bring the Heat poster -->
+          <div id="tile-derby-old-logo" class="b-tile img-tile">
+            <img src="/assets/ictrg/ictrg-old-logo.png" alt="Old ICTRG" class="img-responsive" />
+          </div>
+
+          <!-- Row 3 (completing the span-row-2 output block): Design Stack, 10 yrs, new logo -->
+          <div id="tile-derby-epic-medal-holding" class="b-tile img-tile">
+            <img
+              src="/assets/ictrg/epic-medal-heather-holding.png"
+              alt="EPIC"
+              class="img-responsive"
+            />
+          </div>
+
+          <div id="tile-derby-lap-time" class="b-tile bg-teal">
+            <h2 style="font-size: 4rem">27 lap time</h2>
+            <span class="meta">4 minutes 11 seconds</span>
+          </div>
+
+          <!-- Revised Logo -->
+          <div
+            id="tile-derby-revised-logo"
+            class="b-tile"
+            style="
+              background-color: #d51f30;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <img
+              src="/assets/ictrg/ict-roller-derby-logo-revised.png"
+              alt="ICT Roller Derby Revised Logo"
+              class="ict-logo-new"
+            />
+          </div>
+
+          <!-- Row 7: Website design + web dev at work -->
+          <div id="tile-derby-website-intro" class="b-tile bg-light-gray span-col-2">
+            <div>
+              <span class="meta">Digital Presence</span>
+              <h2>Website<br />Design</h2>
+            </div>
+            <p>
+              The digital home for the team. A fully responsive layout featuring team rosters, game
+              schedules, bout galleries, and a dynamic parallax scroll effect.
+            </p>
+          </div>
+
+          <!-- Website build screenshot -->
+          <div id="tile-derby-website-build" class="b-tile img-tile">
+            <img
+              src="/assets/ictrg/ict-roller-derby-website-build.png"
+              alt="ICT Roller Derby Website Build"
+              class="img-responsive"
+              style="object-fit: contain; background-color: var(--bg-color)"
+            />
+          </div>
+
+          <!-- Web developer at work -->
+          <div id="tile-derby-dev-work" class="b-tile img-tile">
+            <img
+              src="/assets/web-developer-at-work-min.png"
+              alt="Web Developer At Work"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- Row 8 & 9: Accolades (span row 2) + Video (span 2 col, span 2 row) + Promo + Video series labels -->
+          <div id="tile-derby-highlights" class="b-tile bg-dark-teal span-row-2">
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 2.2rem">
+              Team<br />Highlights
+            </h3>
+            <ul style="list-style: none; opacity: 0.9; line-height: 2; font-size: 1.1rem">
+              <li>Multiple MVP Awards</li>
+              <li>Epic Medal Creator</li>
+              <li>Marketing Lead</li>
+              <li>All Star Blocker</li>
+            </ul>
+          </div>
+
+          <!-- 16:9 Responsive Video -->
+          <div id="tile-derby-edu-film" class="b-tile video-tile span-col-2 span-row-2">
+            <h3
+              style="
+                line-height: 1.2;
+                color: var(--lime);
+                font-size: clamp(2.5rem, 4vw, 4rem);
+                padding: 3rem 2.5rem;
+                margin: 0;
+              "
+            >
+              Roller Derby Educational Film
+            </h3>
+            <div class="video-responsive-container">
+              <br />
+              <video controls>
+                <source src="/assets/ictrg/roller-derby-educational-film.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <div id="tile-derby-promo-header" class="b-tile bg-orange">
+            <span class="meta">Media</span>
+            <h2>Promo<br />Videos</h2>
+          </div>
+
+          <div id="tile-derby-pie-skater" class="b-tile bg-light-gray">
+            <h3 style="margin-top: auto; line-height: 1.3">Pie A Skater</h3>
+            <div class="video-responsive-container">
+              <video controls>
+                <source src="/assets/ictrg/ICT-roller-derby-pie-a-skater.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+
+          <!-- Jersey tile, black jersey with sleeves -->
+          <div id="tile-derby-jersey-intro" class="b-tile bg-orange span-col-2">
+            <span class="meta">Custom Apparel</span>
+            <h2>Jersey<br />Design</h2>
+            <p>
+              Performance meets personality. Bold red and black team jerseys featuring clean
+              typography, custom numbers, and the iconic Wichita Zia from the city flag, which is a
+              symbol for home.
+            </p>
+          </div>
+          <!-- Row 15: Jersey render  -->
+          <div id="tile-derby-season-pass" class="b-tile img-tile">
+            <img
+              src="/assets/ictrg/2016-season-pass.jpg"
+              alt="Season Pass"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- Black jersey with sleeves -->
+          <div
+            id="tile-derby-10-years-banner"
+            class="b-tile"
+            style="
+              padding: 0;
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: #fff;
+            "
+          >
+            <img
+              src="/assets/ictrg/10-years-of-Wichita-Roller-Derby-ICTRG-min.png"
+              alt="10 Years of Wichita Roller Derby ICTRG"
+              style="width: 100%; height: 100%; object-fit: contain"
+            />
+          </div>
+
+          <!-- Row 14 & 15: Giant MVP + 2×2 staccato grid -->
+          <div
+            id="tile-derby-jersey-render"
+            class="b-tile img-tile bg-yellow span-col-2 span-row-2"
+          >
+            <img
+              src="/assets/ictrg/ict-roller-derby-jersey-render.png"
+              class="img-responsive"
+              alt="ICT Jersey Render"
+            />
+          </div>
+
+          <!-- 10-year anniversary tee -->
+          <div id="tile-derby-anniversary-tee" class="b-tile img-tile bg-white">
+            <img
+              src="/assets/ictrg/10-year-anniversary-tee-ICTRollerGirls-min-549x600.png"
+              class="img-responsive"
+              alt="10 Year Anniversary Tee"
+            />
+          </div>
+
+          <!-- Roller Mouse mascot -->
+          <div id="tile-derby-rollermouse" class="b-tile img-tile bg-orange">
+            <img
+              src="/assets/ictrg/rollermouse.jpg"
+              alt="Roller Mouse Mascot"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- All-star team full bleed -->
+          <div id="tile-derby-team-all-stars" class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/ictrg/all-stars-ict-roller-derby.jpeg"
+              alt="ICT Roller Derby All Star Team"
+              class="img-responsive"
+            />
+          </div>
+
+          <div class="b-tile bg-white span-col-2" id="tile-derby-poster-campaigns">
+            <span class="meta">Visual Direction &amp; Execution</span>
+            <h3
+              style="
+                font-size: 2rem;
+                margin-bottom: 1rem;
+                font-weight: 800;
+                text-transform: uppercase;
+              "
+            >
+              Poster Campaigns
+            </h3>
+            <p style="font-size: 1.05rem; margin-bottom: 0">
+              3 Seasons, 3 Distinct Visual Styles. A collection blending action photography with
+              heavy typography to drive bout attendance and community hype.
+            </p>
+          </div>
+
+          <!-- Heat Her up -->
+          <div id="tile-derby-facebook-cover" class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/ictrg/heat-her-up-facebook-cover.jpg"
+              alt="Heather getting hit in roller derby action"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- Epic medal side by side -->
+          <div id="tile-derby-epic-side-by-side" class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/ictrg/epic-medal-side-by-side.png"
+              alt="Epic Medal Side by Side Creation"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- Row 10: MVP Awards + Epic Medal images -->
+          <div id="tile-derby-award-ceremony" class="b-tile bg-teal span-col-2">
+            <div>
+              <h2>Award Ceremony</h2>
+            </div>
+            <p>
+              I wanted to recognized exceptional dedication to the league by Dogpile. She started
+              with the league in 2006, she became a welcoming face to newbie skaters. I designed and
+              crafted an oversized "Epic Medal" for teammate to resemble her loyalty. It was made
+              out of carved, cut and layered plywood, copper for the ring, and Jo "Chewblocka" sewed
+              the giant ribbon using a satin vinyl. I applied layers of paints, metallic glitters
+              and shadows.
+            </p>
+          </div>
+
+          <!-- DP holding the epic medal -->
+          <div id="tile-derby-dogpile-medal" class="b-tile img-tile bg-yellow">
+            <img
+              src="/assets/ictrg/epic-medal-dogpile.png"
+              alt="Dogpile wearing the Epic Medal"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- Epic medal build step 0 -->
+          <div id="tile-derby-medal-step-0" class="b-tile img-tile">
+            <img
+              src="/assets/ictrg/epic-medal-0.png"
+              alt="Epic Medal Build Step 1"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- Epic medal build step 1 -->
+          <div id="tile-derby-medal-step-1" class="b-tile img-tile bg-mid-gray">
+            <img
+              src="/assets/ictrg/epic-medal-1.png"
+              alt="Epic Medal Build Step 2"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- Row 11: Epic medal build process (span 2 col) + Dogpile epic medal image + medal 0 -->
+          <div
+            id="tile-derby-medal-build-text"
+            class="b-tile span-col-1"
+            style="justify-content: center; background-color: var(--text-dark); color: var(--lime)"
+          >
+            <span class="meta">Build Process</span>
+            <h2 style="font-size: 3.5rem; letter-spacing: -2px; margin-top: 1rem">
+              Epic<br />Medal
+            </h2>
+            <p style="margin-top: 1rem">
+              Fabricated entirely by hand for teammate Dogpile, an oversized custom award
+              celebrating an unforgettable season.
+            </p>
+          </div>
+
+          <!-- Row 13: Full panoramic love you image -->
+          <div
+            id="tile-derby-panoramic-love"
+            class="b-tile img-tile span-col-4"
+            style="min-height: 450px"
+          >
+            <img
+              src="/assets/ictrg/heat-love-you.jpg"
+              alt="Heather love you, Team affection"
+              class="img-responsive"
+            />
+          </div>
+
+          <!-- Row 16: Footer area -->
+          <a
+            href="#main-content"
+            class="b-tile bg-lime"
+            id="tile-derby-back-top"
+            style="text-decoration: none"
+          >
+            <div
+              style="
+                width: 80px;
+                height: 80px;
+                border-radius: 50% 0 50% 50%;
+                background-color: var(--text-dark);
+                margin-bottom: 2rem;
+              "
+            ></div>
+            <span class="arrow-link" style="margin-top: auto">Back to Top <span>↑</span></span>
+          </a>
+
+          <div id="tile-derby-connect" class="b-tile bg-dark-teal span-col-3">
+            <span class="meta" style="color: var(--lime)">Let's Connect</span>
+            <h2 style="font-size: 4rem; letter-spacing: -2px; margin-top: 1rem">
+              See You On The Track.
+            </h2>
+            <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap">
+              <a
+                href="mailto:contact@heathernew.com"
+                target="_blank"
+                rel="noopener"
+                class="arrow-link"
+                style="color: var(--lime); font-size: 1.2rem"
+                >Email Me <span>→</span></a
+              >
+              <a
+                href="https://linkedin.com/in/heathernew"
+                target="_blank"
+                rel="noopener"
+                class="arrow-link"
+                style="color: var(--yellow); font-size: 1.2rem"
+                >LinkedIn <span>→</span></a
+              >
+              <a
+                href="https://github.com/heathernew"
+                target="_blank"
+                rel="noopener"
+                class="arrow-link"
+                style="color: #fff; font-size: 1.2rem"
+                >GitHub <span>→</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Include Footer -->
+    <div id="footer-trigger">
+      <load src="../src/partials/footer.html" />
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="/src/js/site-core.js"></script>
+    <script type="module" src="/src/js/derby-jam.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </body>
+</html>

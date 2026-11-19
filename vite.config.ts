@@ -10,14 +10,15 @@ import { globSync } from 'glob';
 // them out of the repo; this keeps them out of dist/, which is a separate thing.
 const NO_SHIP = [/-pre-bauhaus\.html$/, /^pages\/template\.html$/];
 
-const pages = globSync('pages/**/*.html').reduce((acc, file) => {
-  // Create a relative path from root to the file
+// URL structure: case studies in /work/, Field Notes and its projects in
+// /field-notes/, presentation tools in /tools/, core pages at the root.
+// pages/ now only holds drafts and scaffolds, which never ship.
+const ROOT_PAGES = ['about.html', 'contact.html', 'privacy.html'];
+const pages = [...globSync('{work,field-notes,tools}/**/*.html'), ...ROOT_PAGES].reduce((acc, file) => {
   const relativePath = path.relative('.', file);
-  // Skip index.html and 404.html as they are handled or not needed in pages
-  if (relativePath === 'index.html' || relativePath === '404.html') return acc;
   if (NO_SHIP.some((re) => re.test(relativePath))) return acc;
 
-  // Use the relative path as the key (e.g., 'pages/about')
+  // Use the relative path as the key (e.g., 'work/parasite-hunter')
   const name = relativePath.replace(/\.html$/, '');
   acc[name] = path.resolve(__dirname, file);
   return acc;
@@ -113,7 +114,7 @@ const PERSON_SCHEMA = {
     },
   ],
 };
-const SCHEMA_PAGES = ['/index.html', '/pages/about.html'];
+const SCHEMA_PAGES = ['/index.html', '/about.html'];
 
 // sitemap.xml is written from the same page list the build uses, so a new
 // page appears in it automatically. Pages marked noindex are left out, and
@@ -126,7 +127,8 @@ function buildSitemap() {
     )
     .sort()
     .map((file) => {
-      const loc = file === 'index.html' ? `${SITE_URL}/` : `${SITE_URL}/${file}`;
+      // A folder's index.html is listed by its folder URL (field-notes/index.html -> /field-notes/).
+      const loc = `${SITE_URL}/${file.replace(/(^|\/)index\.html$/, '$1')}`;
       let lastmod = '';
       try {
         const date = execSync(`git log -1 --format=%cs -- "${file}"`, { encoding: 'utf8' }).trim();

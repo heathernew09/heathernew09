@@ -41,7 +41,7 @@
 
   window.markNavActiveLinks = function () {
     // 1. Get current path, lowercased, no extension
-    // Example: "/root/pages/parasite-hunter.html" -> "/root/pages/parasite-hunter"
+    // Example: "/work/parasite-hunter.html" -> "/work/parasite-hunter"
     const currentPath = window.location.pathname
       .replace(/\/$/, '')
       .replace('.html', '')
@@ -51,11 +51,11 @@
 
     navLinks.forEach((link) => {
       // 2. Get the link's href
-      // Example: "/pages/parasite-hunter.html"
+      // Example: "/work/parasite-hunter.html"
       const href = link.getAttribute('href');
 
       // 3. Clean the href
-      // "/pages/parasite-hunter"
+      // "/work/parasite-hunter"
       const normLink = href.replace(/\/$/, '').replace('.html', '').toLowerCase();
 
       // 4. CHECK: Is this the Home link?
@@ -70,7 +70,7 @@
         }
       }
       // 5. CHECK: All other pages
-      // Does "/root/pages/parasite-hunter" end with "/pages/parasite-hunter"? -> YES.
+      // Does "/work/parasite-hunter" end with "/work/parasite-hunter"? -> YES.
       else if (currentPath.endsWith(normLink)) {
         link.classList.add('active');
       } else {

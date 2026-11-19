@@ -245,7 +245,7 @@
     // SIMPLIFIED LOGIC:
     // Only go up a level if we are explicitly in a known subfolder.
     // This prevents breaking other root-level HTML files (like about.html).
-    if (pathname.includes('/pages/') || pathname.includes('/partials/')) {
+    if (/\/(work|field-notes|tools|partials)\//.test(pathname)) {
       pathPrefix = '../';
     } else {
       pathPrefix = './';

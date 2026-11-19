@@ -13,7 +13,7 @@
     "tech": ["WebXR", "Three.js", "Game Design"],
     "cta": {
       "text": "View Project",
-      "link": "/pages/parasite-hunter.html"
+      "link": "/work/parasite-hunter.html"
     },
     "className": "bg-white"
   },
@@ -32,7 +32,7 @@
     "tech": ["Figma", "Design Systems", "Brand Ops"],
     "cta": {
       "text": "View Project",
-      "link": "/pages/built-different.html"
+      "link": "/work/built-different.html"
     },
     "className": "merge-preview bg-light"
   },
@@ -50,7 +50,7 @@
     "tech": ["SVG", "Vanilla JS", "GSAP"],
     "cta": {
       "text": "View Project",
-      "link": "/pages/decision-tree.html"
+      "link": "/work/decision-tree.html"
     },
     "className": "bg-white"
   },
@@ -70,7 +70,7 @@
     "tech": ["HTML5 Canvas", "Hardware API", "Physics"],
     "cta": {
       "text": "View Project",
-      "link": "/pages/hotspot.html"
+      "link": "/work/hotspot.html"
     },
     "className": "bg-light"
   }

@@ -1,0 +1,1194 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Parasite Hunter, a WebAR game for Elanco Credelio Quattro at VMX. Creative direction and UX/UI product design, leading a team of 3D artists and development partners."
+    />
+    <meta http-equiv="cache-control" content="no-store, max-age=0" />
+    <title>Parasite Hunter WebAR Game for Elanco | Heather New</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="HeatherNew" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link rel="stylesheet" href="../src/css/global.css" />
+    <link rel="stylesheet" href="../src/css/parasite-page.css" />
+    <link rel="stylesheet" href="../src/css/parasite-3d.css" />
+    <link rel="stylesheet" href="../src/css/hero-para.css" />
+    <style>
+      :root {
+        --teal: #1bb1a5;
+        --dark-teal: #247b82;
+        --yellow: #f6b352;
+        --orange: #f66c0f;
+        --lime: #b2f81d;
+        --light-gray: #e0e0e0;
+        --mid-gray: #666666;
+        --text-dark: #111111;
+        --bg-color: #f4f4f4;
+      }
+
+      body {
+        background-color: var(--bg-color);
+      }
+
+      .hero-3d {
+        position: relative;
+        height: 800px;
+        min-height: 800px;
+        width: 100%;
+        max-width: 1800px;
+        margin: 0 auto;
+        overflow: visible;
+      }
+
+      div#parasite-hunter-logo {
+        position: absolute;
+        display: block;
+        top: 50% !important;
+        left: 5% !important;
+        z-index: 100;
+        transform: translateY(-50%) scale(0.5);
+        transform-origin: top left;
+      }
+
+      div#parasite-hunter-logo img {
+        width: 500px;
+      }
+
+      #parasite-counter-ui {
+        position: absolute;
+        top: 310px;
+        left: 150px;
+        z-index: 100;
+        background: #666666d9;
+        padding: 10px 20px;
+        border: 10px solid var(--accent-lime);
+        pointer-events: none;
+        font-family: Manrope, sans-serif;
+        border-radius: 22px;
+        text-align: center;
+        color: var(--white);
+      }
+
+      .count-label {
+        display: block;
+        font-size: 1.7rem;
+        letter-spacing: 0.1em;
+        margin-bottom: 2px;
+      }
+
+      #squish-count {
+        font-size: 7rem;
+        font-weight: 800;
+        color: var(--accent-lime);
+        text-shadow: 0 0 10px rgba(191, 255, 0, 0.5);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .portfolio-section {
+        padding: 0 0 8rem;
+        background-color: var(--bg-color);
+        display: flex;
+        justify-content: center;
+      }
+
+      .bauhaus-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(240px, auto);
+        width: 100%;
+        max-width: 1400px;
+        border-top: 1px solid #000;
+        border-left: 1px solid var(--text-dark);
+        background: var(--bg-color);
+      }
+
+      .b-tile {
+        container-type: inline-size;
+        border-right: 1px solid var(--text-dark);
+        border-bottom: 1px solid var(--text-dark);
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease;
+      }
+
+      /* The tile itself is the link now, so the base a / a:hover colours would
+         recolour the whole cell. Tile anchors never take link colouring. */
+      a.b-tile,
+      a.b-tile:hover,
+      a.b-tile:focus-visible {
+        color: var(--tile-text, inherit);
+      }
+
+      /* Hover: nothing moves. The whole cell is the link, so it takes a pointer
+         cursor, and the tile's own link text underlines to show where it goes. */
+      a.b-tile,
+      a.b-tile * {
+        cursor: pointer;
+      }
+      a.b-tile:hover .arrow-link,
+      a.b-tile:hover .tile-link-text,
+      a.b-tile:focus-visible .arrow-link,
+      a.b-tile:focus-visible .tile-link-text {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
+      }
+      /* The arrow stays out of the underline: a parent's decoration does not
+         span an atomic inline, so inline-block lets the glyph sit clear of it. */
+      .arrow-link span.tile-link-text span {
+        display: inline-block;
+      }
+      a.b-tile:focus-visible {
+        outline: 3px solid var(--text-dark);
+        outline-offset: 3px;
+      }
+
+      .b-tile h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+      }
+
+      .b-tile h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .b-tile p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .b-tile .meta {
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 0.5rem;
+        display: block;
+      }
+
+      .span-col-2 {
+        grid-column: span 2;
+      }
+      .span-col-3 {
+        grid-column: span 3;
+      }
+      .span-col-4 {
+        grid-column: span 4;
+      }
+      .span-row-2 {
+        grid-row: span 2;
+      }
+
+      .img-tile {
+        padding: 0;
+        display: block;
+      }
+      .img-tile img.img-tile video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      a.img-tile:hover img.img-tile:has(a):hover img {
+        transform: scale(1.04);
+      }
+
+      .char-tile {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+      }
+      .char-tile img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: contain;
+      }
+
+      .contain-tile {
+        padding: 1.5rem;
+        display: block;
+      }
+      .contain-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .stat-num {
+        font-size: clamp(3rem, 6vw, 5rem);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -2px;
+        margin-bottom: 0.5rem;
+      }
+
+      .list-clean {
+        list-style: none;
+        line-height: 2;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 900px) {
+        .bauhaus-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 2;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .bauhaus-grid {
+          grid-template-columns: 1fr;
+        }
+        .span-col-2,
+        .span-col-3,
+        .span-col-4 {
+          grid-column: span 1;
+        }
+        .span-row-2 {
+          grid-row: span 1;
+        }
+      }
+
+      .btn-accessible {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        align-self: flex-start;
+        padding: 12px 24px;
+        border: 2px solid var(--white);
+        color: var(--white);
+        background: transparent;
+        border-radius: 30px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-family: 'Manrope', sans-serif;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .btn-accessible:hover {
+        background: var(--lime);
+        border-color: var(--lime);
+        color: var(--text-dark);
+      }
+
+      /* Hero controls override */
+      .parasite-controls-container {
+        position: absolute;
+        bottom: 40px !important;
+        right: 40px !important;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        z-index: 100;
+      }
+      .parasite-controls-container .audio-control {
+        position: static;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        opacity: 0.7;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+        background: rgba(0, 0, 0, 0.5);
+      }
+      .parasite-controls-container .audio-control:hover {
+        opacity: 1;
+        border-color: var(--accent-lime) !important;
+        color: var(--accent-lime) !important;
+        background: rgba(0, 0, 0, 0.7);
+      }
+      .parasite-controls-container .audio-control svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+      }
+      .parasite-controls-container .reset-btn {
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
+      .parasite-controls-container .reset-btn:hover {
+        border-color: #ff4444 !important;
+        color: #ff4444 !important;
+        background: rgba(0, 0, 0, 0.7) !important;
+      }
+
+      /* Mobile: the 3D hero is a fixed 800px and its canvas swallows vertical
+         swipes, which is why the page felt stuck. pan-y hands scrolling back
+         to the page, and the hero shrinks so there is less of it to cross. */
+      @media (max-width: 768px) {
+        .hero-3d {
+          height: 60vh;
+          min-height: 420px;
+        }
+      }
+      .hero-3d,
+      .hero-3d canvas {
+        touch-action: pan-y;
+      }
+
+      /* Bauhaus scrollbar: square, hard edges, lime on ink. Desktop browsers
+         show it; phones keep their overlay bars, where pan-y does the work. */
+      html {
+        scrollbar-color: var(--lime) var(--text-dark);
+      }
+      ::-webkit-scrollbar {
+        width: 14px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--text-dark);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--lime);
+        border: 3px solid var(--text-dark);
+        border-radius: 0;
+      }
+    </style>
+
+    <link rel="canonical" href="https://heathernew.com/work/parasite-hunter.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Heather New" />
+    <meta property="og:url" content="https://heathernew.com/work/parasite-hunter.html" />
+    <meta property="og:title" content="Parasite Hunter WebAR Game for Elanco | Heather New" />
+    <meta
+      property="og:description"
+      content="Parasite Hunter, a WebAR game for Elanco Credelio Quattro at VMX. Creative direction and UX/UI product design, leading a team of 3D artists and development partners."
+    />
+    <meta property="og:image" content="https://heathernew.com/assets/heathernew-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Heather New, Creative Technologist. Portfolio at heathernew.com."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Parasite Hunter WebAR Game for Elanco | Heather New" />
+    <meta
+      name="twitter:description"
+      content="Parasite Hunter, a WebAR game for Elanco Credelio Quattro at VMX. Creative direction and UX/UI product design, leading a team of 3D artists and development partners."
+    />
+    <meta name="twitter:image" content="https://heathernew.com/assets/heathernew-og.png" />
+  </head>
+  <body id="parasite-page" class="page-template">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <!--Nav Menu-->
+    <header class="site-header">
+      <div class="header-content"><load src="../src/partials/nav.html" /></div>
+    </header>
+
+    <main id="main-content">
+      <section>
+        <!-- 3D Interactive Container -->
+        <div class="hero-3d">
+          <div id="section-parasite-hunter"><load src="../src/partials/parasite-3d.html" /></div>
+        </div>
+      </section>
+
+      <!-- BAUHAUS GRID -->
+      <div class="portfolio-section">
+        <div class="bauhaus-grid">
+          <!-- ROW 1: INTRO + PHONE MOCK -->
+          <div
+            id="tile-para-intro"
+            class="b-tile span-col-2 bg-dark-teal"
+            style="justify-content: center; gap: 2.5rem"
+          >
+            <div>
+              <span class="meta" style="color: var(--lime)"
+                >VMX 2026 / WVC 2026 / Elanco / MERGE PostPop</span
+              >
+              <h1 style="margin-top: 1rem; font-size: 3rem">Parasite Hunter</h1>
+              <p style="color: var(--light-gray); font-size: 1.2rem; max-width: 600px">
+                An immersive WebAR game built on 8th Wall. Hunt parasites in augmented reality,
+                learn about pet health, and explore interactive 3D experiences, all from your mobile
+                browser.
+              </p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1.5rem">
+              <button id="demoBtn" class="btn-accessible">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+                Play Demo
+              </button>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: 1fr 1fr;
+                  gap: 1.5rem 3rem;
+                  font-size: 0.9rem;
+                "
+              >
+                <div>
+                  <div style="text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700">
+                    Technology
+                  </div>
+                  <div style="font-weight: 700">WebAR</div>
+                </div>
+                <div>
+                  <div style="text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700">
+                    Platform
+                  </div>
+                  <div style="font-weight: 700">8th Wall</div>
+                </div>
+                <div>
+                  <div style="text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700">
+                    Device
+                  </div>
+                  <div style="font-weight: 700">Mobile First</div>
+                </div>
+                <div>
+                  <div style="text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700">
+                    Role
+                  </div>
+                  <div style="font-weight: 700">Creative Technologist</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            id="tile-para-game-preview"
+            class="b-tile span-col-2 bg-mid-gray"
+            style="
+              padding: 2rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              min-height: 600px;
+              overflow: visible;
+            "
+          >
+            <div class="phone-mock">
+              <div id="phone-mock-container" class="phone-mock-container">
+                <div class="phone-mock-frame">
+                  <div class="dynamic-island"></div>
+                  <div class="screen-container">
+                    <div id="phone-mock-overlay" class="play-overlay"></div>
+                    <video
+                      id="phone-mock-video"
+                      class="game-video"
+                      src="/assets/para/parasite-hunter-insta-shawnee-dragon.mp4"
+                      loop
+                      muted
+                      playsinline
+                    ></video>
+                    <div id="tapContainer"></div>
+                  </div>
+                  <div class="phone-button phone-button-right-1"></div>
+                  <div class="phone-button phone-button-right-2"></div>
+                  <div class="phone-button phone-button-right-3"></div>
+                  <div class="phone-button phone-button-left"></div>
+                </div>
+                <div class="reflection"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROW 2: MAP + CHALLENGE -->
+          <div id="tile-para-map" class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/para/game-play-map-tradeshow-floor.png"
+              alt="Map of tradeshow floor showing parasite hunt zones"
+            />
+          </div>
+          <div id="tile-para-challenge" class="b-tile bg-orange span-col-2">
+            <span class="meta">The Challenge</span>
+            <h2>Go<br />Beyond.</h2>
+            <ul style="list-style: none; line-height: 2; font-size: 0.95rem; margin-top: auto">
+              <li>&#8594; Drive qualified traffic from across the venue</li>
+              <li>&#8594; Educate through active participation</li>
+              <li>&#8594; Create memorable brand moments</li>
+              <li>&#8594; Generate repeat engagement across multiple days</li>
+            </ul>
+          </div>
+
+          <!-- ROW 3: CREATIVE DIRECTION HEADER -->
+          <div id="tile-para-process-header" class="b-tile bg-teal span-col-2">
+            <span class="meta" style="color: var(--text-dark)">Creative Direction</span>
+            <h2>From Storyboard to Spatial Reality</h2>
+            <p>
+              The characters for the parasite hunter game were built and created for the product
+              launch of Credelio Quattro in 2024. We had a story to tell, after building it into an
+              illustration we turned it into a game.
+            </p>
+          </div>
+
+          <!-- ROW 3b: MM+M AWARDS RECOGNITION -->
+          <a
+            id="tile-para-mmm-finalist"
+            href="https://www.mmm-online.com/news/mmm-unveils-2026-awards-finalists/"
+            target="_blank"
+            rel="noopener"
+            class="b-tile bg-dark-teal span-col-2"
+            style="text-decoration: none"
+          >
+            <span class="meta" style="color: var(--lime)">Recognition</span>
+            <h2>2026 MM&#43;M Awards Finalist</h2>
+            <p>
+              Named a finalist for
+              <strong>Use of Immersive Technology and Spatial Computing</strong>, alongside Elanco
+              Animal Health, MERGE, Post Pop and Hamilton Exhibits. The category recognises work
+              that puts spatial computing to a real job, which is exactly what the booth needed it
+              to do.
+            </p>
+            <span class="arrow-link" style="font-size: 1.2rem"
+              ><span>See the finalist list</span> <span>&#8594;</span></span
+            >
+          </a>
+
+          <!-- ROW 4: NARRATIVE VIDEO FULL WIDTH -->
+          <div
+            id="tile-para-flipbook"
+            class="b-tile video-tile bg-light-gray span-col-3"
+            style="padding: 2.5rem; justify-content: center; align-items: center"
+          >
+            <div style="max-width: 800px; width: 100%">
+              <span class="meta" style="color: var(--dark-teal)">The Narrative</span>
+              <video
+                autoplay
+                loop
+                muted
+                playsinline
+                style="
+                  width: 100%;
+                  height: auto;
+                  border-radius: 8px;
+                  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+                "
+              >
+                <source src="/assets/para/comic-flipbook.mp4" type="video/mp4" />
+              </video>
+              <p
+                style="
+                  margin-top: 1.5rem;
+                  font-size: 1.1rem;
+                  font-weight: 600;
+                  color: var(--dark-teal);
+                  text-align: center;
+                "
+              >
+                Comic characters got a new life through movement.
+              </p>
+            </div>
+          </div>
+
+          <!-- ROW 5: EVOLUTION IMAGES & DESIGN DIRECTION (4 COLS) -->
+          <div id="tile-para-comic-img" class="b-tile img-tile">
+            <img
+              src="/assets/para/2025-innovation-lab-interactive-comic.jpg"
+              alt="The Power of Four comic book"
+            />
+          </div>
+          <div id="tile-para-pyra-mask" class="b-tile img-tile">
+            <img
+              src="/assets/para/pyra-mask-selfie-mock.png"
+              alt="AR face mask experiment resembling Pyra"
+            />
+          </div>
+          <div
+            id="tile-para-design-direction"
+            class="b-tile span-col-2"
+            style="background-color: #e8f5f7; color: var(--text-teal)"
+          >
+            <span class="meta">Fun Experiments</span>
+            <h2>Experiment to Direction</h2>
+            <p>
+              During the discovery phase of the project, I ran many experiments testing the
+              technology and building requirements for our project. Here are a couple fun examples.
+              I concepted out what a face filter might look like, with different character masks. I
+              also created AR cards, similar style to a Pokemon card with a QR code that comes to
+              live visually. I gleamed valuable insight from each experiment in how to bring our
+              product story to life.
+            </p>
+          </div>
+
+          <!-- ROW 6: FLOATING PYRA -->
+          <div
+            id="tile-para-pyra-optimization"
+            class="b-tile bg-white"
+            style="min-height: 400px; display: flex; align-items: center; justify-content: center"
+          >
+            <img
+              src="/assets/para/floating-pyra.gif"
+              alt="Pyra spinning in 3D over an AR card"
+              style="width: 100%; height: auto; object-fit: contain"
+            />
+          </div>
+
+          <!-- ROW 6: CHARACTERS HEADER -->
+          <div
+            id="tile-para-characters-header"
+            class="b-tile bg-yellow span-col-4"
+            style="justify-content: center"
+          >
+            <span class="meta">Meet the Characters</span>
+            <div
+              style="
+                font-size: clamp(1.1rem, 2.2vw, 1.8rem);
+                font-weight: 800;
+                line-height: 1.4;
+                max-width: 1000px;
+              "
+            >
+              Each active ingredient is a character. Complex pharmacological modes of action
+              translated into distinct traits, animations, and a reason to keep hunting.
+            </div>
+          </div>
+
+          <!-- ROW 7: 4 CHARACTERS -->
+          <div id="tile-para-char-loti" class="b-tile char-tile bg-white">
+            <img src="/assets/para/loti.png" alt="Loti character" />
+            <div>
+              <h3 style="color: var(--dark-teal)">Loti</h3>
+              <p style="font-size: 0.9rem">
+                <strong>Fast &amp; Agile.</strong> Optimized for high-velocity captures of fleas and
+                ticks. The tactical lead.
+              </p>
+            </div>
+          </div>
+          <div id="tile-para-char-moxi" class="b-tile char-tile bg-white">
+            <img src="/assets/para/moxi.png" alt="Moxi character" />
+            <div>
+              <h3 style="color: var(--dark-teal)">Moxi</h3>
+              <p style="font-size: 0.9rem">
+                <strong>The Guardian.</strong> Specialized in internal defense against
+                life-threatening heartworms.
+              </p>
+            </div>
+          </div>
+          <div id="tile-para-char-pyra" class="b-tile char-tile bg-white">
+            <img src="/assets/para/pyra.png" alt="Pyra character" />
+            <div>
+              <h3 style="color: var(--dark-teal)">Pyra</h3>
+              <p style="font-size: 0.9rem">
+                <strong>The Striker.</strong> Engineered for precision removal of roundworms and
+                hookworms.
+              </p>
+            </div>
+          </div>
+          <div id="tile-para-char-prazi" class="b-tile char-tile bg-white">
+            <img src="/assets/para/prazi.png" alt="Prazi character" />
+            <div>
+              <h3 style="color: var(--dark-teal)">Prazi</h3>
+              <p style="font-size: 0.9rem">
+                <strong>The Specialist.</strong> The final line of defense against segmented
+                tapeworms.
+              </p>
+            </div>
+          </div>
+
+          <!-- STEP TILES, ROW A: Main content -->
+          <div
+            id="tile-para-step-scan"
+            class="b-tile bg-teal"
+            style="justify-content: flex-start; gap: 1rem"
+          >
+            <span class="meta" style="color: var(--text-dark)">01 / Scan</span>
+            <h3>No App Download</h3>
+            <p>
+              QR code launches directly in mobile browser. Zero friction entry. 8th Wall powers the
+              AR natively.
+            </p>
+          </div>
+          <div id="tile-para-step-hunt-img" class="b-tile contain-tile bg-white">
+            <img src="/assets/para/hunt.png" alt="Hunt gameplay screen" />
+          </div>
+          <div id="tile-para-step-learn-img" class="b-tile contain-tile bg-white">
+            <img src="/assets/para/learn.png" alt="Learn gameplay screen" />
+          </div>
+          <div id="tile-para-step-win-img" class="b-tile contain-tile bg-white">
+            <img src="/assets/para/win.png" alt="Win screen" />
+          </div>
+
+          <!-- STEP TILES, ROW B: Labels -->
+          <div id="tile-para-label-scan" class="b-tile bg-dark-teal" style="padding: 1.5rem 2.5rem">
+            <span class="meta" style="color: var(--lime)">01 / Scan</span>
+            <p style="font-size: 0.9rem; color: var(--light-gray)">
+              No app. Just a QR code and you're in.
+            </p>
+          </div>
+          <div
+            id="tile-para-label-hunt"
+            class="b-tile bg-light-gray"
+            style="padding: 1.5rem 2.5rem"
+          >
+            <span class="meta" style="color: var(--dark-teal)">02 / Hunt</span>
+            <p style="font-size: 0.9rem; font-weight: 600">Tap parasites. Earn points.</p>
+          </div>
+          <div
+            id="tile-para-label-learn"
+            class="b-tile bg-light-gray"
+            style="padding: 1.5rem 2.5rem"
+          >
+            <span class="meta" style="color: var(--dark-teal)">03 / Learn</span>
+            <p style="font-size: 0.9rem; font-weight: 600">
+              Tap the icon. Discover how the med works.
+            </p>
+          </div>
+          <div id="tile-para-label-win" class="b-tile bg-lime" style="padding: 1.5rem 2.5rem">
+            <span class="meta">04 / Win</span>
+            <p style="font-size: 0.9rem; font-weight: 700">
+              2,100+ sign-ups. One player caught 6,000.
+            </p>
+          </div>
+
+          <!-- MECHANICS HEADER -->
+          <div id="tile-para-gameplay-header" class="b-tile span-col-3 bg-dark-gray">
+            <span class="meta" style="color: var(--white)">UX / Game Flow / UI</span>
+            <h2 style="color: var(--white)">Mechanics as Messaging</h2>
+            <p style="color: var(--white); max-width: 700px">
+              The educational game loop reinforces product benefits through play. Every interaction
+              is a brand touchpoint.
+            </p>
+          </div>
+          <div
+            id="tile-para-quote-credelio"
+            class="b-tile bg-orange"
+            style="justify-content: center"
+          >
+            <div style="font-size: 0.95rem; font-weight: 700; line-height: 1.4">
+              "Credelio Quattro is the only pharmaceutical that treats all 6 parasites, so it makes
+              sense you have to visit the booth to complete the game and claim your prize."
+            </div>
+          </div>
+
+          <!-- ROW 12: TECHNICAL + PEOPLE PHOTO -->
+          <div id="tile-para-team-tech" class="b-tile bg-light-gray span-col-2">
+            <span class="meta" style="color: var(--dark-teal)">Team &amp; Technology</span>
+            <h2>Refining the Experience</h2>
+            <p>
+              George Bird had a grand vision to extend our reach! Translating 2D comic aesthetic
+              into performant 3D WebAR required rigorous oversight. As
+              <strong>Product Designer for UX and UI</strong>, I explored the capabilities of the
+              tech and identified different friction points while working through the various stages
+              of communicating the flow and plan.
+            </p>
+            <ul style="list-style: none; line-height: 2; font-size: 0.9rem; margin-top: 1rem">
+              <li>
+                <strong>Team Diligence:</strong> Our team was very diligent about how the technology
+                interacts in the space.
+              </li>
+              <li>
+                <strong>Input Sensitivity:</strong> Raycasting adjustments for snappy parasite
+                captures
+              </li>
+              <li>
+                <strong>Asset Performance:</strong> 3D model optimization with video team and vendor
+              </li>
+            </ul>
+            <p style="margin-top: 1.5rem; font-size: 0.95rem; font-style: italic">
+              All of the edits were done before we hit the show floor. A 6-month sprint. Long days,
+              technical hurdles, and what leadership called Elanco’s
+              <strong>"best VMX ever."</strong>
+            </p>
+          </div>
+          <div id="tile-para-booth-crowd" class="b-tile img-tile span-col-2">
+            <img
+              src="/assets/para/people-gathering-booth.png"
+              alt="Crowd gathering at the Parasite Hunter booth"
+            />
+          </div>
+
+          <!-- ROW 13B: EVENT PHOTOS, WVC VEGAS 2026 -->
+          <div id="tile-para-event-columns" class="b-tile img-tile">
+            <img src="/assets/para/para-columns.JPG" alt="Parasite Hunter columns at the event" />
+          </div>
+          <div id="tile-para-event-winners" class="b-tile img-tile">
+            <img
+              src="/assets/para/parasite-hunter-winners.png"
+              alt="Parasite Hunter leaderboard winners"
+            />
+          </div>
+          <div id="tile-para-event-playing" class="b-tile img-tile">
+            <img
+              src="/assets/para/people-playing-parasite-hunter.jpg"
+              alt="People playing Parasite Hunter"
+            />
+          </div>
+          <div id="tile-para-event-qr" class="b-tile img-tile">
+            <img src="/assets/para/scan-to-play.JPG" alt="Scan to play QR code sign" />
+          </div>
+          <div id="tile-para-event-flea" class="b-tile img-tile">
+            <img
+              src="/assets/para/flea-on-debrah-parasite-hunter-game.png"
+              alt="Flea on Debrah in Parasite Hunter game"
+            />
+          </div>
+          <div id="tile-para-booth-vegas" class="b-tile img-tile">
+            <img
+              src="/images/parasite-hunter/booth-wvc-vegas-2026.jpg"
+              alt="Parasite Hunter booth at WVC Vegas 2026"
+            />
+          </div>
+          <div id="tile-para-player-1" class="b-tile img-tile">
+            <img
+              src="/images/parasite-hunter/player-1.jpg"
+              alt="Attendee playing Parasite Hunter at WVC"
+            />
+          </div>
+          <div id="tile-para-player-2" class="b-tile img-tile">
+            <img
+              src="/images/parasite-hunter/player-2.jpg"
+              alt="Player hunting parasites on their phone"
+            />
+          </div>
+          <div id="tile-para-award-vegas" class="b-tile img-tile span-col-2">
+            <img
+              src="/images/parasite-hunter/team-award-wvc-2026.jpg"
+              alt="Team award at WVC Vegas 2026, Best Booth"
+            />
+          </div>
+          <div id="tile-para-player-3" class="b-tile img-tile">
+            <img
+              src="/images/parasite-hunter/player-3.jpg"
+              alt="Player at the Parasite Hunter booth"
+            />
+          </div>
+          <div id="tile-para-stat-retention" class="b-tile bg-teal">
+            <div class="stat-num">3×</div>
+            <h3>High-Value Retention</h3>
+            <p style="font-size: 0.9rem">
+              Participants engaged 3× longer than with traditional booth materials.
+            </p>
+          </div>
+
+          <!-- ROW 14: LEADERBOARD + TROPHIES -->
+          <div class="b-tile bg-dark-teal span-col-3">
+            <span class="meta" style="color: var(--lime)">Engagement Strategy</span>
+            <h2>Leaderboards Incite Competition</h2>
+            <p style="color: var(--light-gray)">
+              The <strong style="color: var(--white)">Mini Toby Trophy</strong> mirrored our 12-foot
+              "Toby" installation from the prior year, brand continuity as a tangible collectible
+              that rewarded mastery and drove attendees back to the booth daily.
+            </p>
+          </div>
+          <div id="tile-para-game-kid" class="b-tile img-tile">
+            <img
+              src="/assets/para/parasite-hunter-game-kid.png"
+              alt="Young attendee playing Parasite Hunter at VMX 2026"
+            />
+          </div>
+
+          <!-- ROW 15: RESULTS STATS -->
+          <div id="tile-para-stat-leads" class="b-tile bg-lime">
+            <div class="stat-num">2,100+</div>
+            <h3>Qualified Leads</h3>
+            <p style="font-size: 0.9rem">
+              Active sign-ups with users returning daily to defend leaderboard rank.
+            </p>
+          </div>
+          <div id="tile-para-stat-ip" class="b-tile bg-yellow">
+            <div class="stat-num">100%</div>
+            <h3>IP Integrity</h3>
+            <p style="font-size: 0.9rem">
+              2D comic assets into 3D space, with brand recognition consistent across all media.
+            </p>
+          </div>
+          <div id="tile-para-stat-footprint" class="b-tile bg-orange">
+            <div class="stat-num">&#8734;</div>
+            <h3>Spatial Footprint</h3>
+            <p style="font-size: 0.9rem">
+              1.2M sq. ft. turned into a brand-owned experience beyond the booth barrier.
+            </p>
+          </div>
+
+          <!-- ROW 16: SHAWN QUOTE -->
+          <div
+            id="tile-para-quote-shawn"
+            class="b-tile bg-dark-gray"
+            style="justify-content: center; color: var(--lime)"
+          >
+            <div
+              style="
+                font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+                font-weight: 700;
+                line-height: 1.5;
+                max-width: 900px;
+              "
+            >
+              "You delivered a new kind of experience for the VMX attendees... it was being talked
+              about everywhere I went. We were by far the best booth there."
+            </div>
+            <p
+              style="
+                margin-top: 1rem;
+                font-size: 0.85rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+              "
+            >
+              Shawn, Elanco Leadership
+            </p>
+          </div>
+
+          <!-- ROW 17: ROLE SUMMARY HEADER -->
+          <div id="tile-para-expertise-header" class="b-tile bg-teal span-col-4">
+            <span class="meta" style="color: var(--text-dark)">Expertise in Action</span>
+            <h2>Bridging Vision and Execution</h2>
+          </div>
+
+          <!-- ROW 18: ROLE TILES -->
+          <div
+            id="tile-para-expertise-ownership"
+            class="b-tile bg-dark-teal"
+            style="color: var(--white); justify-content: flex-start; gap: 1.25rem"
+          >
+            <span class="meta" style="color: var(--lime)">Creative Ownership</span>
+            <p>
+              Directed the translation of original 2D character designs into performant 3D assets,
+              holding the brand’s established Comic Style IP through the conversion.
+            </p>
+          </div>
+          <div
+            id="tile-para-expertise-stewardship"
+            class="b-tile bg-dark-teal"
+            style="color: var(--white); justify-content: flex-start; gap: 1.25rem"
+          >
+            <span class="meta" style="color: var(--lime)">Technical Stewardship</span>
+            <p>
+              Set the WebAR deployment requirements: low-friction access and asset optimization
+              targets for high-density event environments.
+            </p>
+          </div>
+          <div
+            id="tile-para-expertise-strategy"
+            class="b-tile bg-dark-teal"
+            style="color: var(--white); justify-content: flex-start; gap: 1.25rem"
+          >
+            <span class="meta" style="color: var(--lime)">Experience Strategy</span>
+            <p>
+              Game loop aligned with pedagogical goals, so every catch reinforced product benefits
+              through active learning.
+            </p>
+          </div>
+          <div
+            id="tile-para-expertise-studio"
+            class="b-tile bg-dark-teal"
+            style="color: var(--white); justify-content: flex-start; gap: 1.25rem"
+          >
+            <span class="meta" style="color: var(--lime)">Studio Management</span>
+            <p>
+              Orchestrated 3D artists and developers as primary technical liaison, ensuring 1:1
+              delivery of creative vision.
+            </p>
+          </div>
+
+          <!-- ADRIANA QUOTE -->
+          <div
+            id="tile-para-quote-adriana"
+            class="b-tile bg-yellow span-col-4"
+            style="justify-content: center"
+          >
+            <div
+              style="
+                font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+                font-weight: 700;
+                line-height: 1.5;
+                max-width: 900px;
+              "
+            >
+              "I saw Heather as people gleefully killed parasites on their phone... You have all
+              created something to be deeply proud of."
+            </div>
+            <p
+              style="
+                margin-top: 1rem;
+                font-size: 0.85rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+              "
+            >
+              Adriana Zardus, Account Director
+            </p>
+          </div>
+
+          <!-- ROW 19: CREDITS -->
+          <div
+            id="tile-para-credits-ar"
+            class="b-tile span-col-2 bg-dark-gray"
+            style="justify-content: flex-start; gap: 1rem"
+          >
+            <span class="meta" style="color: var(--lime)">Parasite Hunter AR Team</span>
+            <ul class="list-clean" style="margin-top: 1rem">
+              <li><strong>Creative Technologist &amp; Studio Manager:</strong> Heather New</li>
+              <li><strong>3D Design &amp; Animation:</strong> Jason Wickersheim</li>
+              <li><strong>Creative Direction (Copy):</strong> Amy McVey</li>
+              <li><strong>Audio Direction:</strong> Dave Merriman</li>
+              <li><strong>Account Leadership:</strong> Adriana Zardus &amp; Jessica Ocampo</li>
+              <li><strong>Project Management:</strong> Kellie Innocenti</li>
+              <li><strong>Development Partners (PostPop):</strong> AJ (Lead) &amp; Carl (Dev)</li>
+            </ul>
+          </div>
+          <div
+            id="tile-para-credits-booth"
+            class="b-tile bg-dark-teal span-col-2"
+            style="color: var(--white)"
+          >
+            <span class="meta" style="color: var(--lime)">Elanco Booth Experience</span>
+            <ul class="list-clean" style="margin-top: 1rem">
+              <li>
+                <strong>Executive Creative Leadership:</strong> George Bird, Josh Liotta, James
+                Holden, Tom Demetriou
+              </li>
+              <li>
+                <strong>Account &amp; PM:</strong> Bethany Zimmermann, Malarie Claudepierre, Angela
+                Peralta, Meredith Nelson, Pat McGloin
+              </li>
+              <li>
+                <strong>Studio &amp; Design:</strong> Casey Luttrell, Josh Ziegler, Stacey Prudden,
+                Kellsey Martin, Wes Huisenga, Josh Fotheringham, Jami Gettings, Chad McClure,
+                Spencer Tetik, Tyler Mleynek, Dan Boehne
+              </li>
+              <li>
+                <strong>Creative Team:</strong> Daniel Valencia, Iara Roa-Ferreira, Abby Winchester,
+                Andrea Ramos, Luke Lisi
+              </li>
+              <li>
+                <strong>Editorial &amp; Medical:</strong> Keith Ulrich, Kimberly Pavlovich, Yanne
+                Doucet
+              </li>
+            </ul>
+          </div>
+
+          <!-- ROW 20: DISCLOSURE -->
+          <div
+            id="tile-para-disclosure"
+            class="b-tile span-col-4"
+            style="
+              min-height: auto;
+              justify-content: center;
+              text-align: center;
+              padding: 2rem 2.5rem;
+            "
+          >
+            <p style="font-size: 0.8rem; color: var(--text-grey); width: 100%">
+              All photos, videos, and assets have individual credits due to a variety of
+              contributors within the team listed above. Please request additional info for IP and
+              usage rights by emailing contact(at)heathernew.com
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- end bauhaus grid -->
+    </main>
+
+    <div id="footer-trigger"><load src="../src/partials/footer.html" /></div>
+
+    <!-- Scripts -->
+    <script type="module" src="../src/js/site-core.js"></script>
+    <script type="module" src="../src/js/parasite3d.js" defer></script>
+    <script>
+      let isPlaying = false;
+      let isPaused = false;
+      let pauseTimeout = null;
+
+      const demoBtn = document.getElementById('demoBtn');
+      const playOverlay = document.getElementById('phone-mock-overlay');
+      const gameVideo = document.getElementById('phone-mock-video');
+      const phoneContainer = document.getElementById('phone-mock-container');
+
+      function showCover() {
+        if (playOverlay) playOverlay.classList.remove('hidden');
+        if (phoneContainer) phoneContainer.classList.remove('floating');
+        if (demoBtn) demoBtn.style.display = 'inline-flex';
+        isPlaying = false;
+        isPaused = false;
+        if (gameVideo) {
+          gameVideo.pause();
+          gameVideo.currentTime = 0;
+        }
+        if (pauseTimeout) {
+          clearTimeout(pauseTimeout);
+          pauseTimeout = null;
+        }
+      }
+
+      function handlePlayDemo() {
+        isPlaying = true;
+        isPaused = false;
+        if (playOverlay) playOverlay.classList.add('hidden');
+        if (phoneContainer) phoneContainer.classList.add('floating');
+        if (demoBtn) demoBtn.style.display = 'none';
+        if (gameVideo) gameVideo.play();
+      }
+
+      function handleVideoClick() {
+        if (!isPlaying) return;
+
+        if (isPaused) {
+          if (gameVideo) gameVideo.play();
+          isPaused = false;
+          if (pauseTimeout) {
+            clearTimeout(pauseTimeout);
+            pauseTimeout = null;
+          }
+        } else {
+          if (gameVideo) gameVideo.pause();
+          isPaused = true;
+          pauseTimeout = setTimeout(() => {
+            showCover();
+          }, 15000);
+        }
+      }
+
+      if (gameVideo) gameVideo.addEventListener('ended', showCover);
+      if (demoBtn) demoBtn.addEventListener('click', handlePlayDemo);
+      if (playOverlay)
+        playOverlay.addEventListener('click', () => {
+          if (!isPlaying) handlePlayDemo();
+        });
+      if (gameVideo) gameVideo.addEventListener('click', handleVideoClick);
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        window.sectionManager.register(
+          'section-parasite-hunter',
+          () => {
+            if (window.parasiteAnim) window.parasiteAnim.play();
+          },
+          () => {
+            if (window.parasiteAnim) window.parasiteAnim.pause();
+          }
+        );
+
+        const bootstrap = setInterval(() => {
+          if (window.parasiteAnim) {
+            window.parasiteAnim.play();
+            clearInterval(bootstrap);
+          }
+        }, 100);
+      });
+    </script>
+  </body>
+</html>

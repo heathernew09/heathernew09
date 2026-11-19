@@ -123,4 +123,4 @@ ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "site-tools-client domain upd
 echo "Pruning old backups (keeping 2 most recent)..."
 ssh -i "$SG_KEY" "$SG_USER@$SG_HOST" -p "$SG_PORT" "ls -t ~/backup_portfolio_*.tar.gz 2>/dev/null | tail -n +3 | xargs rm -f"
 
-echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✅ Deployed $NEW_COUNT new day(s) through $LATEST_DATE — https://heathernew.com/pages/grace-morning-practice.html"
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✅ Deployed $NEW_COUNT new day(s) through $LATEST_DATE — https://heathernew.com/field-notes/grace-morning-practice.html"

@@ -17,6 +17,16 @@ AddType application/manifest+json .webmanifest
   RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
   RewriteRule ^index\.html$ https://heathernew.com/ [R=301,L]
 
+  # /pages/ retired 2026-11. Every old URL moves permanently to its new home so
+  # search rankings, shared links and printed QR codes keep working. Keep these
+  # rules forever; the query string carries over on its own.
+  RewriteRule ^pages/(parasite-hunter|built-different|decision-tree|generative-portrait-wall|hotspot|roller-derby|subway|biomarin|elanco|studio-roadshow|built-26)\.html$ https://heathernew.com/work/$1.html [R=301,L,NC]
+  RewriteRule ^pages/field-notes\.html$ https://heathernew.com/field-notes/ [R=301,L,NC]
+  RewriteRule ^pages/(skate-mouse|grace-morning-practice|comfyui-sd)\.html$ https://heathernew.com/field-notes/$1.html [R=301,L,NC]
+  RewriteRule ^pages/(about|contact|privacy)\.html$ https://heathernew.com/$1.html [R=301,L,NC]
+  RewriteRule ^pages/(breakout|links|ux-checklist|ux-survey|screen-reader-demo|kanban|heather)\.html$ https://heathernew.com/tools/$1.html [R=301,L,NC]
+  RewriteRule ^pages/bone-growth\.html$ https://heathernew.com/work/biomarin.html [R=301,L,NC]
+
   # AI training crawlers and bulk-download tools. Search engines, social link
   # previews (LinkedIn, Slack, facebookexternalhit) and user-initiated AI
   # fetchers (ChatGPT-User, Claude-User) are left alone on purpose, so a

@@ -68,7 +68,7 @@ function build() {
       <p id="hn-cookie-text">
         This site uses cookies. Not this kind, sadly. It's Google Analytics, so I can see
         if anyone visits.
-        <a href="/pages/privacy.html">Privacy policy</a>
+        <a href="/privacy.html">Privacy policy</a>
       </p>
       <div class="hn-cookie__actions">
         <button type="button" class="hn-cookie__accept" data-choice="granted">Accept cookies</button>

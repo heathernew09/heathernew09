@@ -13,15 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="pages-menu-content">
                 <nav class="pages-main-nav">
                     <a href="/" class="nav-link home-link-nav">Home</a>
-                    <a href="/pages/parasite-hunter.html" class="nav-link">Parasite Hunter AR Game</a>
-                    <a href="/pages/hotspot.html" class="nav-link">Wall of Flame Interactive</a>
-                    <a href="/pages/decision-tree.html" class="nav-link">Interactive Zen Garden</a>
-                    <a href="/pages/bone-growth.html" class="nav-link">Bone Growth Learning Game</a>
-                    <a href="/pages/built-different.html" class="nav-link">The Modular Brand: MERGE</a>
-                    <a href="/pages/generative-portrait-wall.html" class="nav-link">Generative Portrait Wall</a>
+                    <a href="/work/parasite-hunter.html" class="nav-link">Parasite Hunter AR Game</a>
+                    <a href="/work/hotspot.html" class="nav-link">Wall of Flame Interactive</a>
+                    <a href="/work/decision-tree.html" class="nav-link">Interactive Zen Garden</a>
+                    <a href="/work/biomarin.html" class="nav-link">Bone Growth Learning Game</a>
+                    <a href="/work/built-different.html" class="nav-link">The Modular Brand: MERGE</a>
+                    <a href="/work/generative-portrait-wall.html" class="nav-link">Generative Portrait Wall</a>
                     <div class="nav-bottom-group" style="margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
-                        <a href="/pages/about.html" class="nav-link">About</a>
-                        <a href="/pages/contact.html" class="nav-link">Contact</a>
+                        <a href="/about.html" class="nav-link">About</a>
+                        <a href="/contact.html" class="nav-link">Contact</a>
                     </div>
                 </nav>
             </div>

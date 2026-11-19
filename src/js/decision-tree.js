@@ -3,7 +3,7 @@
   let pathPrefix = './';
   const pathname = window.location.pathname;
 
-  if (pathname.includes('/pages/') || pathname.includes('/partials/')) {
+  if (/\/(work|field-notes|tools|partials)\//.test(pathname)) {
     pathPrefix = '../';
   } else {
     pathPrefix = './';
