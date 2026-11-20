@@ -90,9 +90,12 @@
           grid-template-columns: 1fr;
           min-height: 0;
         }
+        /* Chart plus legend needs its natural height; a fixed box clipped it. */
         .hero-visual-block {
           min-height: 0;
-          height: 320px;
+          height: auto;
+          overflow: visible;
+          padding: 1rem 0 3rem;
         }
       }
       .hero-title-block h1 {
@@ -829,9 +832,9 @@
               individual credits within the team listed above. For IP
               and usage rights, email <a href="mailto:contact@heathernew.com">contact@heathernew.com</a>
             </p>
-            <nav class="built-series" aria-label="BUILT series">
+            <nav class="built-series" aria-label="More MERGE work">
               <a href="/work/generative-portrait-wall.html"><span>Year one · BUILT 2025</span>&larr; Generative Portrait Wall</a>
-              <a class="current" href="/work/built-26.html"><span>Year two · BUILT 2026</span>Scan Station Alpha</a>
+              <a href="/work/built-different.html"><span>More MERGE work</span>The Modular Website &rarr;</a>
             </nav>
           </div>
         </div>
